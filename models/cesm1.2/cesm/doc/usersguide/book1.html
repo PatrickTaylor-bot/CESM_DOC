@@ -1,0 +1,668 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>CESM User's Guide (CESM1.2 Release Series User's Guide) (PDF)</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="c12.html"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>CESM User's Guide (CESM1.2 Release Series User's Guide) (<A
+HREF="ug.pdf"
+TARGET="_top"
+>PDF</A
+>)</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN6"
+></A
+>CESM Software Engineering Group (CSEG)</H3
+><DIV
+CLASS="affiliation"
+><SPAN
+CLASS="orgname"
+> NCAR <BR></SPAN
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="c12.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c12.html#howtouse"
+>How To Use This Document</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c12.html#modelVersions"
+>CESM Model Version Naming Conventions</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x32.html"
+>CESM Overview</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x32.html#software_system_prerequisites"
+>CESM Software/Operating System Prerequisites</A
+></DT
+><DT
+><A
+HREF="x32.html#ccsm_components"
+>CESM Components</A
+></DT
+><DT
+><A
+HREF="x32.html#ccsm_component_sets"
+>CESM Component Sets</A
+></DT
+><DT
+><A
+HREF="x32.html#ccsm_grids"
+>CESM Grids</A
+></DT
+><DT
+><A
+HREF="x32.html#ccsm_machines"
+>CESM Machines</A
+></DT
+><DT
+><A
+HREF="x32.html#ccsm_validation"
+>CESM Validation</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x290.html"
+>Downloading CESM</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x290.html#download_ccsm_code"
+>Downloading the code and scripts - starting with CESM1.2.1</A
+></DT
+><DT
+><A
+HREF="x290.html#obtaining_new_verions"
+>Obtaining new release versions of CESM - prior to CESM1.2.1</A
+></DT
+><DT
+><A
+HREF="x290.html#download_ccsm_inputdata"
+>Downloading input data</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x382.html"
+>Quick Start (CESM Workflow)</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="c513.html"
+>Creating and Setting Up A Case</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c513.html#how_to_create_case"
+>How to create a new case</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c513.html#compset_names"
+>New Component Set Naming Convention</A
+></DT
+><DT
+><A
+HREF="c513.html#grid_names"
+>New Overall Model Grid Naming Convention</A
+></DT
+><DT
+><A
+HREF="c513.html#using_create_newcase"
+>Using create_newcase</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x715.html"
+>How to set up a case and customize the PE layout</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x715.html#AEN717"
+>Calling <B
+CLASS="command"
+>cesm_setup</B
+></A
+></DT
+><DT
+><A
+HREF="x715.html#case_conf_setting_pes"
+>Changing the PE layout</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x836.html"
+>Multi-instance component functionality</A
+></DT
+><DT
+><A
+HREF="x886.html"
+>Modifying an xml file</A
+></DT
+><DT
+><A
+HREF="x928.html"
+>Cloning a case (Experts only)</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="c986.html"
+>Building CESM</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c986.html#AEN989"
+>How do I build my model?</A
+></DT
+><DT
+><A
+HREF="x1045.html"
+>Input data</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1045.html#user_input_data"
+>User-created input data</A
+></DT
+><DT
+><A
+HREF="x1045.html#input_data_server"
+>Using the input data server</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1097.html"
+>Rebuilding the model</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="c1113.html"
+>Running CESM</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1113.html#running_ccsm_runtime"
+>Customizing runtime settings</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1113.html#run_start_stop"
+>Controlling starting, stopping and restarting a run</A
+></DT
+><DT
+><A
+HREF="c1113.html#customizing_components"
+>Customizing component-specific namelist settings</A
+></DT
+><DT
+><A
+HREF="c1113.html#running_ccsm_env_output"
+>Controlling output data</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1516.html"
+>Load balancing a case</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1516.html#timing_info"
+>Model timing data</A
+></DT
+><DT
+><A
+HREF="x1516.html#using_timing_info"
+>Using model timing data</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1582.html"
+>How do I run a case?</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1582.html#running_ccsm_running_timelimit"
+>Setting the time limits</A
+></DT
+><DT
+><A
+HREF="x1582.html#running_ccsm_running_submit"
+>Submitting the run</A
+></DT
+><DT
+><A
+HREF="x1582.html#running_ccsm_restarts"
+>Restarting a run</A
+></DT
+><DT
+><A
+HREF="x1582.html#running_ccsm_data_flow"
+>Data flow during a model run</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1734.html"
+>Testing a case</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="c1738.html"
+>Porting and Validating CESM on a new platform</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1738.html#port_overview"
+>Porting Overview</A
+></DT
+><DT
+><A
+HREF="x1748.html"
+>Step 1: Use create_newcase with a userdefined machine name</A
+></DT
+><DT
+><A
+HREF="x1794.html"
+>Step 2: Enabling out-of-the box capability for your machine</A
+></DT
+><DT
+><A
+HREF="x1827.html"
+>Step 3: Port Validation</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="c1868.html"
+>Use Cases and FAQs</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1868.html#use_case_basic"
+>BASICS: A basic example</A
+></DT
+><DT
+><A
+HREF="x1894.html"
+>BASICS: How do I set up a branch or hybrid run?</A
+></DT
+><DT
+><A
+HREF="x1923.html"
+>BASICS: What calendars are supported in CESM?</A
+></DT
+><DT
+><A
+HREF="x1927.html"
+>BASICS: How do I change processor counts and component layouts on processors?</A
+></DT
+><DT
+><A
+HREF="x1955.html"
+>BASICS: What are CESM xml variables and CESM environment variables?</A
+></DT
+><DT
+><A
+HREF="x1968.html"
+>BASICS: How do I modify the value of CESM xml variables?</A
+></DT
+><DT
+><A
+HREF="x1974.html"
+>BASICS: Why aren't my $CASEROOT xml variable changes working?</A
+></DT
+><DT
+><A
+HREF="x1979.html"
+>BASICS: How do I run multiple cases all using a single executable?</A
+></DT
+><DT
+><A
+HREF="x1996.html"
+>BASICS: How do I use the ESMF library and ESMF interfaces?</A
+></DT
+><DT
+><A
+HREF="x2017.html"
+>BASICS: Why is there file locking and how does it work?</A
+></DT
+><DT
+><A
+HREF="x2043.html"
+>BASICS:  What are the directories and files in my case directory?</A
+></DT
+><DT
+><A
+HREF="x2147.html"
+>IO: What is pio?</A
+></DT
+><DT
+><A
+HREF="x2168.html"
+>IO: How do I use pnetcdf?</A
+></DT
+><DT
+><A
+HREF="x2172.html"
+>CAM: How do I customize  CAM output fields?</A
+></DT
+><DT
+><A
+HREF="x2241.html"
+>CAM: How do I customize CAM forcings?</A
+></DT
+><DT
+><A
+HREF="x2268.html"
+>CAM/CLM: How do I change history file output frequency and content for
+CAM and CLM during a run?</A
+></DT
+><DT
+><A
+HREF="x2306.html"
+>CAM: How do I use B compset history output to create SST/ICE data files to drive an F compset?</A
+></DT
+><DT
+><A
+HREF="x2366.html"
+>POP/CICE: How are CICE and POP decompositions set and how do I override them?</A
+></DT
+><DT
+><A
+HREF="x2372.html"
+>POP: How do I initialize POP2 with a spun-up initial condition?</A
+></DT
+><DT
+><A
+HREF="x2393.html"
+>DRIVER: Is there more information about the coupler/driver implementation?</A
+></DT
+><DT
+><A
+HREF="x2397.html"
+>DRIVER: How do I pass in new fields between components?</A
+></DT
+><DT
+><A
+HREF="x2401.html"
+>EXPERTS: How do I add a new user-defined component set?</A
+></DT
+><DT
+><A
+HREF="x2417.html"
+>EXPERTS: How do I add a new user-defined grid?</A
+></DT
+><DT
+><A
+HREF="x2551.html"
+>EXPERTS: How do I carry out data assimilation using CAM and DART?</A
+></DT
+><DT
+><A
+HREF="x2610.html"
+>EXPERTS: How do I add a new CESM model component?</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="c2676.html"
+>CESM Testing</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2676.html#ccsm_tests_summary"
+>Testing overview</A
+></DT
+><DT
+><A
+HREF="x2691.html"
+>Using <B
+CLASS="command"
+>create_production_test</B
+></A
+></DT
+><DT
+><A
+HREF="x2698.html"
+>Using <B
+CLASS="command"
+>query_tests</B
+></A
+></DT
+><DT
+><A
+HREF="x2731.html"
+>Using <B
+CLASS="command"
+>create_test</B
+></A
+></DT
+><DT
+><A
+HREF="x2864.html"
+>Debugging Tests That Fail</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="c2882.html"
+>Troubleshooting</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2882.html#troubleshooting_newcase"
+>Troubleshooting create_newcase</A
+></DT
+><DT
+><A
+HREF="x2890.html"
+>Troubleshooting job submission problems</A
+></DT
+><DT
+><A
+HREF="x2897.html"
+>Troubleshooting runtime problems</A
+></DT
+><DT
+><A
+HREF="x2923.html"
+>Additional Troubleshooting Information</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="g2927.html"
+>Glossary</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Tables</B
+></DT
+><DT
+>1-1. <A
+HREF="x32.html#required_software_table"
+>Recommmended Software Package Versions by Machine</A
+></DT
+><DT
+>2-1. <A
+HREF="c513.html#AEN600"
+>Result of invoking <B
+CLASS="command"
+>create_newcase</B
+></A
+></DT
+><DT
+>2-2. <A
+HREF="x715.html#AEN761"
+>Result of calling <B
+CLASS="command"
+>cesm_setup</B
+></A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c12.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

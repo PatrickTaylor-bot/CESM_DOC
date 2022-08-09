@@ -1,0 +1,4732 @@
+<html>
+
+<head>
+   <title>Community Earth System Model (CESM)</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<a name="TOP">
+<!-- ----------------------------------------------------------------------- -->
+<!-- main navigation include -->
+<!-- ----------------------------------------------------------------------- -->
+<!=======================================================================>
+<body bgcolor="#ffffff">
+<!=======================================================================>
+<!----------------------------------------------------------------------------->
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr>
+<td align="left">
+   <font size=-1>
+   http://www.cesm.ucar.edu/models/ccsm4.0/tags/ccsm4_0_rel/ccsm4_0/index.html
+   </font>
+</td>
+<td align="right">
+   <font size=-1>
+   
+   11 Feb 2011
+   
+   </font>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+<table width="100%" cellpadding="8" cellspacing="0" border="1" bgcolor="dddddd">
+<tr>
+<td align="left">
+   <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="dddddd">
+   <tr>
+   <td align="left">
+      <font size="+1">
+      <b> CCSM4&nbsp;Software&nbsp;Release</b>
+      </font>
+   </td>
+   <td width="50">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td align="right">
+      <font size=-1>
+      [an error occurred while processing this directive]
+         <a href="http://www.cesm.ucar.edu/models/ccsm4.0/">CCSM4&nbsp;Release&nbsp;Home</a>&nbsp;|&nbsp;
+         <a href="http://www.cesm.ucar.edu/">CESM&nbsp;Home</a> 
+      
+      </font>
+   </td>
+   </tr>
+   </table>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### BEGIN EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!----------------------------------------------------------------------------->
+<h1 align=center> 
+ccsm4_0
+
+</h1>
+<!----------------------------------------------------------------------------->
+<h2 align=center>Release Notes, Test Results, and Known Problems </h2>
+<!----------------------------------------------------------------------------->
+
+<p>
+Contents
+<ul>
+<li><a href="#TAG">Release Notes</a>
+<li><a href="#RECORD">Software Engineering Test Record</a>
+<li><a href="#PROBLEMS">Known Problems</a>
+</ul>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="TAG">
+<h3>Release Notes</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+================================================================================
+SVN $URL: https://svn-ccsm-release.cgd.ucar.edu/model_versions/ccsm4_0 $
+================================================================================
+
+Tag name: ccsm4_0
+Originator(s): cseg
+Date: Thu Apr 1 2010
+One-line Summary: First released version of the ccsm4.0 code.
+
+This tag is the first officially released version of the ccsm4.0 code.
+Release tag ccsm4_0 corresponds to internal release candidate ccsm4_0_rel08. 
+
+
+</pre>
+<a href="#TOP"> Return to Top </a>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="RECORD">
+<h3> Software Engineering Test Record</h3>
+<!----------------------------------------------------------------------------->
+
+<h4> Bluefire Pre-tag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>P4A.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.E.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_f19.FW1850.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.FCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T62_g16.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.E.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.E1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERP.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERP.T62_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.416 memh=1058.689 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.110 memh=1076.516 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.294 memh=1058.689 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.T62_g16.C.bluefire.perf npes=128 tput=22.694 memh=912.601 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Bluefire Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS.f45_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS.f45_f45.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.FAMIP.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_f09.FAMIP.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f45_g37.BMOZ.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B20TRCNCHM.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CNCHM.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F1850.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.I4804.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SEQ.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_g16.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_g16.S.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS.ne30_f19_g16.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_RLA.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_RLB.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_ROA.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_ROB.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f45_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>P4A_E.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f45_g37.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_g16.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_g16.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_f19.FW1850.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_f19.FCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB_E.f45_g37.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB_E.T62_g16.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB_E.f45_g37.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB_E.f45_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB_E.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_g16.E.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_g16.E1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERP_E.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERP_E.T62_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g37.C.bluefire.perf npes=16 tput=74.257 memh=376.492 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.368 memh=1117.232 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.076 memh=1136.048 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.317 memh=1099.386 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.T62_g16.C.bluefire.perf npes=128 tput=22.276 memh=943.185 memr=-0.001 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Jaguar Pretag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f19_g16.B20TR.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.FCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.D.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.f09_g16.B1850CN.jaguar.perf npes=128 tput=3.570 memh=921.559 memr=1035.512 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.f09_g16.B20TRCN.jaguar.perf npes=128 tput=3.060 memh=939.617 memr=1055.461 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.f19_g16.B20TR.jaguar.perf npes=416 tput=13.128 memh=774.138 memr=905.538 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.f19_g16.B.jaguar.perf npes=416 tput=16.502 memh=766.162 memr=897.600 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.T31_g37.B.jaguar.perf npes=16 tput=8.381 memh=428.791 memr=515.330 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.T62_g16.C.jaguar.perf npes=128 tput=etag/run/c memh=etag/run/c memr=etag/run/c tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT.T62_g16.D.jaguar.perf npes=64 tput=33.121 memh=271.500 memr=347.748 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Jaguar Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>ERB.T62_g37.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F1850.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.T62_t12.C.jaguar </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+> Timestepping instability in pop2 
+</TD
+></TR
+><TR
+><TD
+>ERS.T62_t12.G.jaguar </TD
+><TD
+><FONT
+COLOR="RED"
+>RUN</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+> <P
+CLASS="literallayout"
+>&nbsp;Test&nbsp;exceeds&nbsp;wallclock&nbsp;limit:&nbsp;optimal&nbsp;PE-layout&nbsp;is&nbsp;not&nbsp;produced,&nbsp;<br>
+&nbsp;us&nbsp;an&nbsp;alternative&nbsp;layout,&nbsp;or&nbsp;use&nbsp;a&nbsp;wallclock&nbsp;time&nbsp;or&nbsp;8&nbsp;hrs.</P
+> 
+</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS.ne30_f19_g16.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.D.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.G.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.I.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.E.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_f19.F1850.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f19_g16.B20TR.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI_E.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_g16.X.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f45_g37.A.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_E.f19_f19.FCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT_E.T62_g16.D.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_DE.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT_E.f09_g16.B1850CN.jaguar.perf npes=128 tput=3.565 memh=926.485 memr=1050.874 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.f19_g16.B20TR.jaguar.perf npes=416 tput=15.978 memh=784.753 memr=928.710 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.f19_g16.B.jaguar.perf npes=416 tput=16.614 memh=776.970 memr=921.136 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.T31_g37.B.jaguar.perf npes=16 tput=8.305 memh=429.263 memr=527.902 tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.T62_g16.C.jaguar.perf npes=128 tput=/run/cpl.l memh=/run/cpl.l memr=/run/cpl.l tag=ccsm4_0_rel08 
+ 
+  
+CHECK ERT_E.T62_g16.D.jaguar.perf npes=64 tput=32.149 memh=278.359 memr=364.925 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Jaguarpf Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CN.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B20TRCN.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.jaguarpf </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.jaguarpf.perf npes=128 tput=14.188 memh=802.486 memr=1008.628 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Franklin PostTest Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CN.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B20TRCN.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B20TRCNCHM.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CNCHM.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.franklin </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.franklin.perf npes=128 tput=14.095 memh=802.257 memr=989.033 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Kraken PostTest Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CN.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B20TRCN.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.kraken </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.kraken.perf npes=128 tput=12.832 memh=803.276 memr=1009.624 tag=ccsm4_0_rel08 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Edinburgh Pretag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>ERS.T31_g37.B1850CN.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.T31_g37.B1850CN.edinburgh_lahey </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+> expected: lahey version L8.10b, fails to compile pop2 
+</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_lahey </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.B1850CN.edinburgh_intel </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_intel </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>---</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Edinburgh Posttag Test Record</h4>
+
+
+<h4> Hadley Test Record</h4>
+[an error occurred while processing this directive]
+
+<h4> Midnight Test Record</h4>
+[an error occurred while processing this directive]
+
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="PROBLEMS">
+<h3>Known Problems</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+
+_____________________________________________________________________________________________
+
+Description: G compset, T62_t12 resolution PE-layout not optimal 
+Date       : 03/31/2010
+Contact    : fischer 
+Information: 
+
+An optimal PE-layout is not produced, suggest the use of an alternative PE-layout, 
+or increase the wall clock limit to 8 hours.
+
+_____________________________________________________________________________________________
+
+Description: C compset, T62_t12 resolution timestepping instability
+Date       : 03/31/2010
+Contact    : njn01
+Information:
+
+There is an initial timestepping instability in POP2 that results in the the model
+issuing the error message "ERROR: k.e. > 100" and shutting down. The solution to this
+problem is to reduce the POP2 timestep size (increase DT_COUNT). 
+
+We are continuing to test this configuration to determine a recommendation for an optimal
+initial timestep size. We know that an initial value of the ocean-model timestep-control
+parameter DT_COUNT = 400 is successful for a six-day startup run. Most likely, the user
+will be able to decrease DT_COUNT (increase the timestep size) following an initial startup
+period.
+
+Check back later for more information.
+
+_____________________________________________________________________________________________
+
+Description: Threaded active-ocean rake decomposition failure
+Date       : 03/31/2010
+Contact    : njn01
+Information:
+
+Occasionally, when running CCSM4 POP2 with OpenMP and using certain processor configurations, 
+the POP_Distribution rake algorithm fails when clinic_distribution_type is set to its default 
+value, balanced. 
+
+Under these circumstances, the user should set clinic_distribution_type = cartesian instead.
+
+_____________________________________________________________________________________________
+Description: incorrect create_newcase messages regarding AMIP compset
+Date       : 04/02/2010
+Contact    : kauff
+Information:
+
+create_newcase issues the message:
+  * If the user is interested in running a "stand-alone"
+  * component configuration, the following model
+  * configurations have been validated scientifically and
+  * have associated diagnostic output as part of the release.
+  *
+  *  0.9x1.25_gx1v6  F_AMIP_1DEG
+  *  1.9x2.5_gx1v6   F_AMIP_2DEG
+
+This is incorrect.  It should say
+  *  0.9x1.25_0.9x1.25 F_AMIP
+  *  1.9x2.5_1.9x2.5   F_AMIP
+
+Also, if one tries to create an AMIP case with an unsupported resolution
+you get the error message...
+   "ERROR: Default resoluton independent AMIP is INVALID"
+the message should be...
+   "ERROR: AMIP compset is not supported at this resolution"
+
+The AMIP compsets should work doing something like this...
+create_newcase -case c40.FAMIP.f19_f19.01 -compset F_AMIP -res f19_f19 -mach bluefire
+
+_____________________________________________________________________________________________
+Description: half degree surface dataset for clm repeats the path twice
+Date       : 04/29/2010
+Contact    : erik
+Information:
+
+When using an 1850 compset with CLM, the path to the surface dataset is
+repeated twice. So modify your namelist in Buildconf/clm.buildnml.csh to change
+the path for "lnd/clm2/surfdata/lnd/clm2/surfdata" to "lnd/clm2/surfdata".
+
+_____________________________________________________________________________________________
+Description: list of minor issues for CLM
+Date       : 04/29/2010
+Contact    : erik
+Information:
+
+There is a list of minor issues with CLM under the CLM Documentation at...
+
+    http://www.ccsm.ucar.edu/models/ccsm4.0/clm/models/lnd/clm/doc/KnownBugs
+
+</pre>
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### END   EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The build-namelist utility</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="User's Guide to the Community Atmosphere Model CAM-4.0"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Environment variables recognized by configure"
+HREF="x1021.html"><LINK
+REL="NEXT"
+TITLE="Environment variables used by build-namelist"
+HREF="x1236.html"></HEAD
+><BODY
+CLASS="appendix"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User's Guide to the Community Atmosphere Model CAM-4.0</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1021.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1236.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="appendix"
+><H1
+><A
+NAME="bldnl"
+></A
+>Appendix B. The <B
+CLASS="command"
+>build-namelist</B
+> utility</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="a1072.html#bldnl_opts"
+>Options to <B
+CLASS="command"
+>build-namelist</B
+></A
+></DT
+><DT
+><A
+HREF="x1236.html"
+>Environment variables used by <B
+CLASS="command"
+>build-namelist</B
+></A
+></DT
+></DL
+></DIV
+><P
+>&#13;The <B
+CLASS="command"
+>build-namelist</B
+> utility builds namelists which specify
+run-time details for CAM.  These are written to a single file
+(by default, the file <TT
+CLASS="filename"
+>atm_in</TT
+> in the directory from which
+<B
+CLASS="command"
+>build-namelist</B
+> is invoked).
+</P
+><P
+>&#13;The only required input for <B
+CLASS="command"
+>build-namelist</B
+> is a configuration
+cache file produced by a previous invocation of <B
+CLASS="command"
+>configure</B
+>
+(<TT
+CLASS="filename"
+>config_cache.xml</TT
+> by default).  <B
+CLASS="command"
+>build-namelist</B
+> looks
+at this file to determine the features of the CAM executable, such as
+the dynamical core and horizontal resolution, that affect the default
+specifications for namelist variables.  The default values themselves
+are specified in the file
+<TT
+CLASS="filename"
+>$CAM_ROOT/models/atm/cam/bld/namelist_files/namelist_defaults_cam.xml</TT
+>,
+and in the use case files located in the directory
+<TT
+CLASS="filename"
+>$CAM_ROOT/models/atm/cam/bld/namelist_files/use_cases/</TT
+>.
+</P
+><P
+>&#13;The methods for setting the values of namelist variables, listed from
+highest to lowest precedence, are:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;using specific command-line options,
+i.e., <CODE
+CLASS="option"
+>-case</CODE
+> and <CODE
+CLASS="option"
+>-runtype</CODE
+>,
+</P
+></LI
+><LI
+><P
+>&#13;using the <CODE
+CLASS="option"
+>-namelist</CODE
+> option,
+</P
+></LI
+><LI
+><P
+>&#13;setting values in a file specified by <CODE
+CLASS="option"
+>-infile</CODE
+>,
+</P
+></LI
+><LI
+><P
+>&#13;specifying a <CODE
+CLASS="option"
+>-use_case</CODE
+> option,
+</P
+></LI
+><LI
+><P
+>&#13;setting values in the namelist defaults file.
+</P
+></LI
+></OL
+><P
+>&#13;The first four of these methods for specifying namelist variables are
+the ones available to the user without requiring code modification.  Any
+namelist variable recognized by <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> can be modified using method 2 or 3.
+The final two methods represent defaults that are hard coded as part of the
+code base.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="bldnl_opts"
+>Options to <B
+CLASS="command"
+>build-namelist</B
+></A
+></H1
+><P
+>&#13;To get a list of all available options, type <KBD
+CLASS="userinput"
+>build-namelist --help</KBD
+>.
+Available options are also listed just below.
+</P
+><P
+>&#13;The following options may all be specified with either one or two leading
+dashes, e.g., <CODE
+CLASS="option"
+>-help</CODE
+> or <CODE
+CLASS="option"
+>--help</CODE
+>.  The few
+options that can be expressed as single letter switches may not be clumped,
+e.g., <CODE
+CLASS="option"
+>-h -s -v</CODE
+> may <I
+CLASS="emphasis"
+>NOT</I
+> be expressed
+as <CODE
+CLASS="option"
+>-hsv</CODE
+>.  When multiple options are listed separated by a
+vertical bar either version may be used.
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-case</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Case identifier up to 80 characters.  This value is used to set the
+case_name variable in the driver namelist.  Default: <CODE
+CLASS="constant"
+>camrun</CODE
+>
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cice_nl</CODE
+> <KBD
+CLASS="userinput"
+>&#60;namelist&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify namelist settings for CICE directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<KBD
+CLASS="userinput"
+>-cice_nl "&#38;ice histfreq=1 /"</KBD
+>.
+This namelist will be passed to the invocation of the CICE build-namelist
+via its <CODE
+CLASS="option"
+>-namelist</CODE
+> argument.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-config</CODE
+> <KBD
+CLASS="userinput"
+>&#60;filepath&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Read the specified configuration cache file to determine the configuration
+of the CAM executable.  Default: <TT
+CLASS="filename"
+>config_cache.xml</TT
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-config_cice</CODE
+> <KBD
+CLASS="userinput"
+>&#60;filepath&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Filepath of the CICE config_cache file.  This filepath is passed to the
+invocation of the CICE <B
+CLASS="command"
+>build-namelist</B
+>.  Only specify this to override the
+default filepath which was set when the CICE <B
+CLASS="command"
+>configure</B
+> was invoked by
+the CAM <B
+CLASS="command"
+>configure</B
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-csmdata</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Root directory of <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> input data.
+Can also be set by using the <CODE
+CLASS="envar"
+>CSMDATA</CODE
+> environment variable.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-dir</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory where output namelist files for each component will be
+written, i.e., <TT
+CLASS="filename"
+>atm_in</TT
+>, <TT
+CLASS="filename"
+>drv_in</TT
+>,
+<TT
+CLASS="filename"
+>ice_in</TT
+>, <TT
+CLASS="filename"
+>lnd_in</TT
+> and <TT
+CLASS="filename"
+>ocn_in</TT
+>.
+Default: current working directory.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-help | -h</CODE
+></DT
+><DD
+><P
+>&#13;Print usage to STDOUT.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ignore_ic_date</CODE
+></DT
+><DD
+><P
+>&#13;Ignore the date attribute of the initial condition files
+when determining the default.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ignore_ic_year</CODE
+></DT
+><DD
+><P
+>&#13;Ignore just the year part of the date attribute of the initial condition files
+when determining the default.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-infile</CODE
+> <KBD
+CLASS="userinput"
+>&#60;filepath&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify a file containing namelists to read values from.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-inputdata</CODE
+> <KBD
+CLASS="userinput"
+>&#60;filepath&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Writes out a list of pathnames for required input datasets to
+the specified file.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-namelist</CODE
+> <KBD
+CLASS="userinput"
+>&#60;namelist&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify namelist settings directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<KBD
+CLASS="userinput"
+>-namelist "&#38;atm stop_option='ndays' stop_n=10 /"</KBD
+>
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-runtype</CODE
+>
+[<CODE
+CLASS="constant"
+>startup</CODE
+>|<CODE
+CLASS="constant"
+>continue</CODE
+>|<CODE
+CLASS="constant"
+>branch</CODE
+>]</DT
+><DD
+><P
+>&#13;Type of simulation.  Default: <CODE
+CLASS="constant"
+>startup</CODE
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-silent | -s</CODE
+></DT
+><DD
+><P
+>&#13;Turns on silent mode - only fatal messages issued.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-test</CODE
+></DT
+><DD
+><P
+>&#13;Enable checking that input datasets exist on local filesystem.  This is
+also a convenient way to generate a list of the required input datasets for
+a model run.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-use_case</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify a use case.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-verbose | -v</CODE
+></DT
+><DD
+><P
+>&#13;Turn on verbose echoing of informational messages.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-version</CODE
+></DT
+><DD
+><P
+>&#13;Echo the source code repository tag name used to check out this CAM distribution.
+</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1021.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1236.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Environment variables recognized by <B
+CLASS="command"
+>configure</B
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Environment variables used by <B
+CLASS="command"
+>build-namelist</B
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

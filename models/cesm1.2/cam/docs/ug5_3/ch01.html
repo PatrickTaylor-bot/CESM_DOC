@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 1. Introduction</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="prev" href="pr01.html" title="Acknowledgments" /><link rel="next" href="ch01s02.html" title="1.2. Getting Help -- Other User Resources" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 1. Introduction </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="pr01.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch01s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="intro"></a>Chapter 1. Introduction </h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="ch01.html#whats_new">1.1. Changes from previous release</a></span></dt><dt><span class="sect1"><a href="ch01s02.html">1.2. Getting Help -- Other User Resources</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch01s02.html#cam_homepage">1.2.1. The <acronym class="acronym">CAM</acronym> Web Page</a></span></dt><dt><span class="sect2"><a href="ch01s02.html#cam_bb">1.2.2. The <acronym class="acronym">CESM</acronym> Bulletin Board</a></span></dt><dt><span class="sect2"><a href="ch01s02.html#cam_bugs">1.2.3. Reporting bugs</a></span></dt></dl></dd></dl></div><p>
+The Community Atmosphere Model version <acronym class="acronym">CAM</acronym>-5.3 is released as the
+atmosphere component of the Community Earth System Model version
+<acronym class="acronym">CESM</acronym>-1.2.  It is the latest in a series of global atmosphere models
+whose development is guided by
+the <a class="ulink" href="../../../../../www.cesm.ucar.edu/working_groups/Atmosphere/default.htm" target="_top"> Atmosphere Model Working
+Group</a> (<acronym class="acronym">AMWG</acronym>) of the
+<a class="ulink" href="../../../../../www.cesm.ucar.edu/models/cesm1.html" target="_top">
+Community Earth System Model</a> (<acronym class="acronym">CESM</acronym>) project.
+<acronym class="acronym">CAM</acronym> is used as both a standalone
+model and as the atmospheric component of the <acronym class="acronym">CESM</acronym>.
+<acronym class="acronym">CAM</acronym> has a long history of use as a standalone model by
+which we mean that the atmosphere is coupled to an active land model
+(<acronym class="acronym">CLM</acronym>), a thermodynamic only sea ice model (a special configuration of <acronym class="acronym">CICE</acronym>), and a data ocean
+model (<acronym class="acronym">DOCN</acronym>).  When one speaks of "doing <acronym class="acronym">CAM</acronym> simulations" the
+implication is that it's a standalone configuration that is being used.
+When <acronym class="acronym">CAM</acronym> is coupled to active ocean and sea ice models then we refer to
+the model as <acronym class="acronym">CESM</acronym>.
+</p><p>
+<acronym class="acronym">CAM</acronym> provides a framework for running the "Whole Atmosphere"
+configurations; <acronym class="acronym">WACCM</acronym>, and <acronym class="acronym">WACCM-X</acronym>.  To run <acronym class="acronym">CAM</acronym> in a <acronym class="acronym">WACCM</acronym> or
+<acronym class="acronym">WACCM-X</acronym> configuration the user is referred to
+the <a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top"> <acronym class="acronym">CESM</acronym>-1.2
+User's Guide</a>.
+</p><p>
+In versions of <acronym class="acronym">CAM</acronym> before 4.0 the driver for the standalone configuration
+was completely separate code from what was used to couple the components of
+the <acronym class="acronym">CCSM</acronym>.  One of the most significant software changes in <acronym class="acronym">CAM</acronym>-4.0 was
+a refactoring of how the land, ocean, and sea ice components are called
+which enabled the use of the <acronym class="acronym">CCSM</acronym> coupler to act as the <acronym class="acronym">CAM</acronym> standalone
+driver (this also depended on the complete rewritting of the <acronym class="acronym">CCSM</acronym> coupler
+to support sequential execution of the components).  Hence, for the <acronym class="acronym">CESM</acronym>1
+model, just as for <acronym class="acronym">CCSM</acronym>4 before it, it is accurate to say that a <acronym class="acronym">CAM</acronym>
+standalone configuration is nothing more than a special configuration of
+<acronym class="acronym">CESM</acronym> in which the active ocean and sea ice components are replaced by
+data ocean and thermodynamic sea ice components.
+</p><p>
+Since the <acronym class="acronym">CAM</acronym> standalone model is just a special configuration of <acronym class="acronym">CESM</acronym>
+it can be run using the <acronym class="acronym">CESM</acronym> scripts.  This is done by using one of the
+"F" compsets and is described in the 
+<a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top">
+<acronym class="acronym">CESM</acronym>-1.2 User's Guide</a>.  The main advantage of running <acronym class="acronym">CAM</acronym> via
+the <acronym class="acronym">CESM</acronym> scripts is to leverage the high level of support that those
+scripts provide for doing production runs of predefined experiments on
+supported platforms.  The <acronym class="acronym">CESM</acronym> scripts do things like: setting up
+reasonable runtime environments; automatically retrieving required input
+datasets from an SVN server; and archiving output files.  But <acronym class="acronym">CAM</acronym> is used
+in a lot of environments where the complexity of production ready scripts is
+not necessary.  In these instances the flexibility and simplicity of
+being able to completely describe a run using a short shell script is a
+valuable option.  In either case though, the ability to customize a <acronym class="acronym">CAM</acronym>
+build or runtime configuration depends on being able to use the utilities
+described in this document.  Any build configuration can be set up via
+appropriate commandline arguments to <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> utility, and any
+runtime configuration can be set up with appropriate arguments to <acronym class="acronym">CAM</acronym>'s
+<span class="command"><strong>build-namelist</strong></span> utility.  Issues that are specific to running <acronym class="acronym">CAM</acronym> from the <acronym class="acronym">CESM</acronym>
+scripts will not be discussed in this guide.  Rather we focus on issues
+that are independent of which scripts are used to run <acronym class="acronym">CAM</acronym>, although there
+is some attention given in this guide to the construction of simple scripts
+designed for running <acronym class="acronym">CAM</acronym> in its standalone mode.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="whats_new"></a>1.1. Changes from previous release</h2></div></div></div><p>
+This information is available from the
+<acronym class="acronym">CESM</acronym>-1.2 <a class="ulink" href="../../../../../www.cesm.ucar.edu/models/cesm1.html" target="_top">home page</a>.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/whatsnew_science.html" target="_top">New science features in <acronym class="acronym">CAM</acronym>-5.3</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/whatsnew_software.html" target="_top">New software features in <acronym class="acronym">CAM</acronym>-5.3</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/answerchanges.html" target="_top">Summary of
+answer changes</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/knownproblems.html" target="_top">Known problems</a>.
+</p></li></ul></div><p>
+
+</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="pr01.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch01s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Acknowledgments </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.2. Getting Help -- Other User Resources</td></tr></table></div></body></html>

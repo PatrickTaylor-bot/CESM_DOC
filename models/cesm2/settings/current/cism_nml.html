@@ -1,0 +1,2991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CESM2 CISM Namelist Definitions</title>
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Namelist definitions for CISM in CESM2" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+	<link rel="manifest" href="../../../../site.webmanifest">
+	<link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../../../../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../../../../styles/um/css/style.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- bring in datatables css -->
+    <link rel="stylesheet" href="../../../../styles/um/css/datatables.min.css">
+
+    <!-- custom css -->
+    <style type="text/css">
+        #description { 
+            background-color: #c5edcb; 
+        }
+
+        table.dataTable > tbody > tr.child ul.dtr-details {
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../../../../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../../../../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../../../../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../../../../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../../../../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../../../../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../../../../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../../../../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../../../../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../../../../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../../../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../../../../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../../../../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../../../../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../../../../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../../../../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../../../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../../../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../../../../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../../../../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../../../../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../../../../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../../../Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../../../Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../../../../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../../../Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../../../../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../../../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../../../simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../../../Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../../../../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../../../../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../../../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../../../../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../../../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../../../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../../../../www.cesm.ucar.edu/models/default.htm">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="../../../current.html">CESM Releases</a></li>
+                            <li class="breadcrumb-item"><a href="../../default.htm">CESM2</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Component Configuration Settings</a></li>
+                            <li class="breadcrumb-item active">CISM Namelist Definitions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="h1-sm">CISM Namelist Definitions</h1>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="dropdown">
+                                <button class="btn btn-primary btn-block btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CESM2 Version <span class="caret"></span>
+                                </button>
+
+                                <div class="dropdown-menu w-100 py-0 mt-1 shadow" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item active" href="../2.2.html">CESM2.2.0 <span class="small">(Current Page)</span></a>
+                                    <a class="dropdown-item" href="../2.1.html">CESM2.1.3</a>
+                                    <a class="dropdown-item" href="../2.1.2">CESM2.1.2</a>
+                                    <a class="dropdown-item" href="../2.1.1">CESM2.1.1</a>
+                                    <a class="dropdown-item" href="../2.1.0">CESM2.1.0</a>
+                                    <a class="dropdown-item" href="../2.0.html">CESM2.0.1</a>
+                                    <a class="dropdown-item" href="../2.0.0">CESM2.0.0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light text-center my-4">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">Viewing component tag<br><span class="badge badge-oj">cism2_1_69</span></p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">Viewing model version<br><span class="badge badge-secondary">2.2.0</span></p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">HTML created on<br><span class="badge badge-info">2020-09-28</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- table buttons start -->
+                    <div class="btns-show-hide" style="">
+                        <button type="button" class="btn btn-primary" id="btn-show-all-children">
+                            <i class="fa fa-folder-open"></i> Show All
+                        </button>
+
+                        <button type="button" class="btn btn-primary" id="btn-hide-all-children">
+                            <i class="fa fa-folder"></i> Hide All
+                        </button>
+                    </div>
+                    <!-- table buttons end -->
+
+
+                    <table id="nmlTable" class="table table-striped bg-white">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Namelist Group</th>
+                                <th>Category</th>
+                                <th>Entry Type</th>
+                                <th class="none">Valid Values</th>
+                                <th class="none">Possible Default Values</th>
+                                <th class="none">Description and out-of-the-box Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            
+                            <tr>
+                                <td>cism_debug</td>
+                                <td>cism_params</td>
+                                <td>cism</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .false. <br/></td>
+                                <td><pre id="description">
+Determines whether extra diagnostics are printed in the cism log file
+Default: false
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>cisminputfile</td>
+                                <td>derived</td>
+                                <td>cism</td>
+                                <td>char*256</td>
+                                <td>['any char']</td>
+                                <td> is glc/cism/gland20.input_c150415.nc for: {'cism_phys': 'cism1', 'glc_grid': 'gland20'} <br/> is glc/cism/IceSheetData_UMontana/PresentDayGreenland/Greenland_5km_v1.1_SacksRev_c160720.nc for: {'cism_phys': 'cism1', 'glc_grid': 'gland5UM'} <br/> is glc/cism/gland20.input_c150415.nc for: {'cism_phys': 'cism2', 'glc_grid': 'gland20'} <br/> is glc/cism/Greenland/glissade/init/greenland_4km_epsg3413_c171126.nc for: {'cism_phys': 'cism2', 'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Input file
+Default: For startup runs or hybrid runs with CISM_OBSERVED_IC=TRUE, a resolution-dependent
+         initial conditions file (e.g., gland20.input_c150415.nc).
+         For branch/hybrid runs with CISM_OBSERVED_IC=FALSE, a restart file name
+         built based on RUN_REFCASE and RUN_REFDATE.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ice_flux_routing</td>
+                                <td>cism_params</td>
+                                <td>cism</td>
+                                <td>char*64</td>
+                                <td>['ocn', 'ice']</td>
+                                <td> ocn <br/></td>
+                                <td><pre id="description">
+Code describing how the solid ice runoff flux (i.e., calving) should
+be routed.
+ocn: all solid ice goes to the ocean component
+ice: all solid ice goes to the sea ice component
+Default: ocn
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>paramfile</td>
+                                <td>cism_params</td>
+                                <td>cism</td>
+                                <td>char*100</td>
+                                <td>['any char']</td>
+                                <td></td>
+                                <td><pre id="description">
+Name of top-level configuration file for CISM
+(Determined by scripts -- cannot be set by user)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>test_coupling</td>
+                                <td>cism_params</td>
+                                <td>cism</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .false. <br/></td>
+                                <td><pre id="description">
+If this is set to true, it sets the mass balance timestep to 1 day.
+This means the ice dynamics is called after one day of climate simulation.
+THIS IS ONLY FOR TESTING OF COUPLING PROCEDURES, NOT TO BE USED FOR SCIENCE.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>zero_gcm_fluxes</td>
+                                <td>cism_params</td>
+                                <td>cism</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'cism_evolve': 'TRUE', 'glc_two_way_coupling': 'TRUE'} <br/> is .true. for: {'cism_evolve': 'TRUE', 'glc_two_way_coupling': 'FALSE'} <br/> is .true. for: {'cism_evolve': 'FALSE', 'glc_two_way_coupling': 'TRUE'} <br/> is .true. for: {'cism_evolve': 'FALSE', 'glc_two_way_coupling': 'FALSE'} <br/></td>
+                                <td><pre id="description">
+If true, zero out all fluxes sent to the GCM
+Default: Depends on GLC_TWO_WAY_COUPLING xml variable
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>evolve_ice</td>
+                                <td>cism_config_climate</td>
+                                <td>cism_config_climate</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'cism_evolve': 'TRUE'} <br/> is 0 for: {'cism_evolve': 'FALSE'} <br/></td>
+                                <td><pre id="description">
+0: Do not let the ice sheet evolve (hold ice state fixed at initial condition)
+1: Let the ice sheet evolve
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ice_tstep_multiply</td>
+                                <td>cism_config_climate</td>
+                                <td>cism_config_climate</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Ice time-step multiplier: allows asynchronous climate-ice coupling
+Default: (use hard-coded default- currently 1)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>dew</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 20000. for: {'glc_grid': 'gland20'} <br/> is 5000. for: {'glc_grid': 'gland5UM'} <br/> is 4000. for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Node spacing in x-direction (m)
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dns</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 20000. for: {'glc_grid': 'gland20'} <br/> is 5000. for: {'glc_grid': 'gland5UM'} <br/> is 4000. for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Node spacing in y-direction (m)
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ewn</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> is 76 for: {'glc_grid': 'gland20'} <br/> is 301 for: {'glc_grid': 'gland5UM'} <br/> is 416 for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Number of nodes in x-direction
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>global_bc</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> is 0 for: {'cism_phys': 'cism1'} <br/> is 1 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Global boundary conditions
+0: Doubly periodic
+1: Free outflow; scalars in global halo set to zero
+2: No penetration; outflow set to zero at global boundaries (only supported for Glissade dycore)
+Default: 0 for cism1, 1 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>nsn</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> is 141 for: {'glc_grid': 'gland20'} <br/> is 561 for: {'glc_grid': 'gland5UM'} <br/> is 704 for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Number of nodes in y-direction
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>upn</td>
+                                <td>cism_config_grid</td>
+                                <td>cism_config_grid</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 11 <br/></td>
+                                <td><pre id="description">
+Number of nodes in z-direction
+Default: 11
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>con</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+thermal conductivity of lithosphere (W m-1 K-1)
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 3.3)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>nlayer</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Number of vertical layers
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 20)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>num_dim</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>integer</td>
+                                <td>['1', '3']</td>
+                                <td></td>
+                                <td><pre id="description">
+1: 1D calculations
+3: 3D calculations
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>numt</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Number of time steps for spinning up GTHF calculations
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 0)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>rho</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Density of lithosphere (kg m-3)
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 3300.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>rock_base</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Depth below sea-level at which geothermal heat gradient is applied (m)
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently -5000.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>shc</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Specific heat capacity of lithosphere (J kg-1 K-1)
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 1000.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>surft</td>
+                                <td>cism_config_gthf</td>
+                                <td>cism_config_gthf</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Initial surface temperature (degrees C)
+Only relevant if gthf = 2
+Default: (use hard-coded default - currently 2.)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>block_inception</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> false <br/></td>
+                                <td><pre id="description">
+Flag that indicates whether ice inception away from the main ice sheet is blocked
+Default: false
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>glissade_maxiter</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 50 <br/></td>
+                                <td><pre id="description">
+Maximum number of nonlinear iterations to be used by the Glissade velocity solver
+Default: 50
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>remove_ice_caps</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> false <br/></td>
+                                <td><pre id="description">
+Flag that indicates whether ice caps are removed and added to the calving flux
+Default: false
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_approx</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['-1', '0', '1', '2', '3', '4']</td>
+                                <td> 4 <br/></td>
+                                <td><pre id="description">
+Flag that indicates which Stokes approximation to use with the Glissade dycore.
+Not valid for other dycores.
+-1: Shallow-ice approximation, Glide-type calculation (uses glissade_velo_sia)
+0: Shallow-ice approximation, vertical-shear stresses only (uses glissade_velo_higher)
+1: Shallow-shelf approximation, horizontal-plane stresses only (uses glissade_velo_higher)
+2: Blatter-Pattyn approximation with both vertical-shear and horizontal-plane stresses (uses glissade_velo_higher)
+3: Vertically integrated 'L1L2' approximation with vertical-shear and horizontal-plane stresses (uses glissade_velo_higher)
+4: Depth-integrated viscosity approximation based on Goldberg (2011) (uses glissade_velo_higher)
+Default: 4
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_assemble_beta</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Flag that describes how beta terms are assembled in the Glissade finite-element calculation
+0: Standard finite-element calculation (which effectively smooths beta)
+1: Apply local value of beta at each vertex
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_assemble_bfric</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Flag that describes how the basal friction heat flux is computed in the Glissade finite-element calculation
+Not valid for other dycores
+0: Standard finite-element calculation summing over quadrature points
+1: Apply local value of beta*(u^2 + v^2) at each vertex
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_assemble_taud</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Flag that describes how driving-stress terms are assembled in the Glissade finite-element calculation
+Not valid for other dycores
+0: Standard finite-element calculation (which effectively smooths the driving stress)
+1: Apply local value of driving stress at each vertex
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_babc</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']</td>
+                                <td> 3 <br/></td>
+                                <td><pre id="description">
+Basal boundary condition for higher order dynamical core
+0: spatially uniform value (low value of 10 Pa yr-1 by default)
+1: large value for frozen bed, lower value for bed at pressure melting point
+2: treat beta value as a till yield stress (in Pa) using Picard iteration 
+3: pseudo-plastic basal sliding law; can model linear, power-law or plastic behavior
+4: very large value for beta to enforce no slip everywhere 
+5: beta field passed in from .nc input file as part of standard i/o
+6: no slip everywhere (using Dirichlet BC rather than large beta)
+7: treat beta value as till yield stress (in Pa) using Newton-type iteration (in development)
+8: beta field as prescribed for ISMIP-HOM test C (serial only)
+9: power law
+10: Coulomb friction law using effective pressure, with flwa from lowest ice layer
+11: Coulomb friction law using effective pressure, with constant basal flwa
+12: basal stress is the minimum of Coulomb and power-law values, as in Tsai et al. (2015)
+13: power law based on effective pressure
+14: simple hard-coded pattern (useful for debugging)
+Default: 3
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_bwat</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 2 <br/></td>
+                                <td><pre id="description">
+Basal water depth
+0: Set to zero everywhere
+1: Set to constant everywhere, to force T = Tpmp.
+2: Local basal till model with constant drainage
+Default: 2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_calving_front</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Flag that indicates whether to use a subgrid calving front parameterization
+0: No subgrid calving front parameterization
+1: Use subgrid calving front parameterization
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_disp</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['-1', '0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Method for computing the dissipation during the temperature calculation
+-1: no dissipation
+0: 0-order SIA approx.
+1: 1st order solution (e.g., Blatter-Pattyn)
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_effecpress</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4']</td>
+                                <td> 4 <br/></td>
+                                <td><pre id="description">
+Flag that describes effective pressure calculation for higher order dynamical core
+0: N = overburden pressure, rhoi*grav*thck
+1: N is reduced where the bed is at or near the pressure melting point
+2: N is reduced where there is melting at the bed
+3: N is reduced due to the connection of subglacial water to the ocean
+4: N is reduced where basal water is present
+Default: 4
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_efvs</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 2 <br/></td>
+                                <td><pre id="description">
+How effective viscosity is computed for higher-order dynamical core
+0: constant value
+1: multiple of flow factor
+2: compute from effective strain rate
+Default: 2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_flotation_function</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 2 <br/></td>
+                                <td><pre id="description">
+Flag that indicates how to compute the flotation function at and near vertices in the Glissade dycore
+Not valid for other dycores
+Only applicable for which_ho_ground=1
+0: f_flotation = (-rhow*b/rhoi*H) = f_pattyn; <=1 for grounded, > 1 for floating
+1: f_flotation = (rhoi*H)/(-rhow*b) = 1/f_pattyn; >=1 for grounded, < 1 for floating
+2: f_flotation = -rhow*b - rhoi*H = ocean cavity thickness; <=0 for grounded, > 0 for floating
+Default: 2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_gradient</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Which gradient operator to use in the Glissade dycore.
+Not valid in other dycores.
+NOTE: Upstream may be better for ice evolution because it damps checkerboard noise.
+0: Centered gradient
+1: First-order accurate upstream gradient
+2: Second-order accurate upstream gradient
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_gradient_margin</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+How to compute the gradient at the ice margin in the Glissade dycore.
+Not valid for other dycores.
+Note: Gradients are always computed at edges with ice on both sides.
+The methods differ in whether gradients are computed when an ice-covered cell
+lies above an ice-free cell (land or ocean).
+0: Compute edge gradient when either cell is ice-covered
+1: Compute edge gradient for ice-covered cell above ice-free land (not ocean)
+2: Compute edge gradient only when both cells have ice
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_ground</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Flag that indicates how the grounded ice fraction is computed in the Glissade dycore
+Not valid for other dycores
+0: fground = 0 in floating cells (based on flotation condition), else fground = 1 
+1: [NOT SUPPORTED] fground between 0 and 1 (inclusive), based on a grounding line parameterization
+2: fground = 1 in all cells
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_ground_bmlt</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Flag that indicates how to compute bmlt_float in partly grounded cells
+0: Apply bmlt_float in all floating cells, including partly grounded cells
+1: Do not apply bmlt_float in partly grounded cells
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_nonlinear</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'dycore': '1'} <br/> is 0 for: {'dycore': '2'} <br/></td>
+                                <td><pre id="description">
+Method for solving the nonlinear iteration when solving the first-order momentum balance
+0: use the standard Picard iteration
+1: use Jacobian Free Newton Krylov (JFNK) method [GLAM only]
+Default: 1 for dycore = 1, 0 for dycore = 2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_precond</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Flag that indicates which Stokes preconditioner to use in the Glissade dycore.
+Not valid for other dycores.
+0: No preconditioner
+1: Diagonal preconditioner
+2: Physics-based shallow-ice preconditioner
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_resid</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4']</td>
+                                <td> 4 <br/></td>
+                                <td><pre id="description">
+Method for computing residual in Payne/Price dynamical core
+0: maxval
+1: maxval ignoring basal velocity
+2: mean value
+3: L2 norm of system residual, Ax-b=resid
+4: L2 norm of system residual relative to rhs, |Ax-b|/|b|
+Default: 4
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_sparse</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['-1', '0', '1', '2', '3', '4']</td>
+                                <td> is 3 for: {'dycore': '2'} <br/> is 1 for: {'cism_use_trilinos': 'FALSE', 'dycore': '1'} <br/> is 4 for: {'cism_use_trilinos': 'TRUE', 'dycore': '1'} <br/></td>
+                                <td><pre id="description">
+Method for solving the sparse linear system that arises from the higher-order solver
+-1: SLAP (serial) Preconditioned conjugate gradient, incomplete Cholesky preconditioner
+0: SLAP (serial) Biconjugate gradient, incomplete LU preconditioner
+1: SLAP (serial) GMRES, incomplete LU preconditioner
+2: Native PCG, parallel-enabled, standard solver
+3: Native PCG, parallel-enabled, Chronopoulos-Gear solver
+4: standalone interface to Trilinos
+The use of trilinos is NOT SUPPORTED in CESM runs.
+Default: 3 if dycore = 2, 1 if dycore = 1 and cism_use_trilinos = FALSE
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>which_ho_thermal_timestep</td>
+                                <td>cism_config_ho_options</td>
+                                <td>cism_config_ho_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> 2 <br/></td>
+                                <td><pre id="description">
+0: vertical thermal solve before transport solve
+1: vertical thermal solve after transport solve
+2: vertical thermal solve split; both before and after transport solve
+Default: 2
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>asthenosphere</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td></td>
+                                <td><pre id="description">
+0: fluid mantle, isostatic adjustment happens instantaneously
+1: relaxing mantle, mantle is approximated by a half-space
+Only relevant if isostasy = 1
+Default: (use hard-coded default - currently 1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>flexural_rigidity</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Flexural rigidity of the lithosphere
+Only relevant if 'lithosphere' is set to 1
+Default: (use hard-coded default - currently 0.24e25)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>lithosphere</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td></td>
+                                <td><pre id="description">
+0: local lithosphere, equilibrium bedrock depression is found using Archimedes' principle
+1: elastic lithosphere, flexural rigidity is taken into account
+Only relevant if isostasy = 1
+Default: (use hard-coded default - currently 1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>lithosphere_period</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Lithosphere update period (years)
+Only relevant if isostasy = 1
+Default: (use hard-coded default - currently 100.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>relaxed_tau</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Characteristic time constant of relaxing mantle (years)
+Only relevant if isostasy = 1
+Default: (use hard-coded default - currently 4000.) 
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>whichrelaxed</td>
+                                <td>cism_config_isostasy</td>
+                                <td>cism_config_isostasy</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td></td>
+                                <td><pre id="description">
+0: relaxed topography is read from a separate variable
+1: first time slice of input topography is assumed to be relaxed
+2: first time slice of input topography is assumed to be in isostatic equilibrium with ice thickness
+Default: (use hard-coded default - currently 0)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>basal_mass_balance</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+0: not in continuity equation
+1: in continuity equation
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>basal_water</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3']</td>
+                                <td></td>
+                                <td><pre id="description">
+Determines the treatment of basal water
+Only valid for Glide dycore (cism1)
+0: Set to zero everywhere
+1: Calculated from local water balance
+2: Compute the basal water flux, then find depth via calculation
+3: Set to constant everywhere (10m), to force T = Tpmp
+Default: (use hard-coded default - currently 0)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Basal melt rate for floating ice
+0: Basal melt rate = 0 for floating ice
+1: Depth-dependent basal melt rate for floating ice as prescribed for MISMIP+
+2: Basal melt rate = constant for floating ice (with option to selectively mask out melting)
+3: Depth-dependent basal melt rate for floating ice
+4: External basal melt rate field (from input file or coupler)
+5: [NOT SUPPORTED] Basal melt rate for floating ice from MISOMIP ocean forcing with plume model
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>calving_domain</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+0: Calve only at ocean edge
+1: Calve wherever the calving criterion is met
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>calving_init</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+0: Do not calve at initialization
+1: Calve at initialization
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>cull_calving_front</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+Expert setting.
+If true, then cull calving_front cells at initialization.
+This can make the run more stable by removing long, thin peninsulas.
+If this is set, then also need to set ncull_calving_front.
+Default: (use hard-coded default - currently .false.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>diag_minthck</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td></td>
+                                <td><pre id="description">
+How to determine minimum thickness for diagnostic
+0: global diagnostics include all cell with H > 0
+1: global diagnostics include all cells with H > thklim
+This change only affects log files, not output .nc files
+Default: (use hard-coded default - currently 1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dm_dt_diag</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Switch units from kg/s to Gt/yr in the log file
+0: use kg/s unit in log file
+1: use Gt/yr unit in log file
+This change only affects log files, not output .nc files
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dycore</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '2']</td>
+                                <td> is 0 for: {'cism_phys': 'cism1'} <br/> is 2 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Which dycore to use
+0: Glide dycore (SIA, serial only)
+1: NOT SUPPORTED: glam dycore (HO, FDM, serial or parallel)
+   Note that this option is not allowed within CESM, because it is buggy
+2: Glissade dycore (HO, FEM, serial or parallel)
+Default: 0 for cism1, 2 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>evolution</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '2', '3', '4', '5']</td>
+                                <td> is 0 for: {'cism_phys': 'cism1'} <br/> is 3 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+0: pseudo-diffusion
+1: ADI scheme [CANNOT BE USED: RESTARTS ARE NOT EXACT]
+2: diffusion
+3: remap thickness
+4: 1st order upwind
+5: no thickness evolution
+Options 0, 1 and 2 are for Glide dycore only
+Options 3, 4 and 5 are for Glissade dycore only
+Default: 0 for cism1, 3 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>flow_law</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3']</td>
+                                <td> 2 <br/></td>
+                                <td><pre id="description">
+0: Constant value, taken from default_flwa
+1: Uniform value equal to the Paterson-Budd value at -10 deg C
+2: Paterson-Budd temperature-dependent relationship
+3: Read flwa/flwastag from file
+Default: 2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>gthf</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2']</td>
+                                <td> is 0 for: {'cism_phys': 'cism1'} <br/> is 1 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+0: prescribed uniform geothermal heat flux
+1: read 2D geothermal flux field from input file, if present
+   (if absent, fall back to prescribed uniform geothermal heat flux)
+2: calculate geothermal flux using 3d diffusion
+Default: 0 for cism1, 1 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>isostasy</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+0: no isostasy
+1: compute isostasy
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>limit_marine_cliffs</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .true. <br/></td>
+                                <td><pre id="description">
+If true, then thin marine-based cliffs based on a thickness threshold
+Default: .true.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>marine_margin</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Calving
+0: No calving
+1: Set thickness to zero if floating
+2: Lose a fraction of floating ice at marine margin
+3: Set thickness to zero if relaxed bedrock is more than a certain water depth (marine_limit)
+4: Set thickness to zero if present bedrock topography lies below a certain water depth (marine_limit)
+5: Set thickness to zero based on grid location (field 'calving_mask')
+6: Set thickness to zero if ice at marine margin is thinner than a certain value (calving_minthck)
+7: Set thickness to zero based on stress (eigencalving) criterion
+8: [NOT SUPPORTED] Calve ice that is sufficiently damaged
+9: [NOT SUPPORTED] Huybrechts grounding line scheme for Greenland initialization
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>periodic_ew</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td></td>
+                                <td><pre id="description">
+0: no periodic EW boundary conditions
+1: periodic EW boundary conditions
+(This is a Glimmer serial option. The parallel code enforces periodic
+EW and NS boundary conditions by default.)
+Default: (use hard-coded default - currently 0)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>remove_icebergs</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .true. <br/></td>
+                                <td><pre id="description">
+If true, then identify and remove icebergs after calving.
+These are connected regions with zero basal traction and no connection to grounded ice.
+Safer to make it true (and this is needed for stability when allowing floating ice
+with more advanced calving options), but not necessary for all applications.
+Default: .true.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>restart</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td></td>
+                                <td><pre id="description">
+Restart the model if set to 1. 
+This allows for exact restarts from previous initial conditions
+Default: 0 for startup or hybrid with CISM_OBSERVED_IC=TRUE, 1 for hybrid/branch with CISM_OBSERVED_IC=FALSE
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>sigma</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '2', '3', '4']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+How to determine sigma values
+0: compute standard Glimmer sigma coordinates
+1: sigma coordinates are given in external file [NOT ALLOWED WHEN RUNNING CISM IN CESM]
+2: read sigma coordinates from config file (from sigma_levels)
+3: evenly spaced levels, as required for glam dycore
+4: compute Pattyn sigma coordinates
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>slip_coeff</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Basal traction parameter
+Glide or Glissade local SIA (which_ho_approx = -1) only.
+0: no basal sliding
+1: constant basal traction coefficient
+2: constant coefficient where basal water is present, else no sliding
+3: constant coefficient where the basal temperature is at the pressure melting point, else no sliding
+4: coefficient is proportional to basal melt rate
+5: coefficient is a linear function of basal water depth
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>temp_init</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4']</td>
+                                <td> is 2 for: {'cism_phys': 'cism1'} <br/> is 3 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Temperature initialization method
+0: Initialize temperature to 0 C
+1: Initialize temperature to surface air temperature
+2: Initialize temperature with a linear profile in each column
+3: Initialize temperature with an advective-diffusive balance in each column
+4: Initialize temperature from external file
+Default: 3 for cism2; 2 for cism1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>temperature</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+Determines the temperature solution method
+0: isothermal: set column to surface air temperature
+1: prognostic temperature solution
+2: do NOTHING: hold temperatures steady at initial value
+3: prognostic enthalpy solution
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>vertical_integration</td>
+                                <td>cism_config_options</td>
+                                <td>cism_config_options</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Method of integration used to obtain vertical velocity
+0: standard vertical integration
+1: vertical integration constrained to obey an upper kinematic boundary condition
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>basal_tract_const</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 1.e-4 <br/></td>
+                                <td><pre id="description">
+(m yr-1 Pa-1)
+Relevant only when slip_coeff is relevant (Glide or Glissade local SIA)
+Default: 1.e-4
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>basal_tract_max</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+(m yr-1 Pa-1)
+(Only used for slip_coeff = BTRC_LINEAR_BMLT)
+Default: (use hard-coded default - currently 0.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>basal_tract_slope</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+(Pa-1)
+(Only used for slip_coeff = BTRC_LINEAR_BMLT)
+Default: (use hard-coded default - currently 0.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>basal_tract_tanh</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real(5)</td>
+                                <td>['any real(5)']</td>
+                                <td></td>
+                                <td><pre id="description">
+5-element list of values
+(Only used for slip_coeff = BTRC_TANH_BWAT)
+Default: (use hard-coded default - currently 0.2d0, 0.5d0, 0.0d0 ,1.0d-2, 1.0d0)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>beta_grounded_min</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 100. <br/></td>
+                                <td><pre id="description">
+Minimum value of beta for grounded ice (Pa yr m-1)
+(Applies only to Glissade higher-order dycore)
+Default: 100.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_frzmax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Max freezing rate near surface (m/yr).
+(Ignored for other bmlt_float options.)
+Default: 0.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_meltmax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 10. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Max melt rate at depth (m/yr).
+(Ignored for other bmlt_float options.)
+Default: 10.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_meltmin</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Minimum melt rate in warm ocean (m/yr).
+Relies on having a warm_ocean_mask field on the input file.
+(Ignored for other bmlt_float options.)
+Default: 0.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_zfrzmax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> -100. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Depth (m) above which bmlt_float = -frzmax.
+(Ignored for other bmlt_float options.)
+Default: -100.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_zmelt0</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> -200. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Depth (m) where bmlt_float = 0.
+(Ignored for other bmlt_float options.)
+Default: -200.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_zmeltmax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> -500. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Depth (m) below which bmlt_float = meltmax.
+(Ignored for other bmlt_float options.)
+Default: -500.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_depth_zmeltmin</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0. <br/></td>
+                                <td><pre id="description">
+Parameter for bmlt_float=3 (depth-dependent basal melt rate for floating ice):
+Depth (m) above which bmlt_float = meltmin.
+Relies on having a warm_ocean_mask field on the input file.
+(Ignored for other bmlt_float options.)
+Default: 0.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bmlt_float_h0</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 75. <br/></td>
+                                <td><pre id="description">
+Scale for sub-shelf cavity thickness (m)
+Default: 75.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>bwat_till_max</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 2.0 <br/></td>
+                                <td><pre id="description">
+Parameter for local till model: Maximum water depth in till (m)
+Relevant only for which_ho_bwat = 2
+Default: 2.0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>c_drainage</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 1.e-3 <br/></td>
+                                <td><pre id="description">
+Parameter for local till model: Uniform drainage rate (m/yr)
+Relevant only for which_ho_bwat = 2
+Default: 1.e-3
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>calving_fraction</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Fraction of ice lost to calving (marine_margin = 2 only)
+Default: (use hard-coded default - currently 0.2)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>calving_minthck</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 100. <br/></td>
+                                <td><pre id="description">
+Minimum thickness of floating ice at marine edge before it calves (m)
+Default: 100.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>calving_timescale</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0. <br/></td>
+                                <td><pre id="description">
+Timescale for calving (yr) (Glissade only)
+calving_thck = thck*max(dt/calving_timescale,1)
+If calving_timescale = 0, then the full column calves at once
+Default: 0.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>cliff_timescale</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0. <br/></td>
+                                <td><pre id="description">
+Time scale (yr) for limiting marine cliffs (Glissade only)
+Default: 0.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>damage_constant</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Damage rate (1/yr) per unit stress (Pa)
+[NOT SUPPORTED]
+Default: (use hard-coded default - currently 1.e-7)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>damage_threshold</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Damage threshold for calving
+[NOT SUPPORTED]
+Default: (use hard-coded default - currently 0.75)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>default_flwa</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Glen's A to use in isothermal case, i.e, when temperature = 0
+Default: (use hard-coded default - currently 1.e-16)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>effecpress_bmlt_threshold</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Basal melting range over which N ramps from a small value to full overburden (m/yr)
+Relevant only for which_ho_effecpress = 2
+Default: (use hard-coded default - currently 1.0d-3)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>effecpress_bpmp_threshold</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Parameter for reducing the effective pressure where the bed is warm, saturated or connected to the ocean:
+Temperature range over which N ramps from a small value to full overburden (deg C)
+Only applies for which_ho_effecpress = 1.
+Default: (use hard-coded default - currently 0.1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>effecpress_delta</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0.02 <br/></td>
+                                <td><pre id="description">
+Parameter for reducing the effective pressure where the bed is warm, saturated or connected to the ocean:
+Multiplier for effective pressure N where the bed is saturated and/or thawed (unitless)
+Default: 0.02
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>eigen2_weight</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Weight that can increase lateral calving rate (eigencalving_constant).
+Used only with marine_margin = 7 and 8
+Default: (use hard-coded default - currently 1.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>eigencalving_constant</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Lateral calving rate (m/yr) per unit stress (Pa)
+Used only with marine_margin = 7 and 8
+Default: (use hard-coded default - currently 0.01)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>flow_factor</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 3. for: {'cism_phys': 'cism1'} <br/> is 1. for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Flow enhancement parameter for the Arrhenius relationship;
+typically used in SIA model to speed up the ice.
+Default: 3.0 for cism1, 1.0 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>flow_factor_float</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 1. <br/></td>
+                                <td><pre id="description">
+Flow enhancement parameter for floating ice.
+Default is 1.0, but for marine simulations a smaller value
+may be needed to match observed shelf speeds.
+Default: 1.0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>geothermal</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> -5.e-2 <br/></td>
+                                <td><pre id="description">
+Constant geothermal heat flux (W m-2; sign convention is positive down)
+(May be overwritten by a spatially-varying field in input file [bheatflx])
+Default: -0.05
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ho_beta_const</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Only relevant for which_ho_babc = 0 
+Spatially uniform beta for higher-order dycores (Pa yr m-1)
+Default: (use hard-coded default - currently 1000.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>hydro_time</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Time scale for basal water to drain (yr-1)
+Only relevant for cism1 (Glide dycore)
+(Not relevant for basal_water=2)
+Default: (use hard-coded default - currently 1000.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ice_limit</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 100. for: {'cism_phys': 'cism1'} <br/> is 1. for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Thickness below which ice dynamics is ignored (m)
+Below this limit, ice is only accumulated
+Default: 100 for cism1, 1 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>log_level</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6']</td>
+                                <td> 6 <br/></td>
+                                <td><pre id="description">
+Set to a value between 0 (no messages) and 6 (all messages)
+Default: 6
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>marine_limit</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+All ice is assumed lost once water depths reach this value (for marine_margin=3 or 4) (m)
+Note that water depth is negative
+Default: (use hard-coded default - currently -200.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>max_slope</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0.1 <br/></td>
+                                <td><pre id="description">
+Maximum surface slope used in the Glissade driving-stress calculation (unitless)
+Not valid for other dycores
+Default: 0.1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ncull_calving_front</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Number of times to cull calving_front cells at initialization
+Set to a larger value to remove thicker peninsulas
+To use this, also set cull_calving_front to .true.
+Default: (use hard-coded default - currently 0)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>periodic_offset_ew</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Optional periodic offset for ismip-hom and similar tests
+May be needed to ensure continuous ice geometry at the edges of the
+global domain
+Default: (use hard-coded default - currently 0.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>periodic_offset_ns</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Optional periodic offset for ismip-hom and similar tests
+May be needed to ensure continuous ice geometry at the edges of the
+global domain
+Default: (use hard-coded default - currently 0.)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pmp_offset</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 5. <br/></td>
+                                <td><pre id="description">
+Offset of initial Tbed from pressure melting point temperature (deg C)
+Default: 5.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_bedmax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 700. <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+Bed elevation above which phi = phimax (m)
+Default: 700.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_bedmin</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> -700. <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+Bed elevation below which phi = phimin (m)
+Default: -700.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_phimax</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 40. <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+max(phi) in pseudo-plastic law, for topg >= bedmin (degrees)
+0 < phi < 90
+Default: 40.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_phimin</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 5. <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+min(phi) in pseudo-plastic law, for topg <= bedmin (degrees)
+0 < phi < 90
+Default: 5.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_q</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0.5 <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+Exponent for pseudo-plastic law (unitless)
+0 <= q <= 1
+q = 1: linear sliding law
+q = 0: plastic
+Intermediate values: power law
+Default: 0.5
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pseudo_plastic_u0</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 100. <br/></td>
+                                <td><pre id="description">
+Parameter for pseudo-plasting sliding law:
+Threshold velocity for pseudo-plastic law (m yr-1)
+Default: 100.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>taumax_cliff</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 1.e6 <br/></td>
+                                <td><pre id="description">
+Yield stress (Pa) for marine-based ice cliffs (Glissade only)
+Default: 1.e6
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>thck_gradient_ramp</td>
+                                <td>cism_config_parameters</td>
+                                <td>cism_config_parameters</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 50. <br/></td>
+                                <td><pre id="description">
+Thickness scale (in meters) over which gradients increase from zero to full value (HO only)
+This parameter does not exist in CISM1 thus CISM2 only.
+Default: 50.
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>sigma_levels</td>
+                                <td>cism_config_sigma</td>
+                                <td>cism_config_sigma</td>
+                                <td>real(20)</td>
+                                <td>['any real(20)']</td>
+                                <td> 0.00 0.15 0.30 0.45 0.60 0.75 0.83 0.90 0.95 0.98 1.00 <br/></td>
+                                <td><pre id="description">
+List of sigma levels, in ascending order, separated by spaces
+These run between 0.0 (at top surface) and 1.0 (at lower surface)
+Only relevant if sigma = 2
+Default: 0.00 0.15 0.30 0.45 0.60 0.75 0.83 0.90 0.95 0.98 1.00
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>adaptive_cfl_threshold</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 0.0 for: {'cism_phys': 'cism1'} <br/> is 0.5 for: {'cism_phys': 'cism2'} <br/></td>
+                                <td><pre id="description">
+Adaptively subcycle the advection when advective CFL exceeds this value (Glissade only)
+(Zero value means no adaptive subcycling.)
+A nonzero value makes it possible for CISM to run with large velocities
+that otherwise would violate the advective CFL limit. Results are
+generally more accurate and stable, however, if the model is run with a
+time step short enough to avoid subcycling.
+Default: 0.5 for cism2
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dt</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 0.1 for: {'cism_phys': 'cism1', 'glc_grid': 'gland20'} <br/> is 0.05 for: {'cism_phys': 'cism1', 'glc_grid': 'gland5UM'} <br/> is 0.5 for: {'cism_phys': 'cism2', 'glc_grid': 'gland20'} <br/> is 0.1 for: {'cism_phys': 'cism2', 'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Ice sheet timestep (years)
+Must translate into an integer number of hours
+Default: Depends on resolution and physics option
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dt_diag</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 0.1 for: {'cism_phys': 'cism1', 'glc_grid': 'gland20'} <br/> is 0.05 for: {'cism_phys': 'cism1', 'glc_grid': 'gland5UM'} <br/> is 0.5 for: {'cism_phys': 'cism2', 'glc_grid': 'gland20'} <br/> is 0.1 for: {'cism_phys': 'cism2', 'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+Diagnostic frequency (years)
+Set to 0 for no diagnostic output; set to dt for diagnostic output every time step
+Default: Same as dt
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>idiag</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> is 19 for: {'glc_grid': 'gland20'} <br/> is 76 for: {'glc_grid': 'gland5UM'} <br/> is 134 for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+x coordinate of point for diagnostic output
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>jdiag</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> is 57 for: {'glc_grid': 'gland20'} <br/> is 228 for: {'glc_grid': 'gland5UM'} <br/> is 280 for: {'glc_grid': 'gland4'} <br/></td>
+                                <td><pre id="description">
+y coordinate of point for diagnostic output
+Default: resolution-dependent
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ntem</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Multiplier of ice sheet timestep, dt
+(in theory, can be real-valued, but values less than 1 are not handled properly, so restricted to being an integer)
+Default: (use hard-coded default: 1)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>profile</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Profile period (number of time steps between profiles)
+Option for Glide dycore only
+Default: 100
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>subcyc</td>
+                                <td>cism_config_time</td>
+                                <td>cism_config_time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Subcycling for Glissade
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>cesm_history_vars</td>
+                                <td>cism_history</td>
+                                <td>history</td>
+                                <td>char*1024</td>
+                                <td>['any char']</td>
+                                <td> is 'smb artm thk usurf topg uvel vvel uflx vflx temp bmlt bwat' for: {'cism_phys': 'cism1', 'cism_evolve': 'TRUE'} <br/> is 'smb artm thk usurf topg' for: {'cism_phys': 'cism1', 'cism_evolve': 'FALSE'} <br/> is 'smb artm thk usurf topg uvel vvel temp bmlt bwat beta_internal floating_mask grounded_mask bpmp acab_applied bmlt_applied calving_rate iareaf iareag imass imass_above_flotation total_smb_flux total_bmb_flux total_calving_flux total_gl_flux ice_sheet_mask ice_cap_mask' for: {'cism_phys': 'cism2', 'cism_evolve': 'TRUE'} <br/> is 'smb artm thk usurf topg' for: {'cism_phys': 'cism2', 'cism_evolve': 'FALSE'} <br/></td>
+                                <td><pre id="description">
+Space-delimited list of variables output to history file
+Default: Depends on physics and ice evolution options
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>history_frequency</td>
+                                <td>cism_history</td>
+                                <td>history</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 1 <br/></td>
+                                <td><pre id="description">
+History frequency
+e.g., if history_option=nyears, then 1 = annual, 2 = every two years, etc.
+Ignored for history_option = 'coupler'
+Default: 1
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>history_option</td>
+                                <td>cism_history</td>
+                                <td>history</td>
+                                <td>char*64</td>
+                                <td>['nyears', 'coupler']</td>
+                                <td> nyears <br/></td>
+                                <td><pre id="description">
+How history frequency is specified
+nyears: Write history every N years
+coupler: Get history frequency from coupler (HIST_OPTION/HIST_N xml variables)
+         WARNING: SHOULD NOT BE USED IN PRODUCTION RUNS - frequency metadata not set properly
+Default: nyears
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>decrease_frac</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0.0 <br/></td>
+                                <td><pre id="description">
+Fractional decrease in glacier area, per day (should be positive).
+(days_elapsed * decrease_frac) determines the elevation threshold below which ice_covered is set to 0.
+When this factor reaches 1, all elevations below 3500 m are set to non-ice-covered.
+Default: 0 (no decrease)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>decrease_override_delay</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Time delay before beginning decrease_frac overrides (days).
+Default: 0 (start overrides at beginning of run)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>enable_frac_overrides</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .false. <br/></td>
+                                <td><pre id="description">
+Whether to enable overrides of the glc fraction sent to the coupler.
+If this is false, the other settings in this namelist group are ignored.
+ONLY MEANT FOR TESTING - SHOULD NOT BE USED FOR SCIENCE RUNS.
+Default: .false.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>increase_frac</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> 0.0 <br/></td>
+                                <td><pre id="description">
+Fractional increase in glacier area, per day.
+(days_elapsed * increase_frac) determines the elevation threshold above which ice_covered is set to 1.
+When this factor reaches 1, all elevations >= 0 m are set to ice-covered.
+Default: 0 (no increase)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>increase_override_delay</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Time delay before beginning increase_frac overrides (days).
+Default: 0 (start overrides at beginning of run)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>rearrange_freq</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Frequency (days) at which we rearrange elevation classes.
+Default: 0 (no flips ever)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>rearrange_override_delay</td>
+                                <td>glc_override_nml</td>
+                                <td>overrides</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 0 <br/></td>
+                                <td><pre id="description">
+Time delay before beginning rearrange_freq overrides (days).
+Default: 0 (start overrides at beginning of run)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>allow_leapyear</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> .true. <br/> is .false. for: {'calendar': 'NO_LEAP'} <br/></td>
+                                <td><pre id="description">
+Whether leap years are enabled in the GLC time manager.
+CAUTION: Leap years don't work correctly with GLC time steps longer than a few months.
+Default: .false. for NO_LEAP calendar, .true. otherwise
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>date_separator</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>char*1</td>
+                                <td>['any char']</td>
+                                <td> - <br/></td>
+                                <td><pre id="description">
+Character to separate date values
+Default: '-'
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dt_count</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Time step, in units given by dt_option
+This generally should not be changed
+Default: set based on NCPL_BASE_PERIOD and GLC_NCPL in env_run.xml,
+so that there is one GLC time step per coupling period
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>dt_option</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>char*80</td>
+                                <td>['steps_per_year', 'steps_per_day', 'seconds', 'hours']</td>
+                                <td></td>
+                                <td><pre id="description">
+GLC time-step units
+This generally should not be changed
+Valid values: steps_per_year, steps_per_day, seconds, hours
+Default: set based on NCPL_BASE_PERIOD and GLC_NCPL in env_run.xml,
+so that there is one GLC time step per coupling period
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iday0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting day number in month
+Default: comes from RUN_STARTDATE or RUN_REFDATE
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ihour0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting hour of the day
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iminute0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting minute of the day
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>imonth0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting month number
+Default: comes from RUN_STARTDATE or RUN_REFDATE
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>isecond0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting second of the minute
+Default: 0
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>iyear0</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Starting year number
+Default: comes from RUN_STARTDATE or RUN_REFDATE
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>runid</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>char*128</td>
+                                <td>['any char']</td>
+                                <td></td>
+                                <td><pre id="description">
+Simulation identifier (ie case name)
+Default: case name set by create_newcase
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>stop_option</td>
+                                <td>time_manager_nml</td>
+                                <td>time</td>
+                                <td>char*80</td>
+                                <td>['never']</td>
+                                <td> never <br/></td>
+                                <td><pre id="description">
+Stop option -- always let the coupler stop the model so use 'never'.
+Default: 'never'
+</pre></td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Namelist Group</th>
+                                <th>Category</th>
+                                <th>Entry Type</th>
+                                <th class="none">Valid Values</th>
+                                <th class="none">Possible Default Values</th>
+                                <th class="none">Description and out-of-the-box Default</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- footer -->
+        
+
+    <div class="container">
+        <!-- footer start -->
+        <div class="row">
+            <div class="col-md">
+                <div class="widget">
+                    <h5 class="widgetheading"><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">CGD Laboratory Info</a></h5>
+                    <p><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">1850 Table Mesa Drive<br>Boulder, CO, 80305</a></p>
+                    <ul class="list-style-none">
+                        <li>303.497.1000&nbsp;&nbsp;<i class="fas fa-phone"></i>&nbsp;&nbsp;Phone</li>
+                        <li>303.497.1314&nbsp;&nbsp;<i class="fas fa-print"></i>&nbsp;&nbsp;Fax</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading"><a href="../../../../about/Wc9217b0e02798.htm">CESM Quicklinks</a></h5>
+                <ul class="link-list">
+                    <li><a href="../../../../events/tutorials/Wc2ebed6407518.htm">Tutorials</a></li>
+                    <li><a href="../../../../events/workshops/Wc4e9f403cf13.htm">Workshops</a></li>
+                    <li><a href="../../../../working_groups/Wc190e721ba82d.htm">Working Groups</a></li>
+                    <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=footer">Support Forums</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Leadership</h5>
+                <ul class="link-list">
+                    <li><a href="https://staff.ucar.edu/users/gokhan">Chief Scientist - Gokhan Danabasoglu</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/SSC/?ref=footer">Scientific Steering Committee</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/working_groups/?ref=footer">Working Group Co-Chairs</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/CAB/?ref=footer">CESM Advisory Board</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Models</h5>
+                <ul class="link-list">
+                    <li><a href="../../../Wcc9c7389d47ec.htm">Overview</a></li>
+                    <li><a href="../../../../experiments/Wcdda398834fdf.htm">Experiments</a></li>
+                    <li><a href="../../../../projects/community-projects/Wcc1852b84e933.htm">Community Projects</a></li>
+                    <li><a href="../../../Wc4da67042a202.html">CESM Releases</a></li>
+                </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- sub footer start -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="copyright">
+                    <p>
+                    <span>&copy; 2021 UCAR | <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use">Terms</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="https://www.ucar.edu/">Managed by UCAR</a><br>
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br>
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </span></p>
+                    </div>
+                    <!-- end subfooter -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Media Include -->
+                    <h5 class="widgetheading social-heading">Follow Us</h5>
+                    <ul class="social-network">
+                        <li><a href="https://www.facebook.com/ncarcgdboulder/"  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/ncar_cgd"  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/national-center-for-atmospheric-research/"  title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCGfjWttSHDKu3y9pCay2KHQ"  title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <!-- end Social Media Include -->
+                </div>
+            </div>
+        </div>
+        <!-- sub footer end -->
+    </div>
+
+    <div class="copyright-nsf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <em>The CESM&reg; project is supported primarily by the National Science Foundation | This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National&nbsp;Science&nbsp;Foundation.</em>
+                </div>
+                <div class="col-lg-2">
+                    <a href="https://nsf.gov"><img src="../../../../Images/logos/footer-logo-nsf.png" width="60" alt="NSF Logo" title="NSF Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- end footer -->
+    </footer>
+</div>
+
+<!-- javascript -->
+<!-- scroll to top toolbar -->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!-- toasts -->
+<!--
+<div class="toast fixed-top mt-2 ml-5" role="alert" data-autohide="true" data-delay="7000">
+    <div class="toast-header">
+        <img src="/favicon.ico" class="rounded mr-2" alt="CGD Logo">
+        <h5 class="mr-auto text-primary">ISG Note</h5>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">Close ×</span>
+    </button>
+    </div>
+
+    <div class="toast-body">
+        Please pardon our dust, we are currently in the process of upgrading pages. You may encounter broken links or old themes during this process. Contact the CGD/IS staff if you need help finding information or have any feedback
+    </div>
+</div>
+-->
+
+
+
+<!-- js includes -->
+<script src="../../../../styles/um/js/jquery.min.js"></script>
+<script src="../../../../styles/um/js/popper.min.js"></script>
+<script src="../../../../styles/um/js/bootstrap.min.js"></script>
+<script src="../../../../styles/um/js/fancybox.min.js"></script> 
+<script src="../../../../styles/um/js/flexslider.min.js"></script>
+<script src="../../../../styles/um/js/custom.js"></script>
+<script src="../../../../styles/um/js/jquery.tablesorter.min.js"></script>
+<script src="../../../../styles/um/js/cookie-consent.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script>
+// initialize and show Bootstrap 4 toast
+//$('.toast').toast('show');
+
+
+// scripts for the notice bar
+// get a cookie if set
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+// set a cookie
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/default.htm";
+}
+
+// clearing the cookie
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// checking to display the banner or not
+function checkDowntimeMsg() {
+    var eventSeen = getCookie("eventSeen3");
+
+    if (eventSeen == null) {
+        // no cookie so havent seen the msg
+        $("#alert-downtime").fadeIn("fast");
+    }
+    else {
+        // have cookie so have seen message
+    }
+}
+
+// check for seeing the downtime message
+//checkDowntimeMsg();
+
+// check for closing the downtime notice
+$(".close-downtime").on('click', function() {
+    // fadeout the downtime message
+    $("#alert-downtime").fadeOut("fast");
+
+    // set the cookie so wont see next time
+    setCookie('eventSeen3','y',7);
+});
+
+// cookie consent
+window.addEventListener("load", function() {
+    window.wpcc.init( {
+        "colors": {
+            "popup": {
+                "background": "#0779bf", "text": "#ffffff", "border": "#0779bf"
+            }
+            , "button": {
+                "background": "#0779bf", "text": "#ffffff"
+            }
+        }
+        , "position":"bottom", "margin":"none", "fontsize":"tiny", "content": {
+            "href": "https://www.ucar.edu/cookie-other-tracking-technologies-notice", "message": "UCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click", "link": "here", "button": "Acknowledge"
+        }
+        , "padding":"none"
+    })
+});
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+// Script for calendar dropdown on inputs
+$('.datepicka').each(function(i, obj) {
+    // Grab the ID
+    var datepickaID = $(this).attr('id');
+
+    // Make it a picka
+    $( "#" + datepickaID ).datepicker();
+});
+
+
+// Script for the autoscroll back to top
+$(window).scroll(function(){
+	// show the scroll bar
+	if ($(this).scrollTop() > 100) {
+		$('.scrollup').fadeIn();
+	} 
+	// hide the scroll bar
+	else {
+		$('.scrollup').fadeOut();
+	}
+});
+
+// clickong on the scroll bar
+$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
+	return false;
+});
+
+
+
+
+
+$(document).ready(function () {
+    
+    $('.star').on('click', function () {
+        $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+        $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'all') {
+            $('.table tr').css('display', 'none');
+            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+            $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+    });
+
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+    // popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover({html:true});
+    });
+
+    // checking for click on details
+    $('[data-toggle="popover"]').on("click", function() {
+        // change the html
+        $(this).removeClass("badge-info");
+        $(this).addClass("badge-danger");
+
+        $(this).html("Hide Details");
+    });
+
+    // checking for hiding popover to revert back
+    $('[data-toggle="popover"]').on('hide.bs.popover', function () {
+        // change the html
+        $(this).removeClass("badge-danger");
+        $(this).addClass("badge-info");
+
+        $(this).html("More Details");
+    });
+
+});
+</script>
+
+
+<!-- datatables js -->
+<script src="../../../../styles/um/js/datatables.min.js"></script>
+<script>
+$(document).ready( function () {
+    var table = $('#nmlTable').DataTable({
+        "responsive": true,
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ]     
+    } );
+
+    // Handle click on "Expand All" button
+    $('#btn-show-all-children').on('click', function(){
+        // Expand row details
+        table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+    });
+
+    // Handle click on "Collapse All" button
+    $('#btn-hide-all-children').on('click', function(){
+        // Collapse row details
+        table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
+    });
+});
+</script>
+
+
+
+</body>
+</html>

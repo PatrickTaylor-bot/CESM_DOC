@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>B.2. Environment variables used by build-namelist</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="apb.html" title="Appendix B. The build-namelist utility" /><link rel="prev" href="apb.html" title="Appendix B. The build-namelist utility" /><link rel="next" href="apbs03.html" title="B.3. CAM Namelist variables" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apb.html">Prev</a> </td><th width="60%" align="center">Appendix B. The <span class="command"><strong>build-namelist</strong></span> utility</th><td width="20%" align="right"> <a accesskey="n" href="apbs03.html">Next</a></td></tr></table><hr /></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="bldnl_env"></a>B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></h2></div></div></div><p>
+The environment variables recognized by <span class="command"><strong>build-namelist</strong></span> are
+presented below.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">CSMDATA</code></span></dt><dd><p>
+Root directory of <acronym class="acronym">CESM</acronym> input data.
+Note that the commandline argument <code class="option">-csmdata</code> takes
+precedence over the environment variable.
+</p></dd><dt><span class="term"><code class="envar">OMP_NUM_THREADS</code></span></dt><dd><p>
+If values of the specific variables that set the thread count for each
+component, i.e., <strong class="userinput"><code>atm_nthreads</code></strong>, <strong class="userinput"><code>cpl_nthreads</code></strong>,
+<strong class="userinput"><code>ice_nthreads</code></strong>, <strong class="userinput"><code>lnd_nthreads</code></strong>,
+or <strong class="userinput"><code>ocn_nthreads</code></strong>, are set via
+the <code class="option">-namelist</code>, or <code class="option">-infile</code> options, then
+these values have highest precedence.  The <code class="envar">OMP_NUM_THREADS</code>
+environment variable has next highest precedence for setting any of the
+component specific thread count variables.  Lowest precedence for setting
+these variables is the value of <code class="option">nthreads</code> from the configure cache file.
+</p></dd></dl></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apb.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="apb.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="apbs03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix B. The <span class="command"><strong>build-namelist</strong></span> utility </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.3. <acronym class="acronym">CAM</acronym> Namelist variables</td></tr></table></div></body></html>

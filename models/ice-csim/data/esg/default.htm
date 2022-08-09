@@ -1,0 +1,100 @@
+<html>
+<head>
+
+<title>CSIM5.0 Output Available on the Earth System Grid (ESG)</title>
+
+<BODY BGCOLOR="white">
+
+<!------------------------------------------------------------->
+<!-- META TAG COMMENT ----------------------------------------->
+<!------------------------------------------------------------->
+<meta name="description" content="CSIM5.0 Output Available on the ESG">
+<meta name="keywords" content="climate model, sea ice model,
+                               polar climate, ncar ">
+<meta name="author" content="Julie Schramm">
+<!------------------------------------------------------------->
+<!-- END META TAG COMMENT ------------------------------------->
+<!------------------------------------------------------------->
+
+</head>
+
+<!-- #BeginLibraryItem "/Library/header.lbi" -->
+[an error occurred while processing this directive]
+[an error occurred while processing this directive]
+<!-- #EndLibraryItem -->
+<!----------------------------------------------------------------------------->
+<!---------------END OF CCSM HEADER-------------------------------------------->
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+<h3><center>  CSIM 5.0  </center></h3>
+<h2><center>  CSIM Control Run Output</center></h2>
+<!----------------------------------------------------------------------------->
+The Earth System Grid is a data portal where data output from all four CCSM
+components can be accessed.  CCSM3.0 original history files can be downloaded from
+the NCAR MSS (an NCAR gatekeeper password is required) or post processed data can
+be downloaded directly from disk.  The post processed data includes:
+
+<ul>
+ <li> CAM:  monthly-mean time series of all 2D fields and
+            monthly-mean, zonally averaged time series of all 3D fields
+ <li> CLM:  100 years of original history files
+ <li> CSIM: monthly-mean time series of select fields
+ <li> POP:  monthly-mean time series of all 2D fields and
+            annual-mean time series of all 3D fields
+</ul>
+
+<p>
+The CSIM post-processed data are monthly averages, with a single variable and
+hemisphere in each file.  The cases run using the high resolution grids (T42_gx1v3
+or T85_gx1v3) have 50 years of data in each file, and those using the low resolution
+grid (T31_gx3v5) have 100 years of data per file.  Due to space restrictions,
+only selected fields from CSIM are available on the ESG:
+
+<p>
+  <!--- This line makes the side-by-side tables --->
+<table border><tr><td>
+  <TABLE>
+  <TR>
+  <!-------------------------------->
+  <!--- Labels for each column   --->
+  <!-------------------------------->
+  <TH ALIGN=LEFT width="5%">Variable Name <TH ALIGN=LEFT width="45%">Long Name
+  <TR> <TD> aice   <TD> ice area  (aggregate)
+  <TR> <TD> hi     <TD> grid box mean ice thickness
+  <TR> <TD> hs     <TD> grid box mean snow thickness
+  <TR> <TD> Tsfc   <TD> snow/ice surface temperature
+  <TR> <TD> u      <TD> ice velocity (x)
+  <TR> <TD> v      <TD> ice velocity (y)
+  <TR> <TD> dvidtt <TD> ice volume tendency due to thermodynamics
+  <TR> <TD> dvidtd <TD> ice volume tendency due to dynamics
+  <TR> <TD> daidtt <TD> ice area tendency due to thermodynamics
+  </TABLE>
+</td><td>
+  <TABLE>
+  <TR>
+  <!-------------------------------->
+  <!--- Labels for each column   --->
+  <!-------------------------------->
+  <TH ALIGN=LEFT width="5%">Variable Name <TH ALIGN=LEFT width="45%">Long Name
+  <TR> <TD> daidtd <TD> ice area tendency due to dynamics
+  <TR> <TD> growb  <TD> congelation ice growth
+  <TR> <TD> frazil <TD> frazil ice growth
+  <TR> <TD> snoice <TD> snow-ice formation
+  <TR> <TD> meltt  <TD> top ice melt
+  <TR> <TD> meltb  <TD> basal ice melt
+  <TR> <TD> meltl  <TD> lateral ice melt
+  <TR> <TD> Fswdn  <TD> down solar flux
+  <TR> <TD> Flwdn  <TD> down longwave flux
+</TABLE>
+  <!--- End of side-by-side tables --->
+</td></tr></table>   
+
+<p>
+All fields from the CSIM history files have been post-processed and reside on the
+NCAR MSS.  A table of available CCSM cases can be found  <a href="http://www.cesm.ucar.edu/experiments/ccsm3.0">here</a>.
+
+<!----------------------------------------------------------------------------->
+<p>
+</body>
+</html>

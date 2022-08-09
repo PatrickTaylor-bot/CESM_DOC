@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CESM2 | Verification</title>
+  <link rel="shortcut icon" href="../../../styles/modern/img/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+
+  <!-- css -->
+  <!--#include virtual="/styles/modern/css/css-include.html" -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+<!-- icon includes -->
+<link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+<link rel="manifest" href="../../../site.webmanifest">
+<link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+<!-- stylesheet includes -->
+<link href="../../../styles/modern/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../styles/modern/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="../../../styles/modern/css/flexslider.css" rel="stylesheet" />
+<link href="../../../styles/modern/css/style.css" rel="stylesheet" />
+<link href="../../../styles/atmos/styles/fonts.css" rel="stylesheet">
+<!-- <link href="/styles/modern/css/jcarousel.css" rel="stylesheet" /> -->
+
+  <!-- Theme skin -->
+  <link href="../../../styles/modern/skins/default.css" rel="stylesheet" />
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="/styles/modern/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+  <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+
+
+  <!-- <script src="/styles/modern/js/jquery.js"></script> outdated version -->
+<script src="../../../styles/modern/js/jquery.min.js"></script> 
+<script src="../../../styles/modern/js/jquery.migrate.js"></script>
+<script src="../../../styles/modern/js/bootstrap.min.js"></script>
+<script src="../../../styles/modern/js/jquery.fancybox.pack.js"></script>
+<script src="../../../styles/modern/js/jquery.fancybox-media.js"></script>
+<script src="../../../styles/modern/js/google-code-prettify/prettify.js"></script>
+<script src="../../../styles/modern/js/jquery.flexslider.js"></script>
+<script src="../../../styles/modern/js/animate.js"></script>
+<script src="../../../styles/modern/js/custom.js"></script>
+<script src="../../../styles/modern/js/jquery.tablesorter.min.js"></script> 
+<!-- <script src="/styles/modern/js/jquery.easing.1.3.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/jquery.quicksand.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/setting.js"></script> missing file -->
+
+<script>
+// Check if the nsf badge is there
+if ( !($(".nsf-header")[0]) ) {
+	// create the nsf badge div
+	var div = '<div class="nsf-header"> <a href="http://www.nsf.gov/"> <img src="../../../styles/modern/includes/header/ncar_header_nsf_only.png"title="Sponsored by NSF"alt="Sponsored by NSF"> </a> </div>';
+
+	// insert it
+	$('.search-container').after(div);
+}
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+$(document).ready(function() {
+	// script to dropdown the Prognostic Components options
+	$("#link-prog").click(function() {
+	  // check to make sure if it is hidden
+	  if ($("#u-link-prog").is(":visible")) {
+	    // its not hidden so change arrow and hide
+	    $("#i-link-prog").attr("class", "fa fa-chevron-right");
+	    $("#u-link-prog").slideUp("fast");
+	  }
+	  else {
+	    // its hidden so change arrow and show
+	    $("#i-link-prog").attr("class", "fa fa-chevron-down");
+	    $("#u-link-prog").slideDown("fast");
+	  }
+	});
+});
+</script>
+
+</head>
+
+
+<body>
+<!-- TESTING 
+action - unknown
+<br>
+upload - 
+<br>
+run1 - 
+<br>
+run2 - 
+<br>
+run 3 - 
+<br>
+timeDir - 
+<br>
+error - 
+<br><br><br>
+ TESTING -->
+
+
+
+
+  <div id="wrapper">
+    <!-- start header -->
+    <header>
+      <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <!-- navbar header -->
+          <!--#include virtual="/styles/modern/includes/header/navbar-header.html" -->
+          <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://www2.ucar.edu/">UCAR | &nbsp;</a>
+    <a class="navbar-brand" href="https://ncar.ucar.edu/">NCAR | &nbsp;</a>
+    <a class="navbar-brand" href="http://www.cesm.ucar.edu/">
+        <span>CESM&reg;</span> : : <span>Community Earth System Model</span></a>
+</div>
+
+          <!-- end navbar header -->
+
+          <!-- search -->
+          <!--#include virtual="/styles/modern/includes/header/search-ssl.html" -->
+          <div class="search-container">
+    <div class="navbar-search">
+        <!-- Google Analytics -->
+        <!-- Added to css includes to be in <head>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+             
+             ga('create', 'UA-2274704-2', 'auto');
+             ga('send', 'pageview');
+             
+            </script>
+        -->
+        
+        <!-- Google Search -->
+        <form name="google" action="https://www.google.com/cse" id="cse-search-box">
+            <div id="searchinput">
+                <input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" />
+                <input type="hidden" name="cof" value="FORID:9" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="text" name="q" size="20" />
+                <button class="btn-theme"><i class="fa fa-search"></i></button>
+            </div> <!-- #googlesearch -->
+        </form>
+        
+        <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+    </div>
+</div>
+          <!-- end search -->
+
+          <!-- NSF header -->
+          <!--#include virtual="/styles/modern/includes/header/nsf-header.html" -->
+          
+<div class="nsf-header">
+<a href="http://www.nsf.gov/">
+<img src="../../../styles/modern/includes/header/ncar_header_nsf_only.png"
+    title="Sponsored by NSF"
+    alt="Sponsored by NSF">
+</a>
+</div>
+
+          <!-- end NSF header -->
+
+          <!-- main navigation -->
+          <!--#include virtual="/styles/modern/includes/navigation/models-nav.html" -->
+          
+                
+                <div class="navbar-collapse collapse ">
+                    
+                    <ul class="nav navbar-nav">
+                        
+                        <li><a href="../../../Wc93fb2ea50e0b.html">Home</a></li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../about/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">About <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../about/Wc4682ed65a072.htm">Overview</a></li>
+                                <li><a href="../../../about/Wc41f0926ae0d9.html">Contact</a></li>
+                                <li><a href="../../../about/Wca62569b79f49.html">Mission</a></li>
+                                <li><a href="../../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a></li>
+                                <li><a href="../../../publications/Wc512d452813.htm">Publication Information</a></li>
+                                <li><a href="../../../about/Wc4d448566b0d0.html">CESM Support Policy</a></li>
+                                <li><a href="../../../about/Wcbd4ebba6880c.html">FAQs</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../management/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Administration<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../management/Wcc13a9ee1809b.htm">Overview</a></li>
+                                <li><a href="../../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a></li>
+                                <li><a href="../../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a></li>
+                                <li><a href="../../../management/Wcbdd42d0b88ea.html">CESM Governance</a></li>
+                                <li><a href="../../../management/Wc895ccddb9fce.html">Administration Plans</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../working_groups/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Working Groups<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../working_groups/Wc65f2ddfc4d9e.htm">Overview</a></li>
+                                <li><a href="../../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a></li>
+                                <li><a href="../../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a></li>
+                                <li><a href="../../../working_groups/Atmosphere/Wc1815cffb0a86.htm">AMWG</a></li>
+                                <li><a href="../../../working_groups/Biogeo/Wc53eb8f496ff0.htm">BGCWG</a></li>
+                                <li><a href="../../../working_groups/Chemistry/Wce7e5098be56.htm">CCWG</a></li>
+                                <li><a href="../../../working_groups/CVC/Wc59a52ed79a3e.htm">CVCWG</a></li>
+                                <li><a href="../../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">LIWG</a></li>
+                                <li><a href="../../../working_groups/Land/Wc68f4fa04493d.htm">LMWG</a></li>
+                                <li><a href="../../../working_groups/Ocean/Wc7f1dfc675f00.htm">OMWG</a></li>
+                                <li><a href="../../../working_groups/Paleo/Wcb3576eaf40fc.htm">PWG</a></li>
+                                <li><a href="../../../working_groups/Polar/Wc62c6f6c03596.htm">PCWG</a></li>
+                                <li><a href="../../../working_groups/Societal/Wce3e53c5e7db8.htm">SDWG</a></li>
+                                <li><a href="../../../working_groups/Software/Wcb76155708f79.htm">SEWG</a></li>
+                                <li><a href="../../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">WAWG</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown active">
+                            <a href="../../default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Models<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../Wcc5a5d9505e02.htm">Overview</a></li>
+                                <li><a href="../../Wc46e54394790a.html">CESM Releases</a></li>
+                                <li><a href="../../Wc2d37fd4892b7.html">Scientifically Validated</a></li>
+                                <li><a href="../../../experiments/Wca1ac0c97dc7.htm">Experiments</a></li>
+                                <li><a href="../../Wceaf9ebcbf058.html">CMIP6</a></li>
+                                <li><a href="../../../projects/Wc52d49be327b0.htm">Projects</a></li>
+                                <li><a href="../../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a></li>
+                                <li><a href="../../simpler-models/Wc340f787b10c9.htm">Simpler Models</a></li>
+                                <li><a href="http://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="../../Wcfecbc74fe52a.html">Legacy</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../events/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Events<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../events/Wc2677660c09ac.htm">Upcoming</a></li>
+                                <li><a href="../../../events/Wc40f6ad8263a5.html">Past Events</a></li>
+                                <li><a href="../../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a></li>
+                                <li><a href="../../../events/tutorials/Wc65159099e150.htm">Tutorials</a></li>
+                                <li><a href="../../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a></li>
+                                <li><a href="../../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a></li>
+                            </ul>
+                        </li>
+
+                        <li id="" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 4px 0 0 0;" data-hover="dropdown" data-delay="0" data-close-others="false"> 
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color:#3E6A9C; vertical-align: bottom;">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i> Help <span class="caret"></span> 
+                                </button>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" style="margin-top: 7px;">
+                                <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a></li>
+                                <li><a href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="t-hlp">CGD Help Desk</a></li>
+                                <li><span id="s-hlp"></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+                <script>
+                var tm='mailto', ru='help', ta='@', md='cgd.ucar.edu', te=document.getElementById('a-hlp'), se=document.getElementById('s-hlp'), te=document.getElementById('t-hlp'); 
+                //te.innerHTML='<a style="padding:4px 0 0 0;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'"><button type="button" class="btn btn-primary btn-sm" style="background-color:#3173ba;"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></a>';
+                se.innerHTML='<a style="text-transform:lowercase;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'">[ '+ru+ta+md+' ]</a>';
+                te.href = tm+':'+ru+ta+md;
+                </script>
+       
+
+          <!-- end main navigation -->
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="breadcrumb">
+              <li><a href="../../../default.htm"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="../../default.htm">CESM Models</a><i class="icon-angle-right"></i></li>
+              <li><a href="../../current.html">CESM Supported Releases</a><i class="icon-angle-right"></i></li>
+              <li><a href="../default.htm">CESM2</a><i class="icon-angle-right"></i></li>
+              <li class="active"><a href="default.htm">Ensemble Verification</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="post-image">
+              <div class="post-heading">
+                <h1>CESM2 Ensemble Verification</h1>
+              </div>
+            </div>
+
+            <p>Please see <a href="http://www.cesm.ucar.edu/models/cesm2/python-tools/">CESM2 Python Tools</a> for details or for help with this form see <a href="https://bb.cgd.ucar.edu/cesm">DiscussCESM</a></p>
+	    <p><b><u>NOTE</u>: This tool currently supports CESM ECT version 2.0.0, and CESM UF-ECT versions 2.0.0 through 2.2.0</b></p>
+
+            
+            <!--<h2 class="">Upload Results</h2>-->
+            
+
+            <div class="alert alert-danger center hideme" id="hideme-err" style="margin:0px; margin-bottom: 10px; clear: both;"></div>
+
+            <form id="formVerify" class="form-verify" action="" method="POST" style="clear: both;" enctype="multipart/form-data">
+              <!-- spinner for uf start -->
+              <fieldset class="loading loading-uf">
+                <h2 class="fs-title">Do not refresh your browser or go back</h2>
+                <h3 class="fs-subtitle">* This could take up to 10 minutes depending on the current processing *</h3>
+
+                <span class="progress-span" id="1"></span>
+                <span class="progress-file" id="0"></span>
+
+                <h5 id="progress-bar-1-text" class="small"><i class="fa fa-refresh fa-spin"></i>&nbsp;&nbsp;&nbsp;Run 1 uploading</h5>
+                <div class="progress progress-striped active">
+                  <div id="progress-bar-1" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                  </div>
+                </div>
+
+                <h5 id="progress-bar-2-text" class="small"><i class="fa fa-refresh"></i>&nbsp;&nbsp;&nbsp;Run 2 waiting</h5>
+                <div class="progress progress-striped active">
+                  <div id="progress-bar-2" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                  </div>
+                </div>
+
+                <h5 id="progress-bar-3-text" class="small"><i class="fa fa-refresh"></i>&nbsp;&nbsp;&nbsp;Run 3 waiting</h5>
+                <div class="progress progress-striped active">
+                  <div id="progress-bar-3" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 30px;">
+                  <div class="col-lg-6 progress-block" id="progress-bar-files">
+                    <i class="fa fa-check fa-2x"></i>
+                    <h5 class="center">All files uploaded</h5>
+                  </div>
+
+                  <div class="col-lg-6 progress-block" id="progress-bar-verify">
+                    <i class="fa fa-cog fa-2x"></i>
+                    <h5 class="center">Waiting to verify</h5>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- sprinner for uf end -->
+
+              <!-- spinner for pop start -->
+              <fieldset class="loading loading-pop">
+                <h2 class="fs-title">Do not refresh your browser or go back</h2>
+                <h3 class="fs-subtitle">* This could take up to 10 minutes depending on the current processing *</h3>
+
+                <span class="progress-span" id="1"></span>
+                <span class="progress-file" id="0"></span>
+
+                <h5 id="progress-bar-4-text" class="small"><i class="fa fa-refresh fa-spin"></i>&nbsp;&nbsp;&nbsp;Run uploading</h5>
+                <div class="progress progress-striped active">
+                  <div id="progress-bar-4" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 30px;">
+                  <div class="col-lg-6 progress-block" id="progress-bar-files-pop">
+                    <i class="fa fa-check fa-2x"></i>
+                    <h5 class="center">File uploaded</h5>
+                  </div>
+
+                  <div class="col-lg-6 progress-block" id="progress-bar-verify-pop">
+                    <i class="fa fa-cog fa-2x"></i>
+                    <h5 class="center">Waiting to verify</h5>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- sprinner for pop end -->
+
+
+              <!-- fieldset ECT details start -->
+              <fieldset style="min-height: 625px;" id="f-deets-user" class="deets">
+                <h2 class="fs-title">ECT &amp; UF-ECT&nbsp;<span class="small">*Only .nc files</span></h2>
+                <!--<h3 class="fs-subtitle">* Only .nc files *</h3>-->
+                <span class="label label-primary link-copy" id="l-s-pop">Switch to POP-ECT</span>
+
+                <div class="form-group">
+                  <h5><label for="f-purpose">Run 1</label></h5>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <input class="f-input f-file" name="run1" size="" id="f-run1" type="file" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <h5><label for="f-purpose">Run 2</label></h5>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <input class="f-input f-file" name="run2" size="" id="f-run2" type="file" required>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <h5><label for="f-purpose">Run 3</label></h5>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <input class="f-input f-file" name="run3" size="" id="f-run3" type="file" required>
+                  </div>
+                </div>
+
+                <div class="callout-block callout-danger" id="callout-submit">
+                  <div class="icon-holder">
+                    <i class="fa fa-exclamation-triangle"></i>
+                  </div>
+
+                  <div class="content" style="text-align: left;">
+                    <h4 class="callout-title">Important</h4>
+                    <p>The process will take 6-10 minutes or more to complete</p>
+                  </div>
+                </div>
+
+                
+
+
+                <button type="button" name="submit[]" id="deets-user" class="submit action-button submit-uf" value="submit-uf" disabled="disabled" style="display: none;">Submit</button>
+              </fieldset>
+              <!-- fieldset ECT details end -->
+
+
+              <!-- fieldset POP details start -->
+              <fieldset style="min-height: 450px;" id="f-pop-user" class="deets">
+                <h2 class="fs-title">POP-ECT&nbsp;<span class="small">*Only .nc files</span></h2>
+                <span class="label label-primary link-copy" id="l-s-ect">Switch to ECT &amp; UF-ECT</span>
+                
+
+                <div class="form-group">
+                  <h5><label for="f-purpose">Run</label></h5>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <input class="f-input f-file" name="run4" size="" id="f-run4" type="file" required>
+                  </div>
+                </div>
+
+                
+                <div class="callout-block callout-danger" id="callout-submit">
+                  <div class="icon-holder">
+                    <i class="fa fa-exclamation-triangle"></i>
+                  </div>
+
+                  <div class="content" style="text-align: left;">
+                    <h4 class="callout-title">Important</h4>
+                    <p>The process will take 6-10 minutes or more to complete</p>
+                  </div>
+                </div>
+
+                
+
+
+                <button type="button" name="submit[]" id="deets-user" class="submit action-button submit-pop" value="submit-pop" disabled="disabled" style="display: none;">Submit</button>
+              </fieldset>
+              <!-- fieldset POP details start -->
+
+              <input type="hidden" name="tmpSes" id="tmpSes" value="">
+              <input type="hidden" name="rand" id="rand" value="">
+              <input type="hidden" name="type-submit" id="type-submit" value="">
+
+              <div id="g-recaptcha-verification" class="g-recaptcha center" data-sitekey="6LcNgPISAAAAANlEG0DZe9qwFVuM_12do-ZSPS9Y" data-callback="enableSubmit" data-expired-callback="disableSubmit"></div>
+            </form>
+            
+          </div>
+
+          <div class="col-lg-4">
+            <aside class="right-sidebar">
+              <!-- CESM Project Include -->
+              <!--#include virtual="/styles/modern/includes/col-lg-4/cesm-project-inc.html" -->
+              <div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat">
+        <li>The CESM project is supported primarily by the <a href="http://www.nsf.gov/">National Science Foundation (NSF)</a>. Administration of the CESM is maintained by the <a href="http://www2.cgd.ucar.edu/">Climate and Global Dynamics Laboratory (CGD)</a> at the <a href="http://www.ncar.ucar.edu/">National Center for Atmospheric Research (NCAR)</a>.</li>
+        <li><a href="http://www.cesm.ucar.edu">CESM</a> is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+
+              <!-- end CESM Project Include -->
+
+              <!-- Models Related Include -->
+              <!--#include virtual="/styles/modern/includes/col-lg-4/models-related-inc.html" -->
+              <div class="widget">
+  <h5 class="widgetheading">CESM2 Quicklinks</h5>
+  <ul class="cat">
+    <li><a href="https://escomp.github.io/cesm/release-cesm2/">Quick Start Guide</a></li>
+    <li><a href="http://www.cesm.ucar.edu/models/cesm2/release_download.html">Downloading The Code</a></li>
+    <li><a href="http://www.cesm.ucar.edu/models/cesm2/scientifically-validated-cesm2.html">Scientifically Validated Configurations</a></li>
+    <li>
+      <a class="link-copy" id="link-prog"><i class="fa fa-chevron-right" aria-hidden="true" id="i-link-prog"></i>&nbsp;&nbsp;Prognostic Components</a>
+      <ul class="ul-margin-none" style="display: none;" id="u-link-prog">
+        <li><a href="../atmosphere/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Atmosphere</a></li>
+        <li><a href="../land/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Land</a></li>
+        <li><a href="../land-ice/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Land Ice</a></li>
+        <li><a href="../ocean/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Ocean</a></li>
+        <li><a href="../river/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;River Runoff</a></li>
+        <li><a href="../sea-ice/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Sea Ice</a></li>
+        <li><a href="../wave/default.htm"><span class="small-fa"><i class="fa fa-circle-thin" aria-hidden="true"></i></span>&nbsp;&nbsp;Wave</a></li>
+      </ul>
+    </li>
+    <li><a href="http://www.cgd.ucar.edu/cseg">CESM Software Engineering</a></li>
+  </ul>
+<br/>
+  <h5 class="widgetheading">Related Information</h5>
+  <ul class="cat">
+
+    <li><a href="http://www.cesm.ucar.edu/management/docs/data.mgt.plan.2011.pdf">Data Management &amp; Distribution Plan</a></li>
+    <li><a href="https://www2.cgd.ucar.edu/sections/cseg/development-code">Development Project Policies &amp; Terms of Use</a></li>
+    <li><a href="http://bb.cgd.ucar.edu/">DiscussCESM Forums Bulletin Board</a></li>
+    <li><a href="../../../publications/default.htm">Publication / Acknowledgment Information</a></li>
+    <li><a href="../copyright.html">CESM2 Copyright</a></li>
+    <li><a href="http://www.cesm.ucar.edu/about/support.html">CESM Support Policy</a></li>
+    <li><a href="../package_copyright.html">CESM2 Included Packages Copyright</a></li>
+  </ul>
+</div>
+              <!-- end Models Related Include -->
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <!-- footer -->
+      <!--#include virtual="/styles/modern/includes/footer/footer-inc.html" -->
+      <div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CGD Laboratory Info</h5>
+                <p><a href="http://www.cgd.ucar.edu/about/lab-office.html">CGD Laboratory Office</a>
+                <br>
+                <i class="fa fa-location-arrow"></i> 1850 Table Mesa Drive
+                <br>
+                Boulder, CO, 80305
+                <br><br>
+                303.497.1000 <i class="fa fa-phone"></i> Phone
+                <br>
+                303.497.1314 <i class="fa fa-print"></i> Fax</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Sponsors</h5>
+                <ul class="link-list">
+                <li><a href="http://www.nsf.gov/" target="_blank">NSF | National Science Foundation</a></li>
+                <li><a href="http://www.energy.gov/" target="_blank">DOE | U.S. Department of Energy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Leadership</h5>
+                <p>
+                CESM Chief Scientist | Gokhan Danabasoglu<br>
+                </p>
+                <p>
+                <a href="http://www.cesm.ucar.edu/working_groups/">Working Group Co-Chairs</a><br />
+                <a href="http://www.cesm.ucar.edu/management/SSC/"> SSC | Scientific Steering Committee</a><br />
+                <a href="http://www.cesm.ucar.edu/management/CAB/">CAB | CESM Advisory Board</a>
+                </p>
+            </div>
+        </div>
+
+        
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Administration</h5>
+                <ul class = "link-list">
+                <li><a href="http://www2.cgd.ucar.edu">CGD | Climate &amp; Global Dynamics Laboratory</a></li>
+                <li><a href="http://www.ncar.ucar.edu">NCAR | National Center for Atmospheric Research</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>  
+    </div>
+
+
+    <div id="sub-footer">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="copyright">
+                    <p>
+                    <span>&copy; 2019 UCAR | <a href="http://www2.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="http://www2.ucar.edu/terms-of-use">Terms</a> | <a href="https://www2.ucar.edu/notification-copyright-infringement-digital-millennium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="http://www.ucar.edu/">Managed by UCAR</a><br />
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <em class="copyright">The CESM&trade; project is supported primarily by the National Science Foundation.
+                <br>
+                This material is based upon work supported by the <a href="https://ncar.ucar.edu/">National Center for Atmospheric Research</a>, a major facility sponsored by the <a href="https://www.nsf.gov/">National Science Foundation</a> and managed by the <a href="https://www.ucar.edu/">University Corporation for Atmospheric Research</a>. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the <a href="https://www.nsf.gov/">National Science Foundation</a>.</em>
+
+                
+                <!-- 
+                <em class="copyright">The National Center for Atmospheric Research is sponsored by the National Science Foundation. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National Science Foundation.</em>
+                <ul class="social-network">
+                    <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12 copyright">
+    
+    </div>
+    </div>
+</div>
+
+      <!-- end footer -->
+    </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<script>
+// called on page load to make up a session ID (in real life the session ID
+// would be made up via server-side script and "hard-coded" in the HTML received
+// by the server, thus it wouldn't require javascript at all)
+function init() {
+  // Make up a session ID.
+  var hex = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ];
+  var ses = "";
+
+  for (var i = 0; i < 8; i++) {
+    var rnd = Math.floor(Math.random()*16);
+    ses += hex[rnd];
+  }
+  
+  $("#tmpSes").val(ses);
+
+  // we set the form action to send the sessid in the query string, too.
+  // this way it's available inside the CGI hook function in a very easy
+  // way. In real life this would probably be done better.
+  $("#formVerify").attr("action", "?" + ses);
+}
+// init it
+init();
+
+function enableSubmit() {
+  // fade out the warning
+  $(".g-recaptcha").fadeOut("fast", function() {
+    // enable the submit button
+    $(".action-button").fadeIn("slow");
+    $(".action-button").prop('disabled', false);
+  });
+}
+function disableSubmit() {
+  // fade out the warning
+  $(".g-recaptcha").fadeIn("fast", function() {
+    // diable the submit button
+    $(".action-button").fadeOut("slow");
+    $(".action-button").prop('disabled', true);
+  });
+}
+
+
+// scripts for displaying the different forms start
+$("#l-s-pop").click(function(){
+  // fade out the first form
+  $("#f-deets-user").fadeOut("fast", function() {
+    // fade in the otha form
+    $("#f-pop-user").fadeIn("slow");
+  })
+});
+
+$("#l-s-ect").click(function(){
+  // fade out the first form
+  $("#f-pop-user").fadeOut("fast", function() {
+    // fade in the otha form
+    $("#f-deets-user").fadeIn("slow");
+  })
+});
+// scripts for displaying the different forms end
+
+
+
+// if the user clicks on the submit button for uf start
+$(".submit-uf").click(function(e){
+    // prevent the default form from submitting as actions are needed prior
+    e.preventDefault();
+
+    // hide the form start
+    $(".deets").fadeOut("fast", function() {
+
+        // once done fading the form out, show the loading bars start
+        $(".loading-uf").fadeIn("fast", function() {
+
+            // Make the url vars
+            var grr = grecaptcha.getResponse();
+            var rand = Math.floor(Math.random()*99999);
+            var tmpSes = $("#tmpSes").val();
+            var urlPP = "?a=preping&tmpSes=" + tmpSes + "&grr=" + grr + "&rand=" + rand;
+            var urlP = "?a=ping&tmpSes=" + tmpSes + "&grr=" + grr + "&rand=" + rand;
+
+            // attach the submit value to the button since cgi blows
+            $("#type-submit").val("submit-uf");
+
+            //console.log(urlPP);
+            //return false;
+
+            // ajax call to prepring start
+            $.ajax({
+                url: urlPP,
+                method: "GET",
+                dataType: "text", 
+                cache: false,
+                // check if the ajax call was a success start
+                success: function( data ) {
+                    //console.log(data);
+                    // check the reutrned
+                    if (data == "PASS") {
+                        // delete the capt
+                        // hide the google cap just incase it decides to rear its ugly head after submission
+                        $(".g-recaptcha").remove();
+
+                        // add in the rand
+                        $("#rand").val(rand);
+
+                        // add in the form type
+                        $("#type-submit").val("form-uf");
+
+                        //return false;
+
+                        //once done with captcha then submit
+                        $("#formVerify").submit();
+
+                        // start the interval to check for the progress start
+                        var pingProgress = setInterval(function() {
+
+                            $.ajax({
+                                url: urlP,
+                                method: "GET",
+                                dataType: "text", 
+                                cache: false,
+                                // if the ajax call for the pingProgress is a success start
+                                success: function( data ) {
+                                    //console.log(data);
+                                    //return false;
+
+                                    // parse the data out
+                                    var matches = data.match(/([\S\s]+)::\*\(::[0-9]+:[0-9]+:([\S]+)/);
+
+                                    // if the returned data matches the right format start
+                                    if (matches) {
+                                        // set the resutls
+                                        var filename = matches[1];
+                                        var percent = matches[2];
+
+                                        // check if the percent to see if the files are done
+                                        if (percent === 'uploaded') {
+                                            // change the verifying text and make the icon spin
+                                            $("#progress-bar-verify").html('<i class="fa fa-cog fa-spin fa-2x"></i><h5 class="center">Verifying, please wait</h5>');
+
+                                            // staph the script
+                                            clearInterval(pingProgress);
+                                        }
+                                        // not dont so multiply
+                                        else {
+                                            // dont need to times by 3 since one file
+                                            percent = eval(percent) * 3;
+                                            //percent = percent;
+                                        }
+
+
+                                        // grab the previous vals
+                                        var span = $(".progress-span").attr("id");
+                                        var progress_bar = "#progress-bar-" + span;
+                                        var prev_file = $(".progress-file").attr("id");
+                                        var prev_width = $(progress_bar).attr("aria-valuenow");
+                                        var prev_filen = $(progress_bar).attr("aria-filenum");
+
+                                        //console.log("PREV - " + prev_file);
+                                        //console.log("FILE - " + filename);
+
+                                        // check if its blank
+                                        //if ((prev_file == "") || (prev_file == "undefined") || (prev_file == "0") || (prev_file == undefined) || (typeof prev_file !== typeof undefined) || (prev_file == false)) {
+                                        if (prev_file == "0") {
+                                            // set it
+                                            $(".progress-file").attr("id", filename);
+                                        }
+                                        // not blank so compare to the filename returned from the ping
+                                        else {
+                                            // check if the prev file is equal to the new filename from the ping
+                                            if (prev_file != filename) {
+                                                // first make the prev bar 100%
+                                                $(progress_bar).attr('aria-valuenow', '100').css('width','100%');
+
+                                                // now add in the html
+                                                $(progress_bar).html('100%');
+
+                                                // add the sucess class
+                                                $(progress_bar).addClass("progress-bar-success");
+
+                                                // grab the parent div
+                                                var div_parent = $(progress_bar).parent().closest("div").attr("class", "progress");
+
+                                                // change the text
+                                                // <i class='fa fa-refresh fa-spin'></i>&nbsp;&nbsp;&nbsp;Run 1 Uploading
+                                                $(progress_bar + "-text").html("<i class='fa fa-check'></i>&nbsp;&nbsp;&nbsp;Run " + span + " uploaded");
+
+                                                // change the color
+                                                $(progress_bar + "-text").css('color', 'green');
+
+                                                //console.log("*************** NEWFILE ***************");
+                                                // issa new file so bump the span
+                                                span = eval(span) + 1;
+
+                                                // reset the spans
+                                                $(".progress-span").attr("id", span);
+                                                $(".progress-file").attr("id", filename);
+
+                                                // reset the progress_bar var
+                                                progress_bar = "#progress-bar-" + span;
+
+                                                // change the text
+                                                $(progress_bar + "-text").html("<i class='fa fa-refresh fa-spin'></i>&nbsp;&nbsp;&nbsp;Run " + span + " uploading");
+                                            }
+                                        }
+
+                                        //console.log("PERCENT - " + percent);
+                                        //console.log("PROGRESS_BAR - " + progress_bar);
+                                        //console.log("\n\n");
+
+                                        // add the % sign for the css width
+                                        var percent_percent = percent + "%";
+
+
+                                        // check for the last run and percent
+                                        if (span == 3 && percent > 95) {
+                                            // first make the prev bar 100%
+                                            $(progress_bar).attr('aria-valuenow', '100').css('width','100%');
+
+                                            // now add in the html
+                                            $(progress_bar).html('100%');
+
+                                            // add the sucess class
+                                            $(progress_bar).addClass("progress-bar-success");
+
+                                            // grab the parent div
+                                            var div_parent = $(progress_bar).parent().closest("div").attr("class", "progress");
+
+                                            // change the text
+                                            $(progress_bar + "-text").html("<i class='fa fa-check'></i>&nbsp;&nbsp;&nbsp;Run " + span + " uploaded");
+
+                                            // change the color
+                                            $(progress_bar + "-text").css('color', 'green');
+
+                                            // show the files uploaded box
+                                            $(".progress-block").fadeIn("slow");
+                                            /*
+                                            $("#progress-bar-files").fadeIn("slow", function() {
+                                            // show the verify box
+                                            setTimeout(function() {$("#progress-bar-verify").fadeIn("slow")}, 3000);
+                                            });
+                                            */
+
+                                            // stop the interval 
+                                            //clearInterval(pingProgress);
+                                        }
+                                        else {
+                                            // update the progress bar
+                                            $(progress_bar).attr('aria-valuenow', percent).css('width',percent_percent);
+
+                                            // now add in the html
+                                            $(progress_bar).html(percent_percent);
+                                        }
+                                    }
+                                    // if the returned data matches the right format end
+                                }
+                                // if the ajax call for the pingProgress is a success end
+                            });
+                        }, 1000);
+                        // start the interval to check for the progress end
+                    }
+                    // didnt pass
+                    else {
+                        //console.log("YOU SHALL NOT PASS");
+                        /* TODO FIX ME AND FOR OTHER FORM BLAHBLAHBLAH
+                        // set the errmsg
+                        $("#hideme-err").html("Captcha failed, please try again");
+
+                        // show the err msg
+                        $("#hideme-err").fadeIn("fast");
+                        
+                        */
+                    }
+                }
+                // check if the ajax call was a success end
+            });
+            //  ajax call to prepring end
+        });
+        // once done fading the form out, show the loading bars end
+    });
+    // hide the form end
+});
+// if the user clicks on the submit button for uf end
+
+
+
+
+
+// if the user clicks on the submit button for pop start
+$(".submit-pop").click(function(e){
+    // prevent the default form from submitting as actions are needed prior
+    e.preventDefault();
+
+    // hide the form start
+    $(".deets").fadeOut("fast", function() {
+
+        // once done fading the form out, show the loading bars start
+        $(".loading-pop").fadeIn("fast", function() {
+
+            // Make the url vars
+            var grr = grecaptcha.getResponse();
+            var rand = Math.floor(Math.random()*99999);
+            var tmpSes = $("#tmpSes").val();
+            var urlPP = "?a=preping&tmpSes=" + tmpSes + "&grr=" + grr + "&rand=" + rand;
+            var urlP = "?a=ping&tmpSes=" + tmpSes + "&grr=" + grr + "&rand=" + rand;
+
+            // attach the submit value to the button since cgi blows
+            $("#type-submit").val("submit-uf");
+
+            //console.log(urlPP);
+            //return false;
+
+            // ajax call to prepring start
+            $.ajax({
+                url: urlPP,
+                method: "GET",
+                dataType: "text", 
+                cache: false,
+                // check if the ajax call was a success start
+                success: function( data ) {
+                    // check the reutrned
+                    if (data == "PASS") {
+                        // delete the capt
+                        // hide the google cap just incase it decides to rear its ugly head after submission
+                        $(".g-recaptcha").remove();
+
+                        // add in the rand
+                        $("#rand").val(rand);
+
+                        // add in the form type
+                        $("#type-submit").val("form-pop");
+
+                        //return false;
+
+                        //once done with captcha then submit
+                        $("#formVerify").submit();
+
+                        // start the interval to check for the progress start
+                        var pingProgress = setInterval(function() {
+
+                            $.ajax({
+                                url: urlP,
+                                method: "GET",
+                                dataType: "text", 
+                                cache: false,
+                                // if the ajax call for the pingProgress is a success start
+                                success: function( data ) {
+                                    //console.log(data);
+                                    //return false;
+
+                                    // parse the data out
+                                    var matches = data.match(/([\S\s]+)::\*\(::[0-9]+:[0-9]+:([\S]+)/);
+
+                                    // if the returned data matches the right format start
+                                    if (matches) {
+                                        // set the resutls
+                                        var filename = matches[1];
+                                        var percent = matches[2];
+
+                                        // set the bar
+                                        var progress_bar = "#progress-bar-4";
+
+                                        // check if the percent to see if the files are done
+                                        if (percent === 'uploaded') {
+                                            // first make the progress bar 100%
+                                            $("#progress-bar-4").attr('aria-valuenow', '100').css('width','100%');
+
+                                            // now add in the html
+                                            $(progress_bar).html('100%');
+
+                                            // change the verifying text and make the icon spin
+                                            $("#progress-bar-verify-pop").html('<i class="fa fa-cog fa-spin fa-2x"></i><h5 class="center">Verifying, please wait</h5>');
+
+                                            // staph the script
+                                            clearInterval(pingProgress);
+                                        }
+                                        // not dont so multiply
+                                        else {
+                                            // convert it
+                                            //percent = eval(percent) * 3;
+                                            percent = eval(percent);
+
+                                            // add the % sign for the css width
+                                            var percent_percent = percent + "%";
+                                        }
+
+
+                                        // check for the last run and percent
+                                        if ( percent > 95 ) {
+                                            // first make the prev bar 100%
+                                            $(progress_bar).attr('aria-valuenow', '100').css('width','100%');
+
+                                            // now add in the html
+                                            $(progress_bar).html('100%');
+
+                                            // add the sucess class
+                                            $(progress_bar).addClass("progress-bar-success");
+
+                                            // grab the parent div
+                                            var div_parent = $(progress_bar).parent().closest("div").attr("class", "progress");
+
+                                            // change the text
+                                            $(progress_bar + "-text").html("<i class='fa fa-check'></i>&nbsp;&nbsp;&nbsp;Run uploaded");
+
+                                            // change the color
+                                            $(progress_bar + "-text").css('color', 'green');
+
+                                            // show the files uploaded box
+                                            $(".progress-block").fadeIn("slow");
+                                            /*
+                                            $("#progress-bar-files").fadeIn("slow", function() {
+                                            // show the verify box
+                                            setTimeout(function() {$("#progress-bar-verify").fadeIn("slow")}, 3000);
+                                            });
+                                            */
+
+                                            // stop the interval 
+                                            //clearInterval(pingProgress);
+                                        }
+                                        else {
+                                            // update the progress bar
+                                            $(progress_bar).attr('aria-valuenow', percent).css('width',percent_percent);
+
+                                            // now add in the html
+                                            $(progress_bar).html(percent_percent);
+                                        }
+                                    }
+                                    // if the returned data matches the right format end
+                                }
+                                // if the ajax call for the pingProgress is a success end
+                            });
+                        }, 1000);
+                        // start the interval to check for the progress end
+                    }
+                    // didnt pass
+                    else {
+                        //console.log("YOU SHALL NOT PASS");
+                        /*
+                        // set the errmsg
+                        $("#hideme-err").html("Captcha failed, please try again");
+
+                        // show the err msg
+                        $("#hideme-err").fadeIn("fast");
+                        
+                        */
+                    }
+                }
+                // check if the ajax call was a success end
+            });
+            //  ajax call to prepring end
+        });
+        // once done fading the form out, show the loading bars end
+    });
+    // hide the form end
+});
+// if the user clicks on the submit button for pop end
+
+
+
+
+// Make an ajax request to check up on the status of the upload
+function ping() {
+  $.ajax({
+    url: "?a=ping",
+    method: "GET",
+    dataType: "text", 
+    success: function( data ) {
+      //console.log(data);
+
+      // parse the data out
+      var matches = data.match(/([\S\s]+)::\*\(::[0-9]+:[0-9]+:([\S]+)/);
+
+      // check for matches
+      if (matches) {
+        // set the resutls
+        var filename = matches[1];
+        var percent = matches[2];
+        percent = eval(percent) * 3;
+
+        // grab the previous vals
+        var span = $(".progress-span").attr("id");
+        var progress_bar = "#progress-bar-" + span;
+        var prev_file = $(".progress-file").attr("id");
+
+        
+        
+        var prev_width = $(progress_bar).attr("aria-valuenow");
+        var prev_filen = $(progress_bar).attr("aria-filenum");
+
+
+        //console.log("PREV - " + prev_file);
+        //console.log("FILE - " + filename);
+
+        // check if its blank
+        //if ((prev_file == "") || (prev_file == "undefined") || (prev_file == "0") || (prev_file == undefined) || (typeof prev_file !== typeof undefined) || (prev_file == false)) {
+          if (prev_file == "0") {
+          // set it
+          $(".progress-file").attr("id", filename);
+        }
+        // not blank so compare to the filename returned from the ping
+        else {
+          // check if the prev file is equal to the new filename from the ping
+          if (prev_file != filename) {
+            // first make the prev bar 100%
+            $(progress_bar).attr('aria-valuenow', '100').css('width','100%');
+
+            // add the sucess class
+            $(progress_bar).addClass("progress-bar-success");
+
+            // grab the parent div
+            var div_parent = $(progress_bar).parent().closest("div").attr("class", "progress");
+
+            // change the text
+            $(progress_bar + "-text").html("Run " + span + " uploaded");
+
+
+            //console.log("*************** NEWFILE ***************");
+            // issa new file so bump the span
+            span = eval(span) + 1;
+
+            // reset the spans
+            $(".progress-span").attr("id", span);
+            $(".progress-file").attr("id", filename);
+
+            // reset the progress_bar var
+            progress_bar = "#progress-bar-" + span;
+
+            // change the text
+            $(progress_bar + "-text").html("Run " + span + " uploading");
+          }
+        }
+
+        //console.log("PERCENT - " + percent);
+        //console.log("PROGRESS_BAR - " + progress_bar);
+        //console.log("\n\n");
+
+        // add the % sign for the css width
+        var percent_percent = percent + "%";
+
+
+        // check for the last run and percent
+        if (span == 3 && percent >= 95) {
+          // first make the prev bar 100%
+          $(progress_bar).attr('aria-valuenow', '100').css('width','100%');
+
+          // add the sucess class
+          $(progress_bar).addClass("progress-bar-success");
+
+          // grab the parent div
+          var div_parent = $(progress_bar).parent().closest("div").attr("class", "progress");
+
+          // stop the interval 
+          clearInterval(ping);
+
+        }
+        else {
+          // update the progress bar
+          $(progress_bar).attr('aria-valuenow', percent).css('width',percent_percent);
+        }
+      }
+    }
+  });
+}
+
+
+
+
+
+  
+</script>
+</body>
+</html>

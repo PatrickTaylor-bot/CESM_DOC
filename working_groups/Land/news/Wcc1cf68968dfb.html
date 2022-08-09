@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="x-apple-disable-message-reformatting">  
+    <title>Community Terrestrial Systems Model Newsletter</title>
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: Arial,sans-serif; !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+
+        * {
+            font-family: Arial,sans-serif;
+        }
+    <![endif]-->
+    <!-- Web Font / @font-face : END -->
+
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+
+            font-family: Arial,sans-serif;
+        }
+
+        a {
+            color: #1a658f;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #007fa3;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors],  /* iOS */
+        .x-gmail-data-detectors,    /* Gmail */
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Prevents underlining the button text in Windows 10 */
+        .button-link {
+            text-decoration: underline !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+    /* What it does: Hover styles for buttons */
+    .button-td,
+    .button-a {
+        transition: all 100ms ease-in;
+    }
+    .button-td:hover,
+    .button-a:hover {
+        background: #007fa3 !important;
+        border-color: #007fa3 !important;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 480px) {
+
+        /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+        .fluid {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* What it does: Forces table cells into full-width rows. */
+        .stack-column,
+        .stack-column-center {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            direction: ltr !important;
+
+
+        }
+        /* And center justify these ones. */
+        .stack-column-center {
+            text-align: center !important;
+        }
+
+        /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+        .center-on-narrow {
+            text-align: center !important;
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            float: none !important;
+        }
+        table.center-on-narrow {
+            display: inline-block !important;
+        }
+
+        /* What it does: Adjust typography on small screens to improve readability */
+        .email-container p {
+            font-size: 17px !important;
+        }
+    }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+</head>
+<body width="100%" style="margin: 0; padding:0px; mso-line-height-rule: exactly;">
+    <!-- Full Bleed Background Section : BEGIN -->
+
+    <table role="presentation" bgcolor="#332f21" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
+        <tr>
+            <td align="center" valign="top" style="">
+                <!--[if mso]>
+                <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                <tr>
+                <td align="center" valign="top" width="330">
+                <![endif]-->
+                <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:330px; vertical-align:top;" class="stack-column stack-column-center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                            <td style="padding:5px;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 10px; color: #fff; text-align: center;">
+                                    <tr>
+                                        <td>
+                                            CTSM Newsletter, November 17, 2020
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--[if mso]>
+                </td>
+                <td align="center" valign="top" width="330">
+                <![endif]-->
+                <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:330px; vertical-align:top;" class="stack-column stack-column-center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                            <td style="padding:5px;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 10px; color: #fff; text-align: center;">
+                                    <tr>
+                                        <td>
+                                            <a href="Wcc1cf68968dfb.html" style="color: #fff;">View in browser</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--[if mso]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+    </table>
+    <!-- Full Bleed Background Section : END -->
+
+
+    <center style="width: 100%; background: #d9d9d6; text-align: left;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#222222">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
+            News for the Community Terrestrial Systems Model, including the Community Land Model of CESM
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 680px.
+            2. MSO tags for Desktop Windows Outlook enforce a 680px width.
+            Note: The Fluid and Responsive templates have a different width (600px). The hybrid grid is more "fragile", and I've found that 680px is a good width. Change with caution.
+        -->
+        <div style="max-width: 680px; margin: auto;" class="email-container">
+            <!--[if mso]>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="680" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Body : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;" class="email-container">
+                <tr>
+                    <td style="padding: 20px; text-align: left; background-color: #fff;">
+                        <h1 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 500;">Community Terrestrial Systems Model</h1>
+                        <h2 style="margin: 0; font-size: 30px; line-height: 125%; color: #1a658f; font-weight: 300; text-transform: uppercase;">Newsletter</h2>
+                        <h2 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 500;">Updates for CTSM users &amp; developers</h2>
+                        <h2 style="margin: 0; font-size: 12px; line-height: 125%; color: #ff7a00; font-weight: 500;">November 17, 2020</h2>
+
+                    </td>
+                </tr>
+
+
+                <!-- Hero Image, Flush : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center">
+                        <img src="../../../images/emails/lmwg-header-2020.11.png" width="680" height="" alt="LMWG newsletter cover image" border="0" align="center" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-size: 15px; line-height: 140%; color: #000; margin: auto;" class="fluid g-img">
+                    </td>
+                </tr>
+                <!-- Hero Image, Flush : END -->
+
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr style="border-bottom:2px solid #007fa3;">
+                                    <td style="background: #1a658f; text-align: center;" class="button-td">
+                                        <a href="../../../models/cesm2/land/Wc525eee3d2a1e.htm" style="text-transform:uppercase; font-weight:600; letter-spacing:1px; background: #1a658f; border: 5px solid #1a658f; font-size: 12px; line-height: 110%; text-align: center; text-decoration: underline; display: block; padding-top: 5px; padding-bottom: 5px;" class="button-a">
+                                            <span style="color:#ffffff;" class="button-link">CLM5</span>
+                                        </a>
+                                    </td>
+
+                                    <td style="background: #1a658f; text-align: center;" class="button-td">
+                                        <a href="https://escomp.github.io/ctsm-docs/versions/master/html/" style="text-transform:uppercase; font-weight:600; letter-spacing:1px; background: #1a658f; border: 5px solid #1a658f; font-size: 12px; line-height: 110%; text-align: center; text-decoration: underline; display: block; padding-top: 5px; padding-bottom: 5px;" class="button-a">
+                                            <span style="color:#ffffff;" class="button-link">Documentation</span>
+                                        </a>
+                                    </td>
+
+                                    <td style="background: #1a658f; text-align: center;" class="button-td">
+                                        <a href="https://github.com/ESCOMP/CTSM" style="text-transform:uppercase; font-weight:600; letter-spacing:1px; background: #1a658f; border: 5px solid #1a658f; font-size: 12px; line-height: 110%; text-align: center; text-decoration: underline; display: block; padding-top: 5px; padding-bottom: 5px;" class="button-a">
+                                            <span style="color:#ffffff;" class="button-link">GitHub</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 20px; text-align: left; background-color: #1a658f;">
+                        <h3 style="margin: 0; font-size: 30px; line-height: 125%; color: #fff; font-weight: 700;">Model Developments &amp; Features</h3>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="padding: 10px 20px 10px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">Ongoing efforts and directions:</h4>
+                    </td>
+                </tr>
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0"><strong>CTSM6(FATES):</strong> We continue to work towards a full FATES integration in CTSM6 for CESM3 (<a href="https://github.com/ESCOMP/CTSM/wiki/CTSM-FATES-integration">see github for discussion</a>).  <a href="https://github.com/ESCOMP/CTSM/tree/fates_main_api">Recent progress includes</a> development of FATES-SP and -no_competition modes as well as the development of other reduced complexity configurations for use in global simulations.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-ctsm6.png" width="310" height="" border="0" alt="CTSM6-FATES" class="center-on-narrow" style="width: 100%; max-width: 310px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                        <p style="font-size: 10px; font-style: italic; color: #999; text-align: center;">Photo: R. Fisher</p>
+                    </td>
+                </tr>
+
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0"><strong>Representative hillslope:</strong> Development and application of the <a href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019MS001833">representative hillslope model</a>, which enables simulation of the impacts of interconnected hillslope elements as well as slope and aspect on lateral water transfer and the surface energy budget, continues and is available for use.  Please contact S. Swenson if you’re interested in using this feature.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-hillslope.png" width="310" height="" border="0" alt="Representative hillslope" class="center-on-narrow" style="width: 100%; max-width: 310px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                        <p style="font-size: 10px; font-style: italic; color: #999; text-align: center;">Photo: S. Swenson et al JAMES 2019</p>
+                    </td>
+                </tr>
+
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0"><strong>Single point capabilities:</strong> Developments to facilitate running single point simulations are in progress that will enable easier simulations with flux tower data (e.g. Plumber2 experiments and NEON sites).</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-neon.png" width="310" height="" border="0" alt="NEON Science STER Tower" class="center-on-narrow" style="width: 100%; max-width: 310px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                        <p style="font-size: 10px; font-style: italic; color: #999; text-align: center;">Photo: NEON Science STER Tower</p>
+                    </td>
+                </tr>
+
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0"><strong>WRF-CTSM:</strong> A beta version of WRF-CTSM, coupled with LILAC has been released for community use.  [&nbsp;<a href="https://docs.google.com/document/d/1XvdrBaHH1IjqTTjWin7-KE-dWtKtzRrziM1qZR9Yn7g/edit?usp=sharing">Release message</a> &amp; <a href="https://escomp.github.io/ctsm-docs/versions/master/html/lilac/specific-atm-models/wrf.html">User’s guide</a>&nbsp;] This release represents an important milestone along the path of land model unification at NCAR.  Ongoing unification work includes development of a  streamlined toolchain for new grid generation, one-way (and eventually two-way) nesting, and coupling to MPAS.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%">
+                        <!--[if mso]>
+                        <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                        <tr>
+                        <td align="center" valign="top" width="660">
+                        <![endif]-->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:660px;">
+                            <tr>
+                                <td align="center" valign="top" style="font-size:0; padding: 10px 0;">
+                                    <!--[if mso]>
+                                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                    <tr>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:330px; vertical-align:top;" class="stack-column">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td style="padding: 10px 10px;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="../../../images/emails/lmwg-wrf-ctsm-1.png" width="310" height="" border="0" alt="WRF-CTSM" class="center-on-narrow" style="width: 100%; max-width: 310px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    <td align="left" valign="top" width="330">
+                                    <![endif]-->
+                                    <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:330px; vertical-align:top;" class="stack-column">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td style="padding: 10px 10px;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="../../../images/emails/lmwg-wrf-ctsm-2.png" width="310" height="" border="0" alt="WRF-CTSM" class="center-on-narrow" style="width: 100%; max-width: 310px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--[if mso]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- 2 Even Columns : END -->
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">More information on ongoing efforts can be found on our <a href="https://github.com/ESCOMP/CTSM/wiki/CTSM5.1-developments">Github Wiki page</a>, or by attending our virtual LWMG meeting in Spring 2021.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+
+                <tr>
+                    <td style="padding: 20px 20px 0px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">New features, since CLM5 release</h4>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <ul style="margin-top: 10px;">
+                                        <li>Runtime flexibility in setting the number of <a href="https://github.com/ESCOMP/CTSM/issues/581">landunits</a>, <a href="https://github.com/ESCOMP/CTSM/issues/457">PFTs</a>, and soil and <a href="https://github.com/ESCOMP/CTSM/issues/729">snow</a> vertical structure and number of layers</li>
+                                        <li>Streamlined capability to run future climate simulations in CTSM land-only mode using anomaly forcing. Anomaly forcing data from CESM2 SSP1-2.6, SSP2-4.5, SSP3-7, and SSP5-8.5  simulations are available. [&nbsp;<a href="https://escomp.github.io/ctsm-docs/versions/release-clm5.0/html/users_guide/running-special-cases/Running-with-anomaly-forcing.html">User’s Guide</a>&nbsp;]</li>
+                                        <li>Fast CTSM(NWP) <a href="https://github.com/ESCOMP/CTSM/issues/456">configuration</a> for use in Numerical Weather Prediction applications.  CTSM(NWP) is ~10X faster than CTSM(BGC-Crop)</li>
+                                        <li>Grid cell level checks for carbon and water balance</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+
+
+                <tr>
+                    <td style="padding: 20px 20px 10px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">CESM2.2 Release</h4>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">This is a development release that focuses on the transition to the MOM6 ocean model and testing for CAM6 dynamical core configurations that enable simulations on variable resolution grids. Science updates for CTSM include:</p>
+                                    <ul style="margin-top: 0px;">
+                                        <li>Option to simulate <a href="https://github.com/ESCOMP/CTSM/pull/884">two bioenergy crops</a> (switchgrass and miscanthus)</li>
+                                        <li>Support for use of CTSM in numerical weather prediction (NWP) applications</li>
+                                        <li>Bug fixes for <a href="https://github.com/ESCOMP/CTSM/pull/961">LUNA</a> and <a href="https://github.com/ESCOMP/CTSM/issues/704">FUN</a> modules</li>
+                                        <li>Prescribed soil moisture</li>
+                                    </ul>
+
+                                    <p>Additional information can be found on the <a href="../../../models/cesm2/Wcb0163f45b7e3.html">CESM2 webpage</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+
+
+                <tr>
+                    <td style="padding: 20px 20px 10px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">CTSM5.1 Beta Tag</h4>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">On <a href="https://github.com/ESCOMP/ctsm">ctsm/main</a> we are building CTSM5.1 physics. The following features have been implemented that introduce answer changing modifications to the CTSM physics package. We emphasize this is a development code that has not been scientifically validated, but we do encourage use of the main development branch for model development.  Major development associated with this tag currently include:</p>
+                                    <ul style="margin-top: 0px;">
+                                        <li>Bug fixes, improvements, and re-tuning to the <a href="https://github.com/ESCOMP/CTSM/issues/889">fire module</a>, especially to improve deforestation and degradation fires</li>
+                                        <li>Improvements to <a href="https://github.com/ESCOMP/CTSM/pull/990">Arctic/Boreal phenology &amp; allocation</a></li>
+                                        <li>Updated <a href="https://github.com/ESCOMP/CTSM/issues/807">PFT optical properties</a> and <a href="https://github.com/ESCOMP/CTSM/pull/1157">urban datasets</a></li>
+                                        <li>Moving <a href="https://github.com/ESCOMP/CTSM/pull/1164">hard coded parameters</a> to the parameter file</li>
+                                        <li>Revised <a href="https://github.com/ESCOMP/CTSM/pull/1187">parameters for plant hydraulic stress</a></li>
+                                        <li>Patch for <a href="https://github.com/ESCOMP/CTSM/pull/1063">wood stoichiometry</a> bug</li>
+                                        <li><a href="https://github.com/ESCOMP/CTSM/pull/640">CN-Matrix</a> calculations for  ecosystem biogeochemistry (in progress)</li>
+                                        <li><a href="https://github.com/ESCOMP/CTSM/pull/1016">Biomass heat storage</a> (in progress)</li>
+                                        <li><a href="https://github.com/ESCOMP/CTSM/pull/1112">Snow burial</a> of vegetation (in progress)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+
+                <tr>
+                    <td style="padding: 20px; text-align: left; background-color: #1a658f;">
+                        <h3 style="margin: 0; font-size: 30px; line-height: 125%; color: #fff; font-weight: 700;">Simulations &amp; Activities</h3>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 10px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <h4 style="margin: 0px; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">SSP extensions to 2300 with CESM2-WACCM</h4>
+
+                                    <ul style="margin-top: 0px; padding-left: 15px;">
+                                        <li><a href="https://esgf-node.llnl.gov/search/cmip6/?institution_id=NCAR&source_id=CESM2-WACCM&experiment_id=ssp585">SSP5-8.5</a> &amp; <a href="https://esgf-node.llnl.gov/search/cmip6/?institution_id=NCAR&source_id=CESM2-WACCM&experiment_id=ssp534-over">SSP5-3.4</a> overshoot completed</li>
+                                        <li>SSP1-2.6 in progress</li>
+                                        <li>
+                                            Data is published on ESGF (links above) and available on campaign storage (via casper)<br>
+                                                <span style="font-size: 9px; font-style: italic; color: #999; text-align: left;">/glade/campaign/collections/cmip/CMIP6/timeseries-cmip6/b.e21.BWSSP585extcmip6.f09_g17.CMIP6-SSP5-8.5ext-WACCM.001</span><br>
+                                                <span style="font-size: 9px; font-style: italic; color: #999; text-align: left;">/glade/campaign/collections/cmip/CMIP6/timeseries-cmip6//b.e21.BWSSP534osextcmip6.f09_g17.CMIP6-SSP5-3.4OSext-WACCM.001</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding:0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <h4 style="margin: 0px; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">TRENDY simulations</h4>
+                                    <ul style="margin-top: 0px; padding-left: 15px;">
+                                        <li>
+                                            Data are published on the <a href="https://dashrepo.ucar.edu/dataset/151_dll.html">NCAR/DASH repository</a> and are also available on cheyenne<br>
+                                            <span style="font-size: 9px; font-style: italic; color: #999; text-align: left;">/glade/p/cgd/tss/people/dll/TRENDY2020_History</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding:0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <h4 style="margin: 0px; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">PLUMBER2</h4>
+                                    <p style="margin: 0px;">CTSM is participating in this model intercomparison project sponsored by GEWEX GLASS that includes 170 Flux Tower Site simulations.  We are submitting CTSM5(SP) and CTSM5.1(SP) simulations, which will be posted at <a href="https://www.modelEvaluation.org">www.modelEvaluation.org</a> and are also available on Cheyenne</p>
+                                    <p style="margin-top:0px; font-size: 9px; font-style: italic; color: #999; text-align: left;">/glade/p/cgd/tss/people/oleson/PLUMBER2</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding:0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <h4 style="margin: 0px; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">CTSM Parameter Perturbation Experiment (PPE)</h4>
+                                    <p style="margin-top: 0px;">Phase 0, infrastructure work; exposing hard coded parameters, scripting, and code base;<br>Phase 1, one-at-a-time parameter perturbations underway [&nbsp;<a href="https://docs.google.com/presentation/d/1S-a2ckeLa4UwzboJ6zJ0EX-Ij3yE0jMP/edit#slide=id.p1">Project Description</a>&nbsp;]</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 20px; text-align: left; background-color: #1a658f;">
+                        <h3 style="margin: 0; font-size: 30px; line-height: 125%; color: #fff; font-weight: 700;">Upcoming Events &amp; Announcements</h3>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 10px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <ul style="margin-top:0px; padding-left: 15px;">
+                                        <li>A number of us will be virtually participating in AGU this year.  Sorry we can’t meet up for coffee, but look forward to hearing about your work!</li>
+                                        <li>LMWG and BGCWG meetings - Virtually Feb. 23 - 25, 2021</li>
+                                        <li>CTSM tutorial, Fall 2021 (tentative)</li>
+                                        <li>Bi-weekly CLM meetings take place Thursdays at 1:00 Mountain time. Please contact <a href="mailto:wwieder@ucar.edu">wwieder@ucar.edu</a> if you’d like to join in these meetings</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 20px; text-align: left; background-color: #1a658f;">
+                        <h3 style="margin: 0; font-size: 30px; line-height: 125%; color: #fff; font-weight: 700;">Science Highlights</h3>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 20px 20px 30px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">Selected papers:</h4>
+                    </td>
+                </tr>
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">Lombardozzi, D. L., Y. Q. Lu, P. J. Lawrence, D. M. Lawrence, S. Swenson, K. W. Oleson, W. R. Wieder, and E. A. Ainsworth, 2020: Simulating Agriculture in the Community Land Model Version 5. Journal of Geophysical Research-Biogeosciences, 125. e2019JG005529. <a href="https://doi.org/10.1029/2019JG005529">https://doi.org/10.1029/2019JG005529</a></p>
+
+                                    <p style="margin-bottom: 10px; font-style: italic;">This paper introduces the updated prognostic representation of agricultural management in CLM5 and CESM2. Lombardozzi and co-authors found that representing specific crop types, as well as irrigation and fertilization in CLM increases the amount of carbon that plants draw out from the atmosphere and also changes patterns of evapotranspiration.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-2020-sp-lombardozzi.png" width="310" height="" border="0" alt="Global grain production" class="center-on-narrow" style="width: 100%; max-width: 450px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                    </td>
+                </tr>
+
+
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">Wozniak, M. C., G.B. Bonan, G Keppel‐Aleks, and A.L. Steiner (2020). Influence of vertical heterogeneities in the canopy microenvironment on interannual variability of carbon uptake in temperate deciduous forests. Journal of Geophysical Research: Biogeosciences, 125, e2020JG005658. <a href="https://doi.org/10.1029/2020JG005658">https://doi.org/10.1029/2020JG005658</a></p>
+
+                                    <p style="margin-bottom: 10px; font-style: italic;">This paper looks at how different representations of canopy vertical structure influences carbon uptake at five temperate deciduous forest sites. Wozniak and co-authors found that different configurations of CLM  cannot accurately simulate observed interannual variability of GPP, which may be related by their inability to capture the upper range of observed hourly GPP and diffuse light‐GPP relationships.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-2020-sp-wozniak.png" width="310" height="" border="0" alt="Different configurations of CLM" class="center-on-narrow" style="width: 100%; max-width: 500px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                    </td>
+                </tr>
+
+
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 10px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin: 0 0 10px 0">Koven, C. D., R.G. Knox, R.A Fisher, et al. 2020. Benchmarking and parameter sensitivity of physiological and vegetation dynamics using the Functionally Assembled Terrestrial Ecosystem Simulator (FATES) at Barro Colorado Island, Panama. Biogeosciences, 17, 3017-3044. <a href="https://doi.org/10.5194/bg-17-3017-2020">https://doi.org/10.5194/bg-17-3017-2020</a></p>
+
+                                    <p style="margin-bottom: 10px; font-style: italic;">This paper explores parameter sensitivity of model predictions from FATES, and compares results to observations from Barro Colorado Island in Panama. Koven and co-authors find that it is important to differentiate between plant traits, which are under competitive pressure in FATES, from those model parameters that are not and to better understand the relationships between plant traits and model parameter to characterize sources of uncertainty in vegetation demographic models. You can also watch a video of trees growing in FATES at: <a href="https://doi.org/10.5446/43627">https://doi.org/10.5446/43627</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <tr>
+                    <td style="padding: 0px 20px 30px 20px; text-align: center; background-color: #fff;">
+                        <img src="../../../images/emails/lmwg-2020-sp-koven.png" width="310" height="" border="0" alt="Forest dynamics using FATES model" class="center-on-narrow" style="width: 100%; max-width: 450px; height: auto; font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555;">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="padding: 20px 20px 10px 20px; text-align: left; background-color: #fff;">
+                        <h4 style="margin: 0; font-size: 20px; line-height: 125%; color: #000; font-weight: 700;">CLM5-Related publications to date:</h4>
+                    </td>
+                </tr>
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 0px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <p style="margin-top: 0px;"><a href="../../../models/cesm2/land/Wc708e16e697ba.htm">All CLM/CTSM publications in 2020</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 0px 20px 20px 20px; font-size: 15px; line-height: 140%; color: #000;">
+                                    <ul style="padding-left: 15px; margin: 0px; font-size: 11px;">
+                                        <li style="padding-bottom:7px;">Arora, V. K., A. Katavouta, R. G. Williams, C. D. Jones, V. Brovkin, P. Friedlingstein, J. Schwinger, L. Bopp, O. Boucher, P. Cadule, M. A. Chamberlain, J. R. Christian, C. Delire, R. A. Fisher, T. Hajima, T. Ilyina, E. Joetzjer, M. Kawamiya, C. D. Koven, J. P. Krasting, R. M. Law, D. M. Lawrence, A. Lenton, K. Lindsay, J. Pongratz, T. Raddatz, R. Seferian, K. Tachiiri, J. F. Tjiputra, A. Wiltshire, T. W. Wu and T. Ziehn (2020). "Carbon-concentration and carbon-climate feedbacks in CMIP6 models and their comparison to CMIP5 models." Biogeosciences 17(16): 4173-4222 DOI: 10.5194/bg-17-4173-2020.</li>
+                                        <li style="padding-bottom:7px;">Bonan, G. B., D. L. Lombardozzi, W. R. Wieder, K. W. Oleson, D. M. Lawrence, F. M. Hoffman and N. Collier (2019). "Model Structure and Climate Data Uncertainty in Historical Simulations of the Terrestrial Carbon Cycle (1850-2014)." Global Biogeochemical Cycles</li>
+                                        <li style="padding-bottom:7px;">Chen, J. L., J. Wen, S. C. Kang, X. H. Meng, H. Tian, X. Ma and Y. Yuan (2020). "Assessments of the factors controlling latent heat flux and the coupling degree between an alpine wetland and the atmosphere on the Qinghai-Tibetan Plateau in summer." Atmospheric Research 240: 9 DOI: 10.1016/j.atmosres.2020.104937.</li>
+                                        <li style="padding-bottom:7px;">Chen, L. and P. A. Dirmeyer (2020). "Distinct Impacts of Land Use and Land Management on Summer Temperatures." Frontiers in Earth Science 8: 12 DOI: 10.3389/feart.2020.00245.</li>
+                                        <li style="padding-bottom:7px;">Chen, M., C. R. Vernon, N. T. Graham, M. Hejazi, M. Y. Huang, Y. Y. Cheng and K. Calvin (2020). "Global land use for 2015-2100 at 0.05 degrees resolution under diverse socioeconomic and climate scenarios." Scientific Data 7(1): 11 DOI: 10.1038/s41597-020-00669-x.</li>
+                                        <li style="padding-bottom:7px;">Cheng, S. J., P. G. Hess, W. R. Wieder, R. Q. Thomas, K. J. Nadelhoffer, J. Vira, D. L. Lombardozzi, P. Gundersen, I. J. Fernandez, P. Schleppi, M. C. Gruselle, F. Moldan and C. L. Goodale (2019). "Decadal fates and impacts of nitrogen additions on temperate forest carbon storage: a data-model comparison." Biogeosciences 16(13): 2771-2793</li>
+                                        <li style="padding-bottom:7px;">Cheng, Y. Y., M. Y. Huang, M. Chen, K. Y. Guan, C. Bernacchi, B. Peng and Z. L. Tan (2020). "Parameterizing Perennial Bioenergy Crops in Version 5 of the Community Land Model Based on Site-Level Observations in the Central Midwestern United States." Journal of Advances in Modeling Earth Systems 12(1): 24 DOI: 10.1029/2019ms001719.</li>
+                                        <li style="padding-bottom:7px;">Danabasoglu, G., J. F. Lamarque, J. Bacmeister, D. A. Bailey, A. K. DuVivier, J. Edwards, L. K. Emmons, J. Fasullo, R. Garcia, A. Gettelman, C. Hannay, M. M. Holland, W. G. Large, P. H. Lauritzen, D. M. Lawrence, J. T. M. Lenaerts, K. Lindsay, W. H. Lipscomb, M. J. Mills, R. Neale, K. W. Oleson, B. Otto‐Bliesner, A. S. Phillips, W. Sacks, S. Tilmes, L. Kampenhout, M. Vertenstein, A. Bertini, J. Dennis, C. Deser, C. Fischer, B. Fox‐Kemper, J. E. Kay, D. Kinnison, P. J. Kushner, V. E. Larson, M. C. Long, S. Mickelson, J. K. Moore, E. Nienhouse, L. Polvani, P. J. Rasch and W. G. Strand (2020). "The Community Earth System Model Version 2 (CESM2)." Journal of Advances in Modeling Earth Systems 12(2): e2019MS001916 DOI: 10.1029/2019ms001916.</li>
+                                        <li style="padding-bottom:7px;">Devanand, A., M. Y. Huang, D. M. Lawrence, C. M. Zarzycki, Z. Feng, P. J. Lawrence, Y. Qian and Z. Yang (2020). "Land Use and Land Cover Change Strongly Modulates Land-Atmosphere Coupling and Warm-Season Precipitation Over the Central United States in CESM2-VR." Journal of Advances in Modeling Earth Systems 12(9): 23 DOI: 10.1029/2019ms001925.</li>
+                                        <li style="padding-bottom:7px;">Ekici, A., H. Lee, D. M. Lawrence, S. C. Swenson and C. Prigent (2019). "Ground subsidence effects on simulating dynamic high-latitude surface inundation under permafrost thaw using CLM5." Geoscientific Model Development 12(12): 5291-5300</li>
+                                        <li style="padding-bottom:7px;">Fisher, R. A., W. R. Wieder, B. M. Sanderson, C. D. Koven, K. W. Oleson, C. G. Xu, J. B. Fisher, M. J. Shi, A. P. Walker and D. M. Lawrence (2019). "Parametric Controls on Vegetation Responses to Biogeochemical Forcing in the CLM5." Journal of Advances in Modeling Earth Systems 11(9): 2879-2895</li>
+                                        <li style="padding-bottom:7px;">Franks, P. J., G. B. Bonan, J. A. Berry, D. L. Lombardozzi, N. M. Holbrook, N. Herold and K. W. Oleson (2018). "Comparing optimal and empirical stomatal conductance models for application in Earth system models." Glob Chang Biol 24(12): 5708-5723 DOI: 10.1111/gcb.14445.</li>
+                                        <li style="padding-bottom:7px;">Friedlingstein, P., M. W. Jones, M. O'Sullivan, R. M. Andrew, J. Hauck, G. P. Peters, W. Peters, J. Pongratz, S. Sitch, C. Le Quere, D. C. E. Bakker, J. G. Canadell, P. Ciais, R. B. Jackson, P. Anthoni, L. Barbero, A. Bastos, V. Bastrikov, M. Becker, L. Bopp, E. Buitenhuis, N. Chandra, F. Chevallier, L. P. Chini, K. I. Currie, R. A. Feely, M. Gehlen, D. Gilfillan, T. Gkritzalis, D. S. Goll, N. Gruber, S. Gutekunst, I. Harris, V. Haverd, R. A. Houghton, G. Hurtt, T. Ilyina, A. K. Jain, E. Joetzjer, J. O. Kaplan, E. Kato, K. K. Goldewijk, J. I. Korsbakken, P. Landschutzer, S. K. Lauvset, N. Lefevre, A. Lenton, S. Lienert, D. Lombardozzi, G. Marland, P. C. McGuire, J. R. Melton, N. Metzl, D. R. Munro, J. Nabel, S. I. Nakaoka, C. Neill, A. M. Omar, T. Ono, A. Peregon, D. Pierrot, B. Poulter, G. Rehder, L. Resplandy, E. Robertson, C. Rodenbeck, R. Seferian, J. Schwinger, N. Smith, P. P. Tans, H. Q. Tian, B. Tilbrook, F. N. Tubiello, G. R. van der Werf, A. J. Wiltshire and S. Zaehle (2019). "Global Carbon Budget 2019." Earth System Science Data 11(4): 1783-1838</li>
+                                        <li style="padding-bottom:7px;">Holm, J. A., R. G. Knox, Q. Zhu, R. A. Fisher, C. D. Koven, A. J. N. Lima, W. J. Riley, M. Longo, R. I. Negron-Juarez, A. C. de Araujo, L. M. Kueppers, P. R. Moorcroft, N. Higuchi and J. Q. Chambers (2020). "The Central Amazon Biomass Sink Under Current and Future Atmospheric CO2: Predictions From Big-Leaf and Demographic Vegetation Models." Journal of Geophysical Research-Biogeosciences 125(3): 23 DOI: 10.1029/2019jg005500.</li>
+                                        <li style="padding-bottom:7px;">Kennedy, D., S. Swenson, K. W. Oleson, D. M. Lawrence, R. Fisher, A. C. L. da Costa and P. Gentine (2019). "Implementing Plant Hydraulics in the Community Land Model, Version 5." Journal of Advances in Modeling Earth Systems 11(2): 485-513</li>
+                                        <li style="padding-bottom:7px;">Koven, C. D., R. G. Knox, R. A. Fisher, J. Q. Chambers, B. O. Christoffersen, S. J. Davies, M. Detto, M. C. Dietze, B. Faybishenko, J. Holm, M. Huang, M. Kovenock, L. M. Kueppers, G. Lemieux, E. Massoud, N. G. McDowell, H. C. Muller-Landau, J. F. Needham, R. J. Norby, T. Powell, A. Rogers, S. P. Serbin, J. K. Shuman, A. L. S. Swann, C. Varadharajan, A. P. Walker, S. J. Wright and C. Xu (2020). "Benchmarking and parameter sensitivity of physiological and vegetation dynamics using the Functionally Assembled Terrestrial Ecosystem Simulator (FATES) at Barro Colorado Island, Panama." Biogeosciences 17(11): 3017-3044 DOI: 10.5194/bg-17-3017-2020.</li>
+                                        <li style="padding-bottom:7px;">Lawrence, D. M., R. A. Fisher, C. D. Koven, K. W. Oleson, S. C. Swenson, G. Bonan, N. Collier, B. Ghimire, L. van Kampenhout, D. Kennedy, E. Kluzek, P. J. Lawrence, F. Li, H. Y. Li, D. Lombardozzi, W. J. Riley, W. J. Sacks, M. J. Shi, M. Vertenstein, W. R. Wieder, C. G. Xu, A. A. Ali, A. M. Badger, G. Bisht, M. van den Broeke, M. A. Brunke, S. P. Burns, J. Buzan, M. Clark, A. Craig, K. Dahlin, B. Drewniak, J. B. Fisher, M. Flanner, A. M. Fox, P. Gentine, F. Hoffman, G. Keppel-Aleks, R. Knox, S. Kumar, J. Lenaerts, L. R. Leung, W. H. Lipscomb, Y. Q. Lu, A. Pandey, J. D. Pelletier, J. Perket, J. T. Randerson, D. M. Ricciuto, B. M. Sanderson, A. Slater, Z. M. Subin, J. Y. Tang, R. Q. Thomas, M. V. Martin and X. B. Zeng (2019). "The Community Land Model Version 5: Description of New Features, Benchmarking, and Impact of Forcing Uncertainty." Journal of Advances in Modeling Earth Systems 11(12): 4245-4287</li>
+                                        <li style="padding-bottom:7px;">Leibovici, D. G., S. Quegan, E. Comyn-Platt, G. Hayman, M. V. Martin, M. Guimberteau, D. Arsene, D. Zhu and P. Ciais (2020). "Spatio-temporal variations and uncertainty in land surface modelling for high latitudes: univariate response analysis." Biogeosciences 17(6): 1821-1844 DOI: 10.5194/bg-17-1821-2020.</li>
+                                        <li style="padding-bottom:7px;">Liu, A. B., Q. Z. Wu and X. Cheng (2020). "Using the Google Earth Engine to estimate a 10 m resolution monthly inventory of soil fugitive dust emissions in Beijing, China." Science of the Total Environment 735: 8 DOI: 10.1016/j.scitotenv.2020.139174.</li>
+                                        <li style="padding-bottom:7px;">Lofverstrom, M., J. G. Fyke, K. Thayer-Calder, L. Muntjewerf, M. Vizcaino, W. J. Sacks, W. H. Lipscomb, B. L. Otto-Bliesner and S. L. Bradley (2020). "An Efficient Ice Sheet/Earth System Model Spin-up Procedure for CESM2-CISM2: Description, Evaluation, and Broader Applicability." J Adv Model Earth Syst 12(8): e2019MS001984 DOI: 10.1029/2019MS001984.</li>
+                                        <li style="padding-bottom:7px;">Lombardozzi, D. L., Y. Q. Lu, P. J. Lawrence, D. M. Lawrence, S. Swenson, K. W. Oleson, W. R. Wieder and E. A. Ainsworth (2020). "Simulating Agriculture in the Community Land Model Version 5." Journal of Geophysical Research-Biogeosciences 125(8): 19 DOI: 10.1029/2019jg005529.</li>
+                                        <li style="padding-bottom:7px;">Lu, X., Z. Du, Y. Huang, D. Lawrence, E. Kluzek, N. Collier, D. Lombardozzi, N. Sobhani, E. A. G. Schuur and Y. Luo (2020). "Full implementation of matrix approach to biogeochemistry module of Community Land Model version 5 (CLM5)." Journal of Advances in Modeling Earth Systems n/a(n/a): e2020MS002105 DOI: 10.1029/2020ms002105.</li>
+                                        <li style="padding-bottom:7px;">Luo, Q., J. Wen, Z. Y. Hu, Y. Q. Lu and X. Y. Yang (2020). "Parameter Sensitivities of the Community Land Model at Two Alpine Sites in the Three-River Source Region." Journal of Meteorological Research 34(4): 851-864 DOI: 10.1007/s13351-020-9205-8.</li>
+                                        <li style="padding-bottom:7px;">MacDougall, A. H., T. L. Frolicher, C. D. Jones, J. Rogelj, H. D. Matthews, K. Zickfeld, V. K. Arora, N. J. Barrett, V. Brovkin, F. A. Burger, M. Eby, A. V. Eliseev, T. Hajima, P. B. Holden, A. Jeltsch-Thommes, C. Koven, N. Mengis, L. Menviel, M. Michou, Mokhov, II, A. Oka, J. Schwinger, R. Seferian, G. Shaffer, A. Sokolov, K. Tachiiri, J. Tjiputra, A. Wiltshire and T. Ziehn (2020). "Is there warming in the pipeline? A multi-model analysis of the Zero Emissions Commitment from CO2." Biogeosciences 17(11): 2987-3016 DOI: 10.5194/bg-17-2987-2020.</li>
+                                        <li style="padding-bottom:7px;">Majasalmi, T. and R. M. Bright (2019). "Evaluation of leaf-level optical properties employed in land surface models." Geoscientific Model Development 12(9): 3923-3938 DOI: 10.5194/gmd-12-3923-2019.</li>
+                                        <li style="padding-bottom:7px;">Meier, R., E. L. Davin, S. C. Swenson, D. M. Lawrence and J. Schwaab (2019). "Biomass heat storage dampens diurnal temperature variations in forests." Environmental Research Letters 14(8)</li>
+                                        <li style="padding-bottom:7px;">Muntjewerf, L., M. Petrini, M. Vizcaino, C. E. da Silva, R. Sellevold, M. D. W. Scherrenberg, K. Thayer-Calder, S. L. Bradley, J. T. M. Lenaerts, W. H. Lipscomb and M. Lofverstrom (2020). "Greenland Ice Sheet Contribution to 21st Century Sea Level Rise as Simulated by the Coupled CESM2.1-CISM2.1." Geophysical Research Letters 47(9): 10 DOI: 10.1029/2019gl086836.</li>
+                                        <li style="padding-bottom:7px;">Noel, B., L. van Kampenhout, W. J. van de Berg, J. T. M. Lenaerts, B. Wouters and M. R. van den Broeke (2020). "Brief communication: CESM2 climate forcing (1950-2014) yields realistic Greenland ice sheet surface mass balance." Cryosphere 14(4): 1425-1435 DOI: 10.5194/tc-14-1425-2020.</li>
+                                        <li style="padding-bottom:7px;">Oleson, K. W. and J. Feddema (2020). "Parameterization and Surface Data Improvements and New Capabilities for the Community Land Model Urban (CLMU)." J Adv Model Earth Syst 12(2): e2018MS001586 DOI: 10.1029/2018MS001586.</li>
+                                        <li style="padding-bottom:7px;">Parazoo, N. C., T. Magney, A. Norton, B. Raczka, C. Bacour, F. Maignan, I. Baker, Y. G. Zhang, B. Qiu, M. J. Shi, N. MacBean, D. R. Bowling, S. P. Burns, P. D. Blanken, J. Stutz, K. Grossmann and C. Frankenberg (2020). "Wide discrepancies in the magnitude and direction of modeled solar-induced chlorophyll fluorescence in response to light conditions." Biogeosciences 17(13): 3733-3755 DOI: 10.5194/bg-17-3733-2020.</li>
+                                        <li style="padding-bottom:7px;">Rhoades, A. M., A. D. Jones, T. A. O'Brien, J. P. O'Brien, P. A. Ullrich and C. M. Zarzycki (2020). "Influences of North Pacific Ocean Domain Extent on the Western US Winter Hydroclimatology in Variable-Resolution CESM." Journal of Geophysical Research-Atmospheres 125(14): 26 DOI: 10.1029/2019jd031977.</li>
+                                        <li style="padding-bottom:7px;">Sellevold, R. and M. Vizcaino (2020). "Global Warming Threshold and Mechanisms for Accelerated Greenland Ice Sheet Surface Mass Loss." J Adv Model Earth Syst 12(9): e2019MS002029 DOI: 10.1029/2019MS002029.</li>
+                                        <li style="padding-bottom:7px;">Shi, Z., S. D. Allison, Y. J. He, P. A. Levine, A. M. Hoyt, J. Beem-Miller, Q. Zhu, W. R. Wieder, S. Trumbore and J. T. Randerson (2020). "The age distribution of global soil carbon inferred from radiocarbon measurements." Nature Geoscience 13(8): 555-+ DOI: 10.1038/s41561-020-0596-z.</li>
+                                        <li style="padding-bottom:7px;">Singh, A., S. Kumar, S. Akula, D. Lawrence and D. L. Lombardozzi (2020). "Plant Growth Nullifies the Effect of Increased Water-Use Efficiency on Streamflow Under Elevated CO2 in the Southeastern United States." Geophysical Research Letters 47(4): 10 DOI: 10.1029/2019gl086940.</li>
+                                        <li style="padding-bottom:7px;">Swenson, S. C., M. Clark, Y. Fan, D. M. Lawrence and J. Perket (2019). "Representing Intrahillslope Lateral Subsurface Flow in the Community Land Model." Journal of Advances in Modeling Earth Systems 11(12): 4044-4065 DOI: 10.1029/2019ms001833.</li>
+                                        <li style="padding-bottom:7px;">Umair, M., D. Kim and M. Choi (2020). "Impact of climate, rising atmospheric carbon dioxide, and other environmental factors on water-use efficiency at multiple land cover types." Scientific Reports 10(1): 13 DOI: 10.1038/s41598-020-68472-7.</li>
+                                        <li style="padding-bottom:7px;">van Kampenhout, L., J. T. M. Lenaerts, W. H. Lipscomb, S. Lhermitte, B. Noel, M. Vizcaino, W. J. Sacks and M. R. van den Broeke (2020). "Present-Day Greenland Ice Sheet Climate and Surface Mass Balance in CESM2." Journal of Geophysical Research-Earth Surface 125(2): 25 DOI: 10.1029/2019jf005318.</li>
+                                        <li style="padding-bottom:7px;">Vira, J., P. Hess, J. Melkonian and W. R. Wieder (2019). "An improved mechanistic model for ammonia volatilization in Earth system models: Flow of Agricultural Nitrogen version 2 (FANv2)." Geoscientific Model Development 13(9): 4459-4490 DOI: 10.5194/gmd-13-4459-2020.</li>
+                                        <li style="padding-bottom:7px;">Wang, L., M. Huang and D. Li (2020). "Where Are White Roofs More Effective in Cooling the Surface?" Geophysical Research Letters 47(15): e2020GL087853 DOI: 10.1029/2020gl087853.</li>
+                                        <li style="padding-bottom:7px;">Wieder, W. R., D. M. Lawrence, R. A. Fisher, G. B. Bonan, S. J. Cheng, C. L. Goodale, A. S. Grandy, C. D. Koven, D. L. Lombardozzi, K. W. Oleson and R. Q. Thomas (2019). "Beyond Static Benchmarking: Using Experimental Manipulations to Evaluate Land Model Assumptions." Global Biogeochemical Cycles 33(10): 1289-1309 DOI: 10.1029/2018gb006141.</li>
+                                        <li style="padding-bottom:7px;">Wozniak, M. C., G. B. Bonan, G. Keppel‐Aleks and A. L. Steiner (2020). "Influence of Vertical Heterogeneities in the Canopy Microenvironment on Interannual Variability of Carbon Uptake in Temperate Deciduous Forests." Journal of Geophysical Research: Biogeosciences 125(8): e2020JG005658 DOI: 10.1029/2020jg005658.</li>
+                                        <li style="padding-bottom:7px;">Zhao, Q., Z. C. Zhu, H. Zeng, W. Q. Zhao and R. B. Myneni (2020). "Future greening of the Earth may not be as large as previously predicted." Agricultural and Forest Meteorology 292: 14 DOI: 10.1016/j.agrformet.2020.108111.</li>
+                                        <li style="padding-bottom:7px;">Zhu, B. W., M. Y. Huang, Y. Y. Cheng, X. H. Xie, Y. Liu, X. S. Zhang, G. Bisht, X. Y. Chen, J. Missik and H. P. Liu (2020). "Effects of Irrigation on Water, Carbon, and Nitrogen Budgets in a Semiarid Watershed in the Pacific Northwest: A Modeling Study." Journal of Advances in Modeling Earth Systems 12(9): 20 DOI: 10.1029/2019ms001953.
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+
+
+
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>

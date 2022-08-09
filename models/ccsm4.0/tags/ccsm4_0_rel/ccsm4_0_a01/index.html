@@ -1,0 +1,467 @@
+<html>
+<a name="TOP">
+
+<head>
+   <title>Community Climate System Model (CCSM)</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- main navigation include -->
+<!-- ----------------------------------------------------------------------- -->
+<!=======================================================================>
+<body bgcolor="#ffffff">
+<!=======================================================================>
+<!----------------------------------------------------------------------------->
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr>
+<td align="left">
+   <font size=-1>
+   http://www.cesm.ucar.edu/models/ccsm4.0/tags/ccsm4_0_rel/ccsm4_0_a01/index.html
+   </font>
+</td>
+<td align="right">
+   <font size=-1>
+   
+   11 Feb 2011
+   
+   </font>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+<table width="100%" cellpadding="8" cellspacing="0" border="1" bgcolor="dddddd">
+<tr>
+<td align="left">
+   <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="dddddd">
+   <tr>
+   <td align="left">
+      <font size="+1">
+      <b> CCSM4&nbsp;Software&nbsp;Release</b>
+      </font>
+   </td>
+   <td width="50">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td align="right">
+      <font size=-1>
+      [an error occurred while processing this directive]
+         <a href="http://www.cesm.ucar.edu/models/ccsm4.0/">CCSM4&nbsp;Release&nbsp;Home</a>&nbsp;|&nbsp;
+         <a href="http://www.cesm.ucar.edu/">CESM&nbsp;Home</a> 
+      
+      </font>
+   </td>
+   </tr>
+   </table>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### BEGIN EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+
+<!----------------------------------------------------------------------------->
+<h2 align=center> 
+ccsm4_0_a01
+
+</h2>
+<!----------------------------------------------------------------------------->
+<h3 align=center>Release Notes, Test Results, and Known Problems </h3>
+<!----------------------------------------------------------------------------->
+
+<p>
+Contents
+<ul>
+<li><a href="#TAG">Release Notes</a>
+<li><a href="Testdefs/index.html">Test Definitions</a>
+<li><a href="#RECORD">Software Engineering Test Record</a>
+<li><a href="#PROBLEMS">Known Problems</a>
+</ul>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="TAG">
+<h3>Release Notes</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+Tag name: ccsm4_0_a01
+Originator(s): cseg
+Date: Fri Jan 15 2010
+One-line Summary: First ccsm4.0 alpha release tag. 
+
+This tag is the first released of the ccsm4.0 alpha code.
+The purpose of alpha code releases is testing leading up to a final release.
+Release tag ccsm4_0_a01 corresponds to internal release candidate ccsm4_0_rel03
+
+</pre>
+<a href="#TOP"> Return to Top </a>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="RECORD">
+<h3> Software Engineering Test Record</h3>
+<!----------------------------------------------------------------------------->
+
+<pre>
+
+Summary of Testing:
+
+
+==============================================================
+bluefire:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+PASS  P4A.f09_g16.B1850CN.bluefire 
+PASS  SMS_D.f09_g16.B1850CN.bluefire 
+PASS  SMS_D.f09_g16.B20TRCN.bluefire 
+PASS  ERH.f09_g16.B1850CN.bluefire 
+PASS  ERH.f09_g16.B20TRCN.bluefire 
+PASS  ERH.f09_g16.B1850RMCN.bluefire 
+PASS  ERB.f09_g16.B1850CN.bluefire 
+PASS  ERB.f09_g16.B20TRCN.bluefire 
+PASS  ERB.f09_g16.B1850RMCN.bluefire 
+PASS  ERT.f09_g16.B1850CN.bluefire 
+CHECK ERT.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.636 memh=-0.001 memr=1039.664 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.300 memh=-0.001 memr=1019.476 tag=ccsm4_0_rel03
+PASS  ERT.f09_g16.B20TRCN.bluefire 
+CHECK ERT.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.321 memh=-0.001 memr=1063.532 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.336 memh=-0.001 memr=1025.937 tag=ccsm4_0_rel03
+PASS  ERT.f09_g16.B1850RMCN.bluefire 
+CHECK ERT.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.681 memh=-0.001 memr=1031.222 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.651 memh=-0.001 memr=1019.286 tag=ccsm4_0_rel03
+PASS  ERS.f45_g37.BW1850CN.bluefire 
+PASS  ERS.f19_g16.BW1850CN.bluefire 
+PASS  ERB.f19_g16.BW1850CN.bluefire 
+PASS  ERH.f19_g16.BW1850CN.bluefire 
+PASS  ERS.f19_g16.B.bluefire 
+PASS  ERS_D.f19_g16.A.bluefire 
+PASS  ERB.f45_g37.A.bluefire 
+PASS  ERH.f45_g37.A.bluefire 
+PASS  ERS_D.f19_g16.X.bluefire 
+PASS  ERS.f19_g16.X.bluefire 
+PASS  ERB.f19_g16.X.bluefire 
+PASS  ERS_D.f19_f19.F.bluefire 
+PASS  ERS_PT.f19_f19.F.bluefire 
+PASS  ERS.f19_f19.FW1850.bluefire 
+PASS  ERB.f19_f19.FW1850.bluefire 
+PASS  ERH.f19_f19.FW1850.bluefire 
+PASS  ERB.f19_f19.F.bluefire 
+PASS  ERH.f19_f19.F.bluefire 
+PASS  ERS.f19_f19.FCN.bluefire 
+PASS  ERB.f45_g37.I.bluefire 
+PASS  ERB.T62_g16.D.bluefire 
+PASS  ERB.f45_g37.D.bluefire 
+PASS  ERB.f45_g37.G.bluefire 
+PASS  ERB.T62_g16.C.bluefire 
+PASS  ERS.f19_g16.E.bluefire 
+PASS  ERB.f19_g16.E.bluefire 
+PASS  ERS.f19_g16.E1850CN.bluefire 
+PASS  ERT.T62_g16.C.bluefire 
+CHECK ERT.T62_g16.C.bluefire.perf npes=128 tput=21.640 memh=-0.001 memr=899.519 tag=ccsm4_0_rel02 baseline
+CHECK ERT.T62_g16.C.bluefire.perf npes=128 tput=22.866 memh=-0.001 memr=877.876 tag=ccsm4_0_rel03
+PASS  ERP.T62_g37.C.bluefire 
+PASS  ERP.T62_g37.G.bluefire 
+PASS  SMS_D.T62_g16.C.bluefire 
+</ul>
+posttag:<ul>
+PASS  SMS.f45_f45.F.bluefire 
+PASS  ERB.T62_g37.C.bluefire 
+PASS  ERH.T62_g37.C.bluefire 
+PASS  ERT.T62_g37.C.bluefire 
+CHECK ERT.T62_g37.C.bluefire.perf npes=16 tput=75.569 memh=-0.001 memr=350.640 tag=ccsm4_0_rel02 baseline
+CHECK ERT.T62_g37.C.bluefire.perf npes=16 tput=75.075 memh=-0.001 memr=350.512 tag=ccsm4_0_rel03
+PASS  ERS.f19_f19.F.bluefire 
+PASS  ERH.f45_g37.BMOZ.bluefire 
+PASS  ERS.f19_g16.B20TRCNCHM.bluefire 
+PASS  ERS.f09_g16.B1850CNCHM.bluefire 
+PASS  ERS.f19_f19.F1850.bluefire 
+PASS  ERS.f45_g37.I4804.bluefire 
+PASS  SEQ.f19_g16.X.bluefire 
+PASS  ERS_DE.f19_g16.A.bluefire 
+PASS  CME.f45_g37.A.bluefire 
+PASS  CME.f19_g16.X.bluefire 
+PASS  CME.f19_g16.S.bluefire 
+PASS  SMS.ne30f19_g16.FH.bluefire 
+PASS  SMS_RLA.f45_f45.I.bluefire 
+PASS  SMS_RLB.f45_f45.I.bluefire 
+PASS  SMS_ROA.f45_f45.I.bluefire 
+PASS  SMS_ROB.f45_f45.I.bluefire 
+PASS  PEA.f19_g16.X.bluefire.cpl 
+PASS  PEM.f19_g16.X.bluefire.cpl 
+PASS  PEM.f19_g16.X.bluefire.atm 
+PASS  PEM.f19_g16.X.bluefire.lnd 
+PASS  PEM.f19_g16.X.bluefire.ice 
+PASS  PEM.f19_g16.X.bluefire.ocn 
+PASS  PEM.f19_g16.X.bluefire.glc 
+PASS  PEM.f45_g37.A.bluefire.cpl 
+PASS  PEM.f45_g37.A.bluefire.atm 
+PASS  PEM.f45_g37.A.bluefire.lnd 
+PASS  PEM.f45_g37.A.bluefire.ice 
+PASS  PEM.f45_g37.A.bluefire.ocn 
+PASS  PEM.f45_g37.A.bluefire.glc 
+PASS  PET.f19_g16.X.bluefire.cpl 
+PASS  PET.f19_g16.X.bluefire.atm 
+PASS  PET.f19_g16.X.bluefire.lnd 
+PASS  PET.f19_g16.X.bluefire.ice 
+PASS  PET.f19_g16.X.bluefire.ocn 
+PASS  PET.f19_g16.X.bluefire.glc 
+PASS  PET.f45_g37.A.bluefire.cpl 
+PASS  PET.f45_g37.A.bluefire.atm 
+PASS  PET.f45_g37.A.bluefire.lnd 
+PASS  PET.f45_g37.A.bluefire.ice 
+PASS  PET.f45_g37.A.bluefire.ocn 
+PASS  PET.f45_g37.A.bluefire.glc 
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+==============================================================
+jaguar:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+PASS  SMS_D.f09_g16.B1850CN.jaguar 
+PASS  SMS_D.f09_g16.B20TRCN.jaguar 
+PASS  ERH.f09_g16.B1850CN.jaguar 
+PASS  ERH.f09_g16.B20TRCN.jaguar 
+PASS  ERB.f09_g16.B1850CN.jaguar 
+PASS  ERB.f09_g16.B20TRCN.jaguar 
+PASS  ERT.f09_g16.B1850CN.jaguar 
+CHECK ERT.f09_g16.B1850CN.jaguar.perf npes=128 tput=3.701 memh=1975.461 memr=1856.313 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f09_g16.B1850CN.jaguar.perf npes=128 tput=3.707 memh=1974.590 memr=1853.586 tag=ccsm4_0_rel03
+PASS  ERT.f09_g16.B20TRCN.jaguar 
+CHECK ERT.f09_g16.B20TRCN.jaguar.perf npes=128 tput=3.512 memh=1995.449 memr=1872.434 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f09_g16.B20TRCN.jaguar.perf npes=128 tput=3.503 memh=1995.553 memr=1875.236 tag=ccsm4_0_rel03
+PASS  ERT.f19_g16.B20TR.jaguar 
+CHECK ERT.f19_g16.B20TR.jaguar.perf npes=416 tput=13.909 memh=1844.939 memr=1711.512 tag=ccsm4_0_rel02 baseline
+CHECK ERT.f19_g16.B20TR.jaguar.perf npes=416 tput=14.006 memh=1844.244 memr=1710.380 tag=ccsm4_0_rel03
+PASS  ERS.f19_g16.X.jaguar 
+PASS  ERS.f45_g37.A.jaguar 
+PASS  ERS.f19_f19.F.jaguar 
+PASS  ERS.f19_f19.FCN.jaguar 
+PASS  ERT.T62_g16.C.jaguar 
+CHECK ERT.T62_g16.C.jaguar.perf npes=128 tput=etag/run/c memh=etag/run/c memr=etag/run/c tag=ccsm4_0_rel02 baseline
+CHECK ERT.T62_g16.C.jaguar.perf npes=128 tput=etag/run/c memh=etag/run/c memr=etag/run/c tag=ccsm4_0_rel03
+PASS  ERT.T62_g16.D.jaguar 
+CHECK ERT.T62_g16.D.jaguar.perf npes=16 tput=9.890 memh=1427.165 memr=1343.875 tag=ccsm4_0_rel02 baseline
+CHECK ERT.T62_g16.D.jaguar.perf npes=64 tput=34.164 memh=1286.416 memr=1210.275 tag=ccsm4_0_rel03
+PASS  SMS_D.T62_g16.C.jaguar 
+</ul>
+posttag:<ul>
+PASS  ERB.T62_g37.C.jaguar 
+PASS  ERB.T31_g37.I.jaguar 
+PASS  ERH.f19_f19.F.jaguar 
+PASS  ERS.f19_f19.F1850.jaguar 
+RUN   ERS.T62_t12.G.jaguar.GC.rel03posttag 
+   -missing force files
+RUN   ERS.f05_t12.B.jaguar.GC.rel03posttag 
+   -missing force files
+RUN   SMS.ne30f19_g16.FH.jaguar.GC.rel03posttag 
+   -ran for 4.5 days then reached wall clock limit.  Needs to be load balanced.
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+==============================================================
+dublin:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+</ul>
+posttag:<ul>
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+==============================================================
+intrepid:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+</ul>
+posttag:<ul>
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+==============================================================
+kraken:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+</ul>
+posttag:<ul>
+RUN   SMS_D.f09_g16.B20TRCN.kraken.GC.rel03posttag 
+RUN   ERS.f09_g16.B1850CN.kraken.GC.rel03posttag 
+RUN   ERS.f09_g16.B20TRCN.kraken.GC.rel03posttag 
+PASS  ERS.f19_g16.X.kraken 
+PASS  ERS.f45_g37.A.kraken 
+PASS  ERT.T62_g16.G.kraken 
+CHECK ERT.T62_g16.G.kraken.perf npes=128 tput= memh= memr= tag=ccsm4_0_rel03
+PASS  ERB.T31_g37.I.kraken 
+PASS  ERH.f19_f19.F.kraken 
+RUN   ERS.f05_t12.B.kraken.GC.rel03posttag 
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+==============================================================
+franklin:
+==============================================================
+
+<b>Smoke and exact restart tests:</b>
+pretag:<ul>
+</ul>
+posttag:<ul>
+PASS  SMS_D.f09_g16.B20TRCN.franklin 
+PASS  ERS.f09_g16.B1850CN.franklin 
+PASS  ERS.f09_g16.B20TRCN.franklin 
+PASS  ERS.f19_g16.B20TRCNCHM.franklin 
+PASS  ERS.f09_g16.B1850CNCHM.franklin 
+PASS  ERS.f19_g16.X.franklin 
+PASS  ERS.f45_g37.A.franklin 
+PASS  ERT.T62_g16.G.franklin 
+CHECK ERT.T62_g16.G.franklin.perf npes=128 tput=13.429 memh=1927.621 memr=1740.787 tag=ccsm4_0_rel02 baseline
+CHECK ERT.T62_g16.G.franklin.perf npes=128 tput=13.334 memh=1927.621 memr=1740.994 tag=ccsm4_0_rel03
+PASS  ERB.T31_g37.I.franklin 
+PASS  ERH.f19_f19.F.franklin 
+RUN   ERS.f05_t12.B.franklin.GC.rel03posttag 
+  -missing forcing files
+</ul>
+<b>Succesful baseline tests:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+<b>Expected baseline failures:</b>
+Pretag:<ul>
+</ul>
+Posttag:<ul>
+</ul>
+
+*** tracked failures ***
+
+
+</pre>
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="PROBLEMS">
+<h3>Known Problems</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+  
+
+_____________________________________________________________________________________________
+
+Description: Threading trouble with transient 20th Century mode for clm
+Date       : 01/25/2010
+Contact    : erik
+Information: See bug 1102
+
+CLM has problems using threading for transient land-use mode when it reads in
+a new piece of dynamic land-use data (on year boundaries). Most examples of
+this cause the model to die. It does seem to get past the problem if you run
+CLM with OUT threading.
+
+_____________________________________________________________________________________________
+
+Description: The F compset, T31_T31 resolution case has a dataset problem
+Date       : 15 January 2010
+Contact    : 
+Information: 
+			       
+_____________________________________________________________________________________________
+
+Description: The F compset, T31_gx3v7 resolution case has a known problem in terms of different
+             processor counts
+Date       : 15 January 2010
+Contact    : 
+Information: The F compset at the T31_gx3v7 resolution does not produce bit-for-bit identical
+             solutions if the processor counts are changed.  This problem is presently being
+             addressed.
+			       
+_____________________________________________________________________________________________
+
+Description: The pgi7.2.2 compiler does not work for clm
+Date       : 15 January 2010
+Contact    : 
+Information: 
+			       
+_____________________________________________________________________________________________
+
+</pre>
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### END   EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+</body>
+</html>

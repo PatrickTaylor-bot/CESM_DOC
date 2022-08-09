@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:20220613T143000Z
+DTEND:20220616T210000Z
+SUMMARY:2022 CESM Workshop
+DESCRIPTION:The 27th Annual CESM Workshop will be a virtual workshop with a modified schedule on its already scheduled date. Specifically, the virtual Workshop will begin with a full-day schedule on 13 June 2022 with presentations on the state of the CESM; by the award recipients; and invited speakers in the morning, followed by order 15-minute highlight and progress presentations from each of the CESM Working Groups (WG) in the afternoon.\n\nOn 14-16 June 2022, working groups and cross working groups have half-day sessions, some with presentations and some that are discussion only.\n\nFor more information, visit the workshop webpage:\nhttps://www.cesm.ucar.edu/events/workshops/2022
+LOCATION:Virtual
+END:VEVENT
+END:VCALENDAR

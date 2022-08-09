@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Introduction</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="User's Guide to the Community Atmosphere Model CAM-4.0"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Acknowledgments"
+HREF="f11.html"><LINK
+REL="NEXT"
+TITLE="Building and Running CAM"
+HREF="c107.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User's Guide to the Community Atmosphere Model CAM-4.0</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="f11.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c107.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="intro"
+></A
+>Chapter 1. Introduction</H1
+><DIV
+CLASS="note"
+><BLOCKQUOTE
+CLASS="note"
+><P
+><B
+>Note: </B
+>
+This User's Guide is under active development.  It was last modified on 
+3 April 2010.
+</P
+></BLOCKQUOTE
+></DIV
+><P
+>&#13;Version 4.0 of the Community Atmosphere Model (<ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>) is the latest in a
+series of global atmosphere models originally developed at the National
+Center for Atmospheric Research (NCAR).  The current development of <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>
+is guided by the <A
+HREF="http://www.ccsm.ucar.edu/working_groups/Atmosphere/"
+TARGET="_top"
+>&#13;Atmosphere Model Working Group</A
+> (<ACRONYM
+CLASS="acronym"
+>AMWG</ACRONYM
+>) of the 
+<A
+HREF="http://www.ccsm.ucar.edu/models/ccsm4.0/"
+TARGET="_top"
+>&#13;Community Climate System Model</A
+> (<ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>) project.
+<ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is used as both a standalone
+model and as the atmospheric component of the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>.
+<ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> has a long history of use as a standalone model by
+which we mean that the atmosphere is coupled to an active land model
+(<ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+>), a thermodynamic only sea ice model (<ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+>), and a data ocean
+model (<ACRONYM
+CLASS="acronym"
+>DOCN</ACRONYM
+>).  When one speaks of "doing <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> simulations" the
+implication is that it's the standalone configuration that is being used.
+When <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is coupled to active ocean and sea ice models then we refer to
+the model as <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>.
+</P
+><P
+>&#13;In versions of <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> before 4.0 the driver for the standalone configuration
+was completely separate code from what was used to couple the components of
+<ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>.  One of the most significant software changes in <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>-4.0 is a
+refactoring of how the land, ocean, and sea ice components are called which
+enabled the use of the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> coupler to act as the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> standalone driver
+(note that this also depended on the complete rewritting of the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>
+coupler to support sequential execution of the components).  It is now
+accurate to say that the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> standalone configuration is nothing more
+than a special configuration of <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> in which the active ocean and sea
+ice components are replaced by data ocean and thermodynamic sea ice
+components.
+</P
+><P
+>&#13;Since the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> standalone model is just a special configuration of <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>
+it can be run using the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts.  This is done by using one of the
+"F" compsets and is described in the 
+<A
+HREF="http://www.ccsm.ucar.edu/models/ccsm4.0/ccsm_doc/book1.html"
+TARGET="_top"
+>&#13;<ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+>-4.0 User's Guide</A
+>.  The main advantage of running <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> via
+the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts is to leverage the high level of support that those
+scripts provide for doing production runs of predefined experiments on
+supported platforms.  The <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts do things like: setting up
+reasonable runtime environments; automatically retrieving required input
+datasets from an SVN server; and archiving output files.  But <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is used
+in alot of environments where the complexity of production ready scripts is
+not necessary.  In these instances the flexibility and simplicity of
+being able to completely describe a run using a short shell script is a
+valuable option.  In either case though, the ability to customize a <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>
+build or runtime configuration depends on being able to use the utilities
+described in this document.  Any build configuration can be set up via
+appropriate commandline arguments to <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>'s <B
+CLASS="command"
+>configure</B
+> utility, and any
+runtime configuration can be set up with appropriate arguments to <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>'s
+<B
+CLASS="command"
+>build-namelist</B
+> utility.  
+</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Much of the example code in this document is set off in sections like this.
+Many examples refer to files in the distribution source tree using
+filepaths that are relative to distribution root directory, which we denote
+by $CAM_ROOT.  The notation indicates that <CODE
+CLASS="envar"
+>CAM_ROOT</CODE
+> is a shell variable
+that contains the filepath.  This could just as accurately be referred to
+as $CCSM_ROOT since the root directory of the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> distribution is the
+same as the root of the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> distribution which is contained within it.
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="help"
+>Getting Help -- Other User Resources</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="cam_homepage"
+>The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Web Page</A
+></H2
+><P
+>&#13;The central source for information on <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is the 
+<A
+HREF="http://www.ccsm.ucar.edu/models/ccsm4.0/cam"
+TARGET="_top"
+><ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> web page</A
+>.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="cam_bb"
+>The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Bulletin Board</A
+></H2
+><P
+>&#13;The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Bulletin Board is a moderated forum for rapid
+exchange of information, ideas, and topics of interest relating to the
+various versions of <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>. This includes sharing software
+tools, datasets, programming tips and examples, as well as discussions
+of questions, problems and workarounds. The primary motivation for the
+establishment of this forum is to facilitate and encourage
+communication between the users of the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> around the world. This bulletin
+board will also be used to distribute announcements related to <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>. 
+</P
+><P
+>&#13;The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Bulletin Board is here: <A
+HREF="http://bb.cgd.ucar.edu/"
+TARGET="_top"
+>http://bb.cgd.ucar.edu/</A
+>.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="cam_bugs"
+>Reporting bugs</A
+></H2
+><P
+>&#13;If a user should encounter bugs in the code (i.e., it doesn't behave
+in a way in which the documentation says it should), the problem
+should be reported electronically to
+the <A
+HREF="http://bb.cgd.ucar.edu/"
+TARGET="_top"
+><ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Bulletin Board</A
+>.
+When writing a bug report the guiding principle should be to provide enough
+information so that the bug can be reproduced.  The following list suggests
+the minimal information that should be contained in the report:
+
+<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;The version number of <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> (or <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> if <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> was obtained as part of a
+<ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> distribution).
+</P
+></LI
+><LI
+><P
+>&#13;The architecture on which the code was built.  Include relevent information
+such as the <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+> compiler, <ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+> library, etc.
+</P
+></LI
+><LI
+><P
+>&#13;The configure commandline.
+</P
+></LI
+><LI
+><P
+>&#13;The build-namelist commandline.
+</P
+></LI
+><LI
+><P
+>&#13;Model printout.  Ideally this would contain a stack trace.  But it should
+at least contain any error messages printed to the output log.
+</P
+></LI
+></OL
+>
+
+Please note that that <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is a research model, and not all features are
+supported.
+
+</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="f11.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c107.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Acknowledgments</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Building and Running <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

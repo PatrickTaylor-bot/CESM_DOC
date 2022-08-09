@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CESM Models | CCSM4: Notable Improvements</title>
+
+<link rel="shortcut icon" href="../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+<body>
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/ccsm4.0/">CESM4.0</a> &raquo; CCSM4.0 Notable Improvements</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">CCSM4: Notable Improvements</h2>
+   
+   <h3 class="subtitle">Infrastructure</h3>
+
+		    <p>CCSM4 contains totally new infrastructure
+		    capabilities that permit new flexibility and
+		    extensibility to address the challenges involved
+		    in earth system modeling. An integral part of
+		    CCSM4 is the implementation of a coupling
+		    architecture that takes a completely new approach
+		    with respect to the high-level design of the
+		    system. The CCSM4 coupling infrastructure now
+		    provides the ability to use a single code base in
+		    a start-to-end development cycle; from model
+		    parameterization development that might only
+		    require a single processor, to performing ultra
+		    high resolution simulations on HPC platforms using
+		    tens-of-thousands of cores. The CCSM4 coupling
+		    architecture also provides "plug and play"
+		    capability of data and active components and
+		    includes a user-friendly scripting system and
+		    informative timing utilities. Together, these
+		    tools enable a user to create a wide variety of
+		    "out-of-the-box" experiments for different model
+		    configurations and resolutions and also to
+		    determine the optimal load balance for those
+		    experiments to ensure maximal throughput and
+		    efficiency. CCSM4 is also targeting much higher
+		    resolutions than any previous CCSM coupled model
+		    and efforts have been made to reduce the memory
+		    footprint and to improve scaling in all
+		    components. </p>
+
+                    <h3 class="subtitle">CAM</h3>
+		    <p> CAM contains notable improvements to the deep
+		    convection, arctic cloud fraction, radiation
+		    interface and computational scalability. The
+		    calculation of Convective Available Potential
+		    Energy (CAPE) has been reformulated in the deep
+		    convection to include more realistic dilution
+		    effects through an explicit representation of
+		    entrainment.  Sub-grid scale momentum transports
+		    have also been added to the deep convection
+		    parametrization. A freeze-drying process
+		    contributes to a greater consistency between polar
+		    cloud fraction and water condensate
+		    properties. The finite volume dynamical core has
+		    been made the default and has improved accuracy
+		    for transport processes. The option of the HOMME
+		    spectral element dynamical core on a cubed sphere
+		    grid vastly increases the computational
+		    scalability of CAM. A new radiation constituent
+		    interface expands flexibility in the specification
+		    of properties for individual gas and aerosol
+		    species and their radiative interaction. The
+		    TROP-MOZART chemistry and aerosol package is now
+		    available and is used to generate evolving aerosol
+		    burden changes from the most recent emission
+		    inventories. Additional physical process
+		    improvements from CAM development will be available in
+		    CAM5.</p>
+ 
+                    <h3 class="subtitle">CLM</h3>
+
+		    <p>CLM has been modified substantially and
+		    includes several new capabilities, input datasets,
+		    and parameterization updates.  The model is
+		    extended with a carbon-nitrogen (CN) cycle model
+		    that is prognostic in carbon and nitrogen as well
+		    as vegetation phenology.  A transient landcover
+		    change capability, including wood harvest, is
+		    introduced and the dynamic vegetation model is
+		    merged with CN (CNDV).  An urban model (CLMU) is
+		    added and the BVOC model is replaced with the
+		    MEGAN model.  The hydrology scheme is updated with
+		    a TOPMODEL-based runoff model, a simple
+		    groundwater model, a new frozen soil scheme, a new
+		    soil evaporation parameterization, and a corrected
+		    numerical solution of the Richards equation.  The
+		    snow model incorporates SNICAR - which includes
+		    aerosol deposition, grain-size dependent snow
+		    ageing, and vertically resolved snowpack heating -
+		    as well as new snow cover fraction and snow burial
+		    fraction parameterizations.  CLM4 also includes a
+		    new canopy integration scheme, new canopy
+		    interception scaling, and a representation of
+		    organic soil thermal and hydraulic properties.
+		    The ground column is extended to ~50-m depth by
+		    adding 5 bedrock layers (15 total layers). New
+		    surface datasets based on MODIS products have been
+		    derived, providing a basis for the transient land
+		    cover datasets.  To improve global energy
+		    conservation, runoff is split into separate liquid
+		    and ice water streams that are passed separately
+		    to the ocean model.</p>
+ 
+                    <h3 class="subtitle">CICE</h3>
+
+		    <p> The CCSM sea ice component is now CICE, the
+		    Los Alamos Sea Ice Model, sometimes referred to as
+		    the Community Ice CodE. The main areas of
+		    enhancement fall into two categories: physics and
+		    computation. The scientific enhancements include
+		    new tracers, a new shortwave radiative transfer
+		    scheme, a melt pond scheme, and aerosol
+		    deposition, all applied to the snow and sea
+		    ice. The new computational enhancements include:
+		    more flexible computational decomposition
+		    strategies, high resolution support, parallel
+		    input / output, and OpenMP threading capability. </p>
+					
+                    <h3 class="subtitle">POP</h3>
+		    <p> The ocean model has been updated to the
+		    Parallel Ocean Program version 2 (POP2) of the Los
+		    Alamos National Laboratory. Many physical and
+		    software developments have been incorporated.  The
+		    physical improvements include a near-surface eddy
+		    flux parameterization; an abyssal tidally driven
+		    mixing parameterization; an overflow
+		    parameterization to represent the Denmark Strait,
+		    Faroe Bank Channel, Weddell Sea, and Ross Sea
+		    overflows; a submesoscale mixing scheme;
+		    vertically-varying thickness and isopycnal
+		    diffusivity coefficients; modified anisotropic
+		    horizontal viscosity coefficients with much lower
+		    magnitudes than in CCSM3; and modified K-Profile
+		    Parameterization that uses horizontally-varying
+		    background vertical diffusivity and viscosity
+		    coefficients.  The software developments include
+		    capability for multiple time-averaged history
+		    files and space-filling curves. The number of
+		    vertical levels has been increased from 40 levels
+		    in CCSM3 to 60 levels in CCSM4. POP2 includes
+		    passive tracer infrastructures and ecosystem
+		    codes.</p>
+		    
+		    <h3 class="subtitle">Data Models</h3>
+
+		    <p> The CCSM4 data models have been completely
+		    rewritten. They are now parallelized and share
+		    significant amounts of source code.  The new data
+		    models have created a natural hierarchy in the
+		    system and methods for reading and interpolating
+		    data have been established that can easily be
+		    reused. </p>
+		
+		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

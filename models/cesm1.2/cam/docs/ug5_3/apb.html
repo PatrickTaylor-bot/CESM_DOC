@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appendix B. The build-namelist utility</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="prev" href="apas03.html" title="A.3. Environment variables recognized by configure" /><link rel="next" href="apbs02.html" title="B.2. Environment variables used by build-namelist" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix B. The <span class="command"><strong>build-namelist</strong></span> utility</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="apas03.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="apbs02.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="bldnl"></a>Appendix B. The <span class="command"><strong>build-namelist</strong></span> utility</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="apb.html#bldnl_opts">B.1. Options to <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="apbs02.html">B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="apbs03.html">B.3. <acronym class="acronym">CAM</acronym> Namelist variables</a></span></dt></dl></div><p>
+The <span class="command"><strong>build-namelist</strong></span> utility builds namelists (and on occasion other types of input
+files) which specify run-time details for <acronym class="acronym">CAM</acronym> and the components it's
+running with in standalone mode.  When executed from the <acronym class="acronym">CESM</acronym> scripts it
+only produces a namelist file for the <acronym class="acronym">CAM</acronym> component (in the file
+<code class="filename">atm_in</code>), and a namelist file for control of dry deposition which is shared
+by <acronym class="acronym">CAM</acronym> and <acronym class="acronym">CLM</acronym> (in the file <code class="filename">drv_flds_in</code>).
+</p><p>
+The task of constructing a correct namelist has become extremely complex
+due to the large number of configurations supported by <acronym class="acronym">CAM</acronym>.  Editing
+namelists by hand is an extremely fragile process due to the number of
+variables that need to be set, and to the many interdependencies among
+them.  <span class="emphasis"><em>We stronly discourage editing namelists by hand.</em></span>
+All customizations of the <acronym class="acronym">CAM</acronym> namelist are possible by making use of the
+<span class="command"><strong>build-namelist</strong></span> command line options.
+</p><p>
+Some of the important features of <span class="command"><strong>build-namelist</strong></span> are:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+
+All valid namelist variables are known to <span class="command"><strong>build-namelist</strong></span>.  So an invalid
+variable specified by the user (supplied either by the
+<code class="option">-infile</code> or <code class="option">-namelist</code> options) will cause
+<span class="command"><strong>build-namelist</strong></span> to fail with an error message telling which namelist
+variable is invalid.  This is a big improvement over a runtime failure
+caused by an invalid variable which typically gives no hint as to which
+variable caused the problem.
+</p></li><li class="listitem"><p>
+In addition to knowing all valid variable names and their
+types, <span class="command"><strong>build-namelist</strong></span> also knows which namelist group each variable belongs to.
+This means that the user only needs to specify variable names to <span class="command"><strong>build-namelist</strong></span>
+and not the group names.  The <code class="option">-infile</code>
+and <code class="option">-namelist</code> options still require valid namelist syntax
+as input, but the group name is ignored.  So all variables can be put
+in a single group with an arbitrary name, for example, "&amp;xxx ... /"
+where "xxx" is the namelist group name.
+</p></li><li class="listitem"><p>
+Since <span class="command"><strong>build-namelist</strong></span> knows all namelist variables specified by the user it is able
+to do consistency checking.  In general however, <span class="command"><strong>build-namelist</strong></span> assumes that the
+user is the expert and will not override a user specification unless there
+is a major inconsistency, for example if variables have been set to use
+parameterizations which can not be run at the same time.
+</p></li><li class="listitem"><p>
+All configurations have namelist variables that must be specified, and
+<span class="command"><strong>build-namelist</strong></span> has a mechanism to provide default values for these variables.
+When an appropriate default value cannot be found then <span class="command"><strong>build-namelist</strong></span> will fail
+with an informative message.
+</p></li><li class="listitem"><p>
+When running a configuration for the first time there are often many input
+datasets that may not be in the local input data directory.  In order to
+facilitate getting the required datasets <span class="command"><strong>build-namelist</strong></span> has an
+option, <code class="option">-test</code>, that can be used to produce a complete list
+of required datasets and report status of whether or not they are present
+in the local directory.  This list can then be used to obtain the needed
+datasets from the <acronym class="acronym">CESM</acronym> SVN input data repository.
+</p></li></ul></div><p>
+
+
+</p><p>
+One required input for <span class="command"><strong>build-namelist</strong></span> is a configuration
+cache file produced by a previous invocation of <span class="command"><strong>configure</strong></span>
+(<code class="filename">config_cache.xml</code> by default).  <span class="command"><strong>build-namelist</strong></span> looks
+at this file to determine the features of the CAM executable, such as
+the dynamical core and horizontal resolution, that affect the default
+specifications for namelist variables.  The default values themselves
+are specified in the file
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/namelist_files/namelist_defaults_cam.xml</code>,
+and in the use case files located in the directory
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/namelist_files/use_cases/</code>.
+</p><p>
+The other required input for <span class="command"><strong>build-namelist</strong></span> is the root directory for the input
+datasets.  This is required since nearly all input files must be specified
+using absolute filepaths, but the defaults are stored as filepaths which
+are relative to the root directory.  It is expected that the actual
+location of the root directory is something that will be resolved at
+runtime.  The way this is done is to either specify it using
+the <code class="option">-csmdata</code> argument, or to set the environment variable
+<code class="envar">CSMDATA</code>.
+</p><p>
+The methods for setting the values of namelist variables, listed from
+highest to lowest precedence, are:
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+using specific command-line options,
+e.g., <code class="option">-case</code> and <code class="option">-runtype</code>,
+</p></li><li class="listitem"><p>
+using the <code class="option">-namelist</code> option,
+</p></li><li class="listitem"><p>
+setting values in a file specified by <code class="option">-infile</code>,
+</p></li><li class="listitem"><p>
+specifying a <code class="option">-use_case</code> option,
+</p></li><li class="listitem"><p>
+setting values in the namelist defaults file.
+</p></li></ol></div><p>
+The first four of these methods for specifying namelist variables are
+the ones available to the user without requiring code modification.  Any
+namelist variable recognized by <acronym class="acronym">CAM</acronym> can be modified using method 2 or 3.
+The final two methods represent defaults that are hard coded as part of the
+code base.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="bldnl_opts"></a>B.1. Options to <span class="command"><strong>build-namelist</strong></span></h2></div></div></div><p>
+To get a list of all available options, type <strong class="userinput"><code>build-namelist --help</code></strong>.
+Available options are also listed just below.
+</p><p>
+The following options may all be specified with either one or two leading
+dashes, e.g., <code class="option">-help</code> or <code class="option">--help</code>.  The few
+options that can be expressed as single letter switches may not be clumped,
+e.g., <code class="option">-h -s -v</code> may <span class="emphasis"><em>NOT</em></span> be expressed
+as <code class="option">-hsv</code>.  When multiple options are listed separated by a
+vertical bar either version may be used.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-case</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Case identifier up to 80 characters.  This value is used to set the
+case_name variable in the driver namelist.  Default: <code class="constant">camrun</code>
+</p></dd><dt><span class="term"><code class="option">-cice_nl</code> <strong class="userinput"><code>&lt;namelist&gt;</code></strong></span></dt><dd><p>
+Specify namelist settings for CICE directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<strong class="userinput"><code>-cice_nl "&amp;ice histfreq=1 /"</code></strong>.
+This namelist will be passed to the invocation of the CICE build-namelist
+via its <code class="option">-namelist</code> argument.
+</p></dd><dt><span class="term"><code class="option">-config</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Read the specified configuration cache file to determine the configuration
+of the CAM executable.  Default: <code class="filename">config_cache.xml</code>.
+</p></dd><dt><span class="term"><code class="option">-config_cice</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Filepath of the CICE config_cache file.  This filepath is passed to the
+invocation of the CICE <span class="command"><strong>build-namelist</strong></span>.  Only specify this to override the
+default filepath which was set when the CICE <span class="command"><strong>configure</strong></span> was invoked by
+the CAM <span class="command"><strong>configure</strong></span>.
+</p></dd><dt><span class="term"><code class="option">-csmdata</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Root directory of <acronym class="acronym">CESM</acronym> input data.
+Can also be set by using the <code class="envar">CSMDATA</code> environment variable.
+</p></dd><dt><span class="term"><code class="option">-dir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory where output namelist files for each component will be
+written, i.e., <code class="filename">atm_in</code>, <code class="filename">drv_in</code>,
+<code class="filename">ice_in</code>, <code class="filename">lnd_in</code> and <code class="filename">ocn_in</code>.
+Default: current working directory.
+</p></dd><dt><span class="term"><code class="option">-help | -h</code></span></dt><dd><p>
+Print usage to STDOUT.
+</p></dd><dt><span class="term"><code class="option">-ignore_ic_date</code></span></dt><dd><p>
+Ignore the date attribute of the initial condition files
+when determining the default.
+</p></dd><dt><span class="term"><code class="option">-ignore_ic_year</code></span></dt><dd><p>
+Ignore just the year part of the date attribute of the initial condition files
+when determining the default.
+</p></dd><dt><span class="term"><code class="option">-infile</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Specify a file containing namelists to read values from.
+</p></dd><dt><span class="term"><code class="option">-inputdata</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Writes out a list of pathnames for required input datasets to
+the specified file.
+</p></dd><dt><span class="term"><code class="option">-namelist</code> <strong class="userinput"><code>&lt;namelist&gt;</code></strong></span></dt><dd><p>
+Specify namelist settings directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<strong class="userinput"><code>-namelist "&amp;atm stop_option='ndays' stop_n=10 /"</code></strong>
+</p></dd><dt><span class="term"><code class="option">-ntasks</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Specify the number of MPI tasks to be used by the run.  This is only used
+to set a default decomposition for the FV dycore, i.e., the npr_yz variable.
+</p></dd><dt><span class="term"><code class="option">-runtype</code>
+[<code class="constant">startup</code>|<code class="constant">continue</code>|<code class="constant">branch</code>]</span></dt><dd><p>
+Type of simulation.  Default: <code class="constant">startup</code>.
+</p></dd><dt><span class="term"><code class="option">-silent | -s</code></span></dt><dd><p>
+Turns on silent mode - only fatal messages issued.
+</p></dd><dt><span class="term"><code class="option">-test</code></span></dt><dd><p>
+Enable checking that input datasets exist on local filesystem.  This is
+also a convenient way to generate a list of the required input datasets for
+a model run.
+</p></dd><dt><span class="term"><code class="option">-use_case</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Specify a use case.
+</p></dd><dt><span class="term"><code class="option">-verbose | -v</code></span></dt><dd><p>
+Turn on verbose echoing of informational messages.
+</p></dd><dt><span class="term"><code class="option">-version</code></span></dt><dd><p>
+Echo the source code repository tag name used to check out this CAM distribution.
+</p></dd></dl></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="apas03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="apbs02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">A.3. Environment variables recognized by <span class="command"><strong>configure</strong></span> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></td></tr></table></div></body></html>

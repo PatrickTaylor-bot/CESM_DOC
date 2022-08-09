@@ -1,0 +1,786 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CESM 1.1.1 Large Ensemble</title>
+
+<link rel="shortcut icon" href="../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.1">CESM1.1 Public Release</a> &raquo; <a href="http://www.cesm.ucar.edu/experiments/">Experiments</a> &raquo; 
+   <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/">LENS Community Project</a>  &raquo; Diagnostics</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">CESM1 (CAM5) Large Ensemble Community Project<br>and Accompanying CVCWG Simulations</h2>
+                <table cellpadding="6" cellspacing=0 border="0" frame=void rules=cols bordercolor="#808080" width=800>
+                    <tr>
+                    <td rowspan=2>
+                   <p>The climate simulated by each Large Ensemble member is documented by the new <a href="http://www.cesm.ucar.edu/working_groups/CVC/cvdp/">Climate Variability Diagnostics Package (CVDP)</a>. 
+                   This diagnostics package calculates a variety of climate metrics not covered by the individual component diagnostic packages. The CVDP was run over a number of time periods: 
+                   <a href="http://webext.cgd.ucar.edu/Multi-Case/CVDP_repository/cesm1.lens_1920-2018/">1920-2018</a> |  
+                   <a href="http://webext.cgd.ucar.edu/Multi-Case/CVDP_repository/cesm1.lens_1979-2018/">1979-2018</a> |  
+                   <a href="http://webext.cgd.ucar.edu/Multi-Case/CVDP_repository/cesm1.lens_2019-2048/">2019-2048</a> |  
+                   <a href="http://webext.cgd.ucar.edu/Multi-Case/CVDP_repository/cesm1.lens_2019-2100/">2019-2100</a></p>   
+
+<p>Data for all the simulations shown below is available off of the Climate Data Gateway (CDG). For direct CDG links to the data please visit the 
+<a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">Data Sets Available to the Community</a> page.</p>                             
+                   </td>                 
+                    </tr>
+                    
+                    </table>
+                   
+     <div id="content_icon">
+     <h2 class="title">Control Simulations</h2>
+					<table cellpadding="6" cellspacing="0" border="1" frame=void bordercolor="#808080"><tr class="background">
+            <th align=center>Brief Description</th>
+            <th align=center>Case Details</th>
+						      <th colspan="5" align=center>Diagnostics</th>
+            <th colspan="2" align=center>Length of Run Diagnostics</th>
+            </tr>
+            
+           <tr align=center>
+               <td align=left rowspan="1"><b>Large Ensemble 1&deg; Pre-Industrial Fully Coupled Control</b><br>
+                <b>Case Name</b>: b.e11.B1850C5CN.f09_g16.005<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B1850C5CN.f09_g16.005"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B1850C5CN.f09_g16.005<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: B_1850_CAM5_CN<br>
+                   <b>Resolution</b>: 0.9x1.25_gx1v6<br>
+                   <b>Years</b>: 1-2200<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily, Sub-Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/b.e11.B1850C5CN.f09_g16.005<br>
+                   <b>Start/End Dates</b>: 3/6/13, --- <br>
+                   <!--<b>Reference</b>: <br>  -->                      
+                </span></a></td>
+     
+              <td>235-284 - 165-214</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/control/atm_235-284-165-214/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/control/ice_235-284-165-214/default.htm">Ice</a></td>
+              <td>Land</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/control/ocn_235-284-165-214/popdiag.html">Ocean</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/control/pdts/popdiagts.html">Ocean Timeseries</a></td>
+              <td>---</td>
+           </tr>
+           <tr align=center>
+               <td align=left rowspan="1"><b>Large Ensemble 1&deg; Pre-Industrial Atmosphere and Land Control</b><br>
+                <b>Case Name</b>: f.e11.F1850C5CN.f09_f09.001<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.F1850C5CN.f09_f09.001"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: f.e11.F1850C5CN.f09_f09.001<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: F1850LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1-2600<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: 3/14/14, --- <br>
+                   <!--<b>Reference</b>: <br>  -->                      
+                </span></a></td>
+     
+              <td>---</td>
+              <td>Atm</td>
+              <td>---</td>
+              <td>Land</td>
+              <td>---</td>
+              <td>---</td>
+              <td>---</td>
+           </tr>
+           <tr align=center>
+               <td align=left rowspan="1"><b>Large Ensemble 1&deg; Slab Ocean Model Control</b><br>
+                <b>Case Name</b>: e.e11.E1850C5CN.f09_g16.001<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="1">              
+               <a href="" alt="e.e11.E1850C5CN.f09_g16.001"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: e.e11.E1850C5CN.f09_g16.001<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: E_1850_CAM5_CN-LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 101-1001<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: 2015<br>
+                   <!--<b>Reference</b>: <br>  -->                      
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for this simulation.</td>
+           </tr>
+     </table>
+     <br>
+           
+     <h2 class="title">Historical/RCP8.5 Simulations</h2>
+           <table cellpadding="6" cellspacing="0" border="1" frame=void bordercolor="#808080"><tr class="background">
+            <th align=center>Brief Description</th>
+            <th align=center>Case Details</th>
+						      <th colspan="5" align=center>Diagnostics</th>
+            <th colspan="2" align=center>Length of Run Diagnostics</th>
+            </tr>
+           <tr align=center>
+               <td align=left rowspan="6"><b>Large Ensemble Simulation #1</b><br>
+                <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.001 / b.e11.BRCP85C5CNBDRD.f09_g16.001<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="6">              
+               <a href="" alt="b.e11.B20TRC5CNBDRD.f09_g16.001 / b.e11.BRCP85C5CNBDRD.f09_g16.001"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.001 / b.e11.BRCP85C5CNBDRD.f09_g16.001<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_gx1v6<br>
+                   <b>Years</b>: 1850-2005 / 2006-2100<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily, Sub-Daily<br>
+                   <b>HPSS Locations</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: 5/30/13, 7/29/13<br>
+                   <!--<b>Reference</b>: <br>  -->                      
+                </span></a></td>
+     
+              <td>1981-2005 w/observations</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_1981-2005-obs/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ice_1981-2005-obs/default.htm">Ice</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/lnd_1981-2005-obs/setsIndex.html">Land</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_1981-2005-obs/popdiag.html">Ocean</a></td>
+              <td rowspan="6"><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/pdts_1850-2005/popdiagts.html">Ocean Timeseries (1850-2005)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/pdts_2006-2080/popdiagts.html">Ocean Timeseries (2006-2080)</a></td>
+              <td rowspan="6"><a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.001/b.e11.BRCP85C5CNBDRD.f09_g16.001_series.html">CCR (#1-5)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.006/b.e11.BRCP85C5CNBDRD.f09_g16.006_series.html">CCR (#6-10)</a></td>
+              </tr>
+              <tr align=center>
+              <td>2056-2080 w/observations</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_2056-2080-obs/default.htm">Atm</a></td>
+              <td>Ice</td>
+              <td>Land</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_2056-2080-obs/popdiag.html">Ocean</a></td>
+              </tr>
+              
+              <tr align=center>
+              <td>2056-2080 - 1981-2005</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_2056-2080-1981-2005/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ice_2056-2080-1981-2005/default.htm">Ice</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/lnd_2056-2080-1981-2005/setsIndex.html">Land</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_2056-2080-1981-2005/popdiag.html">Ocean</a></td>
+              </tr>
+              <tr align=center>
+              <td>2056-2080 - CESM1(CAM5) RCP8.5 #1</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_2056-2080-rcp85/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ice_2056-2080-rcp85/default.htm">Ice</a></td>
+              <td>Land</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_2056-2080-rcp85/popdiag.html">Ocean</a></td>
+              </tr>
+              
+              <tr align=center>
+              <td>1981-2005 - Large Ensemble 1&deg; Pre-Industrial Control</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_1981-2005-cesm1.1ctl/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ice_1981-2005-cesm1.1ctl/default.htm">Ice</a></td>
+              <td>Land</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_1981-2005-cesm1.1ctl/popdiag.html">Ocean</a></td>
+              </tr>
+              
+              <tr align=center>
+              <td>1981-2005 - CESM1 (CAM5.1) 1&deg; 20th Century #1</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/atm_1981-2005-cesm1cam51_20thC/default.htm">Atm</a></td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ice_1981-2005-cesm1cam51_20thC/default.htm">Ice</a></td>
+              <td>Land</td>
+              <td><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens001/ocn_1981-2005-cesm1cam51_20thC/popdiag.html">Ocean</a></td>
+              </tr>
+           
+           <tr align=center>
+               <td align=left rowspan="8"><b>Large Ensemble Simulations #2-#35</b><br>
+                <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.0XX / b.e11.BRCP85C5CNBDRD.f09_g16.0XX<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="8">              
+               <a href="" alt="b.e11.B20TRC5CNBDRD.f09_g16.0XX / b.e11.BRCP85C5CNBDRD.f09_g16.0XX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.0XX / b.e11.BRCP85C5CNBDRD.f09_g16.0XX<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_gx1v6<br>
+                   <b>Years</b>: 1850-2005 / 2006-2100<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily, Sub-Daily<br>
+                   <b>HPSS Locations</b>: /CCSM/csm/CESM-CAM5-BGC-LE
+                </span></a></td>
+              
+              <td rowspan=2>1981-2005 w/observations</td>
+              <td>Atm</td>
+              <td colspan=3><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/atm_1981-2005-obs/default.htm">002</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/atm_1981-2005-obs/default.htm">003</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/atm_1981-2005-obs/default.htm">004</a>
+                  &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/atm_1981-2005-obs/default.htm">005</a><br><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/atm_1981-2005-obs/default.htm">006</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens007/atm_1981-2005-obs/default.htm">007</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens008/atm_1981-2005-obs/default.htm">008</a></td>
+
+                  
+              <td rowspan="8">Ocean Timeseries 2006-2080<br><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/pdts_2006-2080/default.htm">002</a> 
+                                                            <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/pdts_2006-2080/default.htm">003</a>
+                                                            <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/pdts_2006-2080/default.htm">004</a>
+                                                            <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/pdts_2006-2080/default.htm">005</a>
+                                                            <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/pdts_2006-2080/default.htm">006</a></td>
+              <td rowspan="8"><a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.001/b.e11.BRCP85C5CNBDRD.f09_g16.001_series.html">CCR (#1-5)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.006/b.e11.BRCP85C5CNBDRD.f09_g16.006_series.html">CCR (#6-10)</a>
+                               <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.011/b.e11.BRCP85C5CNBDRD.f09_g16.011_series.html">CCR (#11-15)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.016/b.e11.BRCP85C5CNBDRD.f09_g16.016_series.html">CCR (#16-20)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.021/b.e11.BRCP85C5CNBDRD.f09_g16.021_series.html">CCR (#21-25)</a><br>
+              <a href="../../../../experiments/cesm1.1/LE/diagnostics/ccr/b.e11.BRCP85C5CNBDRD.f09_g16.026/b.e11.BRCP85C5CNBDRD.f09_g16.026_series.html">CCR (#26-30)
+
+              </td>
+              </tr>
+              <tr align=center>
+              <td>Ocn</td>
+              <td colspan=3><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/ocn_1981-2005-obs/popdiag.html">002</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/ocn_1981-2005-obs/popdiag.html">003</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/ocn_1981-2005-obs/popdiag.html">004</a>
+                  &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/ocn_1981-2005-obs/popdiag.html">005</a><br><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/ocn_1981-2005-obs/popdiag.html">006</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens007/ocn_1981-2005-obs/popdiag.html">007</a>
+                   &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens008/ocn_1981-2005-obs/popdiag.html">008</a></td>
+              </tr>
+              
+              <tr align=center>
+              <td rowspan=2 >2056-2080 w/observations</td>
+              <td>Atm</td>
+              <td colspan=3><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/atm_2056-2080-obs/default.htm">002</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/atm_2056-2080-obs/default.htm">003</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/atm_2056-2080-obs/default.htm">004</a>
+                  &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/atm_2056-2080-obs/default.htm">005</a><br><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/atm_2056-2080-obs/default.htm">006</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens007/atm_2056-2080-obs/default.htm">007</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens008/atm_2056-2080-obs/default.htm">008</a></td></tr>  
+                  
+              <tr align=center>
+              <td>Ocn</td>
+              <td colspan=3><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/ocn_2056-2080-obs/popdiag.html">002</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/ocn_2056-2080-obs/popdiag.html">003</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/ocn_2056-2080-obs/popdiag.html">004</a>
+                  &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/ocn_2056-2080-obs/popdiag.html">005</a><br><a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/ocn_2056-2080-obs/popdiag.html">006</a> &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens007/ocn_2056-2080-obs/popdiag.html">007</a>
+                   &nbsp;<a href="../../../../experiments/cesm1.1/LE/diagnostics/ens008/ocn_2056-2080-obs/popdiag.html">008</a></td>   
+
+              <tr align=center>
+              <td rowspan=4 >2056-2080 - 1981-2005</td>
+              <td>Atm</td><td colspan=3>
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/atm_2056-2080-1981-2005/default.htm">002</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/atm_2056-2080-1981-2005/default.htm">003</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/atm_2056-2080-1981-2005/default.htm">004</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/atm_2056-2080-1981-2005/default.htm">005</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/atm_2056-2080-1981-2005/default.htm">006</a> &nbsp;
+              </td></tr>
+              
+              <tr align=center>
+              <td>Ice</td><td colspan=3>
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/ice_2056-2080-1981-2005/default.htm">002</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/ice_2056-2080-1981-2005/default.htm">003</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/ice_2056-2080-1981-2005/default.htm">004</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/ice_2056-2080-1981-2005/default.htm">005</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/ice_2056-2080-1981-2005/default.htm">006</a> &nbsp;
+              </td></tr>
+              <tr align=center>
+              <td>Land</td><td colspan=3>
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/lnd_2056-2080-1981-2005/setsIndex.html">002</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/lnd_2056-2080-1981-2005/setsIndex.html">003</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/lnd_2056-2080-1981-2005/setsIndex.html">004</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/lnd_2056-2080-1981-2005/setsIndex.html">005</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/lnd_2056-2080-1981-2005/setsIndex.html">006</a> &nbsp;
+              </td></tr>
+
+              <tr align=center>
+              <td>Ocean</td><td colspan=3>
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens002/ocn_2056-2080-1981-2005/default.htm">002</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens003/ocn_2056-2080-1981-2005/default.htm">003</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens004/ocn_2056-2080-1981-2005/default.htm">004</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens005/ocn_2056-2080-1981-2005/default.htm">005</a> &nbsp;
+                  <a href="../../../../experiments/cesm1.1/LE/diagnostics/ens006/ocn_2056-2080-1981-2005/default.htm">006</a> &nbsp;
+              </td></tr>                 
+           </tr>                  
+
+           <tr align=center>
+           <td align=left><b>Large Ensemble Simulations #101-10X</b><br>
+                <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.10X / b.e11.BRCP85C5CNBDRD.f09_g16.10X<br>
+                   (X=1,2,3,4,5,6,7)<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td>
+                 <td>              
+               <a href="" alt="b.e11.B20TRC5CNBDRD.f09_g16.10X / b.e11.BRCP85C5CNBDRD.f09_g16.10X"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: b.e11.B20TRC5CNBDRD.f09_g16.10X / b.e11.BRCP85C5CNBDRD.f09_g16.10X<br>
+                   <b>Run Location</b>: University of Toronto<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_gx1v6<br>
+                   <b>Years</b>: 1850-2005 / 2006-2100<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily, Sub-Daily<br>
+                   <b>HPSS Locations</b>: /CCSM/csm/CESM-CAM5-BGC-LE
+                </span></a></td>
+                 
+                 <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+     </table>
+     <br>
+
+     <a name="prescribed_sst"></a>
+     <h2 class="title">Prescribed SST Simulations</h2>
+           <table cellpadding="6" cellspacing="0" border="1" frame=void bordercolor="#808080"><tr class="background">
+            <th align=center>Brief Description</th>
+            <th align=center>Case Details</th>
+						      <th colspan="5" align=center>Diagnostics</th>
+            <th colspan="2" align=center>Length of Run Diagnostics</th>
+            </tr>
+           <tr align=center>
+               <td align=left rowspan="1"> <b>IPCC-AMIP TOGA 10-member ensemble (ERSSTv4)</b><br>
+                <b>Case Name</b>: f.e11.FAMIPC5CN.f09_f09.historical.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.toga.ensXX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10)<br>
+                <b>Data Availability: </b> <a href="http://www.cesm.ucar.edu/projects/community-projects/LENS/data-sets.html">ESG</a>
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.FAMIPC5CN.f09_f09.historical.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.toga.ensXX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: f.e11.FAMIPC5CN.f09_f09.historical.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.toga.ensXX<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: FAMIPC5CN<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1880-2014<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/f.e11.FAMIPC5CN.f09_f09.hist-rcp85.toga<br>
+                   <b>Start/End Dates</b>: Fall 2015<br>
+                   <b>Notes</b>: SST's from 28S:28N set to ERSSTv4. Transition/linear interpolation zone from 28:35 degree latitudes. 
+                                 35 degrees polewards set to 1880-2014 climatological SSTs (ERSSTv4)/ice (HadISST). Initialized from
+                                 first LENS historical member on January 1st, 1880, with each ensemble member receiving a small change
+                                 in the initial air temperature via namelist setting PERTLIM.  Ozone dataset: modified SPARC<br>                       
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+
+           <tr align=center>
+               <td align=left rowspan="1"> <b>IPCC-AMIP TOGA 10-member ensemble (ERSSTv3b)</b><br>
+                <b>Case Name</b>: f.e11.FAMIPC5CN.f09_f09.historical.ersstv3b.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv3b.toga.ensXX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10)<br>
+                <b>Data Availability: </b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.FAMIPC5CN.f09_f09.historical.ersstv3b.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv3b.toga.ensXX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: f.e11.FAMIPC5CN.f09_f09.historical.ersstv3b.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv3b.toga.ensXX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: FAMIPC5CN<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1880-2016<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/f.e11.FAMIPC5CN.f09_f09.hist-rcp85.toga<br>
+                   <b>Start/End Dates</b>: Fall 2017<br>
+                   <b>Notes</b>: SST's from 28S:28N set to ERSSTv3b. Transition/linear interpolation zone from 28:35 degree latitudes. 
+                                 35 degrees polewards set to 1880-2016 climatological SSTs (ERSSTv3b)/ice (HadISST). Initialized from
+                                 first LENS historical member on January 1st, 1880, with each ensemble member receiving a small change
+                                 in the initial air temperature via namelist setting PERTLIM.  Ozone dataset: modified SPARC<br>                       
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+
+           <tr align=center>
+               <td align=left rowspan="1"> <b>IPCC-AMIP TOGA 10-member ensemble (ERSSTv5)</b><br>
+                <b>Case Name</b>: f.e11.FAMIPC5CN.f09_f09.historical.ersstv5.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv5.toga.ensXX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10)<br>
+                <b>Data Availability: </b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.FAMIPC5CN.f09_f09.historical.ersstv5.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv5.toga.ensXX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: f.e11.FAMIPC5CN.f09_f09.historical.ersstv5.toga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.ersstv5.toga.ensXX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: FAMIPC5CN<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1880-2017<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/f.e11.FAMIPC5CN.f09_f09.hist-rcp85.toga<br>
+                   <b>Start/End Dates</b>: Summer 2018<br>
+                   <b>Notes</b>: SST's from 28S:28N set to ERSSTv5. Transition/linear interpolation zone from 28:35 degree latitudes. 
+                                 35 degrees polewards set to 1880-2017 climatological SSTs (ERSSTv5)/ice (HadISST). Initialized from
+                                 first LENS historical member on January 1st, 1880, with each ensemble member receiving a small change
+                                 in the initial air temperature via namelist setting PERTLIM.  Ozone dataset: modified SPARC<br>                       
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+
+
+           <tr align=center>
+               <td align=left rowspan="1"><b>IPCC-AMIP GOGA 10-member ensemble (ERSSTv4)</b><br>
+                <b>Case Name</b>: f.e11.FAMIPC5CN.f09_f09.historical.goga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.goga.ensXX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10)<br>
+                <b>Data Availability: </b><a href="https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.CESM_GOGA.html">ESG</a>
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.FAMIPC5CN.f09_f09.historical.goga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.goga.ensXX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Names</b>: f.e11.FAMIPC5CN.f09_f09.historical.goga.ensXX / f.e11.FAMIPC5CN.f09_f09.rcp85.goga.ensXX<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: FAMIPC5CN<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1880-2015<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/f.e11.FAMIPC5CN.f09_f09.hist-rcp85.goga<br>
+                   <b>Start/End Dates</b>: Fall 2016<br>
+                   <b>Notes</b>: SST dataset: ERSSTv4. Ice dataset: HadISST. Initialized from
+                                 first CESM1 LENS historical member on January 1st, 1880, with each ensemble member receiving a small change
+                                 in the initial air temperature via namelist setting PERTLIM. Ozone dataset: modified SPARC<br>                       
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+
+           <tr align=center>
+               <td align=left rowspan="1"><b>AMIP with prescribed sst/ice from pre-industrial control</b><br>
+                <b>Case Names</b>: f.e11.F1850C5CNTVSST.f09_f09.002<br>
+                <b>Data Availability: </b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="f.e11.F1850C5CNTVSST.f09_f09.002"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: f.e11.F1850C5CNTVSST.f09_f09.002<br>
+                   <b>Machine</b>: NCAR:yellowstone<br>
+                   <b>Compset</b>: FAMIPC5CN<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1-100<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: Spring 2016<br>    
+                   <b>Notes</b>: AMIP-style run with the only time-varying forcings being monthly sea surface temperatures and sea ice specified from 
+                                 the pre-industrial control (b.e11.B1850C5CN.f09_g16.005) starting at year 401.<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+     </table>
+     <br>
+
+     <a name="pacemaker"></a>
+     <h2 class="title">Pacemaker Simulations</h2>
+           <table cellpadding="6" cellspacing="0" border="1" frame=void bordercolor="#808080" width=950><tr class="background">
+            <th align=center>Brief Description</th>
+            <th align=center>Case Details</th>
+						      <th colspan="5" align=center>Diagnostics</th>
+            <th colspan="2" align=center>Length of Run Diagnostics</th>
+            </tr>
+
+           <tr align=center>
+               <td align=left rowspan="1" width=570><b>Pacific Pacemaker 20-member ensemble</b><br>
+                <b>Case Names</b>: b.e11.B20TRLENS.f09_g16.SST.restoring.ensXX / b.e11.BRCP85LENS.f09_g16.SST.restoring.ensXX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20)<br>
+                <b>Data Availability:</b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B20TRLENS.f09_g16.SST.restoring.ensXX / b.e11.BRCP85LENS.f09_g16.SST.restoring.ensXX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B20TRLENS.f09_g16.SST.restoring.ensXX / b.e11.BRCP85LENS.f09_g16.SST.restoring.ensXX<br>
+                   <b>Machine</b>: NCAR:yellowstone/cheyenne<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1920-2013<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/PAC-PACEMAKER<br>
+                   <b>Start/End Dates</b>: Spring 2015 (members 1-10), Fall 2017 (members 11-20)<br>    
+                   <b>Notes</b>: SST anomalies (20°N-20°S,180-80°W) nudged to ERSSTv3b observations + radiative forcing<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+     </table>
+
+     <br>
+     <a name="single-forcing"></a>
+     <h2 class="title">Single Forcing (all but one) Simulations</h2>
+           <table cellpadding="6" cellspacing="0" border="1" frame=void bordercolor="#808080" width=950><tr class="background">
+            <th align=center>Brief Description</th>
+            <th align=center>Case Details</th>
+						      <th colspan="5" align=center>Diagnostics</th>
+            <th colspan="2" align=center>Length of Run Diagnostics</th>
+            </tr>
+
+           <tr align=center>
+               <td align=left rowspan="1" width=570><b>XGHG 20-member ensemble</b><br>
+                <b>Case Names</b>: b.e11.B20TRLENS_RCP85.f09_g16.xghg.0XX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20)<br>
+                <b>Data Availability:</b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B20TRLENS_RCP85.f09_g16.xghg.0XX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B20TRLENS_RCP85.f09_g16.xghg.0XX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1920-2080<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: Fall 2017-Summer 2018<br>    
+                   <b>Notes</b>: Same configuration as the Large Ensemble, but without time-evolving greenhouse gases.<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+           <tr align=center>
+               <td align=left rowspan="1"><b>XAER 20-member ensemble</b><br>
+                <b>Case Names</b>: b.e11.B20TRLENS_RCP85.f09_g16.xaer.0XX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20)<br>
+                <b>Data Availability:</b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B20TRLENS_RCP85.f09_g16.xaer.0XX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B20TRLENS_RCP85.f09_g16.xaer.0XX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1920-2080<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: Fall 2017-Summer 2018<br>    
+                   <b>Notes</b>: Same configuration as the Large Ensemble, but without time-evolving aerosols.<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+           <tr align=center>
+               <td align=left rowspan="1"><b>XBMB 15-member ensemble</b><br>
+                <b>Case Names</b>: b.e11.B20TRLENS_RCP85.f09_g16.xbmb.0XX<br>
+                   (XX=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15)<br>
+                <b>Data Availability:</b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B20TRLENS_RCP85.f09_g16.xbmb.0XX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B20TRLENS_RCP85.f09_g16.xbmb.0XX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1920-2029<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: Fall 2017-Summer 2018<br>    
+                   <b>Notes</b>: Same configuration as the Large Ensemble, but without time-evolving biomass burning.<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+           <tr align=center>
+               <td align=left rowspan="1"><b>XLULC 5-member ensemble</b><br>
+                <b>Case Names</b>: b.e11.B20TRLENS_RCP85.f09_g16.xlulc.0XX<br>
+                   (XX=01,02,03,04,05)<br>
+                <b>Data Availability:</b> HPSS (See Details)
+                 </td><td rowspan="1">              
+               <a href="" alt="b.e11.B20TRLENS_RCP85.f09_g16.xlulc.0XX"> 
+                <img src="../../../../images/details2.png" class="icon" />
+                <span>
+                   <b>Case Name</b>: b.e11.B20TRLENS_RCP85.f09_g16.xlulc.0XX<br>
+                   <b>Machine</b>: NCAR:cheyenne<br>
+                   <b>Compset</b>: B20TRLENS / BRCP85LENS<br>
+                   <b>Resolution</b>: 0.9x1.25_0.9x1.25<br>
+                   <b>Years</b>: 1920-2029<br>
+                   <b>Time Frequencies Saved</b>: Monthly, Daily<br>
+                   <b>HPSS Location</b>: /CCSM/csm/CESM-CAM5-BGC-LE<br>
+                   <b>Start/End Dates</b>: Fall 2017-Summer 2018<br>    
+                   <b>Notes</b>: Same configuration as the Large Ensemble, but without time-evolving land use land cover changes.<br>                 
+                </span></a></td>
+     
+                <td colspan=7>Individual diagnostics are not available for these simulations.</td>
+           </tr>
+     </table>
+
+
+<p></p>
+			<!-- end content_icon --></div>		
+
+
+<!------------------------------------------------------------------------->
+		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

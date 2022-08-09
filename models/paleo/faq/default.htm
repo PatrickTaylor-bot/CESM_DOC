@@ -1,0 +1,3631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>PaleoResources for CESM1.2</title>
+
+<link rel="shortcut icon" href="../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www2.cesm.ucar.edu/models">CESM Models</a> &raquo;  <a href="https://www2.cesm.ucar.edu/working-groups/pwg">Paleo Climage Working Group</a> &raquo; <a href="https://www2.cesm.ucar.edu/working-groups/pwg/documentation">PaleoResources</div></a>
+			<h1>PaleoResources </h1>
+	</div>
+ 
+	<div class="content">
+ 
+						<!--  ---------------------------------------------------------------------  -->
+
+
+
+
+
+<a name="top"></a>
+<P><BR>
+<h2 align="CENTER">Resources for CESM1.2 Paleosimulations
+<p></p>
+<align="CENTER">
+Nan Rosenbloom <br>Esther Brady <br>Bette Otto-Bliesner
+<br>
+<br>
+National Center for Atmospheric Research
+</h2>
+
+<P>
+
+<!--Table of Contents-->
+<html>
+
+
+<!-- ==================== Introduction ======================================== --!>
+<ol>
+  <li><a href="#intro">Getting Started</a></li>
+  <ul>
+  <li><a href="#intro">Introduction</a></li></h2>
+  <li><a href="#b4ub">Before you begin</a></li>
+  <li><a href="#dt">Deep Time vs Quaternary paleoclimate</a></li>
+  <li><a href="#flow">FlowChart for creating a paleoclimate simulation</a></li>
+  <li><a href="#ccsm3">Should I use CCSM3 or CESM1.2</a></li>
+  <li><a href="https://www.cesm.ucar.edu/events/tutorials/">How do I take the CESM Tutorial </a>(Recommended)</li></a>
+  <li><a href="https://bb.cgd.ucar.edu/forums/paleoclimate-modeling">Getting help:  CESM on-line Paleoclimate community forum </li></a>
+  <li><a href="https://github.com/CESM-Development/paleoToolkit">Download paleoclimate resources </li></a>
+  <li><a href="#inpt">What input files do I need? </a></li>
+  </ul>
+<!-- ==================== General =========================== --!>
+<!-- ==================== Ocean Forcing  =========================== --!>
+  <li><a href=#ocn>Ocean </a></li>
+         <ul> 
+	 	<li>Modifying the ocean grid for Deep Time paleo simulations</li>
+		<ul>
+	 		<li><a href="#designgrid">How do I design/create a new ocean grid</li></a>
+	 		<li><a href="#bldgrid">How do I build a new ocean grid </li></a>
+			<li><a href="#ocn">How do I change the region mask and the region IDs </li></a>
+		</ul>
+	 	<li>Modifying the ocean grid for Near Modern paleo simulations</li>
+		<ul>
+	 		<li><a href="#seaLev">Changing Sea level and ocean bathymetry  </li></a>
+			<li><a href="#ocn">How do I change the region mask and the region IDs </li></a>
+		</ul>
+	       <li><a href="#pop.nl">What POP2 namelist settings should I use for Deep Time (user_nl_pop2) </li></a>
+	       <li><a href="#overflow">How do I turn off the modern overflow regions </li></a>
+               <li><a href="http://www.cesm.ucar.edu/models/cesm1.2/pop2/doc/faq/#runtime_reduce_dt_howmuch"> Changing timesteps in the ocean </a>
+               (See also <a href="http://www.cesm.ucar.edu/models/paleo/faq/#pop.nl"> dt_count </a> in the user_nl_pop section)
+	</ul>
+  </ul>
+
+<!-- ==================== coupler mapping  =========================== --!>
+  <li><a href="#cpl_map">Coupler mapping </a></li>
+  <ul>
+      <li><a href="#cpl_map">How do I create a SCRIPgrid file</a>
+      <li><a href="#cpl_map">How do I create coupler mapping files</a>
+ </ul>
+<!-- ==================== Runoff Forcing  =========================== --!>
+  <li> <a href="#rof">River runoff</a></li>
+  <ul>
+      <li><a href="#rof">What files will I need for the RTM runoff model </li></a>
+      <li><a href="#rdirc">How do I map river runoff on the land model (rdirc)</li></a>
+      <li><a href="#rdirc">Do I need to modify rdirc for a near-Modern glacial run</li></a>
+      <li><a href="#rmap">How do I create ROF2OCN_RMAPNAME</li></a>
+      <li><a href="#fmap">How do I create ROF2OCN_FMAPNAME</li></a>
+ </ul>
+<!-- ==================== atmosphere Forcing  =========================== --!>
+  <li> <a href="#atm">Atmospheric model (CAM4/CAM5)</a></li>
+  <ul>
+      <li><a href="#bnd_topo"> How do I change topography in a Near Modern simulation</a></li>
+      <li><a href="#dfsfDT">How do I change topography in a Deep Time simulation </a></li>
+      <li> <a href="#atm.dt">How do I change the atmospheric timestep to improve stability</a>
+      <li> <a href="#aerosols">Atmosphere (aerosols, dust, volcanic)</a>
+      </li>
+ </ul>
+<!-- ==================== Land Forcing  =========================== --!>
+  <li><a href="#lnd">Landuse/landcover (CLM4.0)</a></li>
+  <ul>
+      <li> <a href="#lnd">How do I create vegetation for a Deep Time simulation in CLM4.0</a>
+      <li> <a href="#mkraw">How do I create a 'vegetation.nc' file for Deep Time</a>
+      <li> <a href="#srf">How do I create a new surface dataset</a>
+      <li> <a href="#ai">Can I run the land model from arbitrary initial conditions </a>
+      <li> <a href="#IP">How can I restart from a previous run if I have changed the land/sea mask </a>
+      <li> <a href="#CN">How do I initialize CN in a paleo run</a>
+      <li> <a href="#CNDV">How do I turn on CNDV </a>
+      <li> Land ice
+      <li> How can I use a restart file from a previous run if I have changed the land/sea mask
+ </ul>
+<!-- ==================== Sea ice Forcing  =========================== --!>
+  <li><a href="#ice">Sea ice </a></li>
+  <ul>
+  <li><a href="#ice">Boundary conditions and forcing</a>
+  </ul>
+<!-- ==================== Help =========================== --!>
+  <li>Run time issues </a></li>
+  <ul>
+  <li><a href="#nl">Common namelist changes </a></li>
+  <li><a href="#gotchas">Common paleo "gotchas" </a></li>
+  <li><a href="#knownproblems">Known CESM bugs that commonly affect paleoclimate simulations</a></li>
+  <li><a href="#debug">Debugging tips for paleoclimate simulations</a></li>
+  </ul>
+  </ul>
+
+<!-- ==================== Add New Categories Here =========================== --!>
+
+<!-- ==================== Or, Add New Categories Here ======================= --!>
+
+
+</ol>
+
+</html>
+
+
+
+<!-- ===================================================================================== --!>
+<br>
+<a name="intro"></a>
+<br>
+<ul>
+    <a name="intro"></a>
+    <html>			
+<div class="problems-frame">
+<a name="intro"></a>
+<h2>A brief note to users ...</h2>
+			<p><h5>
+			<p class="tab">
+			<i>The Community Earth System Model (CESM1) is a coupled climate model for simulating the earth's
+			climate system. Composed of four separate models simultaneously simulating the earth's atmosphere,
+			ocean, land surface and sea-ice, and one central coupler component, the CESM allows researchers to
+			conduct fundamental research into the earth's past, present and future climate states. Please see
+			the brief overview of the <a
+			href="https://www2.cesm.ucar.edu/models/current">notable model improvements in the current version of CESM1.</a>
+			</p></h5>
+			<p><h5>
+			<p class="tab">
+			The CESM and its component models have been invaluable tools for the national and international
+			research communities.  These models have been used by researchers worldwide, starting with the
+			first version CSM1, to explore problems of both greenhouse and icehouse past climates.  They have
+			been shown to be adaptable for both deep-time paleoclimate applications, when the continental
+			configurations were much different from present, to the more near-term past climates of the
+			glacial-interglacial cycles of the last million years.  Over 60 research articles using versions
+			of CESM for studying past climates have been published by the community.   Low-resolution versions
+			of CESM1 have been developed and supported to allow paleoclimate researchers to integrate the
+			model for thousands and even tens of thousands of years.  This document outlines the procedures
+			for setting up paleoclimate simulations with CESM1, released in 2010.  The science of the
+			paleoclimate simulation still rests on the researcher.  Choices will need to be made on the
+			appropriate conditions (i.e., land-ocean configuration, topography and bathymetry, ice sheets,
+			vegetation) for the specific paleoclimate research topic being explored.  Additional information
+			on the component models and options that may need to be set can be found in the technical notes of
+			these models.  We thank all those who have contributed their time and expertise for maintaining
+			the paleoclimate versions of CESM1.  <br><br> <b></i></b></h5>
+			
+			</p> 
+</div>
+
+
+</ul>
+<hr>
+<h2>Introduction </h2>
+<hr>
+
+<p>
+This document describes procedures developed at NCAR for creating paleoclimate simulations using the NCAR <a
+href="http://www.cesm.ucar.edu/models/cesm1.2/">CESM1.2 series </a> model in the fully coupled (all active components) 
+configuration.  We do not describe the creation of the forcing files used in Data Model components or in stand-alone component model runs. 
+Note that this documentation does not discuss CLM4.5 or later land model versions.
+We provide tools and examples of the processes we have used to create paleoclimate simulations using the computing resources 
+at the National Center for Atmospheric Research (NCAR). <b> However, since the CESM model evolves continuously, this document is 
+to be used as a guide; researchers are ultimately 
+responsible for modifying the processes to accommodate their time period of interest as well as adapting the tools we provide to the model
+version they are using and the computer resources they have available. </b>All tools discussed in this FAQ were developed to run on the computing
+platforms at the National Center for Atmospheric Research (NCAR) and are unsupported on all other platforms. 
+ We provide limited user support for the current version of tools on NWSC computers.  Outside
+ researchers may need to modify these procedures to accommodate earlier versions of the CESM1 model, or for the computer resources available
+ on their home machines.   
+Finally, the information we provide is intended to supplement the detailed usage information for each CESM1.2 series component model
+that can be found in the <a href="https://www2.cesm.ucar.edu/">CESM1 User's Guide</a> and a general familiarity by the user of 
+CESM1 terminology and concepts is assumed.  
+
+		
+	
+<a name="b4ub"></a>
+
+     </ul>
+     <!--  ================== Purpose of the tag ================= -->
+     <html>
+ <p>
+ <hr>
+ <h2>Before you begin </h2>
+ <hr>
+
+ <p>
+ One of the goals of the Paleoclimate Working Group is to allow the community to
+ address scientific questions about past climates in Earth history using the CESM model. To
+ that end we include useful tools that are designed to modify the forcing and input files for
+ paleoclimate applications.  If you are considering a Paleoclimate project using the
+ CESM model you may find it useful to explore the questions listed below before you
+ begin. We also strongly recommend that you complete the exercises in the CESM tutorial, and
+ run a short pre-industrial simulation of the CESM model before you start configuring your
+ paleoclimate simulation.  We ask that users submit questions to the CESM Discussion Forum so that other
+ users may contribute to, or benefit from, the discussion.
+ Browse the <a href="http://bb.cgd.ucar.edu/forums/paleoclimate-modeling">Paleoclimate Section </a>
+ of the <a href="http://bb.cgd.ucar.edu/forums/">CESM Bulletin Board </a>for related community discussion.
+</p> </b>
+
+
+
+<b>Question 1: What scientific question do you plan to investigate with the CESM?</b>
+<ul><li>The current release of the CESM may not resolve all the
+necessary processes nor have adequate resolution critical for your climate
+study.  It is up to the project scientist to decide on initial and forcing conditions
+as well as <a href="http://www.cesm.ucar.edu/models/paleo/cesm1_2_0/nl.html">
+the appropriate topography, bathymetry and vegetation/landcover files </a>for the time period of interest.</li></ul>
+</b></p>
+</p>
+
+<b>Question 2:  What time period do you want to simulate?</b>
+<ul>
+<li>The boundary conditions and forcing files included as part of the CESM release pertain to modern
+               time periods: pre-industrial, present day and future scenarios.
+		Configuring the CESM for past time periods
+               requires that the investigator specify forcings and boundary
+		conditions for the geologic time period of
+               configuration, the investigator may also need to provide, for
+		example, bathymetry, atmospheric aerosols,
+               etc.&nbsp; The Paleo User Resources site provides tools and
+		guidance for modifying forcing and boundary
+               conditions.
+               <li>It may be useful to know whether others have used the
+		current version of CESM
+               to simulate your time period in case they would be willing to
+		share their model setup. Posting a query on
+               the <a href="http://bb.cgd.ucar.edu/forums/paleoclimate-modeling">CESM forums web
+		page</a> is an efficient
+               way to look for collaborative opportunities. In addition, we
+		encourage you to attend one of our
+               Paleoclimate Working Group meetings to share your interest and
+		results and hear about our activities and
+               plans. This is also a great way to link up with other
+		investigators who may be working on similar
+               projects.
+               </li></ul>
+	       </p>
+
+<b>Question 3: What configuration of CESM do you plan to use?</b>
+
+        <ul><li>Your research may allow a reduced model configuration. For
+example, you may be able to implement
+        active land and atmosphere component models driven by prescribed SST
+and sea ice distributions. This may be a
+        good place to start if you have limited computational time and storage
+allocation.&nbsp </li>
+<li>A slab ocean model (SOM) is also
+available. The SOM is much faster and
+        computationally more cost-effective than running the fully-coupled
+model with an active full-depth ocean
+        component, which takes a few thousand model years to spin up to a
+quasi-equilibrium.&nbsp;
+        See the <a href="http://www2.cesm.ucar.edu/">CESM User's Guide</a> for
+details on potential CESM configurations.</li></ul>
+</p>
+</p>
+
+<b>Question 4: Do you have experience running or analyzing output from the CESM?</b>
+<ul><li> Running an "out-of-the-box" (OTB) pre-industrial CESM simulation and
+completing the <a href="http://www.cesm.ucar.edu/events/tutorials/">CESM
+Tutorial</a>&nbsp;are
+prerequisites for configuring a paleoclimate simulation. &nbsp;</li>
+<li> Follow the <a href="http://www.cesm.ucar.edu/events/tutorials/">CESM
+Tutorial</a> to become familiar
+with running the CESM model and changing the model forcing parameters.&nbsp;
+Refer to
+the <a href="http://www2.cesm.ucar.edu/">CESM User's Guide</a> for the model
+version you plan to use to
+find more detailed information.</li></ul>
+
+</p>
+</p>
+
+<b>Question 5:  What computer will you use to run your simulations? 
+</b>
+<ul>
+<li> Do you have allocated computer time and storage on the NCAR-Wyoming Supercomputers?
+<li>Running the CESM at any resolution or configuration is computationally
+expensive and produces large amounts (Giga- to Tera- bytes) of output. This
+means you will need supercomputer access and storage space to carry out your
+simulations.</li><li>Information on access to the Yellowstone computer
+resources at the NCAR-Wyoming Supercomputing Center (NWSC) can be found here:
+<a
+href="http://www2.cisl.ucar.edu/docs/allocations">http://www2.cisl.ucar.edu/docs/allocations</a>.&nbsp;
+Refer to the <a href="http://www2.cesm.ucar.edu/">CESM User's Guide</a> for
+information on porting the CESM model to other computers.&nbsp;</li></ul>
+
+</p>
+</p>
+
+<b>Question 6:  Is it difficult to configure the CESM model for paleoclimate simulations?</b>
+<ul><li>
+This documentation describes tools and procedures for creating paleoclimate simulations using the NCAR CESM1 model.  Using
+the CESM1 model for paleoclimate modeling requires complex, multi-step modifications to the input and forcing files used
+by the model, particularly for Deep Time simulations where continental configurations have changed. These tools are
+developed on the computing resources at the National Center for Atmospheric Research (NCAR) and we strive to keep pace
+with the current version of the CESM1 model.   Researchers may need to modify these procedures to accommodate the version
+of the CESM1 model they are using, or for the computer resources available on their home machines.   To gain more
+understanding about the CESM1 component models and input files, see the CESM1 documentation http://www2.cesm.ucar.edu/.
+
+</li></ul>
+
+</b></p>
+</p>
+
+</p>
+</html>
+
+
+
+
+
+     <!--  ================== End Purpose ======================== -->
+
+
+
+		
+</ul>
+<a name="dt"></a>
+      <hr>
+      <h2>
+         What are the differences between Deep Time and Quaternary paleoclimate simulations.
+      </h2>
+      <hr>
+    <p>
+    <p>
+    Throughout this document we differentiate between the procedures required to create (1) near-modern (e.g.,
+    Quaternary,
+    Pliocene) or (2) Deep-Time (pre-Quaternary/Pliocene) model simulations.  In near-modern simulations, the continents are in
+    their
+    present-day positions, and the land/sea masks do not require significant modification. Quaternary modelers are often
+    able to
+    use existing forcing files to simulate past climate.  By contrast, deep-time simulations require drastic modifications
+    to the
+    land/sea mask, and the modeler is responsible for providing the orographic/bathymetric maps for their geologic period
+    of interest.
+    <p>
+    </p> 
+
+</ul>
+<a name="flow"></a>
+      <hr>
+      <h2>
+         Flow Chart
+      </h2>
+      <hr>
+
+    <p>
+
+    <ul>
+
+    <table cellpadding=10 border="1">
+    <th colspan=3 strong>Near Modern Modifications <tr></strong>
+    <th><th>Procedure<th>Tools<tr>
+    <td>Modify land/sea mask<td>
+    <ul>
+    <li>Create a new ocean KMT file to reflect changes to land/sea mask.  
+    <li>Create SCRIPgrid file 
+    </ul>
+    <td>
+    <ul>
+    <li>NCL code
+    <li>mk_SCRIPTgrid.csh<tr>
+    </ul>
+    <td>Coupler mapping 
+    <td>ESMF tools
+    <td>
+        <ul>
+	<li>gen_cesm_maps.sh
+	<li>gen_domain.sh
+        </ul>
+    <tr>
+    <tr>
+    <td>Modify topography
+    <td>Create a new initialization (topo_bnd) file for CAM. 
+    <td>
+	<ul>
+	<li>definesurf
+	</ul>
+    <tr>
+    <td>river runoff
+    <td>Create a runoff file
+    <td>
+	<ul>
+	<li>rdirc
+	<li> runoff_map
+	<li> create_ESMP_map.sh
+	</ul>
+    <tr>
+    <td>Modify landcover
+    <td>Create a new surface dataset for CLM4.0
+    <ul>
+    <li>Create new 0.5<sup>o</sup> resolution raw ‘mksrf’ datafiles 
+    <li>Create SCRIPgrid mapping file (Required if land/sea mask has changed)
+    <li>Map SCRIPgrid mapping file to CLM land grid.      (Required if land/sea mask has changed)
+    <li>Create surface dataset. 
+    </ul>
+    <td><ul>
+    <li>mkmapgrids
+    <li>mkmapdata
+    <li>mksurfdata_map
+    </ul>
+    <tr>
+    <td>Restart CLM with modified restart file
+    <td><ul>
+    <li>run 5 day case with new land/sea mask, setting finidat=" "
+    <li>interpinic old.clm.r into new.clm.r
+    </ul>
+    <td>
+	<ul>
+	<li>interpinic
+	</ul>
+    </table>
+    <p>
+    <table cellpadding=10 border="1">
+    <th colspan=3 strong>Deep Time Modifications <tr>
+    <th><th>Procedure<th>Tools<tr>
+    <td>Create paleo ocean grid with embedded continents<td>
+    <ul>
+    <li>Create a new ocean grid file 
+    <li>Create a new ocean KMT file 
+    <li>Create SCRIPgrid file 
+    <li><b>Carefully check grid and KMT files (use NCL to visualize the SCRIP mapping file)</b>
+    </ul>
+    <td><ul>
+    <li>ns_dipole.f90 (pole placement)
+    <li>paleotopo.f90 (embed KMT into grid)
+    <li>grid_bin2nc.f90 (convert to viewable netCDF file)
+    <li>mk_SCRIPTgrid.csh (uses myConvertPOPT to create SCRIP file)
+    <li>NCL code to visualize grid
+    </ul>
+    <tr>
+    <td>Coupler mapping
+    <td>ESMF tools
+    <td>
+        <ul>
+	<li>gen_cesm_maps.sh
+	<li>gen_domain.sh
+        </ul>
+    <tr>
+
+    </ul>
+    <tr>
+    <td>Modify topography
+    <td>Create a new initialization (topo_bnd) file for CAM.
+    <td>
+	<ul>
+	<li>definesurf
+	</ul>
+    <tr>
+    <td>Modify landcover
+    <td>Create a new surface dataset for CLM4.0
+    <ul>
+    <li>Create new 0.5<sup>o</sup> resolution raw ‘mksrf’ datafiles
+    <li>Create SCRIPgrid mapping file (Required if land/sea mask has changed)
+    <li>Map SCRIPgrid mapping file to CLM land grid.      (Required if land/sea mask has changed)
+    <li>Create surface dataset.
+    </ul>
+    <td><ul>
+	<li>paleo_mkraw
+	<li>mkmapgrid
+	<li>mkmapdat
+	<li>mksurfdata_map
+	</ul>
+    <tr>
+    <td>Restart CLM with modified restart file
+    <td><ul>
+    <li>run 5 day case with new land/sea mask, setting finidat=" "
+    <li>interpinic old.clm.r into new.clm.r
+    <td>
+	<ul>
+	<li>interpinic
+	</ul>
+    </ul>
+    </table>
+    </ul>
+    </p>
+
+</ul>
+<a name="ccsm3"></a>
+      <hr>
+      <h2>
+         CCSM3 vs CESM1.2
+      </h2>
+      <hr>
+
+    <p>
+    The Community Climate System Model, version 3 (CCSM3) is a legacy version of the Community Earth System Model (CESM).
+    Support for CCSM3 and all previous versions of CCSM have expired.  The tools described in the CCSM3 documentation were
+    developed to work on NCAR platforms that have since been retired and therefore these tools are no longer actively maintained.  
+    Furthermore, using the CCSM3 model is no longer supported on NCAR machines.
+    </p>
+    <ul>
+    <li>Download the <a href="http://nldr.library.ucar.edu/collections/technotes/TECH-NOTE-000-000-000-851.pdf">NCAR
+    Technote</a>
+    for discussion on using the CCSM3 model for Paleoclimate.
+
+    <li>
+    <a href="http://www.cgd.ucar.edu/ccr/paleo/Notes/ccsm2010_virposter_shields.v2.pdf">Download an Overview presentation
+    </a>that describes key differences between CESM1 and CCSM3 for paleo climate modellers.
+
+    <li>
+    Browse the <a href="https://bb.cgd.ucar.edu/">CESM on-line forum </a>for related community discussion.
+
+
+    <li>
+    For more information on currently supported versions of the model see the CESM documentation:
+    http://www2.cesm.ucar.edu/models.
+    </li></ul> 
+    </ul>
+
+<a name="inpt"></a>
+			<hr>
+			<h2>What input files do I need </h2>
+			<hr>
+			<br>
+			<p>Deep time model users need to provide gridded input
+			files that define the surface topography, ocean bathymetry, land/sea mask, and
+			vegetation/landuse categories for their period of scientific interest.
+
+<!--  ---------------------------------------------------------------------  -->
+
+<p><p>
+
+
+    <b>
+    <p>Topography + Bathymetry format &raquo;  topobathy.nc<br>
+    </b>
+
+    The topobathy.nc netCDF file should contain topography and bathymetry on a regular latitude/longitude grid (e.g.,
+    2&degx2&deg). Positive values represent height above sea level and negative values represent ocean bathymetry. The
+    topobathy.nc will define your land/ocean mask, your bathymetry (KMT), and your orography (expressed as PHIS; where PHIS = orography * 9.82m/s2).
+
+    <ul>
+    <p> netCDF format
+    <ul>
+    <li>Coordinate variables:  lat(lat), lon(lon)
+    <li>longitude: 0 to 360&deg
+    <li>latitude: -90 to 90&deg
+    </ul>
+    </ul>
+    </p>
+   </p>
+
+    <b>
+    <p>Vegetation/Landuse  &raquo;  vegetation.nc<br>
+    </b>
+
+    The vegetation.nc netCDF file should contain land use (i.e., vegetation) on a regular latitude/longitude grid (e.g.,
+    2&degx2&deg).
+
+    <ul>
+    <p>netCDF format
+    <ul>
+    <li>Coordinate variables:  lat(lat), lon(lon)
+    <li>longitude: 0 to 360&deg
+    <li>latitude: -90 to 90&deg
+    </ul>
+    </ul>
+    <br>
+
+     <!--  ================== Purpose of the tag ================= -->
+     <html>
+
+<p>
+
+<b>CLM PLANT FUNCTION TYPE (PFT)</b><br>
+For most deep time paleo simulations, we assign LSM (Land Surface Model)
+land-use types for each grid point and then convert these LSM types to CLM
+(Community Land Model) surface information using the tool
+paleo_mkraw_cesm1.csh. Because CLM requires a complicated array of surface
+information for each grid cell, whereas LSM uses a simple integer value to
+represent land-use at each grid point, assigning an LSM integer value and
+using the paleo_mkraw_cesm1.csh tool to convert to LSM types to CLM format
+provides a simple method to create surface data information for deep time.
+
+<p>
+Modelers may first need to construct LSM land cover maps from biome maps using
+the LSM definitions and CLM PFT definitions used in paleo_mkraw_cesm1.csh
+
+<p>
+LSM land-use types are used in paleo_mkraw_cesm1.csh because LSM was the predecessor
+to CLM3 and used in CSM1.4. If this does not suite your needs, you will need
+to modify paleo_mkraw.csh to convert from your preferred land-use type
+structure to CLM surface data information.
+
+</p>
+
+
+
+
+     <!--  ================== End Purpose ======================== -->
+     <!--  ================== Purpose of the tag ================= -->
+     <html>
+<div class="problems-frame">
+
+<b>CLM Plant Function Types </b>
+<p>
+
+<!--  ---------------------------------------------------------------------  -->
+<table>
+
+<td>PFT <td>Description<tr><tr>
+<td>0 <td>bare<tr>
+<td>1 <td>needleleaf evergreen temperate tree<tr>
+<td>2 <td>needleleaf evergreen boreal tree<tr>
+<td>3 <td>needleleaf deciduous boreal tree<tr>
+<td>4 <td>broadleaf evergreen tropical tree<tr>
+<td>5 <td>broadleaf evergreen temperate tree<tr>
+<td>6 <td>broadleaf deciduous tropical tree<tr>
+<td>7 <td>broadleaf deciduous temperate tree<tr>
+<td>8 <td>broadleaf deciduous boreal tree<tr>
+<td>9 <td>broadleaf evergreen temperate shrub<tr>
+<td>10 <td>broadleaf deciduous temperate shrub<tr>
+<td>11 <td>broadleaf deciduous boreal shrub<tr>
+<td>12 <td>arctic c3 grass<tr>
+<td>13 <td>cool c3 grass<tr>
+<td>14 <td>warm c4 grass<tr>
+<td>15 <td>crop 1<tr>
+<td>16 <td>crop 2 <tr>
+</table>
+
+
+
+
+<!------------------------------------------------------------------------>
+		
+</div>
+</body>
+</html>
+  
+
+     <!--  ================== End Purpose ======================== -->
+     <!--  ================== Purpose of the tag ================= -->
+     <html>
+<br>
+<div class="problems-frame">
+<b>LSM Land cover types </b>
+<p>
+
+<!--  ---------------------------------------------------------------------  -->
+<table>
+<td>No Vegetation<tr>
+<td>0 <td>ocean<tr><tr>
+<td>1 <td>land ice<tr>
+<td>2 <td>desert<tr>
+<td><b>Forest<tr></b>
+<td>3 <td>cool needleleaf evergreen tree<tr>
+<td>4 <td>cool needleleaf deciduous tree<tr>
+<td>5 <td>cool broadleaf deciduous tree<tr>
+<td>6 <td>cool mixed forest<tr>
+<td>7 <td>warm needleleaf evergreen tree<tr>
+<td>8 <td>warm broadleaf deciduous tree<tr>
+<td>9 <td>warm mixed forest<tr>
+<td>10 <td>tropical broadleaf evergreen forest<tr>
+<td>11 <td>tropical broadleaf deciduous tree<tr>
+<td><b>Interrupted Woods<tr></b>
+<td>12 <td>savanna<tr>
+<td>13 <td>evergreen forest tundra<tr>
+<td>14 <td>deciduous forest tundra<tr>
+<td>15 <td>cool forest crop<tr>
+<td>16 <td>warm forest crop<tr>
+<td><b>Non-woods<tr></b>
+<td>17 <td>cool grassland<tr>
+<td>18 <td>warm grassland<tr>
+<td>19 <td>tundra<tr>
+<td>20 <td>evergreen shrub land<tr>
+<td>21 <td>deciduous shrub land<tr>
+<td>22 <td>semi-desert<tr>
+<td>23 <td>cool irrigated crop<tr>
+<td>24 <td>cool crop<tr>
+<td>25 <td>warm irrigated crop<tr>
+<td>26 <td>warm crop<tr>
+<td><b>Wetland<tr></b>
+<td>27 <td>forest wetland<tr>
+<td>28 <td>non-forest wetland<tr>
+</table>
+
+
+<!------------------------------------------------------------------------>
+		
+</div>
+</body>
+</html>
+  
+
+     <!--  ================== End Purpose ======================== -->
+
+    </p>
+   </p>
+
+</body>
+</html>
+  
+
+</ul>
+<!-- ===================================================================================== --!>
+<br>
+<a name="ocn"></a>
+<br>
+<ul>
+    <a name="ocn"></a>
+    <html>
+
+</ul>
+<hr>
+<h2> Ocean </h2>
+<hr>
+<ol>
+
+       <a name = "ocn.intro"></a>
+
+       <li><h4>Getting started</h4><html>
+<hr>
+<p>The deep time paleo modeler is responsible for creating the binary ocean bottom topography file, the horizontal and vertical ocean grid files, a 
+region mask file, and the ocean initial conditions. In addition, several input template files may need to be changed. 
+For example, if the land/ocean mask is changed, the input template file containing new indices for diagnostic transport calculations will need to be changed. 
+The namelist input file (pop2_in and user_nl_pop2) will need to be changed as well. This section will describe methods that can be used to generate these new files.
+</p>
+
+
+<hr>
+<li><h4>Ocean Bottom topography (KMT) and Region mask</h4>
+<hr>
+<p>
+The ocean bathymetry in POP is represented by a 2D integer field called the KMT representing the number of active depth levels at each tracer grid box.&nbsp; 
+The corresponding region mask is an integer representing a named region, defined in the *_region_ids input template file.  
+</p>
+
+For more information, please refer to the POP User's Guide. 
+
+</html>
+
+       <a name = "seaLev"></a>
+       <li><html>
+      <hr>
+      <h4>
+      Changing Sea level and ocean bathymetry
+      </h4>
+      <hr>
+
+    <p>
+     The process of altering the modern land/ocean mask to simulate raising/lowering sea level can be complicated and we offer these general guidelines.
+     First, 
+     Model results will be very sensitive to ocean depth, particularly along shallow shelf regions.  For this reason, we do not recommend 
+     making global changes to ocean depth (KMT) for near modern simulations, other than to make
+     localized changes that are essential to your science (e.g., closing the Bering Strait, raising/lowering sill heights, opening the Isthmus of Panama, etc.).
+     If, however, you do decide to change ocean depth or make comprehensive changes to sea floor relief,
+     we advise that you run a control experiment with your modifications to test your model sensitivity to these changes.
+     <b>Note:</b> Every change to the land/sea mask requires new <b>KMT, lnd_domain, rmap</b> and <b>fmap </b>files,
+     as well as new coupler mapping files. However, in contrast to the case of a simulated sea level rise, lowered sea level 
+     simulations can generally restart the ocean and sea ice models using restart files from present-day 
+     simulations, as long as no new ocean points have been added.
+
+     </p>
+
+    <p>
+    <ul>
+    <li><p><strong>Raising Sea level &raquo;</strong>  Raising sea level requires that land cells be reclassified as ocean, 
+    which then must be initialized, since the ocean requires that all points be initialized at start up.  If you 
+    configure your experiment as a startup run, the new ocean cells will
+     automatically be filled with Levitus (Levitus et al., 1998, Steel et al., 2001) values.  However, because the deep ocean takes a long
+     time to come to equilibrium, it is generally desirable to initialize the ocean from a previously run experiment.
+     In order to use a previous ocean restart file, you will need to modify the ocean source code to initialize the 
+     temperature and salinity fields for
+     the new ocean cells.  This process can be complex and is beyond the scope of this document.
+     </p>
+
+    <li><p><strong>Lowering Sea level &raquo;</strong>  Lowering sea level requires that ocean cells be
+     reclassified as land cells.  In general, changing grid cells from ocean to land is more straightforward than turning
+     land into ocean. For example, we use an NCL script to reassign ocean points to land  when we reassign 
+     the ocean cells representing Hudson Bay to land for Pre-Pleistocene simulations.  You recommend that you use
+     the default binary CESM1 topography (KMT) and region mask files as input. Your output should be new binary files
+     with the user-defined changes to the ocean map, which whill be used directly by the ocean model (user_nl_pop2) and are
+     required to create new coupler mapping files that map the new land/sea map to the atmosphere. 
+     </p>
+
+     <b>Hint:</b>  Check the region mask to be sure you have not eliminated any ocean regions.  Eliminating ocean regions requires
+     renumbering the ocean region in the region mask file and changing the region_ids file (e.g., gx1v6_region_ids)
+     to correspond with your new ocean basins.  By retaining at least one active ocean cell in the 
+     default regions, you can avoid having to change the region_ids.</p>
+
+     <p>
+     <b>Hint:  </b> Carefully check your new KMT land/sea mask for narrow channels, one grid-cell bays that inhibit
+     circulation, and changes to marginal seas.   The region_mask and KMT land/sea masks must match EXACTLY.  Even a single
+     grid-cell discrepancy will cause your model to crash without warning and without an adequate error traceback.
+
+     </p>
+
+     <li><p><strong>Bathymetry &raquo;</strong>  Model results will be very sensitive to sea floor relief.  In general, 
+     we do not recommend changing sea floor relief when simulating changes 
+     in sea level, other than to make localized changes to individual grid cells in areas 
+     that are essential to your science.
+     </p>
+      
+     <p>
+
+      </ul>
+
+
+       
+    </p> 
+
+</html>
+
+
+      <hr>
+      <li>
+      <h4>
+      How do I change the region mask and region IDs
+      </h4>
+      <hr>
+
+    <p>
+
+     <b>region_mask_gx1v6</b><br>
+     The region_mask_gx1v6 file defines the ocean regions in CESM1 POP2.  If you change the land/sea mask from the present
+     day configuration you must also modify the region_mask.ieeei4 file to match your KMT land/sea definitions.  These two
+     files must match exactly for the model to work properly.
+
+     <p>
+     <b>gx1v6_region_ids</b><br>
+     If you make significant changes to your land/ocean mask you may also need to adjust the gx1v6_region_ids file, which
+     divides the oceans into numbered regions; negatively numbered regions denote inland or marginal seas.
+     <p>
+     <ul>
+     <p><b>&raquo;Deep Time: </b> Since deep time simulations have ocean configurations that differ profoundly from current day, deep time
+     modelers will need to define their own ocean regions.  Typically we recommend that they define two simple regions,
+     Northern and Southern Hemisphere.</p>
+
+     <b>&raquo; Quaternary :</b>  Quaternary modelers can usually use the default ocean region mask as long as they retain at least one
+     active ocean grid cell within each default region.   However, if you remove an entire ocean basin or marginal sea,  you
+     will need to reorder all subsequent regions in the input template file. </p>
+
+     </ul>
+
+     <p>
+
+      </ul>
+     <a name = "designgrid"></a>
+     <li><html>
+
+<hr>
+<h4> How do I design a new ocean grid for my Deep Time simulation</h4>
+<hr>
+
+<p>
+If the standard Greenland 'displaced pole' grid can not be used for the new land/ocean mask, 
+this procedure can be used to obtain a new grid. First consult the POP User's guide for information about other 
+grids that can be used. Designing and creating a new ocean grid for Deep Time paleoclimate requires expert knowledge of climate
+modeling, including the 'art' of CESM climate modeling. 
+</p>
+
+<h3 class="ColorfulList-Accent11CxSpFirst">a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Choose your grid size:&nbsp;</h3><p
+class="ColorfulList-Accent11CxSpMiddle">We describe using a low resolution version of the finite volume CESM1 model (1.9x2.5 degree atm/land)
+with a high resolution ocean (gx1v6).&nbsp; We recommend that you choose a CESM1-supported grid size for your simulation. The most common
+supported ocean grid sizes are styled after gx3v5 (100 longitudes and 116 latitudes) and gx1v6 (320 longitudes and 384 latitudes).
+&nbsp;Although building a new ocean grid with a non-supported grid size is possible, (<a
+href="http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x2397.html">see CESM User Guide for discussion</a>) additional changes need
+to be made in the ocean and ice source code.&nbsp; Examples and tools described in this document are designed for supported ocean grid
+sizes.</p><h3 class="ColorfulList-Accent11CxSpLast">b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grid pole placement:</h3><p>The ocean model requires that
+grid poles be placed over land. Numerically no computation can be done at the convergence point of all longitudes at the grid pole. The ocean
+model solves this problem by shifting the grid pole away from the geographic pole and placing it over a land mass. (Atmospheric models solve
+this problem by using numerical filters). Therefore if there is no land at the geographic pole, the numerical pole must be shifted over land
+elsewhere. As long as land exists poleward of ~65<sup>o</sup>, our tools should be able to create an ocean grid for POP without code
+modification.&nbsp;</p>
+
+<p>Pole placement is a subjective process, however, we offer a few helpful tips.</p><ol><li>Place the grid pole as
+close to the geographic pole as possible.</li><li>It can be helpful to place the NH and SH pole on the same longitude.</li><li>Place the grid
+pole close to the continental edge (1-2 grid cells) but be sure that you are not creating spurious land cells around the pole disc.&nbsp; If you see a smooth
+edge to your continental boundary when you plot your grid, you will need to shift the shift the pole inland. You might also
+experiment with increasing jcon (reasonable range for jcon=10-20).</li><li><span style="color:
+#ff0000;"><strong>WARNING</strong></span>: &nbsp;Grid cell size decreases as the grid converges toward the pole point, with the consequence
+that if your grid cells are too small as you approach the poles, you may have to decrease the modeling timestep to avoid ocean instabilities.
+Therefore, try to avoid creating grid cells that are smaller than the CESM default ocean grid at your resolution.&nbsp; Increasing jcon may
+help avoid this problem.</li></ol>
+
+</p>
+
+
+</html>
+
+     <a name = "bldgrid"></a>
+     <li><html>
+
+<hr>
+<h4> Building a new ocean grid for Deep Time paleoclimate simulations </h4>
+<hr>
+
+<strong><p>The default configuration of CESM1.X/POP2 expects binary input files in BIG_ENDIAN format.<br
+/></span></strong></strong></p><p>Our tools are designed to combine the grid and KMT creation steps. Feel free to modify the provided scripts
+to suite your programming style. The script <strong>mk_grid_cesm.csh </strong>will create your grid using a Fortran program called
+<b>ns_dipole.f</b>, it will create your KMT file using a Fortran program called paleotop.f90, and it will convert the binary output files into a
+netCDF format for easier viewing and modifying. This script may need to be run iteratively depending on how many modifications to your grid
+are necessary. See the Overview section for guidance on how to create your grid.&nbsp; <strong>Steps 1-3 </strong>will describe
+<strong>mk_grid_cesm.csh.&nbsp;<br /></strong></p><p>Once you are happy with your grid, you will then proceed to <strong>Step 4</strong>,
+modifying your KMT file. Modelers may modify their KMT file with whatever tools proves most useful. Some paleo modelers have used tools, such
+as <strong>Matlab</strong>, to modify their KMT file. See the Overview section for guidance on your KMT file.</p><p>Once you are happy with
+your KMT file, then proceed to <strong>Step 5</strong> to convert your netCDF KMT file back to the binary file required by POP. We provide a
+Fortran program called <strong>gridkmt_nc2bin.f90</strong> as well as <strong>NCL</strong> scripts to accomplish this task.</p><p>Finally,
+proceed to <strong>Steps 6-8</strong> to create your region mask and edit the necessary input templates for your paleo case. All of these
+steps can be accomplished with <strong>mk_ocninput.csh</strong>.</p><p>For all Fortran code, the modeler is responsible for compiling and
+creating executables, and changing the scripts to point to her/his code, data, and executables.</p><hr /><p>
+
+<strong>STEP 1: Creating the ocean
+grid</strong><br /><strong>Tools:&nbsp; mk_grid_cesm.csh/ns_dipole.f/paleotopo.f90</strong></p>
+<a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/ocn/mk_ocn_grid">Source Code on github</a>
+
+<p style="padding-left: 30px;">Edit the top
+portion of the script <strong>mk_grid_cesm.csh</strong> to set the variables that define your grid in ns_dipole.f90, paleotop.f90, and
+grid_nc2bin.f90.</p><table border="1"><tbody><tr><th>Variable</th><th>Description</th><th>Notes</th><th>1<sup>o</sup> grid
+example</th><th>3<sup>o</sup> grid example</th></tr><tr><td>nx</td><td>number of i grid lines</td><td>grid resolution in E/W
+direction</td><td>320</td><td>100</td></tr><tr><td>ny</td><td>number of j grid lines</td><td>grid resolution in N/S
+direction</td><td>384</td><td>116</td></tr><tr><td>nlatn</td><td>number of j gridlines in NH</td><td>Grid distribution should reflect science
+priorities (PD grid has higher resolution in NH).&nbsp;&nbsp;&nbsp; nlatn+nlats=ny.&nbsp; Tip: Avoid even
+distribution</td><td>209</td><td>63</td></tr><tr><td>nlats</td><td>number of j grid lines in
+SH</td><td>&nbsp;</td><td>&nbsp;175</td><td>53</td></tr><tr><td>lonnp</td><td>longitude of grid North
+Pole</td><td>&nbsp;</td><td>&nbsp;--</td><td>&nbsp;--</td></tr><tr><td>latnp</td><td>Latitude of grid North Pole</td><td>Tip: place pole
+points as close as possible to edge of continent without causing the pole to bulge outside the continental boundary on the new grid. (see pole
+plotting routine)</td><td>&nbsp;--</td><td>&nbsp;--</td></tr><tr><td>lonsp</td><td>Longitude of grid South pole</td><td>&nbsp;Time period
+dependent</td><td>&nbsp;--</td><td>&nbsp;--</td></tr><tr><td>latsp</td><td>Latitude of grid South Pole</td><td>&nbsp;Time period
+dependent</td><td>&nbsp;--</td><td>&nbsp;--</td></tr><tr><td>dyeq</td><td>dy in degrees at Equator</td><td>&nbsp;Tip:&nbsp; CESM default ULAT
+at Equator.</td><td>0.26<sup>o</sup></td><td>&nbsp;0.6<sup>o</sup></td></tr><tr><td>dsig</td><td>Gaussian e-folding scale at
+Equator</td><td><p>increasing this number widens the high resoln equatorial
+band</p></td><td><p>30</p></td><td><p>15</p></td></tr><tr><td>jcon</td><td>number of rows of constant dy at poles</td><td>increasing this
+number can move the pole landward if it is extending beyond the edge of the polar continent.&nbsp; Recommended range:&nbsp;
+10-20.</td><td>11</td><td>11</td></tr><tr><td>popgrid</td><td>binary pop grid file</td><td>Default POP2 expects BIG_ENDIAN binary
+format</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>gridkmt.ITER.nc</td><td>netCDF output file with KMT and ocean grid.</td><td>Use this
+file to check your pole placement using ncl tools (e.g., plot_global_all.ncl)</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p
+style="padding-left: 30px;">&nbsp;</p>
+
+<p><strong>STEP 2: Creating the KMT file</strong><br /><strong>Tool:&nbsp;
+mk_grid_cesm.csh/paleotopo.f90</strong></p><p style="padding-left: 30px;">&nbsp;NOTE:&nbsp; <strong>paleotopo.f90</strong> requires the
+bathymetry data be at 0.5x0.5 degree resolution.</p>
+
+<p><strong>STEP 3.&nbsp; Edit mk_grid_cesm.csh&nbsp; Convert model grid and KMT to
+viewable file</strong><br /><strong>Tools:&nbsp; mk_grid.csh/grid_bin2nc.f90 or bin2nc_i4_toporegion.090204.ncl</strong></p><ul
+style="padding-left: 30px;"><li>Choice a: mk_grid_cesm.csh/grid_bin2nc.f90</li></ul><p style="padding-left: 30px;">The
+<strong>mk_grid_cesm.csh</strong> script calls the Fortran program <strong>grid_bin2nc.f90</strong> to create a netCDF file. This information
+includes all grid information (i.e. variables in the pop grid file), plus elevation (bathymetry value in meters) as well as the KMT
+information. Other than the KMT values, all other information in the netCDF file are for viewing purposes only. Only the KMT values will be
+used in the POP model, the elevation variable is for your diagnostics only. Elevation values are ultimately computed in the model at runtime
+based on the KMT binary data file. <strong>Note</strong>: if you notice an error in your grid information, you will need to go back to the
+ns_dipole step for correction.&nbsp; The binary file generated by <strong>ns_dipole</strong> is the file used in the model, not the variables
+in this diagnostic netCDF file.</p><p style="padding-left: 30px;">Edit <strong>mk_grid_cesm.csh</strong> for the following variables which
+control <strong>grid_bin2nc.F90</strong>:</p><ul style="padding-left: 30px;"><li>Choice b: bin2nc_i4_toporegion.090204.ncl</li></ul><p
+style="padding-left: 30px;">If you do not wish to create a grid/KMT netCDF file with <strong>grid_bin2nc.f90</strong>, and only want to
+convert the binary KMT file to a netCDF file, use the NCL script,<strong> bin2nc_i4_toporegion.090204.ncl. </strong>This NCL scripts converts
+both the KMT file as well as the region mask file to netCDF format.&nbsp; (Simply comment out the region mask read/write sections of the code
+if you do not have a region mask file yet).</p><p style="padding-left: 30px;"><strong>At the end of the STEP 3, run mk_grid.csh. &nbsp;If you
+choose STEP3/Choice b, comment out the grid_bin2nc section of mk_grid.csh and run bin2nc_i4_toporegion.090204.ncl.</strong></p><p><strong><br
+/></strong></p>
+
+<p><strong>STEP 4: Evaluate/edit KMT</strong><br /><strong>Tool:&nbsp; multi-step process</strong></p>
+<p> 
+The bottom topography (KMT) field will need to be checked and edited 
+to eliminate potential problems at runtime.  Modifying the KMT is a subjective process, and ultimately, it is up to the modeler to decide how best
+to make the necessary modifications.  Some paleo modelers have used Matlab with a GUI-interface to change the KMT values.  We offer some guidance for grid
+modifications, and outline a method for visualizing the grid on a regular sphere.</p>
+<ul>
+<li>1.  poles extending beyond edge of continent?
+<li>2.  compare gridkmt.4.nc against gx1v6_ocn.nc (paleo_setup/ocn/gx1v6).
+    Be sure that HTN and HTE in your gridkmt.nc file are at least as
+    big as HTN and HTE in the gx1v6_ocn.nc grid.
+        UNITS: --HTN and HTE in gridkmt.{ITER}.nc =  m
+               --HTN and HTE in gx1v6_ocn.nc      = cm
+</p>
+
+
+<p>a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Eliminate or widen one grid cell wide channels and bays at all levels. Horizontal velocities are 
+defined to be zero at the corners of the KMT grid boxes, thus a channel of one grid box wide will have zero horizontal flow. 
+One typically removes these channels by filling them with land, or widening them to
+have a minimum width of two grid cell.&nbsp; Note, our tool contains an option to try and remove these channels automatically, but isolated
+points may still occur.&nbsp;</p>
+<p>b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Check zig-zag channels at the curves for widths of one grid cell. 
+&nbsp; These transition areas will be missed with the automatic checks and must be edited. If not, there will be
+no flow through the transition area due to zero velocities at all corners of (land) cell borders. The recommended change would be to widen the
+transition area to two ocean grid cells.</p>
+<p>c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Avoid small and shallow bays.&nbsp; Although a two cell wide
+bay may contain ocean velocities in the middle of the bay, realistically, there may not be enough circulation to fully resolve the ocean flow.
+Widening these bays may avoid negative salinities (in the case of too much fresh water runoff into the bay) or super-saline bays (in the case
+of excess evaporation).</p>
+<p>d.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The minimun allowable nonzero KMT value is 3 (shallowest active ocean depth).  
+&nbsp;</p>
+<p>e.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visualize KMT on a sphere, with rough grid overlay.
+<ul style="padding-left: 30px;">
+<li> 1. Create SCRIP mapping file.
+<dt>  (NOTE:  myConvertPOPT must be compiled with big_endian flag)
+                <dt>Src: <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/cpl_mapping/scrip1.4">source code on github</a>
+                <dd>src:   <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/ocn/tools/">mk_SCRIPgrid.csh</a>
+                <dd>in1:      nx, ny
+                <dd>in2:      grid.3.pop.da         (binary grid file; big_endian)
+                <dd>in3:      kmt.3.da              (binary KMT file; big_endian)
+                <dd>in4:      fv1.9x2.5_090205.nc   (default atm grid)
+                <dd>out1:   gx1PT_{DATE}.nc (ocn SCRIP mapping file: center_lat, center_lon)
+</dl>
+</li>
+<li> 2. Create four quadrant and two polar images of KMT on a sphere.  The grid is represented as every nth longitude, overlaying the sphere.  
+<dt> 
+                <dt>
+                <dd>runscript:  plot_all.ncl
+                <dd>ncl:  plot_global_all.ncl
+                <dd>in1:      gx1PT_{DATE}.nc
+                <dd>ou1:      Grid_PT_reg_np.ps
+                <dd>ou2:      Grid_PT_reg_sp.ps
+                <dd>ou3:      Grid_PT_reg_q1.ps
+                <dd>ou4:      Grid_PT_reg_q2.ps
+                <dd>ou5:      Grid_PT_reg_q3.ps
+                <dd>ou6:      Grid_PT_reg_q4.ps
+
+</dl>
+</li>
+
+<li>f. Other plotting choices:</li><p style="padding-left: 30px;">
+We provide a sample NCL script to hand edit your KMT
+file. This technique requires hard coding specific KMT changes within the NCL script. It is up to the modeler to determine how best to code
+the necessary changes.&nbsp; Script <strong>change_kmt_example.ncl</strong> is provided as an example and a template.
+Use this code to modify your grid to open/close channels, remove islands, etc.
+<strong>Note: You must create coupler mapping files (described below) before you can modify your code using this NCL script.</strong>
+Also note that the coupler mapping <strong>filename </strong>will be incompatible with NCL's PopLatLon requirements called for in this script 
+so you will need to copy or link the orginal filename to a new filename that matches the syntax that PopLatLon expects.  
+e.g.,  ln -s map_gx1PT_TO_fv19_25_<strong>blin</strong>.{DATE}.nc map_gx1PT_to_fv19_25_<strong>bilin_da</strong>.{DATE}.nc
+</li></ul>
+<ul style="padding-left: 30px;">
+<li>
+
+      <dd>ncl:  change_kmt.b2nc.ncl
+      <dd>in1:  kmt.3.da                       !! your kmt
+      <dd>in2:  grid.3.pop.da                  !! your grid
+      <dd>in2:  topo_bathymetry.1deg.nc        !! your topo
+      <dd>in3:  gx1PT_{DATE}.nc
+      <dd>in4:  cpl_mapping/map_gx1PT_TO_fv19_25_blin.{DATE}.nc     !! coupler mapping file for your run
+     <dd>out1:  kmt.{DATE}.nc
+     <dd>out2:  kmt.remap.{DATE}.nc
+</li></ul>
+</li></ul>
+
+
+
+<p style="padding-left: 30px;">&nbsp;</p><p>
+<strong>STEP 5: Convert from
+final grid back to binary</strong><br /><strong>Tool:&nbsp; gridkmt_nc2bin.F90/NCL</strong></p><p style="padding-left: 30px;">Once you have
+perfected your new KMT file via the netCDF file, you will need to convert this back to binary for the POP model.</p><ul style="padding-left:
+30px;"><li>Choice a: gridkmt_nc2bin.F90</li></ul><p style="padding-left: 30px;">Simply compile and run. The program will prompt you for input
+and output file names.</p><ul style="padding-left: 30px;"><li>Choice b: NCL</li></ul><p style="padding-left: 30px;">The example NCL script
+<strong>change_kmt_example.ncl</strong> writes the new KMT to both netCDF and binary.</p><p><strong>&nbsp;</strong></p>
+
+<p><strong>STEP 6:
+Create region mask</strong><br /><strong>Tool:&nbsp; mk_ocninput.csh/modregmsk_edit.f</strong></p>
+<p>The region mask file is a binary file with unique integer identifiers for each ocean
+basin.&nbsp; The integer value specifies the various water bodies where the ocean model is active (lakes are handled
+in the land model and are considered land cells). The basins with positive integer identifiers should all connect in one large active ocean domain (as in the modern ocean). 
+Negative values designate separate enclosed marginal seas, such as the Black Sea, for which the marginal sea balancing routine is applied. 
+</p>
+<p>For deep time paleo cases, we typically create a simplified domain with 
+two defined regions: the Northern and Southern Hemispheres.  </p>
+<p>Once regions have been chosen, the modeler will need to modify the corresponding ASCII input_template called the region_ids file to reflect
+the new regions.</p>
+
+<p style="padding-left: 30px;">The script
+mk_ocninput.csh actually accomplishes STEPS 6-9. It creates the region mask based on the modregmsk_edit.f code, it creates the region
+identifiers (region_id input_templates), it creates the diagnostic input_template for locations to compute ocean transport, and it grabs all
+input_templates for your grid size and copies them all to a single location with your unique grid name.</p><p style="padding-left: 30px;">Edit
+mk_ocninput to specify your code and data locations, your grid and KMT binary files names, and to specify your new unique grid name. If you
+have used gx3v5 for your grid size, (i.e. 100 longitudes and 116 latitudes), it would still be wise to rename your grid to something more
+appropriate for your case to distinguish it from the default gx3v5. For example, g3vJ where g3 would imply the gx3v5 size, but vJ would imply
+version Jurassic, if your period was the Jurassic.&nbsp;</p><p style="padding-left: 30px;">You will also need to modify the mk_ocninput.csh
+script for each section of the script that deals with STEP 7-9.</p><p style="padding-left: 30px;">In STEP 6, we are modifying the ocean code
+modregmsk_edit.f.&nbsp; Although no changes are necessary to the mk_ocninput.csh script itself, edits to the Fortran code are necessary if the
+modeler requires a region mask other then Northern Hemisphere and Southern Hemisphere. It is up to the modeler’s program style to determine
+how best to accomplish this goal for deep time periods.&nbsp; Each period is unique therefore we cannot provide an all-inclusive
+algorithm.&nbsp;</p><p>&nbsp;</p>
+
+<p><strong>STEP 7: Create region mask identifiers (input_template)</strong><br /><strong>Tool:&nbsp;
+mk_ocninput.csh </strong></p><p style="padding-left: 30px;">Be sure to read the comments in mk_ocninput.csh.</p><p style="padding-left:
+30px;"><em>Input_templates </em>are ASCII files required at POP’s runtime and operate similar to namelist files. Each input_template deals
+with aspects of POP that can be changed by the modeler.</p><p style="padding-left: 30px;">The <strong>region_ids</strong> input_template
+compliments the region mask binary file such that it gives POP information for each ocean region.&nbsp; For each region, the integer value and
+the ocean basin name are set. If the ocean basin is a marginal sea, the model requires a location (latitude and longitude and area) to be
+specified for the redistribution of net freshwater from the marginal seas. Marginal seas are flagged with a negative number.</p><p
+style="padding-left: 30px;">If the ocean basin is not a marginal sea, then these values should be set to 0. Integer values in the region_ids
+file must be ascending order of the absolute value of the integer. (i.e. 1, 2, -3, 4, etc. where -3 would be a marginal sea). For examples of
+the present day region ids, go to the POP source code under input_templates.</p><p>&nbsp;</p>
+<p><strong>STEP 8: Create diagnostic transport
+locations</strong><br /><strong>Tool:&nbsp; mk_ocninput.csh</strong></p><p style="padding-left: 30px;">Be sure to read the comments in
+mk_ocninput.csh</p><p style="padding-left: 30px;">The <strong>transport_contents</strong> input_template is used for diagnostic purposes only.
+In this file, the modeler can specify ocean locations (straits for example) for ocean transport computations that will be output in the ocean
+log files.</p><p style="padding-left: 30px;">Grid point i and j and k (depth) locations are required. The modeler should also specify whether
+the section is meridional or zonal and assign a section name. For examples of the present day transport_contents file, go to the POP source
+code under input_templates.&nbsp; Note that the POP2 source code expects formatted input, so the ASCII format must match the format of the PD
+transport template file.</p>
+<p><strong>STEP 9: Rename input templates to your gridname</strong><br /><strong>Tool:&nbsp;
+mk_ocninput.csh</strong></p><p style="padding-left: 30px;">Finally, the mk_ocninput.csh script copies all other input templates from the
+default location in the POP source code directory and renames them (in addition to your <strong>region_ids</strong> and
+<strong>transport_contents</strong>) according to your unique grid name.&nbsp; These remaining input templates are as follows:</p>
+
+</html>
+
+     <a name = "ocn.ic"></a>
+     <li><html>
+
+<hr>
+<h4>Ocean initial conditions for Deep Time paleo simulations</h4>
+<hr>
+<p>There are four options for initial ocean/ice conditions for startup runs. The choices include, mean, zonal-mean, startup
+(default), and internal. Details on how to invoke each choice are discussed in the model build scripts section.</p><p>startup (default
+configuration)</p><p><strong>Initialize with a full spatially distributed temperature/salinity dataset</strong></p><p>If the modeler has
+latitude, longitude, and depth information on temperature and salinity, the ocean model can be initialized in the default configuration with a
+binary file at startup. This is recommended only if the modeler has this information on an appropriate grid or a grid that is close enough for
+interpolation. We provide a sample NCL script that will interpolate initial T/S information between two similar grids. This option will be
+more appropriate for near-modern cases</p><h2>Zonal-mean</h2><p><strong>Initialize with a global, zonally averaged temperature/salinity
+distribution.</strong></p><p>POP allows a zonally averaged temperature/salinity file to be used for initialization. This file is binary and
+the format can be found in the CCSM3/POP source code, subroutine <strong>initial.F</strong></p><h2>Mean</h2><p class="BodyPaleoDoc">Initialize
+with a global, horizontally averaged temperature/salinity depth profile<strong>.&nbsp; </strong>Initializing with a global volume averaged
+temperature profile is the recommended method for deep time paleo simulations. Often, very little information on deep ocean temperatures is
+known, so initializing with a simple depth profile is the easiest method.</p><p>POP requires this initial file to be a simple ASCII file with
+a temperature and salinity value for each vertical level.
+</p><h2>Internal</h2><p><strong>Initialize with the default Levitus temperature/salinity profile.</strong></p><p>Present day temperature and
+salinity profiles can be computed internally at runtime based on 1992 Levitus data.&nbsp;</p><h2><span style="color:
+#ff0000;"><strong>NOTE:&nbsp; IAGE bug in CESM1.2</strong></span></h2><p>&nbsp; (confirmed by Keith Lindsay and Nancy Norton)</p><p>The non-standard
+initialization of TEMP &amp; SALT is not compatible with CESM's restart script mechanisms. Despite CONTINUE_RUN being TRUE in env_run.xml, the
+model tries to initialize TEMP &amp; SALT with the same IC as was used in the first submission. On restart, the IAGE initialization is trying
+to read from the same file that TEMP &amp; SALT are being read from, but IAGE is not in that file. This leads to the problem that you are
+seeing.</p><p>The iage error appears to be a symptom of using 'internal' or 'mean' for init_ts_option on restarts.</p><p>The default for
+init_ts_option is 'ccsm_$runtype'. This gets evaluated to 'ccsm_continue' on a restart. But if init_ts_option = 'internal' or init_ts_option =
+'mean', pop2 tries to continue using 'internal' or 'mean' for every submission (i.e., restart) instead of the POP2 restart files. On restart,
+the iage module&nbsp; complains that it can't find a restart file because the model hasn't read the rpointer file, because the physics is
+still using internal.&nbsp;<br /><br /><strong><span>Solution A</span></strong>:&nbsp; The workaround is to manually set init_ts_option to
+'ccsm_continue' in user_nl_pop2 for continuation runs, and comment out init_ts_option = 'mean'.</p><p><strong>&nbsp;&nbsp;&nbsp; Initial
+submission : user_nl_pop2 setting</strong></p><p style="padding-left: 30px;">! Use vertical column for first submission<br />init_ts_option =
+'mean'<br />init_ts_file = 'ts_init_b20.681_1100-01_s_35.60level.dat' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/ocn/ic">(available on github)</a><br /><br />! manually turn this
+on for all restarts after first submission<br />! init_ts_option = 'ccsm_continue'</p><p><strong>&nbsp;&nbsp;&nbsp; Restart submission :
+user_nl_pop2 setting</strong></p><p style="padding-left: 30px;">! Use vertical column for first submission<br />! init_ts_option = 'mean'<br />
+! init_ts_file = 'ts_init_b20.681_1100-01_s_35.60level.dat' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/ocn/ic">(available on github)</a>
+
+<br /><br />! manually turn this on for
+all restarts after first submission<br />init_ts_option = 'ccsm_continue'</p><p><span><strong>Solution B</strong></span>:&nbsp;
+An&nbsp;<strong> <span>UNTESTED</span></strong>&nbsp;solution could be to add some variant of this code to the top of
+Buildconf/pop2.buildnml.csh:&nbsp;<br /><br />set init_ts_option = internal&nbsp;<br />if ($CONTINUE_RUN == 'TRUE') set init_ts_option =
+continue&nbsp;<br /><br />Then change the init_ts_option line in the namelist to&nbsp;<br /><br />&nbsp;&nbsp;
+init_ts_option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = '$init_ts_option'</p>
+</html>
+
+     <a name = "tidal"></a>
+     <li><html>
+<a name="overflow"></a>
+<hr>
+<h4> Watch for physical conditions that may be hardcoded to the modern ocean: </h4>
+<hr>
+
+<ul>
+<table border="1.5">
+<tr>
+<td><strong>Recommended pop2 namelist settings for Deep Time</td></strong>
+<tr>
+<td>
+overflows_on = .false.<br>
+overflows_interactive = .false.<br>
+lhoriz_varying_bckgrnd = .false.<br>
+ldiag_velocity = .false.<br>
+ltidal_mixing = .false.<br>
+bckgrnd_vdc1 = 0.524<br>
+bckgrnd_vdc2 = 0.313<br>
+
+sw_absorption_type   = 'jerlov'<br>
+jerlov_water_type    =    3<br>
+chl_option           = 'file'<br>
+chl_filename         = 'unknown-chl'<br>
+chl_file_fmt         = 'bin'<br>
+
+</table>
+</ul>
+
+<p>
+
+
+<ul>
+<li><strong>Overflow regions:</strong>
+<dl>
+The overflow locations are grid dependent.  Contact Gokhan Danabasoglu  (gokhan@ucar.edu) in the NCAR ocean model group for details on the physical implications of the overflow process.  (File:  /models/ocn/pop2/input_templates/gx1v6_overflow)
+</dl>
+
+
+<li><strong>Background diffusivity:</strong>
+<dl>The background diffusivity for the vertical mixing scheme has latitudinal dependence.
+ For example, background diffusitivites are hardwired for the specific lat/lon areas bounding the
+ modern world Banda Sea, and on the western boundaries of oceans.  
+</dl>
+
+   <li><strong>chlorophyll</strong>
+   <dl>The default choice for the “sw_absorption” in pop_in is “chlorophyll”. The
+   chlorophyll dataset is designed for present day geography, therefore, for deep time
+   paleo cases, the choice “jerlov” is more appropriate. See the POP user guide for more
+   details on the pop_in file. 
+   </dl>
+
+
+<li><strong>Branching from a run with overflows turned ON</strong>
+
+<dl>The overflow code has to modify the original startup ocean kmt bottom topography to run. These kmt changes 
+are saved in the restart file as changes to the computational domain. On restart, the kmt field is 
+modified as originally during startup, so it is consistent 
+with the restart file. Our experience is that if one 
+does a restart using a file that originally had overflows, 
+but now you change the namelist input file to turn them 
+off, pop may not be stable.
+</dl>
+
+<li><strong>tidal mixing:</strong>
+
+<dl>Tidal mixing is geography dependent and is closely tied to the present day.  We have
+
+<dt>tidal_mixing = .false.
+
+<dd>/
+</dl>
+</ol>
+</html>
+
+     <a name = "pop.nl"></a>
+     <li><p>
+
+        <p>
+	<dl>
+        !-- Specify the grid type to avoid the model assumption of a uniform grid in the southern hemisphere (i.e., gx1v6).
+<br>
+
+	<dt>
+        <dd> lat_aux_grid_type   = 'user-specified'
+        <dd> lat_aux_begin       = -90.0
+        <dd> lat_aux_end         = 90.0
+        <dd> n_lat_aux_grid      = 180
+	</dl>
+
+        <dl>!-- Set the grid type to 'user-specified' to avoid the model assumption of 
+a uniform grid in the southern hemisphere (i.e., gx1v6).
+
+	<dt>
+        <dd> moc_requested          = .true.
+        <dd> n_heat_trans_requested = .true.
+        <dd> n_salt_trans_requested = .true.
+        <dd> n_transport_reg        = 1
+	</dl>
+
+        <dl>!-- dt_count sets the number of times the ocean is coupled per NCPL_BASE_PERIOD.  Decreasing the ocean timestep can improve model
+	stability, particularly in the early years of a simulation as the model is adjusting to new boundary conditions.  The default ocean timestep is 23.
+	<dt>
+        <dd> dt_count               = 23      (Default)
+        <dd> dt_count               = 30      (Lowered)
+	</dl>
+
+        <dl>!-- Overflow regions are hardcoded in the ocean model to present day bathymetry and must be turned off for deep
+time geographies.
+	<dt>
+        <dd>overflows_on = .false.<br>
+        <dd>overflows_interactive = .false.<br>
+	</dl>
+
+        <dl>!--To initialize from an ocean depth/salinity profile:  init_ts_option = 'mean'
+
+	<dt>
+        <dd>init_ts_file = '/glade/p/cesm/palwg/paleo_setup/ocn/ic/ts_init_b20.681_1100-01_s_35.60level.dat'<br>
+        <dd>init_ts_option = 'mean'<br>
+	</dl>
+
+        <dl>!-- lhoriz_varying_bckgrnd (flag to allow horizontally-varying background (need bckgrnd_vdc2=0.0)), ldiag_velocity
+(flag to compute velocity diagnostics), overflows and tidal mixing all are geographically dependent and so
+present-day setups are not appropriate for deep time paleogeography. 
+
+	<dt>
+        <dd>lhoriz_varying_bckgrnd = .false.<br>
+        <dd>ldiag_velocity = .false.<br>
+        <dd>ltidal_mixing = .false.<br>
+	</dl>
+
+        <dl>!--The new background vertical velocity parameters were determined by Gokhan and Christine to increase Kappa-v in
+the deeper ocean in absence of tidal mixing. The tidal mixing normally would do this.<br>
+
+	<dt>
+        <dd>bckgrnd_vdc1 = 0.524 (default=0.16)<br>
+        <dd>bckgrnd_vdc2 = 0.313 (default=0.0)<br>
+	</dl>
+
+
+
+
+
+       
+    </p> 
+
+    </ol>
+    </ul>
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- ===================================================================================== --!>
+<br>
+<a name="cplmap"></a>
+<br>
+<ul>
+    <a name="cplmap"></a>
+    <html>
+
+<a name="cpl_map"></a>
+</ul>
+<hr>
+<h2> coupler mapping </h2>
+<hr>
+<ol>
+
+<dl>
+<hr>
+<li><h4> Create SCRIP mapping file (Optional:  already done in Ocean section)</h4>
+<hr>
+<dt>                (NOTE:  myConvertPOPT must be compiled with big_endian flag)
+                <dt>Src: <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/cpl_mapping/scrip1.4">source code on github</a>
+
+                <dd>src:   <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/ocn/tools/">mk_SCRIPgrid.csh</a>
+                <dd>in1:      nx, ny
+                <dd>in2:      grid.3.pop.da         (binary grid file; big_endian)
+                <dd>in3:      kmt.3.da              (binary KMT file; big_endian)
+                <dd>in4:      fv1.9x2.5_090205.nc   (default atm grid)
+                <dd>out1:   gx1PT_{DATE}.nc (ocn SCRIP mapping file: center_lat, center_lon)
+</dl>
+<dl>
+<hr>
+<li><h4>Generate mapping files</h4>
+<hr>
+                <dt>SrcDir:  <code>/glade/p/cesm/palwg/cesm1_2_0/tools/mapping/gen_mapping_files</code>
+                <dt>runDir:  <code>/glade/p/cesm/palwg/paleo_setup/cpl_mapping/maps/</code>
+                <dt>src:  <code>./gen_cesm_maps.sh   (NOTE:  do not modify)</code>
+
+                <dt>N1.  <code>cp  /glade/p/cesm/palwg/cesm1_2_0/tools/mapping/gen_mapping_files/gen_cesm_maps.sh .</code>
+                <dt>N2.  <code>cp  /glade/p/cesm/palwg/cesm1_2_0/tools/mapping/gen_mapping_files/gen_ESMF_mapping_file/ .</code>
+                <dd>out2:   <code>map_fv19_25_TO_gx1PT_aave.{DATE}.nc</code>
+                        <dd><code>map_fv19_25_TO_gx1PT_blin.{DATE}.nc</code>
+                        <dd><code>map_fv19_25_TO_gx1PT_patc.{DATE}.nc</code>
+                        <dd><code>map_gx1PT_TO_fv19_25_aave.{DATE}.nc</code>
+                        <dd><code>map_gx1PT_TO_fv19_25_blin.{DATE}.nc</code>
+</dl>
+<dl>
+<dt>
+               <b>% Usage:<code>  ./gen_cesm_maps.sh -fatm /glade/p/cesm/cseg/mapping/grids/fv1.9x2.5_090205.nc -natm fv19_25 
+                      -focn /glade/p/cesm/palwg/paleo_setup/ocn/mk_ocn_grid/gx1PT_{DATE}.nc -nocn gx1PT --nogridcheck</b></code>
+</code>
+</dl>
+<dl>
+<hr>
+<li><h4>Generate land and ocean domain files</h4>
+<hr>
+
+<dt>rundir:/glade/p/cesm/palwg/paleo_setup/cpl_mapping/gen_domain
+<dt>srcDir:/glade/p/cesm/palwg/paleo_setup/cpl_mapping/gen_domain/gen_domain_mlevy
+<dt>N1.  make -f Makefile (if required)
+   <dd>src: gen_domain.F90
+    <dd>in: /glade/p/cesm/palwg/paleo_setup/cpl_mapping/maps/map_gx1PT_TO_fv19_25_aave.{DATE}.nc
+  <dd>out1: domain.ocn.gx1PT.{DATE}.nc'
+  <dd>out2: domain.lnd.fv19_25_gx1PT.{DATE}.nc'             ! has mask in it
+
+</dl>
+<dl>
+<dt><b>% Usage: <code> ./gen_domain -m /glade/p/cesm/palwg/paleo_setup/cpl_mapping/maps/map_gx1PT_TO_fv19_25_aave.{DATE}.nc -o gx1PT -l fv19_25 -c
+Permian </code></b>
+<dl>
+
+</ol>
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- river runoff ======================================================================= --!>
+<br>
+<a name="rof"></a>
+<br>
+<ul>
+    <a name="rof"></a>
+    <html>
+</ul>
+<hr>
+<h2> River Runoff </h2>
+<hr>
+
+      <ol>
+      <hr>
+         <li><h4>What files will I need for the RTM runoff model</h4>
+      <hr>
+
+    <p>
+     <b>Deep time </b>experiments include significant changes to the land/sea mask.  Therefore, Deep Time modelers typically need to 
+     create a new runoff directional <b>(rdirc)</b> file.  The <b>rdirc</b> file is used by the River Transport Model (RTM) to 
+     route river runoff to the ocean.  You will also create two coupler mapping files:  
+     <b><a href="#fmap">fmap</b></a> (ROF2OCN_FMAPNAME) and
+     <b><a href="#rmap">rmap</b></a> (ROF2OCN_RMAPNAME), which are described below.
+
+     <p>
+     <b>Near modern </b>simulations that modify the land/sea mask (by removing Hudson Bay for the Last Glacial Maximum, for example), will 
+     need to create new coupler mapping files to reflect the changes in the land/sea mask, and in that process, they 
+     will create new <b>fmap</b> and <b>rmap</b> files as well.  
+
+    <b><p>&raquo; NOTE: </b> The 'aave' (fmap) was not required by tags older than cesm1_2_X.  Therefore, if you are using cesm1_2_x,
+     to continue an older simulation, you will need to create an <b><a href="#fmap">fmap</a></b> file and point to it in env_run.xml.</b>
+     
+<p>
+
+     
+
+	<a name = "rdirc"></a>
+	<li><html>
+<style type="text/css">
+<!--
+.tab{ margin-left: 40px; }
+        text-indent: 2.0em;
+-->
+</style>
+	 <h4>
+	 <hr>
+         How do I create an rdirc file
+	 <hr>
+	 </h4>
+	 <p>
+
+     <b> RDIRC &raquo; directional river runoff vector map </b>
+    <p>
+    <table border="1"><tbody><tr style="background-color: #a0f30b;"><td style="text-align: center;"><strong>&nbsp; 8&nbsp; </strong></td><td
+    style="text-align: center;"><strong>&nbsp; 1&nbsp; <br /></strong></td><td style="text-align: center;"><strong>&nbsp; 2&nbsp; <br
+    /></strong></td></tr><tr style="background-color: #a0f30b;"><td><strong>&nbsp; 7&nbsp; <br /></strong></td><td style="text-align:
+    center;"><strong>ref</strong></td><td><strong>&nbsp; 3&nbsp; <br /></strong></td></tr><tr style="background-color: #a0f30b;"><td
+    style="text-align: center;"><strong>&nbsp; 6&nbsp; <br /></strong></td><td style="text-align: center;"><strong>&nbsp; 5&nbsp; <br
+    /></strong></td><td style="text-align: center;"><strong>&nbsp; 4 &nbsp;</strong></td></tr></tbody></table>
+    </p> 
+     <p> In this section we address how river runoff is mapped onto the land model (rdirc).
+     The River Transport Model (RTM) is a component model within CESM1.2, and it uses a fixed regular grid.
+     The runoff directional forcing file required by RTM describes vector (direction) for runoff flow at each RTM grid
+     point (e.g., rdirc_0.5x0.5_simyr2000_slpmxvl_c120717.nc). The integer values are numbered from 1 to 8: 1=N, 2=NE, 3=E, etc.  
+     </p>
+    <b> Near Modern </b>
+     <p> Near modern simulations are not required to change the <b>rdirc</b> file, even if they modify the land/sea mask
+     to add/change ice sheets because the coupler will autmatically re-route river runoff to the nearest ocean grid cell. However, if 
+     river runoff is integral to your science question you can make local modifications to the default <b>rdirc</b> file 
+     to suit your purpose.  However, we do not recommend that Near Modern simulations re-create the <b>rdirc</b> file 
+     will make comparison to a CESM control simulation problematic.
+     </p>
+    <p>
+    <b> Deep Time </b><br>
+     Deep time experiments typically require significant modification of the land/sea mask, and therefore must remap river networks across the
+     paleo topography by creating a new runoff directional dataset.  This dataset is used by the River Transport Model (RTM) to route river
+     runoff to the ocean.  The CESM1 default RTM grid is at 0.5 degree resolution.  However, deep time modelers can typically use a 2x2 degree grid.
+
+    <p><b>Creating RTM forcing files </b>
+    The deep time modeler will need to compute the runoff direction at each land grid point based on a user-provided file containing
+    gridded topography and ocean bathymetry.  
+
+
+    <p>We developed a set of offline paleo tools that map runoff for CESM1/CLM4.  An ASCII file of runoff vectors is 
+    created which is used as input to the RTM at runtime. This tool uses
+    topography to compute the direction of runoff flow.  The output filename from rdirc.csh for your RTM forcing file is simply fort.10_$CASE
+    (Fortran output file), so you may wish to rename your RTM forcing file to something more descriptive. For example, a filename for a paleo
+    run could be: "rdirc_myrun.resolution.date.nc".
+
+    <p>
+    <b>&raquo; Create new rdirc file.  (Note that the code may report errors and pause, waiting for input, before it completes.
+    Press the return key to continue to the end of the program).
+    </b>
+
+
+
+    <table border="1"><tbody><tr><th align="left">control script&nbsp;&nbsp;</th><td style="text-align: left;">rdirc.csh (modify
+    for your case)</td></tr><tr><th
+    align="left">source code&nbsp;</th><td style="text-align: left;">topo2rdirc_sed.F90 (modify for your
+    case)<br>topo2rdirc.F90</td></tr><tr><th align="left">inputs</th><td
+    style="text-align: left;">topobathy.nc (gridded input) </td></tr><tr><th align="left">output</th><td style="text-align: left;"><p>fort.10_$CASE (RTM
+    forcing file used in model)<br />fort.11_$CASE (infinite loop vectors)<br /> fort,12_$CASE<br /> fort.13_$CASE (redirected runoff
+    vectors)<br /> fort.14_$CASE (error file)<br /> myPlot.runoffVectors.ps</p></td></tr>
+    <tr>
+    <td><b>Usage:</b>  <td>./rdirc.csh
+</tbody></table>
+
+    <p>&nbsp;</p><b> &raquo; CAVEAT</span>:&nbsp; Redirecting runoff in RTM forcing file</b><p>If your surface
+    topography has internal basins or large flat regions, infinite loops will result, and <i>rdirc.csh</i> will produce another
+    ASCII file with these loops (fort.11_$CASE).&nbsp; An infinite loop is a region from which runoff will never flow out to the coastline,
+    but circulate back to the starting point.&nbsp; If infinite loops are not removed, global freshwater will not be conserved, and
+    undesirable trends in global volume averaged ocean salinity may result. topo2dirc.F90 automatically checks for internal basins and
+    reroutes the resulting drainage to the nearest coastline, irrespective of topography.&nbsp; While the result will conserve freshwater, it
+    may also produce unnatural drainage features that affect the science outcome of the simulation so check the output maps carefully by
+    plotting the uncorrected and redirected runoff maps using the tool provided (<i>plotrdirc.csh</i>).</p>
+
+    <b>
+    &raquo; Plotting the vectors on a map [plotrdirc.csh/plot_rdirc.ncl]
+    </b>
+    <p>
+    <p>We use an NCL script to plot the directional RTM forcing vectors onto a latitude/longitude map .&nbsp; (Note that the code may report errors and
+    pause, waiting for input, before it completes.&nbsp; Press the return key to continue to the end of the program).</p>
+
+    <table border="1"><tbody><tr><th align="left">shell script</th><td>plotrdirc.csh (modify for your case; IFILE, NLAT, NLON,
+    RESOLN)</td></tr><tr><th align="left">source code</th><td>plot_rdirc.ncl</td></tr><tr><th align="left">inputs</th><td><p>fort.10_$CASE<br
+/>fort.11_$CASE<br />fort.13_$CASE<br
+    />fort14_$CASE</p></td></tr><th align="left">output</th><td>postcript file with maps of uncorrected and redirected runoff
+    vectors</td></tr></tbody></table><p>&nbsp;</p>
+
+
+    <b>&raquo; Convert to a netCDF file for CESM1/CLM4 [rtm_ncdf.pro]</b>
+    <p>
+    <p>RTM now requires a netcdf rdirc file. We provide an IDL tool to convert the ASCII output into netCDF for RTM.</p>
+    <table border="1"><tbody><tr><th align="left">source code </th><td>rtm_ncdf.pro (edit to point to your final runoff file
+    (fort.13_$CASE)) </td></tr>
+    <tr><th align="left">details</th><td><p><ul>cp
+    fort.13_$CASE rdirc.0.5x0.5.$CASE<br />rtmfile1='rdirc.0.5_myCase'<br />outfile='rdirc.0.5_myCase.nc'<br/>resnum=1  <i>(NOTE: 0.5<sup>o</sup>)</i></p></td></tr><th
+align="left">output</th><td>postcript file with maps of uncorrected and redirected runoff
+    vectors</td></tr></tbody></table><p>&nbsp;</p>
+    <p>Source Code: &nbsp;rtm_ncdf.pro</p><p><b>% Usage</b>: &nbspEdit rtm_ncdf.pro to point to your fort.13_$CASE file (your renamed
+    file)</p><p>Start IDL on the command line.</p><p
+    style="padding-left: 30px;">IDL&gt; .rn
+    rtm_ncdf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    ; compile rtm module</p><p style="padding-left: 30px;">IDL&gt;
+    rtm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    ; execute code</p>
+
+
+
+
+
+
+    
+    
+	<p><b>&raquo; Modify user_nl_rtm in your CASEROOT to point to your new file</b><br>
+    <p>Your final product will be a netCDF file with your rivers mapped to your topography, using the
+    directional vectors outlined above.
+	user_nl_rtm:   frivinp_rtm = '/myPath/rdirc.myCase.nc </p>
+
+
+
+
+	<DL>
+        <DT><code>float RTM_FLOW_DIRECTION(nj, ni) ;</br>
+                <dd>RTM_FLOW_DIRECTION:long_name = "RTM flow direction" ;
+                <dd>RTM_FLOW_DIRECTION:units = "unitless" ;
+                <dd>RTM_FLOW_DIRECTION:mode = "time-invariant" ;
+                <dd>RTM_FLOW_DIRECTION:comment = "N,NE,E,SE,S,SW,W,NW = 1,2,3,4,5,6,7,8" ;
+	</dl>
+	<dl>
+        <dt>float xc(nj, ni) ;
+                <dd>xc:long_name = "longitude of grid cell center" ;
+                <dd>xc:units = "degrees_east" ;
+                <dd>xc:mode = "time-invariant" ;
+	</dl>
+	<dl>
+        <dt>float yc(nj, ni) ;
+                <dd>yc:long_name = "latitude of grid cell center" ;
+                <dd>yc:units = "degrees_north" ;
+                <dd>yc:mode = "time-invariant" ;
+	</dl></code>
+
+
+    <b> &raquo; CAVEAT</span>:&nbsp; Redirecting runoff in RTM forcing file</b><p>If your surface
+    topography has internal basins or large flat regions, you may end up with infinite loops in your runoff.
+    An infinite loop is a region from which runoff will never flow out to the coastline,
+    but circulate back to the starting point.&nbsp; If infinite loops are not removed, global freshwater will not be conserved, and
+    undesirable trends in global volume averaged ocean salinity may result. 
+    
+
+
+<p><b>&raquo; Modify user_nl_rtm in your CASEROOT to point to your new file</b><br>
+user_nl_rtm:   frivinp_rtm = '/myPath/rdirc.myCase.nc
+
+</p>
+
+
+
+</html>
+
+	<a name = "rmap"></a>
+	<li><html>
+
+
+<hr>
+<h4>How do I create ROF2OCN_RMAPNAME
+</h4>
+<hr>
+<p>
+<p>
+
+<b> ROF2OCN_RMAPNAME &raquo; creating the runoff-to-ocean flux mapping file using cesm1_2_x.<br>
+</b>
+<p>
+<b>NOTE:</b>  run on yellowstone<br>
+<b>SOURCE:</b>  /CESMROOT/tools/mapping/gen_mapping_files/runoff_to_ocn<br> 
+
+
+
+<table border="1"><tbody>
+<tr><th align="left">
+runoff_map.nml </th><td>Namelist input to runoff_to_ocn<tr>
+<tr><th align="left">
+  &input_nml
+<td>
+   gridtype     = 'rtm'<br>
+   file_roff    = '/myPath/rdirc.myCase'<br>
+   file_ocn     = '/SCRIPgx1_myCase_<DATE>.nc'<br>
+   file_nn      = 'map_r05_myCase_to_gx1v6_myCase_nn_<DATE>.nc '<br>
+   file_smooth  = 'map_r05_myCase_to_gx1v6_myCase_sm_e1000r300_<DATE>.nc '<br>
+   file_new     = 'map_r05_myCase_to_gx1v6_myCase_nnsm_e1000r300_<DATE>.nc'<br>
+   title        = 'runoff map: r05_myCase -> gx1v6_myCase, nearest neighbor and smoothed '<br>
+   eFold        = 1000000.0<br>
+   rMax         =  300000.0<br>
+   step1 = .true.<br>
+   step2 = .true.<br>
+   step3 = .true.<br>
+
+<tr>
+<td><b>output file </td></b>
+<td>map_r05_myCase_to_gx1v6_myCase_nnsm_e1000r300_<DATE>.nc</td>
+</tr></tbody></table><p>&nbsp;</p>
+
+
+<b> Details:</b>
+<ol>
+<li>copy runoff_map.nml to a new file (e.g., runoff_map.myCase.nml)
+<li>modify for your case
+<li>soft link your new file to the original filename
+</ol>
+<p>
+</p>
+<b>% Usage:</b>
+        % ./build.yellowstone.csh
+        % ln -s
+        % ./runoff_map
+
+        output:  map_r05x05PT_to_gx1v6PT_nnsm_e1000r300_130909.nc
+        cp map_r05x05PT_to_gx1v6PT_nnsm_e1000r300_130909.nc /glade/p/cesm/palwg/paleo_setup/cpl_mapping/map
+<p>
+<b>% Usage:<br></b>
+<p><b>%</b> &nbsp&nbsp ./build.yellowstone.csh
+<p><b>%</b> &nbsp&nbsp ln -s &nbsp&nbsp runoff_map.myCase.nml ./runoff_map.nml
+<p><b>% </b>&nbsp&nbsp./runoff_map
+</br>
+<p><b>Modify env_run.xml in your CASEROOT to point to your new files</b><br>
+
+xmlchange -file env_run.xml -id ROF2OCN_RMAPNAME  -val '/myPath/map_r05_to_gx1_myCase_e1000r300_150902.nc'
+</p>
+
+
+	<a name = "fmap"></a>
+	<li><html>
+
+<p>
+
+<hr>
+<h4>How do I create ROF2OCN_FMAPNAME</h4>
+<hr>
+<p>
+
+<b> ROF2OCN_FMAPNAME &raquo; Creating the runoff-to-ocean flux distribution (aave) mapping file 
+</b>
+<p>ESMF generated file (type=aave) that maps an unmasked 0.5<sup>o</sup> runoff grid to a user-specified ocean grid.
+(<a
+href="https://svn.oss.deltares.nl/repos/openearthtools/trunk/cesm1_1/mapping/gen_mapping_files/gen_ESMF_mapping_file/README">README for
+'create_ESMF_map.sh' script</a>)
+</h3> 
+</p>
+<p>
+
+
+<table border cellspacing=2 cellpadding=5>
+<th><th>input<th>description</th>
+<tr>
+<align="left">
+<th align="left">Source<th align="left"> create_ESMP_map.sh<th align="left"><a
+href="https://svn.oss.deltares.nl/repos/openearthtools/trunk/cesm1_1/mapping/gen_mapping_files/gen_ESMF_mapping_file/README">README </a></th><tr>
+<th align="left">-fsrc<th align="left"> r05_nomask_070925.nc<sup>1</sup><th align="left">default unmasked (0.5deg) mapping file </th><tr>
+<th align="left">-nsrc<th align="left"> r05_nomask<th align="left"> name of default mapping file<tr>
+<th align="left">-fdst<th align="left"> gx1v6_myCase.nc<th align="left"> paleo SCRIP mapping file <tr>
+<th align="left">-ndst<th align="left"> gx1v6_myCase<th align="left"> name of paleo SCRIP mapping file <tr>
+<th align="left">-map<th align="left"> aave<th align="left"> area average mapping <tr>
+<th align="left">output<th align="left"> map_r05_nomask_TO_gx1v6_myCase_aave.<DATE>.nc<th align="left"> ROF2OCN_FMAPNAME<tr>
+<tr>
+</table>
+<sup>1</sup><b>Default path:</b> /glade/p/cesm/cseg/mapping/grids/r05_nomask_070925.nc<br>
+
+<p>
+<p>
+<b>NOTE:</b>  run on yellowstone<br>
+<ul>
+<li><b>CESMROOT:</b>  /cesm1_2_0/tools/mapping/gen_mapping_files/gen_ESMF_mapping_file<br>
+</ul>
+<p>
+<b>% Usage:<br></b>
+<p><b>%</b> &nbsp&nbsp ln -s &nbsp&nbsp/CESMROOT<sup>2</sup>/tools/mapping/gen_mapping_files/gen_ESMF_mapping_file/create_ESMF_map.sh &nbsp&nbspmyWorkDir/.<br>
+<p><b>% </b>&nbsp&nbsp./create_ESMF_map.sh -fsrc /glade/p/cesm/cseg/mapping/grids/r05_nomask_070925.nc -nsrc r05_nomask -fdst<br>
+/glade/p/cesm/palwg/pliocene/plio/mapping/gx1v6pliocene_150902.nc -ndst gx1v6pliocene -map aave<br>
+</br>
+<b>Modify env_run.xml in your CASEROOT to point to your new files</b><br>
+
+xmlchange -file env_run.xml -id ROF2OCN_FMAPNAME  -val '/myPath/map_r05_nomask_TO_gx1v6_myCase_aave.150902.nc'
+</p>
+
+
+
+
+
+<p>
+<hr>
+<b>Once you have created your new files, point to them in user_nl_rtm and env_run.xml in $CASEROOT.</b><br>
+
+<b>% edit  user_nl_rtm: </b> &raquo;                                        frivinp_rtm = '/myPath/rdirc.myCase.nc<br>
+<b>%</b>   xmlchange -file env_run.xml -id ROF2OCN_FMAPNAME  -val '/myPath/map_r05_nomask_TO_gx1v6_myCase_aave.150902.nc'<br>
+<b>%</b>   xmlchange -file env_run.xml -id ROF2OCN_RMAPNAME  -val '/myPath/map_r05_to_gx1_myCase_e1000r300_150902.nc'<br>
+<hr>
+</p>
+</ol>
+
+
+	
+</p>
+
+
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- ===================================================================================== --!>
+<br>
+<a name="atm"></a>
+<br>
+<ul>
+    <a name="atm"></a>
+    <html>
+</ul>
+<hr>
+<h2> Atmosphere model (CAM4/CAM5)</h2>
+<hr>
+
+      <ol>
+	<a name = "bnd_topo"></a>
+        <li><html>
+
+<hr>
+<h4> How do I change topography in a Near Modern simulation</h4>
+<hr>
+<p>
+Paleoclimate modelers can use a CESM fortran tool called definesurf to create smoothed 
+surface topography for paleo simulations.  Near-modern paleo modelers can use definesurf to map minor topography modifications 
+onto the present day default CAM bnd_topo file.   Typical scientific applications might include incorporating ice sheets across N. America, or modifying the Greenland or
+Antarctic Ice Sheets.  Note:  If you are using CAM4, and have extended land over ocean points (e.g., over Hudson Bay), you can modify landm_coslat.ncl using
+mod_landm_coslat.ncl.
+<p>
+NOTE:  Near-modern modelers are advised to make changes to topography by first creating an anomaly map 
+of their time period relative to present day (ΔZ = my_TOPO_paleo– my_TOPO_present-day) and 
+then adding this anomaly (ΔZ) to the CESM present-day base topography.
+<ul>
+
+<p>
+<p>
+<html>
+<div class="problems-frame">
+<p>
+
+<h2>Definesurf</h2>
+Definesurf is a CESM tool used to create smoothed topography files for cam (bnd_topo).  This process was modified for
+Deep Time by adding several steps (see below).
+<p>
+<ul>
+<li>PHIS:  surface geo-potential [m2/s2])
+<ul>
+<li>PHIS [m2/s2] = elevation[m] × gravity [m/s2].  </li>
+</ul>
+<li>SGH [m]:  standard deviation of surface
+elevation.
+<li>SGH30 [m]: surface roughness
+
+<li>LANDFRACT: <font color="red">(deprecated)</font> ignored by CAM4 and CAM5; fractional land is defined by the coupler mapping files.
+<li>LANDM_COSLAT: <font color="red">(deprecated)</font>  CAM3/CAM4 scale factor for offshore aerosols; no longer used in CAM5.
+<li>from_hires:  <font color="red">(deprecated)</font> Definesurf adds the attribute: from_hires = "true" to all output
+variables, prior versions of the model used this attribute to force CESM to do additional spectral
+filtering at runtime.  This feature is no longer active in CESM1.0.
+</ul>
+<p>
+
+
+<h2>Warning</h2>
+By default, the Ross Ice Shelf is hardcoded to 'land' in definesurf to represent modern day.  To turn off the
+hardcoding for the Ross Ice Shelf, use the commandline flag "-r" (see Example 2 below).
+</p>
+
+<h2>Command line examples</h2>
+
+General Form:
+<ul>
+<li>% definesurf -remap -t topofile -g gridfile -l landm_coslat.nc outfile.nc<br>
+</ul>
+
+<br>
+Example 1:  FV 0.9x1.25 grid, Ross Ice Shelf turned <font color="red">ON</font>
+<ul>
+<li>%  definesurf -remap -t topo_10min.nc -g fv_0.9x1.25.nc -l landm_coslat.nc topo_remap.nc
+</ul>
+
+<br>
+Example 2:  FV 1.9x2.5 grid, Ross Ice Shelf turned <font color="red">OFF</font>
+<ul>
+<li>%  definesurf -remap -r -t topo_10min.nc -g fv_1.9x2.5.nc -l landm_coslat.nc topo_remap.nc
+</ul>
+<br>
+</div>
+</ul>
+
+<!--  ---------------------------------------------------------------------  -->
+
+<a name = "dfsfDT"></a>
+<hr>
+<li><h4> How do I change topography in a Deep Time simulation</h4>
+<hr>
+<p>
+<p>
+Deep time modelers can also use definesurf to create smoothed topography. However, paleo maps lack high resolution
+information like surface roughness and topographic variance so we approximate these attributes based on present day topographic relationships. 
+<p>Definesurf requires a 10min input data, so the first step is to use NCL to remap the base input topography onto a 
+10min grid. We then run definesurf, using the '-r' flag to turn off the hardcoded Ross Ice Shelf. We also input 
+the modern 'landm_coslat' file, because it is required by definesurf, but it will not be used by CAM5.  
+We use 'ftopo' for landfrac and 'htopo' for topography; this allows definesurf to be run as an 'old style' input where 
+definesurf is not expecting a topography 'variance', which which we don't have for deep time.  We also provide the 
+grid map required by definesurf:  fv_1.9x2.5.nc (or fv_0.9x1.25.nc).
+With these inputfiles, definesurf creates SGH, but not SGH30, which is needed in CAM5.  Therefore, we approximate SGH30 from
+the modern global average ratio of SGH30/SGH: SGH30 = SGH*0.16.
+<p>
+<p>
+
+<html>
+<div class="problems-frame">
+<p>
+
+<h2>Using definesurf for Deep Time</h2>
+
+Step 1) create a 10min topographic datafile
+<ul>
+        <li>src:  mk_10min_definesurf_input_paleo.ncl
+        <li>inf1:  USGS-gtopo30_10min_c050419.nc
+        <li>inf2:  permian_topo.05deg.nc
+        <li>out1:  permian_topo.10min.{DATE}.nc
+</ul>
+<br>
+Step 2)  run definesurf with Ross Ice Shelf turned OFF (-r option)
+<ul>
+<li>% ./definesurf -remap -r -t permian_topo.10min.{DATE}.nc -g fv_1.9x2.5.nc -l landm_coslat.nc
+bnd_topo_permian_1.9x2.5_remap.{DATE}.nc
+</ul>
+<br>
+
+Step 3)  Add SGH30 with 0.16 ratio (estimated from global PD SGH30/SGH ratio).
+<ul>
+
+        <li>src: add_SGH30_paleo.ncl
+        <li>in1: bnd_topo_permian_1.9x2.5_remap.150331.nc
+        <li>of1: bnd_topo_permian_1.9x2.5_remap_sgh30.150331.nc
+</ul>
+<br>
+
+<h2>Warning</h2>
+The 'add_SGH30_paleo.ncl' excludes LANDM_COSLAT in the bnd_topo file to avoid confusion, because the LANDM_COSLAT
+landmask is modern and CAM5 doesn't use landm_coslat.  If you are using CAM4, set the 'write_landm_coslat'
+flag to TRUE in 'add_SGH30_paleo.ncl'.
+</ul>
+<br>
+
+</html>
+  
+
+	<a name = "cam.nl"></a>
+        <li><p>
+
+<hr>
+<h4>CAM4/CAM5 namelist options [user_nl_cam]</h4>
+<hr>
+
+<p>This section describes the namelist parameters that control aspects of your physical boundary forcing.
+
+
+<hr>
+<li><h4>Orbital parameters</h4>
+<hr>
+<p>Orbital parameters are set in the coupler namelist for a fully coupled CESM1 experiment.</p>
+
+<hr>
+<li><h4>Solar constant and trace gases</h4>
+<hr>
+<table>
+<th>Variable         <th> Description<tr>
+<td>solar_const	<td>Solar constant<tr>
+<td>co2vmr	<td>CO2 volume mixing ratio<tr>
+<td>ch4vmr	<td>CH4 volume mixing ratio<tr>
+<td>n2ovmr	<td>N2O volume mixing ratio<tr>
+<td>f11vmr<sup>1</sup>	<td>CFC11 volume mixing ratio<tr>
+<td>f12vmr<sup>1</sup>	<td>CFC12 volume mixing ratio<tr>
+</table>
+<sup>1 </sup>For Pre-Industrial paleo experiments, F11VMR and F12VMR should be set to 0.
+
+ 
+
+</html>
+
+	<a name = "atm.dt"></a>
+        <li><html>
+
+
+<hr>
+<h4>How do I change the atmosphere timestep to improve stability </h4>
+<hr>
+<br>
+<p>
+<b>Part 1.</b>  Changing the atmosphere timestep (dtime) can improve model stability, particularly in the early years of a
+simulation as the model is adjusting to new boundary conditions.  
+
+The atmosphere timestep (dtime) is set by the coupling frequency (ATM_NCPL) which is the interval at which the
+model physics and the dynamical core exchange information.  Increasing the frequency of communication between the physics and the
+dynamics can increase model stability.  ATM_NCPL can be changed in env_run.xml.  
+The default coupling frequency is 48, which corresponds to an atmosphere timestep of 1800 seconds, or 30 minutes (ATM_NCPL = 48; dtime=1800s).  
+To increase dtime, change ATM_NCPL to 96, which lowers the dtime to 900 seconds, or 
+15 minutes (ATM_NCPL = 96; dtime=900s). Note that lowering the timestep will increase model cost, so you may want to return to the default
+value once past the instability.  </p>
+<p>
+ATM_NCPL  &raquo; env_run.xml
+<ul>
+<p>
+<li>ATM_NCPL sets the number of times the atm is coupled per NCPL_BASE_PERIOD
+<p>
+<li>The atmosphere coupling interval (atm_cpl_dt) is set by ATM_NCPL.  Setting the coupling frequency will
+automatically adjust the atmosphere timestep (dtime).  In CESM, the coupling frequency for the atmosphere, 
+land and ice must be the same, so changing ATM_NCPL will also adjust the timestep of the land and ice models.
+<p>
+<ul>
+DEFAULT : dtime = 1800 seconds : ATM_NCPL = 48<br>
+LOWERED : dtime =  900 seconds : ATM_NCPL = 96
+</ul>
+<p>
+<li>ATM_NCPL must be changed in env_run.xml:
+<p>
+
+<ul>
+./xmlchange -file env_run.xml -id ATM_NCPL -val 96
+</ul>
+</ul>
+<br>
+<p>
+
+<font color=red>WARNING:  </font> Do not attempt to change <i>dtime </i>in user_nl_cam.  In contrast to earlier model versions, directly modifying 
+(dtime) is no longer an option in CESM-CAM5.  Doing so can result in a silent error where the model changes coupling frequency in some places but not others, 
+resulting in an imbalance in the net radiation fluxes.  This problem has been fixed in more recent versions of CAM5.
+</p>
+<p>
+<b>Part 2.</b>  Expert users may also try changing the dynamical substepping within dtime.  Check the CAM5 documentation for 
+information on nsplit (the number of dynamics timesteps per physics timestep), nspltrac (the number of tracer advection timesteps per physics timestep), 
+and nspltvrm (number of vertical re-mapping timesteps per physics timestep).
+Also see the CESM Bulletin Board for more discussion (e.g., https://bb.cgd.ucar.edu/node/1002415). A change to nsplit might look like this:
+
+<ul>
+<li>nsplit = 8
+<li>nspltrac = 4
+<li>nspltvrm = 4
+</ul>
+<p> You can also try changing the type of divergence damping and
+velocity diffusion.  Consult the CAM user's guide for more
+guidance.
+<ul>
+<li>div24del2flag<sup>1</sup> = 4
+</ul>
+
+<br>
+<sup>1</sup>div24del2flag :: Chooses type of divergence damping and velocity diffusion.
+
+</body>
+</html>
+  
+
+	<a name = "aerosols"></a>
+        <li><html>
+
+<hr>
+<h4>Other atmosphere forcing files:</h4>
+<hr>
+ <dl>
+ <dt>Absorption/Emissivity:
+ <dt>The present day absorption/emissivity forcing dataset was built with wide constraints and is therefore flexible and can be used for
+ paleoclimate cases.
+   <dd>[CESM1.0 DEFAULT]
+   <dt>Ozone:
+   <dd>Typically, present day or pre-industrial ozone mixing ratio boundary forcing files are used for paleoclimate cases. Choice of dataset
+will
+   depend on your control experiment.
+     <dd>[CESM1.0 DEFAULT]
+
+</dl>
+
+
+
+<h4>Background:</strong></h3><p>Modifying atmospheric aerosals for paleo simulations became considerably more complex in CESM1.2 than it was in
+earlier versions of the model.&nbsp; Tauback
+(typically used for CCSM3 paleo simulations) is not available.&nbsp; Christine Shields developed a new technique to define aerosols for
+user-specified geography within CESM1(CAM4/5).&nbsp; <a href="http://www.cgd.ucar.edu/ccr/paleo/UsersGuide/shields.aerosols.2011.pdf">Download
+</a>the 2011 CCSM workshop presentation of her results.</p><p>Recommendation:&nbsp; You can run with bulk aerosols, but that is very
+expensive.&nbsp; A better alternative is use the procedure described below.</p><p><strong>How to create a prescribed aerosol dataset for deep
+time paleo:</strong></p><p><strong>&nbsp;</strong><br />1. turn off prescribed aeorsols, use bulk, i.e. trop_bam<br />2. this gives us dust
+and sea salt (primary aerosols)<br />3. for bam: create zonal distributions of oxid, dms, bc, and oc and soil erodiablity based on land<br
+/>&nbsp;&nbsp; i.e., avg modern grid points over ocean (where appropriate), avg modern grid pts over land, give<br />&nbsp;&nbsp; avg values
+to paleo 2d data forcing files over respective lat and land<br />4. create prescribed aerosol (radiative) set based on BAM run<br />5. create
+prescribed aerosol (deposition) based on run BAM run</p><p>&nbsp;</p><p><strong>For BAM run:</strong></p><p><strong>--(1)</strong> create
+forcing data w/ncl scripts<br /><br />see cam.input_data_list for bulk aerosols:<br /><br />don't need deposition velocity stuff unless using
+chemistry.<br />1) do nothing about depvel_monthly.nc, clim_soilw.nc, and season_wes.nc --not needed<br />2) do nothing to&nbsp; do about
+regrid_vegetation.nc -- not needed<br /><br />new datasets for:<br />1) oxid: oxid_1.9x2.5_L26_1850clim_c091123.nc<br />2) soil erod:&nbsp;
+dst_48x96_c090203.nc<br />3) so2:&nbsp; aerocom_SO2_vertical_1750.c080807.nc lat/mtns?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+aerocom_SO2_surface_1750.c080807.nc&nbsp; lat/mtns?<br />4) so4:&nbsp; aerocom_SO4_vertical_1750.c080807.nc<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aerocom_SO4_surface_1750.c080807.nc<br />5) CB1:&nbsp; aerocom_CB1_1750.c080807.nc&nbsp;
+(lat dist)<br />6) DMS:&nbsp; aerocom_DMS_2000.c080417.nc (lat dist)<br />7) OC1:&nbsp; aerocom_OC1_1750.nosoa.c080807.nc (lat
+dist)</p><p>create ncl scripts to read in template (default) file, and modify accordingly<br />details: see
+fis/cgd/ccr/shields/permian/ccsm4/atm/bulk_aero_files/data/README.whatidid<br /><br /><strong>--(2) </strong>take output from BAM and create
+prescribed forcing aerosol (raditative)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (from jf email)<br /><br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a) ncra -h -v<br
+/>lat,lon,lev,time,date,datesec,hyam,hybm,hyai,hybi,PS,P0,T,CB1,CB2,OC1,OC2,SO4,SOA,<br
+/>DST01,DST02,DST03,DST04,SSLT01,SSLT02,SSLT03,SSLT04<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (b) then you concatenate all those into
+a single file (beware that sometime p0 becomes 0_<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (c) you probably need to overwrite date and
+time as those also get messed<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; up with ncra.<br /><br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SCRIPT written: /fis/cgd/ccr/shields/permian/ccsm4/atm/presc_aero_files/aero_climo.csh<br /><br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (d) NOTE: does not need to be interpolated to fv2deg res (as default). model will accept<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; any resolution, (eaton), and interp, on the fly, if necessary. normally
+all model<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; configs use the fv2deg, but you can supply a file at the
+correct config resolution to<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin
+with...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>** although in theory (d) is true, code
+currently buggy and the aero file doesn't<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; work,&nbsp; use
+aero_climo_interp.ncl to put onto fv2deg grid. (march 4 2011). bug<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reported to b.eaton and
+f.vitt.</p><p><strong>--(3)</strong> branch basic default (BAM) run (or change in original) to include vars necessary for deposition<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to create aero dep file for prescribed aero run.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (from jf email)<br
+/><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a) monthly avg hist needed:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF_CB1&nbsp;&nbsp; (need to include in finc1)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DF_CB2&nbsp;&nbsp; (need to include in finc1)<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CB2SFWET&nbsp; (default bam)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF_OC1&nbsp;&nbsp;&nbsp; (need to include in finc1)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DF_OC2&nbsp;&nbsp;&nbsp; (need to include
+in finc1)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OC2SFWET&nbsp; (default bam)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DST01DD&nbsp;&nbsp; ("")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST01PP&nbsp;&nbsp; ("")<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST02DD&nbsp; ("")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST02PP&nbsp; ("")<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST03DD&nbsp; ("")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST03PP&nbsp; ("")<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST04DD&nbsp; ("")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DST04PP&nbsp;
+("")</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (b)&nbsp; run dep_snow.f90 (from jf): original code:
+/fis/cgd/home/shields/ccsm4/aerodep<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+workingdir code: this dir...<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/fis/cgd/ccr/shields/permian/ccsm4/atm/presc_aero_files<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (c)&nbsp; overwrite time
+and date with 1850 default values, and add source run to global history<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; script to do
+this:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aerodep.nco.csh<br /><br />ncks --append -v
+date,time /fis/cgd/ccr/shields/permian/ccsm4/atm/presc_aero_files/default_1850/date_time_1850clim.nc
+aerosoldep_monthly_12-21_mean_b40.t31x3.pt.4.nc<br />ncatted -a history,global,a,c,"b40.t31x3.pt.4.cam2.h0* files years 12-21 cshields 110303"
+aerosoldep_monthly_12-21_mean_b40.t31x3.pt.4.nc<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (d) this seems to work fine
+w/T31.</p>
+</html>
+
+      </ol>
+
+    <p>
+
+</p>
+
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- landmodel changes======================================================================= --!>
+<br>
+<a name="lnd"></a>
+<br>
+<ul>
+    <a name="lnd"></a>
+    <html>
+</ul>
+<hr>
+<h2> Landuse/landcover </h2>
+<hr>
+
+      <ol>
+	<a name = "lndintro"></a>
+        <li><html>
+
+<hr>
+<h4>The Land model</h4>
+<hr>
+<p class="BodyPaleoDoc">The land component of CESM1.x is the <a href="http://www.cesm.ucar.edu/models/cesm1.0/clm/index.html">Community Land
+Model, version 4.0</a>&nbsp;(CLM4) or version 4.5 (CLM4.5). &nbsp;This documentation supports CLM4, version 4.0.&nbsp; The CLM4 requires a
+surface dataset that defines the spatial distribution of vegetation, surface water, and land ice. This surface dataset is created offline,
+using CLM tools and the set of 'raw' datafiles, most of which are at half-degree resolution, that define the spatial distribution of
+vegetation types (expressed as plant function types or PFT), soil color, soil texture, leaf/stem areas and heights, inland lakes, urban area
+and land ice data.</p><p class="BodyPaleoDoc" style="padding-left: 30px;">e.g., set fsurdat =
+‘surfdata_0.9x1.25_simyr1850_c091006.nc’</p><p>Many near-modern simulations are able to use the present day (default) surface dataset.&nbsp;
+However, if you want to make changes to your land cover (e.g., by adding/removing land ice or by changing vegetation), you will need to create
+a new surface dataset to reflect these changes.&nbsp; The surface dataset requires 'raw' data at 0.5 degree grid resolution netCDF files
+called 'mksrf' files.&nbsp; These data reflect the spatial distribution of vegetation types (PFT), inland lakes, and land ice data for the
+land model.&nbsp;</p><p class="BodyPaleoDoc"><strong>NOTE</strong>:&nbsp; If you plan to lower sea level and expose new land along the
+continental shelf, CLM4 will automatically define that new land as ‘wetland’. We provide a tool that will modify your mksrf files (PFT, soil
+color and LAI) using a nearest neighbor algorithm to fill in the new land points (see Table below).</p><p><strong>NOTE</strong>:&nbsp;
+Modifying mksrf_pft.nc can be tricky and drastically changing vegetation may result in a climate signal that is larger than the forcing that
+you are testings.</p>
+
+<hr>
+<li><h4>Changing land ice</h4>
+<hr>
+
+<p>If your experiment requires a change in land ice, we provide a set of tools that will modify
+the default raw data files to reflect land surface changes in glaciers, lakes/wetlands, and PFTs.&nbsp; The programs will also remove crops,
+and set harvest variables to zero. The modeler needs to provide a netCDF file of surface topography and land ice at 10min resolution.&nbsp;
+NOTE:&nbsp; If you have added new land (and/or ice-covered land) over ocean grid cells (e.g., Fenno-Scandia, Hudson Bay) you will also need to
+create new coupler mapping files to reflect the change to the land/sea mask.</p><p>&nbsp;</p><table border="1"><tbody><tr><th
+width="55%">&nbsp;script</th><th width="55%">description</th></tr><tr align="left"><td>mk10minTopo.ncl</td><td>&nbsp;</td></tr><tr
+align="left"><td>10min2_05deg.ncl</td><td>Create 0.5 degree topo-ice file for convert_mksrf.F90</td></tr><tr><td align="left"
+valign="middle"><p>convert_mksrf.F90<sup>1</sup></p><p>(rewrite in ncl)</p></td><td align="left" valign="middle">modify default (modern) raw
+mksrf files to be consistent w/ your new landice files. &nbsp;Output:&nbsp;mksrf_lanwat.15ka.nc,&nbsp;mksrf_pft.15ka.nc<br
+/>mksrf_glacier.15ka.nc. &nbsp;See usage below.</td></tr><tr><td align="left" valign="middle">remove_crops.ncl</td><td align="left"
+valign="middle">set crops to 0. use nearest neighbor for cells where crop==100%; add req'd pft harvest variables; set harvest to
+0.</td></tr><tr><td align="left" valign="middle">nn_fill.ncl<sup>2&nbsp;</sup>(beta)</td><td align="left" valign="middle">use nearest neighbor
+interpolation to fill new land cells. &nbsp;Notes: &nbsp;soil color<sup>2</sup>,&nbsp;lai<sup><span>3</span></sup></td></tr><tr><td
+align="left" valign="middle">create_mksrf_topo.ncl</td><td align="left" valign="middle">create raw topo dataset.</td></tr><tr><td align="left"
+valign="middle">create_mksrf_urban.ncl</td><td align="left" valign="middle">create raw urban dataset; set urban to 0.</td></tr><tr><td
+align="left" valign="middle">nn_fill.mapunits.ncl (WIP)</td><td align="left" valign="middle">&nbsp;-- SKIP --</td></tr><tr><td align="left"
+valign="middle"><p>cesm1_2_0/models/lnd/clm/</p><p>tools/shared/mkmapgrids</p></td><td align="left"
+valign="middle">&nbsp;SCRIPgrid_lgm_360x720.140801.nc</td></tr><tr><td align="left"
+valign="middle"><p>cesm1_2_0/models/lnd/clm/</p><p>tools/shared/mkmapdata</p></td><td align="left" valign="middle">create land mapping
+file</td></tr><tr><td align="left" valign="middle"><p>cesm1_2_0/models/lnd/clm/</p><p>tools/clm4_0/mksurfdata_map</p></td><td align="left"
+valign="middle">&nbsp;</td></tr><tr><td align="left" valign="middle"><p>mksurfdata_map.namelist.15ka<sup>4</sup></p>&nbsp;&nbsp;</td><td
+align="left" valign="middle"><p>&nbsp;</p></td></tr></tbody></table><p><sup>1</sup>&nbsp;<span>Usage</span>:&nbsp;&nbsp;
+convert_mksrf</p><ol><li>&nbsp;cp
+convert_mksrf.template&nbsp;<strong>convert_mksrf.template.myrun</strong>&nbsp;</li><li>&nbsp;modify&nbsp;<strong>convert_mksrf.template.myrun&nbsp;</strong>to
+point to your input files&nbsp;</li><li>cp&nbsp;<strong>convert_mksrf.template.myrun&nbsp;</strong>convert_mksrf.F90</li><li>&nbsp;compile
+(make -f Makefile.nwsc)</li><li>&nbsp;execute: &nbsp;./convert_mksrf</li></ol><p class="BodyPaleoDoc">&nbsp;<sup>2</sup> We use the default
+soil color file because it (1) already assigns soilcolor = 15 to new land, and (2) the landmask is not
+used:&nbsp;pftlandusedyn.0.5x0.5.simyr1850-2005.c090630/mksrf_soilcol_global_c090324.nc</p><p class="BodyPaleoDoc"><sup>3</sup>
+Monthly_height_BOT = constant for given PFT; MONTHLY_HEIGHT_TOP = constant for given PFT; MONTHLY_LAI and MONTHLY_SAI: &nbsp;interpolate from
+nearest neighbor.</p><p class="BodyPaleoDoc"><sup>4</sup>Path:
+&nbsp;/glade/p/cesm/palwg/cesm1_2_0/models/lnd/clm/tools/clm4_0/mksurfdata_map/;&nbsp;Usage: mksurfdata_map &lt;
+mksurfdata_map.namelist.15ka</p>
+<hr>
+<li><h4>Changing land cover</h4>
+<hr>
+<p>CLM4 does not require an initial condition file and can be initialized with
+arbitrary initialization and the surface dataset created from your mksrf datafiles [finidat = ‘ ‘].&nbsp; You can also restart from an
+existing simulation, using clm2.r files to initialize your new experiment.&nbsp;</p><p>However, if you have changed your land cover in your
+new simulation (for example, if you have changed your land ice distribution), you will first need to create a new clm2.r file that conforms to
+the new land cover assignments in your modified surface datafile.&nbsp; Creating a new clm2.r file is a two step process.&nbsp; Step 1:&nbsp;
+Run a short (e.g., 5 day) startup simulation with arbitrary initial conditions and your new surface dataset. The 5 day simulation will produce
+a restart file that is consistent with the ice distribution in your new surface dataset, which is different from the original experiment that
+you wish to branch from.&nbsp; Use the tool, <strong>interpinic, </strong>to re-map the restart data from the original simulation to the new
+restart file created by the 5-day run.</p><ol><li><p>Set up and run a 5-day <strong>startup</strong> simulation with your <strong>new</strong>
+surface dataset and <strong>arbitrary initialization</strong> to create a CLM restart file consistent with your new surface
+dataset.</p><p><strong>-- user_nl_clm</strong></p><p>finidat = ‘ ‘</p><p>fsurdat = '/mypath/surfdata_RESOLN_myrun.nc'</p></li><li><p>Map the
+data from the original restart file (original.clm.r.nc), onto the newly created restart file (my5day.clm.r.nc) using the tool
+<strong>interpinic</strong>, which is included with the CESM1 release.</p><p>% interpinic -i original.clm.r.nc -o
+my5day.clm.r.nc</p></li><li><p>Rename the newly remapped file to reflect its history.</p><p>% mv my5day.clm.r.nc original.clm.r.IP.nc&nbsp;
+(IP ~= interpinic)</p></li><li><p>NOTE: CLM4 will not allow you to specify both a surface dataset and finidat in user_nl_clm. If you get an
+error when running preview_namelist, then comment out the finidat line in user_nl_clm, and edit Buildconf/clm.buildnml.csh to point explicitly
+to your new file:</p><p>--<strong> user_nl_clm:</strong></p><p>fsurdata = '/mypath/surfdata_RESOLN_myrun.nc'</p><p>! finidat =
+'/mypath/original.clm.r.IP.nc'&nbsp; (comment out)</p><p><strong>-- Buildconf/clm.buildnml.csh</strong>:</p><p>clm_startfile =
+"/mypath/original.clm.r.IP.nc"</p></li></ol>
+<hr>
+<li><h4>PFT-physiology dataset</h4>
+<hr>
+<p>The CLM4 land model defines the physiology of each plant
+functional type (PFT) in an ASCII text file, called ‘pft-physiology’.&nbsp; The default pft-physiology definitions are generally used for
+paleo experiments.&nbsp; However, if you wish to change the characteristic of a specific CLM4 PFT you may need to edit this dataset. Please
+read the <a href="http://www.cesm.ucar.edu/models/cesm1.0/clm/index.shtml">CLM4 documentation</a> before altering this file and/or contact a
+CCSM paleo liaison for a consultation.</p>
+<hr>
+<li><h4>Runoff directional dataset (rdirc)</h4>
+<hr>
+<p>The River Transport Model (RTM) runs inside the land
+model on a fixed regular grid that is different from the parent CLM4 grid (the CLM4, CAM4 and CAM5 models typically use the same grid). The
+runoff directional dataset required for RTM is an ASCII file containing latitude, longitude, and an integer value describing the vector
+(direction) for runoff flow at each RTM grid point. The integer values are numbered from 1 to 8: 1=N, 2=NE (45<sup>o</sup>), 3=E
+(90<sup>o</sup>), 4=SE (135<sup>o</sup>), 5=S (180<sup>o</sup>), etc.&nbsp;&nbsp; Most near-modern experiments are able to use the default
+runoff directional dataset (rdirc.05) pointed to in clm.buildnml.csh.&nbsp;</p>
+</html>
+
+	<a name = "lulc"></a>
+        <li><html>
+</ul>
+<hr>
+<h4>What are 'mksrf' files</h4>
+<hr>
+<p>
+The surface dataset is constructed from a series of seven 'raw' datafiles.  These
+datasets are named ‘mksrf_[*].nc’ and include surface data information for PFTs (plant functional types), soil color, soil
+texture, leaf/stem areas and heights (LAI), land water (lakes and wetlands), glaciers, and urban areas.  
+Offline CESM tools use these 'raw' datasets to create the surface dataset <b>(fsurdat)</b>, tailored to your land and ocean grids.
+</p>
+<hr>
+<li><h4>Near Modern:  How do I modify mksrf landuse/landcover files for a Near Modern simulation </h4>
+<hr>
+<p>
+
+Near Modern simulations can use any software tool to modify the mksrf files (e.g., add glaciers, change vegetation, etc.).  Users
+can also use <b>convert_mksrf</b>, a tool developed for use on NCAR machines, to modify existing mksrf files.
+NOTE:  This code and it's Makefile were designed to run on NWSC machines:  (yellowstone, geyser, caldera).  Users are responsible
+for modifying the code for other platforms.
+
+  <p>
+  <b>TOOL:  convert_mksrf.csh</b> <br>
+  <b> Source :  <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/lnd/convert_mksrf">Source</a></b><br>
+<dl>
+<dt><b>INSTRUCTIONS</b>
+<dt>1)  cp convert_mksrf.template convert_mksrf.template.myCase
+<dt>2)  edit convert_mksrf.template.myCase
+        <dd>!-----------------------------------------------------------------
+        <dd>!! point to your files
+        <dd>!-----------------------------------------------------------------
+        <dd>filei  = '/public/topo/topo-ice.0.5degree.myCase.nc'
+        <dd>fileig = '/inputdata/lnd/clm2/rawdata/mksrf_glacier.060929.nc'
+        <dd>fileip = '/inputdata/lnd/clm2/rawdata/pftlandusedyn.0.5x0.5.simyr1850-2005.c090630/mksrf_landuse_rc1850_c090630.nc'
+        <dd>fileil = '/inputdata/lnd/clm2/rawdata/mksrf_lanwat.050425.nc'
+        <dd>fileog = '/public/rawdata/mksrf_glacier_lgm21ka.110106.nc'
+        <dd>fileop = '/public/rawdata/mksrf_pft_lgm21ka.110106.nc'
+        <dd>fileol = '/public/rawdata/mksrf_lanwat_lgm21ka.110106.nc'
+        <dd>!-----------------------------------------------------------------
+<dt>3)  cp convert_mksrf.template.myCase convert_mksrf.F90
+<dt>4)  gmake -f Makefile.nwsc 
+<dt>5)  ./convert_mksrf
+</dl>
+
+</p>
+
+<p>
+
+<a name = "mkraw"></a>
+<hr>
+<li><h4>Deep Time:  How do I create mksrf landuse/landcover files for a deep Time simulation </h4>
+<hr>
+
+<p>
+Deep Time modelers can create these files using the script: <a
+href="#mkraw">paleo_mkraw_cesm1.csh.</a>
+The script reads a user-provided lat/lon map of LSM vegetation types in netCDF format (e.g., vegetation.nc) and
+current day soil texture profiles (mksrf_soitex.10level.nc) to create the ‘raw’ surface datafiles required by CLM4. These
+datasets are named ‘mksrf_[*].nc’ and include surface data information for PFTs (plant functional types), soil color, soil
+texture, leaf/stem areas and heights (LAI), land water (lakes and wetlands), glaciers, and urban areas.  Offline CESM tools use these
+raw datasets to create the surface dataset <b>(fsurdat)</b>, tailored to your land and ocean grids.
+</p>
+ <p class="tab" >
+  <b>TOOL:  paleo_mkraw_cesm1.csh</b> <br>
+   <b> Source :  <a href="https://github.com/CESM-Development/paleoToolkit/tree/master/cesm1/lnd/paleo_mkraw">Source</b></a>
+
+   <p>
+    <p class="tab" >
+    <b> Details: </b> <br>
+    &raquo;   Specify the resolution of your incoming LSM vegetation dataset by setting longitude/latitude in paleo_mkraw_cesm1_sed.F90.
+    For example, if your LSM vegetation map is at 2x2 degree resolution, then
+    nlon=180 and nlat=90, and your mksrf_[*].nc files will also be 2x2 degree.  If your input vegetation resolution is 0.5 degree, nlon=720
+    and nlat=360 and your mksrf_[*].nc files will also be at 0.5 degree resolution.</li>
+    <br>
+
+    <p class="tab" >
+    &raquo;<b>NOTE:</b>   The paleo_mkraw_cesm1.csh script assumes that glaciers=urban=lakes=wetlands=0, soil texture =loam and soil color=4.
+If this
+    does not
+    suit your needs, you will need to alter paleo_mkraw_cesm1_sed.F90 to make any desired changes.
+    For example, if you would like to add glaciers, you will need to edit the subroutine create_mksrf_glacier and add code to test for
+    LSM type 1 (land ice). For each point equal to 1, assign pct_glacier values from 0 to 100%.  See the Near-modern section for a discussion
+    on adding glaciers to near-modern simulations.</li>
+
+    <ul>
+    <table border="1"><tbody><tr style="background-color: #a0f30b;">
+    <th colspan=2>Creating raw mksrf files
+    <tr>
+    <th>Shell Script <th align=left>paleo_mkraw_cesm1.csh
+    <tr>
+    <th>Source code         <th align=left>paleo_mkraw_cesm1_sed.F90
+    <tr>
+    <th>inputs      <th align=left>vegetation.nc<br> mksrf_soitex.10levels.nc
+    <tr>
+    <th>output
+    <th align=left>mksrf_glacier.myrun.date.nc<br>
+    mksrf_pft.myrun.date.nc<br>
+    mksrf_lai.myrun.date.nc<br>
+    mksrf_soicol.myrun.date.nc<br>
+    mksrf_lanwat.myrun.date.nc<br>
+    mksrf_soitex.myrun.date.nc<br>
+    mksrf_urban.myrun.date.nc <br>
+    <tr>
+    <th> mk_ffrac.ncl       <th align=left>mksrf_ffrac.myrun.date.nc
+    </table>
+
+    </p>
+    </ul>
+
+
+
+</html>
+  
+
+	<a name = "srf"></a>
+        <li><html>
+<hr>
+<h4>
+Surface dataset
+</h4>
+<hr>
+<p>Changing the land/sea mask for deep time model experiments requires that the modeler create a new land surface
+dataset.&nbsp;&nbsp;The surface dataset is created offline in a series of three steps outlined below.&nbsp;Note that the offline process
+differs from CCSM3, where the surface dataset was created at runtime. 
+We recommend that users review the newly created surface_data_[resolution].nc for accuracy. When creating this dataset,
+CLM4/CESM1 uses the ocean grid to compute the land/ocean mask and create the respective variables onto atm/lnd grid. When this initial
+mapping is done, there are often mismatches between the ocean grid and the atmosphere grid. If the ocean model views a grid point as land,
+and the land model has no information on that grid point (because on the atmosphere grid it was considered ocean), then CLM4 assigns this
+point to be wetland. This typically occurs along the coastlines and may not be desired.&nbsp; The modeler will need to modify the
+surface_data_[resolution].nc file to correct for these spurious wetland points. </p>
+
+
+<p><strong>NOTE</strong>: The offline process for creating the surface dataset for CLM4.0 is outlined below.  The process requires three
+steps.  The second and third steps rely on CESM/CLM path dependencies that require you to run the scripts within the 
+framework of your personal CESM1.2.x sandbox.  However, the paleo tools listed below are not included in the official CESM release code, and
+must be <a href="https://svn-ccsm-models.cgd.ucar.edu/tools/paleoToolkit/cesm1/trunk/lnd/">downloaded</a> from the online PaleoToolKit.</
+
+</p>
+
+<hr>
+<li><h4>Step 1.  mkmapgrids </h4>
+<hr>
+<p>
+This processes uses an ncl script to create a SCRIP grid file for the user defined land/sea mask. For Deep Time users, this
+creates a SCRIPgrid file for the 2x2 rawdata files with the paleo landmask.</p>
+<p>srcdir: /cesm1_2_1/models/lnd/clm/tools/shared/mkmapgrids<br />
+src: mkscripgrid_paleo.ncl <br />
+in: &nbsp; mksrf_lanwat_{myRun}.nc !! land mask, edges, centers<br />
+out: SCRIPgrid_{myRun}_{RESOLUTION}.nc</p>
+<p><strong>% Usage:</strong> ncl mkscripgrid_paleo.ncl</p>
+
+
+<hr>
+<li><h4>Step 2.  mkmapdata </h4>
+<hr>
+<p>Now map the SCRIPgrid file to the CESM land grid.  We use a generic SCRIP land grid because its mask == 1 everywhere.</p>
+</p>
+<p>srcdir: /cesm1_2_1/models/lnd/clm/tools/shared/mkmapdata<br />
+src 1: regridbatch_paleo.sh <br />
+src 2: mkmapdata_paleo.sh <br>
+<p>
+<p><strong>INSTRUCTIONS: </strong><br>
+<ul>
+<li><strong>Copy</strong>&nbsp;mkmapdata_paleo.sh to&nbsp;mkmapdata_myCase.sh</li>
+<li><strong>Copy</strong>&nbsp;regridbatch_paleo.sh to&nbsp;regridbatch_myCase.sh</li>
+<li><strong>Edit</strong>&nbsp;mkmapdata_myCase.sh (Search for <strong>"Change me"</strong>)</li>
+<ul>
+<li>grids_ID (e.g., 2x2_PT)</li>
+<li>INGRID (e.g.,&nbsp;SCRIPgrid_PT_90x180.130921.nc from mkmapgrid)</li>
+</ul>
+<li><p>Edit&nbsp;regridbatch_paleo.sh to point to&nbsp;mkmapdata_myCase.sh</p>
+<li> NOTE:  regridbatch_myCase.sh calls mkmapdata_myCase.sh</li>
+</li>
+</ul>
+<p><br />
+in1: SCRIPgrid_myRun_<RESOLUTION>.nc<br />
+in2: /inputdata/lnd/clm2/mappingdata/grids/1.9x2.5_c110308.nc &nbsp; &nbsp;!! generic<br />out:
+map_<mksrf_resolution>_to_<CESM_resolution>_nomask_aave_da_c<DATE>.nc </p>
+<p><strong>GEYSER INSTRUCTIONS: <strong><span style="color: #ff0000;">NOTE: &nbsp;Yellowstone users should run this as a BATCH JOB on geyser </span></strong> <br>
+</br>% Usage:  </strong> bsub &lt; regridbatch_myCase.sh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;!! 
+<strong>POSSIBLE BUG: &nbsp;batch submission may not be automatic</strong></span></p><p>The
+variable $LSF_PJL_TYPE should be set automatically to give the batch directive. If it is not set, the run will not submit in batch mode as
+required. &nbsp;Workaround: &nbsp;manually add the -b flag.</p><p><br />
+
+
+
+<hr>
+<li><h4> Step 3.  mksurfdata</h4>
+<hr>
+</strong>
+<p>This is the final step to create a new surface dataset</p>
+<p>srcDir: /cesm1_2_1/models/lnd/clm/tools/clm4_0/mksurfdata_map<br />
+<p><strong>INSTRUCTIONS: </strong><br>
+<ul>
+<li><strong>Copy</strong> mksurfdata_map.namelist to mksurfdata_map.namelist.myCase
+<li><strong>Edit</strong> mksurfdata_map.namelist.myCase 
+<li><strong>Run</strong> mksurfdata_map</p>
+<p><strong>% Usage:</strong> ./mksurfdata_map &lt; mksurfdata_map.namelist.myCase</p>
+</ul>
+</p>
+
+
+</html>
+  
+
+	<a name = "runlnd"></a>
+        <li><html>
+
+<a name="ai"> </a>
+<hr>
+<h4>How do I run the CLM4.0 model from arbitrary initial conditions. </h4>
+<hr>
+<p>
+CLM4 does not require an initial condition file and can be initialized with arbitrary initialization <b>(finidat=" ")</b>.  However, arbitrary
+initialization starts the model from essentially bare ground, with vegetation, soil carbon, soil nitrogen, and soil moisture set to zero. 
+The land model will spin up all variables at once, but will therefore require many hundreds of years to come into equilibrium.  
+</p>
+<a name="IP"> </a>
+<hr>
+<li><h4>How can I restart from a previous run if I have changed the land/sea mask. </h4>
+<hr>
+<p>Alternatively, if your new land/sea mask is relatively close to modern, you could use <a
+href="http://www.cesm.ucar.edu/models/ccsm4.0/clm/models/lnd/clm/doc/UsersGuide/x1779.html"><b>interpinic</b></a> to interpolate the land
+model initial conditions from a previously spun up CESM simulation into your new land model initialization file.   Note that <b>interpinic</b>
+will not work for Dynamic Vegetation (CNDV) simulations.
+</p>
+<p>
+
+ <p class="tab" >
+ <b>TOOL:  INTERPINIC</b> <br>
+ <b> Source :  /CESMROOT/models/lnd/clm/tools/clm4_0/interpinic
+</b> <br>
+
+
+<ul>
+         <li>At present, interpinic does not work for CNDV clm.r files.
+
+         <li> interpinic on yellowstone:
+         <li>module load netcdf/4.3.0-rc4
+         <li>make LIB_NETCDF=$NETCDF/lib INC_NETCDF=$NETCDF/include
+</ul>
+
+
+ <br>
+ <p class="tab" >
+          <b>Details</b></br>
+          This process maps land cover data from one CESM file (e.g., run1.clm2.i.001.nc; the input file) to another file (run2.clm2.i.001.nc;
+          the output file) by overwriting the contents of the second file. This process is required if surface fields have changed (e.g.,
+          landmask, ice, pfts etc).  When these fields change, the clm.i files are not interchangeable.The input and output files may be of
+          any spatial resolution and gridcell/landunit/column/pft configuration.  In this case, run2 is the clm file produced by a 5-day
+          'startup' simulation that has the landmask and landcover mapping for your paleo simulation.
+
+
+ <p class="tab" >
+	<b>Definitions</b>
+	<br>case1 = output from a spunup CESM/CLM4 simulation (e.g., a default PI  control:  run1.1850control.clm2.nc)
+	<br>case2 = output from a 5-day simulation with paleo landmask:
+
+ <p class="tab" >
+          <b> % Usage:</b><br>
+	<ul>
+          % interpinic -i case1_1850control.clm2.r.nc -o case2_5dayPaleo.clm2.r.nc<br>
+	</ul>
+
+
+	  <br>
+ <p class="tab" >
+          Hint:  Rename output file to document the provenance for the input data : (IP = interpinic)
+
+	<ul>
+          OLD:   case2_cret.clm2.r.nc<br>
+          NEW:   case1_1850control.clm2.r.IP.nc<br>
+	</ul>
+
+</p>
+</p>
+
+</p>
+
+<a name="CN"> </a>
+<hr>
+<li><h4>How do I initialize Carbon/Nitrogen pools</h4>
+<hr>
+<p>
+To run the land model with in a prognostic carbon (CN) mode, you will need to 
+<a href="http://www.cesm.ucar.edu/models/cesm1.2/clm/models/lnd/clm/doc/UsersGuide/x12591.html"> spin up the carbon and nitrogen pools.  </a>
+A land model spinup can be accelerated by running an 
+<a href="http://www.cesm.ucar.edu/models/cesm1.2/clm/models/lnd/clm/doc/UsersGuide/x12591.html">offline I-case (compset = ICN)</a> simulation to spin up
+the biogeochemistry C and N model (CN Spinup), and using output from this I-case to initialize a fully coupled CESM simulation.   
+</p>
+
+<a name="CNDV"></a>
+<hr>
+<li><h4>How do I turn on CNDV (CLM4.0)</h4>
+<hr>
+<p>
+
+To turn on CNDV, modify env_build.xml:<br>
+<style type="text/css">
+<!--
+.tab{ margin-left: 40px; }
+	text-indent: 2.0em;
+-->
+</style>
+
+
+<p class="tab">CLM_CONFIG_OPTS = "-phys clm4_0 -bgc cndv"</p>
+<p class="tab"><b>% Usage:</b>&nbsp&nbsp ./xmlchange -file env_build.xml -id CLM_CONFIG_OPTS -val '-phys clm4_0 -bgc cndv'</p>
+
+<p>See the <a href="http://www.cesm.ucar.edu/models/cesm1.2/clm/models/lnd/clm/doc/UsersGuide/x12591.html">CLM4.0 documentation </a>for
+instructions on how to spin up the Carbon-Nitrogen Dynamic vegetation model.</p>
+
+
+<p>
+</p>
+<hr>
+<li><h4>Plant Physiology</h4>
+<hr>
+
+
+  <p>
+  CLM4 model defines the physiology of each plant functional type (PFT) in a netCDF files, called pft-physiology.clm40.<DATE>.nc.  The default
+  (i.e., modern) pft-physiology definitions are generally used for paleo experiments.  However, if you wish to change the characteristic
+  of a specific CLM PFT, and you cannot accomplish your goal by modifying paleo_mkraw_cesm1__sed.F90, you may need to edit this dataset.
+  We recommend that you read the CLM documentation before altering this file.
+
+</p>
+
+
+</html>
+  
+
+      <hr>
+
+    <p>
+</p>
+</ol>
+
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- ice changes======================================================================= --!>
+<br>
+<a name="ice"></a>
+<br>
+<ul>
+    <a name="ice"></a>
+    <html>
+</ul>
+<hr>
+<h2> Sea Ice model (CICE)</h2>
+<hr>
+
+      <ol>
+	<a name = "cice"></a>
+        <html>
+
+<li><h4>ICE FORCING FILES</h4>
+<p>
+Forcing files required for the sea ice model (CICE) are the ocean grid and the ocean bathymetry. A requirement in CESM1 is that the ocean and
+sea ice model components share the same grid, which is an irregular POP dipole grid; deep time modelers typically use a nominally 1o ocean/ice
+grid (gx1v6).
+</p>
+
+<li><h4>ICE INITIAL CONDITIONS</h4>
+<p>
+Ice initial conditions files are not required for deep time paleoclimate cases. We recommend initializing the ice model with a ‘no ice’
+initial state and allowing the model to simulate an ice state.  Set ‘no ice’ in the ice model namelist (user_nl_cice). 
+</p>
+
+<dl>
+<dd>ice_ic = 'none'
+</dl>
+</html>
+
+      </ol>
+
+    <p>
+</p>
+
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- cpl changes======================================================================= --!>
+<br>
+<a name="cpl"></a>
+<br>
+<ul>
+    <a name="cpl"></a>
+    <html>
+</ul>
+<hr>
+<h2> Coupler </h2>
+<hr>
+
+      <ol>
+	<a name = "cpl.nl"></a>
+        <html>
+</ul>
+<hr>
+<li> <h4>Setting orbital parameters</h4>
+<hr>
+
+<p>To simulate changes in Earth orbital position, the model calculates the eccentricity, obliquity and precession based on Berger et al., (J.
+Geophys. Res.1993). </p>
+
+<p><b>Quaternary/Near Modern: </b> The model sets these parameters automatically using a variable called <b>orb_iyear</b>, which is set in the coupler namelist
+(user_nl_cpl) and is defined in years before 1950.  </p>
+
+<p><b>Deep Time:</b>  Since we have no definitive estimate of orbital variations beyond ~1Ma BP, eccentricity, obliquity, and the moving vernal equinox
+must be defined explicitly for pre-Quaternary experiments.  The CESM default orbital year for the B1850C5CN pre-industrial compset is
+1850.</p>
+
+<b>QUATERNARY ORBITAL SETTINGS</b><br>
+<b>AD:</b> (e.g., 1800, 1900, 1950, 1990, 2000, etc.) are expressed in calendar years.<br>
+
+<b>BC: </b> (e.g., 10ka, 130ka, 506ka) are expressed in years relative to 1950:<br>
+
+<dl><i>Example for calculating the orbital year from PD:  </i>
+
+<dd>506ka BP: orb_iyear = (1950 - 506,000) = -504050
+
+   <dd>4ka BP: orb_iyear = (1950 – 4000) = -2050
+</dl>
+
+<b>COUPLER NAMELIST (USER_NL_CPL)</b>
+<i>
+
+<dl> Example for the Last Glacial Maximum (21ka BP)</i>
+<dd>orb_iyear = -19050
+<dd>orb_mode = 'fixed_year'
+</dl>
+
+<dl>
+<b>COUPLER DOCUMENTATION</b>
+<dl>
+<dd>cesm1.2 -- http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/nl_drv.html
+</dl>
+
+<b>COUPLER DEFINITIONS</b><br>
+<b>orb_mode (char)</b>
+<b>NOTE: orb_mode may cause early CESM tags to crash.  If so, remove orb_mode from cpl.buildnml.csh and resubmit.</b>
+"Orb_mode" sets how the orbital mode will be configured. "fixed_year" uses the orb_iyear and other orb inputs are ignored. In
+this mode, the orbital parameters are constant and based on the year. "variable_year" uses the orb_iyear and orb_iyear_align. In this mode,
+the orbital parameters vary as the model year advances and the model year orb_iyear_align has the equivalent orbital year of orb_iyear.
+"fixed_parameters" uses the orb_eccen, orb_mvelp, and orb_obliq to set the orbital parameters which then remain constant through the model
+integration. set by ORBITAL_MODE in env_run.xml. [fixed_year, variable_year, fixed_parameters] default='fixed_year'.
+
+
+
+<b>orb_iyear (int):</b> year of orbit, used when orb_mode is fixed_year or variable_year. set by ORBITAL_YEAR in env_run.xml.
+default=unset<br>
+
+<b>orb_iyear_align (int):</b> model year associated with orb_iyear when orb_mode is variable_year. set by ORBITAL_YEAR_ALIGN in env_run.xml. default=unset<br>
+
+<b>orb_eccen: </b> eccentricity of orbit, used when orb_mode is fixed_parameters. default=unset<br>
+
+<b>orb_mvelp :</b> location of vernal equinox in longitude degrees, used when orb_mode is fixed_parameters. default=unset<br>
+
+<b>orb_obliq :</b>obliquity of orbit in degrees, used when orb_mode is fixed_parameters. default=unset<br>
+
+
+</html>
+
+      </ol>
+
+    <p>
+</p>
+
+</html>
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- namelist changes======================================================================= --!>
+<br>
+<a name="nl"></a>
+<br>
+<ul>
+    <a name="nl"></a>
+    <html> 
+
+
+</ul>
+<hr>
+<h2>Common namelist changes for paleoclimate</h2>
+<hr>
+<br>
+
+   <hr>
+   <h3>POP2 Namelist Changes   </h3>
+   <hr>
+     <!--  ================== Purpose of the tag ================= -->
+     <p>
+
+        <p>
+	<dl>
+        !-- Specify the grid type to avoid the model assumption of a uniform grid in the southern hemisphere (i.e., gx1v6).
+<br>
+
+	<dt>
+        <dd> lat_aux_grid_type   = 'user-specified'
+        <dd> lat_aux_begin       = -90.0
+        <dd> lat_aux_end         = 90.0
+        <dd> n_lat_aux_grid      = 180
+	</dl>
+
+        <dl>!-- Set the grid type to 'user-specified' to avoid the model assumption of 
+a uniform grid in the southern hemisphere (i.e., gx1v6).
+
+	<dt>
+        <dd> moc_requested          = .true.
+        <dd> n_heat_trans_requested = .true.
+        <dd> n_salt_trans_requested = .true.
+        <dd> n_transport_reg        = 1
+	</dl>
+
+        <dl>!-- dt_count sets the number of times the ocean is coupled per NCPL_BASE_PERIOD.  Decreasing the ocean timestep can improve model
+	stability, particularly in the early years of a simulation as the model is adjusting to new boundary conditions.  The default ocean timestep is 23.
+	<dt>
+        <dd> dt_count               = 23      (Default)
+        <dd> dt_count               = 30      (Lowered)
+	</dl>
+
+        <dl>!-- Overflow regions are hardcoded in the ocean model to present day bathymetry and must be turned off for deep
+time geographies.
+	<dt>
+        <dd>overflows_on = .false.<br>
+        <dd>overflows_interactive = .false.<br>
+	</dl>
+
+        <dl>!--To initialize from an ocean depth/salinity profile:  init_ts_option = 'mean'
+
+	<dt>
+        <dd>init_ts_file = '/glade/p/cesm/palwg/paleo_setup/ocn/ic/ts_init_b20.681_1100-01_s_35.60level.dat'<br>
+        <dd>init_ts_option = 'mean'<br>
+	</dl>
+
+        <dl>!-- lhoriz_varying_bckgrnd (flag to allow horizontally-varying background (need bckgrnd_vdc2=0.0)), ldiag_velocity
+(flag to compute velocity diagnostics), overflows and tidal mixing all are geographically dependent and so
+present-day setups are not appropriate for deep time paleogeography. 
+
+	<dt>
+        <dd>lhoriz_varying_bckgrnd = .false.<br>
+        <dd>ldiag_velocity = .false.<br>
+        <dd>ltidal_mixing = .false.<br>
+	</dl>
+
+        <dl>!--The new background vertical velocity parameters were determined by Gokhan and Christine to increase Kappa-v in
+the deeper ocean in absence of tidal mixing. The tidal mixing normally would do this.<br>
+
+	<dt>
+        <dd>bckgrnd_vdc1 = 0.524 (default=0.16)<br>
+        <dd>bckgrnd_vdc2 = 0.313 (default=0.0)<br>
+	</dl>
+
+
+
+     <!--  ================== End Purpose ======================== -->
+   <p><b>POP2  &raquo;  Near Modern (LGM example) </b>
+
+   <a href="http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/nl_pop2.html">CESM POP2 namelist options </a>
+	<dl>
+        <dd>region_mask_file = '/mypath/modify_kmt/region_mask_gx1v6_LGM.ieeei4'
+        <dd>topography_file  = '/mypath/modify_kmt/kmt_gx1v6_LGM.ieeei4'
+        </dl>
+        </b></p>
+
+        <p><b>POP2  </a>&raquo;  Deep Time (Permian example)</b></b>
+        <dl>
+        <dd> horiz_grid_file     = '/mypath/ocn/mk_ocn_grid/permian/grid.pop.da'
+        <dd> topography_file     = '/mypath/ocn/mk_ocn_grid/permian/kmt.da'
+        <dd> region_mask_file    = '/mypath/ocn/region_mask/region.permian.be.ieeei4'
+        <dd> region_info_file    = '/mypath/ocn/region_mask/perm_gx1v6_region_ids.permian'
+        <dd> diag_transport_file = '/mypath/ocn/region_mask/perm_gx1v6_transport_contents.permian'
+        <dd> lat_aux_grid_type   = 'user-specified'
+        <dd> lat_aux_begin       = -90.0
+        <dd> lat_aux_end         = 90.0
+        <dd> n_lat_aux_grid      = 180
+        <dd> moc_requested          = .true.
+        <dd> n_heat_trans_requested = .true.
+        <dd> n_salt_trans_requested = .true.
+        <dd> n_transport_reg        = 1
+        <dd> dt_count               = 23
+        <dd> overflows_on           = .false.
+        <dd> overflows_interactive  = .false.
+        <dd> lhoriz_varying_bckgrnd = .false.
+        <dd> ldiag_velocity = .false.
+        <dd> ltidal_mixing  = .false.
+        <dd> bckgrnd_vdc1   = 0.524
+        <dd> bckgrnd_vdc2   = 0.313
+
+	</dl>
+	</b></p>
+
+
+</b>
+
+
+   <hr>
+   <h3>CAM5 Namelist Changes   </h3>
+   <hr>
+   <b><p>CAM5  &raquo;  Near Modern and Deep Time</b>
+
+	<dl>
+	<dd>bnd_topo = '/mypath/definesurf/my_topo_remap.DATE.nc'
+	<dd>(CAM5) ncdata = '/glade/p/cesm/cseg/inputdata/atm/cam/inic/fv/cami_0000-01-01_1.9x2.5_L30_c070703.nc'
+	<dd>(CAM4) ncdata = '/glade/p/cesm/cseg/inputdata/atm/cam/inic/fv/cami_0000-01-01_1.9x2.5_L26_c070408.nc'
+	</dl>
+
+	<br>
+	<b> Greenhouse gases</b>
+	<dl>
+	<dt><i>Example 1:  Fixed GHG</i>
+	<dd>scenario_ghg    = 'FIXED'
+	<dd>co2vmr         = 279e-6     (CO<sub>2</sub> volume mixing ratio)
+	<dd>ch4vmr         = 674.6e-9   (CH<sub>4</sub> volume mixing ratio)
+	<dd>n2ovmr         = 266.9e-9   (N<sub>2</sub>0 volume mixing ratio)
+	<dd>f11vmr         = 0.0	(CFC11 volume mixing ratio)
+	<dd>f12vmr         = 0.0	(CFC12 volume mixing ratio)
+	</dl>
+
+	<dl>
+	<dt><i>Example 2:  Time varying GHG </i>
+	<dd>bndtvghg        = '/glade/p/cesm/cseg//inputdata/atm/cam/ggas/ghg_pmip3_850-2007_annual_c100517.v2.nc'
+	<dd>scenario_ghg    = 'RAMPED'
+	</dl>
+	<br>
+
+	<b> Solar Forcing </b><br>
+	<dl>
+	<dt><i>Example 1:  Time varying solar</i>
+	<dd>solar_data_file =  '/glade/p/cesm/cseg/inputdata/atm/cam/solar/SOLAR_SPECTRAL_VK_Lean_849-2008_annual_c130909.nc'
+	<dd>solar_data_type = 'SERIAL'
+	</dl>
+	<dl>
+	<dt><i>Example 2:  Fixed solar (year 850AD)</i>
+	<dd>solar_data_file =  '/glade/p/cesm/cseg/inputdata/atm/cam/solar/SOLAR_SPECTRAL_VK_Lean_849-2008_annual_c130909.nc'
+	<dd> solar_data_ymd = 08500101
+	<dd> solar_data_type = 'FIXED'
+	</dl>
+	<dl>
+	<dt><i>Example 3:  Fixed solar (year 1850)</i>
+	<dd>solar_data_file = '/glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SOLAR_SPECTRAL_Lean_1610-2008_annual_c090324.nc'
+	<dd> solar_data_type = 'FIXED'
+	<dd> solar_data_ymd = 18500101
+	</dl>
+
+	<br>
+	<b> Volcanic Forcing (Default=OFF)</b>
+	<dl>
+	<dt><i>Example 1:  Volcanoes turned ON</i>
+	<dd>prescribed_volcaero_datapath = '/glade/p/cesmdata/cseg/inputdata/atm/cam/volc'
+	<dd>prescribed_volcaero_file = 'IVI2LoadingLatHeight501-2000_L18_c20100518.nc'
+	</dl>
+
+
+
+   <hr>
+   <h3>CLM4.0 Namelist Changes   </h3>
+   <hr>
+	<p><b>CLM4.0  &raquo; user_nl_clm &raquo; Near Modern</b>
+
+	<dl>
+	<dd>fsurdat = '/mypath/mksurfdata_map/surfdata_0.9x1.25_YD13ka_90_lat.nc'
+	<dd>finidat = "  "
+	<dd>urban_hac = 'OFF'
+	
+	</dl>
+	</p>
+	
+	<p><b>CLM4.0  &raquo; user_nl_clm &raquo;  Deep Time</b>
+	
+	<dl>
+	<dd>fsurdat = '/mypath/lnd/mksurfdata_map/surfdata_1.9x2.5_per.nc'
+	<dd>finidat<sup>1</sup> = " "
+	<dd>urban_hac = 'OFF'
+	
+	</dl>
+	<br>
+	<sup>1</sup>finidat (See <a href="#bugs">Known Problems)</a>
+	</p>
+
+
+   <hr>
+   <h3>RTM Namelist Changes   </h3>
+   <hr>
+	<p><b>RTM  &raquo; user_nl_rtm &raquo; Near Modern and Deep Time</b>
+
+	<dl>
+	<dd> frivinp_rtm = '/mypath/lnd/rdirc/rdirc.0.5x0.5.per.nc'
+	<dd> finidat_rtm = ' '
+	
+	</dl>
+	
+   <hr>
+   <h3>CICE Namelist Changes   </h3>
+   <hr>
+	<p><b>CICE  &raquo; user_nl_cice &raquo; Near Modern</b>
+	
+	<dl>
+	<dd>kmt_file  = '/mypath/modify_kmt/kmt_gx1v6_YD.ieeei4'
+	</dl>
+	</p>
+	
+	<p><b>CICE  &raquo; user_nl_cice &raquo;  Deep Time</b>
+	<dl>
+	<dd>grid_file = '/mypath/ocn/mk_ocn_grid/permian/grid.3.pop.da'
+	<dd>kmt_file  = '/mypath/ocn/mk_ocn_grid/permian/kmt.3.da'
+	<dd>ice_ic = 'none'
+	<dd>xndt_dyn = 2
+	</dl>
+   <hr>
+   <h3>CPL Namelist Changes  </h3>
+   <hr>
+<p><b>CPL  &raquo; user_nl_cpl &raquo; Near Modern example for Last Glacial Maximum <i> (-19050 = 1950-21,000)</i></b>
+	<dl>
+ 	<dd>orb_iyear = -19050         
+    	<dd>orb_iyear_align = -19050
+  	<dd>orb_mode = 'fixed_year'  (optional: 'variable_year')
+	
+    	</dl>
+    	</p>
+	
+    	<p><b>CPL  &raquo; user_nl_cpl &raquo;  Deep Time </b>
+	
+    	<dl>
+	
+     	<dd> orb_iyear = 1990 (1950, 1850, etc.)
+	
+     	</ul>
+	</p>
+
+</html>
+  
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- namelist changes======================================================================= --!>
+<br>
+<a name="xml"></a>
+<br>
+<ul>
+    <a name="xml"></a>
+    <html>
+
+</dl>
+</ul>
+<hr>
+<h2 class="title">Common XML changes for Paleo simulations using CESM1.2.0 </h2>
+<hr>
+
+<p>
+These XML changes will help configure the CESM1.2.x model for a paleoclimate simulation.  The files pointed to in env_run.xml are created by the user, using tools provided in the paleoToolKit.
+
+<!--  ---------------------------------------------------------------------  -->
+
+
+<div class="problems-frame">
+<p><b>xmlchanges  &raquo; Near Modern
+<ul>
+<li>xmlchange -file env_run.xml -id STOP_OPTION -val nyears
+<li>xmlchange -file env_run.xml -id STOP_N -val 5
+<li>xmlchange -file env_run.xml -id DOUT_L_MSROOT -val '/CCSM/csm/$CASE'
+<li>xmlchange -file env_run.xml -id RUN_REFCASE -val 'b40.plio.FV1.003'
+<li>xmlchange -file env_run.xml -id GET_REFCASE   -val FALSE
+<li>xmlchange -file env_run.xml -id RUN_TYPE          -val 'startup'
+<li>xmlchange -file env_run.xml -id RUN_STARTDATE     -val '0451-01-01'
+</ul>
+</div>
+</b></p>
+
+<div class="problems-frame">
+<p><b>xmlchanges  &raquo;  Deep Time &raquo; Point to new mapping files.
+
+<ul>
+<li>xmlchange -file env_run.xml -id GET_REFCASE   -val FALSE
+<li>xmlchange -file env_run.xml -id RUN_TYPE          -val 'startup'
+<li>xmlchange -file env_run.xml -id ATM_DOMAIN_FILE   -val 'domain.lnd.fv09_1.25_gx1v6perm.141028.nc'
+<li>xmlchange -file env_run.xml -id ATM_DOMAIN_PATH   -val '/mypath/gen_domain'
+<li>xmlchange -file env_run.xml -id LND_DOMAIN_FILE   -val 'domain.lnd.fv09_1.25_gx1v6perm.141028.nc'
+<li>xmlchange -file env_run.xml -id LND_DOMAIN_PATH   -val '/mypath/gen_domain'
+<li>xmlchange -file env_run.xml -id OCN_DOMAIN_FILE   -val 'domain.ocn.gx1v6perm.141028.nc'
+<li>xmlchange -file env_run.xml -id OCN_DOMAIN_PATH   -val '/mypath/gen_domain'
+<li>xmlchange -file env_run.xml -id ICE_DOMAIN_FILE   -val 'domain.ocn.gx1v6perm.141028.nc'
+<li>xmlchange -file env_run.xml -id ICE_DOMAIN_PATH   -val '/mypath/gen_domain'
+<li>xmlchange -file env_run.xml -id OCN2ATM_FMAPNAME  -val '/mypath/mapping/map_gx1v6perm_TO_fv09_1.25_aave.141028.nc'
+<li>xmlchange -file env_run.xml -id OCN2ATM_SMAPNAME  -val '/mypath/mapping/map_gx1v6perm_TO_fv09_1.25_aave.141028.nc'
+<li>xmlchange -file env_run.xml -id ATM2OCN_FMAPNAME  -val '/mypath/mapping/map_fv09_1.25_TO_gx1v6perm_aave.141028.nc'
+<li>xmlchange -file env_run.xml -id ATM2OCN_SMAPNAME  -val '/mypath/mapping/map_fv09_1.25_TO_gx1v6perm_blin.141028.nc'
+<li>xmlchange -file env_run.xml -id ATM2OCN_VMAPNAME  -val '/mypath/mapping/map_fv09_1.25_TO_gx1v6perm_patc.141028.nc'
+<li>xmlchange -file env_run.xml -id ROF2OCN_RMAPNAME  -val '/mypath/mapping/map_r05_to_gx1v6perm_nnsm_e1000r300_141028.nc'
+<li>xmlchange -file env_run.xml -id ROF2OCN_FMAPNAME  -val '/mypath/rof/map_r05_nomask_TO_gx1v6perm_aave.141028.nc'
+</ul>
+</div>
+
+<div class="problems-frame">
+<p><b>xmlchanges &raquo; Ocean Grid &raquo;  This is an example of changing the ocean decomposition if you have changed the size of the ocean grid (EXPERT USERS ONLY)
+<ul>
+<li>xmlchange -file env_build.xml -id OCN_NY          -val 394
+<li>xmlchange -file env_build.xml -id ICE_NY          -val 394
+<li>xmlchange -file env_build.xml -id POP_AUTO_DECOMP          -val false
+<li>xmlchange -file env_build.xml -id POP_BLCKY          -val 33
+</ul>
+</div>
+
+<div class="problems-frame">
+<p><b>xmlchanges  &raquo;  Turn on Dynamic Vegetation
+
+<ul>
+<li>xmlchange -file env_build.xml -id CLM_CONFIG_OPTS   -val '-phys clm4_0 -bgc cndv'
+</ul>
+</b></p>
+</div>
+
+<div class="problems-frame">
+<p><b>xmlchanges  &raquo;  Turn on debugging
+
+<ul>
+<li>xmlchange -file env_build.xml -id DEBUG -val TRUE
+</ul>
+</b></p>
+</div>
+
+
+
+<p><p>
+
+
+</b>
+</b>
+
+<!------------------------------------------------------------------------>
+		
+</body>
+</html>
+  
+
+</ul>
+<br>
+<a href="#top"> (Return to top)  </a><p></p>
+<!-- ===================================================================================== --!>
+<br>
+<a name="gotchas"></a>
+<br>
+<ul>
+    <a name="gotchas"></a>
+    <html>
+</ul>
+<hr>
+<h2>Modern vs Paleo Gotchas</h2>
+<hr>
+
+<table cellpadding=5 border=2>
+<th> Land model<th>description + Solution<tr>
+<td> urban waste_heat <td>Default: urban_hac='ON_WASTEHEAT'<br>paleo: urban_hac= 'OFF'<tr>
+<td> pct_urban <td> set to 0 in mksrf_urban <tr>
+<th> Atm Model <th> description + Solution<tr>
+<td> aerosols<td> aerosol forcing files are set to present day spatial distribution.<tr>
+<th> Ocean Model <th> description + Solution<tr>
+<td> region mask <td> Tip: keep at least one active cell for near modern simulations<tr>
+<td> new ocean cells <td>new ocean cells need to be initialized for T/S<tr>
+<td> new/modified KMT <td>check for closed basins, narrow channels, one cell bays (check literature for time period)<tr>
+<td> IAGE bug <td>The non-standard initialization of TEMP & SALT is not compatible with CESM's restart script mechanisms. Despite
+CONTINUE_RUN being TRUE in env_run.xml, the model tries to initialize TEMP & SALT with the same IC as was used in the first submission. On
+restart, the IAGE initialization is trying to read from the same file that TEMP & SALT are being read from, but IAGE is not in that file. This
+leads to an error. Solution: Modify user_nl_pop2:   init_ts_option = 'ccsm_continue'   Make this modification when you are restarting after the initial
+submission.</tr>
+<td> ncview  <td>When ocean history files are viewed using ncview, the year appears to be one year greater than the filename
+indicates.  e.g., year 896-01 will appear be displayed as year 897-01 in ncview.</tr>
+<td> hdr file <td>hybrid and branch runs MUST have an ocean header file (.hdr) with the same name as the restart file.  Simulations
+that are missing the header file will give a warning message ("... missing hdr file...") but will appear to run.  They will usually fail,
+however, within a few days. e.g., <br><code>myrun.pop.r.0801-01-01-00000.hdr</code> (ASCII header file)<br>
+<code>myrun.pop.r.0801-01-01-00000</code> (binary restart file)<tr>
+<td> POP2 binary files grid <td>POP2 expects big_endian grid and KMT files, regardless of the native format of the
+machine on which you are running CESM.  This affects grid, KMT, region_mask <tr>
+<td>NCL "popLatLon" <td> This NCL function is used to remap the ocean grid to a lat/lon coordinate system. NCL expects a filenaming
+syntax that no longer matches what cesm1.2 ESMF mapping tools produce:</br>
+<code>map_gx1pt_TO_fv19_25_blin.130925.nc</code> (ESMF)<br>
+<code>map_gx1pt_to_fv19_25_bilin_da_130925.nc</code> (popLatLon format)<tr>
+
+<td>diagnostics.F90 <td>5 diagnostic locations are hardcoded (diagnostics.F90). If these points fall over land they cause the
+model to fail.<tr>
+<td rowspan=7> PD ocean details
+<td> turn off overflows for Deep time (see recommended user_nl_pop2 settings)<tr>
+<td> Banda Sea diffusivity<br>velocites change over lat/lon grid box (change in user_nl_pop2)<br>Modern:<code>  lhoriz_varying_bckgrnd = .true.</code>
+ <br>Paleo: <code>lhoriz_varying_bckgrnd = .false. </code> </tr>
+<td> tidal mixing - turn off for deep time; increase to 6 levels for debugging (vmix_kpp.F90)</td></tr>
+<td> Ross Ice shelf is not hardwired in CESM1.2<tr>
+<td> Mediterranean Sea <tr>
+<td> If you create a rotated grid (e.g., for deep time) you will need to check the western boundary anisotropic
+viscosity to make sure still on western boundary. i.e. *.pop.hv. file.<tr>
+</table>
+
+
+</html>
+
+</ul>
+<!-- ===================================================================================== --!>
+<br>
+<a name="knownproblems"></a>
+<br>
+<ul>
+    <a name="knownproblems"></a>
+    <html>
+<!--  ---------------------------------------------------------------------  -->
+<!--  BUGZILLA  -->
+<!--  ---------------------------------------------------------------------  -->
+
+<p><p>
+
+
+<a name="bugs"></a>
+</ul>
+<hr>
+<h2>Known CESM bugs that commonly affect paleoclimate simulations</h2>
+<hr>
+<br>
+
+ <table cellpadding=5 border=2>
+ <th>BugReport<th>Problem<th>solution</tr>
+ <td><a href="http://bugz.cgd.ucar.edu/show_bug.cgi?id=699">(Bugzilla 699)</a>  <td>Mismatch between regionmask and KMT.<td>Check for exact
+ match between regionmask and KMT<tr>
+ <td><a href="http://bugz.cgd.ucar.edu/show_bug.cgi?id=1274">(Bugzilla 1274)</a>  <td>init_ts_option 'mean' or 'zonal' case fails to continue 
+ automatically.<td>manually change from <code> init_ts_option='mean'</code> to <code> init_ts_option='ccsm_continue'</code> in user_nl_pop2. <tr>
+ <td rowspan=2><a href="http://bugz.cgd.ucar.edu/show_bug.cgi?id=1870">(Bugzilla 1870)</a> <td rowspan=2>
+ This bug causes two problems for Paleo users:<br>
+ ocn build error:  <br>
+ <code>"Duplicate definitions ... "; domain_size.F90 and POP_DomainSizeMod.F90 are not handled correctly in <code>SourceMods/.</code>
+ build error:  "ocn.bldlog.141022-105640:Duplicate definitions of module domain_size in domain_size and gx1v6_domain_size_plioWAIS:
+ Inappropriate ioctl for device"</code>
+ <br>
+ <td>
+ Problem #1: You can't have multiple versions of ".F90" code in your <code>SourceMods/src.pop2 </code>directory, 
+ even if they are named something other than domain_size.F90, or they will all be copied over, confuse the build, and 
+ cause a <code>'Duplicate definitions' </code>error.<br>
+ Fix:  Place the modified domain files in a separate directory, modify them, and copy them back to <code>SourceMods/src.pop2</code>
+ with the appropriate pop2 names<br>
+<br>
+<code>cp myDir/gx1v6_domain_size_myRun.F90 $CASEDIR/SourceMods/src.pop2/gx1v6_domain_size_myRun.F90<br></code>
+<code>cp myDir/gx1v6_POP_DomainSizeMod.F90 $CASEDIR/SourceMods/src.pop2/gx1v6_POP_DomainSizeMod.F90</code><br>
+<tr> <td>Problem #2: cesm1_2_0 still won't compile with this code modification; it will give the same error.
+ <br>Fix:  This bug was fixed in cesm1_2_1 and cesm1_2_2.
+<br>
+<br>
+ <code>cp /cesm1_2_1/models/ocn/pop2/bld/pop2.buildexe.csh </code>to <code>$CASEDIR/Buildconf</code>; rebuild<tr>
+<td>  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1625">(Bugzilla 1625)</a><td> 
+	 build-namelist <code>ERROR:: Can NOT set both -clm_startfile option AND finidat on namelist.  ERROR: clm.buildnml.csh failed </code></a><td>
+    <p>Solution:  This is a workaround for the situation (e.g., a paleo simulation) where you have had to modify and rename the CLM4.0 finidat
+    file, and can't use the default restart or the $RUN_REFCASE restart file.  You need to modify clm.buildnml.csh to point to your new
+    file.<br>
+    <code> cd $CASEROOT/Buildconf/clm.buildnml.csh<br>
+    cp clm.buildnml.csh clm.buildnml.csh.orig<br>
+    vi clm.buildnml.csh<br>
+	       OLD:  set clm_startfile = "-clm_startfile ${RUN_REFCASE}.clm2.r.${RUN_REFDATE}-${RUN_REFTOD}.nc"<br>
+	       <b>NEW:  set clm_startfile = "myCase.IP.nc"<br></b>
+	</code>
+	<tr>
+ </table>
+
+</html>
+  
+
+</ul>
+<!-- ===================================================================================== --!>
+<br>
+<a name="debug"></a>
+<br>
+<ul>
+    <a name="debug"></a>
+    <html>
+
+<!--  ---------------------------------------------------------------------  -->
+<!--  DEBUGGING  -->
+<!--  ---------------------------------------------------------------------  -->
+</ul>
+<hr>
+<h2>Debugging tips for paleoclimate simulations</h2>
+<hr>
+<p>
+
+   <b>Build Issue &raquo;  Model won't build after adding or modifying SourceMods</b>
+
+    <ul> 
+    <li> Problem: Depends file
+    <li>Solution: Check that the <b>Depends </b>file is not empty:  (e.g., $case/bld/atm/obj/Depends)
+    </ul>
+   <b>Runtime Issue &raquo;  ERROR: Model dies almost immediately; may not have an error message.</b>
+
+    <ul>
+    <li>Check to be sure you are assigning the correct mapping files. The atm to ocean STATE vars are the ONLY ones that use bilinear mapping. if you accidentally give the bilinear mapping (or area average mapping) the wrong assignment, the model will crash right away.
+
+    <li> If you have created new mapping files (particularly important for Deep Time simulations) run scrip_test (section 5.1.3 in the Paleo Tech Note).  This tool creates spatial maps in netCDF format from the files created by scrip.   These files are easy to look at using ncview and can often be used to identify problems.
+   <li> If you get any time steps in at all, write out an instantaneous cpl history file at every time step to look at the various variables.  Sometimes the atm/ocn grid ratios at the poles are too large (or too small).
+<li> If the model is crashing at timestep 0, and you have correctly set the mapping files (#1),  try setting info_debug in env_run.xml to the highest value.  This will write extra coupler STDOUT information to the log file which might help identify a problem.
+</ul>	
+   <b>Runtime Issue &raquo;  ERROR: ANGLE is outside its expected range</b>
+
+    <ul> 
+    <li> Problem: POP2 ANGLE
+    <li>Solution: Check the binary file for errors and resolution.  The POP2 model may be reading bad data from the binary grid or
+    topography file.
+    </ul>
+
+   <b>Runtime Issue &raquo;  ERROR: original kmt not equal to actual kmt;  POP aborting...  ERROR kmt inconsistency for overflows</b>
+
+    <ul> 
+    <li> Problem: The POP2 model may be reading bad data from the topography/bathymetry (KMT) file.
+    <li>Solution: Check that the KMT file was compiled with a big_endian flag.  
+    </ul>
+
+   <b>Runtime Issue &raquo;  filew failed e.g., 26: -4.168408887446482E-069  1.674944354524342E-093 </a></b>
+
+
+     <dl>
+     <dd> ERROR
+     <code>
+     <dd>26:  filew failed, worst i, j, qtmp, q =            1          81<br>
+     <dd>26: -4.168408887446482E-069  1.674944354524342E-093<br>
+     <dd>49:  filew failed, worst i, j, qtmp, q =            1         161<br>
+     <dd>49: -5.766523308738317E-069  2.637668946517899E-082<br>
+     </code>
+     </dl>
+
+    <ul>
+    <li> Solution: Check for bad data coming from the input files.  The atmosphere may be trying to write NaNs after receiving bad input values.
+    </ul>
+   <b>Runtime Issue &raquo;  clinic blocks exceed max: increase max to           4 </b>
+   <ul>
+   <li> Problem: POP2 decomposition
+   <li> Solution: This error may affect users who increase the size of the ocean grid.  Example:  384 &raquo; 394
+    <ul> 
+    <li> Turn off the automatic decomposition routine because it is hardwired for the default 320x384 grid 
+
+    <li>env_build.xml:  set POP_AUTO_DECOMP &raquo; .false.
+    <li>env_build.xml:  edit size of  POP_BLCKY: 32 &raquo; 33
+    <li>Note: "NTASKS_OCN" * "NTHRDS_OCN" = 120       !! must equal POP_NX_BLOCK * POP_NY_BLOCK
+    <li>Note: you may have to load balance the PE layout.
+    </ul>
+    </ul>
+
+<b>RunTime Issue -  surfrd_get_data: surfdata/fatmgrid lon/lat mismatch #1</b>
+	   <ul>
+           <li>Problem:  gen_domain; The north/south extent of the latitudinal variable (yc) in the land domain (LND_DOMAIN_FILE) must match
+	that of the  CAM initial file (ncdata).
+	<li> solution: Extend the yc variable from +/-90&deg in the <i>domain.lnd</i> file.
+	<ul>
+	<li> Check gen_domain.F90 for correct code (early versions may need to be
+	modified):
+	<code>
+	<ul>
+	<li> OLD:  set_fv_pole_yc = ichar(trim(arg))
+	<li> NEW:  set_fv_pole_yc = ichar(trim(arg))-48
+	</ul>
+	</code>
+	<li> Rebuild the gen_domain executable
+	<li> Turn on 'set_fv_pole_yc' by running gen_domain with the "-p 2" option.
+	</ul>
+	<dl>
+	<dt><code> prompt> ./gen_domain -m map_gx1v6plio_TO_fv09_1.25_aave.141017.nc -o gx1v6plio -l fv09_1.25 -c pliocene -p 2 </code>
+	</p>
+	</dl>
+	</ul>
+
+     <b>RunTime Issue -  surfrd_get_data: surfdata/fatmgrid lon/lat mismatch #2</b>
+           <ul>
+	   <li> ERROR: surfrd_get_data: surfdata/fatmgrid lon/lat mismatch error
+	   <li>Problem:  surface dataset LATIXY dimension. 
+	   The latitude variable (LATIXY) in the surface dataset (fsurdat) must match
+	the latitudinal extent of the CAM initial file (ncdata).
+	<ul>
+	<li> solution: Extend the yc variable from +/-90&deg in the <i>domain.lnd</i>
+	file.
+	<li> Check LATIXY extent:
+	<code>
+	<ul> ncdump -v LATIXY surfdata_file.nc </ul>
+	</code>
+	<li> If LATIXY does not extend from +/-90&deg, use changeLATIXY.ncl to rewrite
+	it to +/-90&deg.
+	<dl>
+	<dt> <code> prompt> ncl changeLATIXY.ncl</code>
+	</dl>
+	</ul>
+	</ul>
+    <b>Tip -  Write SALT and TEMP to 'pop.h.once' file for debugging</b>
+
+    <ul> This tip may help users who introduce their own initial conditions for TEMPERATURE and SALINITY and want to check them.
+    <ol> 
+    <li> cd $CASEDIR/SourceMods/src.pop2
+
+    <li>cp /$CESMROOT/models/ocn/pop2/input_templates/gx1v6_tavg_contents .
+    <li>edit gx1v6_tavg_contents:
+    <p>
+    <table cellpadding=3 border=2>
+    <th colspan=3 align=center> gx1vg_tavg_contents<tr>
+    <th> Variable <th>Old Value <th>New Value<tr>
+    <td> TEMP <td align="center">1<td align="center"> 3  <tr>
+    <td> SALT  <td align="center">1<td align="center">3  <tr>
+    <td> SST   <td align="center">1<td align="center">3  <tr>
+    </table>
+    <li> build
+    <li> run until it fails then + check 'pop.once' file.
+    <li><font color="red"> <b>REMEMBER &raquo; to remove the modified gx1v6_tavg_contents file from your SourceMods/src.pop2 directory and
+    REBUILD  before starting your production run.</font></b>
+    </ol>
+    </ul>
+    </p>
+
+    </p>
+   </p>
+
+     <!--  ================== Purpose of the tag ================= -->
+     <head>
+<b> Tip - Perturbing the atmosphere model using 'pertlim'</b>
+
+<p>
+
+<a href="http://www.cesm.ucar.edu/cgi-bin/eaton/namelist/nldef2html-pub">Pertlim </a>is a CAM5 namelist parameter used by CESM modelers to perturb CAM without changing climate. It is often applied to a suite of simulations with the purpose of differentiating 
+between individual ensemble members.  Pertlim is activated on <b>initial </b> files only.  When
+CESM is reading restart files (e.g, for branch runs, or anytime when CONTINUE_RUN = TRUE), pertlim is ignored.
+
+<p>  This document describes a runtime application where pertlim is 
+used to perturb an unstable run by slightly changing the model trajectory, and
+- hopefully - sidestepping a model instability.
+<p>
+
+<p>
+<h4> Hybrid Option </h4>
+<p>
+Because pertlim operates only on initial files, you must hybrid your 
+case if you are trying to nudge a run past an instability using pertlim.
+If you use pertlim for this purpose, I strongly recommend saving the original CASE directory intact 
+so that you can retrace your steps with confidence.  If you are trying this for the first time, I also recommend 
+moving the run and archive directory aside for safety.
+You can also perform these changes within the original CASE and RUN directories, especially if you need 
+to perturb the run more than once; but <b>don't forget to document your changes each time you perform this perturbation
+</b>.
+</p>
+
+ <p>
+
+<b>Example for CASEID=b.e13.B1850C5CN.f19_g16.001; RESTART YEAR=1890-01-01</b>
+<p>
+<ol> 
+<li> Move  the old case, run and archive directories out of the way.
+        <ul><code>
+	<li>mv b.e13.B1850C5CN.f19_g16.001 b.e13.B1850C5CN.f19_g16.001_1850-1889
+        </ul></code>
+<li> Recreate the case directory with the same name.  
+        <ul><code>
+	<li>./create_newcase -case /mypath/b.e13.B1850C5CN.f19_g16.001 <br>-clone /mypath/b.e13.B1850C5CN.f19_g16.001_1850-1889
+        </ul></code>
+<li> Make these XML changes, referring back to the original case name.
+        <dl><code>
+	<dd>xmlchange -file env_run.xml -id RUN_TYPE -val hybrid
+        <dd>xmlchange -file env_run.xml -id RUN_REFCASE -val b.e13.B1850C5CN.f19_g16.001
+        <dd>xmlchange -file env_run.xml -id BRNCH_RETAIN_CASENAME -val TRUE
+        <dd>xmlchange -file env_run.xml -id RUN_STARTDATE   -val "1890-01-01"
+        <dd>xmlchange -file env_run.xml -id RUN_REFDATE -val "1890-01-01"
+        <dd>xmlchange -file env_run.xml -id CONTINUE_RUN -val FALSE
+	</dl></code>
+<li> Set pertlim in user_nl_cam.  The <b>integer</b> portion of pertlim can be any number: 1.d-14, 4.d-14, 9.d-14, etc.
+        <dl><code>
+	<dd> user_nl_cam: pertlim = 2.d-14
+	</dl>
+<li> Remove namelist references in user_nl_cam, user_nl_clm, and user_nl_rtm (ncdata,  finidat, finidat_rtm).
+<li> Copy the restart files into your new run directory (if needed). 
+</ol>
+</p>
+<h4> Additional options </h4>
+<p> If you need to perform perturbations more than once within the same CASEDIR, reset
+the RUN_STARTDATE and RUN_REFDATA:
+<ul>
+        <dl><code>
+        <dd>xmlchange -file env_run.xml -id RUN_STARTDATE   -val "1890-01-01"
+        <dd>xmlchange -file env_run.xml -id RUN_REFDATE -val "1890-01-01"
+        <dd>xmlchange -file env_run.xml -id CONTINUE_RUN -val FALSE
+	</dl></code>
+</ul>
+
+
+
+
+
+
+     <!--  ================== End Purpose ======================== -->
+
+    </p>
+       </p>
+
+      Tip -  How do I change the atmospheric timestep to improve model stability.</a>
+
+     <!--  ================== Purpose of the tag ================= -->
+     [an error occurred while processing this directive]
+     <!--  ================== End Purpose ======================== -->
+
+    </p>
+    </p>
+
+
+</body>
+</html>
+  
+
+</ul>
+
+<!--  ===== BACKGROUND ================================================== --!>
+
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+</ol>
+
+</BODY>
+</HTML>
+						<!--  ---------------------------------------------------------------------  -->		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

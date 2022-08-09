@@ -1,0 +1,468 @@
+<html>
+<head>
+<title> CCSM4 Timing Table</title>
+<!--base href="http://www.cesm.ucar.edu/models/ccsm4.0/timing/index.html"-->
+<style type="text/css">
+<!--
+  td.first  {text-align: center; color: white; background: green  }
+  td.second {text-align: center; color: white; background: blue   }
+  td.third  {text-align: center; color: black; background: yellow }
+  td.fourth {text-align: center; color: white; background: orange  }
+  td.fifth  {text-align: center; color: white; background: red  }
+-->
+</style>
+</head>
+<BODY bgcolor="white">
+<a name="TOP">
+<p>
+
+<!----------------------------------------------------------------------------->
+<a name="TABLE">
+
+<script type="text/javascript" src="sorttable.js"></script>
+<style type="text/css">
+/* Sortable tables */
+table.sortable a.sortheader {
+    background-color:#DDDDDD;
+    color:#AA0044;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+table.sortable span.sortarrow {
+    color: black;
+    text-decoration: none;
+}
+</style>
+
+<style type="text/css">
+<!--
+  td.gradeA {text-align: center; color: black; background: #0f0   }
+  td.gradeB {text-align: center; color: black; background: #5bf   }
+  td.gradeC {text-align: center; color: black; background: #ff0   }
+  td.gradeD {text-align: center; color: black; background: #f80   }
+  td.gradeF {text-align: center; color: black; background: #f33   }
+-->
+</style>
+
+<h2 align=center>CCSM4 Timing Table</h2>
+
+<p>
+<dl>
+<dt>
+<p>
+<font color=AA0044>General Notes:</font>
+<li>This information is constantly subject to change due to changes
+in the model or machine hardware and software.
+Each entry contains information about the CCSM4 version and the
+date of the test.
+<li>This is a <font color=AA0044>sortable table</font>, click on the
+headings to perform a descending or ascending sort.
+(Note: the tool sorts based on character string, not numerical
+value).</font>
+<li>A <font color=AA0044>clickable link</font> for each entry in the <font
+color=AA0044>Compset</font> column takes you to the raw timing output file.
+<li>Please contribute to this timing table by sending a raw
+CCSM timing file and information about your hardware (including a web
+link if possible) to ccsm4-help@cgd.ucar.edu.  
+
+<p>
+<font color=AA0044>Component pe information is formatted as follows: </font><br>
+<li> total_pes
+<li> tasks x threads
+<li> root_pe
+
+<p>
+<font color=AA0044>The machines are:</font> 
+<li> <a href="http://www.cisl.ucar.edu/computers/bluefire/">bluefire</a> = NCAR IBM AIX power6, 32-way, 4.7 GHz, infiniband interconnect, 64 Gb/node
+<li> <a href="http://www.nccs.gov/computing-resources/jaguar">jaguar</a> = NCCS Cray XT4, quad-core, AMD 2.1 GHz, SeaStar 2 interconnect, 8 Gb/node
+<li> <a href="http://www.nccs.gov/computing-resources/jaguar">jaguarpf</a> = NCCS Cray XT5, dual hex-core AMD, SeaStar 2+ interconnect, 16 Gb/node
+<li> <a href="https://www.nersc.gov/nusers/resources/franklin/">franklin</a> = NERSC Cray XT4, dual quad-core, AMD 2.3 GHz, SeaStar 2 interconnect, 8 Gb/node
+<li> <a href="http://www.arsc.edu/resources/midnight.html">midnight</a> = ARSC Sun Cluster, Two 2.6 GHz Dual-Core AMD Opteron, Voltaire infiniband interconnect, 16 Gb/node
+<li> <a href="http://www.alcf.anl.gov/resources/storage.php">interpid</a> = ANL IBM Blue Gene/P, Quad-Core 850 MHz PowerPC 450, 2 GB/node 
+<li> <a href="http://www.rcac.purdue.edu/userinfo/resources/coates">coates</a> = Purdue HP Cluster, dual/quad 2.5 GHz Quad-Core AMD 2380/8380, 10 GigE interconnect, 32-128 Gb/node
+
+</dl>
+<p>
+
+<!--------------------------------------------------------------------------->
+<table id="ccsmtiming" border=1 cellspacing="0" cellpadding="3" width="100%" class="sortable">
+<tr>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Machine</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Resolution</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Compset</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Total PEs</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Cost pe-hrs/yr</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">ThruPut yrs/day</th>
+
+   <th align=center rowspan="1" bgcolor="DDDDDD">cpl pes</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">lnd pes</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">ice pes</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">atm pes</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">ocn pes</th>
+
+   <th align=center rowspan="1" bgcolor="DDDDDD">Version Date</th>
+   <th align=center rowspan="1" bgcolor="DDDDDD">Comment</th>
+</tr>
+
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.tb_1deg_a.090620-121303> B1850 </a></td>
+<td align=center  > 256 </td>
+<td align=center  > 324.23 &nbsp </td>
+<td align=center  > 9.47 &nbsp </td>
+<td align=center  > 216 <br> 216x1 <br> 0:1 </td>
+<td align=center  > 56 <br> 56x1 <br> 160:1 </td>
+<td align=center  > 160 <br> 160x1 <br> 0:1 </td>
+<td align=center  > 216 <br> 216x1 <br> 0:1 </td>
+<td align=center  > 40 <br> 40x1 <br> 216:1 </td>
+<td align=center  > ccsm4_0_beta18 <br> 2009.06.20 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.tb_1deg_a.090619-155538> B1850 </a></td>
+<td align=center  > 448 </td>
+<td align=center  > 408.68 &nbsp </td>
+<td align=center  > 13.15 &nbsp </td>
+<td align=center  > 64 <br> 64x1 <br> 0:1 </td>
+<td align=center  > 64 <br> 64x1 <br> 0:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 64:1 </td>
+<td align=center  > 384 <br> 384x1 <br> 0:1 </td>
+<td align=center  > 64 <br> 64x1 <br> 384:1 </td>
+<td align=center  > ccsm4_0_beta18 <br> 2009.06.19 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.tb_1deg_a.090620-115357> B1850 </a></td>
+<td align=center  > 512 </td>
+<td align=center  > 416.25 &nbsp </td>
+<td align=center  > 14.76 &nbsp </td>
+<td align=center  > 240 <br> 240x1 <br> 0:1 </td>
+<td align=center  > 112 <br> 112x1 <br> 320:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 0:1 </td>
+<td align=center  > 432 <br> 432x1 <br> 0:1 </td>
+<td align=center  > 80 <br> 80x1 <br> 432:1 </td>
+<td align=center  > ccsm4_0_beta18 <br> 2009.06.20 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b40.1850.track1.1deg.006.100103-182533> B1850CN </a></td>
+<td align=center  > 512 </td>
+<td align=center  > 459.42 &nbsp </td>
+<td align=center  > 13.37 &nbsp </td>
+<td align=center  > 320 <br> 320x1 <br> 0:1 </td>
+<td align=center  > 128 <br> 128x1 <br> 320:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 0:1 </td>
+<td align=center  > 448 <br> 448x1 <br> 0:1 </td>
+<td align=center  > 64 <br> 64x1 <br> 448:1 </td>
+<td align=center  > ccsm4_0_beta29 <br> 2010.01.03 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b40.1850.2deg.tr1.waccm.001.090812-165219> BW1850 </a></td>
+<td align=center  > 320 </td>
+<td align=center  > 975.00 &nbsp </td>
+<td align=center  > 3.94 &nbsp </td>
+<td align=center  > 64 <br> 64x1 <br> 0:1 </td>
+<td align=center  > 48 <br> 12x4 <br> 64:1 </td>
+<td align=center  > 256 <br> 64x4 <br> 0:1 </td>
+<td align=center  > 304 <br> 76x4 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 76:1 </td>
+<td align=center  > ccsm4_0_beta21 <br> 2009.08.12 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > T31_gx3v7  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.Btest2.091221-150604> B1850CN </a></td>
+<td align=center  > 128 </td>
+<td align=center  > 31.64 &nbsp </td>
+<td align=center  > 48.55 &nbsp </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 62 <br> 62x1 <br> 50:1 </td>
+<td align=center  > 50 <br> 50x1 <br> 0:1 </td>
+<td align=center  > 112 <br> 112x1 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 112:1 </td>
+<td align=center  > ccsm4_0_beta37 <br> 2009.12.21 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > T31_gx3v7  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.Btest3.091229-123259> B1850CN </a></td>
+<td align=center  > 192 </td>
+<td align=center  > 32.02 &nbsp </td>
+<td align=center  > 71.96 &nbsp </td>
+<td align=center  > 88 <br> 88x1 <br> 0:1 </td>
+<td align=center  > 38 <br> 38x1 <br> 50:1 </td>
+<td align=center  > 100 <br> 50x2 <br> 0:1 </td>
+<td align=center  > 176 <br> 88x2 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 88:1 </td>
+<td align=center  > ccsm4_0_beta37 <br> 2009.12.29 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > bluefire </td>
+<td align=center  > T31_gx3v7  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.Btest.091221-133214> B1850CN </a></td>
+<td align=center  > 64 </td>
+<td align=center  > 23.83 &nbsp </td>
+<td align=center  > 32.22 &nbsp </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 40 <br> 40x1 <br> 0:1 </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 48:1 </td>
+<td align=center  > ccsm4_0_beta37 <br> 2009.12.21 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > coates </td>
+<td align=center  > T31_gx3v7  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.hubert31.100222-162746> B1850CN </a></td>
+<td align=center  > 192 </td>
+<td align=center  > 118.54 &nbsp </td>
+<td align=center  > 38.87 &nbsp </td>
+<td align=center  > 100 <br> 100x1 <br> 0:1 </td>
+<td align=center  > 38 <br> 38x1 <br> 100:1 </td>
+<td align=center  > 100 <br> 100x1 <br> 0:1 </td>
+<td align=center  > 176 <br> 176x1 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 176:1 </td>
+<td align=center  > ccsm4_0_a01 <br> 2010.02.22 </td>
+<td align=center  > from generic_linux_intel </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > franklin </td>
+<td align=center  > 0.47x0.63_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b43pBm5.100224-164414> B1850CN </a></td>
+<td align=center  > 2000 </td>
+<td align=center  > 5760.90 &nbsp </td>
+<td align=center  > 8.33 &nbsp </td>
+<td align=center  > 240 <br> 240x1 <br> 0:1 </td>
+<td align=center  > 640 <br> 320x2 <br> 640:1 </td>
+<td align=center  > 640 <br> 640x1 <br> 0:1 </td>
+<td align=center  > 1920 <br> 960x2 <br> 0:1 </td>
+<td align=center  > 80 <br> 80x1 <br> 960:1 </td>
+<td align=center  > ccsm4_0_beta43 <br> 2010.02.24 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > franklin </td>
+<td align=center  > 0.47x0.63_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b43pBm3.100224-164449> B1850CN </a></td>
+<td align=center  > 3424 </td>
+<td align=center  > 7331.85 &nbsp </td>
+<td align=center  > 11.21 &nbsp </td>
+<td align=center  > 240 <br> 240x1 <br> 0:1 </td>
+<td align=center  > 768 <br> 192x4 <br> 0:1 </td>
+<td align=center  > 640 <br> 640x1 <br> 192:1 </td>
+<td align=center  > 3328 <br> 832x4 <br> 0:1 </td>
+<td align=center  > 96 <br> 96x1 <br> 832:1 </td>
+<td align=center  > ccsm4_0_beta43 <br> 2010.02.24 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > intrepid </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b1850.1deg_rel08-2.100424-145637> B1850CN </a></td>
+<td align=center  > 3808 </td>
+<td align=center  > 9569.52 &nbsp </td>
+<td align=center  > 9.55 &nbsp </td>
+<td align=center  > 640 <br> 640x1 <br> 0:1 </td>
+<td align=center  > 768 <br> 192x4 <br> 0:1 </td>
+<td align=center  > 2560 <br> 640x4 <br> 192:1 </td>
+<td align=center  > 3328 <br> 832x4 <br> 0:1 </td>
+<td align=center  > 480 <br> 120x4 <br> 832:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.04.24 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > intrepid </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b1850.1deg_rel08-low-2.100504-093612> B1850CN </a></td>
+<td align=center  > 992 </td>
+<td align=center  > 4712.98 &nbsp </td>
+<td align=center  > 5.05 &nbsp </td>
+<td align=center  > 320 <br> 320x1 <br> 0:1 </td>
+<td align=center  > 192 <br> 192x1 <br> 640:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 320:1 </td>
+<td align=center  > 832 <br> 832x1 <br> 0:1 </td>
+<td align=center  > 160 <br> 160x1 <br> 832:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.05.04 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > intrepid </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b1850.2deg_rel08-low-2.100421-135302> B1850CN </a></td>
+<td align=center  > 320 </td>
+<td align=center  > 1507.40 &nbsp </td>
+<td align=center  > 5.09 &nbsp </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 32 <br> 32x1 <br> 0:1 </td>
+<td align=center  > 160 <br> 160x1 <br> 32:1 </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 128 <br> 128x1 <br> 192:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.04.21 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > intrepid </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b1850.2deg_rel08-high-1.100413-110827> B1850CN </a></td>
+<td align=center  > 3584 </td>
+<td align=center  > 6778.51 &nbsp </td>
+<td align=center  > 12.69 &nbsp </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 768 <br> 192x4 <br> 0:1 </td>
+<td align=center  > 1280 <br> 320x4 <br> 192:1 </td>
+<td align=center  > 2048 <br> 512x4 <br> 0:1 </td>
+<td align=center  > 1536 <br> 384x4 <br> 512:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.04.13 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > intrepid </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b1850.2deg_rel08.100406-200750> B1850CN </a></td>
+<td align=center  > 896 </td>
+<td align=center  > 2323.60 &nbsp </td>
+<td align=center  > 9.25 &nbsp </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 192:1 </td>
+<td align=center  > 512 <br> 512x1 <br> 0:1 </td>
+<td align=center  > 384 <br> 384x1 <br> 512:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.04.06 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > jaguar </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.b40.20th.track1.1deg.002a.090627-045105> B20TR </a></td>
+<td align=center  > 1904 </td>
+<td align=center  > 2641.83 &nbsp </td>
+<td align=center  > 17.30 &nbsp </td>
+<td align=center  > 320 <br> 320x1 <br> 0:1 </td>
+<td align=center  > 192 <br> 192x1 <br> 640:1 </td>
+<td align=center  > 320 <br> 320x1 <br> 320:1 </td>
+<td align=center  > 1664 <br> 832x2 <br> 0:1 </td>
+<td align=center  > 240 <br> 240x1 <br> 832:1 </td>
+<td align=center  > ccsm4_0_beta18 <br> 2009.06.27 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > jaguarpf </td>
+<td align=center  > 0.9x1.25_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.r08bt.100506-232252> B1850CN </a></td>
+<td align=center  > 1656 </td>
+<td align=center  > 2818.61 &nbsp </td>
+<td align=center  > 14.10 &nbsp </td>
+<td align=center  > 64 <br> 64x1 <br> 0:1 </td>
+<td align=center  > 256 <br> 64x4 <br> 0:1 </td>
+<td align=center  > 1280 <br> 320x4 <br> 64:1 </td>
+<td align=center  > 1536 <br> 384x4 <br> 0:1 </td>
+<td align=center  > 120 <br> 30x4 <br> 384:1 </td>
+<td align=center  > ccsm4_0_rel08 <br> 2010.05.06 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > jaguarpf </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.LB2deg12.091230-133046> B1850CN </a></td>
+<td align=center  > 560 </td>
+<td align=center  > 715.01 &nbsp </td>
+<td align=center  > 18.80 &nbsp </td>
+<td align=center  > 160 <br> 160x1 <br> 0:1 </td>
+<td align=center  > 160 <br> 160x1 <br> 0:1 </td>
+<td align=center  > 320 <br> 160x2 <br> 0:1 </td>
+<td align=center  > 320 <br> 160x2 <br> 0:1 </td>
+<td align=center  > 240 <br> 240x1 <br> 160:1 </td>
+<td align=center  > ccsm4_0_beta38 <br> 2009.12.30 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > midnight </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.B1850CNa.100324-143031> B1850CN </a></td>
+<td align=center  > 176 </td>
+<td align=center  > 736.43 &nbsp </td>
+<td align=center  > 5.74 &nbsp </td>
+<td align=center  > 80 <br> 80x1 <br> 0:1 </td>
+<td align=center  > 16 <br> 16x1 <br> 80:1 </td>
+<td align=center  > 80 <br> 80x1 <br> 0:1 </td>
+<td align=center  > 96 <br> 96x1 <br> 0:1 </td>
+<td align=center  > 80 <br> 80x1 <br> 96:1 </td>
+<td align=center  > ccsm4_0_rel06 <br> 2010.03.24 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > midnight </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.B1850CNa.100326-113616> B1850CN </a></td>
+<td align=center  > 320 </td>
+<td align=center  > 815.71 &nbsp </td>
+<td align=center  > 9.42 &nbsp </td>
+<td align=center  > 128 <br> 128x1 <br> 0:1 </td>
+<td align=center  > 32 <br> 32x1 <br> 160:1 </td>
+<td align=center  > 160 <br> 160x1 <br> 0:1 </td>
+<td align=center  > 192 <br> 192x1 <br> 0:1 </td>
+<td align=center  > 128 <br> 128x1 <br> 192:1 </td>
+<td align=center  > ccsm4_0_rel06 <br> 2010.03.26 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+<tr>
+<td align=center  > midnight </td>
+<td align=center  > 1.9x2.5_gx1v6  </td>
+<td align=center  > <a href=timing_files/ccsm_timing.B1850CNa.100326-135450> B1850CN </a></td>
+<td align=center  > 96 </td>
+<td align=center  > 704.81 &nbsp </td>
+<td align=center  > 3.27 &nbsp </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 8 <br> 8x1 <br> 40:1 </td>
+<td align=center  > 40 <br> 40x1 <br> 0:1 </td>
+<td align=center  > 48 <br> 48x1 <br> 0:1 </td>
+<td align=center  > 48 <br> 48x1 <br> 48:1 </td>
+<td align=center  > ccsm4_0_rel06 <br> 2010.03.26 </td>
+<td align=center  > &nbsp </td>
+</tr>
+<!------------------------------------------------------------------------>
+
+
+</table>
+<!-------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+
+</HTML>
+      

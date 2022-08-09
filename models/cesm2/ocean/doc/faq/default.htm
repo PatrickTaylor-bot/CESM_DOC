@@ -1,0 +1,2533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The CESM1.3 POP2 FAQ</title>
+
+<link rel="shortcut icon" href="../../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www2.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.3">CESM1.3 Public Release</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.3/pop2/">POP2</a> &raquo; The CESM1.3 POP2 FAQ</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">The CESM1.3 POP2 FAQ</h2>&nbsp;
+ 
+						<!--  ---------------------------------------------------------------------  -->
+
+
+
+
+
+<a name="top"></a>
+<P><BR>
+<h2 align="CENTER">The CESM1.3 POP2 FAQ
+<p></p>
+<em>Nancy J. Norton
+<p></p>
+Susan Bates
+<p></p>
+Michael Levy
+<p></p>
+Gokhan Danabasoglu</em>
+<p></p>
+National Center for Atmospheric Research
+<p></p>
+December 2013</h2>
+
+<P>
+
+<!--Table of Contents-->
+<h3> Contents</h3>
+
+   <html>
+
+<ol>
+
+<!-- ==================== Introduction ======================================== --!>
+  <li><a href="#intro">Introduction</a></li><p>
+   <!-- ==================== comment out for now
+    <ul>
+      <li><a href="#intro1">
+                          What is meant by "stand-alone", "ocean-only" and 
+                          "fully coupled" ocean model?
+      </a></li>
+      <li><a href="#intro2">
+                          What is the difference between POP, POP1, and POP2?
+      </a></li>
+    </ul>
+                             end comment ======================================== --!>
+  <p></p>
+
+<!-- ==================== Interannual Forcing (IAF) =========================== --!>
+  <li><a href="#POPFORCING">POP2 Forcing Questions</a></li><p>
+  <ul>
+      <li><a href="#forcing_hosing">
+                          Is there an automatic option for setting up "hosing" experiments in POP2?
+      </a></li>
+ </ul>
+
+  <ul>
+  <li><a href="#IAF">Interannual Forcing (IAF) Compset Questions</a></li><p>
+    <ul>
+      <li><a href="#iaf1">
+                          What are the interannual forcing (IAF) compsets?
+      </a></li>
+      <li><a href="#iaf2">
+                          What are the COREv2 datasets?
+      </a></li>
+      <li><a href="#iaf2a">
+                          Where can I get the COREv2 data?
+      </a></li>
+      <li><a href="#iaf3">
+                          What versions of CESM recognize the IAF compsets?
+      </a></li>
+      <li><a href="#iaf4">
+                          If I create an IAF case on yellowstone, will it run out of the box?
+      </a></li>
+      <li><a href="#iaf5">
+                          If I create an IAF case elsewhere, what do I need to do to get it to run?
+      </a></li>
+      <li><a href="#iaf6">
+                          Tips for running interannually-forced cases: Specifically, what are the differences when running IAF cases with CESM1.1 release code and previous model versions?
+      </a></li>
+    </ul>
+   </ul>
+  <p></p>
+
+<!-- ========================== Configure & Build =========================== --!>
+  <li><a href="#configure_and_build">Configure- and Build-Time Questions</a></li><p>
+    <ul>
+      <li><a href="#namelists">Namelists</a> </li>
+       <h4>All namelists except tavg_nml</h4>
+       <ul>
+        <li><a href="#nml_general_control">What can I control by changing 
+                                POP2 namelist variables?</a></li>
+        <li><a href="#nml_general_change">How do I change the value of a variable in a
+                                POP2 namelist?</a></li>
+        <li><a href="#nml_general_change_dt">
+                                How do I change the POP2 timestep size?  </a></li>
+       </ul>
+
+       <h4><a name="the tavg_nml namelist"></a>The tavg_nml namelist</h4>
+       <ul>
+        <li><a href="#nml_tavg_control">What can I control by changing variables in
+                                the <b>tavg_nml</b> namelist?</a></li>
+
+        <li><a href="#nml_tavg_change_nml">How do I change the value of a variable in the
+                                POP2 <b>tavg_nml</b> namelist?</a></li>
+
+        <li><a href="#nml_tavg_daily">How do I create daily time-averaged
+                                output variables?</a></li>
+
+        <li><a href="#nml_tavg_5daily">How do I create 5-day time-averaged
+                                output variables?</a></li>
+
+        <li><a href="#nml_tavg_change_filename">
+                                Can I customize my CESM POP2 tavg output filenames?
+          </a></li>
+       </ul>
+<br>
+      <li><a href="#initialization">Initialization</a> </li>
+       <ul>
+        <li><a href="#init_startupspunup">What is the startup/spunup initialization 
+                                option in POP2?</a></li>
+        <li><a href="#init_hybrid_binary">I want to initialize POP2 in a hybrid-start case
+                                with an old POP2 binary restart file.  Will this work?  </a></li>
+       </ul>
+<br>
+      <li><a href="#build">Build</a> </li>
+       <ul>
+        <li><a href="#bld_domain_decomp">What is the meaning of the 
+                                "pop decomp not set" build-time error message?</a></li>
+       </ul>
+
+    </ul>
+
+<p></p>
+<!-- ==================== Timestepping/non-convergence ======================= --!>
+
+  <li><a href="#TIME"> Non-convergence, Timestep Size, and Other Run-Time Questions</a></li><p>
+    <ul>
+      <li><a href="#runtime_solver">
+                          My job stopped running with a POP2 "error in solver" or
+                          "solver not converged" message. What should I do?
+      </a></li>
+      <li><a href="#runtime_ke">
+                          POP2 stops with the error message "ERROR: k.e. > 100."
+                          What's the problem?
+      </a></li>
+      <li><a href="#runtime_reduce_dt_howmuch">
+                          If I decrease the POP2 timestep size to overcome an instability,
+                          how much of a reduction is reasonable?
+      </a></li>
+      <li><a href="#runtime_tavg_contents_init">
+                          Why might the ocean model stop during initialization after
+                          I've modified the POP2 tavg_contents file?
+          </a></li>
+      <li><a href="#runtime_tavg_contents_month">
+                          Why might the ocean model stop after running one month if
+                          I've modified the POP2 tavg_contents file?
+          </a></li>
+    </ul>
+  <p></p>
+
+<!-- ============================= Output =========================== --!>
+  <li><a href="#output_files">The CESM POP2 Output Files</a></li><p>
+    <ul>
+      <li><a href="#output_general">General</li>
+      <ul>
+      <li><a href="#output_allfiles">What POP2 output files are produced in a CESM1 run?
+          </a></li>
+      <li><a href="#output_tavg">
+                          What are the POP2 "tavg files"?
+          </a></li>
+      <li><a href="#output_restart">
+                          What are the POP2 restart files?
+          </a></li>
+      <li><a href="#output_rpointer">
+                          What are the POP2 "rpointer files"?
+          </a></li>
+      </ul>
+      <p></p>
+
+      <li><a href="#tavg_history_file_output">Time-Averaged History File Contents</li>
+      <ul>
+        <li><a href="#output_tavg_general">
+                          What's in the standard POP2 tavg output files?
+            </a></li>
+        <li><a href="#output_tavg_reduction_strategy">
+                          I want to reduce the size of the POP2 tavg output files.
+                          What strategies do you recommend?
+            </a></li>
+        <li><a href="#output_tavg_reduce_dont">
+                          I want to reduce the size of the POP2 tavg output files
+                          by eliminating selected variables.
+                          Why do you recommend <b><i>against</i></b> this?
+            </a></li>
+        <li><a href="#output_tavg_reduce_really">
+                          But what if I <b><i>really</i></b> want to eliminate selected
+                          variables from the POP2 tavg output files? 
+                          Is there anything I can do?
+            </a></li>
+        <li><a href="#output_tavg_rm">
+                          How do I remove variables from the tavg output files?
+            </a></li>
+        <li><a href="#output_tavg_add1">
+                          How do I add a POP2 variable to the tavg output files? 
+                          Case 1 -- variable is already in the tavg_contents file
+            </a></li>
+        <li><a href="#output_tavg_add2">
+                          How do I add a POP2 variable to the tavg output files? 
+                          Case 2 -- code support already exists
+            </a></li>
+        <li><a href="#output_tavg_r8">
+                          Are the variables in the POP2 tavg output files single or
+                          double precision?
+            </a></li>
+        <li><a href="#output_tavg_r8how">
+                          How can I create POP2 tavg output files with double-precision
+                          variables?
+            </a></li>
+      </ul>
+      <li>Time-Averaged History File Control</li>
+          <ul>
+           <li><a href="#the tavg_nml namelist"> See the questions and answers
+               about the tavg_nml namelist</a> in the Configure and Build section </li>
+          </ul>
+    </ul>
+  <p></p>
+
+<!-- ========================== Post Processing  =========================== --!>
+  <li><a href="#postproc">Post Processing</a></li><p>
+    <ol>
+      <li><a href="#postproc_moc"> 
+                         I deactivated the MOC computation during my
+                         $CASE execution. How do I compute the MOC after the run is completed?
+          </a></li>
+      <li><a href="#postproc_diags"> 
+                         Is there a diagnostics package I can use to post-process output from my
+                         CESM1 POP2 case?
+          </a></li>
+    </ol>
+
+  <p></p>
+
+<!-- ========================== Developer Section =========================== --!>
+  <li><a href="#developer">Developer's Questions</a></li><p>
+    <ol>
+      <li><a href="#dev_tavg_add3">
+                     How do I add a POP2 variable to the tavg output files? 
+                     Case 3 -- code support does not exist  
+          </a></li>
+
+      <li><a href="#dev_newnamelist">
+                        As a POP2 developer, how do I add a new POP2 namelist to the 
+                        build-namelist procedure?
+          </a></li>
+
+    </ol>
+
+  <p></p>
+
+<!-- ==================== Add New Categories Here =========================== --!>
+
+<!-- ==================== Or, Add New Categories Here ======================= --!>
+
+
+</ol>
+
+</html>
+
+
+
+<!-- ===================================================================================== --!>
+<br>
+<a name="intro"></a>
+<h2>Introduction</h2>
+<br>
+<p>
+This FAQ contains a compilation of common CESM1 POP2 user inquiries. It is intended to
+supplement the detailed usage information for CESM1 POP2 that can be found in the
+ <a href="../users/POPusers_main.html">POP User's Guide</a>.
+A general familiarity by the user of the the terminology and concepts in the
+ <a href="../../../cesm/doc/usersguide/book1.html">CESM1 User's Guide</a> is
+assumed.
+</p>
+
+<!--  ===== POP2 Forcing ================================================== --!>
+<a name="POPFORCING"></a>
+<h2>POP2 Forcing </h2>
+<p>
+
+<ol>
+    <li> <a name="forcing_hosing"></a>
+    <html>
+      <h4>
+         Is there an automatic option for setting up "hosing" experiments in POP2?
+      </h4>
+
+    <p>
+       No.
+ 
+     </p><p>
+         Presently, there is no CESM POP2 "out-of-the-box" option to support
+         hosing experiments,
+         which are intended to model the climate effects from the addition
+         of freshwater to an ocean region.
+         However, the following general guidance may be useful
+         to modellers interested in developing such experiments on their own.
+     </p><p>
+         <b> Freshwater added at the ocean surface</b>
+     </p><p>
+             The CESM POP2 forcing subroutines are rather complex and intertwined, with
+             many dependencies among the forcing modules. For several years we have wanted to
+             redesign these routines to cleanly support all of our forcing options, but
+             resource limitations and higher priorities have prevented us from doing so.
+     </p><p>
+             Although a hosing option is not supported per se, it is very likely that all
+             the elements that one would need are already in the code. However, we do
+             not recommend activating these by trial-and-error namelist modifications,
+             because this approach may have some unintended consequences that may not 
+             be apparent to the casual user.
+     </p><p>
+             Instead, we recommend the following: If you want to perform hosing experiments
+             in fully coupled simulations, you can modify <b>forcing_coupled.F90</b> module. The
+             specific subroutine that needs to be modified is <i>pop_set_coupled_forcing</i>.
+             Essentially, you need to add the "hosing" virtual salt fluxes to the following
+             segment in proper units:
+
+<pre>
+      !$OMP PARALLEL DO PRIVATE(iblock)
+      do iblock = 1, nblocks_clinic
+        STF(:,:,2,iblock) = RCALCT(:,:,iblock)*(  &
+                     (PREC_F(:,:,iblock)+EVAP_F(:,:,iblock)+  &
+                      MELT_F(:,:,iblock)+ROFF_F(:,:,iblock)+IOFF_F(:,:,iblock))*salinity_factor &
+                    + SALT_F(:,:,iblock)*sflux_factor)
+      enddo
+      !$OMP END PARALLEL DO
+</pre>
+     </p><p>
+             If you plan to use time-independent perturbations, these can be incorporated in
+             this subroutine. The grid information is already accessible from this module,
+             so you can define a geographic region.
+     </p><p>
+             If you plan to use a time-dependent perturbation, this gets a bit complicated.
+             You can create a netCDF file and read it in the <i>pop_init_coupled</i> subroutine.
+             Then, the field needs to be interpolated in time. For both reading the data set
+             and time interpolation, you can mimic what is done elsewhere in other CESM POP2
+             forcing subroutines.
+         
+     </p><p>
+         <b> Freshwater added below ocean surface</b>
+     </p><p>
+             If you want to add the freshwater at depth, then you may not need to modify the
+             surface flux subroutines. The POP2 model allows interior restoring of T and S,
+             the so-called robust diagnostics technique. The idea is to add source terms to
+             the model T and S equations at any depth range, at any strength, and at any place
+             you want. These can be time-dependent as well. So, take a look at 
+             <b>forcing_s_interior.F90</b>, where you should be able to incorporate your fluxes 
+             fairly easily.
+
+
+    </p> 
+
+</html>
+
+    </li>
+</ol>
+
+
+<!--  ===== IAF ============================================================ --!>
+<br>
+<a name="IAF"></a>
+<h2>Interannual Forcing (IAF) Compsets </h2>
+<p>
+
+<ol>
+    <li> <a name="iaf1"></a>
+    <html>
+      <h4>
+         What are the interannual forcing (IAF) compsets?  
+      </h4>
+
+    <p>
+       The interannual forcing (IAF) compsets are those compsets that
+       use the data atmosphere model (datm) to provide CESM1
+       ocean-only(C), ice-only(D), or
+       ocean-ice(G) cases with forcing from 
+       version 2 of the Coordinated Ocean-ice Reference Experiments (COREv2)
+       datasets.
+ 
+     </p><p>
+       The IAF compsets include 
+          <ul>
+            <li><b>CIAF</b> (active-ocean-only with interannual forcing)</li>
+            <li><b>DIAF</b> (active-ice-only with interannual forcing)</li>
+            <li><b>GIAF</b> (active-ocean-ice with interannual forcing)</li>
+         </ul>
+       
+    </p> 
+
+</html>
+
+    </li>
+
+    <li> <a name="iaf2"></a>
+    <html>
+      <h4>
+         What are the COREv2 datasets?
+      </h4>
+
+    <p>
+        For additional information on the COREv2 forcing datasets,
+        see <a href="http://www.clivar.org/organization/wgomd/resources/core/core-ii">http://www.clivar.org/organization/wgomd/resources/core/core-ii</a>
+     </p><p>
+
+
+
+</html>
+
+    </li>
+
+    <li> <a name="iaf2a"></a>
+    <html>
+      <h4>
+         Where can I get the COREv2 data?
+      </h4>
+
+    <p>
+        If you are running IAF cases on the NCAR machine
+        yellowstone, you do not need to download the COREv2 data.
+    </p><p>
+        If you are running IAF cases elsewhere, you do. See the
+        <a href="#iaf5">full CESM1.2 instructions</a> below.
+     </p><p>
+
+
+
+</html>
+
+    </li>
+
+    <li> <a name="iaf3"></a>
+    <html>
+      <h4>
+         What versions of CESM recognize the IAF compsets?
+      </h4>
+
+    <p>
+        The IAF compsets are available in the CESM Release Version 1.0.4
+        (CESM1.0.4) and higher, including all versions of CESM1.1 and CESM1.2.
+     </p>
+</html>
+
+    </li>
+
+    <li> <a name="iaf4"></a>
+    <html>
+      <h4>
+         If I create an IAF case on yellowstone, will it run out of the box?
+      </h4>
+
+    <p>
+        Yes, as long as you use CESM1.0.4 or higher, or any version of CESM1.1 or
+        CESM1.2, to create your case.
+     </p>
+</html>
+
+    </li>
+
+    <li> <a name="iaf5"></a>
+    <html>
+      <h4>
+         If I create an IAF case elsewhere, what do I need to do 
+         to get it to run? 
+      </h4>
+
+    <p>
+       Before you can set up and run your IAF case on a machine other than 
+       NCAR's yellowstone, 
+       you will need to first download the forcing datasets onto your own
+       disk location, then make modifications to the CESM so that it knows
+       how to locate the data.
+     </p><p>
+       You will be downloading a lot of data (~85-90 Gbytes), so make sure
+       your disk is large enough to hold all of the data.  Also, this disk must
+       be visible from your case's execution directory.
+     </p><p>
+       Here's how you can do this:
+  
+        <ol>
+           <li>
+           <b>Download your own copy of CESM1.2</b>
+           (or higher versions) from
+           the CESM website (follow the CESM Releases link from the
+           <a href="http://www.cesm.ucar.edu/">
+           main page </a>). The location where you
+           download the code is called your $CCSMROOT directory.</li>
+           <li> 
+           <b>Download the interannual data</b> (COREv2) from the GFDL website 
+          <a href="http://data1.gfdl.noaa.gov/nomads/forms/mom4/COREv2.html">
+          (http://data1.gfdl.noaa.gov/nomads/forms/mom4/COREv2.html)</a>. 
+           You want to download the <font color="red">"un-Corrected"</font> data. 
+           When using the CESM,
+           corrections to the data are made within the data atmosphere, so
+           please be sure to get the uncorrected data. To learn more about
+           this data, see the GFDL website.</li>
+           <li>
+           <b>Let the model know where the downloaded files</b> from
+           the previous step <b>reside</b>:</li>
+              <ul>
+               <li>  Change all occurrences of the string '/ccsm/ocn/iaf' in the 
+<pre>
+   /$CCSMROOT/models/atm/datm/bld/datm.template.streams.xml 
+</pre>
+            file (there are 10 of them) to match the directory name where you put your data.
+            Do this BEFORE you issue the create_newcase command. This way,
+            any case you create from this $CCSMROOT will find the data.</li>
+               <li> Let the model know where the
+                    CORE2.t_10.ArcFactor.T62.1997-2004.nc file resides. In the
+                    same file that you previously edited,
+<pre>
+   $CCSMROOT/models/atm/datm/bld/datm.template.streams.xml,
+</pre>
+                    find the filename and change the directory listed three lines
+                    above this (in between the <filepath> indicators) to match the
+                    directory where you put your downloaded data.</li>
+              </ul>
+         <li> <b>Issue the create_newcase command</b>, referencing an IAF
+              compset, from your modified $CODEROOT/scripts directory. Configure,
+              build, and submit your job as usual.
+              If you have followed the above steps, 
+              your new IAF cases will be configured to properly run on your machine.
+        </ol>
+
+        
+     </p>
+</html>
+
+    </li>
+
+    <li> <a name="iaf6"></a>
+    <html>
+      <h4>
+         What are the differences when running IAF cases with CESM1.1 or CESM1.2 release
+         code and previous model versions?
+      </h4>
+
+    <p>
+    <b>TIPS FOR RUNNING INTERANNUALLY-FORCED CASES</b>
+     </p><p>
+     Because a user can run a simulation using any number of years from the IAF data,
+     there are two subtle issues that can potentially affect a user. This first will
+     be encountered if you are performing a <b>comparison</b> between cases in which
+     you have used different cycle lengths to force the model. The second will be
+     encountered if you are <b>branching</b> a new simulation from a simulation that
+     was forced with a different cycle length.
+     </p><p>
+     Because the IAF data now extend two more years (to 2009 rather than 2007), a user
+     may easily encounter these two issues when using the default setup for the model.
+     The examples below show ways to avoid mismatches between simulations using the
+     new, 62-year data and simulations using the older, 60-year long data; however,
+     these same principles may be applied to any simulations in which the forcing cycle
+     length may differ. These examples also illustrate how to create simulations with
+     varying forcing cycle lengths.
+     </p><p>
+     <b>COMPARISON</b>
+     </p><p>
+     Be aware that any new CESM1.1- or CESM1.2- release generated simulations have longer cycles
+     (1948-2009) than simulations generated by older model versions, whose cycles
+     include 1948-2007. If you would like to use the CESM1.2 release to compare
+     with an older (pre CESM1.1) simulation, you can use the new code and force it to cycle over
+     1948-2007. To do this, input stream information into the user_nl_d*** files as
+     indicated below. 
+     </p><p>
+     Here are the changes you need to add to user_nl_datm (for CIAF,GIAF,and DIAF):
+     </p><p>
+<pre>
+streams = "datm.streams.txt.CORE2_IAF.GCGCS.PREC       $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.GISS.LWDN        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.GISS.SWDN        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.GISS.SWUP        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.DN10        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.Q_10        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.SLP_        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.T_10        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.U_10        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.NCEP.V_10        $STARTYEAR 1948 2007",
+          "datm.streams.txt.CORE2_IAF.CORE2.ArcFactor  $STARTYEAR 1948 2007",
+          "datm.streams.txt.presaero.clim_2000 1 1 1"
+</pre>
+     </p><p>
+     Here are the changes you need to add to user_nl_dice (only for CIAF):
+     </p><p>
+<pre>
+streams = "datm.streams.txt.CORE2_IAF.GCGCS.PREC $STARTYEAR 1948 2007",
+</pre>
+     </p><p>
+     Here are the changes you need to add to user_nl_drof (for CIAF,GIAF,and DIAF):
+     </p><p>
+<pre>
+streams=''drof.streams.txt.rof.diatren_iaf_rx1 $STARTYEAR 1948 2007''
+</pre>
+     </p><p>
+     where $STARTYEAR is your model start year. If you are branching from a older
+     model version simulation, please see #2b below.
+     </p><p>
+     <b>BRANCHING</b>
+     </p><p>
+     If you are branching a new IAF case using CESM1.2 from an IAF case run with
+     an older, pre-CESM 1.1 model version, the reference years for the data will be
+     different. For example, the five cycles will correspond to model years as
+     follows:
+     <center>
+     <table border="1">
+     <tr>
+         <td><b>Cycle</b></td>
+         <td><b>Older Model Versions</b></td>
+         <td><b>CESM1.1</b></td>
+     </tr>
+     <tr>
+         <td>1</td>
+         <td>years 1-60</td>
+         <td>years 1-62</td>
+     </tr>
+     <tr>
+         <td>2</td>
+         <td>years 61-120</td>
+         <td>years 63-124</td>
+     </tr>
+     <tr>
+         <td>3</td>
+         <td>years 121-180</td>
+         <td>years 125-186</td>
+     </tr>
+     <tr>
+		     <td>4</td>
+         <td>years 181-240</td>
+         <td>years 187-248</td>
+     </tr>
+     <tr>
+		     <td>5</td>
+         <td>years 241-300</td>
+         <td>years 249-310
+     </tr>
+     </table>
+     </center>
+     </p><p>
+     Let's say that you are going to re-run Cycle 5 of a previous run with some
+     changes using the new code. The model reference year is 241, which corresponds
+     to 1948 in the older versions. The $RUN_REFDATE in env_run.xml will need to be
+     set to 0241 so that the model reads the correct restart files (from the old
+     simulation); however, because the new code has the above reference years for
+     the cycles, 241 would correspond to data year 2002, rather than 1948. To correct
+     this, you must make the corresponding stream changes (see <b>COMPARISON
+     CAVEAT</b> above) to the user_nl_datm, user_nl_dice, user_nl_docn, and
+     user_nl_drof (depending on compset) using a $STARTDATE corresponding to the
+     CESM1.1 data reference years.
+     </p><p>
+     This modification ONLY applies if you are branching from a simulation created
+     with an older version of the model. If you are running a 'startup' simulation
+     with the CESM1.2 release, this modification is not needed.
+     </p>
+</html>
+
+    </li>
+
+</ol>
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+
+<!--  ===== Configure/Build ================================================ --!>
+<br>
+<a name="configure_and_build"></a>
+<h2>Configure- and Build-Time Questions</h2>
+<p>
+
+<ul>
+ <li><h3><a name="namelists">Namelists</a> </h3></li>
+   <h4> All namelists except tavg_nml </h4>
+   <ol>
+    <li> <a name="nml_general_control"></a>
+    <html>
+    <h4>
+       What can I control by changing POP2 namelist variables?
+    </h4>
+
+      <p>
+      In POP2, namelists are generally organized so that each Fortran module
+      reads from its initialization routine a namelist specific to that module.
+      The CESM1 POP2 namelist file, pop2_in, contains a collection of all of
+      the namelists for the POP2 model as it is configured in your $CASE.
+</p><p>
+      Full documentation for the POP2 namelists can be found distributed 
+      throughout the CESM1
+      <a href="../users/POPusers_main.html">POP User's Guide</a>, and a full list
+      of the contents of the pop2_in file can be found in the
+      <a href="../../../cesm/doc/modelnl/nl_pop2.html"> POP2 namelist documentation</a>.
+      Note that the latter documentation is presently incomplete; our intention is to
+      update it as time and resources allow.
+</p>
+</p>
+</html>
+
+    </li>
+
+    <li> <a name="nml_general_change"></a>
+    <html>
+    <h4>
+       How do I change the value of a variable in a POP2 namelist?
+    </h4>
+
+      <p>
+      In CESM1.2, all models use
+       <!-- <a href="../../../cesm/doc/usersguide/c1158.html#customizing_components"> --> a component-specific 
+version of the CESM build-namelist utility<!-- </a> -->
+      to generate each component's input namelist file. 
+      One benefit of using the common build-namelist utiliy is that you can
+      easily change a component's namelist settings by making simple
+      changes to the user_nl_${component} text files that reside in your case directory.
+
+      </p><p>
+So to modify the value of a CESM1 POP2 variable, add
+      </p><p>
+<pre>
+     var_name&amp;namelist_name = var_value
+</pre>
+      </p><p>
+      to $CASEROOT/<b>user_nl_pop2</b> and then run the <b>preview_namelist</b> command.
+       The namelist that was generated by invoking preview_namelist can be viewed in 
+       $CASEROOT/CaseDocs/pop2_in, where you can verify that your change was made.
+      </p><p>
+       If you do not know what
+       namelist the variable you are changing belongs to, you can simply add
+      </p><p>
+<pre>
+     var_name = var_value
+</pre>
+      </p><p>
+      instead, but be aware that some variable names appear in multiple namelists, and in 
+      those cases, omitting <tt>&amp;namelist_name </tt> will result in an error message.
+      </p><p>
+      A full list of variables that can be edited in <b>user_nl_pop2</b> is available <a href="../../../cesm/doc/modelnl/nl_pop2.html">here</a>.
+      </p> <p>
+
+      <font color="red"><b>There is one exception to this process.</b></font> 
+       The present build-namelist procedure is not capable of properly handling 
+       all of the interactions of the options in the tavg_nml namelist's variable
+       streams with all of the POP2 model options, so if you want to change the
+       value of a CESM1 POP2 tavg_nml namelist variable, you must follow a 
+       different procedure instead.
+       See <a href="#nml_tavg_change_nml">the instructions</a> in this document,
+       or follow the streamlined version which appears at the
+       top of your $CASEROOT/user_nl_pop2 file.
+       </p>
+
+</html>
+
+    </li>
+
+    <li><a name="nml_general_change_dt"></a>
+    <html>
+      <h4>
+         How do I change the POP2 timestep size?
+      </h4>
+
+    <p>
+     To change the size of the POP2 timestep, you simply change the value of
+     dt_count in your $CASE/user_nl_pop2 file.
+    </p><p>
+     To <em><b>decrease</b></em> the POP2  timestep, you must 
+     <em><b>increase</b></em> the POP2 time_manager_nml namelist
+      variable <b>dt_count</b>.
+     </p><p>
+
+     For example, if the ocean grid in your case is gx1v6, then the
+     default value for dt_count is 23. In order decrease the 
+     timestep by roughly 15%, you would increase dt_count to 26. To do this, 
+     put the following line in your $CASE/user_nl_pop2 file:
+<p></p>
+     <b>dt_count = 26</b>
+     </p><p>
+ 
+     You do not need to rebuild the executable in order to change dt_count.
+     </p><p>
+     <a href="#runtime_reduce_dt_howmuch">Recommendations on the <font color="red">limits
+     of timestep reduction</font> appear in the Runtime section of this document.</a>
+     
+     </p>
+</html>
+
+    </li>
+   </ol>
+   
+   <h4> The tavg_nml namelist </h4>
+   <ol>
+    <li> <a name="nml_tavg_control"></a>
+    <html>
+    <h4>
+       What can I control by changing variables in the <b>tavg_nml</b> namelist?
+    </h4>
+
+      <p>
+      The POP2 <b>tavg_nml</b> namelist contains variables that control many aspects of
+      the time-averaged history file output ("the tavg files"), including the time-averaging
+      frequency of variables, the frequency of time-averaged output files, the number
+      of time-averaged output "streams", and some aspects of the time-averaged output
+      filenames.
+      See the CESM1 <a href="../users/POPusers_main.html">POP User's Guide</a> for a complete
+      description of the options available to the user and the "POP2: TAVG Settings"
+      section of the
+      <a href="../../../cesm/doc/modelnl/nl_pop2.html"> POP2 namelist documentation</a>.
+</p><p>
+      Some features and options available to the user through the tavg_nml namelist controls
+      include:
+<ul>
+   <li> timeseries files, in which output files contain averaged variables
+         at multiple time levels per file </li>
+   <li> support for the creation of up to nine simultaneous tavg output streams generated
+        during a single model run, each with its own contents, time-averaging frequency,
+        and bundling options</li>
+   <li> an offset date specification, which allows finer control over the tavg_freq and
+        tavg_freq_opt options</li>
+   <li> the option for a one-time header, in which all time-invariant information is
+        written into the first tavg file of each stream, at the beginning of each run segment,
+        and then omitted from all subsequent files in that stream for the remainder of
+        the run segment</li>
+</ul>
+
+
+</p>
+</html>
+
+    </li>
+
+    <li> <a name="nml_tavg_change_nml"></a>
+    <html>
+    <h4>
+       How do I change the value of a variable in the POP2 <b>tavg_nml</b> namelist?
+    </h4>
+
+      <p>
+      In CESM1.2, all components use <!-- <a href="../../../cesm/doc/usersguide/c1158.html#customizing_components"> -->
+       a component-specific version of the CESM build-namelist
+        utility<!-- </a> --> to generate the component's namelist. 
+      </p><p>
+      <b>However</b>, the underlying CESM1 common build-namelist scripts cannot properly
+        handle all of complexity introduced by the options in the tavg_nml variable streams
+        and their interactions with various POP2 modelling options, so in order to change
+        the values of tavg_nml variables, you must follow a different procedure instead.
+        This procedure is outlined in the comment section at the top of your $CASE/user_nl_pop2
+        file and is also explained here.
+      </p><p>
+<h4> Process for changing CESM POP2 tavg_nml namelist variables:</h4>
+     <ol>
+      <li>cd $CASEROOT/SourceMods/src.pop2</li>
+      <li>cp $CODEROOT/ocn/pop2/input_templates/ocn.base.tavg.csh .</li>
+      <br> If at any point during the execution of your $CASEROOT you will be
+          using the CESM1 POP2 ecosystem
+          model, iage, or cfcs, then you should also copy their ocn.*.tavg.csh scripts. That
+          is,
+       <br>cp $CODEROOT/ocn/pop2/input_templates/ocn.${subm}.tavg.csh . where $subm = any or all of the values
+           [ecosys,iage,cfc] </li>
+      <li> edit the ocn.*.tavg.csh scripts to make your changes
+      <li> cd $CASEROOT
+      <li> ./preview_namelist </li>
+      <li> confirm your changes are correct by viewing $CASEROOT/CaseDocs/pop2_in
+      
+     </ol>
+</p>
+</html>
+
+    </li>
+
+    <li> <a name="nml_tavg_daily"></a>
+    <html>
+    <h4>
+       How do I create <b>daily</b> time-averaged output variables?
+    </h4>
+
+      <p>
+       Out of the box, the CESM1 POP2 model is configured to write a recommended
+       group of time-averaged ocean-model variables into a pre-determined number
+       of files (the "tavg" files).
+
+       By default in the gx* resolutions, three groups, or "streams," of tavg files
+       are produced during each model run:
+       one set of output files containing <b>monthly</b> averaged variables, 
+       another set of output files containing <b>a small number of daily</b> averaged
+       variables, and one file containing <b>time-invariant</b>
+       variables written at the beginning of the run.
+       
+      </p><p>
+       For more details on time-averaged output, read the questions and answers in 
+        the <a href="#tavg_history_file_output">Time-Averaged History File Contents</a> 
+        section of this FAQ.
+      </p><p>
+
+       If you only want to change the averaging frequency of the primary POP2 
+       time-averaged output <b>variables</b> (the variables written to the $CASEROOT.pop.h.yyyy-mm.nc files) 
+       from <b>monthly</b> to <b>daily</b>, then all you need
+       to do is make one simple change in the tavg_nml namelist.  
+      </p><p>
+
+      <i>However, as previously discussed, the process for changing tavg_nml variables is
+          non-standard.</i>
+    
+       To create daily averages of the primary POP2 time-averaged output variables,
+       <a href="#nml_tavg_change_nml"> follow the general steps for modifying the tavg_nml
+       namelist variables</a>. 
+       </p><p>
+
+       When you reach the step in which you edit your <tt>$CASEROOT/SourceMods/ocn.base.tavg.csh</tt> 
+       script, find the block that corresponds to your case's resolution 
+      ('gx*' for the gx1v6 and gx3v7 grids; 'tx*' for the tx0.1v2 grid) and
+      then change the line that controls the averaging frequency of the 
+      <b>variables</b>. Using the gx* block as an example, you would change the first
+      element of the <tt>tavg_freq_opt</tt> namelist array from:</p>
+<pre>
+tavg_freq_opt           = <b>'nmonth'</b>   'nday'   'once'
+   to
+tavg_freq_opt           = <b>'nday'</b>   'nday'   'once'
+</pre>
+       
+</p><p>
+      If you make no other changes, the result will be a timeseries of
+      <b>daily averaged variables</b> bundled into <b>monthly</b> files with 
+      filenames of the form $CASE.pop.h.yyyy-mm.nc.
+      If instead you want to create <b>individual files</b>, one for each day of
+      the year, then you must also make a change to the line that controls the output
+      frequency of the tavg <i><b>files</b></i>. Again using the gx* block as an example, you would change the
+      first element of the <tt>tavg_<b>file</b>_freq_opt</tt> namelist array from:</p>
+<pre>
+tavg_file_freq_opt      = <b>'nmonth'</b>   'nmonth' 'once'
+   to
+tavg_file_freq_opt      = <b>'nday'</b>   'nmonth' 'once'
+</pre>
+</p><p>
+If you make this change to the first element of <tt>tavg_<b>file</b>_freq_opt</tt> to <tt>'<b>nday</b>'</tt>, 
+then your $CASE will generate daily files with filenames of the form: $CASEROOT.pop.h.yyyy-mm-dd.nc.
+</p><p>
+Note that <b>daily time-averaged output, bundled as a timeseries of daily averages or
+written to individual files, will not work as-is with
+the POP2 diagnostics package</b>.  You will first need to create monthly averages from your
+daily average files before you can use the diagnostics package.
+</p>
+
+</html>
+
+    </li>
+
+    <li> <a name="nml_tavg_5daily"></a>
+    <html>
+    <h4>
+       How do I create 5-day time-averaged output variables?
+    </h4>
+
+      <p>
+       First, read the discussion on <a href="#nml_tavg_daily">
+       how to create daily averaged output</a>, because
+       what you want to do is nearly the same.
+
+      </p><p>
+       If you want to create 5-day averages of the primary POP2
+       time-averaged output variables, you will need to make changes
+       to the tavg_nml namelist. 
+       <a href="#nml_tavg_change_nml">follow the general steps for modifying the tavg_nml namelist variables</a>, making these four changes to the appropriate
+       resolution-dependent block of your
+       <tt>$CASEROOT/SourceMods/ocn.base.tavg.csh</tt> 
+       script:
+
+       
+<ol>
+average variables over 5-day intervals:
+<li>
+<pre>
+   change
+tavg_freq_opt           = <b>'nmonth'</b>   'nday'   'once'
+   to
+tavg_freq_opt           = <b>'nday'</b>   'nday'   'once'
+</pre>
+</li>
+       
+<li>
+<pre>
+   change
+tavg_freq               = <b>1</b> 1 1 
+   to
+tavg_freq               = <b>5</b> 1 1 
+</pre>
+</li>
+
+and create one file every five days:
+<li>
+<pre>
+   change
+tavg_file_freq_opt      = <b>'nmonth'</b>   'nmonth' 'once'
+   to
+tavg_file_freq_opt      = <b>'nday'</b>   'nmonth' 'once'
+</pre>
+</li>
+
+<li>
+<pre>
+   change
+tavg_file_freq          = <b>1</b> 1 1
+   to
+tavg_file_freq          = <b>5</b> 1 1
+</pre>
+</li>
+</ol>
+
+</p><p>
+Because you are modifying the default tavg output stream, you cannot change the
+filename to reflect the 5-day averaging interval.  However, with these modifications,
+you will generate tavg output files every five days, and each file will contain
+five-day averages of the standard POP2 tavg output variables.
+</p><p>
+Output filenames will be $CASE.pop.h.yyyy-mm-dd.nc, where the dd values are offset
+from one another by a difference of five.
+</p><p>
+You are cautioned that these files will not work with the standard CESM POP2
+diagnostics package, which uses as input monthly averages of the standard
+tavg output variables.
+</p>
+
+</html>
+
+    </li>
+
+    <li><a name="nml_tavg_change_filename"></a>
+    <html>
+<h4>Can I customize my CESM POP2 tavg output filenames?</h4>
+
+<p>
+No and yes.
+ </p><p>
+<b>No</b>, you cannot change the name of the default POP2 tavg output stream, even
+though reviewing the tavg_nml namelist inputs would lead you to think that
+you could. Why? We decided that maintaining backwards compatability with 
+older cases and with the built-in assumptions in the POP2 ocean diagnostics package
+were very important, and thus the name of the first (default) tavg output file 
+should remain consistent with its previous naming convention: $CASE.pop.h.yyyy-mm.nc. 
+Therefore, we wrote the POP2 model code so that it intentionally ignores the first
+element of the variable array <tt>tavg_stream_filestrings</tt>.
+As a result, if you try to change the name of the default file, you will see no effect. 
+ </p><p>
+<b>Yes</b>, you can customize the names of all but the default POP2 tavg output file. 
+Just follow the <a href="#nml_tavg_change_nml">procedure to change variables in the tavg_nml
+namelist</a>, and then edit the second through last values of the variable array
+<tt>tavg_stream_filestrings</tt> in your <tt>ocn.*.tavg.csh</tt> script file.
+</p><p>
+For example, suppose you want to rename the daily (second) POP2 tavg output file from
+its default name, 
+<pre>
+$CASE.pop.h.<b>nday1</b>.yyyy-mm-dd.nc
+    to 
+$CASE.pop.h.<b>daily</b>.yyy-mm-dd.nc.
+</pre>
+
+</p><p>
+Follow the instructions for changing the tavg_nml namelist, and at the step where
+you edit the ocn.base.tavg.csh script, find the block that corresponds with your
+case's resolution and change the line:
+<pre>
+ tavg_stream_filestrings = 'nmonth1' '<b>nday1</b>' 'once'
+    to 
+ tavg_stream_filestrings = 'nmonth1' '<b>daily</b>' 'once'
+</pre>
+
+</p>
+</html>
+
+    </li>
+
+   </ol>
+
+ <li><h3><a name="initialization">Initialization</a> </h3></li>
+   <ol>
+    <li> <a name="init_startupspunup"></a>
+    <html>
+<h4>What is the startup/spunup initialization option in POP2?</h4>
+
+<p>
+The startup/spunup initialization option is a specialized active-ocean model 
+suboption available in the CESM1.2 POP2 model which can be used only in
+conjunction with a CESM "startup" case;
+it is not designed to work with "hybrid" or "branch" cases.
+</p><p>
+The recommended method for initializing the CESM active ocean model (POP2) in a
+CESM startup case is to use the default settings; these initialize the ocean model
+from Levitus initial conditions and a state of rest. Occasionally, however,
+researchers are interested in a startup run in which only the ocean model is
+initialized from a "spun up" ocean condition generated from a previous
+CESM run. To accommodate their request, a nonstandard method of initializing POP2
+in a startup case was developed. It is called the startup_spunup option. It
+is a research option that is designed for use by expert users only.
+</p><p>
+Because of the complex interactions between the ocean-model parameterizations used to
+generate the spun-up case and those used in the new startup case, it is
+impossible to provide a single recommended spun-up ocean initial condition for all 
+circumstances.
+Instead, researchers must carefully select an existing solution whose case conditions
+closely match those in the new case. A mismatch of options between the spun-up case and
+the new case can result in scientifically invalid solutions.
+</p><p>
+Instructions on the use of this option appear in the 
+<a href="../../../cesm/doc/usersguide/book1.html">CESM1 User's Guide</a>
+"Use Cases and FAQs section."
+</p>
+</html>
+
+    </li>
+    <li> <a name="init_hybrid_binary"></a>
+    <html>
+<h4>I want to initialize POP2 in a hybrid-start case with an old POP2 binary restart file.
+    Will this work?</h4>
+
+<p>
+Yes.
+</p><p>
+When you set up your hybrid case, just make sure that you put the binary restart file 
+and the corresponding "header" and "rpointer" files into your execution directory.
+</p><p>
+That is, you must have the following three files, all generated at the same POP2 case at
+the same model time, in your execution directory:
+<pre>
+$CASE.pop.r.yyyy-mm-dd-sssss
+$CASE.pop.r.yyyy-mm-dd-sssss.hdr
+rpointer.ocn.restart
+</pre>
+</p><p>
+Upon initial execution of your hybrid case, the ocean model will read the rpointer.ocn.restart
+file and determine from it that the restart file's format is binary.  Because it knows
+that the restart format is binary, the ocean model will then read the header file and
+the binary restart file correctly.
+</p><p>
+Note that unless you make changes to the POP2 restart_nml namelist, POP2 in your new run will
+generate output restart files in the netCDF format, not binary.
+</p>
+</html>
+
+    </li>
+   </ol>
+  
+ <li><h3><a name="build">Build</a> </h3></li>
+   <ol>
+    <li> <a name="bld_domain_decomp"></a>
+    <html>
+    <h4>
+       What is the meaning of the "pop decomp not set" build-time error message?
+    </h4>
+
+      <p>
+      If you create any CESM1 $CASE configured with the active ocean model (POP2), 
+      use only the default ("out-of-the-box") CESM1 settings, and then build 
+      your $CASE on a tested machine, you should not encounter a build-time error.
+
+      </p><p>
+
+      However, if you decide to customize your $CASE by changing the number of PE's assigned
+      to POP2, your build might fail with the "<b>pop decomp not set</b>" error message.
+
+      </p><p>
+       Why? Because sometimes a decomposition cannot be found for the given
+       pop grid resolution and number of PE's.
+
+      </p><p>
+       The decomposition is set using two different tools. First,
+       a user-defined decomposition might exist for the given grid
+       and pe count in your $CASE/Buildconf/pop_decomp.xml file. This
+       tool was contributed by a member of the CESM community and is
+       undocumented, but by studying the supported decompostions in
+       this file, you should be able to modify this file to support
+       additional PE/decomposition choices. If a decomposition is not
+       found there, then the pop decomp script ($CASE/Buildconf/generate_pop_decomp.pl)
+       attempts to generate one automatically. In some instances, both
+       those methods will fail, a decomp will not be found, and you will
+       see the error message, "pop decomp not set".
+      </p><p>
+
+       As a user, you can also overwrite the default decomposition by changing
+       POP_AUTO_DECOMP to false in env_build.xml and then setting the env variables
+       POP_BLCKX, POP_BLCKY, POP_MXBLCKS, and POP_DECOMPTYPE manually in the same file.
+      </p><p>
+
+       Note that not all decompositions make sense for the POP2 model, particularly
+       those that result in subdividing the POP2 grid into very small subdomains,
+       because at some point, the boundary calculations will dominate the interior
+       computations. Also note that our general recommendation is to try to define
+       decompositions that result in subdomains that are square or nearly so.
+      </p>
+</html>
+
+    </li>
+   </ol>
+    
+
+</ul>
+<A HREF="#top" >Return to top</A><p></p>
+<hr width=100%>
+
+<!--  ===== Timestepping/Non-convergence ======================================= --!>
+<br>
+<a name="TIME"></a>
+<h2>Non-convergence, Timestep Size, and Other Run-Time Questions  </h2>
+<p></p>
+
+<ul>
+  <ol>
+    <li><a name="runtime_solver"></a>
+    <html>
+      <h4>
+         My job stopped running with a POP2 "error in solver" or
+         "solver not converged" message. What should I do?
+
+      </h4>
+
+    <p>
+      If your case has been running successfully for a period of time, but then 
+      the ocean model suddenly fails to converge, you might have encountered
+      a time-stepping instability.  If so, you will need to decrease the
+      ocean timestep and restart your case. We recommend you back up at least
+      one month prior to the time of nonconvergence, 
+      <a href="#nml_general_change_dt">decrease the ocean-model timestep by about 15-20%</a>,
+      and then restart your case. 
+    </p><p>
+      See |Section 4|Running CESM|The run|Restarting a run in the
+<a href=" http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/book1.html">
+     CESM1.2 User's Guide</a> for details on how to restart your run.
+     </p><p>
+     If, however, your model stops with a solver error message very early in your model
+     run, a timestepping instability is less likely to be the cause.  Many times when
+     the run fails with an ocean nonconvergence error, particularly early in
+     the model run, the ocean-model solver cannot converge because it has received 
+     bad boundary conditions passed from another model. In this situation, the user
+     should investigate what is being passed to the ocean and perhaps write 
+     high-frequency output to help diagnose the problem.
+</p>
+
+</html>
+
+    </li>
+
+    <li><a name="runtime_ke"></a>
+    <html>
+      <h4>
+         POP2  stops with the error message "ERROR: k.e. > 100."
+         What's the problem?
+      </h4>
+
+    <p>
+      POP2 monitors the kinetic energy diagnostic
+      during a model run.  When the kinetic energy grows too large, the model
+      shuts down, as you have discovered in your run.
+     </p><p>
+      If your case has been running successfully for some period of time before 
+      POP2 detects that K.E. is too large, that usually indicates you've
+      encountered a CFL problem,
+      which can usually be solved by 
+      <a href="#nml_general_change_dt">reducing the ocean-model timestep by about 20%</a>.
+     </p><p>
+      If, on the other hand, this problem occurs within days, or even steps,
+      after ocean-model initialization, this usually indicates that the forcing
+      coming into POP2 is way too strong, undefined, or otherwise
+      "un-earthlike," which is usually caused by user setup error. 
+     </p><p>
+      If you are using non-standard initial conditions or forcing in your
+      case, it is most likely that you are forcing the POP2 model unrealistically.
+      If this is your situation, you will need to correct the problems with
+      your initial conditions or forcing before continuing your run.
+     
+     </p>
+</html>
+
+    </li>
+
+    <li><a name="runtime_reduce_dt_howmuch"></a>
+    <html>
+      <h4>
+         If I decrease the POP2 timestep size to overcome an instability,
+         how much of a reduction is reasonable?
+      </h4>
+
+    <p>
+     Generally speaking, if your run has encountered a CFL-type
+     instability, then decreasing the POP2 timestep by 15-20% should,
+     under most circumstances,
+     be sufficient to overcome the problem, assuming that you restart
+     your run a month or so prior to the "blowup."
+     </p><p>
+     If this approach is successful, then you might consider increasing
+     the ocean timestep back to its original value after you have 
+     run about a year or so with the reduced timestep.
+     </p><p>
+     If this approach is <b>not</b> successful, then you might find that
+     decreasing the timestep by another 10% or so would be enough
+     to overcome the instability.
+     </p><p>
+     <b>However</b>, in most cases, we do not recommend that you reduce
+      your timestep much more than about 30%.  If you have reduced your 
+      timestep by ~30% and your case still "blows up," it is most likely
+      that something else is wrong with your run.
+     </p><p>
+      Two exceptions to this advice are:
+      <ul>
+         <li> during the spin-up phase of a
+              high-resolution (0.1<sup>o</sup>) ocean case, when significant
+              timestep-size reductions may be necessary to overcome initial
+              adjustments.</li>
+         <li> in some highly customized paleo experiments. Consultation with
+              paleo experts is advised.</li>
+      </ul>
+     </p><p>
+      Note that if you reduce your POP2 timestep, you may need to adjust your
+      job's runtime limit, because the ocean model will take longer to run.
+      Although you may also find that your case is now
+      not optimally balanced, we recommend against making any changes to your
+      PE layout to compensate, because this will create bit-level changes in your
+      model solutions.
+     </p>
+</html>
+
+    </li>
+
+    <li><a name="runtime_tavg_contents_init"></a>
+    <html>
+      <h4>
+           Why might the ocean model stop during initialization after
+           I've modified the POP2 tavg_contents file?
+      </h4>
+
+    <p>
+    You can eliminate any of the <a href="#output_tavg_reduce_really">variables in the list</a>
+    shown in the Time-Averaged History Output section
+    from your tavg history files by modifying your tavg_contents file, and the
+    POP2 model will run just fine.
+    However, if you decide to eliminate any variables that are <em>not</em> on
+    the list, the POP2 model might stop during its initialization phase.  Why?
+    </p><p>
+    The POP2 initial.F90 module contains a handful of subroutines that control the
+    intialization of all POP2 modules, and as a result, it knows about
+    all of the POP2 options and related variables that you've activated for your
+    case.  At the end of the final POP2 initialization routine, an
+    inter-module consistency checking subroutine, POP_check, is called.
+    Using the model-wide information available to it, this routine identifies
+    some -- but not necessarily all -- inconsistencies among the various options selected in
+    your case.  
+    
+    </p><p>
+    If any inconsistencies are detected, the POP_check routine will print messages
+    in the ocn.log and/or ccsm.log files, and if the problem is a fatal error,
+    POP_check will cause the ocean model to shut down, thus preventing the user
+    from running an incorrectly specified case. POP_check is the subroutine that
+    generates errors about missing UISOP or other variables, and it is the routine
+    that will prevent your case from running beyond the ocean-model initialization phase.
+    </p> 
+
+</html>
+
+    </li>
+
+    <li><a name="runtime_tavg_contents_month"></a>
+    <html>
+      <h4>
+           Why might the ocean model stop after running one month if
+           I've modified the POP2 tavg_contents file?
+      </h4>
+
+    <p>
+       MOC and northward transport errors will only occur after the model has run
+       to the point at which a time-averaged history file is to be generated,
+       which typically occurs at the end of the first month. 
+    </p><p>
+       Why would the error occur then?
+    </p><p>
+       Because the variables MOC, N_HEAT, and N_SALT are calculated from other
+       time-averaged quantities, which must be available prior to the MOC, N_HEAT, and N_SALT
+       computations. So if you have chosen to compute MOC, N_HEAT or N_SALT, but
+       you have chosen <em>not</em> to keep a time-averaged variable that is needed in the
+       calculation, the model will fail when it tries to compute MOC, etc.
+     </p><p>
+
+       Presently, there are no checks in place that will detect this particular
+       inconsistency prior to the point at which you try to compute these variables,
+       because of complexities in the way the time-averaging and these
+       particular model diagnostics interact.  As some users have noted, this is different
+       from the way some other models handle their variables, which we understand makes
+       it more difficult for new CESM users.
+
+    </p> 
+
+</html>
+
+    </li>
+
+  </ol>
+
+</ul>
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+
+<!--  ===== Output ============================================================ --!>
+<br>
+<a name="output_files"></a>
+<h2>The CESM1 POP2 Output Files </h2>
+<br>
+
+<ul>
+ <li><h3><a name="output_general">General</a> </h3></li>
+   <ol>
+    <li><a name="output_allfiles"></a>
+    <html>
+
+    <h4>
+      What POP2 output files are produced in a CESM1 run?
+    </h4>
+
+      <p>
+       During the course of its execution, CESM POP2 will produce 
+       <b>restart, history, pointer, diagnostic</b>, and <b>log</b> output files.
+       These files will appear in your case's execution
+       directory, and their filenames follow the CESM
+       <a href="http://www.cesm.ucar.edu/models/cesm1.0/filename_conventions_cesm.html">
+       output-file naming conventions</a>.
+      </p><p>
+      In particular, the standard CESM POP2 model produces the following files:
+      </p><p>
+         <ul>
+           
+           <li> log files:</li>
+            <ul>
+              <li> ocn.log.yymmdd-sssss    &nbsp;&nbsp;&nbsp; output log (text) files
+            </ul>
+           <li> <b>d</b>iagnostics files:</li>
+            <ul>
+              <li> ${CASE}.pop.<b>dd</b>*  &nbsp;&nbsp;&nbsp; general diagnostics </li>
+              <li> ${CASE}.pop.<b>do</b>*  &nbsp;&nbsp;&nbsp; <b>o</b>verflows </li>
+              <li> ${CASE}.pop.<b>dt</b>*  &nbsp;&nbsp;&nbsp;&nbsp; <b>t</b>ransport </li>
+              <li> ${CASE}.pop.<b>dv</b>*  &nbsp;&nbsp;&nbsp;&nbsp; <b>v</b>elocity  </li>
+            </ul>
+          <li> time-averaged <b>h</b>istory files:</li>
+            <ul>
+             <li> ${CASE}.pop.<b>h</b>*    &nbsp;&nbsp;&nbsp; (the "tavg" files)</li>
+            </ul>
+          <li> <b>r</b>estart files:</li>
+            <ul>
+             <li> ${CASE}.pop.<b>r</b>.*   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model variables</li>
+             <li> ${CASE}.pop.<b>rh</b>.*  &nbsp;&nbsp;&nbsp; time-averaged <b>h</b>istory </li>
+             <li> ${CASE}.pop.<b>ro</b>.*  &nbsp;&nbsp;&nbsp; <b>o</b>verflows </li>
+            </ul>
+          <li> <b>r</b>estart pointer files:</li>
+            <ul>
+             <li> rpointer.ocn.<b>restart</b>.*  
+             <li> rpointer.ocn.<b>tavg</b>.*  
+             <li> rpointer.ocn.<b>ovf</b>.*  
+            </ul>
+          
+         </ul> 
+      </p><p>
+      See the <b>Model diagnostics and output</b> section of the
+      CESM <a href="http://www.cesm.ucar.edu/models/cesm1.0/pop2/doc/users/POPusers_main.html">
+      POP2 User's guide </a>
+      for information on the diagnostics, history, and restart files and their configurable options.
+</p><p>
+      <b>NOTE:</b> Unlike the LANL version of POP2, the CESM POP2 model does not,
+       by default,  generate instantaneous "snapshot" (*.s.* files). This is
+       intentional; the CESM POP2 model does not support this option. </p>
+</html>
+
+    </li>
+ 
+    <li><a name="output_tavg"></a>
+    <html>
+
+    <a name="output_gen2_tavg"></a>
+    <h4>What are the POP2 "tavg files"?</h4>
+      <p>
+       The time-averaged history output files produced by the CESM1 POP2 model 
+       are commonly referred to as "the tavg files." 
+      </p><p>
+
+       See <a href="#tavg_history_file_output">tavg-specific questions</a>
+        in this FAQ and also the
+        <b>Model diagnostics and output:Model output files:Time-averaged history files</b> 
+        subsection of the CESM
+        <a href="http://www.cesm.ucar.edu/models/cesm1.0/pop2/doc/users/POPusers_main.html">
+        POP2 User's guide </a>
+        for more information on the tavg files.
+      </p>
+      
+</html>
+
+    </li>
+ 
+    <li><a name="output_restart"></a>
+    <html>
+
+    <a name="output_gen3_restart"></a>
+    <h4>What are the POP2 restart files?</h4>
+      <p>
+       The CESM1 POP2 model restart files contain a snapshot of all model variables that
+       are necessary to exactly restart the model from a previous run segment. These files
+       are, by default, generated in the netCDF file format. However, the user may configure
+       the CESM1 POP2 model so that it produces restart files in the native machine binary
+       format.  If the binary file format ('bin') is chosen,  two restart files will be
+       created: the actual binary data file and an accompanying text "header" file (suffix ".hdr").
+</p><p>
+       See the
+        <b>Running POP:Initializing the model state:Restart control </b> 
+        subsection of the CESM
+        <a href="http://www.cesm.ucar.edu/models/cesm1.0/pop2/doc/users/POPusers_main.html">
+        POP2 User's guide </a>
+        for more information on the restart files.
+      </p>
+      
+</html>
+
+    </li>
+
+    <li><a name="output_rpointer"></a>
+    <html>
+
+    <a name="output_gen2_tavg"></a>
+    <h4>What are the POP2 "rpointer files"?</h4>
+      <p>
+       During execution, CESM1 component models periodically create restart files
+       that allow that component to exactly restart.
+       At the same time, the component models also create one or more ascii files 
+       that contain, at a minimum, the names of these restart files and may,
+       additionally, contain other identifying information.
+      </p><p>
+       These files are called the "rpointer" (sometimes just "pointer") files,
+       because their filenames all begin with the prefix string "rpointer,"
+       and they are the files that CESM component models read when resuming a $CASE's
+       execution.  
+       </p>
+     
+      <p>
+       CESM1 POP2 creates the following three rpointer files whenever an ocean-model restart file
+       is generated: 
+         <ul>
+          <li><b>rpointer.ocn.restart</b> contains the name and the file format (binary or netCDF)
+                  of the ocean model restart file.</li>
+          <li><b>rpointer.ocn.tavg</b> contains the name of the file needed to continue an averaging
+                  interval that may have been interrupted at the end of the previous run segment. This
+                  file will always exist, and should be present in your execution directory, but its
+                  contents will only be read if the previous time-averaging interval spans model shut-down.</li>
+          <li><b>rpointer.ocn.ovf</b> contains the name of the file needed to continue a a case in which
+                  the overflows parameterization is active.</li>
+        </ul>
+       
+      </p>
+      
+</html>
+
+    </li>
+   </ol>
+
+
+<li><h3><a name="tavg_history_file_output">Time-Averaged History File Contents</a> </h3></li>
+  <ol>
+    <li><a name="output_tavg_general"></a>
+    <html>
+
+      <h4>
+           What's in the standard POP2 tavg output files?
+      </h4>
+      <p>
+       Out of the box, the CESM1 POP2 model is configured to write a recommended
+       group of time-averaged ocean-model variables into a pre-determined number
+       of files (the "tavg" files).
+       By default in the gx* resolutions, three groups, or "streams," of tavg files
+       are produced during each model run:
+       one set of output files containing monthly averaged variables, another set of output
+       files containing a small number of daily averaged variables, and one file, which
+       is generated once, at the beginning of the run,  containing a few 3D time-invariant
+       variables.
+      </p><p>
+       By default, the daily averaged variables are bundled into monthly timeseries files. These files
+       are relatively small, because they contain only a handful of 2D variables. Out of the
+       box, these variables are: Surface Potential Temperature (SST), SST<sup>2</sup>, 
+       Mixed-Layer Depth, and Maximum Mixed-Layer Depth.
+      </p><p>
+       The monthly averaged files are the largest files, because they contain
+       many variables, several of which are full 3D variables. For a complete list of the variables
+       contained in these files, you can look at the 
+       $CODEROOT/models/ocn/pop2/input_templates/${resolution}_tavg_contents file.
+       Also see the <a href="../users/POPusers_main.html"> POP2 User's Guide</a> for
+       a list of variables that could be added to your output file and see the section
+       in this FAQ for 
+       <a href="#output_tavg_add1">how to add a tavg variable</a> to your output files.
+       </p><p>
+       Because of the monthly files' large size and monthly frequency, a user may be tempted to
+       try to reduce the size of the POP2 output files by eliminating variables from these
+       files. <b> But see the next question...</b>
+      </p>
+
+</html>
+
+    </li>
+
+    <li><a name="output_tavg_reduction_strategy"></a>
+    <html>
+      <h4>
+      I want to reduce the size of the POP2 tavg output files. What strategies do you recommend?
+      </h4>
+
+      </p><p>
+       We know that the size of the POP2 tavg files can be significant
+       when your storage space is limited, so we understand why you might
+       want to reduce the size of these files.
+      </p><p>
+       If large file size is a problem, you might consider the following:
+          <ul>
+             <li><em><b>Create annual averages instead of monthly averages.</b></em></li>
+               <br><p> This can be a useful strategy during the early years of a long spin-up run,
+                     because often you will not be analyzing monthly or seasonal
+                     variations during the spin-up phase of your simulation. 
+                 </p><p>
+                     Obviously, this is a quick way to reduce your POP2 tavg output file
+                     size by a <b>factor of 12</b>. But do consider the scientific rationale for
+                     your case before deciding on this option.
+              </p><p> 
+             <li><em><b>Compress the tavg files</b></em>.</li>
+                 <br><p> Compressing the ocean history files
+                 is a fairly effective way of reducing the file size, because of all of the
+                 land points. For example, using gzip to compress a standard 
+                 gx1v6 POP2 *pop.h.* file reduces the size by 60%.
+ 
+                 However, note that compression is often a time-consuming process
+                 and it may not be practical to do this on your system. We recommend
+                 that you try compressing a single tavg file and timing the process
+                 before committing to this strategy.
+              </p><p> 
+                 Although there are plans for an autmoatic file compression
+                 option in future CESM releases, for now you would need to develop
+                 your own process for compression.
+                 </p><p>
+                 
+                 Also consider your usage of these files after you have compressed them.
+                 A new version of the CESM POP2 post-processing software
+                 automatically detects and uncompresses gzip'd files, but this process
+                 can potentially slow the post processing considerably.
+                 </p>
+          </ul>
+       
+      </p><p>
+</html>
+
+    </li>
+
+    <li><a name="output_tavg_reduce_dont"></a>
+    <html>
+      <h4>
+       I want to reduce the size of the POP2 tavg output files by eliminating 
+       selected variables. Why do you recommend <b><i>against</i></b> this?
+      </h4>
+
+      </p><p> 
+
+       <b>We do not recommend eliminating variables from the POP2 monthly tavg history
+       files if you are running cases for scientific studies. </b>
+      
+      </p><p> 
+
+       Why? Because the variables on the monthly tavg files have been carefully selected
+       to provide a full scientific picture of the ocean-model solutions. These variables are
+       essential input to the standard CESM ocean-model post-processing diagnostics tools.
+       If you plan to use these tools on your nonstandard, reduced-field files, they
+       will likely fail because required variables are missing from your
+       tavg output files.  If you have eliminated variables from your tavg files and the
+       post-processing tools fail, <b> you are on your own.</b>
+
+      </p><p>
+
+       Furthermore, the tavg-history file variables are tied to various pre-set POP2 run-time
+       diagnostics settings; removing variables will often result in model shut-down because
+       of inconsistent diagnostics settings and tavg-history-file field availablility.
+       Eliminating variables from the tavg files then becomes a rather frustrating trial-and-error
+       hunt for what "works." We do not recommend this approach.
+      </p>
+</html>
+
+    </li>
+
+    <li><a name="output_tavg_reduce_really"></a>
+    <html>
+      <h4>
+      But what if I <b><i>really</i></b> want to eliminate selected
+      variables from the POP2 tavg output files? Is there anything I can do?
+      </h4>
+
+      </p><p> 
+          We repeat: we do not recommend eliminating variables from the POP2 monthly
+          tavg history files if you are running cases for scientific studies. 
+      </p><p>
+
+       But if you insist, we have identified variables that, if removed from the tavg_contents file,
+       will not cause the model to stop with an error message during initialization or run time.  
+      </p> <p>
+
+      In particular, if you are not planning to analyze ocean mixing, you might try
+      eliminating some or all of the following variables. Eliminating all of
+      them will reduce the size of each monthly tavg history file by approximately 45%. 
+      </p> <p>
+
+      Note that the ocean-model diagnostics post-processing package will fail
+      when these variables are not available in the monthly tavg files,
+      and you will be on your own if this happens. </p> 
+      </p><p>
+            
+            <ul>
+                      <li>KAPPA_ISOP</li>
+                      <li>KAPPA_THIC</li>
+                      <li>HOR_DIFF</li>
+                      <li>PV</li>
+                      <li>KVMIX</li>
+                      <li>TPOWER</li>
+                      <li>KVMIX_M</li>
+                      <li>VVC</li>
+                      <li>VDC_T</li>
+                      <li>VDC_S</li>
+                      <li>UVEL2</li>
+                      <li>VVEL2</li>
+                      <li>WVEL2</li>
+                      <li>Q</li>
+                      <li>UET</li>
+                      <li>UES</li>
+                      <li>WTT</li>
+                      <li>WTS</li>
+            </ul>                 
+
+      </p>
+</html>
+
+    </li>
+
+    <li><a name="output_tavg_rm"></a>
+    <html>
+      <h4>
+       How do I remove variables from the tavg output files?
+      </h4>
+
+      <p> 
+         Assuming you understand and accept the consequences of eliminating variables from the tavg
+         output files (see related questions above), you can follow the steps below
+         to comment out and thereby
+         eliminate variables from your tavg output files. See above for a list of 3D
+         mixing variables that you could, under certain circumstances, decide to eliminate.
+      </p><p>
+         You need to be generally familiar with CESM1 and its terminology for the
+         following instructions to make sense:
+
+         <ul>
+           <li> cd $CASE/SourceMods/src.pop2</li>
+           <li> cp $CODEROOT/ocn/pop2/input_templates/${OCN_RES}_tavg_contents .  </li>
+           <li> edit $CASE/SourceMods/src.pop2/${OCN_RES}_tavg_contents,
+                replacing the leading "1" character of each variable with the
+                comment symbol, "#"</li>
+           <li> configure and build $CASE, if you haven't already done so </li>
+           <li> if you have already configured and built $CASE, just submit
+                your job -- the new job will use the new ${OCN_RES}_tavg_contents to determine
+                which tavg variables are active.</li>
+        </ul>
+      </p>
+
+
+</html>
+
+    </li>
+
+    <li> <a name="output_tavg_add1"></a>
+    <html>
+<h4>How do I add a POP2 variable to the tavg output files? 
+    Case 1 -- variable is already in the tavg_contents file</h4>
+
+<p>
+First, search for your model variable in the CESM POP2 ${RESOLUTION}_tavg_contents file. If
+you find the variable in the file, then all you need to do is uncomment it and run your case.
+
+ </p><p>
+Here's an example of this scenario:
+ </p><p>
+Suppose you are interested in putting the maximum value of temperature over an averaging interval
+into a POP2 time-averaged output file in your gx1v6 ocean-resolution case.
+You search the gx1v6_tavg_contents file, and you find TEMP_MAX, but it is preceeded by the
+pound sign (&#35;), which is a comment symbol in the tavg_contents file. This means that 
+TEMP_MAX  will not be written to your tavg output files, unless you uncomment it.
+Uncommenting the line is simple; here's what you need to do:
+<ul>
+ <li> $cd $CASE/SourceMods/src.pop2</li>
+ <li> cp $CODEROOT/models/ocn/pop2/input_templates/gx1v6_tavg_contents .  </li>
+ <li> change following line in your gx1v6_tavg_contents file:</li>
+</ul>
+<pre>
+#  TEMP_MAX
+   to 
+1  TEMP_MAX
+</pre>
+<ul>
+ <li> run your $CASE (no rebuild is necessary) </li>
+</ul>
+
+ </p><p>
+If you follow these steps, you will find TEMP_MAX in your $CASE.pop.h.yyyy-mm.nc files.
+
+</p>
+</html>
+
+    </li>
+
+    <li> <a name="output_tavg_add2"></a>
+    <html>
+<h4>How do I add a POP2 variable to the tavg output files? 
+    Case 2 -- code support already exists</h4>
+
+<p>
+Suppose you want to add a CESM POP2 variable to your tavg output files. You've already confirmed
+that the variable is not in the tavg_contents file, so here's what you should do:
+</p><p>
+First, search the CESM POP2 Fortran modules to see if your variable, VARNAME, is a model variable.
+If the model variable exists, then search the code to see
+if there is a tavg "handle" (tavg_VARNAME) associated with that model variable.  
+If so, you're in luck; all you need to do is add the tavg variable name to the tavg_contents
+file.  
+ </p><p>
+For example, suppose you are interested in putting the time average of RHOU, 
+the product of potential density and the U velocity, into a POP2 time-averaged
+output file in your gx1v6 ocean-resolution case.  You've already searched the
+ gx1v6_tavg_contents file, so you know RHOU is not there.  So you next search the
+POP2 modules, and you find references to the variable RHOU and its tavg handle,
+tavg_RHOU, in the advection.F90 module. This is good news, because all you need to
+do to accomplish your goal is to add RHOU to your tavg_contents file:
+<ul>
+ <li> $cd $CASE/SourceMods/src.pop2</li>
+ <li> cp $CODEROOT/models/ocn/pop2/input_templates/gx1v6_tavg_contents .  </li>
+ <li> add the following line to your gx1v6_tavg_contents file:</li>
+</ul>
+<pre>
+1  RHOU
+</pre>
+<ul>
+ <li> run your $CASE (no rebuild is necessary) </li>
+</ul>
+
+ </p><p>
+If you search the CESM POP2 Fortran modules and find your variable, but you do not find the
+tavg "handle" for that variable, you will need to modify the POP2 code.  See the <a href="#developer">
+Developers section</a> of this document for information on how to do this.
+      
+
+</p>
+</html>
+
+    </li>
+  
+    <li><a name="output_tavg_r8"></a>
+    <html>
+      <h4>
+          Are the variables in the POP2 tavg output files single or double
+          precision?
+      </h4>
+
+    <p>
+          By default, all POP2 tavg output variables are created in single
+          precision (netCDF "float").
+    </p> 
+
+</html>
+
+    </li>
+
+    <li><a name="output_tavg_r8how"></a>
+    <html>
+      <h4>
+          How can I create POP2 tavg output files with double-precision
+          variables?
+      </h4>
+
+    <p>
+          By default, all POP2 tavg output variables are created in single
+          precision (netCDF "float"), which is usually appropriate and
+          sufficient for scientific analysis.
+    </p> <p>
+          Sometimes, however, a user might want to generate double-precision
+          tavg variables (netCDF "double"), perhaps for short debugging runs or
+          other special-purpose situations.  If so, and if the doubled file
+          size is not a problem, you can follow these steps to generate the
+          double-precision tavg variables:
+    </p> <p>
+          <ul>
+            <li> create_newcase -case $CASE ... </li>
+            <li> cd $CASE</li>
+            <li> cesm_setup</li>
+            <li> add this line:
+                  <pre>
+   set pop2defs = "$pop2defs -DTAVG_R8"</li> </pre>
+                 to the $CASE/Buildconf/pop2.buildexe.csh script,
+                 just prior to the gmake command.
+            <li> build and run $CASE
+          </ul>
+    </p> <p>
+          
+          Note that if you have already built the executable for an existing
+          case and then decide that you want double-precision pop2 history
+          variables, you must rebuild your case after you modify 
+          Buildconf/pop2.buildexe.csh. But before you do, you should ensure that
+          the previous ocean executable has been removed.
+          See the CESM1 ./$CASE.clean_build documentation in the 
+<a href="../../../cesm/doc/usersguide/book1.html">CESM1 User's Guide</a>
+          section titled, "Rebuilding the Model."
+          
+          <ul>
+            <li> cd $CASE</li>
+            <li> ./$CASE.clean_build </li>
+            <li> add this line:
+                  <pre>
+   set pop2defs = "$pop2defs -DTAVG_R8"</li> </pre>
+                 to the $CASE/Buildconf/pop2.buildexe.csh script,
+                 just prior to the gmake command.
+            <li> rebuild and run $CASE</li>
+          </ul>
+    </p>
+</html>
+
+    </li>
+
+  </ol>
+</ul>
+
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+
+<!--  ===== Post Processing ============================================================ --!>
+<br>
+<a name="postproc"</a>
+<h2>Post Processing </h2>
+<p>
+
+<ol>
+    <li> <a name="postproc_moc"></a>
+    
+<html>
+    <h4>
+      I deactivated the MOC computation during my $CASE execution.
+      How do I compute the MOC after the run is completed?
+    </h4>
+
+      <p>
+         There is "off-line" post-processing code written in NCL that
+         computes the MOC using POP2 output files. This post-processing
+         tool will work with the newer CESM code and with either the
+         gx* or tx0.1v2 grids. With some modifications, this code can
+         also be made to work with CCSM3 POP1 output as well.
+
+      </p><p>
+      The documentation for that code is here:
+<a href="http://www.ncl.ucar.edu/Document/Functions/Built-in/moc_globe_atl.shtml">
+         http://www.ncl.ucar.edu/Document/Functions/Built-in/moc_globe_atl.shtml</a>
+      </p><p>
+      The documentation also includes an example NCL script to make use of this function.
+      </p>
+
+</html>
+
+    </li>
+
+    <li> <a name="postproc_diags"></a>
+    
+<html>
+    <h4>
+      Is there a diagnostics package I can use to post-process output from my CESM1 POP2 case?
+    </h4>
+
+     <p>
+     The CESM Ocean Model Working Group (OMWG) has diagnostics packages to assess both spatial
+     and temporal characteristics of ocean model simulations. We perform such assessments routinely
+     for output from both forced ocean and fully-coupled experiments. The use of these packages
+     includes evaluating the validity and climate state of a particular coupled model simulation,
+     assessment of whether new capabilities in any component model, when coupled to the entire
+     coupled model system (i.e., a new model code base), have impacted the ocean, and validating
+     long coupled control simulations.
+      </p><p>
+     We expect to announce a new version of the OMWG diagnostics package with
+     feature enhancements by the end of 2013.
+      </p><p>
+      See <a href="http://www2.cesm.ucar.edu/working-groups/omwg/pop2-metrics-diagnostics">
+      the CESM Ocean Component (POP2) Metrics and Diagnostics</a> page for a discussion
+      of the POP2 diagnostics.
+      </p><p>
+
+</html>
+
+    </li>
+  
+  
+</ol>
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+
+<!--  ===== Developer ============================================================ --!>
+<br>
+<a name="developer"></a>
+<h2>Developer's Questions </h2>
+<p>
+
+<ol>
+    <li> <a name="dev_tavg_add3"></a>
+    <html>
+<h4>How do I add a POP2 variable to the tavg output files? 
+    <br>Case 3 -- no code support exists</h4>
+
+<p>
+First, search the CESM POP2 Fortran modules to see if your variable, VARNAME, is a model variable.
+If the model variable exists, but the tavg "handle" (tavg_VARNAME) associated with the model variable
+does not, you will need to add new code to the POP2 model.  
+ </p><p>
+Suppose you are interested in putting the time average of the U velocity at level five 
+into a POP2 time-averaged output file.
+You've already searched the gx1v6_tavg_contents file, but U velocity at level five is not on the list.
+Next, you've searched the POP2 modules, and although you found references to UVEL, 
+tavg_UVEL, tavg_U1_8, and lots of tavg_U* variables, you've found nothing that looks like 
+U velocity at level five.
+ </p><p>
+Because under this scenario you have not found what you want, you will need to modify the
+POP2 code.  Note that in this example, you could also just extract level five from the 3D UVEL
+that is already written out to the $CASE.pop.h.yyyy* file, but let's just go with this example
+for now, assuming that you have good reason to want just U velocity at level five as a separate
+output variable.
+ </p><p>
+In adding support for new tavg output variables, it is easiest to mimic developments for similar
+variables, so let's use tavg_U1_8, the vertical average of U velocity over model levels one through 
+eight, as our template.  To instrument the POP2 code to write out our new varible, U velocity at 
+level five, do the following:
+<ul>
+ <li> $cd $CASE/SourceMods/src.pop2</li>
+ <li> cp $CODEROOT/models/ocn/pop2/source/baroclinic.F90 .  </li>
+ <li> edit baroclinic, using tavg_U1_8 as a guide, adding the following lines in the appropriate places:
+     
+<pre>
+          integer (int_kind) :: tavg_U5_5  ! U velocity in layer five
+
+
+          call define_tavg_field(tavg_U5_5,'U5_5',2,                          &
+                                 long_name='Zonal Velocity lvls 5-5',         &
+                                 units='centimeter/s', grid_loc='2221')
+          if (k == 5)  &
+          call accumulate_tavg_field(UVEL(:,:,k,curtime,iblock),tavg_U5_5,iblock,k)
+</pre>
+     
+ <li> cd $CASE </li>
+ <li> build (or rebuild), then run your $CASE</li>
+ <li> examine your $CASE.pop.h.yyyy-mm.nc file, where you should find your new variable, U5_5.</li>
+</ul>
+
+</p>
+</html>
+
+    </li>
+  
+    <li> <a name="dev_newnamelist"></a>
+    <html>
+<h4>As a POP2 developer, how do I add a new POP2 namelist to the build-namelist procedure?</h4>
+
+<p>
+There are two files that you <b>must</b> modify in order to introduce a new 
+namelist into the POP2 build-namelist procedure, and then there are two
+options for how to populate the namelist.
+</p>
+<p>
+Suppose you have introduced the following namelist into the POP2 source
+code:
+</p>
+<pre>
+real (r8)            :: varname1
+logical (log_kind)   :: varname2
+integer (int_kind)   :: varname3
+character (char_len) :: varname4
+character (char_len) :: varname5
+character (char_len) :: varname6
+
+namelist / abc_nml /  &amp;
+           varname1,  &amp;
+           varname2,  &amp;
+           varname3,  &amp;
+           varname4,  &amp;
+           varname5,  &amp;
+           varname6
+</pre>
+<p>
+To illustrate many different ways to handle values, we also work under the
+following assumptions:
+</p>
+<ol>
+<li> varname4 is a regular string,
+<li> varname5 depends on a CESM environment variable, and
+<li> varname6 is a filename for something located in the inputdata/ directory
+   that is only used for a specific resolution.
+</ol>
+<p>
+You will need to make the following changes to models/ocn/pop2/bld/ (or in 
+$CASEROOT/SourceMods/src.pop2) to have &amp;abc_nml appear in pop2_in:
+</p>
+<h5>1. Edit namelist_files/namelist_definition_pop2.xml</h5>
+<p>
+You need to add definitions to namelist_files/namelist_definition_pop2.xml for
+all 6 of the &amp;abc_nml variable names. 
+</p>
+<p>
+NOTES:
+</p>
+<ol>
+<li> In this file, the Default: value is for documentation purposes only. It
+     has NO effect on the actual setting of the variable value in the pop2_in
+     file.
+<li> The entry for varname6 uses the attribute input_pathname=&quot;abs&quot; to add
+     the path of the CESM inputdata root directory.
+</ol>
+<p>
+--- begin addition to namelist_definition_pop2.xml --- 
+</p>
+<pre>
+&lt;!-------------------------------------&gt;
+&lt;!---group abc_nml                 ----&gt;
+&lt;!-------------------------------------&gt;
+
+&lt;entry
+id=&quot;varname1&quot;
+type=&quot;real&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot; &gt;
+A brief description about varname 1.
+
+Default: 
+&lt;/entry&gt;
+
+&lt;entry
+id=&quot;varname2&quot;
+type=&quot;logical&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot; &gt;
+A brief description about varname 2.
+
+Default: 
+&lt;/entry&gt;
+
+&lt;entry
+id=&quot;varname3&quot;
+type=&quot;integer&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot; &gt;
+A brief description about varname 3.
+
+Default: 
+&lt;/entry&gt;
+
+&lt;entry
+id=&quot;varname4&quot;
+type=&quot;char*256&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot; &gt;
+A brief description about varname 4.
+
+Default: 
+&lt;/entry&gt;
+
+&lt;entry
+id=&quot;varname5&quot;
+type=&quot;char*256&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot; &gt;
+A brief description about varname 5.
+
+Default: 
+&lt;/entry&gt;
+
+&lt;entry
+id=&quot;varname6&quot;
+type=&quot;char*256&quot;
+category=&quot;pop2&quot;
+group=&quot;abc_nml&quot;
+input_pathname=&quot;abs&quot; &gt;
+A brief description about varname 6.
+
+Default: 
+&lt;/entry&gt;
+</pre>
+<p>
+--- end addition to namelist_definition_pop2.xml --- 
+</p>
+
+<h5>2. Edit build-namelist</h5>
+<p>
+You need to add abc_nml to the build-namelist groups array (search for the
+string &quot;my @groups&quot;; you want the one with the comment &quot;Set namelist groups to
+be written out&quot;). This tells build-namelist that &amp;abc_nml should appear in
+pop2_in. Note that the order of the listing in @groups determines the order
+that the namelists appear in pop2_in.
+</p>
+<p>
+--- begin addition to build-namelist ---
+</p>
+<pre>
+my @groups = qw(domain_nml
+                  ...
+                abc_nml
+                  ...
+                passive_tracers_on_nml);
+</pre>
+<p>
+--- end addition to build-namelist ---
+</p>
+<p>
+While these first two steps tell the build-namelist script that &amp;abc_nml
+exists and contains varname1 ... varname6, it does not actually add
+anything to pop2_in. There are two different ways to populate the namelist:
+</p>
+<h5>3.1 Short-term solution (user_nl_pop2)</h5>
+<p>
+After you create and configure your case, set all 6 variables in user_nl_pop2
+by adding the following lines:
+</p>
+<pre>
+varname1 = 0.5
+varname2 = .true.
+varname3 = 15
+varname4 = &quot;abc123&quot;
+varname5 = &quot;/dir/otherdir/netcdf_file.nc&quot;
+varname6 = &quot;/glade/p/cesm/cseg/inputdata/other_netcdf_file.nc&quot;
+</pre>
+<p>
+This is the &quot;short-term&quot; solution because it requires updating user_nl_pop2
+every time you create a new case that needs to read &amp;abc_nml. It is a good way
+to run tests while you decide what variables need to be in &amp;abc_nml, but it
+is not a permanent plan.
+</p>
+<p>
+NOTE:
+</p>
+<ul>
+<li> You must specify the full pathname for varname6 in this case because
+     build-namelist will not prepend &quot;$DIN_LOC_ROOT/&quot; to the value (and 
+     &quot;$DIN_LOC_ROOT&quot; will NOT be interpretted correctly from the user_nl_pop2
+     file, so you must type the path explicitly).
+</ul>
+<h5>3.2 Long-term solution (use the namelist_defaults_pop2.xml file)</h5>
+<p>
+You can set default values in namelist_files/namelist_defaults.xml and then
+call the add_defaults() routine in build-namelist to read these values and
+add them to pop2_in. Sometimes variables need to be set directly by the 
+add_defaults() routine, these should not included in the defaults file. In
+this simple example, varname5 is one such variable.
+</p>
+<p>
+NOTE:
+</p>
+<ul>
+<li> Dependencies on grids should be specified in the defaults file rather than
+     in build-namelist (functionally there is no difference but reducing the
+     amount of logic tests in build-namelist both makes the script easier to
+     read and reduces the likelihood of introducing a bug).
+</ul>
+<p>
+--- begin addition to namelist_defaults_pop2.xml --- 
+</p>
+<pre>
+&lt;!----------------------------&gt;
+&lt;!--abc_nml                 --&gt;
+&lt;!----------------------------&gt;
+
+&lt;varname1&gt;0.5&lt;/varname1&gt;
+
+&lt;varname2 ocn_grid=&quot;gx3v7&quot;  &gt;.false.&lt;/varname2&gt;
+&lt;varname2 ocn_grid=&quot;gx1v6&quot;  &gt;.true. &lt;/varname2&gt;
+&lt;varname2 ocn_grid=&quot;tx1v1&quot;  &gt;.false.&lt;/varname2&gt;
+&lt;varname2 ocn_grid=&quot;tx0.1v2&quot;&gt;.false.&lt;/varname2&gt;
+
+&lt;varname3&gt;15&lt;/varname3&gt;
+
+&lt;varname4&gt;abc123&lt;/varname4&gt;
+
+&lt;varname6 ocn_grid=&quot;gx1v6&quot;&gt;input_file.nc&lt;/varname6&gt;
+</pre>
+<p>
+--- end addition to namelist_defaults_pop2.xml ---
+</p>
+<p>
+--- begin addition to build-namelist ---
+</p>
+<pre>
+##################################
+# namelist group: abc_nml        #
+##################################
+
+add_default($nl, 'varname1');
+add_default($nl, 'varname2');
+add_default($nl, 'varname3');
+add_default($nl, 'varname4');
+add_default($nl, 'varname5', 'val'=&gt;&quot;${RUNDIR}/${output_d}o&quot;);
+
+add_default($nl, 'varname6','nofail'=&gt;1);
+if (not $nl-&gt;get_value('varname6')) {
+	add_default($nl, 'varname6', 'val'=&gt;'unknown_abc_cell','noprepend'=&gt;1);
+}
+</pre>
+<p>
+--- end addition to build-namelist ---
+</p>
+</html>
+
+    </li>
+  
+</ol>
+<a href="#top"> (Return to top)  </a><p></p>
+<hr width=100%>
+
+<br>
+<hr>
+<P><ADDRESS>
+2013-10-09 (njn01)
+</ADDRESS>
+</BODY>
+</HTML>
+						<!--  ---------------------------------------------------------------------  -->		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

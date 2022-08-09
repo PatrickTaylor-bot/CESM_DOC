@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CCSM4/CESM1 Output Filename Requirements</title>
+
+<link rel="shortcut icon" href="../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.2">CESM1.2 Public Release</a> &raquo; CCSM4/CESM1 Output Filename Requirements</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">CCSM4/CESM1 Output Filename Requirements</h2>
+<h3 class="subtitle">21 February 2011</h3>
+<p>
+This document presents naming conventions for CESM output files,
+which fall into two broad categories: those files generated by the
+CCSM4/CESM1 component models at run-time ("model output data") and those created by
+post-processing the run-time files ("post-processed data"). This document describes the
+filename conventions of both types of files, for both CCSM4 and CESM.
+</p>
+<p>At the present time, this document does not describe the output files generated by
+the data-assimilation version of the CESM ("dart" files).</p>
+
+<h2 align=left><font color="navy">1. CESM Model Output Data Filenames</font></h2>
+<p>
+The general filename formats for output files generated at run-time by the CESM
+component models are:<br> 
+</p>
+<p>
+<b>$output = $CASE.$scomp.$type.[$string.]$date[$ending] <br>    
+   $log     = $CASE.$gcomp.$ltype.$logdate<br>
+</b>
+<br>
+where: <br> 
+</p>
+<p>
+<ul>
+  <li> <b>[]</b> denotes an optional filename element</li><br>
+
+  <li> <b>$output</b> denotes any model history, restart, initial, or diagnostic output file</li><br>
+
+  <li> <b>$log</b> denotes any model log file</li><br>
+
+  <li> <b>$CASE</b> = (<b>A-Z,a-z,0-9</b>), "<b>.</b>" (dot), and/or "<b>_</b>" (underscore).</B>  
+       <br>
+       $CASE is the case-name character string, which must be 80 or fewer characters long.
+       See the <nobr><a href="http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/book1.html">
+       CESM User's Guide</a></nobr> for more information on the definition of a $CASE.</li><br>
+
+  <li> <b>$scomp</b> = (<b>cam2,clm2,pop,cice,glc,cpl,datm,dice,dlnd,docn</b>)<br>
+       $scomp is the string that indicates the specific component-model name.</li><br>
+
+  <li> <b>$gcomp</b> = (<b>atm,lnd,ocn,ice,glc,cpl</b>)<br>
+       $gcomp is the string that indicates the generic component-model name.</li><br>
+
+  <li> <b>$type</b> = (<b>h*,r*,i*,d*</b>) <br>
+          $type is a one-, two-, or three-character string which denotes the output
+          file type. In the future, more characters may be required.
+          $type must begin with <b>h</b> (history), <b>r</b> (restart), <b>i</b> (initial), 
+          or <b>d</b> (diagnostic) and may be followed by up to two optional characters
+          <nobr>(<b>a-z,0-9</b>)</nobr>.
+          Certain restart $type strings have special meanings:
+          <b>rs</b> (cam surface restart), <b>rh</b> (restart history), and
+          <b>rd</b> (restart diagnostic).<br>
+           One known exception to this is that the cice model sometimes generates history
+             files with a <b>$type</b> string of unlimited length and which may include
+             the "<b>_</b>" (underscore) character or other characters.</li><br>
+
+  <li> <b>$string</b> <br>
+          $string is an optional, typically short character string 
+          <nobr>(<b>A-Z,a-z,0-9</b>)</nobr> "<b>.</b>" (dot), "<b>_</b>" (underscore),
+          and/or "<b>-</b>" (dash) which is used to further
+          identify the history file type.</li><br>
+
+  <li> <b>$ltype</b> = <b>log</b> <br>
+       $ltype is the character string <b>log</b> which denotes the model output log type.</li><br>
+
+  <li> <b>$date</b> =  (<b>yyyy-mm-dd-sssss, yyyy-mm-dd, yyyy-mm, yyyy</b>)<br>
+       $date is the model date string which is based on a <b>yyyy-mm-dd-sssss</b> convention
+       where:
+        <ul>
+          <li><b>yyyy</b> (0000,9999) is the year string (if necessary, yyyy can be
+              increased to more than four digits, but four is the minimum and anything
+              greater than four requires script and code modifications)</li>
+          <li> <b>mm</b> (01,02,...,12) is the month string</li>
+          <li> <b>dd</b> (01,02,...,31) is the day string</li>
+          <li> <b>sssss</b> (00000,86399) is the seconds string.</li>
+          <br>
+           As it was conceived originally, $date was intended to provide a quick-look
+           indication of the contents of the file: instantaneous, daily-, monthly-, or 
+           annual averages. However, it is now the case that some components mix
+           instantaneous and time-averaged quantities 
+           or combine timeseries of multiple frequencies within a single output file.
+           Therefore, the user is encouraged to view the metadata associated with
+           the output file to determine the exact model times associated with the file
+           contents.
+           <br>
+           In date-conforming output files, 
+           the following are established $date strings and their meanings:<br>
+           <br> 
+
+       <ul>
+          <li> <b>yyyy</b> &nbsp; <br>
+               annual average (history file)</li>
+          <li><b> yyyy-mm</b>  &nbsp;       <br>
+               monthly average (history file)</li>
+          <li><b> yyyy-mm-dd</b> &nbsp; <br>
+               daily average  (history file)</li>
+          <li><nobr><b> yyyy-mm-dd-sssss</nobr></b> &nbsp;</nobr><br>
+           instantaneous or timeseries.<br>
+           This is the stamp used for restart files,
+           instantaneous history files ("snapshot" files), and
+           timeseries history files (the date stamp indicates the timestamp
+           of the first data written to the file).</li>
+       </ul>
+</li>
+</ul></br>
+
+
+
+  <li> <b>$logdate</b> = <b>yymmdd-hhmmss</b> <br>
+       $logdate is the log-file date string, which is a real-world date string of
+       the form indicated in the definition.</li><br>
+
+
+  <li> <b>$ending</b> = (<b>.bin, .nc, .hdr</b>)<br>
+       $ending denotes the file format. The following optional endings are supported:
+       <b>.bin</b> (binary), <b>.nc</b> (netCDF), and 
+       <b>.hdr</b> (ascii text). The absence of $ending implies binary format.</li>
+
+        </ul>
+      </td>
+  </tr>
+  </table>
+
+
+</ul>
+
+<p>
+CCSM3 model developers were required to conform to the following points. Many of them are
+still valid for CESM:
+  <ul>
+     <li> Model output data streams should conform to these standards as much as possible.  
+          Unique diagnostic files or other output files could have some non-standard naming 
+          conventions if that makes them easier to identify.</li>
+    <li> Restart dates are for the current timestep to run, so would be, for example,
+         0002-01-01-00000 if written at the end of year 1, month 12.</li>
+     <li> All restart filenames have the format $CASE.$scomp.r*.yyyy-mm-dd-sssss, unless information is in
+          the rpointer files about what auxiliary files are required.</li>
+     <li> All history filenames have the format $CASE.$scomp.h?[.$string].[$date][$ending].
+          The second character of the type and the optional string are left up to the developer.
+          There are no requirements, although optional string names must be coordinated with the
+          CESM archiving scripts.  </li>
+     <li> All monthly average history files look like $CASE.$scomp.h?[.$string].yyyy-mm[$ending]. 
+          The date string, NOT THE TYPE, tells you whether the file is yearly, monthly, daily
+          averaged or other.  </li>
+      <li> History files and restart history files are connected via $CASE.$scomp.h* and
+           $CASE.$scomp.rh* even though the dates might be quite different.  The dates for
+           restart history files must conform with the restart date.  The date for history files
+           is set by the averaging strategy or the last date data were written.</li>
+      <li> Care must be used when not using the optional history character.  For instance,
+           for a case where you might have $CASE.$scomp.h.yyyy.nc and $CASE.$scomp.h.yyyy-mm.nc
+           for an annual average and monthly average outputs, the date makes the files 
+           unique.  However, their restart equivalents will have identical names because
+           the date string is the yyyy-mm-dd-sssss of the restart.  There will be a conflict.
+           It is up to the model developer, and generally not the user, to make this robust.
+      <li> In short:
+         <ul>
+            <li> All restart-file types start with r.</li>
+            <li> All history-file types start with h.</li>
+            <li> All initial-file types start with i.</li>
+            <li> All restart-file dates are of the form yyyy-mm-dd-sssss.</li>

@@ -1,0 +1,929 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Known Problems in CESM1.2.0</title>
+
+<link rel="shortcut icon" href="../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../scripts/simple-expand.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $('.expander').simpleexpand();
+            // prettyPrint();
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www2.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.2">CESM1.2 Public Release</a> &raquo; Known Problems in CESM1.2.0</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">Known Problems in CESM1.2.0</h2>
+
+<!--  ---------------------------------------------------------------------  -->
+ 
+<p>The CESM1.2 release has numerous new key features among which are the addition of CLM4.5, new science changes to CAM5 running with the CAM-SE dynamical core, and new scripting infrastructure for the generation of component sets, grids and model testing. 
+</p>
+
+
+
+</ul>
+<p><p>
+
+<p><a class="expander" data-expander-target=".problems-frame .content" data-expander-target-search="absolute" href="#">Show/Hide All</a></p>
+
+<h3>Component Sets (COMPSETS)</h3>
+
+<div class="problems-frame">
+  <div id="known-problems">
+The B_1850_BGC_BDRD, B_1850_BGC_BPRP, B_1850-2000_BGC-BDRD and B_1850-2000_BGC-BPRP compsets must be run from cold start conditions in CESM 1.2.0. If you need to start from a spun-up initial condition, please use CESM 1.0.5.
+  </div>
+</div>
+
+<h3>Grids</h3>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1750">(Bugzilla 1750)</a> <a class="expander" href="#">The ne240_ne240 grid as defined in the cesm 1.2.0 release is incomplete.</a>
+    <div class="content" style="display: none;">
+      <p>
+To use this grid please make the following changes in
+scripts/ccsm_utils/Case.template/config_grids.xml 
+
+<pre style="white-space: pre-wrap">
+--- config_grid.xml    (revision 47680)
++++ config_grid.xml    (working copy)
+@@ -93,7 +93,7 @@
+ &lt;GRID sname="ne30np4_ne30np4"       alias="ne30_ne30"   compset="(DOCN|XOCN|SOCN|AQUAP)"&gt;a%ne30np4_l%ne30np4_oi%ne30np4_r%r05_m%gx1v6_g%null_w%null&lt;/GRID&gt;
+
+ &lt;GRID sname="ne60np4_ne60np4"       alias="ne60_ne60"   compset="(DOCN|XOCN|SOCN|AQUAP)"&gt;a%ne60np4_l%ne60np4_oi%ne60np4_r%r05_m%gx1v6_g%null_w%null&lt;/GRID&gt;
+
+ &lt;GRID sname="ne120np4_ne120np4"     alias="ne120_ne120" compset="(DOCN|XOCN|SOCN|AQUAP)"&gt;a%ne120np4_l%ne120np4_oi%ne120np4_r%r05_m%gx1v6_g%null_w%null&lt;/GRID&gt;
+
+-&lt;GRID sname="ne240np4_ne240np4"     alias="ne240_ne240" compset="(DOCN|XOCN|SOCN|AQUAP)"&gt;a%ne240np4_l%ne240np4_oi%ne240np4_r%r01_m%gx1v6_g%null_w%null&lt;/GRID&gt;
+
++&lt;GRID sname="ne240np4_ne240np4"     alias="ne240_ne240" compset="(DOCN|XOCN|SOCN|AQUAP)"&gt;a%ne240np4_l%ne240np4_oi%ne240np4_r%null_m%gx1v6_g%null_w%null&lt;/GRID&gt;
+
+ &lt;!--- cism grids --&gt; 
+
+@@ -863,6 +863,8 @@
+ &lt;griddom grid="ne240np4" mask="gx1v6"&gt;
+   &lt;ATM_DOMAIN_FILE&gt;domain.lnd.ne240np4_gx1v6.111226.nc&lt;/ATM_DOMAIN_FILE&gt;
+   &lt;LND_DOMAIN_FILE&gt;domain.lnd.ne240np4_gx1v6.111226.nc&lt;/LND_DOMAIN_FILE&gt;
++  &lt;OCN_DOMAIN_FILE&gt;domain.ocn.ne240np4_gx1v6.111226.nc&lt;/OCN_DOMAIN_FILE&gt;
++  &lt;ICE_DOMAIN_FILE&gt;domain.ocn.ne240np4_gx1v6.111226.nc&lt;/ICE_DOMAIN_FILE&gt;
+ &lt;/griddom&gt;
+
+ &lt;gridmap atm_grid="ne240np4" ocn_grid="gx1v6"&gt;
+</pre>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<h3>atmosphere/CAM</h3>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1872">(Bugzilla 1872)</a> <a class="expander" href="#">RRTMG gives biased results on big-endian architectures</a>
+    <div class="content" style="display: none;">
+<p>
+A bug in the CESM 1.2.0 release code causes RRTMG to give wrong results on
+big-endian platforms (e.g. on Mira). This is caused by a bias in the output of
+a random number generator.</p>
+
+<p>A solution is to change the RRTMG external to this fixed tag:</p>
+
+<p><a href="https://svn-ccsm-models.cgd.ucar.edu/rrtmg/trunk_tags/rrtmg_130827/src">https://svn-ccsm-models.cgd.ucar.edu/rrtmg/trunk_tags/rrtmg_130827/src</a></p>
+
+<p>This fix should be present in CESM 1.2.1.</p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1760">(Bugzilla 1760)</a> <a class="expander" href="#">F_1850_CAM5_PM has hard coded yellowstone paths for prescribed_aero_datapath and aerodep_flx_datapath.</a>
+    <div class="content" style="display: none;">
+<p>
+A work around is to add the following to user_nl_cam in your case directory.</p>
+<pre>
+  prescribed_aero_datapath= '/your/path/to_inputdata/atm/cam/chem/trop_mam/aero'
+  aerodep_flx_datapath= '/your/path/to_inputdata/atm/cam/chem/trop_mam/aero'
+</pre>
+<p>  Or, you can edit these datapaths in cesm1_2_0/models/atm/cam/bld/namelist_files/use_cases/1850_cam5_pm.xml
+  before you create a new case. </p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1727">(Bugzilla 1727)</a> CLUBB cannot be run with OMP_NUM_THREADS greater than 1.
+  </div>
+</div>
+
+
+<h3>atmosphere/WACCM</h3>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    Known Issue -  <a class="expander" href="#">namelist description of "do_circulation_diags" in CAM's namelist_definition.xml should include:</a>
+    <div class="content" style="display: none;">
+<p>
+do_circulation_diags MUST be .true. in all cases with WACCM's QBO forcing
+enabled. Cases with qbo_use_forcing = .true. and do_circulation_diags =
+.false. will produce invalid output.
+</p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1768">(Bugzilla 1768)</a> <a class="expander" href="#">The correct reference case for the nuclear winter compset is:</a>
+    <div class="content" style="display: none;">
+<p>
+<pre>
+b40.rcp4_5.2deg.wcm.carma.bc0tg.002
+</pre>
+<p>
+This sets up a control run by default. The following must be added to
+user_nl_cam to get an actual nuclear winter:</p>
+<pre>
+ncdata = "b40.rcp4_5.2deg.wcm.carma.bc5tg.IndPak.002.cam2.i.2013-01-01-00000.nc"
+</pre>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1744">(Bugzilla 1766)</a> <a class="expander" href="#">The SE version of gravity_waves_sources in CESM 1.2 has a bug and workaround.</a>
+    <div class="content" style="display: none;">
+<p>
+The SE version of gravity_waves_sources in CESM 1.2 has a frontogenesis
+function ~14x larger than it should be due to a unit conversion error. The main
+effect is to trigger frontal waves more often and in the tropics. This only
+affects WACCM-SE.</p>
+
+<p>This will be fixed for CESM 1.3 in the next CAM tag but a workaround patch for
+gravity_waves_sources is listed below.</p>
+
+<pre>
+@@ -39,7 +39,7 @@
+     call initEdgeBuffer(edge3,3*nlev)
+     allocate(deriv(0:Nthreads-1))
+
+-    psurf_ref = hypi(plev+1)
++    psurf_ref = hypi(plev+1)/100._r8
+
+   end subroutine gws_init
+</pre>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1744">(Bugzilla 1744)</a> <a class="expander" href="#">Potential problem with WACCM-SE and threading</a>
+    <div class="content" style="display: none;">
+<p>
+In WACCM-SE's gravity_waves_sources module, a race condition is present
+that may cause problems for some runs. For instance, it may cause the model
+to crash if using the Intel compiler with DEBUG set to TRUE.</p>
+
+<p>To work around this you may either change gravity_waves_sources to make the
+variables "ie" and "ncol" thread-private, or simply run with NTHRDS_ATM
+set to 1.</p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1612">(Bugzilla 1612)</a> <a class="expander" href="#">There is a known problem with the following WACCM compsets when the ESMF time manager is used.</a> 
+    <div class="content" style="display: none;">
+<p>
+The problem occurs when the solar_parms_file input file contains data for leap days
+(Feb 29) while the calendar is 'NOLEAP'.  A work around to this problem is to
+use the following alternative datasets for solar_parms_file which do not contain leap
+days:</p>
+<pre>
+B_1850-2000_WACCM_CN
+ solar_parms_file = '$DIN_LOC_ROOT/atm/waccm/solar/proxy_solar_Solomon_Richmond_1845-2008_daily_noleap_c110526.nc'
+
+B_1955-2005_WACCM_CN
+F_1955-2005_WACCM_CN
+B_RCP2.6_WACCM_CN
+B_RCP4.5_WACCM_CN
+B_RCP8.5_WACCM_CN
+ solar_parms_file = '$DIN_LOC_ROOT/atm/waccm/solar/wasolar_1948-2140_daily_noleap_c110525.nc'
+</pre>
+    </div>
+  </div>
+</div>
+
+<h3>Coupler</h3>
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1761">(Bugzilla 1761)</a> <a class="expander" href="#">The variable orb_velp should be orb_mvelp in the namelist_definition_drv.xml file.</a>
+    <div class="content" style="display: none;">
+<p>In the models/drv/bld/namelist_files/namelist_definition_drv.xml variable
+orb_velp should be orb_mvelp this is only a problem if you attempt to set the 
+variable.  The fix is to correct the name in this file and it is fixed in
+<a href="https://svn-ccsm-models.cgd.ucar.edu/drv/seq_mct/trunk_tags/drvseq4_2_34">https://svn-ccsm-models.cgd.ucar.edu/drv/seq_mct/trunk_tags/drvseq4_2_34</a>
+</p>
+   </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1740">(Bugzilla 1740)</a> <a class="expander" href="#">Limitations with different coupling frequencies for different models.</a>
+    <div class="content" style="display: none;">
+<p>CESM allows different coupling frequencies for different models. However, there are some limitations.
+The coupling frequencies are set via the env_run.xml variables *_NCPL.  Generally,  the atmosphere, land, and ice model coupling frequencies should match.  The ocean model coupling frequency should be equal to or less than the atm coupling frequency.  And the runoff model coupling frequency should be greater or equal to the atm
+coupling frequency and less than or equal to the ocean coupling frequency.  The known problem is that
+there are no checks at setup or run-time that these constraints are met.  If they are not met, there can
+be problems with the simulation.  In summary, users should ensure that the following is true,
+<p>
+<pre>
+  ATM_NCPL = LND_NCPL = ICE_NCPL >= ROF_NCPL >= OCN_NCPL
+</pre>
+<p>especially for fully active configurations.</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1733">(Bugzilla 1733)</a> Driver needs a different list hardcoded in for hist_a2x3hr_flds (important
+  when trying to save data to run CLM later, i.e. CLM spinup).
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1733">(Bugzilla 1339)</a> Problem running with "too many files" for datm for over 83 years.
+  </div>
+</div>
+
+
+
+<h3>land/CLM</h3>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1867">(Bugzilla 1867)</a> <a class="expander" href="#"> irrigated soybean not treated same as rainfed soybean</a>
+    <div class="content" style="display: none;">
+      <p>
+In modifying the clm to introduce tropical crop pfts, I have come across the
+following problem:</p>
+
+<p>The if-statements in biogeochem/CNAllocationMod.F90 and
+biogeochem/CNNDynamicsMod.F90 that check for soybean do not include the option
+for irrigated soybean. I'm correcting this in my version of clm4.5 that will
+run with 78 pfts.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1838">(Bugzilla 1838)</a> <a class="expander" href="#"> The population density is set to 1850 for 2000_control namelist use-cases.</a>
+    <div class="content" style="display: none;">
+      <p>
+The Bugzilla report contains detailed information regarding this bug and the fix.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1815">(Bugzilla 1815)</a> <a class="expander" href="#">For both CLM4.0 and CLM4.5, crop GDD is incorrect for the first ~20 years.</a>
+    <div class="content" style="display: none;">
+      <p>
+The Bugzilla report contains detailed information regarding this bug and the fix.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1805">(Bugzilla 1805)</a> <a class="expander" href="#"> There is a  bug in clm4.5 fire model connected to fpftdyn/=' '</a>
+    <div class="content" style="display: none;">
+      <p>
+The Bugzilla report contains detailed information regarding this bug and the fix.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1776">(Bugzilla 1776)</a> <a class="expander" href="#">Issue with CLM45CNDV trees over Amazon.</a>
+    <div class="content" style="display: none;">
+      <p>
+	When running CLM45CNDV model (compset: ICLM45CNDV) and after running 400 years, there are no trees in the Amazon. ICNDV works all fine.</p>
+      <p>
+	The behavior has been attributed to Gordon's physiology changes to
+the model that improve the GPP simulation. This means that the dgvm needs
+retuning, and we decided not to proceed with such retuning at this time because
+we expect this dgvm to be replaced with Rosie Fisher's work in the not too
+distant future.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1759">(Bugzilla 1759)</a> For CLM4.0, the RCP 8.5 file pftdyn for f09 was NOT correctly updated. 
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1634">(Bugzilla 1634)</a> <a class="expander" href="#">clm4_0_60 interpinic fails to properly map from 1.9x2.5 to the 360x720 grid for CRUNCEP.</a>
+    <div class="content" style="display: none;">
+<p>
+It will map to other high resolutions like:
+ne120np4, 0.23x0.31, 0.47x0.61 however. The problem is that it does the
+mapping, but puts garbage data values (like e317) in some fields that the
+program does NOT touch. They happen to be very important indexing fields that
+can NOT be messed with.
+</p>
+<p>This is fixed when you use the new netCDF library: netCDF-4.3.0-rc3.<p>
+   </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1753">(Bugzilla 1753)</a> <a class="expander" href="#">Problem with an initial file used in CROP simulations.</a>
+    <div class="content" style="display: none;">
+<p>
+The file clmi.ICRUCLM45BGCCROPmp24.0241-01-01.1.9x2.5_g1v6_simyr2000_c130515.nc
+was interpolated using interpinic for CROP simulations. But, because of 
+<a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1725">Bug 1725</a>, 
+interpinic gave a file that has CROP NOT spunup, but starting up from
+bare soil. So we plan to delete this file, and get a version that will work.
+Users should either wait for that file, or spin up CROP on their own using the
+standard procedure.
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1734">(Bugzilla 1734)</a> Problem with branch startup for CLM single-point simulations.
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1732">(Bugzilla 1732)</a> Value of the VOLR diagnostic variable not correct when passed from RTM to CLM.  Also effects TWS.
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1719">(Bugzilla 1719)</a> Minor -- false overestimation of fire C emissions for natural vegetation PFTs without transient
+  land-use change.
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1717">(Bugzilla 1717)</a> Minor -- lake hydrology bug when sudden intense snowstorm occurs preceeded by warm weather.
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+   Please refer to the <a href="../../clm/models/lnd/clm/doc/KnownBugs/default.htm">Known Bugs for CLM</a> document for a detailed list of known issues specifically addressing custom configurations for CLM.
+  </div>
+</div>
+
+
+<h3>ocean/POP2</h3>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1877">(Bugzilla 1877)</a> <a class="expander" href="#">The check_input_data script does not grab POP's .hdr files (associated with binary data files) from the inputdata repository. </a>
+
+    <div class="content" style="display: none;">
+<p>
+See the bugzilla report for detailed information and a suggested work around.
+</p> 
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1871">(Bugzilla 1871)</a> <a class="expander" href="#"> Issue re-running a multi-instance case that has produced rpointer file.</a>
+    <div class="content" style="display: none;">
+<p>
+In mid-October, Tony Craig pointed out an issue in how the POP restarted a
+multi-instance run that had created restart / rpointer files: once the
+instance-specific files existed (due to successfully completing a run), you
+could not start from the beginning of the run again because the initial
+conditions would not be read in correctly from the restart files in the
+reference directory.</p>
+
+<p>This bug was fixed by editing pop2.buildnml.csh in the cesm_pop_2_1_20131028
+and cesm_pop_2_1_20131101 POP trunk tags, made as part of the 1.3.0 development
+cycle (and the fix will be incorporated in the CESM 1.2.1 minor release)
+</p> 
+    </div>
+  </div>
+</div>
+
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1870">(Bugzilla 1870)</a> <a class="expander" href="#">domain_size.F90 and POP_DomainSizeMod.F90 are not handled correctly in SourceMods/ </a>
+
+    <div class="content" style="display: none;">
+<p>
+See the bugzilla report for detailed information and a suggested work around.
+</p> 
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1866">(Bugzilla 1866)</a> <a class="expander" href="#"> riverine Fe flux overwrites atm Fe flux, instead of being added to it</a>
+    <div class="content" style="display: none;">
+<p>
+The ecosystem in CESM 1.2 includes climatological riverine inputs of various
+tracers. There is a bug for the Fe input, in that it overwrites the atmospheric
+Fe flux, instead of being added to it.
+</p> 
+<p>Detailed information and a code fix is available in the Bugzilla report.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1861">(Bugzilla 1861)</a> <a class="expander" href="#"> Issue using RESUBMIT option in env_run.xml when setting certain variables in user_nl_pop2</a>
+    <div class="content" style="display: none;">
+<p>
+See the bugzilla report for detailed information and a suggested work around.
+</p> 
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1802">(Bugzilla 1802)</a> <a class="expander" href="#"> global Si imbalance in ecosys</a>
+    <div class="content" style="display: none;">
+<p>
+See the bugzilla report for detailed information and a suggested work around.
+</p> 
+
+<p>
+Fixed code will be included in CESM1.3.0.
+</p> 
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1803">(Bugzilla 1803)</a> <a class="expander" href="#"> scalelength for depth dependent remin length scale not applied consistently.</a>
+    <div class="content" style="display: none;">
+<p>
+The variable scalelength was introduced into ecosys in CESM 1.2, in order to
+have a depth dependent remineralization length scale. It is used as a
+multiplier to modfiy the %diss as a function of depth. The bug is that it is
+not applied consistently to all uses of %diss.
+</p>
+
+<p>The global impact of this is small. However, it can be non-negligible when
+mixing is deep.</p>
+
+<p>
+Fixed code will be included in CESM1.3.0.
+</p> 
+    </div>
+  </div>
+</div>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1622">(Bugzilla 1622)</a> <a class="expander" href="#">CFC initialization incorrect for 20C branch & hybrid runs</a>
+    <div class="content" style="display: none;">
+<p>
+A fix to the CFC initialization process that went in to 1.1.1 and 1.2.0 only worked for hybrid runs, a second patch was needed to handle branch runs correctly and is included in CESM1.2.1.</p>
+
+<p>The Bugzilla report contains detailed information regarding this bug and the fix.
+</p>
+
+    </div>
+  </div>
+</div>
+
+
+<h3>ice/CICE</h3>
+ 
+<div class="problems-frame">
+  <div id="known-problems">
+   The CICE history files have some incorrect history fields (albpnd, albice, albsno). These should not be used.
+  </div>
+</div>
+
+
+<h3>land-ice/CISM</h3>
+<div class="problems-frame">
+  <div id="known-problems">
+    <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1611">(Bugzilla 1611)</a> Restarts can only happen on year boundaries.
+  </div>
+</div>
+
+<h3>River/RTM</h3>
+
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1777">(Bugzilla 1777)</a> <a class="expander" href="#">There is a problem with setting up a branch simulation when using RTM. The problem occurs when ./cesm_setup is invoked.</a>
+    <div class="content" style="display: none;">
+      <p>
+Here are the details associated with creating the case:
+</p>
+
+<pre>
+create_newcase -case /glade/u/home/shields/cesm1/scripts/tests/b.day2.7.again
+-res T31_gx3v7 -mach yellowstone -compset B_1850_CN
+</pre>
+
+<p>And here are the custom XML settings:</P>
+
+<pre>
+env_run.xml: RUN_TYPE = branch
+env_run.xml: RUN_REFCASE = b.day2.6
+env_run.xml: RUN_REFDATE = 0001-02-01
+</pre>
+
+<p>
+The log output with error statements and the associated fix are detailed in the Bugzilla report.</p>
+
+<p>There is a similar issue described in this DiscussCESM forum post:<br>
+<a href="https://bb.cgd.ucar.edu/bug-cesm120-when-using-branch-brnchretaincasenametrue">https://bb.cgd.ucar.edu/bug-cesm120-when-using-branch-brnchretaincasenametrue</a></p>
+
+    </div>
+  </div>
+</div>
+
+
+<h3>Machines / Scripts</h3>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1882">(Bugzilla 1882)</a> <a class="expander" href="#">Bug in config_grid for a couple of tri-grid setups</a>
+    <div class="content" style="display: none;">
+<p>
+If you try to set up an ne120_f09_g16 or ne120_f02_t12 case, the grids are not
+set correctly because of a missing underscore in config_grid.xml. There is no
+separator between the ocean grid [gx1v6 or tx0.1v2] and the r% header
+indicating the name of the runoff.</p>
+
+<p>More details and a patch are available from the Bugzilla report.</p>
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1793">(Bugzilla 1793)</a> <a class="expander" href="#">The pgi compiler is currently failing in calls to mpi_init on yellowstone.</a>
+    <div class="content" style="display: none;">
+<p>
+For cesm using the pgi compiler on yellowstone add the following to the env_mach_specific for your case:
+<pre> 
+if( $?LSB_JOBID) then
+   setenv LD_PRELOAD /opt/ibmhpc/pe1304/ppe.pami/gnu/lib64/pami64/libpami.so
+endif
+</pre>
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+  <a class="expander" href="#">Information regarding port of CESM 1.2.0 to edison.</a>
+    <div class="content" style="display: none;">
+<p>
+A port to the new edison architecture at NERSC has been completed with limited testing by adding a scripts and a Machines tag. These tags are compatible with the cesm1_2_0 release and the release in the collections directory on edison has been updated with this change.   Note that when using multiple threads we exploit the SMT capability of the system and therefore the pe count for cost estimate and the Model Cost values in the timing file are a factor of 2x too large.   We will correct this in a future tag.   
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1748">(Bugzilla 1748)</a> <a class="expander" href="#">CESM on stampede is still in development.</a>
+    <div class="content" style="display: none;">
+<p>
+A partial port to the machine stampede was included in the 1.2.0 release.   We
+apologize - this port is incomplete and should not have been included in a
+release version of the code.
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1594">(Bugzilla 1594)</a> <a class="expander" href="#">Problem and fix when running create_clone</a>
+    <div class="content" style="display: none;">
+<p>
+When running create_clone to duplicate a case from another source tree, I
+noticed that the variable CCSM_MACHDIR is not updated to the new tree.
+Click on the Bugzilla link for fix.
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1743">(Bugzilla 1743)</a> <a class="expander" href="#">Coordination of variables EXEROOT and RUNDIR in env_build.xml and env_run.xml</a>
+    <div class="content" style="display: none;">
+<p>
+Currently in env_build.xml we have<br/><br/>
+
+&lt;entry id="EXEROOT"   value="/blah/$CCSMUSER/$CASE/bld"  /&gt;<br/><br/>
+
+and in env_run.xml <br/><br/>
+
+&lt;entry id="RUNDIR"   value="/blah/$CCSMUSER/$CASE/run"  /&gt;<br/><br/>
+
+In many cases you may want to change both of these variables, but you cannot
+currently reference one variable in the other file - that is you cannot set:<br/><br/>
+
+&lt;entry id="RUNDIR"   value="$EXEROOT/../run"  /&gt;<br/><br/>
+
+The workaround is not to use $EXEROOT in env_run.xml but rather to set it
+individually
+</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1737">(Bugzilla 1737)</a> Decomposition problem on Mira using compset BG1850CN at resolution f09_g16.</a>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1736">(Bugzilla 1736)</a> <a class="expander" href="#">Intrepid: There is an xml compiler problem with threads, that prevents ne30 F compsets from being able to restart correctly.</a>
+    <div class="content" style="display: none;">
+<p>There is an xlf compiler problem using
+ne30_ne30, compsets FSTRATMAM and FAMIPC5 that requires updating the PE/threading layout.
+Please post a question to the <a href="http://bb.cgd.ucar.edu">DiscussCESM Forums</a> if you need help 
+determining an optimal layout.</p>
+   </div>
+  </div>
+</div>
+
+<div class="problems-frame">
+  <div id="known-problems">
+ <a href="http://bugs.cgd.ucar.edu/show_bug.cgi?id=1735">(Bugzilla 1735)</a> <a class="expander" href="#">Janus is not supported for this release.</a>
+    <div class="content" style="display: none;">
+<p>Janus is being upgraded and is switching from dotkits to modules. The machine was unavailable for porting and testing at the time of this CESM release. Please post a question to the <a href="http://bb.cgd.ucar.edu">DiscussCESM Forums</a> if you need help running on Janus after the machine becomes available again.</p></p>
+   </div>
+  </div>
+</div>
+
+
+<!--  ---------------------------------------------------------------------  -->
+		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

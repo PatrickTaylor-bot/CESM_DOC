@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Multi-Model Large Ensemble Archive</title>
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Information about CLIVAR Multi-Model Large Ensemble Archive" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+	<link rel="manifest" href="../../../../site.webmanifest">
+	<link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../../../../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../../../../styles/um/css/style.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../../../../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../../../../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../../../../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../../../../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../../../../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../../../../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../../../../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../../../../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../../../../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../../../../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../../../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../../../../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../../../../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../../../../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../../../../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../../../../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../../../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../../../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../../../../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../../../../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../../../../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../../../../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../../../../models/Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../../../../models/Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../../../../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../../../../models/Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../../../../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../../../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../../../../models/simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../../../../models/Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../../../../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../../../../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../../../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../../../../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../../../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../../../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../../../models/default.htm">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="../../../../projects/default.htm">CESM Projects</a></li>
+                            <li class="breadcrumb-item"><a href="../../../../projects/community-projects/default.htm">Large Ensemble Projects</a></li>
+                            <li class="breadcrumb-item active">Multi-Model Large Ensemble Archive</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end breadcrumb menu -->
+
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h1>Multi-Model Large Ensemble Archive</h1>
+                        </div>
+                        <div class="w-100 bg-white text-center">
+                            <img src="../../../../projects/community-projects/MMLEA/CLIVAR-LE.png">
+                        </div>
+                    </div>
+
+                    <p>As part of its activities, the <a href="https://usclivar.org/working-groups/large-ensemble-working-group">US CLIVAR Working Group on Large Ensembles</a>
+                    has produced a centralized <b>data archive of initial-condition Large Ensembles</b> conducted with currently
+                    up to 7 CMIP5-class climate models. This archive contains gridded fields of key variables at both daily and monthly resolution,
+                    and is publicly accessible via the <a href="https://www.earthsystemgrid.org/dataset/ucar.cgd.ccsm4.CLIVAR_LE.html">NCAR Climate Data Gateway</a>
+                    or via NCAR’s supercomputer for users with a Cheyenne account: <span class="badge badge-info small">/glade/collections/cdg/data/CLIVAR_LE</span>
+                    (note that the complete MPI-ESM Large Enesmble is available <a href="https://esgf-data.dkrz.de/search/mpi-ge/">here</a>)</p>
+
+                    <p>The table below provides a summary of the salient characteristics of the models and simulations contained within the archive.
+                       Further discussion of the utility and applications of the archive is given in the reference below. Please direct questions about this archive to
+                       Dr. Flavio Lehner [&nbsp;<a href="mailto:flehner@ucar.edu">flehner@ucar.edu</a>&nbsp;] or Dr. Clara Deser [&nbsp;<a href="mailto:cdeser@ucar.edu">cdeser@ucar.edu</a>&nbsp;].</p>
+                    <p>We kindly ask that you acknowledge the <a href="https://usclivar.org/working-groups/large-ensemble-working-group">US CLIVAR Working Group on Large Ensembles</a>
+                       and reference <a href="http://www.cgd.ucar.edu/staff/cdeser/docs/submitted.deser.large_ensembles.jan20.pdf">Deser et al. (2020)</a> when presenting
+                       results based on the Multi-Model Large Ensemble Archive in either oral or written form.</p>
+
+                    <p>Deser, C., F. Lehner, K. B. Rodgers, T. Ault, T. L. Delworth, P. N. DiNezio, A. Fiore, C. Frankignoul, J. C. Fyfe, D. E. Horton,
+                                J. E. Kay, R. Knutti, N. S. Lovenduski, J. Marotzke, K. A. McKinnon, S. Minobe, J. Randerson, J. A. Screen, I. R. Simpson and M. Ting, 2020:
+                                Insights from Earth system model initial-condition large ensembles and future prospects. <i>Nature Climate Change</i>, doi: 10.1038/s41558-020-0731-2.
+                                [<a href="http://www.cgd.ucar.edu/staff/cdeser/docs/submitted.deser.large_ensembles.jan20.pdf">Article</a>][<a href="https://rdcu.be/b3i25">Read-only</a>]</p>
+
+                    <p>The archive also includes an “Observational Large Ensemble” (Obs-LE) for temperature (land only), precipitation (land only), and sea level pressure (global),
+                       which can be used to sample alternative but non-observed historical climate trajectories. These data are based on a statistical model and described in
+                       McKinnon and Deser (2018). Further details and the code to reproduce the Obs-LE can be found on
+                       <a href="https://github.com/karenamckinnon/observational_large_ensemble">github</a>. Please direct questions about the Obs-LE to
+                       Prof. Karen McKinnon [&nbsp;<a href="mailto:kmckinnon@ucla.edu">kmckinnon@ucla.edu</a>&nbsp;].</p>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <!-- CESM Includes -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM Models</h5>
+    <ul class="cat">
+        <li><a href="../../../models/default.htm">Overview</a></li>
+        <li><a href="../../../../models/current.html">CESM Releases</a></li>
+        <li><a href="https://csegweb.cgd.ucar.edu/experiments/public/">Experiments, Data & Diagnostic Output</a></li>
+        <li><a href="../../../../experiments/default.htm">Experiments</a></li>
+        <li><a href="../../../../projects/CMIP6/default.htm">CMIP6</a></li>
+        <li><a href="../../../../projects/default.htm">Projects</a></li>
+        <li><a href="../../../../projects/community-projects/default.htm">Community Projects</a></li>
+        <li><a href="../../../../models/simpler-models/default.htm">Simpler Models</a></li>
+        <li><a href="../../../../models/legacy.html">Legacy</a></li>
+        <li><a href="https://www.cgd.ucar.edu/cseg/old-general.html">Legacy Releases: Older General/Run Info</a></li>
+    </ul>
+</div>
+
+                        <div class="widget">
+    <h5 class="widgetheading">CESM Communications</h5>
+    <ul class="cat small">
+    	<li><a href="https://bb.cgd.ucar.edu/cesm/">User Support Forums</a></li>
+    	<li><a href="../../../../about/faq.html#mailing-list">Mailing Lists</a></li>
+    	<li><a href="../../../../about/contact.html">Contact CESM</a></li>
+    	<li><a href="../../../../about/support.html">Support Policy</a></li>
+        <li class="hide-me"><a href="https://escomp.github.io/CESM/versions/master/html/">Latest Development Code Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+    </ul>
+</div>
+
+
+<div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat small">
+        <li>The CESM project is supported primarily by the <a href="http://www.nsf.gov/">National Science Foundation (NSF)</a>. Administration of the CESM is maintained by the <a href="http://www.cgd.ucar.edu/">Climate and Global Dynamics Laboratory (CGD)</a> at the <a href="http://www.ncar.ucar.edu/">National Center for Atmospheric Research (NCAR)</a>.</li>
+        <li><a href="http://www.cesm.ucar.edu">CESM</a> is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    // set the url
+    var url_full = window.location.href;
+
+    // check for cesm2 to hide the leatest dev code quickstart
+    if(/cesm2/.test(url_full)) {
+        var link = document.getElementById("li-cesm2");
+        link.className += " hide-me";
+    }
+
+</script>
+                    </aside>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm table-bordered bg-white small">
+                        <thead>
+                            <tr>
+                                <th>Modeling Center</th>
+                                <th>Model Version</th>
+                                <th>Model Resolution (atm/ocn)</th>
+                                <th>Years</th>
+                                <th>Initialization Method</th>
+                                <th>Number of Members</th>
+                                <th>Forcing</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CCCma</td>
+                                <td>CanESM2</td>
+                                <td>~2.8°x2.8°/~1.4°x0.9°</td>
+                                <td>1950-2100</td>
+                                <td>Macro and Micro</td>
+                                <td>50</td>
+                                <td>historical, rcp85</td>
+                                <td>Kirchmeier-Young et al. (2017)</td>
+                            </tr>
+                            <tr>
+                                <td>CSIRO</td>
+                                <td>MK3.6</td>
+                                <td>~1.9°x1.9°/~1.9°x1.0°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>30</td>
+                                <td>historical, rcp85</td>
+                                <td>Jeffrey et al. (2013)</td>
+                            </tr>
+                            <tr>
+                                <td>GFDL</td>
+                                <td>ESM2M</td>
+                                <td>~2.0°x2.5°/~1.0°x0.9°</td>
+                                <td>1950-2100</td>
+                                <td>Macro</td>
+                                <td>30</td>
+                                <td>historical, rcp85</td>
+                                <td>Rodgers et al. (2015)</td>
+                            </tr>
+                            <tr>
+                                <td>GFDL</td>
+                                <td>CM3</td>
+                                <td>~2.0°x2.5°/~1.0°x0.9°</td>
+                                <td>1920-2100</td>
+                                <td>Micro</td>
+                                <td>20</td>
+                                <td>historical, rcp85</td>
+                                <td>Sun et al. (2018)</td>
+                            </tr>
+                            <tr>
+                                <td>MPI</td>
+                                <td>MPI-ESM-LR</td>
+                                <td>~1.9°x1.9°/nominal 1.5°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>100</td>
+                                <td>historical, rcp26, rcp45, rcp85</td>
+                                <td>Maher et al. (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>NCAR</td>
+                                <td>CESM1-CAM5</td>
+                                <td>~1.3°x0.9°/nominal 1.0°</td>
+                                <td>1920-2100</td>
+                                <td>Micro</td>
+                                <td>40</td>
+                                <td>historical, rcp85</td>
+                                <td>Kay et al. (2015)</td>
+                            </tr>
+                            <tr>
+                                <td>NCAR</td>
+                                <td>CESM1-CAM5</td>
+                                <td>~1.3°x0.9°/nominal 1.0°</td>
+                                <td>1920-2080</td>
+                                <td>Micro</td>
+                                <td>15</td>
+                                <td>historical, rcp45</td>
+                                <td>Sanderson et al. (2015)</td>
+                            </tr>
+                            <tr>
+                                <td>EC-Earth Consortium</td>
+                                <td>EC-EARTH</td>
+                                <td>~1.1°x1.1°/nominal 1.0°</td>
+                                <td>1860-2100</td>
+                                <td>Micro</td>
+                                <td>16</td>
+                                <td>historical, rcp85</td>
+                                <td>Hazeleger et al. (2010)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Obs-LE v1.0</td>
+                                <td>1°x1°</td>
+                                <td>1921-2014</td>
+                                <td></td>
+                                <td>1000</td>
+                                <td></td>
+                                <td>McKinnon and Deser (2018)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<br>
+<b>Additional LE resources</b> for historical and scenario simulations exist within CMIP6. These are listed below and are available from the standard CMIP server at <a href="https://esgf-node.llnl.gov/search/cmip6/">ESGF</a>.
+We focus on models that have at least 15 members in the historical period. This table is current as of November 2020. More simulations are expected to be added to CMIP6.
+<br>
+<br>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm table-bordered bg-white small">
+                        <thead>
+                            <tr>
+                                <th>Modeling Center</th>
+                                <th>Model Version</th>
+                                <th>Model Resolution (atm/ocn)</th>
+                                <th>Years</th>
+                                <th>Initialization Method</th>
+                                <th>Forcing (Number of Members)</th>
+                                <th>Reference (*ESGF reference)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CCCma</td>
+                                <td>CanESM5</td>
+                                <td>~2.8°x2.8°/~1.4°x0.9°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>historical (50), ssp126 (50), ssp245 (50), ssp370 (50), ssp585 (50)</br>
+                                Note that the first 25 members have a different physics version (r[1..25]i1p1f1), leading to a different climate from the second 25 members (r[26..50]i1p2f1)</td>
+                                <td>Swart et al. (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>CNRM</td>
+                                <td>CNRM-CM6-1</td>
+                                <td>~1.4°x1.4°/nominal 1°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>historical (30), ssp126 (6), ssp245 (10), ssp370 (6), ssp585 (6)</td>
+                                <td>*Voldoire (2018)</td>
+                            </tr>
+                            <tr>
+                                <td>EC-Earth Consortium</td>
+                                <td>EC-Earth3</td>
+                                <td>~0.7°x0.7°/nominal 1°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>historical (23), ssp126 (7), ssp245 (5), ssp370 (7), ssp585 (7)</td>
+                                <td>*EC-Earth Consortium (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>SMHI</td>
+                                <td>EC-Earth3</td>
+                                <td>~0.7°x0.7°/nominal 1°</td>
+                                <td>1970-2100</td>
+                                <td>Macro</td>
+                                <td>historical (50), ssp119 (50), ssp126 (50), ssp245 (50), ssp370 (50), ssp434 (50), ssp534-over (50), ssp460 (50), ssp585 (50)</td>
+                                <td>Wyser et al. (2021)</td>
+                            </tr>
+                            <tr>
+                                <td>NASA</td>
+                                <td>GISS-E2-1-G</td>
+                                <td>~2°x2.5°/~1°x1.25°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>historical (40, comprised of 10 members with different physics and forcing combinations), ssp126 (2), ssp245 (15), ssp370 (2), ssp585 (2)</td>
+                                <td>*NASA GISS (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>NASA</td>
+                                <td>GISS-E2-1-H</td>
+                                <td>~2°x2.5°/~1°x1.25°</td>
+                                <td>1850-2014</td>
+                                <td>Macro</td>
+                                <td>historical (23)</td>
+                                <td>*NASA GISS (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>IPSL</td>
+                                <td>IPSL-CM6A-LR</td>
+                                <td>~2.5°x1.25°/~1.0°x0.5°</td>
+                                <td>1850-2100</td>
+                                <td>Macro</td>
+                                <td>historical (32), ssp119 (6), ssp126 (6), ssp245 (11), ssp370 (11), ssp585 (6)</td>
+                                <td>Boucher et al. (in review)</td>
+                            </tr>
+                            <tr>
+                                <td>NCC</td>
+                                <td>NorCPM1</td>
+                                <td>~1.25°x1.9°/nominal 1°</td>
+                                <td>1850-2029</td>
+                                <td>Macro</td>
+                                <td>historical (30)</td>
+                                <td>*Bethke et al. (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>Met Office</td>
+                                <td>UKESM1-0-LL</td>
+                                <td>~1.25°x1.9°/nominal 1°</td>
+                                <td>1850-2029</td>
+                                <td>Macro</td>
+                                <td>historical (17), ssp126 (5), ssp245 (5), ssp370 (5), ssp585 (5)</td>
+                                <td>*Tang et al. (2019)</td>
+                            </tr>
+                            <tr>
+                                <td>MIROC</td>
+                                <td>MIROC6</td>
+                                <td>~1.4°x1.4°/nominal 1°</td>
+                                <td>1850-2014</td>
+                                <td>Macro</td>
+                                <td>historical (50), ssp126 (50), ssp245 (50), ssp370 (3), ssp585 (50)</td>
+                                <td>Tatebe et al. (2019)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+<br>
+Finally, modeling groups have started to produce multi-member ensembles for <b>single-forcing simulations</b>.
+Some follow the CMIP <a href="https://gmd.copernicus.org/articles/9/3685/2016/gmd-9-3685-2016.pdf">DAMIP protocol</a> (with experiments such as 'hist-nat', 'hist-GHG', etc).
+Others use independent experimental setups, such as "everything-but-X" forcing, or idealized aerosol forcing scaling.
+<br>
+<br>
+<div class="row">
+    <div class="col">
+        <table class="table table-sm table-bordered bg-white small">
+            <thead>
+                <tr>
+                    <th>Modeling Center</th>
+                    <th>Model Version</th>
+                    <th>Model Resolution (atm/ocn)</th>
+                    <th>Years</th>
+                    <th>Initialization Method</th>
+                    <th>Forcing (Number of Members)</th>
+                    <th>Reference (*ESGF reference)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CCCma</td>
+                    <td>CanESM5</td>
+                    <td>~2.8°x2.8°/~1.4°x0.9°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>hist-nat (50), hist-GHG (50), hist-aer (30), hist-sol (50), hist-volc (50)</td>
+                    <td>??</td>
+                </tr>
+                <tr>
+                    <td>CNRM</td>
+                    <td>CNRM-CM6-1</td>
+                    <td>~1.4°x1.4°/nominal 1°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>hist-nat (10)</td>
+                    <td>*Voldoire (2018)</td>
+                </tr>
+                <tr>
+                    <td>NASA</td>
+                    <td>GISS-E2-1-G</td>
+                    <td>~2°x2.5°/~1°x1.25°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>hist-nat (20)</td>
+                    <td>*NASA GISS (2019)</td>
+                </tr>
+                <tr>
+                    <td>IPSL</td>
+                    <td>IPSL-CM6A-LR</td>
+                    <td>~2.5°x1.25°/~1.0°x0.5°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>hist-nat (10)</td>
+                    <td>Boucher et al. (in review)</td>
+                </tr>
+                <tr>
+                    <td>MIROC</td>
+                    <td>MIROC6</td>
+                    <td>~1.4°x1.4°/nominal 1°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>hist-nat (50)</td>
+                    <td>Tatebe et al. (2019)</td>
+                </tr>
+                <tr>
+                    <td>NCAR</td>
+                    <td>CESM1-CAM5</td>
+                    <td>~1.3°x0.9°/nominal 1.0°</td>
+                    <td>1920-2080</td>
+                    <td>Micro</td>
+                    <td>everything-but-GHG (20), everything-but-anthropogenic-aer (20), everything-but-biomass-burning (15; only until 2029), everything-but-LULUC (5; only until 2029)</td>
+                    <td>Deser et al. (2020, J. Climate)</td>
+                </tr>
+                <tr>
+                    <td>NCAS</td>
+                    <td>HadGEM3-GC3.1</td>
+                    <td>~1.25°x1.9°/nominal 1.0°</td>
+                    <td>1850-2014</td>
+                    <td>Macro</td>
+                    <td>Aerosol scaling: 0.2&times; (5), 0.4&times; (5), 0.7&times; (5), 1.0&times; (5), 1.5&times; (5)</td>
+                    <td>Dittus et al. (2020, Geophys. Res. Lett.)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+    <!-- footer include -->
+    
+
+    <div class="container">
+        <!-- footer start -->
+        <div class="row">
+            <div class="col-md">
+                <div class="widget">
+                    <h5 class="widgetheading"><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">CGD Laboratory Info</a></h5>
+                    <p><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">1850 Table Mesa Drive<br>Boulder, CO, 80305</a></p>
+                    <ul class="list-style-none">
+                        <li>303.497.1000&nbsp;&nbsp;<i class="fas fa-phone"></i>&nbsp;&nbsp;Phone</li>
+                        <li>303.497.1314&nbsp;&nbsp;<i class="fas fa-print"></i>&nbsp;&nbsp;Fax</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading"><a href="../../../../about/Wc9217b0e02798.htm">CESM Quicklinks</a></h5>
+                <ul class="link-list">
+                    <li><a href="../../../../events/tutorials/Wc2ebed6407518.htm">Tutorials</a></li>
+                    <li><a href="../../../../events/workshops/Wc4e9f403cf13.htm">Workshops</a></li>
+                    <li><a href="../../../../working_groups/Wc190e721ba82d.htm">Working Groups</a></li>
+                    <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=footer">Support Forums</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Leadership</h5>
+                <ul class="link-list">
+                    <li><a href="https://staff.ucar.edu/users/gokhan">Chief Scientist - Gokhan Danabasoglu</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/SSC/?ref=footer">Scientific Steering Committee</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/working_groups/?ref=footer">Working Group Co-Chairs</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/CAB/?ref=footer">CESM Advisory Board</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Models</h5>
+                <ul class="link-list">
+                    <li><a href="../../../../models/Wcc9c7389d47ec.htm">Overview</a></li>
+                    <li><a href="../../../../experiments/Wcdda398834fdf.htm">Experiments</a></li>
+                    <li><a href="../../../../projects/community-projects/Wcc1852b84e933.htm">Community Projects</a></li>
+                    <li><a href="../../../../models/Wc4da67042a202.html">CESM Releases</a></li>
+                </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- sub footer start -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="copyright">
+                    <p>
+                    <span>&copy; 2021 UCAR | <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use">Terms</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="https://www.ucar.edu/">Managed by UCAR</a><br>
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br>
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </span></p>
+                    </div>
+                    <!-- end subfooter -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Media Include -->
+                    <h5 class="widgetheading social-heading">Follow Us</h5>
+                    <ul class="social-network">
+                        <li><a href="https://www.facebook.com/ncarcgdboulder/"  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/ncar_cgd"  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/national-center-for-atmospheric-research/"  title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCGfjWttSHDKu3y9pCay2KHQ"  title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <!-- end Social Media Include -->
+                </div>
+            </div>
+        </div>
+        <!-- sub footer end -->
+    </div>
+
+    <div class="copyright-nsf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <em>The CESM&reg; project is supported primarily by the National Science Foundation | This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National&nbsp;Science&nbsp;Foundation.</em>
+                </div>
+                <div class="col-lg-2">
+                    <a href="https://nsf.gov"><img src="../../../../Images/logos/footer-logo-nsf.png" width="60" alt="NSF Logo" title="NSF Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </footer>
+</div>
+
+<!-- javascript include -->
+<!-- scroll to top toolbar -->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!-- toasts -->
+<!--
+<div class="toast fixed-top mt-2 ml-5" role="alert" data-autohide="true" data-delay="7000">
+    <div class="toast-header">
+        <img src="/favicon.ico" class="rounded mr-2" alt="CGD Logo">
+        <h5 class="mr-auto text-primary">ISG Note</h5>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">Close ×</span>
+    </button>
+    </div>
+
+    <div class="toast-body">
+        Please pardon our dust, we are currently in the process of upgrading pages. You may encounter broken links or old themes during this process. Contact the CGD/IS staff if you need help finding information or have any feedback
+    </div>
+</div>
+-->
+
+
+
+<!-- js includes -->
+<script src="../../../../styles/um/js/jquery.min.js"></script>
+<script src="../../../../styles/um/js/popper.min.js"></script>
+<script src="../../../../styles/um/js/bootstrap.min.js"></script>
+<script src="../../../../styles/um/js/fancybox.min.js"></script> 
+<script src="../../../../styles/um/js/flexslider.min.js"></script>
+<script src="../../../../styles/um/js/custom.js"></script>
+<script src="../../../../styles/um/js/jquery.tablesorter.min.js"></script>
+<script src="../../../../styles/um/js/cookie-consent.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script>
+// initialize and show Bootstrap 4 toast
+//$('.toast').toast('show');
+
+
+// scripts for the notice bar
+// get a cookie if set
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+// set a cookie
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "../../../../projects/community-projects/MMLEA/; path=/default.htm";
+}
+
+// clearing the cookie
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// checking to display the banner or not
+function checkDowntimeMsg() {
+    var eventSeen = getCookie("eventSeen3");
+
+    if (eventSeen == null) {
+        // no cookie so havent seen the msg
+        $("#alert-downtime").fadeIn("fast");
+    }
+    else {
+        // have cookie so have seen message
+    }
+}
+
+// check for seeing the downtime message
+//checkDowntimeMsg();
+
+// check for closing the downtime notice
+$(".close-downtime").on('click', function() {
+    // fadeout the downtime message
+    $("#alert-downtime").fadeOut("fast");
+
+    // set the cookie so wont see next time
+    setCookie('eventSeen3','y',7);
+});
+
+// cookie consent
+window.addEventListener("load", function() {
+    window.wpcc.init( {
+        "colors": {
+            "popup": {
+                "background": "#0779bf", "text": "#ffffff", "border": "#0779bf"
+            }
+            , "button": {
+                "background": "#0779bf", "text": "#ffffff"
+            }
+        }
+        , "position":"bottom", "margin":"none", "fontsize":"tiny", "content": {
+            "href": "https://www.ucar.edu/cookie-other-tracking-technologies-notice", "message": "UCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click", "link": "here", "button": "Acknowledge"
+        }
+        , "padding":"none"
+    })
+});
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+// Script for calendar dropdown on inputs
+$('.datepicka').each(function(i, obj) {
+    // Grab the ID
+    var datepickaID = $(this).attr('id');
+
+    // Make it a picka
+    $( "#" + datepickaID ).datepicker();
+});
+
+
+// Script for the autoscroll back to top
+$(window).scroll(function(){
+	// show the scroll bar
+	if ($(this).scrollTop() > 100) {
+		$('.scrollup').fadeIn();
+	} 
+	// hide the scroll bar
+	else {
+		$('.scrollup').fadeOut();
+	}
+});
+
+// clickong on the scroll bar
+$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
+	return false;
+});
+
+
+
+
+
+$(document).ready(function () {
+    
+    $('.star').on('click', function () {
+        $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+        $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'all') {
+            $('.table tr').css('display', 'none');
+            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+            $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+    });
+
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+    // popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover({html:true});
+    });
+
+    // checking for click on details
+    $('[data-toggle="popover"]').on("click", function() {
+        // change the html
+        $(this).removeClass("badge-info");
+        $(this).addClass("badge-danger");
+
+        $(this).html("Hide Details");
+    });
+
+    // checking for hiding popover to revert back
+    $('[data-toggle="popover"]').on('hide.bs.popover', function () {
+        // change the html
+        $(this).removeClass("badge-danger");
+        $(this).addClass("badge-info");
+
+        $(this).html("More Details");
+    });
+
+});
+</script>
+
+</body>
+</html>

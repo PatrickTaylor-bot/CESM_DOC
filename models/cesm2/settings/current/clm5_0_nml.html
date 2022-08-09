@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CESM2 CLM Namelist Definitions</title>
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Namelist definitions for CLM in CESM2" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+	<link rel="manifest" href="../../../../site.webmanifest">
+	<link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../../../../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../../../../styles/um/css/style.css" rel="stylesheet">
+	<link href="../../../../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- bring in datatables css -->
+    <link rel="stylesheet" href="../../../../styles/um/css/datatables.min.css">
+
+    <!-- custom css -->
+    <style type="text/css">
+        #description { 
+            background-color: #c5edcb; 
+        }
+
+        table.dataTable > tbody > tr.child ul.dtr-details {
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../../../../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../../../../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../../../../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../../../../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../../../../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../../../../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../../../../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../../../../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../../../../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../../../../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../../../../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../../../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../../../../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../../../../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../../../../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../../../../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../../../../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../../../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../../../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../../../../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../../../../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../../../../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../../../../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../../../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../../../Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../../../Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../../../../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../../../Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../../../../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../../../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../../../simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../../../Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../../../../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../../../../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../../../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../../../../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../../../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../../../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../../../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../../../../www.cesm.ucar.edu/models/default.htm">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="../../../current.html">CESM Releases</a></li>
+                            <li class="breadcrumb-item"><a href="../../default.htm">CESM2</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Component Configuration Settings</a></li>
+                            <li class="breadcrumb-item active">CLM Namelist Definitions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="h1-sm">CLM Namelist Definitions</h1>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="dropdown">
+                                <button class="btn btn-primary btn-block btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CESM2 Version <span class="caret"></span>
+                                </button>
+
+                                <div class="dropdown-menu w-100 py-0 mt-1 shadow" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item active" href="../2.2.html">CESM2.2.0 <span class="small">(Current Page)</span></a>
+                                    <a class="dropdown-item" href="../2.1.html">CESM2.1.3</a>
+                                    <a class="dropdown-item" href="../2.1.2">CESM2.1.2</a>
+                                    <a class="dropdown-item" href="../2.1.1">CESM2.1.1</a>
+                                    <a class="dropdown-item" href="../2.1.0">CESM2.1.0</a>
+                                    <a class="dropdown-item" href="../2.0.html">CESM2.0.1</a>
+                                    <a class="dropdown-item" href="../2.0.0">CESM2.0.0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light text-center my-4">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">Viewing component tag<br><span class="badge badge-oj">release-cesm2.2.01</span></p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">Viewing model version<br><span class="badge badge-secondary">2.2.0</span></p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="text-dark font-weight-bold h4">HTML created on<br><span class="badge badge-info">2020-09-28</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- table buttons start -->
+                    <div class="btns-show-hide" style="">
+                        <button type="button" class="btn btn-primary" id="btn-show-all-children">
+                            <i class="fa fa-folder-open"></i> Show All
+                        </button>
+
+                        <button type="button" class="btn btn-primary" id="btn-hide-all-children">
+                            <i class="fa fa-folder"></i> Hide All
+                        </button>
+                    </div>
+                    <!-- table buttons end -->
+
+
+                    <table id="nmlTable" class="table table-striped bg-white">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Namelist Group</th>
+                                <th>Category</th>
+                                <th>Entry Type</th>
+                                <th class="none">Valid Values</th>
+                                <th class="none">Possible Default Values</th>
+                                <th class="none">Description and out-of-the-box Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            
+                            <tr>
+                                <td>denitrif_nitrateconc_coefficient</td>
+                                <td>nitrif_inparm</td>
+                                <td>bgc</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Multiplier for nitrate concentration for max denitrification rates
+(ONLY used if use_nitrif_denitrif is enabled)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>denitrif_nitrateconc_exponent</td>
+                                <td>nitrif_inparm</td>
+                                <td>bgc</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Exponent power for nitrate concentrationfor max denitrification rates
+(ONLY used if use_nitrif_denitrif is enabled)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>denitrif_respiration_coefficient</td>
+                                <td>nitrif_inparm</td>
+                                <td>bgc</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Multiplier for heterotrophic respiration for max denitrification rates
+(ONLY used if use_nitrif_denitrif is enabled)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>denitrif_respiration_exponent</td>
+                                <td>nitrif_inparm</td>
+                                <td>bgc</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Exponent power for heterotrophic respiration for max denitrification rates
+(ONLY used if use_nitrif_denitrif is enabled)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>k_nitr_max</td>
+                                <td>nitrif_inparm</td>
+                                <td>bgc</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Maximum nitrification rate constant (1/s)
+(ONLY used if use_nitrif_denitrif is enabled)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_century_decomp</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'bgc_mode': 'sp'} <br/> is .false. for: {'bgc_mode': 'cn'} <br/> is .true. for: {'bgc_mode': 'bgc'} <br/> is .true. for: {'bgc_mode': 'fates'} <br/></td>
+                                <td><pre id="description">
+Use parameters for decomposition from the CENTURY Carbon model
+Requires the CN or FATES model to work (either CN or CNDV).
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_cn</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+CLM Biogeochemistry mode : Carbon Nitrogen model (CN) 
+(or CLM45BGC if phys=clm4_5, vsoilc_centbgc='on', and clm4me='on')
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_cndv</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+CLM Biogeochemistry mode : Carbon Nitrogen with Dynamic Global Vegetation Model (CNDV)
+(or CLM45BGCDV if phys=clm4_5, vsoilc_centbgc='on', and clm4me='on')
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_fun</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'phys': 'clm5_0', 'use_cn': '.true.', 'use_nitrif_denitrif': '.true.'} <br/> .false. <br/></td>
+                                <td><pre id="description">
+Turn the Fixation and Uptate of Nitrogen model version 2 (FUN2.0)
+Requires the CN model to work (either CN or CNDV).
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_lch4</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'bgc_mode': 'sp'} <br/> is .false. for: {'bgc_mode': 'cn'} <br/> is .true. for: {'bgc_mode': 'bgc'} <br/> is .false. for: {'bgc_mode': 'fates'} <br/></td>
+                                <td><pre id="description">
+Turn on methane model. Standard part of CLM45BGC model.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_nitrif_denitrif</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'bgc_mode': 'sp'} <br/> is .false. for: {'bgc_mode': 'cn'} <br/> is .true. for: {'bgc_mode': 'bgc'} <br/> is .false. for: {'bgc_mode': 'fates'} <br/></td>
+                                <td><pre id="description">
+Nitrification/denitrification splits the prognostic mineral N pool into two 
+   mineral N pools: NO3 and NH4, and includes the transformations between them.
+Requires the CN model to work (either CN or CNDV).
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_vertsoilc</td>
+                                <td>clm_inparm</td>
+                                <td>bgc</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'bgc_mode': 'sp'} <br/> is .false. for: {'bgc_mode': 'cn'} <br/> is .true. for: {'bgc_mode': 'bgc'} <br/> is .true. for: {'bgc_mode': 'fates'} <br/></td>
+                                <td><pre id="description">
+Turn on vertical soil carbon.
+Requires the CN or FATES model to work (either CN or CNDV).
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>atm_c13_filename</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>char*256</td>
+                                <td>['any char']</td>
+                                <td> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_1850-2015_yearly_v2.0_c190528.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'hist'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP119_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP1-1.9'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP126_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP1-2.6'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP245_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP2-4.5'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP3B_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP3-7.0'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP534os_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP5-3.4'} <br/> is lnd/clm2/isotopes/atm_delta_C13_CMIP6_SSP5B_1850-2100_yearly_c181209.nc for: {'use_c13': '.true.', 'use_c13_timeseries': '.true.', 'ssp_rcp': 'SSP5-8.5'} <br/></td>
+                                <td><pre id="description">
+Filename with time series of atmospheric Delta C13 data, which use CMIP6 format.  variables in file are "time" and "delta13co2_in_air".  time variable is in format: years since 1850-01-01 0:0:0.0. units are permil.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>atm_c14_filename</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>char*256</td>
+                                <td>['any char']</td>
+                                <td> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_3x1_global_1850-2015_yearly_v2.0_c190528.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'hist', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP119_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP1-1.9', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP126_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP1-2.6', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP245_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP2-4.5', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP3B_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP3-7.0', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP534os_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP5-3.4', 'use_c14': '.true.'} <br/> is lnd/clm2/isotopes/atm_delta_C14_CMIP6_SSP5B_3x1_global_1850-2100_yearly_c181209.nc for: {'use_c14_bombspike': '.true.', 'ssp_rcp': 'SSP5-8.5', 'use_c14': '.true.'} <br/></td>
+                                <td><pre id="description">
+Filename with time series of atmospheric Delta C14 data.  variables in file are "time" and "Delta14co2_in_air". time variable is in format: years since 1850-01-01 0:0:0.0  units are permil.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>for_testing_allow_interp_non_ciso_to_ciso</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+There is a bug that causes incorrect values for C isotopes if running
+init_interp from a case without C isotopes to a case with C isotopes
+(https://github.com/ESCOMP/ctsm/issues/67). Normally, an error-check
+prevents you from doing this interpolation (until we have fixed that
+bug). However, we sometimes want to bypass this error-check in system
+tests. This namelist flag bypasses this error-check.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_c13</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+Enable C13 model
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_c13_timeseries</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+Flag to use the atmospheric time series of C13 concentrations from natural abundance and the Seuss Effect, rather than static values.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_c14</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+Enable C14 model
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_c14_bombspike</td>
+                                <td>clm_inparm</td>
+                                <td>clm_isotope</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+Flag to use the atmospheric time series of C14 concentrations from bomb fallout and Seuss effect, rather than natural abundance C14 (nominally set as 10^-12 mol C14 / mol C)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>deepmixing_depthcrit</td>
+                                <td>clm_inparm</td>
+                                <td>clm_lake</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Minimum lake depth to increase non-molecular thermal diffusivities by the factor deepmixing_mixfact.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>deepmixing_mixfact</td>
+                                <td>clm_inparm</td>
+                                <td>clm_lake</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Factor to increase non-molecular thermal diffusivities for lakes deeper than deepmixing_depthcrit
+to account for unresolved 3D processes.
+Set to 1 to 
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>lake_melt_icealb</td>
+                                <td>clm_inparm</td>
+                                <td>clm_lake</td>
+                                <td>real(2)</td>
+                                <td>['any real(2)']</td>
+                                <td></td>
+                                <td><pre id="description">
+Visible and Near-infrared albedo values for melting lakes. Albedo will relax to these values as temperature
+reaches melting when ice is present with no snow layers. Represents puddling, ice disintegration, and white ice.
+Set to alblak values (0.6, 0.4) to keep albedo constant for ice-covered lakes without snow layers.
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>allowlakeprod</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, turn on methane biogeochemistry model for lake columns, using a simplified version of the CH4 submodel.
+(EXPERIMENTAL)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>ch4offline</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, run the methane submodel decoupled from the atmosphere. The atmospheric methane concentration is prescribed by
+atmch4, the methane flux is not passed to the atmosphere, and the CO2 flux to the atmosphere is not adjusted for
+net methane production. NOTE: Currently this must be TRUE.
+(EXPERIMENTAL and NOT functional)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>finundation_method</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>char*50</td>
+                                <td>['h2osfc', 'ZWT_inversion', 'TWS_inversion']</td>
+                                <td> is TWS_inversion for: {'phys': 'clm5_0'} <br/> is ZWT_inversion for: {'phys': 'clm4_5'} <br/></td>
+                                <td><pre id="description">
+Inundated fraction method type to use for the CH4 submodel (possibly affecting soil 
+heterotrophic respiration and denitrification depending on the configuration),
+
+h2osfc ----------- Use prognostic saturated fraction h2osfc value calculated in Soil Hydrology
+ZWT_inversion ---- Use inversion of Prigent Satellite data to model ZWT
+TWS_inversion ---- Use inversion of Prigent Satellite data to model TWS
+
+Inversion options require additional data on fsurdat or use of stream_fldfilename_ch4finundated files.
+(h2osfc option is EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>replenishlakec</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, maintain constant soil carbon under lakes, and use the methane submodel simply to predict the net conversion of
+CO2 (via biological assimilation, decomposition, and methanogenesis) to CH4. If FALSE, transiently decompose initial
+soil carbon stock based on soil carbon dataset.  NOTE: if FALSE, a new transient source of C is added to the climate system,
+so the coupled system will NOT conserve carbon in this mode if the methane model is coupled to the atmosphere.
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_aereoxid_prog</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_cn': '.true.'} <br/> is .true. for: {'use_fates': '.true.'} <br/></td>
+                                <td><pre id="description">
+Allows user to tune the value of aereoxid.  If set to FALSE, then use the value of aereoxid from 
+the parameter file (set to 0.0, but may be tuned with values in the range {0.0,1.0}.  If set to TRUE,
+then don't fix aere (see ch4Mod.F90).
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>usefrootc</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, use the fine root carbon predicted by CN when calculating the aerenchyma area, rather than the parametrization
+based on annual NPP, aboveground NPP fraction, and LAI.
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>usephfact</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, apply a limitation to methane production based on the soil pH dataset.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>vmax_oxid_unsat</td>
+                                <td>ch4par_in</td>
+                                <td>clm_methane</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td></td>
+                                <td><pre id="description">
+Michaelis-Mentin maximum methane oxidation rate (mol/m^3-water/s), in the unsaturated zone.
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>carbon_resp_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'use_fun': '.false.', 'use_flexibleCN': '.true.'} <br/> is 0 for: {'use_fun': '.true.', 'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+Carbon respiration option to burn off carbon when CN ratio is too high (do NOT use when FUN is on)
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CN_evergreen_phenology_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+Evergreen phenology option for CNPhenology
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CN_partition_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+Partition option for flexible-CN
+   CN_partition_opt = 1
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CN_residual_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '1']</td>
+                                <td> is 1 for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+Residual option for flexible-CN
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>CNratio_floating</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Flexible CN ratio used for Phenology
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>downreg_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   GPP downregulation for use_flexibleCN option
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>initial_vegC</td>
+                                <td>cnvegcarbonstate</td>
+                                <td>clm_nitrogen</td>
+                                <td>real</td>
+                                <td>['any real']</td>
+                                <td> is 100.d00 for: {'phys': 'clm5_0', 'use_cn': '.true.', 'mm_nuptake_opt': '.true.'} <br/> is 20.d00 for: {'phys': 'clm4_5', 'use_cn': '.true.', 'mm_nuptake_opt': '.true.'} <br/> is 1.d00 for: {'phys': 'clm5_0', 'use_cn': '.true.', 'mm_nuptake_opt': '.false.'} <br/> is 1.d00 for: {'phys': 'clm4_5', 'use_cn': '.true.', 'mm_nuptake_opt': '.false.'} <br/></td>
+                                <td><pre id="description">
+How much Carbon to initialize vegetation pools (leafc/frootc and storage) to when -- Michaelis Menten nitrogen uptake kinetics is on
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>lnc_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_cn': '.true.'} <br/> is .false. for: {'use_cn': '.false.'} <br/></td>
+                                <td><pre id="description">
+How LUNA and Photosynthesis (if needed) will get Leaf nitrogen content
+   lnc_opt = true  get from leaf N from CN model
+   lnc_opt = false get based on LAI and fixed CN ratio from parameter file
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>MM_Nuptake_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Michaelis Menten nitrogen uptake kinetics
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>nscalar_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Michaelis Menten nitrogen limitation for use_flexibleCN option
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>plant_ndemand_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '1', '2', '3']</td>
+                                <td> is 3 for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Plant nitrogen demand for use_flexibleCN option
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>reduce_dayl_factor</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .false. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Reduce day length factor
+(NOT implemented)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>substrate_term_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Michaelis Menten substrate limitation for use_flexibleCN option
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>temp_scalar_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+   Michaelis Menten temperature limitation for use_flexibleCN option
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>use_flexibleCN</td>
+                                <td>clm_inparm</td>
+                                <td>clm_nitrogen</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td> is .true. for: {'phys': 'clm5_0', 'use_cn': '.true.'} <br/> is .false. for: {'phys': 'clm5_0'} <br/> is .false. for: {'phys': 'clm4_5'} <br/></td>
+                                <td><pre id="description">
+Allow the CN ratio to flexibly change with the simulation, rather than being fixed
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>vcmax_opt</td>
+                                <td>clm_nitrogen</td>
+                                <td>clm_nitrogen</td>
+                                <td>integer</td>
+                                <td>['0', '3', '4']</td>
+                                <td> is 3 for: {'use_flexibleCN': '.true.'} <br/></td>
+                                <td><pre id="description">
+Vcmax calculation for Photosynthesis
+    vcmax_opt = 4 As for vcmax_opt=0, but using leafN, and exponential if tree  (EXPERIMENTAL NOT TESTED!)
+    vcmax_opt = 3 Based on leafN and VCAD (used with Luna for crop and C4 vegetation)
+    vcmax_opt = 0 Based on canopy top and foilage Nitrogen limitation factor from params file (clm4.5)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>clump_pproc</td>
+                                <td>clm_inparm</td>
+                                <td>clm_performance</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td></td>
+                                <td><pre id="description">
+Clumps per processor.
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>nsegspc</td>
+                                <td>clm_inparm</td>
+                                <td>clm_performance</td>
+                                <td>integer</td>
+                                <td>['any integer']</td>
+                                <td> 35 <br/></td>
+                                <td><pre id="description">
+number of segments per clump for decomposition
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>perchroot</td>
+                                <td>clm_inparm</td>
+                                <td>clm_permafrost</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, weight btran (vegetation soil moisture availability) by unfrozen layers only, assuming that vegetation
+will allocate roots preferentially to the active layer.
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>perchroot_alt</td>
+                                <td>clm_inparm</td>
+                                <td>clm_permafrost</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, weight btran (vegetation soil moisture availability) by the active layer, as defined by the greatest thaw depth over the current and prior years.
+(EXPERIMENTAL and NOT tested)
+</pre></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td>albice</td>
+                                <td>clm_inparm</td>
+                                <td>clm_physics</td>
+                                <td>real(2)</td>
+                                <td>['any real(2)']</td>
+                                <td> is 0.50,0.30 for: {'phys': 'clm5_0'} <br/> is 0.60,0.40 for: {'phys': 'clm4_5'} <br/></td>
+                                <td><pre id="description">
+Visible and Near-infrared albedo's for glacier ice
+</pre></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>all_active</td>
+                                <td>clm_inparm</td>
+                                <td>clm_physics</td>
+                                <td>logical</td>
+                                <td>['.true.', '.false.']</td>
+                                <td></td>
+                                <td><pre id="description">
+If TRUE, make ALL pfts, columns and landunits active, even those with 0 weight.
+This means that computations will be run even over these 0-weight points.
+
+THIS IS ONLY FOR TESTING PURPOSES - IT HAS NOT BEEN CHECKED FOR SCIENTIFIC VALIDITY.

@@ -1,0 +1,2120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>User's Guide to the Community Atmosphere Model CAM-5.3</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /></head><body><div class="book"><div class="titlepage"><div><div><h1 class="title"><a id="idm218602505440"></a>User's Guide to the Community Atmosphere Model <acronym class="acronym">CAM</acronym>-5.3</h1></div><div><p class="pubdate">This document was last updated on
+2015-05-08 15:21:13.
+</p></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="preface"><a href="#acknow">Acknowledgments</a></span></dt><dt><span class="chapter"><a href="#intro">1. Introduction </a></span></dt><dd><dl><dt><span class="sect1"><a href="#whats_new">1.1. Changes from previous release</a></span></dt><dt><span class="sect1"><a href="#help">1.2. Getting Help -- Other User Resources</a></span></dt><dd><dl><dt><span class="sect2"><a href="#cam_homepage">1.2.1. The <acronym class="acronym">CAM</acronym> Web Page</a></span></dt><dt><span class="sect2"><a href="#cam_bb">1.2.2. The <acronym class="acronym">CESM</acronym> Bulletin Board</a></span></dt><dt><span class="sect2"><a href="#cam_bugs">1.2.3. Reporting bugs</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#bld_run_cam">2. Building and Running <acronym class="acronym">CAM</acronym></a></span></dt><dd><dl><dt><span class="sect1"><a href="#interactive_session">2.1. Sample Interactive Session</a></span></dt><dd><dl><dt><span class="sect2"><a href="#config_serial">2.1.1. Configuring <acronym class="acronym">CAM</acronym> for serial execution</a></span></dt><dt><span class="sect2"><a href="#config_fc">2.1.2. Specifying the <acronym class="acronym">Fortran</acronym> compiler</a></span></dt><dt><span class="sect2"><a href="#compiler_wrapper">2.1.3. Dealing with compiler wrappers</a></span></dt><dt><span class="sect2"><a href="#config_para">2.1.4. Configuring <acronym class="acronym">CAM</acronym> for parallel execution</a></span></dt><dt><span class="sect2"><a href="#build">2.1.5. Building <acronym class="acronym">CAM</acronym></a></span></dt><dt><span class="sect2"><a href="#bldnl_default">2.1.6. Building the Namelist</a></span></dt><dt><span class="sect2"><a href="#acquire_inputdata">2.1.7. Acquiring Input Datasets</a></span></dt><dt><span class="sect2"><a href="#run_cam">2.1.8. Running CAM</a></span></dt></dl></dd><dt><span class="sect1"><a href="#run_scripts">2.2. Sample Run Scripts</a></span></dt></dl></dd><dt><span class="chapter"><a href="#input_datasets">3. Input datasets</a></span></dt><dd><dl><dt><span class="sect1"><a href="#sst_files">3.1. SST and Sea Ice Boundary Files</a></span></dt></dl></dd><dt><span class="chapter"><a href="#model_out">4. Model Output</a></span></dt><dd><dl><dt><span class="sect1"><a href="#hist_files">4.1. Model History Files</a></span></dt><dd><dl><dt><span class="sect2"><a href="#hist_general">4.1.1. General Features of History Files</a></span></dt><dt><span class="sect2"><a href="#hist_fields">4.1.2. Default History Fields and Master Field Lists</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#mod_nml">5. Physics modifications via the namelist</a></span></dt><dd><dl><dt><span class="sect1"><a href="#rad_cnst_nml">5.1. Radiative Constituents</a></span></dt><dd><dl><dt><span class="sect2"><a href="#rad_clim_cam4_default">5.1.1. Default <code class="varname">rad_climate</code> for <code class="literal">cam4</code> physics</a></span></dt><dt><span class="sect2"><a href="#rad_clim_cam5_default">5.1.2. Default <code class="varname">rad_climate</code> for <code class="literal">cam5</code> physics</a></span></dt><dt><span class="sect2"><a href="#diag_rad_calc">5.1.3. Diagnostic radiative forcing</a></span></dt></dl></dd></dl></dd><dt><span class="appendix"><a href="#config">A. The <span class="command"><strong>configure</strong></span> utility</a></span></dt><dd><dl><dt><span class="sect1"><a href="#config_cesm">A.1. How <span class="command"><strong>configure</strong></span> is called from the <acronym class="acronym">CESM</acronym> scripts</a></span></dt><dt><span class="sect1"><a href="#config_opts">A.2. Arguments to <span class="command"><strong>configure</strong></span></a></span></dt><dd><dl><dt><span class="sect2"><a href="#config_cam">A.2.1. CAM configuration</a></span></dt><dt><span class="sect2"><a href="#config_scam">A.2.2. SCAM configuration</a></span></dt><dt><span class="sect2"><a href="#config_parallel">A.2.3. CAM parallelization</a></span></dt><dt><span class="sect2"><a href="#config_cice">A.2.4. CAM parallelization when running standalone with CICE</a></span></dt><dt><span class="sect2"><a href="#config_general">A.2.5. General options</a></span></dt><dt><span class="sect2"><a href="#config_surface_comp">A.2.6. Surface components</a></span></dt><dt><span class="sect2"><a href="#config_standalone_bld">A.2.7. CAM standalone build</a></span></dt></dl></dd><dt><span class="sect1"><a href="#config_env">A.3. Environment variables recognized by <span class="command"><strong>configure</strong></span></a></span></dt></dl></dd><dt><span class="appendix"><a href="#bldnl">B. The <span class="command"><strong>build-namelist</strong></span> utility</a></span></dt><dd><dl><dt><span class="sect1"><a href="#bldnl_opts">B.1. Options to <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="#bldnl_env">B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="#cam_namelist_ref">B.3. <acronym class="acronym">CAM</acronym> Namelist variables</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#idm218596792640">References</a></span></dt></dl></div><div class="list-of-examples"><p><strong>List of Examples</strong></p><dl><dt>2.1. <a href="#bldnl_ex01">Use <span class="command">build-namelist</span> to specify a dataset in a non-default location.</a></dt><dt>2.2. <a href="#acquire_inputdata_ex01">Acquire missing dataset</a></dt><dt>4.1. <a href="#timestamps_mon_avg">Timestamps for a year of monthly averages</a></dt><dt>4.2. <a href="#timestamps_daily_avg">Timestamps for five daily averages</a></dt><dt>5.1. <a href="#modify_rad_clim">Modify a radiatively active gas</a></dt><dt>5.2. <a href="#aerosol_radforce">Aerosol radiative forcing</a></dt><dt>5.3. <a href="#bc_radforce">Black carbon radiative forcing</a></dt></dl></div><div class="preface"><div class="titlepage"><div><div><h1 class="title"><a id="acknow"></a>Acknowledgments</h1></div></div></div><p>
+We wish to acknowledge members of <acronym class="acronym">NCAR</acronym>'s Atmospheric Modeling and
+Predictability Section (<acronym class="acronym">AMP</acronym>), <acronym class="acronym">CESM</acronym> Software Engineering Group
+(<acronym class="acronym">CSEG</acronym>), and Computation and Information Systems Laboratory (<acronym class="acronym">CISL</acronym>) for their
+contributions to the development of <acronym class="acronym">CAM</acronym>-5.3.
+</p><p>
+The new model would not exist without the significant input from members of
+the <acronym class="acronym">CESM</acronym> Atmospheric Model Working Group (<acronym class="acronym">AMWG</acronym>) too numerous to
+mention. Rich Neale (<acronym class="acronym">NCAR</acronym>), Minghua Zhang (<acronym class="acronym">SUNY</acronym>), Mark Taylor (<acronym class="acronym">SNL</acronym>) and Leo
+Donner (<acronym class="acronym">GFDL</acronym>), were co-chairs of the <acronym class="acronym">AMWG</acronym> during part or all of the
+development of <acronym class="acronym">CAM</acronym>-5.3.
+</p><p>
+We would like to acknowledge the substantial contributions to the <acronym class="acronym">CAM</acronym>
+effort from the National Science Foundation, the Department of Energy, the
+National Oceanic and Atmospheric Administration, and the National
+Aeronautics and Space Administration.
+</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="intro"></a>Chapter 1. Introduction </h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#whats_new">1.1. Changes from previous release</a></span></dt><dt><span class="sect1"><a href="#help">1.2. Getting Help -- Other User Resources</a></span></dt><dd><dl><dt><span class="sect2"><a href="#cam_homepage">1.2.1. The <acronym class="acronym">CAM</acronym> Web Page</a></span></dt><dt><span class="sect2"><a href="#cam_bb">1.2.2. The <acronym class="acronym">CESM</acronym> Bulletin Board</a></span></dt><dt><span class="sect2"><a href="#cam_bugs">1.2.3. Reporting bugs</a></span></dt></dl></dd></dl></div><p>
+The Community Atmosphere Model version <acronym class="acronym">CAM</acronym>-5.3 is released as the
+atmosphere component of the Community Earth System Model version
+<acronym class="acronym">CESM</acronym>-1.2.  It is the latest in a series of global atmosphere models
+whose development is guided by
+the <a class="ulink" href="../../../../../www.cesm.ucar.edu/working_groups/Atmosphere/default.htm" target="_top"> Atmosphere Model Working
+Group</a> (<acronym class="acronym">AMWG</acronym>) of the
+<a class="ulink" href="../../../../../www.cesm.ucar.edu/models/cesm1.html" target="_top">
+Community Earth System Model</a> (<acronym class="acronym">CESM</acronym>) project.
+<acronym class="acronym">CAM</acronym> is used as both a standalone
+model and as the atmospheric component of the <acronym class="acronym">CESM</acronym>.
+<acronym class="acronym">CAM</acronym> has a long history of use as a standalone model by
+which we mean that the atmosphere is coupled to an active land model
+(<acronym class="acronym">CLM</acronym>), a thermodynamic only sea ice model (a special configuration of <acronym class="acronym">CICE</acronym>), and a data ocean
+model (<acronym class="acronym">DOCN</acronym>).  When one speaks of "doing <acronym class="acronym">CAM</acronym> simulations" the
+implication is that it's a standalone configuration that is being used.
+When <acronym class="acronym">CAM</acronym> is coupled to active ocean and sea ice models then we refer to
+the model as <acronym class="acronym">CESM</acronym>.
+</p><p>
+<acronym class="acronym">CAM</acronym> provides a framework for running the "Whole Atmosphere"
+configurations; <acronym class="acronym">WACCM</acronym>, and <acronym class="acronym">WACCM-X</acronym>.  To run <acronym class="acronym">CAM</acronym> in a <acronym class="acronym">WACCM</acronym> or
+<acronym class="acronym">WACCM-X</acronym> configuration the user is referred to
+the <a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top"> <acronym class="acronym">CESM</acronym>-1.2
+User's Guide</a>.
+</p><p>
+In versions of <acronym class="acronym">CAM</acronym> before 4.0 the driver for the standalone configuration
+was completely separate code from what was used to couple the components of
+the <acronym class="acronym">CCSM</acronym>.  One of the most significant software changes in <acronym class="acronym">CAM</acronym>-4.0 was
+a refactoring of how the land, ocean, and sea ice components are called
+which enabled the use of the <acronym class="acronym">CCSM</acronym> coupler to act as the <acronym class="acronym">CAM</acronym> standalone
+driver (this also depended on the complete rewritting of the <acronym class="acronym">CCSM</acronym> coupler
+to support sequential execution of the components).  Hence, for the <acronym class="acronym">CESM</acronym>1
+model, just as for <acronym class="acronym">CCSM</acronym>4 before it, it is accurate to say that a <acronym class="acronym">CAM</acronym>
+standalone configuration is nothing more than a special configuration of
+<acronym class="acronym">CESM</acronym> in which the active ocean and sea ice components are replaced by
+data ocean and thermodynamic sea ice components.
+</p><p>
+Since the <acronym class="acronym">CAM</acronym> standalone model is just a special configuration of <acronym class="acronym">CESM</acronym>
+it can be run using the <acronym class="acronym">CESM</acronym> scripts.  This is done by using one of the
+"F" compsets and is described in the 
+<a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top">
+<acronym class="acronym">CESM</acronym>-1.2 User's Guide</a>.  The main advantage of running <acronym class="acronym">CAM</acronym> via
+the <acronym class="acronym">CESM</acronym> scripts is to leverage the high level of support that those
+scripts provide for doing production runs of predefined experiments on
+supported platforms.  The <acronym class="acronym">CESM</acronym> scripts do things like: setting up
+reasonable runtime environments; automatically retrieving required input
+datasets from an SVN server; and archiving output files.  But <acronym class="acronym">CAM</acronym> is used
+in a lot of environments where the complexity of production ready scripts is
+not necessary.  In these instances the flexibility and simplicity of
+being able to completely describe a run using a short shell script is a
+valuable option.  In either case though, the ability to customize a <acronym class="acronym">CAM</acronym>
+build or runtime configuration depends on being able to use the utilities
+described in this document.  Any build configuration can be set up via
+appropriate commandline arguments to <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> utility, and any
+runtime configuration can be set up with appropriate arguments to <acronym class="acronym">CAM</acronym>'s
+<span class="command"><strong>build-namelist</strong></span> utility.  Issues that are specific to running <acronym class="acronym">CAM</acronym> from the <acronym class="acronym">CESM</acronym>
+scripts will not be discussed in this guide.  Rather we focus on issues
+that are independent of which scripts are used to run <acronym class="acronym">CAM</acronym>, although there
+is some attention given in this guide to the construction of simple scripts
+designed for running <acronym class="acronym">CAM</acronym> in its standalone mode.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="whats_new"></a>1.1. Changes from previous release</h2></div></div></div><p>
+This information is available from the
+<acronym class="acronym">CESM</acronym>-1.2 <a class="ulink" href="../../../../../www.cesm.ucar.edu/models/cesm1.html" target="_top">home page</a>.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/whatsnew_science.html" target="_top">New science features in <acronym class="acronym">CAM</acronym>-5.3</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/whatsnew_software.html" target="_top">New software features in <acronym class="acronym">CAM</acronym>-5.3</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/answerchanges.html" target="_top">Summary of
+answer changes</a>.
+</p></li><li class="listitem"><p>
+<a class="ulink" href="../../../tags/cesm1_2/knownproblems.html" target="_top">Known problems</a>.
+</p></li></ul></div><p>
+
+</p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="help"></a>1.2. Getting Help -- Other User Resources</h2></div></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="cam_homepage"></a>1.2.1. The <acronym class="acronym">CAM</acronym> Web Page</h3></div></div></div><p>
+The central source for information on <acronym class="acronym">CAM</acronym> is the 
+<a class="ulink" href="../../default.htm" target="_top"><acronym class="acronym">CAM</acronym> web page</a>.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="cam_bb"></a>1.2.2. The <acronym class="acronym">CESM</acronym> Bulletin Board</h3></div></div></div><p>
+The <acronym class="acronym">CESM</acronym> Bulletin Board is a moderated forum for rapid
+exchange of information, ideas, and topics of interest relating to all
+components of the <acronym class="acronym">CESM</acronym>.
+This includes sharing software
+tools, datasets, programming tips and examples, as well as discussions
+of questions, problems and workarounds. The primary motivation for the
+establishment of this forum is to facilitate and encourage
+communication between the users of the <acronym class="acronym">CESM</acronym> around the world. This bulletin
+board will also be used to distribute announcements related to <acronym class="acronym">CESM</acronym>. 
+</p><p>
+The <acronym class="acronym">CESM</acronym> Bulletin Board is here: <a class="ulink" href="http://bb.cgd.ucar.edu/" target="_top">http://bb.cgd.ucar.edu/</a>.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="cam_bugs"></a>1.2.3. Reporting bugs</h3></div></div></div><p>
+If a user should encounter bugs in the code (i.e., it doesn't behave
+in a way in which the documentation says it should), the problem
+should be reported electronically to
+the <a class="ulink" href="http://bb.cgd.ucar.edu/" target="_top"><acronym class="acronym">CESM</acronym> Bulletin Board</a>.
+When writing a bug report the guiding principle should be to provide enough
+information so that the bug can be reproduced.  The following list suggests
+the minimal information that should be contained in the report:
+
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+The version number of the <acronym class="acronym">CCSM</acronym> or <acronym class="acronym">CESM</acronym> release that <acronym class="acronym">CAM</acronym> is part of.
+</p></li><li class="listitem"><p>
+The architecture on which the code was built.  Include relevent information
+such as the <acronym class="acronym">Fortran</acronym> compiler, <acronym class="acronym">MPI</acronym> library, etc.
+</p></li><li class="listitem"><p>
+The <span class="command"><strong>configure</strong></span> commandline.  If it is this command that is failing, then
+report the output from this command.  It can also be very useful to run
+this command with the <strong class="userinput"><code>-v</code></strong> option to turn on verbose
+output. 
+</p></li><li class="listitem"><p>
+The <span class="command"><strong>build-namelist</strong></span> commandline.  If it is this command that is failing, then
+report the output from this command.  It can also be very useful to run
+this command with the <strong class="userinput"><code>-v</code></strong> option to turn on verbose
+output.
+</p></li><li class="listitem"><p>
+Model printout.  Ideally this would contain a stack trace.  But it should
+at least contain any error messages printed to the output log.
+</p></li></ol></div><p>
+
+Please note that <acronym class="acronym">CAM</acronym> is a research tool, and not all features contained
+in the code base are supported.
+
+</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="bld_run_cam"></a>Chapter 2. Building and Running <acronym class="acronym">CAM</acronym></h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#interactive_session">2.1. Sample Interactive Session</a></span></dt><dd><dl><dt><span class="sect2"><a href="#config_serial">2.1.1. Configuring <acronym class="acronym">CAM</acronym> for serial execution</a></span></dt><dt><span class="sect2"><a href="#config_fc">2.1.2. Specifying the <acronym class="acronym">Fortran</acronym> compiler</a></span></dt><dt><span class="sect2"><a href="#compiler_wrapper">2.1.3. Dealing with compiler wrappers</a></span></dt><dt><span class="sect2"><a href="#config_para">2.1.4. Configuring <acronym class="acronym">CAM</acronym> for parallel execution</a></span></dt><dt><span class="sect2"><a href="#build">2.1.5. Building <acronym class="acronym">CAM</acronym></a></span></dt><dt><span class="sect2"><a href="#bldnl_default">2.1.6. Building the Namelist</a></span></dt><dt><span class="sect2"><a href="#acquire_inputdata">2.1.7. Acquiring Input Datasets</a></span></dt><dt><span class="sect2"><a href="#run_cam">2.1.8. Running CAM</a></span></dt></dl></dd><dt><span class="sect1"><a href="#run_scripts">2.2. Sample Run Scripts</a></span></dt></dl></div><p>
+This chapter describes how to build and run <acronym class="acronym">CAM</acronym> in its standalone
+configuration.  We do not provide scripts that are setup to work out of the
+box on a particular set of platforms.  If you would like this level of
+support then consider running <acronym class="acronym">CAM</acronym> from the <acronym class="acronym">CESM</acronym> scripts (see
+<a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top">
+<acronym class="acronym">CESM</acronym>-1.2 User's Guide</a>).  We do however provide some examples of
+simple run scripts which should provide a useful starting point for writing
+your own scripts (see <a class="xref" href="#run_scripts" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a>).
+</p><p>
+In order to build and run <acronym class="acronym">CAM</acronym> the following are required:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>The source tree.  <acronym class="acronym">CAM</acronym>-5.3
+    is distributed with <acronym class="acronym">CESM</acronym>-1.2.  To obtain the source code go to
+    the section "Acquiring the Code" on the 
+    <a class="ulink" href="../../../index.html" target="_top"><acronym class="acronym">CESM</acronym>
+    Home Page</a>.  When we refer to the root of the <acronym class="acronym">CAM</acronym> source tree,
+    this is the same directory as the root of the <acronym class="acronym">CESM</acronym> source tree.  This
+    directory is referred to throughout this document as $<code class="envar">CAM_ROOT</code>.
+</p></li><li class="listitem"><p><acronym class="acronym">Perl</acronym> (version 5.4 or later).
+</p></li><li class="listitem"><p>A <acronym class="acronym">GNU</acronym> version of the <span class="command"><strong>make</strong></span> utility.
+</p></li><li class="listitem"><p><acronym class="acronym">Fortran</acronym> and C compilers.  The <acronym class="acronym">Fortran</acronym> compiler needs to
+    support at least the <acronym class="acronym">Fortran</acronym>95 standard.
+</p></li><li class="listitem"><p>A <acronym class="acronym">NetCDF</acronym> library (version 4.1.3 or later) that has the
+    <acronym class="acronym">Fortran</acronym> APIs built using the same <acronym class="acronym">Fortran</acronym> compiler that is used
+    to build the rest of the <acronym class="acronym">CAM</acronym> code.  This library is used extensively
+    by <acronym class="acronym">CAM</acronym> both to read input datasets and to write the output datasets.
+    The <acronym class="acronym">NetCDF</acronym> source code is available
+    <a class="ulink" href="http://www.unidata.ucar.edu/downloads/netcdf/" target="_top">here</a>.
+    We have updated the required <acronym class="acronym">NetCDF</acronym> library version from 3.6 to 4.1.3
+    due to a recently discovered bug which affects all previous versions of
+    the <acronym class="acronym">NetCDF</acronym> library.  The bug only occurs in special circumstances
+    that are not that easy to replicate, however the result is that corrupt
+    files are silently created.  A more complete description of the bug is
+    <a class="ulink" href="https://www.unidata.ucar.edu/jira/browse/NCF-22" target="_top">here</a>.
+</p></li><li class="listitem"><p>Input datasets.  The required datasets depend on the <acronym class="acronym">CAM</acronym>
+    configuration.  Determining which datasets are required for any
+    configuration is discussed in <a class="xref" href="#bldnl_default" title="2.1.6. Building the Namelist">Section 2.1.6, “Building the Namelist”</a>.
+    Acquiring those datasets is discussed in <a class="xref" href="#acquire_inputdata" title="2.1.7. Acquiring Input Datasets">Section 2.1.7, “Acquiring Input Datasets”</a>.
+</p></li></ul></div><p>
+</p><p>
+To build <acronym class="acronym">CAM</acronym> for SPMD execution it will also be necessary to have an
+<acronym class="acronym">MPI</acronym> library (version 1 or later).  As with the <acronym class="acronym">NetCDF</acronym> library, the
+<acronym class="acronym">Fortran</acronym> API should be build using the same <acronym class="acronym">Fortran</acronym> compiler that is
+used to build the rest of <acronym class="acronym">CAM</acronym>.  Otherwise linking to the library may
+encounter difficulties, usually due to inconsistencies in <acronym class="acronym">Fortran</acronym> name
+mangling.
+</p><p>
+Building and running <acronym class="acronym">CAM</acronym> takes place in the following steps:
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Configure model</p></li><li class="listitem"><p>Build model</p></li><li class="listitem"><p>Build namelist</p></li><li class="listitem"><p>Execute model</p></li></ol></div><p><strong>Configure model. </strong>
+This step is accomplished by running
+the <span class="command"><strong>configure</strong></span> utility to set the compile-time parameters such as the
+dynamical core (Eulerian Spectral, Semi-Lagrangian Spectral, Finite Volume,
+or Spectral Element), horizontal grid resolution, and the type of parallelism to
+employ (shared-memory and/or distributed memory).  The <span class="command"><strong>configure</strong></span> utility
+is discussed in <a class="xref" href="#config" title="Appendix A. The configure utility">Appendix A, <em>The <span class="command"><strong>configure</strong></span> utility</em></a>.
+</p><p><strong>Build model. </strong>
+This step includes compiling and linking
+the executable using the <acronym class="acronym">GNU</acronym> make command (<span class="command"><strong>gmake</strong></span>). <span class="command"><strong>configure</strong></span> creates
+a Makefile in the directory where the build is to take place. The user then
+need only change to this directory and execute the <span class="command"><strong>gmake</strong></span> command.
+</p><p><strong>Build namelist. </strong>
+This step is accomplished by running the
+<span class="command"><strong>build-namelist</strong></span> utility, which supports a variety of options to control the
+run-time behavior of the model.  Any namelist variable recognized by <acronym class="acronym">CAM</acronym>
+can be changed by the user via the <span class="command"><strong>build-namelist</strong></span> interface.  There is also a high
+level "use case" functionality which makes it easy for the user to specify
+a consistent set of namelist variable settings for running particular types
+of experiments.  The <span class="command"><strong>build-namelist</strong></span> utility is discussed in
+<a class="xref" href="#bldnl" title="Appendix B. The build-namelist utility">Appendix B, <em>The <span class="command"><strong>build-namelist</strong></span> utility</em></a>.
+</p><p><strong>Execute model. </strong>
+This step includes the actual invocation
+of the executable. When running using distributed memory parallelism this
+step requires knowledge of how your machine invokes (or "launches") <acronym class="acronym">MPI</acronym> executables. When
+running with shared-memory parallelism (using <acronym class="acronym">OpenMP</acronym>) you may also set the number of
+<acronym class="acronym">OpenMP</acronym> threads.  On most HPC platforms access to the compute resource is
+through a batch queue system.  The sample run scripts discussed in
+<a class="xref" href="#run_scripts" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a> show how to set the batch queue resources on
+several HPC platforms.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="interactive_session"></a>2.1. Sample Interactive Session</h2></div></div></div><p>
+The following sections present an interactive <acronym class="acronym">C</acronym> shell session to build and
+run a default version of <acronym class="acronym">CAM</acronym>.  Most often these steps will be
+encapsulated in shell scripts.  An important advantage of using a script is
+that it acts to document the run you've done.  Knowing the source code
+tree, and the <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> commands provides all the information
+needed to replicate a run.
+</p><p>
+For the interactive session the shell variable <code class="filename">camcfg</code> is set to the
+directory in the source tree that contains the <acronym class="acronym">CAM</acronym> <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span>
+utilities ($<code class="envar">CAM_ROOT</code>/models/atm/cam/bld).
+</p><pre class="screen">
+Much of the example code in this document is set off in sections like this.
+Many examples refer to files in the distribution source tree using
+filepaths that are relative to distribution root directory, which we
+denote, using a <acronym class="acronym">UNIX</acronym> shell syntax, by $CAM_ROOT.  The notation indicates
+that <code class="envar">CAM_ROOT</code> is a shell variable that contains the filepath.  This could
+just as accurately be referred to as $CCSMROOT since the root directory of
+the <acronym class="acronym">CESM</acronym> distribution is the same as the root of the <acronym class="acronym">CAM</acronym> distribution
+which is contained within it.
+</pre><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_serial"></a>2.1.1. Configuring <acronym class="acronym">CAM</acronym> for serial execution</h3></div></div></div><p>
+We start by changing into the directory in which the CAM executable will be
+built, and then setting the environment variables <code class="envar">INC_NETCDF</code> and <code class="envar">LIB_NETCDF</code> which
+specify the locations of the <acronym class="acronym">NetCDF</acronym> include files and library.  This
+information is required by <span class="command"><strong>configure</strong></span> in order for it to produce the
+<code class="filename">Makefile</code>.  The <acronym class="acronym">NetCDF</acronym> library is require by all <acronym class="acronym">CAM</acronym> builds.  The
+directories given are just examples; the locations of the <acronym class="acronym">NetCDF</acronym> include
+files and library are system dependent.  The information provided by these
+environment variables could alternatively be provided via the commandline
+arguments <strong class="userinput"><code>-nc_inc</code></strong> and <strong class="userinput"><code>-nc_lib</code></strong>.
+</p><p><strong>NOTE: </strong>
+A common problem is to encounter build failures due to specifying a
+<acronym class="acronym">NetCDF</acronym> library which was built with a different <acronym class="acronym">Fortran</acronym> compiler than
+the one used to build <acronym class="acronym">CAM</acronym>.  Consult your system's documentation (or some
+other knowledgeable source) to find the location of the <acronym class="acronym">NetCDF</acronym> library
+which was built with the <acronym class="acronym">Fortran</acronym> compiler you intend to use.
+</p><pre class="screen">
+% cd /work/user/cam_test/bld
+% setenv INC_NETCDF /usr/local/include
+% setenv LIB_NETCDF /usr/local/lib
+</pre><p>
+Next we issue the <span class="command"><strong>configure</strong></span> command (see the example just below).  The argument
+<strong class="userinput"><code>-dyn fv</code></strong> specifies using the FV dynamical core
+which is the default for <acronym class="acronym">CAM</acronym>5, but we recommend always adding the
+dynamical core (dycore for short) argument to <span class="command"><strong>configure</strong></span> commands for clarity.  The argument 
+<strong class="userinput"><code>-hgrid 10x15</code></strong> specifies the horizontal grid.  This is
+the coarsest grid available for the FV dycore in <acronym class="acronym">CAM</acronym> and is often useful
+for testing purposes.
+</p><p>
+We recommend using the <strong class="userinput"><code>-test</code></strong> option the first time
+CAM is built on any machine.  This will check that the environment is
+properly set up so that the Fortran compiler works and can successfully
+link to the <acronym class="acronym">NetCDF</acronym> and <acronym class="acronym">MPI</acronym> (if SPMD is enabled) libraries.
+Furthermore, if the configuration is for serial execution, then the tests
+will include both build and run phases which may be useful in exposing run
+time problems that don't show up during the build, for example when shared
+libraries are linked dynamically.  If any tests fail then it is useful to
+rerun the <span class="command"><strong>configure</strong></span> command and add the <strong class="userinput"><code>-v</code></strong> option
+which will produce verbose output of all aspects of the configuration
+process including the tests.  If the configuration is for an SPMD build,
+then no attempt to run the tests will be made.  Typically <acronym class="acronym">MPI</acronym> runs must
+be submitted to a batch queue and are not enabled from interactive
+sessions.  Also the method of launching an <acronym class="acronym">MPI</acronym> job is system dependent.
+But the build and static linking will still be tested.
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -nospmd -nosmp -test 
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -nx 24 -ny 19 -bsizex 6 -bsizey 19 -maxblocks 4 -decomptype blkrobin \
+  -cache config_cache_cice.xml -cachedir /work/user/cam_test/bld
+CICE configure done.
+MCT configure is done.
+creating /work/user/cam_test/bld/Filepath
+creating /work/user/cam_test/bld/Makefile
+creating /work/user/cam_test/bld/config.h
+creating /work/user/cam_test/bld/config_cache.xml
+Looking for a valid GNU make... using gmake
+Testing for Fortran 90 compatible compiler... using pgf95
+Test linking to NetCDF library... ok
+CAM configure done.
+</pre><p>
+The first line of output from the <span class="command"><strong>configure</strong></span> command is an echo of the
+system command that <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> issues to invoke the <acronym class="acronym">CICE</acronym>
+<span class="command"><strong>configure</strong></span> utility.  <acronym class="acronym">CICE</acronym>'s <span class="command"><strong>configure</strong></span> is responsible for setting the
+values of the CPP macros that are needed to build the <acronym class="acronym">CICE</acronym> code.
+</p><p>
+After the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span> is complete the <acronym class="acronym">MCT</acronym> <span class="command"><strong>configure</strong></span> script is
+executed to create the Makefile for building <acronym class="acronym">MCT</acronym> as a separate library.
+There is a status line output to indicate success of that process.
+</p><p>
+The next four lines of output inform the user of the files being created
+by <span class="command"><strong>configure</strong></span>.  All these files except for the cache file are required to
+be in the CAM build directory, so it is generally easiest to be in that
+directory when <span class="command"><strong>configure</strong></span> is invoked.
+</p><p>
+The output from the <strong class="userinput"><code>-test</code></strong> option tells us that
+<span class="command"><strong>gmake</strong></span> is a GNU Make on this machine; that the <acronym class="acronym">Fortran</acronym> compiler
+is <span class="command"><strong>pgf95</strong></span>; and that code compiled with the <acronym class="acronym">Fortran</acronym>
+compiler can be successfully linked to the <acronym class="acronym">NetCDF</acronym> library.  The <acronym class="acronym">CAM</acronym>
+<span class="command"><strong>configure</strong></span> script is the place where the default compilers are specified.  On
+<acronym class="acronym">Linux</acronym> systems the default is <span class="command"><strong>pgf95</strong></span>.  Finally, since
+this is a serial configuration no test for linking to the <acronym class="acronym">MPI</acronym> library was
+done.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_fc"></a>2.1.2. Specifying the <acronym class="acronym">Fortran</acronym> compiler</h3></div></div></div><p>
+In the previous section the <span class="command"><strong>configure</strong></span> command was issued without
+specifying which <acronym class="acronym">Fortran</acronym> compiler to use.  For that to work we were
+depending on the <acronym class="acronym">CAM</acronym> <span class="command"><strong>configure</strong></span> script to select a default compiler.  One of the
+differences between the <acronym class="acronym">CAM</acronym> standalone build and a build using the <acronym class="acronym">CESM</acronym>
+scripts is that <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> provides defaults
+based on the operating system name (as determined by the <acronym class="acronym">Perl</acronym> internal
+variable <code class="envar">$OSNAME</code>), while the <acronym class="acronym">CESM</acronym> scripts require the user
+to specify a specific machine (and compiler if the machine supports more than one)
+as an argument to the <span class="command"><strong>create_newcase</strong></span> command.
+</p><p>
+The <acronym class="acronym">CAM</acronym> makefile currently recognizes the following operating systems
+and compilers.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">AIX</span></dt><dd><p>
+xlf95_r, mpxlf95_r
+</p></dd><dt><span class="term">Linux</span></dt><dd><p>pgf95 (this is the default)</p><p>lf95</p><p>ifort</p><p>gfortran (has had minimal testing)</p><p>pathf90 (has had minimal testing)</p></dd><dt><span class="term">Darwin</span></dt><dd><p>
+xlf95_r, mpxlf95_r, ifort
+</p></dd><dt><span class="term">BGL</span></dt><dd><p>
+blrts_xlf95
+</p></dd><dt><span class="term">BGP</span></dt><dd><p>
+mpixlf95_r
+</p></dd></dl></div><p>
+The above list contains two <acronym class="acronym">IBM</acronym> Blue Gene machines; BGL and BGP.  The
+executables on these machines are produced by cross compilation and hence
+the configure script is not able to determine the machine for which the
+build is intented.  In this case the user must supply this information to
+<span class="command"><strong>configure</strong></span> by using the <strong class="userinput"><code>-target_os</code></strong> option with the
+values of either <strong class="userinput"><code>bgl</code></strong> or <strong class="userinput"><code>bgp</code></strong>.
+</p><p>
+On a <acronym class="acronym">Linux</acronym> platform several compilers are recognized with the default
+being <span class="command"><strong>pgf95</strong></span>.  It is assumed that the compiler to be used is in the user's
+path (i.e., in one of the directories in the <code class="envar">PATH</code> environment variable).
+If it isn't then the <strong class="userinput"><code>-test</code></strong> option will issue an
+error indicating that the compiler was not found.
+</p><p>
+Suppose for example that one would like to use the <acronym class="acronym">Intel</acronym> compiler on a
+local <acronym class="acronym">Linux</acronym> system.  The <acronym class="acronym">CAM</acronym> makefile recognizes <span class="command"><strong>ifort</strong></span> as the name
+of the <acronym class="acronym">Intel</acronym> compiler.  To invoke this compiler use
+the <strong class="userinput"><code>-fc</code></strong> argument to <span class="command"><strong>configure</strong></span>.  The following
+example illustrates the output you get when the compiler you ask for isn't
+in your <code class="envar">PATH</code>:
+</p><pre class="screen">
+% $camcfg/configure -fc ifort -dyn fv -hgrid 10x15 -nospmd -nosmp -test 
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 1 -nthreads 1 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+FAILURE: MCT configure
+</pre><p>
+In previous <acronym class="acronym">CAM</acronym> versions this problem would be caught by
+the <strong class="userinput"><code>-test</code></strong> option, but with the addition of <acronym class="acronym">MCT</acronym>'s
+<span class="command"><strong>configure</strong></span> the problem is now detected there.  By default <acronym class="acronym">MCT</acronym> will be
+build in a subdirectory of the build directory
+named <code class="filename">mct</code>.  That directory will contain a
+file, <code class="filename">config.log</code>, which should be examined to track
+down the cause of the failure.  In this case the file contains the message:
+</p><pre class="screen">
+$CAM_ROOT/models/utils/mct/configure: line 3558: ifort: command not found
+</pre><p>
+This means that the <code class="envar">PATH</code> environment variable has not been correctly set.
+The first thing to try is to verify the directory that contains the
+compiler, and then to prepend this directory name to the <code class="envar">PATH</code> environment
+variable.
+</p><p><strong>NOTE: </strong>
+We have made progress porting <acronym class="acronym">CAM</acronym> to the <span class="command"><strong>gfortran</strong></span>
+compiler, but it is still not regularly tested or used for production work.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="compiler_wrapper"></a>2.1.3. Dealing with compiler wrappers</h3></div></div></div><p>
+Another instance where the user needs to supply information about the
+<acronym class="acronym">Fortran</acronym> compiler type to configure is when the compiler is being invoked
+by a wrapper script.  A common example of this is using the <span class="command"><strong>mpif90</strong></span>
+command to invoke the <acronym class="acronym">Fortran</acronym> compiler that was used to build the <acronym class="acronym">MPI</acronym>
+libraries.  This facilitates correct compilation and linking with the <acronym class="acronym">MPI</acronym>
+libraries without the user needing to add the required include and library
+directories, or library names.  The same benefit is provided by the <span class="command"><strong>ftn</strong></span>
+wrapper used on Cray XT and XE systems.  In the usual case that a <acronym class="acronym">Linux</acronym>
+OS is being used, since the <acronym class="acronym">CAM</acronym> makefile will not recognize these
+compiler names, it will assume that the default compiler is being used, and
+thus will supply compiler arguments that are appropriate for <span class="command"><strong>pgf90</strong></span>.  The
+compilation will fail if <span class="command"><strong>pgf90</strong></span> is not the compiler being invoked by the
+wrapper script (invoking <span class="command"><strong>configure</strong></span> with the <strong class="userinput"><code>-test</code></strong>
+option is a good way to catch this problem).  The way to specify which
+<acronym class="acronym">Fortran</acronym> compiler is being invoked by a wrapper script is via the
+<strong class="userinput"><code>-fc_type</code></strong> argument to configure.  This argument takes
+one of the values <strong class="userinput"><code>pgi</code></strong>, <strong class="userinput"><code>lahey</code></strong>,
+<strong class="userinput"><code>intel</code></strong>, <strong class="userinput"><code>pathscale</code></strong>, <strong class="userinput"><code>gnu</code></strong>,
+or <strong class="userinput"><code>xlf</code></strong>.
+</p><p>
+<acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> script attempts to determine the compiler type when a
+compiler specific name is used.  It does so by a regular expression match
+against the unique part of specific compiler names (e.g., any compiler name
+matching 'pgf' will be given the default type of pgi).  If the default is
+wrong then the user will need to manually override the default via setting
+the <strong class="userinput"><code>-fc_type</code></strong> argument.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_para"></a>2.1.4. Configuring <acronym class="acronym">CAM</acronym> for parallel execution</h3></div></div></div><p>
+Before moving on to building <acronym class="acronym">CAM</acronym> we address configuring the executable for
+parallel execution.  But before talking about configuration specifics let's
+briefly discuss the parallel execution capabilities of <acronym class="acronym">CAM</acronym>.
+</p><p>
+<acronym class="acronym">CAM</acronym> makes use of both distributed memory parallelism implemented using
+<acronym class="acronym">MPI</acronym> (referred to throughout this document
+as <a class="ulink" href="http://en.wikipedia.org/wiki/SPMD" target="_top">SPMD</a>), and shared
+memory parallelism implemented using <acronym class="acronym">OpenMP</acronym> (referred to
+as <a class="ulink" href="http://en.wikipedia.org/wiki/Symmetric_multiprocessing" target="_top">SMP</a>).
+Each of these parallel modes may be used independently of the other, or
+they may be used at the same time which we refer to as "hybrid mode".  When
+talking about the SPMD mode we usually refer to the <acronym class="acronym">MPI</acronym> processes as
+"tasks", and when talking about the SMP mode we usually refer to the <acronym class="acronym">OpenMP</acronym>
+processes as "threads".  A feature of <acronym class="acronym">CAM</acronym> which is very helpful in code
+development work is that the simulation results are independent of the
+number of tasks and threads used.
+</p><p>
+Now consider configuring <acronym class="acronym">CAM</acronym> to run in pure SPMD mode.  Prior to the
+introduction of <acronym class="acronym">CICE</acronym> as the sea ice model
+SPMD was turned on using the <strong class="userinput"><code>-spmd</code></strong> option.
+But if we try that now we find the following:
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -spmd -nosmp
+**    ERROR: If CICE decomposition parameters are not specified, then
+**    -ntasks must be specified to determine a default decomposition
+**    for a pure MPI run.  The setting was:  ntasks=
+</pre><p>
+A requirement of the <acronym class="acronym">CICE</acronym> model is that its grid decomposition (which is
+independent of <acronym class="acronym">CAM</acronym>'s decomposition even when the two models are using the
+same horizontal grid) must be specified at build time.  In order for
+<acronym class="acronym">CICE</acronym>'s <span class="command"><strong>configure</strong></span> to set the decomposition it needs to know how much
+parallelism is going to be used.  This information is provided by
+specifying the number of <acronym class="acronym">MPI</acronym> tasks that the job will use via setting
+the <strong class="userinput"><code>-ntasks</code></strong> argument.
+</p><p><strong>NOTE: </strong> The default <acronym class="acronym">CICE</acronym> decomposition can be overridden by
+setting it explicitly using the <span class="command"><strong>configure</strong></span> options provided for that
+purpose.
+</p><p>
+When running <acronym class="acronym">CAM</acronym> in <acronym class="acronym">SPMD</acronym> mode the build procedure must be able to find
+the <acronym class="acronym">MPI</acronym> include files and library.  The recommended method for doing this
+is to use scripts provided by the <acronym class="acronym">MPI</acronym> installation to invoke the compiler
+and linker.  On <acronym class="acronym">Linux</acronym> systems a common name for this script is <span class="command"><strong>mpif90</strong></span>.
+The <acronym class="acronym">CAM</acronym> Makefile does not currently use this script by default on <acronym class="acronym">Linux</acronym>
+platforms, so the user must explicitly specify it on the <span class="command"><strong>configure</strong></span>
+commandline using the <strong class="userinput"><code>-fc</code></strong> argument: 
+</p><pre class="screen">
+% $camcfg/configure -fc mpif90 -fc_type pgi -cc mpicc -dyn fv -hgrid 10x15 -ntasks 6 -nosmp -test
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 6 -nthreads 1 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+MCT configure is done.
+creating /work/user/cam_test/bld/Filepath
+creating /work/user/cam_test/bld/Makefile
+creating /work/user/cam_test/bld/config.h
+creating /work/user/cam_test/bld/config_cache.xml
+Looking for a valid GNU make... using gmake
+Testing for Fortran 90 compatible compiler... using mpif90
+Test linking to NetCDF library... ok
+Test linking to MPI library... ok
+CAM configure done.
+</pre><p>
+Notice that the number of tasks specified to <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> is passed
+through to the commandline that invokes the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span>.  Generally
+any number of tasks that is appropriate for <acronym class="acronym">CAM</acronym> to use for a particular
+horizontal grid will also work for <acronym class="acronym">CICE</acronym>.  But it is possible to get an
+error from <acronym class="acronym">CICE</acronym> at this point in which case either the number of tasks
+requested should be adjusted, or the options that set the <acronym class="acronym">CICE</acronym>
+decomposition explicitly will need to be used.
+</p><p><strong>NOTE: </strong>
+The use of the <strong class="userinput"><code>-ntasks</code></strong> argument to <span class="command"><strong>configure</strong></span>
+implies building for SPMD.  This means that an <acronym class="acronym">MPI</acronym> library will be
+required.  Hence, the specification <strong class="userinput"><code>-ntasks 1</code></strong> is not
+the same as building for serial execution which is done via
+the <strong class="userinput"><code>-nospmd</code></strong> option and does not require a full <acronym class="acronym">MPI</acronym>
+library.  (Implementation detail: when building for serial mode a special
+serial MPI library is used which basically provides a complete <acronym class="acronym">MPI</acronym> API,
+but doesn't do any message passing.)
+</p><p>
+Next consider configuring <acronym class="acronym">CAM</acronym> to run in pure SMP mode.  Similarly to
+<acronym class="acronym">SPMD</acronym> mode, prior to the introduction of the sea ice component <acronym class="acronym">CICE</acronym> the
+<acronym class="acronym">SMP</acronym> mode was turned on using the <strong class="userinput"><code>-smp</code></strong> option.  But
+with <acronym class="acronym">CAM</acronym>5 that will result in the same error from <acronym class="acronym">CICE</acronym> that we obtained
+above from attempting to use <strong class="userinput"><code>-spmd</code></strong>.  If we are going
+to run the <acronym class="acronym">CICE</acronym> code in parallel, we need to specify up front how much
+parallelism will be used so that the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span> utility can set the
+CPP macros that determine the grid decomposition.  We specify the amount of
+SMP parallelism by setting the <strong class="userinput"><code>-nthreads</code></strong> option as
+follows:
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -nospmd -nthreads 6 -test
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 1 -nthreads 6 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+...
+</pre><p>
+We see that the number of threads has been passed through to the <acronym class="acronym">CICE</acronym>
+<span class="command"><strong>configure</strong></span> command.
+</p><p><strong>NOTE: </strong>
+The use of the <strong class="userinput"><code>-nthreads</code></strong> argument to <span class="command"><strong>configure</strong></span>
+implies building for SMP.  This means that the <acronym class="acronym">OpenMP</acronym> directives will be
+compiled.  Hence, the specification <strong class="userinput"><code>-nthreads 1</code></strong> is
+not the same as building for serial execution which is done via
+the <strong class="userinput"><code>-nosmp</code></strong> option and does not require a compiler
+that supports <acronym class="acronym">OpenMP</acronym>.
+</p><p>
+Finally, to configure <acronym class="acronym">CAM</acronym> for hybrid mode, simply specify both
+the <strong class="userinput"><code>-ntasks</code></strong> and <strong class="userinput"><code>-nthreads</code></strong>
+arguments to <span class="command"><strong>configure</strong></span>.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="build"></a>2.1.5. Building <acronym class="acronym">CAM</acronym></h3></div></div></div><p>
+Once <span class="command"><strong>configure</strong></span> is successful, build <acronym class="acronym">CAM</acronym> by issuing the make
+command:
+</p><pre class="screen">
+% gmake -j2  &gt;&amp;! make.out
+</pre><p>
+The argument <strong class="userinput"><code>-j2</code></strong> is given to allow a parallel build
+using 2 processes.  The optimal number of processes to use depends on the
+compute resource available.  There is a lot of available parallelism in the
+build procedure, so using 16 or even 32 processes may speed things up
+considerably.  Note however that the build happens in shared (not
+distributed) memory.  So specifying more processes than there are
+processors in a shared memory node is generally not helpful (although the
+presence of hyperthreading or SMT on a node may provide an advantage to
+specifying twice the number of processors).
+</p><p>
+It is useful to redirect the output from <span class="command"><strong>make</strong></span> to a file for later
+reference.  This file contains the exact commands that were issued to
+compile each file and the final command which links everything into an
+executable file.  Relevant information from this file should be included
+when posting a bug report concerning a build failure.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="bldnl_default"></a>2.1.6. Building the Namelist</h3></div></div></div><p>
+The first step in the run procedure is to generate the namelist files.  The
+safest way to generate consistent namelist settings is via the <span class="command"><strong>build-namelist</strong></span>
+utility.  Even in the case where only a slight modification to the namelist
+is desired, the best practice is to provide the modified value as an
+argument to <span class="command"><strong>build-namelist</strong></span> and allow it to actually generate the namelist files.
+</p><p><strong>NOTE: </strong>
+The default configuration of <acronym class="acronym">CAM</acronym> using the
+<strong class="userinput"><code>cam5</code></strong> physics package requires that about 60
+datasets and dozens of parameter values be specified in order to run
+correctly.  Trying to manage namelists of that complexity by hand editing
+files is extremely error prone and is strongly discouraged.  User
+modifications to the default namelist settings can be made in a number of
+ways while still letting <span class="command"><strong>build-namelist</strong></span> actually generate the final namelist.  In
+particular, the
+<strong class="userinput"><code>-namelist</code></strong>, <strong class="userinput"><code>-infile</code></strong>,
+and <strong class="userinput"><code>-use_case</code></strong> arguments to <span class="command"><strong>build-namelist</strong></span> are all
+mechanisms by which the user can override default values or specify
+additional namelist variables and still allow build-namelist to do the
+error and consistency checking which makes the namelist creation process
+more robust.
+</p><p>
+The following interactive C shell session builds a default namelist for
+<acronym class="acronym">CAM</acronym>.  We assume that a successful execution of <span class="command"><strong>configure</strong></span> was performed
+in the build directory as discussed in the previous sections.  This is an
+essential prerequisite because the <code class="filename">config_cache.xml</code>
+file produced by <span class="command"><strong>configure</strong></span> is a required input file to <span class="command"><strong>build-namelist</strong></span>.  One of
+the responsibilities of <span class="command"><strong>build-namelist</strong></span> is to set appropriate default values for
+many namelist variables, and it can only do this if it knows how the <acronym class="acronym">CAM</acronym>
+executable was configured.  That information is present in the cache file.
+As in the previous section
+the shell variable <code class="filename">camcfg</code> is set to the CAM configuration
+directory ($<code class="envar">CAM_ROOT</code>/models/atm/cam/bld).
+</p><p>
+We begin by changing into the directory where <acronym class="acronym">CAM</acronym> will be run.  It is
+usually convenient to have the run directory be separate from the build
+directory.  Possibly a number of different runs will be done that each need
+to have a separate run directory for the output files, but will all use the
+same executable file from a common build directory.  It is, of course,
+possible to execute <span class="command"><strong>build-namelist</strong></span> in the build directory since that's where the
+cache file is and so you don't need to specify to <span class="command"><strong>build-namelist</strong></span> where to find
+that file (it looks in the current working directory by default).  But
+then, assuming you plan to run <acronym class="acronym">CAM</acronym> in a different directory, all the
+files produced by <span class="command"><strong>build-namelist</strong></span> need to be copied to the run directly.  If you're
+running <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> from a script, then you need to know how to
+specify the filenames for the files that need to be copied.  For this
+reason it's more robust to change to the run directory and execute <span class="command"><strong>build-namelist</strong></span>
+there.  That way if there's a change to the files that are produced, your
+script doesn't break due to the files not all getting copied to the run
+directory.
+</p><p>
+Next we set the <code class="envar">CSMDATA</code> environment variable to point to the root
+directory of the tree containing the input data files.  Note that this is
+a required input for <span class="command"><strong>build-namelist</strong></span> (this information may alternatively be
+provided using the <strong class="userinput"><code>-csmdata</code></strong> argument).  If not
+provided then <span class="command"><strong>build-namelist</strong></span> will fail with an informative message.  The
+information is required because many of the namelist variables have values
+that are absolute filepaths.  These filepaths are resolved by <span class="command"><strong>build-namelist</strong></span> by
+prepending the <code class="envar">CSMDATA</code> root to the relative filepaths that are stored in
+the default values database.
+</p><p>
+The <span class="command"><strong>build-namelist</strong></span> commandline contains the <strong class="userinput"><code>-config</code></strong> argument
+which is used to point to the cache file which was produced in the build
+directory.  It also contains the <strong class="userinput"><code>-test</code></strong> argument,
+explained further below.
+</p><pre class="screen">
+% cd /work/user/cam_test
+% setenv CSMDATA /fs/cgd/csm/inputdata
+% $camcfg/build-namelist -test -config /work/user/cam_test/bld/config_cache.xml
+Writing CICE namelist to ./ice_in 
+Writing RTM namelist to ./rof_in 
+Writing DOCN namelist to ./docn_ocn_in 
+Writing DOCN stream file to ./docn.stream.txt 
+Writing CLM namelist to ./lnd_in 
+Writing driver namelist to ./drv_in 
+CAM writing dry deposition namelist to drv_flds_in 
+Writing ocean component namelist to ./docn_in 
+CAM writing namelist to atm_in 
+Checking whether input datasets exist locally...
+OK -- found depvel_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/depvel_monthly.nc
+OK -- found tracer_cnst_filelist = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid/oxid_1.9x2.5_L26_clim_list.c090805.txt
+OK -- found tracer_cnst_datapath = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid
+OK -- found depvel_lnd_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/regrid_vegetation.nc
+OK -- found xs_long_file = /fs/cgd/csm/inputdata/atm/waccm/phot/temp_prs_GT200nm_jpl06_c080930.nc
+OK -- found rsf_file = /fs/cgd/csm/inputdata/atm/waccm/phot/RSF_GT200nm_v3.0_c080416.nc
+OK -- found clim_soilw_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/clim_soilw.nc
+OK -- found exo_coldens_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/phot/exo_coldens.nc
+OK -- found tracer_cnst_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid/oxid_1.9x2.5_L26_1850-2005_c091123.nc
+OK -- found season_wes_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/season_wes.nc
+OK -- found solar_data_file = /fs/cgd/csm/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc
+OK -- found soil_erod = /fs/cgd/csm/inputdata/atm/cam/dst/dst_10x15_c090203.nc
+OK -- found bndtvs = /fs/cgd/csm/inputdata/atm/cam/sst/sst_HadOIBl_bc_10x15_clim_c050526.nc
+OK -- found focndomain = /fs/cgd/csm/inputdata/atm/cam/ocnfrac/domain.camocn.10x15_USGS_070807.nc
+OK -- found tropopause_climo_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/ub/clim_p_trop.nc
+OK -- found fpftcon = /fs/cgd/csm/inputdata/lnd/clm2/pftdata/pft-physiology.c110425.nc
+OK -- found fsnowaging = /fs/cgd/csm/inputdata/lnd/clm2/snicardata/snicar_drdt_bst_fit_60_c070416.nc
+OK -- found fatmlndfrc = /fs/cgd/csm/inputdata/share/domains/domain.lnd.fv10x15_USGS.110713.nc
+OK -- found fsnowoptics = /fs/cgd/csm/inputdata/lnd/clm2/snicardata/snicar_optics_5bnd_c090915.nc
+OK -- found fsurdat = /fs/cgd/csm/inputdata/lnd/clm2/surfdata/surfdata_10x15_simyr2000_c090928.nc
+OK -- found prescribed_ozone_datapath = /fs/cgd/csm/inputdata/atm/cam/ozone
+OK -- found prescribed_ozone_file = /fs/cgd/csm/inputdata/atm/cam/ozone/ozone_1.9x2.5_L26_2000clim_c091112.nc
+OK -- found liqopticsfile = /fs/cgd/csm/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t298_c080428.nc
+OK -- found iceopticsfile = /fs/cgd/csm/inputdata/atm/cam/physprops/iceoptics_c080917.nc
+OK -- found water_refindex_file = /fs/cgd/csm/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
+OK -- found ncdata = /fs/cgd/csm/inputdata/atm/cam/inic/fv/cami_0000-01-01_10x15_L30_c081013.nc
+OK -- found bnd_topo = /fs/cgd/csm/inputdata/atm/cam/topo/USGS-gtopo30_10x15_remap_c050520.nc
+OK -- found ext_frc_specifier for SO2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so2_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for num_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a1_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for num_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_oc_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_elev_2000_c090726.nc
+OK -- found srf_emis_specifier for DMS = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/aerocom_mam3_dms_surf_2000_c090129.nc
+OK -- found srf_emis_specifier for SO2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so2_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for SOAG = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_soag_1.5_surf_2000_c100217.nc
+OK -- found srf_emis_specifier for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for num_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a1_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for num_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_oc_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_surf_2000_c090726.nc
+OK -- found mode_defs for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found mode_defs for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocpho_rrtmg_c101112.nc
+OK -- found mode_defs for soa_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+OK -- found mode_defs for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc
+OK -- found mode_defs for dst_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/dust4_rrtmg_c090521.nc
+OK -- found mode_defs for ncl_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found mode_defs for soa_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+OK -- found mode_defs for ncl_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for dst_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/dust4_rrtmg_c090521.nc
+OK -- found mode_defs for ncl_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for so4_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found rad_climate for mam3_mode1 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc
+OK -- found rad_climate for mam3_mode2 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc
+OK -- found rad_climate for mam3_mode3 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc
+</pre><p>
+The first nine lines of output from <span class="command"><strong>build-namelist</strong></span> inform the user about the files
+that have been created.  There are namelist files for the ice component
+(<code class="filename">ice_in</code>), the river runoff component
+(<code class="filename">rof_in</code>), the land component
+(<code class="filename">lnd_in</code>), the data ocean component
+(<code class="filename">docn_in</code>, <code class="filename">docn_ocn_in</code>), the
+atmosphere component (<code class="filename">atm_in</code>), the driver
+(<code class="filename">drv_in</code>), and a file that is read by both the
+atmosphere and land components (<code class="filename">drv_flds_in</code>).  There
+is also a "stream file" (<code class="filename">docn.stream.txt</code>) which is
+read by the data ocean component.  Note that these filenames are hardcoded
+in the components and cannot be changed without source code modifications.
+</p><p>
+The next section of output is the result of using
+the <strong class="userinput"><code>-test</code></strong> argument to <span class="command"><strong>build-namelist</strong></span>.  As with <span class="command"><strong>configure</strong></span>
+we recommend using this argument whenever a model configuration is being
+run for the first time.  It checks that each of the files that are present
+in the generated namelists can be found in the input data tree whose root
+is given by the <code class="envar">CSMDATA</code> environment variable.  If a file is not found
+then the user will need to take steps to make that file accessible to the
+executing model before a successful run will be possible.  The following is
+a list of possible actions:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Acquire the missing file.  If this is a default file
+    supplied by the <acronym class="acronym">CESM</acronym> project then you will be able to download the
+    file from the project's svn data repository (see 
+    <a class="xref" href="#acquire_inputdata" title="2.1.7. Acquiring Input Datasets">Section 2.1.7, “Acquiring Input Datasets”</a>). </p></li><li class="listitem"><p>If you have write permissions in the directory under
+    $<code class="envar">CSMDATA</code> then add the missing file to the appropriate
+    location there.
+</p></li><li class="listitem"><p>If you don't have write permissions under $<code class="envar">CSMDATA</code> then
+    put the file in a place where you can (for example, your run directory)
+    and rerun <span class="command"><strong>build-namelist</strong></span> with an explicit setting for the file using your
+    specific filepath.</p></li></ul></div><p>
+
+</p><div class="example"><a id="bldnl_ex01"></a><p class="title"><strong>Example 2.1. Use <span class="command">build-namelist</span> to specify a dataset in a non-default location.</strong></p><div class="example-contents"><p>
+Suppose that the 
+<strong class="userinput"><code>-test</code></strong> option informed you that the
+<code class="varname">ncdata</code>
+file <code class="filename">cami_0000-01-01_10x15_L30_c081013.nc</code> was not
+found.  You acquire the file from the data repository, but don't have
+permissions to write in the $<code class="envar">CSMDATA</code> tree.  So you put the file in your
+run directory and issue a <span class="command"><strong>build-namelist</strong></span> command that looks like this:
+</p><pre class="screen">
+% $camcfg/build-namelist -config /work/user/cam_test/bld/config_cache.xml \
+  -namelist "&amp;atm ncdata='/work/user/cam_test/cami_0000-01-01_10x15_L30_c081013.nc' /"
+</pre><p>
+Now the namelist in <code class="filename">atm_in</code> will contain an initial
+file (specified by namelist variable <code class="varname">ncdata</code>) which
+will be found by the executing <acronym class="acronym">CAM</acronym> model.
+</p></div></div><br class="example-break" /></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="acquire_inputdata"></a>2.1.7. Acquiring Input Datasets</h3></div></div></div><p>
+If you are doing a standard production run that is supported in the <acronym class="acronym">CESM</acronym>
+scripts, then using those scripts will automatically invoke a utility to
+acquire needed input datasets.  The information in this section is to aid
+developers using <acronym class="acronym">CAM</acronym> standalone scripts.
+</p><p>
+The input datasets required to run <acronym class="acronym">CAM</acronym> are available from a Subversion
+repository located here:
+<a class="ulink" href="https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/" target="_top">https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/</a>.
+The user name and password for the input data repository will be the same
+as for the code repository (which are provided to users when they register
+to acquire access to the <acronym class="acronym">CESM</acronym> source code repository).
+</p><div class="example"><a id="acquire_inputdata_ex01"></a><p class="title"><strong>Example 2.2. Acquire missing dataset</strong></p><div class="example-contents"><p>
+If you have a list of files that you need to acquire before running
+<acronym class="acronym">CAM</acronym>, then you can either just issue commands interactively, or if your
+list is rather long then you may want to put the commands into a shell
+script.  For example, 
+suppose after running <span class="command"><strong>build-namelist</strong></span> with the <strong class="userinput"><code>-test</code></strong> option
+you find that you need to acquire the file
+<code class="filename">/fs/cgd/csm/inputdata/atm/cam/inic/fv/cami_0000-01-01_10x15_L26_c030918.nc</code>.
+And let's assume that <code class="filename">/fs/cgd/csm/inputdata/</code> is the
+root directory of the inputdata tree, and that you have permissions to
+write there.  If the subdirectory <code class="filename">atm/cam/inic/fv/</code>
+doesn't already exist, then create it.  Finally, issue the following
+commands at an interactive C shell prompt:
+</p><pre class="screen">
+% set svnrepo='https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata'
+% cd /fs/cgd/csm/inputdata/atm/cam/inic/fv
+% svn export $svnrepo/atm/cam/inic/fv/cami_0000-01-01_10x15_L26_c030918.nc
+Error validating server certificate for 'https://svn-ccsm-inputdata.cgd.ucar.edu:443':
+ - The certificate is not issued by a trusted authority. Use the
+   fingerprint to validate the certificate manually!
+ - The certificate hostname does not match.
+ - The certificate has expired.
+Certificate information:
+ - Hostname: localhost.localdomain
+ - Valid: from Feb 20 23:32:25 2008 GMT until Feb 19 23:32:25 2009 GMT
+ - Issuer: SomeOrganizationalUnit, SomeOrganization, SomeCity, SomeState, --
+ - Fingerprint: 86:01:bb:a4:4a:e8:4d:8b:e1:f1:01:dc:60:b9:96:22:67:a4:49:ff
+(R)eject, accept (t)emporarily or accept (p)ermanently? p
+A    cami_0000-01-01_10x15_L26_c030918.nc
+Export complete.
+</pre><p>
+The messages about validating the server certificate will only occur for
+the first file that you export if you answer "p" to the question as in the
+example above.
+</p></div></div><br class="example-break" /></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="run_cam"></a>2.1.8. Running CAM</h3></div></div></div><p>
+Once the namelist files have successfully been produced, and the necessary
+input datasets are available, the model is ready to run.  Usually <acronym class="acronym">CAM</acronym>
+will be run with SPMD parallelization enabled, and this requires setting up
+MPI resources and possibly dealing with batch queues.  These issues will be
+addressed briefly in <a class="xref" href="#run_scripts" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a>.  But for a simple test
+in serial mode executed from an interactive shell, we only need to issue
+the following command:
+</p><pre class="screen">
+% /work/user/cam_test/bld/cam &gt;&amp;! cam.log
+</pre><p>
+The commandline above redirects STDOUT and STDERR to the
+file <code class="filename">cam.log</code>.  The <acronym class="acronym">CAM</acronym> logfile contains a
+substantial amount of information from all components that can be used to
+verify that the model is running as expected.  Things like namelist variable
+settings, input datasets used, and output datasets created are all echoed
+to the log file.  This is the first place to look for problems when a model
+run is unsuccessful.  It is also very useful to include relevant
+information from the logfile when submitting bug reports.
+</p></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="run_scripts"></a>2.2. Sample Run Scripts</h2></div></div></div><p>
+</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="input_datasets"></a>Chapter 3. Input datasets</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#sst_files">3.1. SST and Sea Ice Boundary Files</a></span></dt></dl></div><p>
+The minimal <acronym class="acronym">CAM</acronym> configuration requires an initial conditions dataset.
+But most configurations require in addition to initial conditions a variety
+of boundary condition files.  This chapter will provide an overview of
+<acronym class="acronym">CAM</acronym>'s dataset requirements and some information on the provenance of the
+default datasets.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sst_files"></a>3.1. SST and Sea Ice Boundary Files</h2></div></div></div><p>
+The standard <acronym class="acronym">CAM</acronym> standalone configuration (An F compset when using <acronym class="acronym">CESM</acronym>
+scripts) uses prescribed sea surface temperatures (SST) and sea ice
+fractions from datasets containing either climatological or time series
+data.  The source of this data for <acronym class="acronym">CAM</acronym>'s default datasets is 
+<a class="xref" href="#hurrell2008" title="A New Sea Surface Temperature and Sea Ice Boundary Dataset for the Community Atmosphere Model">Hurrell et al. [2008]</a>.
+</p><p>
+The default <acronym class="acronym">CAM</acronym> datasets have been preconditioned to comply with the <acronym class="acronym">AMIP II</acronym>
+requirement as described in <a class="xref" href="#taylor2000" title="The Sea Surface Temperature and Sea-Ice Concentration Boundary Conditions for AMIP II Simulations">Taylor et al. [2000]</a>.  The requirement
+is that the SST and sea-ice concentration boundary conditions should be
+specified such that the monthly means computed from model output precisely
+agree with the monthly means in the input dataset.
+</p><p>
+The original Hurrell datasets are on a 1 degree grid.  The <acronym class="acronym">AMIP II</acronym> versions
+of these dataset are available as 1 degree datasets and have also been
+spatially interpolated to several spectral and finite volume grid
+resolutions.  The currently available datasets are:
+</p><p>
+Pre-industrial climatology (1870 - 1890):
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_clim_pi_c101029.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_clim_pi_c091020.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_clim_pi_c100128.nc
+</pre><p>
+</p><p>
+Historical Time Series
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_1850_2010_c110526.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_1850_2008_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_1850_2012_c130411.nc
+</pre><p>
+</p><p>
+Present day climatology (1982 - 2001):
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_clim_c101029.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_clim_c061106.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_clim_c061106.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_clim_c040926a.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_clim_c061031.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_clim_c061031.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_256x512_clim_c031031.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_clim_c050526.nc
+</pre><p>
+</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="model_out"></a>Chapter 4. Model Output</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#hist_files">4.1. Model History Files</a></span></dt><dd><dl><dt><span class="sect2"><a href="#hist_general">4.1.1. General Features of History Files</a></span></dt><dt><span class="sect2"><a href="#hist_fields">4.1.2. Default History Fields and Master Field Lists</a></span></dt></dl></dd></dl></div><p>
+<acronym class="acronym">CAM</acronym> produces a series of <acronym class="acronym">NetCDF</acronym> format history files containing
+atmospheric gridpoint data generated during the course of a run. It
+also produces a series of <acronym class="acronym">NetCDF</acronym> format restart files necessary to continue a
+run once it has terminated successfully and a series of initial
+conditions files that may be used to initialize new simulations. The
+contents of these datasets are described below.  
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="hist_files"></a>4.1. Model History Files</h2></div></div></div><p>
+History files contain model data values written at specified frequencies
+during a run.  Options are also available to record averaged,
+instantaneous, maximum, or minimum values on a field-by-field basis.  If
+the user wishes to see a field written at more than one time frequency
+(e.g. daily, hourly), additional history files must be declared.  This
+functionality is available via setting namelist variables.
+</p><p>
+History files may be visualized using various commercial or freely
+available tools.  Examples include the the NCAR Graphics package (via NCL),
+CDAT, FERRET, ncview, MATLAB, and IDL. For a list of software tools
+for interacting with NetCDF files, view the <acronym class="acronym">UNIDATA</acronym> maintained link
+<a class="ulink" href="http://www.unidata.ucar.edu/software/netcdf/software.html" target="_top">
+Software for Manipulating or Displaying NetCDF Data</a>.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="hist_general"></a>4.1.1. General Features of History Files</h3></div></div></div><p>
+<acronym class="acronym">CAM</acronym> writes a sequence of time samples
+to each of its specified history files.  There can
+currently be from one to six history file streams, and each stream has its
+own set of the following attributes:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+fields
+</p></li><li class="listitem"><p>
+output frequency
+</p></li><li class="listitem"><p>
+maximun number of time samples in a file
+</p></li><li class="listitem"><p>
+output precision (4-byte or 8-byte floats)
+</p></li><li class="listitem"><p>
+output domain (global or rectangular subdomains)
+</p></li></ul></div><p>
+
+</p><p>
+Each time sample in a history file has an associated timestamp which
+conforms to the <a class="ulink" href="http://cfconventions.org/" target="_top"><acronym class="acronym">CF</acronym> metadata
+conventions</a>.  The time unit used in <acronym class="acronym">CAM</acronym>'s output files is
+"days since reference date" where the reference date is the run start date
+by default, but can be customized via the <code class="varname">ref_ymd</code> and <code class="varname">ref_tod</code> namelist
+variables.  The variables relevant to the timestamps are the following
+(from the output of the <acronym class="acronym">NetCDF</acronym> <span class="command"><strong>ncdump</strong></span> utility):
+</p><pre class="screen">
+        double time(time) ;
+                time:long_name = "time" ;
+                time:units = "days since 0000-01-01 00:00:00" ;
+                time:calendar = "noleap" ;
+                time:bounds = "time_bnds" ;
+
+        double time_bnds(time, nbnd) ;
+                time_bnds:long_name = "time interval endpoints" ;
+
+        int date(time) ;
+                date:long_name = "current date (YYYYMMDD)" ;
+
+        int datesec(time) ;
+                datesec:long_name = "current seconds of current date" ;
+</pre><p>
+</p><p>
+The variable names, <code class="varname">time</code>, <code class="varname">time_bnds</code>, <code class="varname">date</code>, and <code class="varname">datesec</code> are all
+local conventions.  What makes the history files <acronym class="acronym">CF</acronym> compliant is that the
+time coordinate, <code class="varname">time</code>, can be identified by it's units attribute "days
+since 0000-01-01 00:00:00".  The reference date is in the form YYYY-MM-DD
+HH:MM:SS where YYYY, MM, DD, HH, MM, SS are year, month, day, hour, minute,
+second respectively, and a missing timezone defaults to UTC.  The
+<code class="varname">calendar</code> and <code class="varname">bounds</code> attributes are also part of <acronym class="acronym">CF</acronym>.  The <code class="varname">calendar</code>
+value "<code class="literal">noleap</code>" denotes the Gregorian calendar with no leap years.  The
+<code class="varname">bounds</code> value <code class="varname">time_bnds</code> denotes that the variable with the name
+<code class="varname">time_bnds</code> contains the timestamps that bound the time intervals over
+which an operation such as computing an averager or a minimum or maximum
+value has been applied.  Whether or not the interval specified by
+<code class="varname">time_bnds</code> is relevent depends on the individual variables, e.g., a single
+file can contain both instantaneous and time averaged fields.  The type of
+the time operation that has been applied is contained in the <code class="varname">cell_methods</code>
+attribute of each variable, e.g.,
+
+</p><pre class="screen">
+        float T(time, lev, lat, lon) ;
+                T:mdims = 1 ;
+                T:units = "K" ;
+                T:long_name = "Temperature" ;
+                T:cell_methods = "time: mean" ;
+</pre><p>
+
+The <code class="varname">cell_methods</code> attribute for the temperature variable indicates that it
+is being output as a time averaged field.  If temperature was instantaneous
+then the <code class="varname">cell_methods</code> attribute would not be present since instantaneous
+is the default.
+</p><p>
+The variables <code class="varname">date</code> and <code class="varname">datesec</code> are for convenience only; they don't
+play any role in terms of <acronym class="acronym">CF</acronym> compliance.  The <code class="varname">date</code> variable is an
+integer which is encoded to contain the digits YYYYMMDD where YYYY, MM, and
+DD are the year, month, and day of month respectively.  <code class="varname">datesec</code> is
+the integer number of seconds past 0Z in the current day.  The variables
+<code class="varname">date</code> and <code class="varname">datesec</code> are redundant in the sense that they can be recovered
+from the <code class="varname">time</code> variable via a date calculation using the specified
+calendar.
+</p><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="timestamp_location"></a>Timestamps and time intervals</h4></div></div></div><p>
+<span class="emphasis"><em>The timestamp associated with each time sample in a history file
+is the model time at the end of the timestep during which the model writes
+data to the disk</em></span>.  In the case of instantaneous data the meaning
+is clear.  However when the data is representative of a time interval, the
+timestamp corresponds to <span class="emphasis"><em>the end of the interval</em></span>.
+</p><p>
+This is often a point of confusion when looking at history files.  Since
+the endpoint of one interval is the same as the begining of the next
+interval, when looking at a monthly average for January, which has a
+timestamp of 0Z on Feb 01, at first glance the timestamp would seem to
+correspond to a February average.  Hence it's important for post processing
+tools to make use of the data in the <code class="varname">time_bnds</code> variable so that the time
+interval endpoints can be used to compute an interval midpoint which is the
+more appropriate timestamp to associate with the interval.
+</p><div class="example"><a id="timestamps_mon_avg"></a><p class="title"><strong>Example 4.1. Timestamps for a year of monthly averages</strong></p><div class="example-contents"><p>
+Here are the timestamps and corresponding time interval bounds for a one
+year sequence of monthly averages starting at 0000-01-01 00:00:00.
+
+</p><pre class="screen">
+Month    time    date   datesec   time_bnds
+Jan       31      201      0        0,  31
+Feb       59      301      0       31,  59
+Mar       90      401      0       59,  90
+Apr      120      501      0       90, 120
+May      151      601      0      120, 151
+Jun      181      701      0      151, 181
+Jul      212      801      0      181, 212
+Aug      243      901      0      212, 243
+Sep      273     1001      0      243, 273
+Oct      304     1101      0      273, 304
+Nov      334     1201      0      304, 334
+Dec      365    10101      0      334, 365
+</pre><p>
+</p></div></div><br class="example-break" /></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="multiple_time_samples"></a>Multiple time samples in a single file</h4></div></div></div><p>
+<acronym class="acronym">CAM</acronym>'s default history output is a sequence of monthly averaged fields,
+written with one time sample per file.  This restriction is related to the
+default file naming scheme which uses the string "YYYY-MM" to indicate the
+year and month of the average contained in the file.  However in general it
+is possible to write multiple time samples in any of the history file
+streams that don't contain monthly time intervals.  However there is one
+somewhat unexpected "feature" of multiple time sample files that we wish to
+point out here.
+</p><div class="example"><a id="timestamps_daily_avg"></a><p class="title"><strong>Example 4.2. Timestamps for five daily averages</strong></p><div class="example-contents"><p>
+Here are the timestamps and corresponding time interval bounds for all time
+samples written to a single file from a 5 day run
+starting at 0000-01-01 00:00:00.
+
+</p><pre class="screen">
+Sample    time    date   datesec   time_bnds
+1           0      101     0         0, 0
+2           1      102     0         0, 1
+3           2      103     0         1, 2
+4           3      104     0         2, 3
+5           4      105     0         4, 5
+6           5      106     0         5, 6
+</pre><p>
+</p><p>
+Instead of ending up with a file containing five time samples, i.e., a
+daily average for each of the first five days of January, we get six time
+samples.  The first one looks a bit strange since the time bounds are
+indicating an interval of zero duration.  But in fact that's correct for the
+first time sample which is instantaneous data representing the initial
+conditions which have only been modify by a partial first step up to the
+point of the radiation calculation.  This "extra" time sample from the
+initialization phase is included in every history file except for the
+monthly average file.  An unfortunate consequence of this extra time sample
+is that it's not possible to create a sequence of files with the same
+number of time intervals since the first file in the sequence will always
+have one fewer time interval than the rest due to the inclusion of the time
+zero sample.
+</p></div></div><br class="example-break" /></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="hist_fields"></a>4.1.2. Default History Fields and Master Field Lists</h3></div></div></div><p>
+<acronym class="acronym">CAM</acronym> is set up by default to output a set of fields to a single monthly
+average history file.  There is a much larger set of available fields,
+known as the "master field list," from which the user can choose fields of
+interest to add to the history file via namelist settings.  Both the set of
+default fields and the master field list depend on how <acronym class="acronym">CAM</acronym> is configured.
+Due to the large number of fields we have chosen to make lists of fields
+for some standard configuration available via linked documents rather than
+to inline the lists here.  Each of the field list documents is comprised of
+tables containing the lists of fields that are output by default as well as
+the master field list.
+</p><p><strong>NOTE: </strong>
+The master field list tables may contain some fields that are not actually
+available for output.  The presence of a field in the master field list is
+a necessary, but not sufficient condition that the corresponding field in
+the history file will contain valid data.  This is because in some
+instances fields are added to the master field list (this is done in the
+source code) even though that field may not be computed in the
+configuration that is built (specified via the arguments to <span class="command"><strong>configure</strong></span>).
+When adding non-default fields to the history file it's important to check
+that the fields contain reasonable data before doing a long run.
+</p><p>
+The following links provide tables of default and master field lists for
+some standard model configurations which are characterized by the values of
+the <code class="option">-dyn</code>, <code class="option">-phys</code>,
+and <code class="option">-chem</code> arguments to <span class="command"><strong>configure</strong></span>.  The source of the
+information in these tables is <acronym class="acronym">CAM</acronym>'s default log file, so you can always
+look there for any configuration not included in the list below.
+
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4.html" target="_top">
+    fv, cam4, none</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_trop_bam.html" target="_top">
+    fv, cam4, trop_bam</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam5.html" target="_top">
+    fv, cam5, trop_mam3</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_waccm.html" target="_top">
+    fv, cam4, waccm_mozart</a> (use_case: waccm_2000_cam4)
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_super_fast_llnl.html" target="_top">
+    fv, cam4, super_fast_llnl</a> (use_case: 2000_cam4_super_fast_llnl)
+</p></li></ul></div><p>
+</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="mod_nml"></a>Chapter 5. Physics modifications via the namelist</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#rad_cnst_nml">5.1. Radiative Constituents</a></span></dt><dd><dl><dt><span class="sect2"><a href="#rad_clim_cam4_default">5.1.1. Default <code class="varname">rad_climate</code> for <code class="literal">cam4</code> physics</a></span></dt><dt><span class="sect2"><a href="#rad_clim_cam5_default">5.1.2. Default <code class="varname">rad_climate</code> for <code class="literal">cam5</code> physics</a></span></dt><dt><span class="sect2"><a href="#diag_rad_calc">5.1.3. Diagnostic radiative forcing</a></span></dt></dl></dd></dl></div><p>
+This chapter is comprised of sections that explore how to customize various
+aspects of <acronym class="acronym">CAM</acronym>'s run time configuration.  General instructions for
+building namelists using the <span class="command"><strong>build-namelist</strong></span> utility were given in
+<a class="xref" href="#bldnl_default" title="2.1.6. Building the Namelist">Section 2.1.6, “Building the Namelist”</a>, and details of the <span class="command"><strong>build-namelist</strong></span> utility are in
+<a class="xref" href="#bldnl" title="Appendix B. The build-namelist utility">Appendix B, <em>The <span class="command"><strong>build-namelist</strong></span> utility</em></a>.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="rad_cnst_nml"></a>5.1. Radiative Constituents</h2></div></div></div><p>
+The atmospheric constituents which impact the calculation of radiative
+fluxes and heating rates are referred to as radiative constituents.  A
+single <acronym class="acronym">CAM</acronym> run may potentially contain multiple sources of any given
+constituent, for example, a prognostic version of ozone from a
+chemistry scheme and a prescribed version of ozone from a dataset.  The 
+radiative constituent module was designed to
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+provide an explicit specification of the gas and aerosol constituents that
+impact the radiation calculations, and
+</p></li><li class="listitem"><p>
+allow this specification to be modified via the namelist.
+</p></li></ul></div><p>
+
+A detailed description of the radiative constituent module is found in the
+<a class="ulink" href="../rm5_3/rm.html#rad_cnst_intro" target="_top">Reference Manual</a>.
+</p><p>
+Putting the entire specification of the radiative constituents into the
+namelist results in a certain amount of complexity which is hard to avoid.
+This sections begins with a description of what's in the default
+specifications for both the <strong class="userinput"><code>cam4</code></strong>
+and <strong class="userinput"><code>cam5</code></strong> physics packages.  Following that are some
+examples of how to modify the default namelist settings.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="rad_clim_cam4_default"></a>5.1.1. Default <code class="varname">rad_climate</code> for <code class="literal">cam4</code> physics</h3></div></div></div><p>
+The <code class="literal">cam4</code> physics package uses prescribed gases (except
+for water vapor), and prescribed bulk aerosols.  <code class="varname">rad_climate</code> is the
+namelist variable which holds the specification of radiatively active
+constituents.  The default value of <code class="varname">rad_climate</code> generated by <span class="command"><strong>build-namelist</strong></span> is:
+</p><pre class="screen">
+rad_climate =
+ 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3',
+ 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+ 'N:sulf:/CSMDATA/atm/cam/physprops/sulfate_camrt_c080918.nc',
+ 'N:dust1:/CSMDATA/atm/cam/physprops/dust1_camrt_c080918.nc', 
+ 'N:dust2:/CSMDATA/atm/cam/physprops/dust2_camrt_c080918.nc',
+ 'N:dust3:/CSMDATA/atm/cam/physprops/dust3_camrt_c080918.nc', 
+ 'N:dust4:/CSMDATA/atm/cam/physprops/dust4_camrt_c080918.nc',
+ 'N:bcar1:/CSMDATA/atm/cam/physprops/bcpho_camrt_c080918.nc', 
+ 'N:bcar2:/CSMDATA/atm/cam/physprops/bcphi_camrt_c080918.nc',
+ 'N:ocar1:/CSMDATA/atm/cam/physprops/ocpho_camrt_c080918.nc', 
+ 'N:ocar2:/CSMDATA/atm/cam/physprops/ocphi_camrt_c080918.nc',
+ 'N:SSLTA:/CSMDATA/atm/cam/physprops/ssam_camrt_c080918.nc', 
+ 'N:SSLTC:/CSMDATA/atm/cam/physprops/sscm_camrt_c080918.nc'
+</pre><p>
+The <code class="varname">rad_climate</code> variable takes an array of string values.  Each of the
+strings has three fields separated by colons.  In this example the
+first field of each string is either an <code class="literal">A</code> or an <code class="literal">N</code>.  An <code class="literal">A</code>
+indicates the constituent is advected and an <code class="literal">N</code> indicates the constituent
+is not advected.  Generally a non-advected constituent is one whose value
+is prescribed from a dataset but that's not always the case.  It's also
+possible that a non-advected constituent is one that has been prognosed by
+a chemistry scheme (e.g. the cloud borne species in the modal aerosol
+models) or diagnosed from other prognostic species.  The second field
+in each string is a name that is used to identify the constituent in the
+appropriate internal data structure (there are separate data structures for
+the advected and the non-advected constituents).  The third field is
+either a name from the set of gas specie names recognized by the radiation
+code, or it is an absolute pathname of a dataset that contains physical and
+optical properties of an aerosol.  This third field is how <acronym class="acronym">CAM</acronym>
+distinquishes the gas from the aerosol species.
+</p><p>
+The names used for the prescribed gas species except ozone in both the <code class="literal">cam4</code>
+and <code class="literal">cam5</code> physics packages, i.e., <code class="literal">O2</code>, <code class="literal">CO2</code>,
+<code class="literal">N2O</code>, <code class="literal">CH4</code>, <code class="literal">CFC11</code>, and
+<code class="literal">CFC12</code>, are hardcoded in the
+module <code class="classname">ghg_data</code> which is responsible for setting the values of these
+species in the physics buffer.  
+The name for water vapor, 
+<code class="literal">Q</code>, is hardcoded in a <code class="function">cnst_add</code> subroutine call made
+from subroutine <code class="function">phys_register</code>.  The name for
+ozone, <code class="literal">ozone</code>, is hardcoded in the <code class="classname">prescribed_ozone</code>
+module which is responsible for reading ozone datasets and setting the
+values for <code class="literal">ozone</code> in the physics buffer.
+</p><p>
+The names used to identify the gas species which must be provided to the <code class="literal">cam4</code> radiation code
+are <code class="literal">H2O</code>, <code class="literal">O2</code>, <code class="literal">CO2</code>, <code class="literal">O3</code>,
+<code class="literal">N2O</code>, <code class="literal">CH4</code>, <code class="literal">CFC11</code>, and
+<code class="literal">CFC12</code>.  These names are hardcoded in the module
+<code class="classname">radconstants</code>.  There are no datasets associated with the gas specie names
+because the optical properties of the gases are handled by the radiation
+code directly.
+</p><p>
+The names used to identify the bulk aerosol species are hardcoded in the
+<span class="command"><strong>build-namelist</strong></span> utility and are specified to the <code class="classname">prescribed_aero</code> module by the
+namelist variable <code class="varname">prescribed_aero_specifier</code> as follows:
+
+</p><pre class="screen">
+prescribed_aero_specifier =
+ 'sulf:SO4', 'bcar1:CB1', 'bcar2:CB2', 'ocar1:OC1', 'ocar2:OC2',
+ 'sslt1:SSLT01', 'sslt2:SSLT02', 'sslt3:SSLT03', 'sslt4:SSLT04',
+ 'dust1:DST01', 'dust2:DST02', 'dust3:DST03', 'dust4:DST04'
+</pre><p>
+
+The first name in each of these colon separated pairs is the one the
+<code class="classname">prescribed_aero</code> module adds to the physics buffer, while the second name
+is the variable name in the dataset.  The first names for all the species
+except the sea salt bins (<code class="literal">sslt1</code>,
+..., <code class="literal">sslt4</code>) are the ones that appear in the
+<code class="varname">rad_climate</code> specifier.  Sea salt is treated specially by repartitioning
+the total mass in the four bins into a coarse and an accumulation mode with
+the names <code class="literal">SSLTC</code> and <code class="literal">SSLTA</code>
+respectively.  The repartitioning is done by the <code class="classname">sslt_rebin</code> module.
+</p><p>
+Each of the aerosol species has an associated file which contains physical
+and optical properties.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="rad_clim_cam5_default"></a>5.1.2. Default <code class="varname">rad_climate</code> for <code class="literal">cam5</code> physics</h3></div></div></div><p>
+The <code class="literal">cam5</code> physics package uses the same prescribed gases as the <code class="literal">cam4</code>
+package, but uses prognostic modal aerosols from
+the <code class="literal">trop_mam3</code> chemistry package.  The default value of
+<code class="varname">rad_climate</code> generated by <span class="command"><strong>build-namelist</strong></span> is:
+</p><pre class="screen">
+rad_climate =
+ 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3',
+ 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+ 'M:mam3_mode1:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc',
+ 'M:mam3_mode2:/CSMDATA/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc',
+ 'M:mam3_mode3:/CSMDATA/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc' 
+</pre><p>
+The gas species mass mixing ratios come from the same constituents in
+<code class="literal">cam5</code> as they did in <code class="literal">cam4</code> (but the
+radiative treatment is different since the <code class="literal">rrtmg</code>
+radiation package replaces <code class="literal">camrt</code>).  Hence the 
+<code class="varname">rad_climate</code> strings for the gasses are the same as they
+were in the <code class="literal">cam4</code> physics example.
+</p><p>
+The aerosol constituents in this <code class="varname">rad_climate</code> specification are all in the
+form of modes.  The first field is an <code class="literal">M</code> rather than an <code class="literal">A</code> or an <code class="literal">N</code> to
+indicate that the aerosol constituents are modes.  Roughly, the
+<code class="varname">rad_climate</code> variable lists the aerosol constituents whose contributions
+are added together to compute the total aerosol optical depth.  In the case
+of the bulk aerosols the optical depths due to the individual aerosol
+species are summed to find the total aerosol optical depth.  In the case of
+the modal aerosol model it is the modes that are summed.  Hence each mode
+has an entry in the <code class="varname">rad_climate</code> list, along with a file that contains
+physical and optical properties of the mode as a whole.  In the example
+above there are three modes identified by the names
+<code class="literal">mam3_mode1</code>, <code class="literal">mam3_mode2</code>, and 
+<code class="literal">mam3_mode3</code>.  These names are hardwired in the <span class="command"><strong>build-namelist</strong></span>
+utility and are only used to connect each mode with more detailed
+specification of the constituents that comprise it.  That specification is
+given by the namelist variable <code class="varname">mode_defs</code> and looks as follows for the
+default <code class="literal">trop_mam3</code> chemistry scheme.
+</p><pre class="screen">
+mode_defs =
+ 'mam3_mode1:accum:=',
+   'A:num_a1:N:num_c1:num_mr:+',
+   'A:so4_a1:N:so4_c1:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+   'A:pom_a1:N:pom_c1:p-organic:/CSMDATA/atm/cam/physprops/ocpho_rrtmg_c101112.nc:+', 
+   'A:soa_a1:N:soa_c1:s-organic:/CSMDATA/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+   'A:bc_a1:N:bc_c1:black-c:/CSMDATA/atm/cam/physprops/bcpho_rrtmg_c100508.nc:+', 
+   'A:dst_a1:N:dst_c1:dust:/CSMDATA/atm/cam/physprops/dust4_rrtmg_c090521.nc:+',
+   'A:ncl_a1:N:ncl_c1:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc', 
+ 'mam3_mode2:aitken:=',
+   'A:num_a2:N:num_c2:num_mr:+',
+   'A:so4_a2:N:so4_c2:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+   'A:soa_a2:N:soa_c2:s-organic:/CSMDATA/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+', 
+   'A:ncl_a2:N:ncl_c2:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc',
+ 'mam3_mode3:coarse:=', 
+   'A:num_a3:N:num_c3:num_mr:+',
+   'A:dst_a3:N:dst_c3:dust:/CSMDATA/atm/cam/physprops/dust4_rrtmg_c090521.nc:+', 
+   'A:ncl_a3:N:ncl_c3:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+   'A:so4_a3:N:so4_c3:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc' 
+</pre><p>
+Similarly to the <code class="varname">rad_climate</code> variable, the <code class="varname">mode_defs</code> variable is an
+array of strings which provide a definition for all the modes that may be
+used in a single run.  The modes don't all need to appear in the
+<code class="varname">rad_climate</code> variable; some may only be needed for diagnostic radiation
+calculations which will be discussed in more detail later.
+</p><p>
+There are three different types of strings in <code class="varname">mode_defs</code>:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+The initial string in each mode specification contains three fields.  The
+first is a name that identifies the mode, the second is a name that
+identifies the type of the mode, and the final is the token "=".
+</p></li><li class="listitem"><p>
+One string in each mode specification must contain the names for the mode number
+concentrations in both the interstitial and cloud borne phases.
+</p></li><li class="listitem"><p>
+One or more strings in each mode specification must contain the names for the mass
+mixing ratios in both the interstitial and cloud borne phases of the
+individual constituents that comprise the mode.
+</p></li></ul></div><p>
+
+The example of <code class="varname">mode_defs</code> above has been formatted in a way that makes the
+individual parts of each mode definition stand out.  The actual output from
+the <span class="command"><strong>build-namelist</strong></span> utility is not formatted like this and is a bit harder to
+decipher.
+</p><p>
+What follows is an detailed explanation of the mode definitions in the
+example above.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+There are three modes defined, i.e., <code class="literal">mam3_mode1</code>,
+<code class="literal">mam3_mode2</code>, and <code class="literal">mam3_mode3</code>.  The name of a mode is arbitrary, the only
+requirement being that the same name is used in the <code class="varname">rad_climate</code> (or
+<code class="varname">rad_diag_N</code>) and the <code class="varname">mode_defs</code> variables.  These default mode names for
+<code class="literal">trop_mam3</code> are
+hardcoded in the <span class="command"><strong>build-namelist</strong></span> utility.  The three modes are of type <code class="literal">accum</code>
+(accumulation), <code class="literal">aitken</code>, and <code class="literal">coarse</code> respectively.  The names for the
+mode types are hardcoded in the <code class="classname">modal_aero_data</code> module.
+</p></li><li class="listitem"><p>
+The second line in the definition of each mode contains
+the names of the number concentrations for the interstitial and cloud borne
+phases.  Looking specifically at the definition for <code class="literal">mam3_mode1</code>, the first
+two fields are for the interstitial phase and specify that the name
+<code class="literal">num_a1</code> is an advected constituent (<code class="literal">A</code>), while the third and fourth
+fields are for the cloud borne phase and specify that the name <code class="literal">num_c1</code> is
+a non-advected constituent (<code class="literal">N</code>).  The names of the number concentration
+constituents are hardcoded in the <code class="classname">modal_aero_initialize_data</code> module.  The
+fifth field, <code class="literal">num_mr</code>, is a fixed token recognized by the 
+parser of the <code class="varname">mode_defs</code> strings (in the <code class="classname">rad_constituents</code> module) as an
+indicator that the string contains the number concentration names.  The
+final token in the string, a "+", signals to the parser that the definition
+of the current mode continues in the next string.
+</p></li><li class="listitem"><p>
+The third through final strings in each mode definition
+contain specifications for each specie in the mode.  Looking again at the
+definition of <code class="literal">mam3_mode1</code>, the first specie is of type <code class="literal">sulfate</code> which is
+indicated by the fifth field in that string.  The specie type names are
+hardcoded in the <code class="classname">modal_aero_data</code> module.  The first two fields in the
+string provide the name for the mass mixing ratio of the specie in the
+interstitial phase (<code class="literal">so4_a1</code>), and indicate that it is an advected
+constituent (<code class="literal">A</code>).  Fields three and four specify that the name of the mass
+mixing ratio for the cloud borne phase is <code class="literal">so4_c1</code>, and that this is a
+non-advected constituent (<code class="literal">N</code>).  The names of the mass mixing ratio
+constituents are hardcoded in the <code class="classname">modal_aero_initialize_data</code> module.  The
+sixth field in the string is the absolute pathname of the file containing
+physical and optical properties of the specie.  The last field in the
+string contains the token "+" which again indicates that the definition of
+the mode continues in the next string.
+</p></li></ul></div><p>
+
+</p></div><div class="example"><a id="modify_rad_clim"></a><p class="title"><strong>Example 5.1. Modify a radiatively active gas</strong></p><div class="example-contents"><p>
+Suppose that we wish to modify the distribution of water vapor that is
+seen by the radiation calculations.  More specifically, consider modifying
+just the stratospheric part of the water vapor distribution while leaving
+the troposheric distribution unchanged.
+To modify a radiatively active gas two things must be done.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+Change the name (and possibly the type) of the constituent which is
+providing the mass mixing ratios to the radiation code.  This is a simple
+modification to the <code class="varname">rad_climate</code> value.
+</p></li><li class="listitem"><p>
+Make the necessary modifications to <acronym class="acronym">CAM</acronym> to provide the new constituent
+mixing ratios.  A likely scenario for this example would be to create a new
+module which is responsible for adding the modified water vapor field to
+the physics buffer.  This module could leverage the existing <code class="classname">tropopause</code>
+module to determine the vertical levels where changes need to be made.  It
+could also leverage existing modules for reading and interpolating prescribed
+constituents, for example the <code class="classname">prescribed_ozone</code> module.
+Details of how to make this type of source code modification won't be
+covered here.
+</p></li></ul></div><p>
+
+</p><p>
+Now suppose the source code modifications have been made and the new water
+vapor constituent is in the physics buffer with the name <code class="literal">Q_fixstrat</code>.  The
+best way to modify the <code class="varname">rad_climate</code> variable is to start from a value that
+was generated by <span class="command"><strong>build-namelist</strong></span> for the configuration of interest but with the
+default water vapor, and then to modify that version of <code class="varname">rad_climate</code> and
+add the modified version to the <span class="command"><strong>build-namelist</strong></span> command in our run script.  Note
+that the entire value of <code class="varname">rad_climate</code> must be specified.  There is no way
+to just modify one individual string in the array of string values.
+If we are running with a default <code class="literal">cam5</code> configuration then the customized
+namelist would be generated by the following command.
+</p><pre class="screen">
+$camcfg/build-namelist ... \
+ -namelist "&amp;cam ... 
+ rad_climate =
+ 'N:Q_fixstrat:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3',
+ 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+ 'M:mam3_mode1:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc',
+ 'M:mam3_mode2:/CSMDATA/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc',
+ 'M:mam3_mode3:/CSMDATA/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc'  /"
+</pre><p>
+The only difference between this version of <code class="varname">rad_climate</code> and the default
+is that the string for water vapor:
+</p><pre class="screen">
+'A:Q:H2O'
+</pre><p>
+has been replaced by
+</p><pre class="screen">
+'N:Q_fixstrat:H2O'
+</pre><p>
+In addition to specifying the new name for the constituent (<code class="literal">Q_fixstrat</code>), it was
+necessary to replace the <code class="literal">A</code> by an <code class="literal">N</code> since the new constituent is not
+advected, even though it is derived in part for the constituent <code class="literal">Q</code> which
+is advected.
+</p></div></div><br class="example-break" /><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="diag_rad_calc"></a>5.1.3. Diagnostic radiative forcing</h3></div></div></div><p>
+There are several namelist variables available for direct radiative forcing
+calculations in the <code class="literal">cam5</code> physics package.  But note that these online
+calculations are enabled for <acronym class="acronym">RRTMG</acronym> only and not for the <acronym class="acronym">CAM_RT</acronym>
+radiation code used in the <code class="literal">cam4</code> and earlier physics packages.  The
+ability to do radiative forcing calculations with <acronym class="acronym">CAM_RT</acronym> is provided by
+using the offline tool <acronym class="acronym">PORT</acronym> which is documented
+<a class="ulink" href="https://wiki.ucar.edu/display/port/PORT" target="_top">here</a>, and
+described in the paper <a class="xref" href="#conley2013" title="PORT, a CESM tool for the diagnosis of radiative forcing">Conley et al. [2013]</a>.  The <acronym class="acronym">PORT</acronym>
+functionality is included in the <acronym class="acronym">CESM</acronym> release code.
+</p><p>
+Namelist variables are available for ten radiative forcing calculations;
+<code class="varname">rad_diag_1</code>, ..., <code class="varname">rad_diag_10</code>.  The values of these variables use the
+exact same format as the <code class="varname">rad_climate</code> variable.  When a diagnostic
+calculation is requested, for example by setting the variable <code class="varname">rad_diag_1</code>,
+then the default history output variables for the radiative heating rates
+and fluxes will be output for the diagnostic calculation as well.  The
+names of the variables for the diagnostic calculation will be distinquished
+from those that affect the climate simulation by appending the strings
+'<code class="literal">_d1</code>', ..., '<code class="literal">_d10</code>' for diagnostic calculations specified by <code class="varname">rad_diag_1</code>
+through <code class="varname">rad_diag_10</code> respectively.
+</p><div class="example"><a id="aerosol_radforce"></a><p class="title"><strong>Example 5.2. Aerosol radiative forcing</strong></p><div class="example-contents"><p>
+To compute the total aerosol radiative forcing we need a diagnostic
+calculation in which all the aerosols have been removed.  To do this we
+start from the default setting for the <code class="varname">rad_climate</code> variable, use that as
+the initial setting for <code class="varname">rad_diag_1</code>, and then edit that initial setting to
+remove the aerosols.  In the <code class="literal">cam5</code> physics this involves removing the
+specification of the three modes, so we end up with a setting in our
+<span class="command"><strong>build-namelist</strong></span> command that looks like this
+</p><pre class="screen">
+$camcfg/build-namelist ... \
+ -namelist "&amp;cam ... 
+ rad_diag_1 =
+ 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3',
+ 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12' /"
+</pre><p>
+</p></div></div><br class="example-break" /><div class="example"><a id="bc_radforce"></a><p class="title"><strong>Example 5.3. Black carbon radiative forcing</strong></p><div class="example-contents"><p>
+To compute the radiative forcing of a single aerosol specie we need a diagnostic
+calculation in which that specie has been removed from all modes that
+contain it.  This is a bit more complicated that the previous example where
+we were able to remove entire modes from the value of <code class="varname">rad_diag_1</code>.
+Removing species from modes requires us to create new mode definitions.
+Using black carbon as a specific example, we see from the default
+definitions of the <code class="literal">trop_mam3</code> modes
+(<a class="xref" href="#rad_clim_cam5_default" title="5.1.2. Default rad_climate for cam5 physics">Section 5.1.2, “Default <code class="varname">rad_climate</code> for <code class="literal">cam5</code> physics”</a>) that black carbon is only
+contained in <code class="literal">mam3_mode1</code>.  The best way to create the definition of a new
+mode which doesn't contain black carbon is to copy the definition of
+<code class="literal">mam3_mode1</code>, change its name, and remove the black carbon from the
+definition.  Then use this new mode in place of <code class="literal">mam3_mode1</code> in the
+specifier for <code class="varname">rad_diag_1</code>.  Below is an outline of our <span class="command"><strong>build-namelist</strong></span> command
+with just the <code class="varname">mode_defs</code> and <code class="varname">rad_diag_1</code> variables listed.
+
+</p><pre class="screen">
+$camcfg/build-namelist ... \
+ -namelist "&amp;cam ... 
+mode_defs =
+ 'mam3_mode1:accum:=',
+   'A:num_a1:N:num_c1:num_mr:+',
+   'A:so4_a1:N:so4_c1:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+   'A:pom_a1:N:pom_c1:p-organic:/CSMDATA/atm/cam/physprops/ocpho_rrtmg_c101112.nc:+', 
+   'A:soa_a1:N:soa_c1:s-organic:/CSMDATA/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+   'A:bc_a1:N:bc_c1:black-c:/CSMDATA/atm/cam/physprops/bcpho_rrtmg_c100508.nc:+', 
+   'A:dst_a1:N:dst_c1:dust:/CSMDATA/atm/cam/physprops/dust4_rrtmg_c090521.nc:+',
+   'A:ncl_a1:N:ncl_c1:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc', 
+ 'mam3_mode2:aitken:=',
+   'A:num_a2:N:num_c2:num_mr:+',
+   'A:so4_a2:N:so4_c2:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+   'A:soa_a2:N:soa_c2:s-organic:/CSMDATA/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+', 
+   'A:ncl_a2:N:ncl_c2:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc',
+ 'mam3_mode3:coarse:=', 
+   'A:num_a3:N:num_c3:num_mr:+',
+   'A:dst_a3:N:dst_c3:dust:/CSMDATA/atm/cam/physprops/dust4_rrtmg_c090521.nc:+', 
+   'A:ncl_a3:N:ncl_c3:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+   'A:so4_a3:N:so4_c3:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+ 'mam3_mode1_noBC:accum:=',
+   'A:num_a1:N:num_c1:num_mr:+',
+   'A:so4_a1:N:so4_c1:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+   'A:pom_a1:N:pom_c1:p-organic:/CSMDATA/atm/cam/physprops/ocpho_rrtmg_c101112.nc:+', 
+   'A:soa_a1:N:soa_c1:s-organic:/CSMDATA/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+   'A:dst_a1:N:dst_c1:dust:/CSMDATA/atm/cam/physprops/dust4_rrtmg_c090521.nc:+',
+   'A:ncl_a1:N:ncl_c1:seasalt:/CSMDATA/atm/cam/physprops/ssam_rrtmg_c100508.nc'
+
+ rad_diag_1 =
+ 'A:Q:H2O', 'N:O2:O2', 'N:CO2:CO2', 'N:ozone:O3',
+ 'N:N2O:N2O', 'N:CH4:CH4', 'N:CFC11:CFC11', 'N:CFC12:CFC12',
+ 'M:mam3_mode1_noBC:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc',
+ 'M:mam3_mode2:/CSMDATA/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc',
+ 'M:mam3_mode3:/CSMDATA/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc'  /"
+</pre><p>
+
+Note that we just appended the new mode definition, <code class="literal">mam3_mode1_noBC</code>, to
+the end of the modes used in the climate calculation, and then used that
+mode in place of <code class="literal">mam3_mode1</code> in the <code class="varname">rad_diag_1</code> value.
+
+</p></div></div><br class="example-break" /></div></div></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="config"></a>Appendix A. The <span class="command"><strong>configure</strong></span> utility</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#config_cesm">A.1. How <span class="command"><strong>configure</strong></span> is called from the <acronym class="acronym">CESM</acronym> scripts</a></span></dt><dt><span class="sect1"><a href="#config_opts">A.2. Arguments to <span class="command"><strong>configure</strong></span></a></span></dt><dd><dl><dt><span class="sect2"><a href="#config_cam">A.2.1. CAM configuration</a></span></dt><dt><span class="sect2"><a href="#config_scam">A.2.2. SCAM configuration</a></span></dt><dt><span class="sect2"><a href="#config_parallel">A.2.3. CAM parallelization</a></span></dt><dt><span class="sect2"><a href="#config_cice">A.2.4. CAM parallelization when running standalone with CICE</a></span></dt><dt><span class="sect2"><a href="#config_general">A.2.5. General options</a></span></dt><dt><span class="sect2"><a href="#config_surface_comp">A.2.6. Surface components</a></span></dt><dt><span class="sect2"><a href="#config_standalone_bld">A.2.7. CAM standalone build</a></span></dt></dl></dd><dt><span class="sect1"><a href="#config_env">A.3. Environment variables recognized by <span class="command"><strong>configure</strong></span></a></span></dt></dl></div><p>
+The <span class="command"><strong>configure</strong></span> utility provides a flexible way to specify any
+configuration of <acronym class="acronym">CAM</acronym>.  The best way to communicate to another user how
+you built <acronym class="acronym">CAM</acronym> is to simply supply them with the <span class="command"><strong>configure</strong></span> commandline
+that was used (along with the source code version).
+</p><p>
+<span class="command"><strong>configure</strong></span> has two distinct operating modes which correspond to the two distinct
+ways of building <acronym class="acronym">CAM</acronym>, i.e., either using the <acronym class="acronym">CESM</acronym> scripts, or using <acronym class="acronym">CAM</acronym>
+standalone scripts.  By default <span class="command"><strong>configure</strong></span> runs in the mode used by the
+standalone scripts.  In this mode <span class="command"><strong>configure</strong></span> is responsible for setting
+the filepaths and CPP macros needed to build not only <acronym class="acronym">CAM</acronym>, but all the
+components of the standalone configuration including the land, sea ice,
+data ocean, and driver.  In the mode used when building <acronym class="acronym">CAM</acronym> from the <acronym class="acronym">CESM</acronym>
+scripts <span class="command"><strong>configure</strong></span> is only responsible for setting the filepaths and CPP
+macros needed to build a library containing just the <acronym class="acronym">CAM</acronym> component.
+</p><p>
+When configuring a build of standalone <acronym class="acronym">CAM</acronym>, <span class="command"><strong>configure</strong></span> produces the files
+<code class="filename">Filepath</code> and <code class="filename">Makefile</code>.  In addition, a configuration cache file
+(<code class="filename">config_cache.xml</code> by default) is written which contains the values of all the
+configuration parameters set by <span class="command"><strong>configure</strong></span>.  The files produced by
+<span class="command"><strong>configure</strong></span> are written to the directory where <acronym class="acronym">CAM</acronym> will be built, which
+by default is the directory from which <span class="command"><strong>configure</strong></span> is executed, but can be
+specified to be elsewhere (see
+the <a class="link" href="#cam_bld"><code class="option">-cam_bld</code></a> option).
+</p><p>
+When configuring <acronym class="acronym">CAM</acronym> for a build using the <acronym class="acronym">CESM</acronym> scripts,
+<span class="command"><strong>configure</strong></span> doesn't write a Makefile, but instead writes a file
+<code class="filename">CCSM_cppdefs</code> which is used by the <acronym class="acronym">CESM</acronym> Makefile.
+Also, the <code class="filename">Filepath</code> file only contains paths for the <acronym class="acronym">CAM</acronym> component.
+</p><p>
+In both modes <span class="command"><strong>configure</strong></span> is responsible for setting the correct filepaths
+and CPP macros to produce the desired configuration of <acronym class="acronym">CAM</acronym>'s dynamical
+core, physics parameterizations and chemistry scheme.  The options
+that are involved in making these choices are described in
+<a class="xref" href="#config_cam" title="A.2.1. CAM configuration">Section A.2.1, “CAM configuration”</a> below.  The subsequent sections describe
+options used by the <acronym class="acronym">CAM</acronym> standalone scripts.
+</p><p>
+<span class="command"><strong>configure</strong></span> will optionally perform tests to validate that the <acronym class="acronym">Fortran</acronym>
+compiler is operational and <acronym class="acronym">Fortran</acronym> 90 compliant, and that the linker can
+resolve references to required external libraries (<acronym class="acronym">NetCDF</acronym> and possibly
+<acronym class="acronym">MPI</acronym>).  These tests will point out problems with the user environment in a
+way that is much easier to understand than looking at the output from a
+failed build of <acronym class="acronym">CAM</acronym>.  We strongly recommend that the first time <acronym class="acronym">CAM</acronym> is
+built on any new machine, <span class="command"><strong>configure</strong></span> should be invoked to execute these
+tests (see the <a class="link" href="#cfg_test"><code class="option">-test</code></a> option).
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="config_cesm"></a>A.1. How <span class="command"><strong>configure</strong></span> is called from the <acronym class="acronym">CESM</acronym> scripts</h2></div></div></div><p>
+The <acronym class="acronym">CESM</acronym> scripts access <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> via the script 
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/cam.buildnml.csh</code>.  The
+<code class="filename">cam.buildnml.csh</code> script acts as the interface between
+the <acronym class="acronym">CESM</acronym> scripts and <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> utilities.
+</p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="config_opts"></a>A.2. Arguments to <span class="command"><strong>configure</strong></span></h2></div></div></div><p>
+All configuration options can be specified using command line arguments to
+<span class="command"><strong>configure</strong></span> and this is the recommended practice.  Options specified via
+command line arguments take precedence over options specified any other way.
+</p><p>
+At the next level of precedence a few options can be specified by setting
+environment variables.  And finally, at the lowest precedence, many options
+have hard-coded defaults.  Most of these are located in the files
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/config_files/defaults_*.xml</code>.
+A few that depend on the values of other options are set by logic
+contained in the <span class="command"><strong>configure</strong></span> script (a <acronym class="acronym">Perl</acronym> script). The hard-coded defaults
+are designed to produce the standard production configurations of CAM.
+</p><p>
+The configure script allows the user to specify compile time options such as 
+model resolution, dynamical core type, additional compiler flags, and many other 
+aspects. The user can type <strong class="userinput"><code>configure --help</code></strong> for a complete
+list of available options.
+</p><p>
+The options may all be specified with either one or two leading
+dashes, e.g., <code class="option">-help</code> or <code class="option">--help</code>.  The few
+options that can be expressed as single letter switches may not be clumped,
+e.g., <code class="option">-h -s -v</code> may <span class="emphasis"><em>NOT</em></span> be expressed
+as <code class="option">-hsv</code>.  When multiple options are listed separated by a
+vertical bar either version may be used.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_cam"></a>A.2.1. CAM configuration</h3></div></div></div><p>
+<span class="emphasis"><em>These options will have an effect whether running <acronym class="acronym">CAM</acronym> as part of <acronym class="acronym">CESM</acronym> or
+running in a <acronym class="acronym">CAM</acronym> standalone mode:</em></span>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-[no]age_of_air_trcs</code></span></dt><dd><p>
+Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.
+</p></dd><dt><span class="term"><a id="carma"></a><code class="option">-carma</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Build <acronym class="acronym">CAM</acronym> with specified CARMA microphysics model
+[ <code class="constant">none</code> | <code class="constant">bc_strat</code> | <code class="constant">cirrus</code> |
+  <code class="constant">dust</code> | <code class="constant">meteor_smoke</code> | <code class="constant">pmc</code> |
+  <code class="constant">sea_salt</code> | <code class="constant">sulfate</code> | <code class="constant">test_detrain</code> |
+  <code class="constant">test_growth</code> | <code class="constant">test_passive</code> |
+  <code class="constant">test_radiative</code> | <code class="constant">test_swelling</code> |
+  <code class="constant">test_tracers</code> ].
+Default: <code class="constant">none</code>.
+</p></dd><dt><span class="term"><a id="chem"></a><code class="option">-chem</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Build <acronym class="acronym">CAM</acronym> with specified prognostic chemistry package 
+[ <code class="constant">waccm_mozart</code> |
+  <code class="constant">waccm_mozart_sulfur</code> |
+  <code class="constant">waccm_ghg</code> | <code class="constant">trop_mozart</code> |
+  <code class="constant">trop_mozart_mam3</code> |
+  <code class="constant">trop_mozart_soa</code> | <code class="constant">trop_ghg</code> |
+  <code class="constant">trop_bam</code> | <code class="constant">trop_mam3</code> |
+  <code class="constant">trop_mam7</code> | <code class="constant">super_fast_llnl</code> |
+  <code class="constant">super_fast_llnl_mam3</code> | <code class="constant">trop_strat_soa</code> |
+  <code class="constant">trop_strat_mam3</code> | <code class="constant">trop_strat_mam7</code> |
+  <code class="constant">none</code> ].
+Default: <code class="constant">trop_mam3</code> if the physics package
+  is <code class="constant">cam5</code>, otherwise default is <code class="constant">none</code>.
+</p></dd><dt><span class="term"><code class="option">-clubb_sgs</code></span></dt><dd><p>
+Switch to turn on the CLUBB_SGS package.
+Default: Off.
+</p></dd><dt><span class="term"><code class="option">-co2_cycle</code></span></dt><dd><p>
+This option is usually used with the <code class="option">-ccsm_seq</code> option as
+part of the configuration for running biogeochemistry (BGC) compsets.
+It modifies the CAM configuration by increasing the number of advected
+constituents by 4. 
+Default: not set.
+</p></dd><dt><span class="term"><code class="option">-comp_intf</code> [<code class="constant">mct</code>
+ | <code class="constant">esmf</code>]</span></dt><dd><p>
+Specify the component interfaces
+Default: <code class="constant">mct</code>.
+</p></dd><dt><span class="term"><code class="option">-cosp</code></span></dt><dd><p>
+Enable the COSP simulator package.
+Default: not set.
+</p></dd><dt><span class="term"><code class="option">-cppdefs</code> <strong class="userinput"><code>&lt;string&gt;</code></strong></span></dt><dd><p>
+A string of user specified CPP defines appended to
+Makefile defaults.  E.g. <code class="option">-cppdefs</code> <code class="constant">'-DVAR1
+    -DVAR2'</code>.  Note that a string containing whitespace will need
+to be quoted.
+</p></dd><dt><span class="term"><code class="option">-dyn</code> [<code class="constant">eul</code> |
+ <code class="constant">sld</code> | <code class="constant">fv</code>
+ | <code class="constant">se</code> ]</span></dt><dd><p>
+Build <acronym class="acronym">CAM</acronym> with specified dynamical core.
+Default: <code class="constant">fv</code>.
+</p></dd><dt><span class="term"><code class="option">-edit_chem_mech</code></span></dt><dd><p>
+Invokes <code class="envar">CAMCHEM_EDITOR</code> to allow the user to edit the chemistry mechanism file.
+</p></dd><dt><span class="term"><code class="option">-hgrid</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Specify horizontal grid.  For spectral grids
+use <code class="constant">nlatxnlon</code>
+where <code class="constant">nlat</code> and <code class="constant">nlon</code> are the
+number of latitude and longitude grid points respectively in the global Gaussian
+grid (e.g., <code class="constant">64x128</code>).  For FV grids use <code class="constant">dlatxdlon</code>
+where <code class="constant">dlat</code> and <code class="constant">dlon</code> are the grid
+cell size in degrees for latitude and longitude respectively
+(e.g., <code class="constant">1.9x2.5</code>).  For SE grids 
+(cubed sphere) use <code class="constant">neNnpM</code>
+where <code class="constant">N</code> is the number of elements on an edge of the
+cube, and <code class="constant">M</code> is the number of Gauss points on the edge
+of an element (e.g., <code class="constant">ne30np4</code>).
+</p></dd><dt><span class="term"><code class="option">-microphys</code> [<code class="constant">mg1</code> | 
+<code class="constant">mg1.5</code> | <code class="constant">rk</code>]</span></dt><dd><p>
+Specify the microphysics package.
+Default: <code class="constant">mg1</code> if the physics package
+is <code class="constant">cam5</code>, otherwise <code class="constant">rk</code>.
+</p></dd><dt><span class="term"><code class="option">-nadv</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Set total number of advected species to <strong class="userinput"><code>&lt;n&gt;</code></strong>.  If <code class="option">-nadv</code>
+is set to a larger number than is required by the selected physics and
+chemistry schemes, then the remainder will automatically be used for test
+tracers (N.B. the namelist variable <code class="varname">tracers_flag</code> must be
+set to <code class="constant">.true.</code> to enable the test tracer code.)
+Default: set to the number required by the
+selected physics and chemistry schemes.
+</p></dd><dt><span class="term"><code class="option">-nadv_tt</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Set number of advected test tracers to <strong class="userinput"><code>&lt;n&gt;</code></strong>.  
+Setting the number of test tracers explicitly with this option allows <span class="command"><strong>build-namelist</strong></span> to
+automatically enable the test tracer code by setting
+the <code class="varname">tracers_flag</code> namelist variable.
+Default: 0.
+</p></dd><dt><span class="term"><code class="option">-nlev</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Set number of vertical layers to <strong class="userinput"><code>&lt;n&gt;</code></strong>.
+Default: <code class="constant">30</code> if the physics package
+is <code class="constant">cam5</code>, <code class="constant">ideal</code>,
+or <code class="constant">adiabatic</code>.  <code class="constant">26</code> if the physics package
+is <code class="constant">cam4</code>.  <code class="constant">66</code> if the chemistry package
+is <code class="constant">waccm_*</code>.  <code class="constant">81</code> if
+the <code class="option">-waccmx</code> is used.
+</p></dd><dt><span class="term"><code class="option">-offline_dyn</code></span></dt><dd><p>
+Switch enables the use of offline driver for FV dycore.
+Default: not set.
+</p></dd><dt><span class="term"><code class="option">-pbl</code> [<code class="constant">uw</code>
+    | <code class="constant">hb</code> | <code class="constant">hbr</code> | <code class="constant">clubb_sgs</code>]</span></dt><dd><p>
+PBL package.
+Default: <code class="constant">uw</code> if the physics package
+is <code class="constant">cam5</code>; <code class="constant">clubb_sgs</code> if the <code class="option">-clubb_sgs</code>
+switch is set; otherwise <code class="constant">hb</code>.
+</p></dd><dt><span class="term"><code class="option">-pcols</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Set maximum number of grid columns in a chunk to <strong class="userinput"><code>&lt;n&gt;</code></strong>.  Default: 16.
+</p></dd><dt><span class="term"><code class="option">-pergro</code></span></dt><dd><p>
+Switch enables building CAM for perturbation growth tests.  Only valid with
+<code class="constant">cam3</code> and <code class="constant">cam4</code> physics packages.
+</p></dd><dt><span class="term"><code class="option">-phys</code> [<code class="constant">cam3</code> |
+ <code class="constant">cam4</code> | <code class="constant">cam5</code> | 
+ <code class="constant">ideal</code> | <code class="constant">adiabatic</code>]</span></dt><dd><p>
+Physics package. Default: <code class="constant">cam5</code>.
+</p></dd><dt><span class="term"><code class="option">-prog_species</code> <strong class="userinput"><code>&lt;list&gt;</code></strong></span></dt><dd><p>
+Comma separated list of prognostic mozart species packages.
+Currently available: <code class="constant">DST,SSLT,SO4,GHG,OC,BC,CARBON16</code>
+</p></dd><dt><span class="term"><code class="option">-psubcols</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Set maximum number of subcolumns in a grid column to <strong class="userinput"><code>&lt;n&gt;</code></strong>.  Default: 1.
+</p></dd><dt><span class="term"><code class="option">-rad</code> [<code class="constant">rrtmg</code>
+    | <code class="constant">camrt</code>]</span></dt><dd><p>
+Radiation package.
+Default: <code class="constant">rrtmg</code> if the physics package
+is <code class="constant">cam5</code>, otherwise <code class="constant">camrt</code>.
+</p></dd><dt><span class="term"><code class="option">-usr_mech_infile</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Pathname of the user supplied chemistry mechanism file.
+</p></dd><dt><span class="term"><code class="option">-waccm_phys</code></span></dt><dd><p>
+Switch enables the use of WACCM physics in any chemistry configuration.  
+Default: Off unless one of the waccm chemistry options is chosen then
+it's automatically turned on.
+</p></dd><dt><span class="term"><code class="option">-waccmx</code></span></dt><dd><p>
+Build CAM/WACCM with WACCM upper Thermosphere/Ionosphere extended package.
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_scam"></a>A.2.2. SCAM configuration</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-camiop</code></span></dt><dd><p>
+Configure <acronym class="acronym">CAM</acronym> to generate an IOP file that can be used to drive SCAM.
+This switch only works with the Eulerian dycore.
+</p></dd><dt><span class="term"><code class="option">-scam</code></span></dt><dd><p>
+Compiles model in single column mode.  Only works with Eulerian dycore.
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_parallel"></a>A.2.3. CAM parallelization</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-[no]smp</code></span></dt><dd><p>
+Switch on [off] SMP parallelism (<acronym class="acronym">OpenMP</acronym>).  This option can be used when
+building a model that doesn't contain <acronym class="acronym">CICE</acronym>.  It allows building an
+executable whose thread count can be set at run time.
+</p></dd><dt><span class="term"><code class="option">-[no]spmd</code></span></dt><dd><p>
+Switch on [off] SPMD parallelism (<acronym class="acronym">MPI</acronym>).  This option can be used when
+building a model that doesn't contain <acronym class="acronym">CICE</acronym>.  It allows building an
+executable whose task count can be set at run time.
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_cice"></a>A.2.4. CAM parallelization when running standalone with CICE</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-ntasks</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+This option must be used to specify <acronym class="acronym">SPMD</acronym> parallelism when the <acronym class="acronym">CICE</acronym>
+component is present.  <strong class="userinput"><code>&lt;n&gt;</code></strong> is the
+number of <acronym class="acronym">MPI</acronym> tasks.  Setting ntasks &gt; 0 implies <code class="option">-spmd</code>.
+Use <code class="option">-nospmd</code> to turn off 
+linking with an MPI library.  To configure for pure <acronym class="acronym">MPI</acronym> specify
+"<code class="option">-ntasks N -nosmp</code>". 
+ntasks is used by <acronym class="acronym">CICE</acronym> to determine default grid decompositions which
+must be specified at build time.
+</p></dd><dt><span class="term"><code class="option">-nthreads</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+This option must be used to specify <acronym class="acronym">SMP</acronym> parallelism when the <acronym class="acronym">CICE</acronym>
+component is present.  <strong class="userinput"><code>&lt;n&gt;</code></strong> is the
+number of <acronym class="acronym">OpenMP</acronym> threads per process.  Setting nthreads &gt; 0
+implies <code class="option">-smp</code>.  Use <code class="option">-nosmp</code> to 
+turn off compilation of OMP directives.  For pure <acronym class="acronym">OpenMP</acronym> set
+"<code class="option">-nthreads N -nospmd</code>". 
+nthreads is used by <acronym class="acronym">CICE</acronym> to determine default grid decomposition which
+must be specified at build time.
+</p></dd></dl></div><p><strong>NOTE: </strong>
+When <acronym class="acronym">CAM</acronym> is running standalone with <acronym class="acronym">CICE</acronym> the default <acronym class="acronym">CICE</acronym>
+decomposition is determined from the values of
+the <code class="option">-ntasks</code> and <code class="option">-nthreads</code> arguments.
+The user also has the ability to explicitly set the <acronym class="acronym">CICE</acronym>
+decomposition using the following four arguments.  If any of these arguments is
+set then <span class="emphasis"><em>ALL FOUR</em></span> must be set.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-cice_bsizex</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+<acronym class="acronym">CICE</acronym> block size in longitude dimension.  This size must evenly
+divide the number of longitude points in the global grid.
+</p></dd><dt><span class="term"><code class="option">-cice_bsizey</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+<acronym class="acronym">CICE</acronym> block size in latitude dimension.  This size must evenly
+divide the number of latitude points in the global grid.
+</p></dd><dt><span class="term"><code class="option">-cice_maxblocks</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Maximum number of <acronym class="acronym">CICE</acronym> blocks per process.
+</p></dd><dt><span class="term"><code class="option">-cice_decomptype</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+<acronym class="acronym">CICE</acronym> decomposition type [ <code class="constant">cartesian</code> | <code class="constant">spacecurve</code> |
+<code class="constant">roundrobin</code> ].
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_general"></a>A.2.5. General options</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-cache</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Name of output cache file.  Default: <code class="filename">config_cache.xml</code>.
+</p></dd><dt><span class="term"><code class="option">-cachedir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Name of directory where output cache file is written.  Default: <acronym class="acronym">CAM</acronym> build directory.
+</p></dd><dt><span class="term"><code class="option">-ccsm_seq</code></span></dt><dd><p>
+Switch to specify that <acronym class="acronym">CAM</acronym> is being built from within the <acronym class="acronym">CESM</acronym>
+scripts.  This produces Filepath and CCSM_cppdefs files that contains only
+the paths and CPP macros needed to build a library for the <acronym class="acronym">CAM</acronym> component.
+</p></dd><dt><span class="term"><code class="option">-defaults</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Specify a configuration file which will be used to supply defaults instead of
+one of the <code class="filename">config_files/defaults_*.xml</code> files.  This file is used to specify model
+configuration parameters only.  Parameters relating to the build which
+are system dependent will be ignored.
+</p></dd><dt><span class="term"><code class="option">-help | -h</code></span></dt><dd><p>
+Print usage to STDOUT.
+</p></dd><dt><span class="term"><code class="option">-silent | -s</code></span></dt><dd><p>
+Turns on silent mode - only fatal messages printed to STDOUT.
+</p></dd><dt><span class="term"><a id="cfg_test"></a><code class="option">-test</code></span></dt><dd><p>
+Switch on testing of <acronym class="acronym">Fortran</acronym> compiler and linking to external libraries.
+</p></dd><dt><span class="term"><code class="option">-verbose | -v</code></span></dt><dd><p>
+Turn on verbose echoing of settings made by configure.
+</p></dd><dt><span class="term"><code class="option">-version</code></span></dt><dd><p>
+Echo the repository tag name used to check out this <acronym class="acronym">CAM</acronym> source tree.
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_surface_comp"></a>A.2.6. Surface components</h3></div></div></div><p>
+<span class="emphasis"><em>Options for surface components used in standalone CAM mode:</em></span>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-ice</code> [<code class="constant">cice</code> |
+ <code class="constant">sice</code> ]</span></dt><dd><p>
+Specify the sea ice component.
+Default: <code class="constant">cice</code>.
+</p></dd><dt><span class="term"><code class="option">-lnd</code> [<code class="constant">clm</code> |
+ <code class="constant">slnd</code> ]</span></dt><dd><p>
+Specify the land component.
+Default: <code class="constant">clm</code>.
+</p></dd><dt><span class="term"><code class="option">-ocn</code>
+[<code class="constant">docn</code> | <code class="constant">socn</code> |
+<code class="constant">dom</code> | <code class="constant">aquaplanet</code> ]</span></dt><dd><p>
+Specify ocean component.  If set to <code class="constant">aquaplanet</code> then
+the stub ice (<code class="constant">sice</code>) and stubb land
+(<code class="constant">slnd</code>)  components are implied.
+Default: <code class="constant">docn</code>.
+</p></dd><dt><span class="term"><code class="option">-rof</code> [<code class="constant">rtm</code> |
+ <code class="constant">srof</code> ]</span></dt><dd><p>
+Specify the river runoff component.
+Default: <code class="constant">rtm</code>.
+</p></dd></dl></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_standalone_bld"></a>A.2.7. CAM standalone build</h3></div></div></div><p>
+<span class="emphasis"><em>Options for building <acronym class="acronym">CAM</acronym> via standalone scripts:</em></span>
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><a id="cam_bld"></a><code class="option">-cam_bld</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory where <acronym class="acronym">CAM</acronym> will be built.  This is where configure will write the
+output files it generates (Makefile, Filepath, etc...).  Default: ./
+</p></dd><dt><span class="term"><code class="option">-cam_exe</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Name of the <acronym class="acronym">CAM</acronym> executable.  Default: <code class="constant">cam</code>.
+</p></dd><dt><span class="term"><code class="option">-cam_exedir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory where CAM executable will be created.  Default: CAM build directory.
+</p></dd><dt><span class="term"><code class="option">-cc</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+User specified C compiler.  Default: Depends on the OS
+and the Fortran compiler.
+</p></dd><dt><span class="term"><code class="option">-cflags</code> <strong class="userinput"><code>&lt;string&gt;</code></strong></span></dt><dd><p>
+A string of user specified C compiler options appended to the default
+options set in Makefile.
+</p></dd><dt><span class="term"><code class="option">-debug</code></span></dt><dd><p>
+Switch to turn on building <acronym class="acronym">CAM</acronym> with compiler options for debugging.  The
+specific options are compiler dependent.  These flags are set in the
+<code class="filename">Makefile.in</code> template file.
+</p></dd><dt><span class="term"><code class="option">-esmf_libdir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">ESMF</acronym> library and the <code class="filename">esmf.mk</code>
+file.  If this option is specified then the external <acronym class="acronym">ESMF</acronym> library will be
+used in place of the ESMF-WRF time manager code which is provided in the
+CESM source distribution.
+</p></dd><dt><span class="term"><code class="option">-fc</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+User specified <acronym class="acronym">Fortran</acronym> compiler.  Default: Depends on
+the OS and whether MPI is enabled.
+</p></dd><dt><span class="term"><code class="option">-fc_type</code>
+[<code class="constant">pgi</code> | <code class="constant">lahey</code> |
+<code class="constant">intel</code> | <code class="constant">pathscale</code> |
+<code class="constant">gnu</code> | <code class="constant">xlf</code>]</span></dt><dd><p>
+
+Type of the <acronym class="acronym">Fortran</acronym> compiler.  This argument is used in conjunction with
+the <code class="option">-fc</code> argument when the name of the fortran compiler
+refers to a wrapper script (e.g., mpif90 or ftn).  In this case the user
+needs to specify the type of <acronym class="acronym">Fortran</acronym> compiler that is being invoked by the
+wrapper script.
+Default: Depends on the name of the <acronym class="acronym">Fortran</acronym> compiler.
+</p></dd><dt><span class="term"><code class="option">-fflags</code> <strong class="userinput"><code>&lt;string&gt;</code></strong></span></dt><dd><p>
+A string of user specified <acronym class="acronym">Fortran</acronym> compiler options appended to the
+default options set in the Makefile.
+See <a class="link" href="#cfg_fopt"><code class="option">-fopt</code></a> to override optimization flags.
+</p></dd><dt><span class="term"><a id="cfg_fopt"></a><code class="option">-fopt</code> <strong class="userinput"><code>&lt;string&gt;</code></strong></span></dt><dd><p>
+A string of user specified <acronym class="acronym">Fortran</acronym> compiler optimization flags.  
+Overrides Makefile defaults.
+</p></dd><dt><span class="term"><code class="option">-gmake</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Name of the <acronym class="acronym">GNU</acronym> make program on your system.  Supply the absolute
+pathname if the program is not in your path (or fix your path).  This is
+only needed by <span class="command"><strong>configure</strong></span> for running tests via the
+<a class="link" href="#cfg_test"><code class="option">-test</code></a> option.
+</p></dd><dt><span class="term"><code class="option">-lapack_libdir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">LAPACK</acronym> library.
+</p></dd><dt><span class="term"><code class="option">-ldflags</code> <strong class="userinput"><code>&lt;string&gt;</code></strong></span></dt><dd><p>
+A string of user specified load options.  Appended to
+Makefile defaults.
+</p></dd><dt><span class="term"><code class="option">-linker</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+User specified linker.  Default: use the <acronym class="acronym">Fortran</acronym> compiler.
+</p></dd><dt><span class="term"><code class="option">-mpi_inc</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">MPI</acronym> include files.
+</p></dd><dt><span class="term"><code class="option">-mpi_lib</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">MPI</acronym> library.
+</p></dd><dt><span class="term"><code class="option">-nc_inc</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">NetCDF</acronym> include files.
+</p></dd><dt><span class="term"><code class="option">-nc_lib</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">NetCDF</acronym> library.
+</p></dd><dt><span class="term"><code class="option">-nc_mod</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">NetCDF</acronym> module files.
+</p></dd><dt><span class="term"><code class="option">-pnc_inc</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">PnetCDF</acronym> include files.
+</p></dd><dt><span class="term"><code class="option">-pnc_lib</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory containing <acronym class="acronym">PnetCDF</acronym> library.
+</p></dd><dt><span class="term"><code class="option">-rad_driver</code></span></dt><dd><p>
+Build <acronym class="acronym">CAM</acronym> with the offline radiation driver.  This produces an executable
+that can only be used for offline radiation calculations.
+</p></dd><dt><span class="term"><code class="option">-target_os</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Override the OS setting for cross platform compilation from the following
+ list
+ [<code class="constant">aix</code>|<code class="constant">irix</code>|<code class="constant">linux</code>|
+ <code class="constant">bgl</code>|<code class="constant">bgp</code> ].
+  Default: OS on which configure is executed as defined by the <acronym class="acronym">Perl</acronym> $OSNAME variable.
+</p></dd><dt><span class="term"><code class="option">-usr_src</code> <strong class="userinput"><code>&lt;dir1&gt;[,&lt;dir2&gt;[,&lt;dir3&gt;[...]]]</code></strong></span></dt><dd><p>
+Directories containing user source code.  Note that these directories will
+also be searched for modified versions of
+the files needed by the <span class="command"><strong>build-namelist</strong></span> script, e.g., the namelist definition and
+use case files.
+</p></dd></dl></div></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="config_env"></a>A.3. Environment variables recognized by <span class="command"><strong>configure</strong></span></h2></div></div></div><p>
+The following environment variables are recognized by <span class="command"><strong>configure</strong></span>.  Note
+that the command line arguments for specifying this information always
+takes precedence over the environment variables.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">CASEROOT</code></span></dt><dd><p>
+Directory where a <acronym class="acronym">CESM</acronym> case is set up.  This is only used when building
+from the CESM scripts to add the SourceMods directory for <acronym class="acronym">CAM</acronym> to
+the <code class="filename">Filepath</code> file.
+</p></dd><dt><span class="term"><code class="envar">ESMF_LIBDIR</code></span></dt><dd><p>
+Directory containing the ESMF library.
+</p></dd><dt><span class="term"><code class="envar">INC_MPI</code></span></dt><dd><p>
+Directory containing the MPI include files.
+</p></dd><dt><span class="term"><code class="envar">INC_NETCDF</code></span></dt><dd><p>
+Directory containing the NetCDF include files.
+</p></dd><dt><span class="term"><code class="envar">INC_PNETCDF</code></span></dt><dd><p>
+Directory containing the PnetCDF include files.
+</p></dd><dt><span class="term"><code class="envar">LAPACK_LIBDIR</code></span></dt><dd><p>
+Directory containing the LAPACK library.
+</p></dd><dt><span class="term"><code class="envar">LIB_MPI</code></span></dt><dd><p>
+Directory containing the MPI library.
+</p></dd><dt><span class="term"><code class="envar">LIB_NETCDF</code></span></dt><dd><p>
+Directory containing the NetCDF library.
+</p></dd><dt><span class="term"><code class="envar">LIB_PNETCDF</code></span></dt><dd><p>
+Directory containing the PnetCDF library.
+</p></dd><dt><span class="term"><code class="envar">MCT_LIBDIR</code></span></dt><dd><p>
+Directory containing the MCT libraries.
+</p></dd><dt><span class="term"><code class="envar">MOD_NETCDF</code></span></dt><dd><p>
+Directory containing the NetCDF module files.
+</p></dd></dl></div></div></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="bldnl"></a>Appendix B. The <span class="command"><strong>build-namelist</strong></span> utility</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#bldnl_opts">B.1. Options to <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="#bldnl_env">B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></a></span></dt><dt><span class="sect1"><a href="#cam_namelist_ref">B.3. <acronym class="acronym">CAM</acronym> Namelist variables</a></span></dt></dl></div><p>
+The <span class="command"><strong>build-namelist</strong></span> utility builds namelists (and on occasion other types of input
+files) which specify run-time details for <acronym class="acronym">CAM</acronym> and the components it's
+running with in standalone mode.  When executed from the <acronym class="acronym">CESM</acronym> scripts it
+only produces a namelist file for the <acronym class="acronym">CAM</acronym> component (in the file
+<code class="filename">atm_in</code>), and a namelist file for control of dry deposition which is shared
+by <acronym class="acronym">CAM</acronym> and <acronym class="acronym">CLM</acronym> (in the file <code class="filename">drv_flds_in</code>).
+</p><p>
+The task of constructing a correct namelist has become extremely complex
+due to the large number of configurations supported by <acronym class="acronym">CAM</acronym>.  Editing
+namelists by hand is an extremely fragile process due to the number of
+variables that need to be set, and to the many interdependencies among
+them.  <span class="emphasis"><em>We stronly discourage editing namelists by hand.</em></span>
+All customizations of the <acronym class="acronym">CAM</acronym> namelist are possible by making use of the
+<span class="command"><strong>build-namelist</strong></span> command line options.
+</p><p>
+Some of the important features of <span class="command"><strong>build-namelist</strong></span> are:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+
+All valid namelist variables are known to <span class="command"><strong>build-namelist</strong></span>.  So an invalid
+variable specified by the user (supplied either by the
+<code class="option">-infile</code> or <code class="option">-namelist</code> options) will cause
+<span class="command"><strong>build-namelist</strong></span> to fail with an error message telling which namelist
+variable is invalid.  This is a big improvement over a runtime failure
+caused by an invalid variable which typically gives no hint as to which
+variable caused the problem.
+</p></li><li class="listitem"><p>
+In addition to knowing all valid variable names and their
+types, <span class="command"><strong>build-namelist</strong></span> also knows which namelist group each variable belongs to.
+This means that the user only needs to specify variable names to <span class="command"><strong>build-namelist</strong></span>
+and not the group names.  The <code class="option">-infile</code>
+and <code class="option">-namelist</code> options still require valid namelist syntax
+as input, but the group name is ignored.  So all variables can be put
+in a single group with an arbitrary name, for example, "&amp;xxx ... /"
+where "xxx" is the namelist group name.
+</p></li><li class="listitem"><p>
+Since <span class="command"><strong>build-namelist</strong></span> knows all namelist variables specified by the user it is able
+to do consistency checking.  In general however, <span class="command"><strong>build-namelist</strong></span> assumes that the
+user is the expert and will not override a user specification unless there
+is a major inconsistency, for example if variables have been set to use
+parameterizations which can not be run at the same time.
+</p></li><li class="listitem"><p>
+All configurations have namelist variables that must be specified, and
+<span class="command"><strong>build-namelist</strong></span> has a mechanism to provide default values for these variables.
+When an appropriate default value cannot be found then <span class="command"><strong>build-namelist</strong></span> will fail
+with an informative message.
+</p></li><li class="listitem"><p>
+When running a configuration for the first time there are often many input
+datasets that may not be in the local input data directory.  In order to
+facilitate getting the required datasets <span class="command"><strong>build-namelist</strong></span> has an
+option, <code class="option">-test</code>, that can be used to produce a complete list
+of required datasets and report status of whether or not they are present
+in the local directory.  This list can then be used to obtain the needed
+datasets from the <acronym class="acronym">CESM</acronym> SVN input data repository.
+</p></li></ul></div><p>
+
+
+</p><p>
+One required input for <span class="command"><strong>build-namelist</strong></span> is a configuration
+cache file produced by a previous invocation of <span class="command"><strong>configure</strong></span>
+(<code class="filename">config_cache.xml</code> by default).  <span class="command"><strong>build-namelist</strong></span> looks
+at this file to determine the features of the CAM executable, such as
+the dynamical core and horizontal resolution, that affect the default
+specifications for namelist variables.  The default values themselves
+are specified in the file
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/namelist_files/namelist_defaults_cam.xml</code>,
+and in the use case files located in the directory
+<code class="filename">$CAM_ROOT/models/atm/cam/bld/namelist_files/use_cases/</code>.
+</p><p>
+The other required input for <span class="command"><strong>build-namelist</strong></span> is the root directory for the input
+datasets.  This is required since nearly all input files must be specified
+using absolute filepaths, but the defaults are stored as filepaths which
+are relative to the root directory.  It is expected that the actual
+location of the root directory is something that will be resolved at
+runtime.  The way this is done is to either specify it using
+the <code class="option">-csmdata</code> argument, or to set the environment variable
+<code class="envar">CSMDATA</code>.
+</p><p>
+The methods for setting the values of namelist variables, listed from
+highest to lowest precedence, are:
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+using specific command-line options,
+e.g., <code class="option">-case</code> and <code class="option">-runtype</code>,
+</p></li><li class="listitem"><p>
+using the <code class="option">-namelist</code> option,
+</p></li><li class="listitem"><p>
+setting values in a file specified by <code class="option">-infile</code>,
+</p></li><li class="listitem"><p>
+specifying a <code class="option">-use_case</code> option,
+</p></li><li class="listitem"><p>
+setting values in the namelist defaults file.
+</p></li></ol></div><p>
+The first four of these methods for specifying namelist variables are
+the ones available to the user without requiring code modification.  Any
+namelist variable recognized by <acronym class="acronym">CAM</acronym> can be modified using method 2 or 3.
+The final two methods represent defaults that are hard coded as part of the
+code base.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="bldnl_opts"></a>B.1. Options to <span class="command"><strong>build-namelist</strong></span></h2></div></div></div><p>
+To get a list of all available options, type <strong class="userinput"><code>build-namelist --help</code></strong>.
+Available options are also listed just below.
+</p><p>
+The following options may all be specified with either one or two leading
+dashes, e.g., <code class="option">-help</code> or <code class="option">--help</code>.  The few
+options that can be expressed as single letter switches may not be clumped,
+e.g., <code class="option">-h -s -v</code> may <span class="emphasis"><em>NOT</em></span> be expressed
+as <code class="option">-hsv</code>.  When multiple options are listed separated by a
+vertical bar either version may be used.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-case</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Case identifier up to 80 characters.  This value is used to set the
+case_name variable in the driver namelist.  Default: <code class="constant">camrun</code>
+</p></dd><dt><span class="term"><code class="option">-cice_nl</code> <strong class="userinput"><code>&lt;namelist&gt;</code></strong></span></dt><dd><p>
+Specify namelist settings for CICE directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<strong class="userinput"><code>-cice_nl "&amp;ice histfreq=1 /"</code></strong>.
+This namelist will be passed to the invocation of the CICE build-namelist
+via its <code class="option">-namelist</code> argument.
+</p></dd><dt><span class="term"><code class="option">-config</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Read the specified configuration cache file to determine the configuration
+of the CAM executable.  Default: <code class="filename">config_cache.xml</code>.
+</p></dd><dt><span class="term"><code class="option">-config_cice</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Filepath of the CICE config_cache file.  This filepath is passed to the
+invocation of the CICE <span class="command"><strong>build-namelist</strong></span>.  Only specify this to override the
+default filepath which was set when the CICE <span class="command"><strong>configure</strong></span> was invoked by
+the CAM <span class="command"><strong>configure</strong></span>.
+</p></dd><dt><span class="term"><code class="option">-csmdata</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Root directory of <acronym class="acronym">CESM</acronym> input data.
+Can also be set by using the <code class="envar">CSMDATA</code> environment variable.
+</p></dd><dt><span class="term"><code class="option">-dir</code> <strong class="userinput"><code>&lt;dir&gt;</code></strong></span></dt><dd><p>
+Directory where output namelist files for each component will be
+written, i.e., <code class="filename">atm_in</code>, <code class="filename">drv_in</code>,
+<code class="filename">ice_in</code>, <code class="filename">lnd_in</code> and <code class="filename">ocn_in</code>.
+Default: current working directory.
+</p></dd><dt><span class="term"><code class="option">-help | -h</code></span></dt><dd><p>
+Print usage to STDOUT.
+</p></dd><dt><span class="term"><code class="option">-ignore_ic_date</code></span></dt><dd><p>
+Ignore the date attribute of the initial condition files
+when determining the default.
+</p></dd><dt><span class="term"><code class="option">-ignore_ic_year</code></span></dt><dd><p>
+Ignore just the year part of the date attribute of the initial condition files
+when determining the default.
+</p></dd><dt><span class="term"><code class="option">-infile</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Specify a file containing namelists to read values from.
+</p></dd><dt><span class="term"><code class="option">-inputdata</code> <strong class="userinput"><code>&lt;filepath&gt;</code></strong></span></dt><dd><p>
+Writes out a list of pathnames for required input datasets to
+the specified file.
+</p></dd><dt><span class="term"><code class="option">-namelist</code> <strong class="userinput"><code>&lt;namelist&gt;</code></strong></span></dt><dd><p>
+Specify namelist settings directly on the commandline by supplying 
+a string containing FORTRAN namelist syntax, e.g.,
+<strong class="userinput"><code>-namelist "&amp;atm stop_option='ndays' stop_n=10 /"</code></strong>
+</p></dd><dt><span class="term"><code class="option">-ntasks</code> <strong class="userinput"><code>&lt;n&gt;</code></strong></span></dt><dd><p>
+Specify the number of MPI tasks to be used by the run.  This is only used
+to set a default decomposition for the FV dycore, i.e., the npr_yz variable.
+</p></dd><dt><span class="term"><code class="option">-runtype</code>
+[<code class="constant">startup</code>|<code class="constant">continue</code>|<code class="constant">branch</code>]</span></dt><dd><p>
+Type of simulation.  Default: <code class="constant">startup</code>.
+</p></dd><dt><span class="term"><code class="option">-silent | -s</code></span></dt><dd><p>
+Turns on silent mode - only fatal messages issued.
+</p></dd><dt><span class="term"><code class="option">-test</code></span></dt><dd><p>
+Enable checking that input datasets exist on local filesystem.  This is
+also a convenient way to generate a list of the required input datasets for
+a model run.
+</p></dd><dt><span class="term"><code class="option">-use_case</code> <strong class="userinput"><code>&lt;name&gt;</code></strong></span></dt><dd><p>
+Specify a use case.
+</p></dd><dt><span class="term"><code class="option">-verbose | -v</code></span></dt><dd><p>
+Turn on verbose echoing of informational messages.
+</p></dd><dt><span class="term"><code class="option">-version</code></span></dt><dd><p>
+Echo the source code repository tag name used to check out this CAM distribution.
+</p></dd></dl></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="bldnl_env"></a>B.2. Environment variables used by <span class="command"><strong>build-namelist</strong></span></h2></div></div></div><p>
+The environment variables recognized by <span class="command"><strong>build-namelist</strong></span> are
+presented below.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">CSMDATA</code></span></dt><dd><p>
+Root directory of <acronym class="acronym">CESM</acronym> input data.
+Note that the commandline argument <code class="option">-csmdata</code> takes
+precedence over the environment variable.
+</p></dd><dt><span class="term"><code class="envar">OMP_NUM_THREADS</code></span></dt><dd><p>
+If values of the specific variables that set the thread count for each
+component, i.e., <strong class="userinput"><code>atm_nthreads</code></strong>, <strong class="userinput"><code>cpl_nthreads</code></strong>,
+<strong class="userinput"><code>ice_nthreads</code></strong>, <strong class="userinput"><code>lnd_nthreads</code></strong>,
+or <strong class="userinput"><code>ocn_nthreads</code></strong>, are set via
+the <code class="option">-namelist</code>, or <code class="option">-infile</code> options, then
+these values have highest precedence.  The <code class="envar">OMP_NUM_THREADS</code>
+environment variable has next highest precedence for setting any of the
+component specific thread count variables.  Lowest precedence for setting
+these variables is the value of <code class="option">nthreads</code> from the configure cache file.
+</p></dd></dl></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cam_namelist_ref"></a>B.3. <acronym class="acronym">CAM</acronym> Namelist variables</h2></div></div></div><p>
+A searchable (or browsable) page containing all <acronym class="acronym">CAM</acronym> namelist variables is 
+<a class="ulink" href="../../../../../cgi-bin/eaton/namelist/nldef2html-cam5_3/default.htm" target="_top">here</a>.
+</p></div></div><div class="bibliography"><div class="titlepage"><div><div><h1 class="title"><a id="idm218596792640"></a>References</h1></div></div></div><div class="bibliomixed"><a id="conley2013"></a><p class="bibliomixed">[Conley et al. [2013]] 
+Conley, A.J., J.-F. Lamarque, F. Vitt, W.D. Collins, and J. Kiehl.
+<span class="title">PORT, a CESM tool for the diagnosis of radiative forcing
+</span>,
+Geoscientific Model Development,
+<span class="volumenum">6</span>,
+<span class="pagenums">469-476</span>,
+<span class="bibliomisc">
+<a class="ulink" href="http://dx.doi.org/10.5194/gmd-6-469-2013" target="_top">doi:10.5194/gmd-6-469-2013</a>
+</span>,
+<span class="pubdate">2013</span>.
+</p></div><div class="bibliomixed"><a id="hurrell2008"></a><p class="bibliomixed">[Hurrell et al. [2008]] 
+Hurrell, J.W., James J. Hack, Dennis Shea, Julie M. Caron, and James Rosinski.
+<span class="title">A New Sea Surface Temperature and Sea Ice Boundary Dataset for the
+Community Atmosphere Model
+</span>,
+Journal of Climate,
+<span class="volumenum">21</span>,
+<span class="pagenums">5145-5153</span>,
+<span class="bibliomisc">
+<a class="ulink" href="http://dx.doi.org/10.1175/2008JCLI2292.1" target="_top">doi:10.1175/2008JCLI2292.1</a>
+</span>,
+<span class="pubdate">2008</span>.
+</p></div><div class="bibliomixed"><a id="taylor2000"></a><p class="bibliomixed">[Taylor et al. [2000]] 
+Taylor, K.E., David Williamson, and Francis Zwiers.
+<span class="title">The Sea Surface Temperature and Sea-Ice Concentration Boundary
+  Conditions for AMIP II Simulations
+</span>,
+PCMDI Report No. 60, UCRL-JC-125597,
+<span class="bibliomisc">
+<a class="ulink" href="http://www-pcmdi.llnl.gov/publications/pdf/60.pdf" target="_top">
+http://www-pcmdi.llnl.gov/publications/pdf/60.pdf</a> 
+</span>,
+<span class="pubdate">2000</span>.
+</p></div></div></div></body></html>

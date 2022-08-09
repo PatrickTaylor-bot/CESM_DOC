@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 3. Input datasets</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="prev" href="ch02s02.html" title="2.2. Sample Run Scripts" /><link rel="next" href="ch04.html" title="Chapter 4. Model Output" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Input datasets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="input_datasets"></a>Chapter 3. Input datasets</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="ch03.html#sst_files">3.1. SST and Sea Ice Boundary Files</a></span></dt></dl></div><p>
+The minimal <acronym class="acronym">CAM</acronym> configuration requires an initial conditions dataset.
+But most configurations require in addition to initial conditions a variety
+of boundary condition files.  This chapter will provide an overview of
+<acronym class="acronym">CAM</acronym>'s dataset requirements and some information on the provenance of the
+default datasets.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sst_files"></a>3.1. SST and Sea Ice Boundary Files</h2></div></div></div><p>
+The standard <acronym class="acronym">CAM</acronym> standalone configuration (An F compset when using <acronym class="acronym">CESM</acronym>
+scripts) uses prescribed sea surface temperatures (SST) and sea ice
+fractions from datasets containing either climatological or time series
+data.  The source of this data for <acronym class="acronym">CAM</acronym>'s default datasets is 
+<a class="xref" href="bi01.html#hurrell2008" title="A New Sea Surface Temperature and Sea Ice Boundary Dataset for the Community Atmosphere Model">Hurrell et al. [2008]</a>.
+</p><p>
+The default <acronym class="acronym">CAM</acronym> datasets have been preconditioned to comply with the <acronym class="acronym">AMIP II</acronym>
+requirement as described in <a class="xref" href="bi01.html#taylor2000" title="The Sea Surface Temperature and Sea-Ice Concentration Boundary Conditions for AMIP II Simulations">Taylor et al. [2000]</a>.  The requirement
+is that the SST and sea-ice concentration boundary conditions should be
+specified such that the monthly means computed from model output precisely
+agree with the monthly means in the input dataset.
+</p><p>
+The original Hurrell datasets are on a 1 degree grid.  The <acronym class="acronym">AMIP II</acronym> versions
+of these dataset are available as 1 degree datasets and have also been
+spatially interpolated to several spectral and finite volume grid
+resolutions.  The currently available datasets are:
+</p><p>
+Pre-industrial climatology (1870 - 1890):
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_clim_pi_c101029.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_clim_pi_c091020.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_clim_pi_c100127.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_clim_pi_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_clim_pi_c100128.nc
+</pre><p>
+</p><p>
+Historical Time Series
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_1850_2010_c110526.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_1850_2008_c100128.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_1850_2012_c130411.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_1850_2012_c130411.nc
+</pre><p>
+</p><p>
+Present day climatology (1982 - 2001):
+</p><pre class="screen">
+atm/cam/sst/sst_HadOIBl_bc_1x1_clim_c101029.nc
+atm/cam/sst/sst_HadOIBl_bc_0.23x0.31_clim_c061106.nc
+atm/cam/sst/sst_HadOIBl_bc_0.47x0.63_clim_c061106.nc
+atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_clim_c040926a.nc
+atm/cam/sst/sst_HadOIBl_bc_1.9x2.5_clim_c061031.nc
+atm/cam/sst/sst_HadOIBl_bc_4x5_clim_c061031.nc
+atm/cam/sst/sst_HadOIBl_bc_10x15_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_256x512_clim_c031031.nc
+atm/cam/sst/sst_HadOIBl_bc_128x256_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_64x128_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_48x96_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_32x64_clim_c050526.nc
+atm/cam/sst/sst_HadOIBl_bc_8x16_clim_c050526.nc
+</pre><p>
+</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. Sample Run Scripts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Model Output</td></tr></table></div></body></html>

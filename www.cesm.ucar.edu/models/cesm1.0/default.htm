@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CESM1.0 Public Release</title>
+
+<link rel="shortcut icon" href="../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<!-- ImageReady Preload Script (atmosphere.175.psd) -->
+<script type="text/javascript">
+<!--
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		ug_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/ug.maps_01-ImageMap_01_over.gif");
+		atmosphere_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-Imag.gif");
+		atmosphere_175_maps_01_ImageMap_02_over = newImage("../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-I-03.gif");
+		land_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMap_0.gif");
+		land_175_maps_01_ImageMap_02_over = newImage("../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMa-03.gif");
+		sea_ice_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-ImageMa.gif");
+		sea_ice_175_maps_01_ImageMap_02_over = newImage("../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-Imag-03.gif");
+		ocean_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageMap_.gif");
+		ocean_175_maps_01_ImageMap_02_over = newImage("../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageM-03.gif");
+		land_ice_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/land.ice.175.maps_01-ImageM.gif");
+		coupler_175_maps_01_ImageMap_01_over = newImage("../../../models/cesm1.0/images/maps/coupler.175_maps_01-ImageMa.gif");
+		preloadFlag = true;
+	}
+}
+
+// -->
+</script>
+<!-- End Preload Script -->
+
+<body onLoad="preloadImages();">
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www.cesm.ucar.edu/models">CESM Models</a> &raquo; CESM1.0 Public Release</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+		<div id="leftcol">
+			<h2 class="title">CESM1.0 Public Release</h2>
+ <!--  ---------------------------------------------------------------------  -->
+<h3 class="subtitle">About CESM 1.0  </h3>
+<!--  ---------------------------------------------------------------------  -->
+<p>
+The Community Earth System Model (CESM) is a coupled climate model for
+simulating the earth's climate system.  Composed of four separate
+models simultaneously simulating the earth's atmosphere, ocean, land
+surface and sea-ice, and one central coupler component, the CESM
+allows researchers to conduct fundamental research into the earth's
+past, present and future climate states.
+CCSM4.0 is a subset of CESM1.0. All CCSM4.0 compsets and resolutions are also found in CESM1.0.z.</p>
+<ul>
+   <li><a href="../../../models/cesm1.0/notable_improvements.html">Notable Model Improvements</a></li>
+
+   <li><a href="../../../models/cesm1.0/tags/index.html">CESM1.0 Release Notes</a> (summaries of all releases in the CESM1.0 series)</li> 
+
+
+   <li><a href="../../../models/cesm1.0/scientific_validation.html">Scientifically Supported Model Configurations</a></li>
+   
+   <li><a href="../../../models/cesm1.0/config_conventions_cesm.html">CESM Configuration Naming Conventions</a></li>
+</ul>
+
+                    
+<!--  ---------------------------------------------------------------------  -->
+<h3 class="subtitle">Model Output Data and Diagnostics</h3>
+<!--  ---------------------------------------------------------------------  -->
+
+<ul>
+   <li><a href="../../experiments/cesm1.0/default.htm">Experiments & Diagnostics</a></li>
+   <li><a href="../../../models/cesm1.0/esg.html">Model Output Data (ESG)</a></li>
+   <li><a href="../../../models/cesm1.0/model_diagnostics/default.htm">Post Processing Utilities</a></li>
+   <li><a href="../../../models/cesm1.0/filename_conventions_cesm.html">Model File Naming Conventions</a></li>
+   <li><a href="../../../models/cesm1.0/casename_conventions_cesm.html">Experiment Case Naming Conventions</a></li>
+</ul>
+
+<!--  ---------------------------------------------------------------------  -->
+<h3 class="subtitle">Model Documentation</h3>
+<!--  ---------------------------------------------------------------------  -->
+							
+<!-- ImageReady Slices  -->
+
+<div id="research123">
+<img name="ug_maps_01" src="../../../models/cesm1.0/images/maps/ug.maps_01.gif" width="564" height="50" border="0" alt="" usemap="#ug_maps_01_Map">
+<map name="ug_maps_01_Map">
+<area shape="rect" alt="" coords="9,31,84,42" href="http://www.cesm.ucar.edu/models/cesm1.0/cesm/"
+	onmouseover="changeImages('ug_maps_01', '../../../models/cesm1.0/images/maps/ug.maps_01-ImageMap_01_over.gif'); return true;"
+	onmouseout="changeImages('ug_maps_01', '../../../models/cesm1.0/images/maps/ug.maps_01.gif'); return true;"
+	onmousedown="changeImages('ug_maps_01', '../../../models/cesm1.0/images/maps/ug.maps_01-ImageMap_01_over.gif'); return true;"
+	onmouseup="changeImages('ug_maps_01', '../../../models/cesm1.0/images/maps/ug.maps_01-ImageMap_01_over.gif'); return true;">
+</map>
+</div>
+
+<div id="research1">
+<img name="atmosphere_175_maps_01" src="../../../models/cesm1.0/images/maps/atmosphere.175.maps_01.gif" width="175" height="175" border="0" alt="" usemap="#atmosphere_175_maps_01_Map">
+<map name="atmosphere_175_maps_01_Map">
+<area shape="rect" alt="" coords="8,115,150,141" href="http://www.cesm.ucar.edu/models/cesm1.0/cam/"
+	onmouseover="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-I-03.gif'); return true;"
+	onmouseout="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-I-03.gif'); return true;"
+	onmouseup="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-I-03.gif'); return true;">
+<area shape="rect" alt="" coords="8,147,122,173" href="http://www.cesm.ucar.edu/models/cesm1.0/data8/"
+	onmouseover="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-Imag.gif'); return true;"
+	onmouseout="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-Imag.gif'); return true;"
+	onmouseup="changeImages('atmosphere_175_maps_01', '../../../models/cesm1.0/images/maps/atmosphere.175.maps_01-Imag.gif'); return true;">
+</map>
+</div>
+
+<div id="research2">
+<img name="land_175_maps_01" src="../../../models/cesm1.0/images/maps/land.175.maps_01.gif" width="175" height="175" border="0" alt="" usemap="#land_175_maps_01_Map">
+<map name="land_175_maps_01_Map">
+<area shape="rect" alt="" coords="9,115,147,141" href="http://www.cesm.ucar.edu/models/cesm1.0/clm/index.html"
+	onmouseover="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMa-03.gif'); return true;"
+	onmouseout="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMa-03.gif'); return true;"
+	onmouseup="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMa-03.gif'); return true;">
+<area shape="rect" alt="" coords="9,147,122,173" href="http://www.cesm.ucar.edu/models/cesm1.0/data8/"
+	onmouseover="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMap_0.gif'); return true;"
+	onmouseout="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMap_0.gif'); return true;"
+	onmouseup="changeImages('land_175_maps_01', '../../../models/cesm1.0/images/maps/land.175.maps_01-ImageMap_0.gif'); return true;">
+</map>
+</div>
+
+<div id="research3">
+<img name="sea_ice_175_maps_01" src="../../../models/cesm1.0/images/maps/sea.ice.175.maps_01.gif" width="175" height="175" border="0" alt="" usemap="#sea_ice_175_maps_01_Map">
+<map name="sea_ice_175_maps_01_Map">
+<area shape="rect" alt="" coords="8,115,172,129" href="http://www.cesm.ucar.edu/models/cesm1.0/cice/"
+	onmouseover="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-Imag-03.gif'); return true;"
+	onmouseout="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-Imag-03.gif'); return true;"
+	onmouseup="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-Imag-03.gif'); return true;">
+<area shape="rect" alt="" coords="8,136,149,162" href="http://www.cesm.ucar.edu/models/cesm1.0/data8/"
+	onmouseover="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-ImageMa.gif'); return true;"
+	onmouseout="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-ImageMa.gif'); return true;"
+	onmouseup="changeImages('sea_ice_175_maps_01', '../../../models/cesm1.0/images/maps/sea.ice.175.maps_01-ImageMa.gif'); return true;">
+</map>
+</div>
+
+<div id="research1">
+<img name="ocean_175_maps_01" src="../../../models/cesm1.0/images/maps/ocean.175.maps_01.gif" width="175" height="175" border="0" alt="" usemap="#ocean_175_maps_01_Map">
+<map name="ocean_175_maps_01_Map">
+<area shape="rect" alt="" coords="8,115,144,141" href="http://www.cesm.ucar.edu/models/cesm1.0/pop2/"
+	onmouseover="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageM-03.gif'); return true;"
+	onmouseout="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageM-03.gif'); return true;"
+	onmouseup="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageM-03.gif'); return true;">
+<area shape="rect" alt="" coords="8,146,161,172" href="http://www.cesm.ucar.edu/models/cesm1.0/data8/"
+	onmouseover="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageMap_.gif'); return true;"
+	onmouseout="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageMap_.gif'); return true;"
+	onmouseup="changeImages('ocean_175_maps_01', '../../../models/cesm1.0/images/maps/ocean.175.maps_01-ImageMap_.gif'); return true;">
+</map>
+</div>
+
+<div id="research2">
+<img name="land_ice_175_maps_01" src="../../../models/cesm1.0/images/maps/land.ice.175.maps_01.gif" width="175" height="175" border="0" alt="" usemap="#land_ice_175_maps_01_Map">
+<map name="land_ice_175_maps_01_Map">
+<area shape="rect" alt="" coords="8,115,133,141" href="http://www.cesm.ucar.edu/models/cesm1.0/cism/"
+	onmouseover="changeImages('land_ice_175_maps_01', '../../../models/cesm1.0/images/maps/land.ice.175.maps_01-ImageM.gif'); return true;"
+	onmouseout="changeImages('land_ice_175_maps_01', '../../../models/cesm1.0/images/maps/land.ice.175.maps_01.gif'); return true;"
+	onmousedown="changeImages('land_ice_175_maps_01', '../../../models/cesm1.0/images/maps/land.ice.175.maps_01-ImageM.gif'); return true;"
+	onmouseup="changeImages('land_ice_175_maps_01', '../../../models/cesm1.0/images/maps/land.ice.175.maps_01-ImageM.gif'); return true;">
+</map>
+</div>
+
+<div id="research3">
+<img name="coupler_175_maps_01" src="../../../models/cesm1.0/images/maps/coupler.175_maps_01.gif" width="175" height="175" border="0" alt="" usemap="#coupler_175_maps_01_Map">
+<map name="coupler_175_maps_01_Map">
+<area shape="rect" alt="" coords="9,115,131,129" href="http://www.cesm.ucar.edu/models/cesm1.0/cpl7/"
+	onmouseover="changeImages('coupler_175_maps_01', '../../../models/cesm1.0/images/maps/coupler.175_maps_01-ImageMa.gif'); return true;"
+	onmouseout="changeImages('coupler_175_maps_01', '../../../models/cesm1.0/images/maps/coupler.175_maps_01.gif'); return true;"
+	onmousedown="changeImages('coupler_175_maps_01', '../../../models/cesm1.0/images/maps/coupler.175_maps_01-ImageMa.gif'); return true;"
+	onmouseup="changeImages('coupler_175_maps_01', '../../../models/cesm1.0/images/maps/coupler.175_maps_01-ImageMa.gif'); return true;">
+</map>
+</div>
+<!-- End ImageReady Slices -->			
+					
+                    <p>&nbsp;</p><p>&nbsp;</p>
+                    
+<!--  ---------------------------------------------------------------------  -->
+<h4>External Library Documentation</h4>
+<!--  ---------------------------------------------------------------------  -->
+
+<ul>
+   <li><a href="http://web.ncar.teragrid.org/~dennis/pio_doc/html/" target="_blank">Parallel I/O Library</a> (PIO)</li>
+   <li><a href="http://www.mcs.anl.gov/research/projects/mct/mct_APIs/index.html"  target="_blank">Model Coupling Toolkit</a> (MCT)</li>
+   <li><a href="http://www.earthsystemmodeling.org/download/index.shtml"  target="_blank">Earth System Modeling Framework</a> (ESMF)</li>
+</ul>
+                    
+<!--  ---------------------------------------------------------------------  -->
+<h3 class="subtitle">Model Input Data</h3>
+<!--  ---------------------------------------------------------------------  -->
+<p>
+The input data necessary to run all supported component sets is made available from a public 
+<a href = "https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/">Subversion input data repository</a>. 
+Note that the inputdata repository has much more data in it than you need to run CESM1.0  
+---- <b><font color="red">DO NOT attempt to svn checkout the whole input data repository</font></b>. 
+The <a href="cesm/default.htm">CESM1.0 User's Guide</a> explains how to obtain the subset of input data required for your needs.  
+</p>
+
+<!--  ---------------------------------------------------------------------  -->
+<h3 class="subtitle">Performance and Load Balancing Data</h3>
+<!--  ---------------------------------------------------------------------  -->
+<p>
+The <a href="../../../models/cesm1.0/timing/default.htm">CESM1 Timing Table</a> 
+provides performance data for machine hardware and input from the user community.
+</p>
+
+<p>
+The <a href="../../../models/cesm1.0/timing_cesm1_0_5/default.htm">CESM1.0.5 Timing Table</a> 
+provides performance data for yellowstone.
+</p>
+
+<p>&nbsp;</p>
+
+</div><!-- #leftcol -->
+		<div id="rightcol">
+  <div class="darkblock">
+										<h2 class="white">CESM Project</h2>
+
+									<p><a href="http://www.cesm.ucar.edu/">The Community Earth System Model</a> (CESM) is a fully-coupled, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</p>
+									
+									<p>CESM is sponsored by the National Science Foundation (<a href="http://www.nsf.gov" target="_blank">NSF</a>) and the U.S. Department of Energy (<a href="http://www.energy.gov" target="_blank">DOE</a>). Administration of the CESM is maintained by the Climate and Global Dynamics Laboratory (<a href="http://www2.cgd.ucar.edu">CGD</a>) at the National Center for Atmospheric Research (<a href="http://www.ncar.ucar.edu">NCAR</a>).</p>
+
+	</div><!-- .darkblock -->
+		
+  <div class="mediumblock">
+		<h2 class="white">Model Source Code</h1>
+	
+   <h3 class="white">Copyright and Terms of Use</h3>
+   <p>
+   All CESM source code is subject to the following <a href="../../../models/cesm1.0/copyright.html">Copyright Notice and Disclaimer</a>.
+   </p>
+   
+   <h3 class="white">Acquiring the Release Code</h3>
+
+   <p>CESM source code is distributed through a public Subversion code repository. 
+   This code can be checked out using Subversion client software, 
+   such as the command tool svn, or simply 
+   <a href="https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_0_6" target="_blank">view the latest version with a web browser.</a></li> 
+   </p>
+   <p> 
+   A short <a href = "../../../models/register/register.html">registration</a>
+   is required to access the repository. 
+   After registering, you will receive an email containing a user name and password 
+   that is necessary to gain access to the repository. 
+   </p>
+   <p>
+   Acquistion of the code is more fully described in the most recent version of the
+   <a href="cesm/default.htm">CESM1.0 User's Guide</a>.
+   </p>
+   
+   <h3 class="white">Version Summaries and Release Notes</h3>
+   <p>
+   The <a href="../../../models/cesm1.0/tags/default.htm">CESM1.0 Release Notes</a> page 
+   summarizes all available versions of CESM1.0,
+   along with details of new features, bug fixes, and any known issues
+   identified in each release.</p>
+   
+   <h3 class="white">Reporting a Problem</h3>
+   <p> 
+   If you have any problems, please first
+   read the User's Guide including the sections
+   on FAQs and Use Cases. Please also refer to the
+   <a href="http://bb.cgd.ucar.edu/"> CESM Bulletin Board</a>, 
+   which is in place to facilitate communication within the CESM
+   community.  Finally, please also refer to the
+   <a href="../../../models/cesm1.0/tags/default.htm">Release Notes</a> 
+   entries that are provided with
+   every release and release update.
+   </p>
+   
+   <h3 class="white">CESM Support Policy</h3>
+   <p><a href="../../../about/support.html">CESM Support Policy</a> </p>
+
+   
+   
+
+
+
+		</div><!-- .mediumblock -->&nbsp;
+		
+<div class="lightblock">
+						<h2 class="white">CESM Data Management & Distribution Plan</h2>
+                        <p>The <a href="../../../management/docs/data.mgt.plan.2011.pdf" target="_blank">Community Earth System Model (CESM) Data Management and Data Distribution Plan</a> documents the procedures for the storage and distribution of data associated with the CESM project.</p>
+
+</div><!-- .lightblock -->
+            
+			
+			
+            
+		</div><!-- #rightcol -->
+		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

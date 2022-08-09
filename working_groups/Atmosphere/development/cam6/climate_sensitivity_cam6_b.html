@@ -1,0 +1,1465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CAM6 simulations based on 125 configuration</title>
+
+<link rel="shortcut icon" href="../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+        <h1>CAM6 Climate sensitivity</h1>
+	</div>
+<div class="content">
+  <p>We are trying to undertsand the difference between the climate sensivitity in CESM1 and CESM2.</p>
+  <p>125 had a climate sensivity similar to CESM1. <br />
+  CESM2 has a much larger climate sensitivity. In the 4xCO experiments, it seems that the behavior changes sometimes between 125 and 202. <br />
+  <br />
+  In the following we revert some of the features between 125 and 202. The experiments are done with cesm2.0 tag (this is the 297)  </p>
+  <h2>Menu</h2>
+  <ul>
+    <li><a href="#Bcases">Tables of simulations </a></li>
+    <li><a href="#Bcases">B cases</a>  (1850, 4xCO2, 20th century)</li>
+    <li><a href="#SOMruns">SOM runs</a></li>
+    <li><a href="#Fcases">F cases</a>  (control, pia, SST+4K)</li>
+    <li><a href="#diff_297_125">Difference between 125 and 297</a><br />
+    </li>
+  </ul>
+	<br />
+	
+  <p>&nbsp;</p>
+  <h2><a name="Table" id="Table"> </a></h2>
+  <h2>Table of Simulations</h2>
+  <p>In the table, we only show 1 ensemble. To see other ensembles look in tables below.</p>
+  <table border="1">
+    <tbody>
+      <tr>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">Description</td>
+        <td style="text-align: center">1850</td>
+        <td style="text-align: center">20thC</td>
+        <td style="text-align: center">4xCO2</td>
+        <td style="text-align: center">SOM<br />
+        1xCO2          <br /></td>
+        <td style="text-align: center">SOM<br />
+2xCO2 </td>
+        <td style="text-align: center">F2000</td>
+        <td style="text-align: center"><p>F2000<br />
+        piaero</p></td>
+        <td style="text-align: center">F2000<br />
+        SST_4K</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">125</td>
+        <td style="text-align: center">125</td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//atm/"> diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g16.20thC.125.02/atm/">diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//atm/">diags</a></td>
+        <td align="center" bordercolor="#808080" style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/atm/">diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/atm/">diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96/atm/">diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_pia/atm/">diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_SST+4K/atm/">diags</a></td>
+      </tr>
+      <tr>
+        <td style="text-align: center">297</td>
+        <td style="text-align: center">297</td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/atm/"> diags</a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//atm/"> diags</a></td>
+        <td style="text-align: center"><p><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/atm/">diags </a></p></td>
+        <td align="center" bordercolor="#808080" style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/atm/">diags</a><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/atm/"></a></td>
+        <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/atm/"> diags</a></td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><a name="Bcases" id="Bcases"> </a><br />
+</p>
+  <h2>B cases (B1850, 4xCO2, 20th century)</h2>
+  <h2>&nbsp;</h2>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">ID</th>
+      <th align="center" bgcolor="#F9CB84">Case Description</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">ATM</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">OCN</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">ICE</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">LND</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">CVDP</th>
+      <th align="center" bgcolor="#F9CB84" style="text-align: center">comments</th>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">125</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td>b1850</td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.125<br />
+        clubb_gamma_coef       =  0.32        <br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125//cvdp/">cvdp diags</a></td>
+      <td style="text-align: center"><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>125_4XCO2</td>
+      <td style="text-align: left"><p>Same as 125<br />
+        + 4xCO2 starting the same way as 125</p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g16.pi_control.all.125_4XCO2//cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>20th C</td>
+      <td style="text-align: left"><p>Same as 125<br />
+        + 20th century</p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu//B20TH/b.e20.BHIST.f09_g16.20thC.125.02/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu//B20TH/b.e20.BHIST.f09_g16.20thC.125.02/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu//B20TH/b.e20.BHIST.f09_g16.20thC.125.02/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu//B20TH/b.e20.BHIST.f09_g16.20thC.125.02/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B/B20TH/b.e20.BHIST.f09_g16.20thC.125.02/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">297</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297<br />
+        clubb_gamma_coef       =  0.308      </p>
+    </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_2xCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 2xCO2<br />
+      </p>
+</td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_2xCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_2xCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_2xCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_2xCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.2297_2xCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4xCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4xCO2 start from 297 at year 130<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_4xCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_4xCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_4xCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_4xCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.2297_4xCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4xCO2<br />
+        yr 308 </p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from 297 at year 308<br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_yr308_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>20thC<br />
+        ens 1
+      </p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 20th <br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_01//atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_01//ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_01//ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_01//lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_01//cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>20thC<br />
+      ens 5</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 20th <br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B20TH/b.e20.BHIST.f09_g17.20thC.297_05//cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">zmconv</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850<br />
+t4 <br />
+      </p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4<br />
+          zmconv_ke              =  0.5-&gt;1.0E-6 <br />
++ retuning to balance RESTOM: clubb_gamma_coef       =  0.30 <br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_zmconv_t4<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_zmconv_t4_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">so2 lifetime</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850<br />
+      t1</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1<br />
+          decrease so2 lifetime (same in 125)<br />
+          src.cam/mo_drydep.F90 <br />
+          src.clm/DryDepVelocity.F90</p>
+        <p>No need to retune gamma_coeff  (clubb_gamma_coef       =  0.308)<br />
+        </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_so2lifetime_t1<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_so2lifetime_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">ice albedo</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850<br />
+        t1
+      </p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1<br />
+          </p>
+        <p>Change sea-ice abedo + snow grain mods in land<br />
+          r_snw = 1.0<br />
+          rsnw_mlt = 1500.<br />
+SourceMods/src.clm/clm_driver.F90  SourceMods/src.clm/SnowSnicarMod.F90<br />
+<br />
+No need to retune gamma_coeff  (clubb_gamma_coef       =  0.308)<br />
+        </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_icealbedo_t1<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_icealbedo_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">cmip5 emissions</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td style="color: #B4B1B1"><p>b1850<br />
+        t1
+      </p></td>
+      <td style="color: #B8B7B7" ><p>b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1<br />
+      </p>
+        <p>use cmip5 emission<br />
+        </p>
+        <p>Default 297 clubb_gamma_coef       =  0.308<br />
+        </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850<br />
+        t2
+      </p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2<br />
+          <br />
+          use cmip5 emission          <br />
+          + retuning to balance RESTOM: clubb_gamma_coef       =  0.316<br />
+        </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_cmip5-emission_t2<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_cmip5-emission_t2_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">SB autoconversion</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td style="color: #B4B1B1"><p>b1850<br />
+        t1
+        <br />
+      </p></td>
+      <td style="color: #B8B7B7"><p>b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1<br />
+         clubb_gamma_coef       =  0.328<br />
+      </p>
+        </td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1/atm/">atm diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1/ocn/">ocn diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1/ice/">ice diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1/lnd/">lnd diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t1/cvdp/">cvdp diags</a></td>
+      <td style="color: #B4B1B1">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td style="color: #B4B1B1"><p>b1850<br />
+        t2
+      </p></td>
+      <td style="color: #B8B7B7"><p>b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2<br />
+        clubb_gamma_coef       =  0.318        <br />
+      </p>
+        </td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2/atm/">atm diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2/ocn/">ocn diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2/ice/">ice diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2/lnd/">lnd diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t2/cvdp/">cvdp diags</a></td>
+      <td style="color: #B4B1B1">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td style="color: #B4B1B1"><p>b1850<br />
+        t3
+      </p></td>
+      <td style="color: #B8B7B7"><p>b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3<br />
+        clubb_gamma_coef       =  0.30        <br />
+      </p>
+        </td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3/atm/">atm diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3/ocn/">ocn diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3/ice/">ice diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3/lnd/">lnd diags</a></td>
+      <td style="color: #B4B1B1"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t3/cvdp/">cvdp diags</a></td>
+      <td style="color: #B4B1B1">&nbsp;</td>
+    </tr>
+    
+     <tr align="center">
+      <td><p>b1850<br />
+        t4
+      </p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4<br />
+          + revert SB2001 autoconversion<br />
+          + retuning to balance RESTOM: clubb_gamma_coef       =  0.295<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+     </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_sb-autoconv_t4<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_sb-autoconv_t4_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">gamma_coeff</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_gamma_coef_t2_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">mg2 bugfix + zmconv</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_mg_bugfix_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">297 + pd aero</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1<br />
+        <br />
+        297 + use present day aerosol<br />
+      </p></td>
+	  <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1/cvdp/">cvdp diags</a></td>
+		
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297_pd_aerso<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p></td>
+	  <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_pd_aero_t1_4XCO2/cvdp/">cvdp diags</a></td>	
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84"><p>revert to 125</p>
+      <p>atm+sea-ice+some land</p></th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3<br />
+        <br />
+        use cmip5 emission <br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha3_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84"><p>revert to 125<br />
+      atm only</p></th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1<br />
+        <br />
+        use cmip5 emission <br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p>
+        </td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84"><p>revert to 125<br />
+        atm +sea-ice albedo </p></th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1<br />
+        <br />
+        use cmip5 emission <br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha6_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84"><p>revert to 125<br />
+        atm only + pd aerosol</p></th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>b1850</p></td>
+      <td style="text-align: left"><p>b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1<br />
+        <br />
+        use cmip5 emission <br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>b1850_4XCO2</p></td>
+      <td style="text-align: left"><p>same as 297<br />
+        + 4XCO2 start from b1850 at year 26<br />
+      </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1_4XCO2/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1_4XCO2/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1_4XCO2/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1_4XCO2/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/b.e20.B1850.f09_g17.pi_control.all.297_revert125_alpha5_pd_aero_t1_4XCO2/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>&nbsp;</td>
+      <td style="text-align: left">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center"><p><br />
+        </p></td>
+    </tr>
+  </table>
+  <h3>Tuning parameters for B cases</h3>
+  <table width="200" border="1">
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td style="text-align: center">125</td>
+        <td style="text-align: center">297</td>
+        <td style="text-align: center">zmconv<br />
+          t4</td>
+        <td style="text-align: center">so2 lifetime<br /></td>
+        <td style="text-align: center">ice<br />
+          albedo <br /></td>
+        <td style="text-align: center">cmip5 emissions<br /></td>
+        <td style="text-align: center">SB autoconversion<br /></td>
+      </tr>
+      <tr>
+        <td>zmconv_ke</td>
+        <td style="text-align: center"> 1.0E-6</td>
+        <td style="text-align: center"> 5.0E-6</td>
+        <td style="text-align: center">1.0E-6</td>
+        <td style="text-align: center"> 5.0E-6</td>
+        <td style="text-align: center"> 5.0E-6</td>
+        <td style="text-align: center"> 5.0E-6</td>
+        <td style="text-align: center"> 5.0E-6</td>
+      </tr>
+      <tr>
+        <td> clubb_gamma_coef </td>
+        <td style="text-align: center">0.32</td>
+        <td style="text-align: center">0.308</td>
+        <td style="text-align: center">0.30</td>
+        <td style="text-align: center">0.308</td>
+        <td style="text-align: center">0.308</td>
+        <td style="text-align: center">0.316</td>
+        <td style="text-align: center">0.295</td>
+      </tr>
+      <tr>
+        <td> seasalt_emis_scale</td>
+        <td style="text-align: center">0.9</td>
+        <td style="text-align: center">1.00</td>
+        <td style="text-align: center">1.00</td>
+        <td style="text-align: center">1.00</td>
+        <td style="text-align: center">1.00</td>
+        <td style="text-align: center">1.00</td>
+        <td style="text-align: center">1.00</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>r_snw</td>
+        <td style="text-align: center">1.0</td>
+        <td style="text-align: center">1.25</td>
+        <td style="text-align: center">1.25</td>
+        <td style="text-align: center">1.25</td>
+        <td style="text-align: center">1.0</td>
+        <td style="text-align: center">1.25</td>
+        <td style="text-align: center">1.25</td>
+      </tr>
+      <tr>
+        <td>rsnw_mlt</td>
+        <td style="text-align: center">1500.</td>
+        <td style="text-align: center">1500</td>
+        <td style="text-align: center">1500</td>
+        <td style="text-align: center">1500</td>
+        <td style="text-align: center">1500</td>
+        <td style="text-align: center">1500</td>
+        <td style="text-align: center">1500</td>
+      </tr>
+      <tr>
+        <td>dt_mlt</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+        <td style="text-align: center">1.5</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+        <td style="text-align: center">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name="SOMruns" id="SOMruns"> </a></h2>
+  <h2>SOM runs  </h2>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">ID</th>
+      <th align="center" bgcolor="#F9CB84">Case Description</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">ATM</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">OCN</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">ICE</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">LND</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">CVDP</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">comments</th>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">125</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_1xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 125 configuration<br />
+        1xCO2<br />
+        Q_fluxes from 125 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.all.125/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_2xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 125 configuration<br />
+        2xCO2<br />
+        Q_fluxes from 125 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/ee.e20.E1850.f09_g16.pi_control.2xco2.125/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g16.pi_control.2xco2.125/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">125_revert</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_1xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 125_revert configuration<br />
+        1xCO2<br />
+        Q_fluxes from 125_revert over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297_revert125_alpha5_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297_revert125_alpha5_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297_revert125_alpha5_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297_revert125_alpha5_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297_revert125_alpha5_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">This is the configuration alpha5 where we revert only the atmosphere</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_2xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 125_revert  configuration<br />
+        2xCO2<br />
+        Q_fluxes from 125_revert  over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297_revert125_alpha5_t1/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297_revert125_alpha5_t1/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297_revert125_alpha5_t1/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297_revert125_alpha5_t1/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297_revert125_alpha5_t1/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">297</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" style="text-align: center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_1xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 297 configuration<br />
+        1xCO2<br />
+        Q_fluxes from 297 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1xco2.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_1.5xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 297 configuration<br />
+        1.5xCO2<br />
+        Q_fluxes from 297 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1.5xco2.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1.5xco2.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1.5xco2.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1.5xco2.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.1.5xco2.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_2xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 297 configuration<br />
+        2xCO2<br />
+        Q_fluxes from 297 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.2xco2.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_3xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 297 configuration<br />
+        3xCO2<br />
+        Q_fluxes from 297 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.3xco2.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.3xco2.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.3xco2.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.3xco2.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.3xco2.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td><p>SOM_4xco2</p></td>
+      <td style="text-align: left"><p>SOM run with 297 configuration<br />
+        4xCO2<br />
+        Q_fluxes from 297 over yrs 50-99 </p></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.4xco2.297/atm/">atm diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.4xco2.297/ocn/">ocn diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.4xco2.297/ice/">ice diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.4xco2.297/lnd/">lnd diags</a></td>
+      <td style="text-align: center"><a href="http://webext.cgd.ucar.edu/B1850/e.e20.E1850.f09_g17.4xco2.297/cvdp/">cvdp diags</a></td>
+      <td style="text-align: center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>&nbsp;</td>
+      <td style="text-align: left">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center">&nbsp;</td>
+      <td style="text-align: center"><p><br />
+      </p></td>
+    </tr>
+  </table>
+  <p><a name="Fcases" id="Fcases2"> </a><br />
+</p>
+      <h2>F cases (control, pia, SST+4K)<br />
+      </h2>
+  <table border="1" cellpadding="6" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th width="153" align="center" bgcolor="#F9CB84">ID</th>
+      <th width="272" align="center" bgcolor="#F9CB84">Case Description</th>
+      <th width="78" align="center" bgcolor="#F9CB84">Diagnostics</th>
+      <th width="253" align="center" bgcolor="#F9CB84">Details/Comments</th>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">125</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000<br /></td>
+      <td align="left"><p>f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96</p>
+        <p>Tag = CLUBB_reorder_n05_cam5_4_96 <br />
+        </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96/atm/">diags</a></td>
+      <td align="left">
+        This case is a Fcase based on the CLUBB_reorder_n05_cam5_4_96 tag. <br />
+        The atmosphere is basically the same as in125.<br />
+      There are difference in the othe components especially the land is different. This is because the model was crashing when using the same land as in 125. </span></td>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000_pia<br /></td>
+      <td align="left"><p>f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_pia</p>
+        <p>same as 125_f2000 + pre-industrial aerosols<br />
+        </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_pia/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000_SST+4K<br /></td>
+      <td align="left"><p>f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_SST+4K</p>
+        <p>same as 125_f2000 + SST+4K<br />
+        </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000_DEV.f09_f09.CLUBB_reorder_n05_cam5_4_96_SST+4K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">297</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000</td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.001<br />
+        This is the release tag for cesm2.0<br />
+        </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.001/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000_SST+2K<br /></td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.001_SST2K<br />
+      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.001_SST2K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="center">f2000_SST+4K<br /></td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.001_SST4K<br />
+      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.001_SST4K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">zmconv_ke</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td>f2000</td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.002<br />
+        zmconv_ke  =  5.0E-6 -&gt; 1.0E-6<br />
+      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.002/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>f2000_SST+4K<br /></td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.002_SST4K<br />
+        zmconv_ke  =  5.0E-6 -&gt; 1.0E-6         <br />
+      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.002_SST4K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">clubb_gamma_coef</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td>f2000</td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.003<br />
+        + clubb_gamma_coef               =  0.308-&gt;0.288</p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.003/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>f2000_SST+4K<br /></td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.003_SST4K<br />
+      + clubb_gamma_coef               =  0.308-&gt;0.288      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.003_SST4K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr class="background">
+      <th align="center" bgcolor="#F9CB84">so2 lifetime</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+      <th align="center" bgcolor="#F9CB84">&nbsp;</th>
+    </tr>
+    <tr align="center">
+      <td>f2000</td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.004<br />
+        + so2 lifetime<br />
+      </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.004/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>f2000_SST+4K<br /></td>
+      <td align="left"><p>f.e20.F2000climo.f09_f09.297.004_SST4</p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e20.F2000climo.f09_f09.297.004_SST4K/atm/">diags</a></td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td align="center">&nbsp;</td>
+      <td align="left">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <h2>&nbsp;</h2>
+  <p><a name="diff_297_125" id="diff_297_125"> </a></p>
+  <h2>Differences between 125 and 297<br />
+  </h2>
+  <h3>Tuning parameters <br />
+  </h3>
+  <ul>
+    <li> In 125:</li>
+  </ul>
+  <p>bnd_topo		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/topo/fv_0.9x1.25_nc3000_Nsw042_Nrs008_Co060_Fi001_ZR_160505.nc' </p>
+  <p>ext_frc_specifier		= 'H2O -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2O_emission_CH4_oxidationx2_elev_1850-2100_CCMI_RCP6_0_c160219.nc',<br />
+    'SO2         -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1960-2008/IPCC_emissions_volc_SO2_1850-2100_1.9x2.5_c130426cycle.nc',<br />
+    'bc_a4       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_elev_1850-2005_c090804.nc',<br />
+    'num_a1      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a1_elev_1850-2005_c150205.nc',<br />
+    'num_a2      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_elev_1850-2005_c090804.nc',<br />
+    'num_a4      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a4_elev_1850-2005_c150205.nc',<br />
+    'pom_a4      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_pom_elev_1850-2005_c130424.nc',<br />
+    'so4_a1      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_elev_1850-2005_c090804.nc',<br />
+  'so4_a2      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_elev_1850-2005_c090804.nc'</p>
+  <p> srf_emis_specifier		= 'DMS       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1950_2100_rcp6/IPCC_emissions_DMS_surface_1850-2100_1.9x2.5_c130814.nc',<br />
+    'SO2       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1950_2100_rcp6/IPCC_emissions_SO2_surface_1850-2100_1.9x2.5_c130814.nc',<br />
+    'SOAG      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_soag_1.5_surf_1850-2005_c130424.nc',<br />
+    'bc_a4     -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_surf_1850-2005_c090804.nc',<br />
+    'num_a1    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a1_surf_1850-2005_c150205.nc',<br />
+    'num_a2    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_surf_1850-2005_c090804.nc',<br />
+    'num_a4    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a4_surf_1850-2005_c150205.nc',<br />
+    'pom_a4    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_pom_surf_1850-2005_c130424.nc',<br />
+    'so4_a1    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_surf_1850-2005_c090804.nc',<br />
+  'so4_a2    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_surf_1850-2005_c090804.nc'</p>
+  <p> tracer_cnst_file		= 'oxid_ozone_WACCM_CCMI_1850_cycle_3D_monthly_c20160531.nc'</p>
+  <p>cldfrc2m_rhminis		=   0.80D0 </p>
+  <p>clubb_gamma_coef		= 0.3200001</p>
+  <p> dust_emis_fact		=    1.50D0 <br />
+    soil_erod_file		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2_cam5.4_c150327.nc'</p>
+  <p> micro_do_sb_physics		=   .true. </p>
+  <p>micro_mg_berg_eff_factor		= 0.7<br />
+    micro_mg_dcs		= 540.D-6</p>
+  <p>nucleate_ice_strat		= 0.3D0<br />
+    nucleate_ice_use_troplev		= .false.</p>
+  <p> prescribed_ozone_file		= 'oxid_ozone_WACCM_CCMI_1850_cycle_3D_monthly_c20160531.nc'</p>
+  <p>prescribed_strataero_file		= 'CESM_1849_2100_sad_V3_c160211.nc'<br />
+    prescribed_strataero_use_chemtrop		= .false.</p>
+  <p>rad_climate		= 'A:Q:H2O', 'N:O2:O2',<br />
+    'N:CO2:CO2', 'N:ozone:O3',<br />
+    'N:N2O:N2O', 'N:CH4:CH4',<br />
+    'N:CFC11:CFC11', 'N:CFC12:CFC12',<br />
+    'M:mam4_mode1:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode1_rrtmg_aeronetdust_sig1.6_dgnh.48_c140304.nc', 'M:mam4_mode2:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode2_rrtmg_aitkendust_c141106.nc',<br />
+    'M:mam4_mode3:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode3_rrtmg_aeronetdust_sig1.2_dgnl.40_c150219.nc', 'M:mam4_mode4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode4_rrtmg_c130628.nc',<br />
+    'N:VOLC_MMR:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma1.6_c130724.nc'</p>
+  <p> solar_data_file		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcingCMIP6piControl_c160921.nc'</p>
+  <p>zmconv_ke		=  1.0E-6 </p>
+  <p> seasalt_emis_scale              = 0.90D0</p>
+  <ul>
+    <li>In 297:</li>
+  </ul>
+  <p>bnd_topo		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/topo/fv_0.9x1.25_nc3000_Nsw042_Nrs008_Co060_Fi001_ZR_sgh30_24km_GRNL_c170103.nc'</p>
+  <p> ext_frc_specifier		= 'H2O -&gt; /glade/p/acd/mmills/emis/piControl/H2O_emission_CH4_oxidationx2_elev_3DmonthlyL70_1850climo295_c180426.nc',<br />
+    'num_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a1_anthro-ene_vertical_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'num_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_a1_so4_contvolcano_vertical_850-5000_0.9x1.25_c20170724.nc',<br />
+    'num_a2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_a2_so4_contvolcano_vertical_850-5000_0.9x1.25_c20170724.nc',<br />
+    'SO2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_contvolcano_vertical_850-5000_0.9x1.25_c20170724.nc',<br />
+    'so4_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_anthro-ene_vertical_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'so4_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_contvolcano_vertical_850-5000_0.9x1.25_c20170724.nc',<br />
+  'so4_a2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a2_contvolcano_vertical_850-5000_0.9x1.25_c20170724.nc'</p>
+  <p> srf_emis_specifier		= 'bc_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_bc_a4_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',<br />
+    'bc_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_bc_a4_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'DMS -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_DMS_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'DMS -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_DMS_other_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'num_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a1_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'num_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a1_anthro-ag-ship_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'num_a2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a2_anthro-res_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'num_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_bc_a4_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'num_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_bc_a4_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',<br />
+    'num_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_pom_a4_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',<br />
+    'num_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_pom_a4_bb_surface_1750-2015_0.9x1.25_c20170509.nc',<br />
+    'pom_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_pom_a4_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',<br />
+    'pom_a4 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_pom_a4_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'SO2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_anthro-ag-ship-res_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'SO2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_anthro-ene_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'SO2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'so4_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_anthro-ag-ship_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'so4_a1 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+    'so4_a2 -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a2_anthro-res_surface_1750-2015_0.9x1.25_c20170616.nc',<br />
+    'SOAG -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SOAGx1.5_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',<br />
+    'SOAG -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SOAGx1.5_bb_surface_1750-2015_0.9x1.25_c20170322.nc',<br />
+  'SOAG -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SOAGx1.5_biogenic_surface_1750-2015_0.9x1.25_c20170322.nc' </p>
+  <p> tracer_cnst_file		= 'tracer_cnst_WACCM6_halons_3DmonthlyL70_1850climo295_c180426.nc' </p>
+  <p> cldfrc2m_rhminis		=   1.0D0 </p>
+  <p> clubb_gamma_coef		=  0.308 <br />
+  </p>
+  <p> dust_emis_fact		= 0.70D0<br />
+    soil_erod_file		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2tunedcam6-2x2-04062017.nc'</p>
+  <p> micro_do_sb_physics		= .false.<br />
+    micro_mg_berg_eff_factor		=   1.0D0 <br />
+    micro_mg_dcs		=                                  500.D-6 </p>
+  <p>nucleate_ice_strat		= 1.0D0<br />
+    nucleate_ice_use_troplev		= .true.</p>
+  <p> prescribed_ozone_file		= 'ozone_strataero_WACCM6_L70_zm5day_1850climo_295_c180426.nc'<br />
+    prescribed_strataero_file		= 'ozone_strataero_WACCM6_L70_zm5day_1850climo_295_c180426.nc'<br />
+    prescribed_strataero_use_chemtrop		= .true. </p>
+  <p>rad_climate		= 'A:Q:H2O', 'N:O2:O2',<br />
+    'N:CO2:CO2', 'N:ozone:O3',<br />
+    'N:N2O:N2O', 'N:CH4:CH4',<br />
+    'N:CFC11:CFC11', 'N:CFC12:CFC12',<br />
+    'M:mam4_mode1:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode1_rrtmg_aeronetdust_sig1.6_dgnh.48_c140304.nc', 'M:mam4_mode2:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode2_rrtmg_aitkendust_c141106.nc',<br />
+    'M:mam4_mode3:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode3_rrtmg_aeronetdust_sig1.2_dgnl.40_c150219.nc', 'M:mam4_mode4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode4_rrtmg_c130628.nc',<br />
+    'N:VOLC_MMR1:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma1.6_mode1_c170214.nc', 'N:VOLC_MMR2:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma1.6_mode2_c170214.nc',<br />
+    'N:VOLC_MMR3:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/volc_camRRTMG_byradius_sigma1.2_mode3_c170214.nc'</p>
+  <p> solar_irrad_data_file		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcingCMIP6piControl_c160921.nc'</p>
+  <p>zmconv_ke		=  5.0E-6 <br />
+  </p>
+  <p> seasalt_emis_scale              = 1.0D0</p>
+  <h2>Files</h2>
+  <p># SO2 lifetime<br />
+    src.clm/DryDepVelocity.F90 <br />
+  src.cam/mo_drydep.F90</p>
+  <p># snow grain mods in land<br />
+    src.clm/SnowSnicarMod.F90<br />
+    src.clm/clm_driver.F90</p>
+  <p># SB/KK autoconversion<br />
+    src.cam/micro_mg_utils.F90</p>
+  <p># MG2 bugfix<br />
+    src.cam/micro_mg2_0.F90</p>
+  <p># Bugfix for vertical remapping<br />
+    src.cam/mapz_module.F90</p>
+  <p># Washout fix for SO2<br />
+    src.cam/mo_neu_wetdep.F90</p>
+  <p># Modified Mahrt and Sun + number of iterations for sfc fluxes calculation<br />
+    src.drv/shr_flux_mod.F90</p>
+  <p># Fix for water conservation<br />
+    src.cam/clubb_intr.F90<br />
+    src.cam/physpkg.F90<br />
+    src.cam/vertical_diffusion.F90</p>
+  <p># O3 fix above CAM top<br />
+    src.cam/radiation.F90<br />
+    src.cam/rrtmg_state.F90</p>
+  <h2> <br />
+</h2>
+  <p>&nbsp;</p>
+</div>
+</body>
+</html>
+  

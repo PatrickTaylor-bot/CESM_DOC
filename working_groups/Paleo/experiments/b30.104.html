@@ -1,0 +1,83 @@
+<html>
+<head>
+<TITLE>b30.104</TITLE>
+</head>
+<body>
+<H2 ALIGN = CENTER>b30.104</H2>
+<HR SIZE=4 WIDTH="75%">
+
+<H4>General</H4>
+<UL>
+   <LI> Description: T42x1 Last Glacial Maximum 21 kyr BP  (PMIP-2 simulation)
+</UL>
+
+<UL>
+   <LI> Contact: Bette Otto-Bliesner  NCAR (ottobli@ucar.edu)
+</UL>
+
+<H4>Forcings</H4>
+<UL>
+   <LI> scon     = 1.36500e+6  (solar constant = 1365.0 W/m^2)
+   <LI> orb_year = -19050      (relative to 1950: 1950-21000)
+   <LI> co2vmr   = 1.85000e-4  (185 ppmv)
+   <LI> ch4vmr   = 3.50000e-7  (350 ppbv)
+   <LI> n20vmr   = 2.00000e-7  (200 ppbv)
+   <LI> f11vmr   = 0.0 
+   <LI> f12vmr   = 0.0 
+</UL>
+
+<H4>Boundary Conditions</H4>
+<UL>
+   <LI> ozone           = mozart.o3.128x64_L18_1870cyc_c040123.nc 
+   <LI> sulfates        = AerosolMass_V_1870_SO4_64x128_clim_c040224.nc (10 year average from b30.020; T85 1870)
+   <LI> dust & sea salt = present day prescribed
+   <LI> carscl          = 0.30 (carbonaceous aerosol scaling)
+   <LI> topography      = ICE-5G
+   <LI> ice sheet       = ICE-5G
+   <LI> coastline       = ICE-5G, corresponding to ~120 m lowering of sea level
+   <LI> bathymetry      = Present day except ~120 m raised sills: Strait of Gibraltor and Denmark Strait
+</UL>
+
+<H4>Initial Conditions</H4>
+<UL>
+   <LI> branch from b30.100.ES01, year 100 (PI 1780 control, T42x1)
+   <LI> ocean = 3D pot temp and salinity anomalies from Shin et al. 2003 on PI
+   <LI> sea ice = from present day
+</UL>
+
+<H4>Years of Run</H4>
+<UL>
+   <LI> 1 to 400
+</UL>
+
+<H4>Mass Store Path</H4>
+<UL>
+   <LI> /CCSM/paleo/b30.104
+</UL>
+
+<H4>Post-Processed File Locations</H4>
+<UL>
+   <LI> /CCSM/paleo/PMIP2/PMIP2_21K_OA
+</UL>
+
+<H4>References</H4>
+<UL>
+Otto-Bliesner, B.L., E.C. Brady, G. Clauzet, R. Tomas, S. Levis, and Z. Kothavala, 2006: <a href="http://www.cgd.ucar.edu/ccr/ottobli/pubs/Otto-Bliesner-JClimate-Paleo-19.pdf">Last Glacial Maximum and Holocene climate in CCSM3.</a><i> J. Climate</i>, <b>19</b>, 2526-2544.*
+</UL>
+<UL>
+*This download/article is courtesy of the American Meterological Society, who owns sole rights
+to it. The download/article is subject to AMS copyright laws and statutes. For more information
+, please visit the Allen Press/AMS Journals Online website at <a href="http://ams.allenpress.co
+m/amsonline/?request=index-html">AMS Journals Online</a>.
+</UL>
+
+<H4>Notes</H4>
+<UL>
+   <LI> Source: beta 20
+</UL>
+
+<h3><a HREF="b30.104_diagnostic_plots.html">Diagnostic Plots</a> </h3>
+
+<P> </P>
+</body>
+</html>

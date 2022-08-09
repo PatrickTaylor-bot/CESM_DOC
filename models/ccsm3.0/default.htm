@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CESM Models | CCSM3.0 Public Release</title>
+
+<link rel="shortcut icon" href="../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+
+<body>
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www.cesm.ucar.edu/models">CESM Models</a> &raquo; CCSM3.0 Public Release</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">CCSM3.0 Public Release</h2>
+                        
+                        <p>CCSM version 3.0 was released to the public in June 2004. This web page deals specifically with the CCSM3.0 release.</p>
+							<p>The Community Climate System Model (CCSM) is a coupled climate model for simulating the earth's climate system. Composed of four separate models simultaneously simulating the earth's atmosphere, ocean, land surface and sea-ice, and one central coupler component, the CCSM allows researchers to conduct fundamental research into the earth's past, present and future climate states.</p>
+								
+							<h2>Contents</h2>
+								
+								<ul><li>CCSM3.0 <a href="#docs">Model Documentation</a>, tutorials, FAQs</li>
+								<li>CCSM3.0 <a href="#src">Model Source Code</a>, patches, bug reports</li>
+								<li>CCSM3.0 <a href="#input">Model Input Data</a></li>
+								<li>CCSM3.0 <a href="#output">Model Output Data</a></li>
+								<li>Links to information about <a href="#cam">uncoupled CAM and CLM</a></li></ul>
+								
+							<a name="docs"><h2>Model Documentation</h2></a>
+							<h3>Running The Complete Coupled System</h3></a>
+								<ul><li>CCSM3.0 User's Guide [<a href="ccsm/doc/UsersGuide/UsersGuide/UsersGuide.html">html</a>] [<a href="ccsm/doc/UsersGuide/UsersGuide.pdf">pdf</a>]</li>
+								<li><a href="ccsm3.0_faq.html">Frequently Asked Questions</a> about CCSM3.0</li>
+								<li><a href="ccsm3.0_tutorial.pdf">Slide presentation</a> from the July 2004 CCSM3.0 Scripts Tutorial (700K pdf).</li>
+								<li>An Introduction to Load Balancing CCSM3 Components presented at the June 2005 CCSM workshop [<a href="CCSMLoadBalanceWorkshop.pdf">pdf</a>]</li>
+								<li><a href="http://bb.cgd.ucar.edu/">Online Bulletin Board</a> for CCSM bug reports &amp; questions</li></ul>
+										
+							<h3>Atmosphere Models</h3>
+								<ul><li><a href="cam/default.htm" >Community Atmosphere Model</a> (cam3)</li>
+								<li><a href="datm6/default.htm">Climatological Data Model</a> (datm6)</li>
+								<li><a href="latm6/default.htm">Observational Data Model</a> (latm6)</li></ul>
+										
+							<h3>Ice Models</h3>
+								<ul><li><a href="csim/default.htm">Community Sea Ice Model</a> (csim5)</li>
+								<li><a href="dice6/default.htm">Climatological Data Model </a> (dice6)</li></ul>
+										
+							<h3>Land Models</h3>
+								<ul><li><a href="clm3/default.htm" >Community Land Model</a> (clm3)</li>
+								<li><a href="dlnd6/default.htm">Climatological Data Model</a> (dlnd6)</li></ul>
+									
+							<h3>Ocean Models</h3>
+								<ul><li><a href="pop/default.htm" >CCSM POP</a> (pop)</li>
+								<li><a href="docn6/default.htm">Climatological Data Model</a> (docn6)</li></ul>
+									
+							<h3>Coupler</h3>
+								<ul><li>The <a href="cpl6/default.htm">Coupler</a> (cpl6)</li></ul>
+								
+							<a name="src"><h2>Model Source Code</h2></a>
+								<ul>
+									<li><b>CCSM3.0 source code</b> (23 June 2004) --  This is the original 3.0 software release.<br>
+									This source code is disseminated via the <a href = "https://www.earthsystemgrid.org">Earth System Grid</a> (ESG). A short registration is required.<br>
+									All CCSM3 source code is subject to the following <a href="copyright.html">Copyright Notice and Disclaimer</a>.<br>
+									The code is a 7.2MB gzip'd tar file. Once un-zip'd and un-tar'd, the source code is about 34MB.<br>
+									To unzip, "gunzip ccsm3_0.tar.gz". To untar, "tar -xvf ccsm3_0.tar".</li> 
+									
+								<p><li><b>CCSM3.0.1 beta14 source code</b> (22 March 2006) --  This is an incremental upgrade to the  original release.<br>
+								<a href = "ccsm3_0_1_beta14.readme.html">What is ccsm3.0.1 beta14?</a><br>
+								This source code is disseminated via the <a href = "https://www.earthsystemgrid.org">Earth System Grid</a> (ESG). A short registration is required. <br>
+								All CCSM3 source code is subject to the following <a href="copyright.html">Copyright Notice and Disclaimer</a>.<br>
+								The code is a 7.5MB gzip'd tar file. Once un-zip'd and un-tar'd, the source code is about 30MB.<br>
+								To unzip, "gunzip ccsm3_0_1_beta14.tar.gz". To untar, "tar -xvf ccsm3_0_1_beta14.tar".</li> 
+								
+								<p><li><b>Reporting a Problem</b><br>
+								If you have any problems, additional questions, bug reports, or any other feedback, please use the <a href="http://bb.cgd.ucar.edu/">CCSM Help Bulletin Board </a>.</li></p>
+								
+								<p><li><b>CCSM3.0 Mailing List</b><br>
+								To subscribe to the <a href="http://mailman.cgd.ucar.edu/mailman/listinfo/ccsm-users">ccsm-users mailing list </a> follow the link, or email your request to ccsm @ ucar.edu.  This is a low-volume mailing list that allows the community to stay up to date with new releases, important bugs, and development procedures.</li></p>
+								</ul>
+								
+							<a name="input"><h2>Model Input Data</h2></a>
+								<p>The input data needed to run the model is disseminated via the <a href = "https://www.earthsystemgrid.org">Earth System Grid</a> (ESG).</p>
+								<p>The data necessary to run these all-active configurations is currently available:</p>
+								<ul><li><a href="ipcc_definition.html">non-IPCC</a> constant 1990 control runs</li>
+								<li>non-IPCC increasing CO2 scenarios</li>
+								<li><a href="ipcc_definition.html">IPCC</a> constant 1870 control runs</li></ul>
+								
+								<p>Additional input data is necessary for the following IPCC scenarios
+(registration with ESG is required):</p>
+								<ul><li><a href="http://www.earthsystemgrid.org/browse/viewCollectionFilesInitial.htm?datasetId=956106e4-c91e-11df-9d5f-00c0f03d5b7c" target="_blank">IPCC constant 2000 control runs</a></li>
+								<li><a href="http://www.earthsystemgrid.org/browse/viewCollectionFilesInitial.htm?datasetId=956106e4-c91e-11df-9d5f-00c0f03d5b7c" target="_blank">IPCC 20th-century scenarios</a></li>
+								<li><a href="http://www.earthsystemgrid.org/browse/viewCollectionFilesInitial.htm?datasetId=956106e4-c91e-11df-9d5f-00c0f03d5b7c" target="_blank">IPCC future scenarios</li></a></ul>
+								
+							<a name="output"><h2>Model Output Data</h2></a>
+								<p>A variety of mmulti-century CCSM3.0 control runs have been carried out at three resolutions: T31_gx3v5, T42_gx1v3, and T85_gx1v3. Monthly average data from all components were saved and some post-processed time series are available. A description of the various CCSM3 control runs is available in the <a href="../../experiments/ccsm3.html">Experiments and Output Data</a> section of this web site.</p>
+								<p>CCSM3 output data is disseminated via the <a href = "https://www.earthsystemgrid.org">Earth System Grid</a> (ESG).</p>
+								
+							<h2>Related Stand-Alone Components: Uncoupled Models</h2>
+									
+								<table border="1">
+								
+				    				<tr bgcolor="#E8E8E8">
+				    				<td width=16%><strong>Version</strong></td>
+									<td><strong>Description</strong></td>
+        		    				</tr>
+									
+									<tr>
+				    				<td>Atmosphere [<a href="../atm-cam/default.htm">CAM</a>]</td>
+									<td>The Community Atmosphere Model (CAM) is the latest in a series of global atmosphere models developed at NCAR for the weather and climate research communities. While a version CAM serves as an atmospheric component in the CCSM framework (a coupled system), this is an alternate version that runs as a "stand alone" (uncoupled) model.</td>
+        		    				</tr>
+									
+									<tr>
+				    				<td>Sea Ice [<a href="../ice-csim/default.htm">CSIM</a>]</td>
+									<td>The Community Sea Ice Model (CSIM) serves as the sea ice component of CCSM. It is the result of a community effort to develop a portable, efficient sea ice model that can be run coupled in a global climate model or uncoupled as a stand-alone ice model. It is a dynamic-thermodynamic model that includes a subgrid-scale ice thickness distribution, energy conserving thermodynamics, and elastic-viscous-plastic (EVP) dynamics.</td>
+        		    				</tr>
+									
+									<tr>
+				    				<td>Land [<a href="http://www.cesm.ucar.edu/models/clm/">CLM</a>]</td>
+									<td>The Community Land Model (CLM) is a state-of-the-art soil-vegetation-atmosphere transfer model developed by the CCSM's Land Model Working Group. Given land surface and atmospheric inputs from datasets and models, the CLM calculates (at the land-atmosphere interface) heat and radiation fluxes, temperature, humidity, and moisture values, river flow, volatile organic compound emissions, and CO2 fluxes. The CLM includes a dynamic global vegetation model that simulates plant structure and distribution as a function of the climate.</td>
+        		    				</tr>
+									
+									<tr>
+				    				<td>Ocean [<a href="pop/default.htm">POP</a>]</td>
+									<td>The CCSM version of the Parallel Ocean Program was released in June 2004 as part of the CCSM3.0 release.</td>
+        		    				</tr>
+			
+			    				</table>
+								<p>&nbsp;</p>
+		
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

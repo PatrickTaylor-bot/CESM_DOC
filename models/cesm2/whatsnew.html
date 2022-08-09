@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CESM2 Release Series Information</title>
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Information about new features and improvements in all releases of CESM2" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+	<link rel="manifest" href="../../site.webmanifest">
+	<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../../styles/um/css/style.css" rel="stylesheet">
+	<link href="../../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../../www.cesm.ucar.edu/models/default.htm">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="../current.html">CESM Releases</a></li>
+                            <li class="breadcrumb-item"><a href="default.htm">CESM2</a></li>
+                            <li class="breadcrumb-item active">Release Series Information</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end breadcrumb menu -->
+
+
+    <section id="content">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-8">
+    				<div class="post-image">
+    					<div class="post-heading">
+    						<h1>CESM2 release series information</h1>
+    					</div>
+    				</div>
+
+    				<div class="card mb-3 ">
+    					<div class="card-body">
+    						<h3 class="card-title">Developmental Release - New Advancements<span class="badge badge-pill badge-primary float-right">CESM2.2.0</span></h3>
+    						<p>CESM2.2 is a new <em>developmental</em> version of the CESM2 family, containing many new developments in several component models since the release of CESM2.0 in June 2018. Some of these new advancements include: a developmental version of CAM, CAM6.3, with new dynamical core configurations and capabilities for the Spectral-Element (SE) and NOAA’s Finite Volume Cubed Sphere (FV3) dynamical cores; a new version of WACCM-X, WACCM-X 6.2, that supports CAM6 physics; an updated version of CLM that includes infrastructure and parameterization improvements; availability of a functional version of the Modular Ocean Model version 6 (MOM6); and several bug corrections. As such, CESM2.2 contains answer-changing developments in comparison to the CESM2.1.z series.</p> 
+
+    						<p>The CESM2.2 release is <strong>not</strong> a scientifically supported version; that is, we do not have any long simulations with this model version yet. Rather, CESM2.2 provides consolidated access to new model developments and features accomplished over the last two years so that any interested community members can access and further develop them.</p> 
+    						
+    						<p>In most cases, users should continue to use the CESM2.1.z series for their science and especially for CMIP6-related simulations.</p>
+
+
+	    					<a href="atmosphere/default.htm"><h4>Atmosphere CAM</h4></a>
+	    					<p>The CAM6.3 is a developmental release mostly centered around new dynamical core configurations and capabilities. Further development of the Spectral-Element (SE) dynamical core has occurred since the CESM2.0 release.  NOAA’s Finite Volume Cubed Sphere (FV3) dynamical has been incorporated in CESM.</p>  
+	    					<p class="mb-0">Specific new features included in CESM2.2.0 are:</p>
+	    					<ul class="mb-4">
+	    						<li>New Exner function pressure gradient formulation and new reference profiles for damping to improve flow over orography implemented in SE</li>
+	    						<li>New vertical remapping algorithm implemented in SE</li>
+	    						<li>Extensive new capabilities for variable resolution SE applications which include three new resolutions/configurations (CONUS, ARCTIC and ARCTICGRIS) and tools for making new grids</li>
+	    						<li>Developmental setups for coupled simulations using CAM-SE and CAM-SE-CSLAM (Conservative Semi-Lagrangian multi-tracer transport scheme)</li>
+	    						<li>NOAA’s FV3 dynamical core used operationally by EMC (Environmental Modeling Center) has been coupled with CAM6 physics</li>
+	    						<li>A new simpler models configuration has been added: Moist Held-Suarez</li>
+	    						<li>Flexible, dynamical core independent nudging capability has been added</li>
+	    					</ul>
+
+	    					<h5>CAM-chem</h5>
+	    					<p>CAM-chem now includes the capability to run the regionally refined grid with the Spectral Element dynamical core (CAM-chem-SE-RR), also referred to as MUSICA-V0 (<a href="https://wiki.ucar.edu/display/MUSICA/MUSICA+Home">https://wiki.ucar.edu/display/MUSICA/MUSICA+Home</a>). The CAM-chem compsets now support resolutions for uniform grid SE, and SE with CSLAM.  Compsets for physics-side nudging to MERRA meteorological reanalyses are now provided, in addition to the specified dynamics compset.  The wet scavenging of aerosols by convective clouds has been updated.  The Henry's Law constants used to determine wet and dry deposition of gas-phase species have been updated.  Compsets for using the MOZART-TS2 chemistry are included.</p>
+	    					<h5>WACCM-X</h5>
+	    					<p class="mb-0">New WACCM-X features that are part of WACCM-X 6.2 include:</p>
+	    					<ul class="mb-4">
+	    						<li>Move to CAM6 Physics (including CLM5), support for 1&deg; resolution. Disabled CLUBB above the stratopause.</li>
+	    						<li>RingAv filtering of high-latitude O+, implemented for both resolutions. Defaults to RingAv method for 1&deg; version, and FFT for 2&deg; version.</li>
+	    						<li>Electron heat flux fix near equator, remove large spurious background flux. This is essentially a bug fix.</li>
+	    					</ul>
+
+
+	    					<a href="land/default.htm"><h4>Land CLM</h4></a>
+	    					<p class="mb-0">New land features that are part of this release include:</p>
+	    					<ul>
+	    						<li>FV3 grids and several variable resolution grids needed for CAM, with initial condition files provided for some of them</li>
+	    						<li>Updates to CIME and introduction of the NUOPC cap that are consistent with other CESM components</li>
+	    						<li>A new parameterization that allows for an option to simulate two bioenergy crops (switchgrass and miscanthus)</li>
+	    						<li>Adding support for more general  use of setting numbers of subscale vegetation types</li>
+	    						<li>Moving hard coded parameters to the CTSM parameter file</li>
+	    						<li>Support for use of CTSM in numerical weather prediction (NWP)</li>
+							</ul>
+							<p>The release also addresses several answer changing bug fixes that were present in the released CLM5.0 code and previous versions of CESM2 that include the LUNA and FUN modules.  Additional minor improvements were made to the implementation of plant hydraulic stress, snow aerosols, snow and soil hydrology, urban, phenology, and the lake model. Additionally the land-only configuration of the model is set to only run through 2013 with the GSWP3 forcing because of an error in the forcing data for 2014.  More information about these changes, bug fixes and ongoing work can be found at the <a href="https://github.com/ESCOMP/ctsm">CTSM github repository</a>.</p>
+
+	    					<a href="ocean/default.htm"><h4>Ocean</h4></a>
+	    					<h5>POP</h5>
+	    					<p>A new option to the Langmuir mixing parameterization is added to enhance entrainment following Li and Fox-Kemper (2017, <a href="doi.org/10.1175/JPO-D-17-0085.1">Doi: 10.1175/JPO-D-17-0085.1</a>). This enhanced entrainment is expected to help reduce mixed layer biases.</p>
+
+	    					<h5>MOM6</h5>
+	    					<p>A new ocean component model based on the Modular Ocean Model version 6 (MOM6) has been incorporated into CESM and is anticipated to replace POP2 as the default ocean component in CESM3. An early functional release of the MOM6 ocean component is being made available to users beginning with CESM2.2. Instructions for using MOM6 in CESM are available on the <a href="https://github.com/ESCOMP/MOM_interface/wiki/Detailed-Instructions">MOM_interface Github Wiki</a> page.</p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3">
+    					<div class="card-body">
+    						<h3 class="card-title" id="2.1.3">Incremental Release - Bug Fix <span class="badge badge-pill badge-primary float-right">CESM2.1.3</span></h3>
+	    					<p>CESM2.1.3 is an incremental bug fix release that addresses python 3.8 issues in manage_externals</p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3">
+    					<div class="card-body">
+    						<h3 class="card-title">Incremental Release - CMIP6 <span class="badge badge-pill badge-primary float-right">CESM2.1.2</span></h3>
+	    					<p>
+	    						CESM2.1.2 is the third incremental release of CESM2 that increases the
+	    						available set of out-of-the-box configurations of the model for
+	    						readily performing additional simulations requested by the Diagnostic,
+	    						Evaluation and Characterization of Klima (DECK) of the Coupled Model
+	    						Intercomparison Project phase 6 (CMIP6) and several Model
+	    						Intercomparison Projects (MIPs) Tier 1 sets. These configurations
+	    						include both CAM6 and WACCM6 2-degree horizontal resolution versions
+	    						for performing the DECK simulations. The release includes many output
+	    						files from the corresponding CESM2 simulations via the Earth System
+	    						Grid Federation (ESGF). See the scientifically validated
+	    						configurations page for a complete list of experiments and their
+	    						associated dataset links that have been completed with CESM2.1.2.
+	    					</p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3">
+    					<div class="card-body">
+    						<h3 class="card-title">Incremental Release - CMIP6 <span class="badge badge-pill badge-primary float-right">CESM2.1.1</span></h3>
+	    					<p>
+	    						CESM2.1.1 is the second incremental release of CESM2
+	    						that further expands the available set of
+	    						out-of-the-box configurations of the model for
+	    						readily performing all of the simulations requested
+	    						by the Diagnostic, Evaluation and Characterization
+	    						of Klima (DECK) experiments of the Coupled Model
+	    						Intercomparison Project phase 6 (CMIP6) as well as
+	    						several Model Intercomparison Projects (MIPs) Tier 1
+	    						simulations. Functional support for both CAM6 and
+	    						WACCM6 2-degree horizontal resolution versions is
+	    						also provided. The release includes many output files
+	    						from the corresponding CESM2 simulations via the
+	    						Earth System Grid Federation (ESGF). See the
+	    						<a href="https://csegweb.cgd.ucar.edu/experiments/public/">scientifcally
+	    						validated configurations</a> page for a complete list of experiments
+	    						and their associated dataset links that have been completed with CESM2.1.1.
+	    					</p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3">
+    					<div class="card-body">
+    						<h3 class="card-title">Incremental Release - Science Support <span class="badge badge-pill badge-primary float-right">CESM2.1.0</span></h3>
+	    					<p>CESM2.1.0 is an incremental release of CESM2 that
+	    						includes support for performing pre-industrial control and subsequent
+	    						historical simulations as well as AMIP-type simulations with both the
+	    						low-top (CAM6) and high-top (WACCM6) atmospheric model versions that
+	    						can be used for the Coupled Model Intercomparison Project phase 6
+	    						(CMIP6) Diagnostic, Evaluation and Characterization of Klima (DECK)
+	    						experiments. The release includes a limited set of output files from
+	    						the corresponding CESM2 simulations. In addition, several bug
+	    					corrections are included. </p>
+
+	    					<p>The CESM project will continue to provide incremental releases to
+	    						perform the remaining DECK and Model Intercomparison Project (MIP)
+	    						simulations as they become ready. The full set of output files from
+	    						the CESM CMIP6 simulations will become available to the general
+	    					community, starting in late February 2019. </p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3">
+    					<div class="card-body">
+    						<h3 class="card-title">Incremental Release - Bug Fix <span class="badge badge-pill badge-primary float-right">CESM2.0.1</span></h3>
+	    					<p>CESM2.0.1 is an incremental bug fix release that
+	    						includes fixes for some known issues, updates to documentation, updates for machine
+	    						support and an expanded list of supported
+	    					machines.</p>
+	    				</div>
+    				</div>
+
+    				<div class="card mb-3 border-primary">
+    					<div class="card-body">
+    						
+    						<h2 class="card-title">Initial Release <span class="badge badge-pill badge-primary float-right">CESM2.0.0</span></h2>
+
+	    					<h3>Infrastructure</h3>
+	    					<h4>CIME <span class="small">- Common Infrastructure for Modeling the Earth</span></h4>
+
+	    					<p>In CESM2, the coupling infrastructure, scripting utilities and data models are now in <a href="https://esmci.github.io/cime/versions/master/html/what_cime/index.html">CIME</a>, a separate and open-source repository (<a href="https://github.com/ESMCI/cime">https://github.com/ESMCI/cime</a>). CIME provides a Case Control System for configuring, compiling and executing Earth system models, data and stub model components, a driver and associated tools and libraries.</p>
+
+	    					<p>The <a href="https://esmci.github.io/cime/versions/master/html/users_guide/index.html">CIME Case Control System</a> is a new object-oriented set of python utilities that provide many new capabilities for easier portability, case generation and user customization, testing functionality, and greatly increased robustness and flexibility. CIME can also be downloaded and tested in a stand-alone mode, without any of the other CESM prognostic components, as a first step in porting CESM2. CIME also contains a default coupling model architecture that permits active and data components to be mixed in any combination, thereby enabling component feedbacks to be easily controlled. CIME also contains additional tools, such as a new <a href="https://esmci.github.io/cime/versions/master/html/users_guide/porting-cime.html#validating-a-cesm-port-with-prognostic-components">statistical consistency test</a>, that will allow new users to quickly <a href="verification/default.htm">verify their port</a> of CESM2.</p>
+
+
+	    					<h3 class="mt-5">Science Enhancements</h3>
+	    					<a href="atmosphere/default.htm"><h4>Atmosphere CAM</h4></a>
+	    					<p>CAM contains substantial modifications of every atmospheric physics parameterization except for radiative transfer. The Cloud Layers Unified by Binormals (CLUBB) scheme has replaced earlier schemes for boundary layer turbulence, shallow convection, and cloud macrophysics. CLUBB is a prognostic moist turbulence scheme that calculates joint higher-order moments of subgrid vertical velocity, water content, and liquid water potential temperature. Equations for these moments are closed using assumed joint binormal probability density functions (PDFs) for these quantities. In addition to calculating subgrid vertical fluxes, CLUBB’s PDF closure is also used to calculate large-scale condensation and cloud fraction. An improved two-moment prognostic cloud microphysics (MG2) has also been introduced. The major innovation in MG2 is to carry prognostic precipitation species – rain and snow – in addition to cloud condensates. MG2 interacts with the Modal Aerosol Module (MAM4) aerosol microphysics scheme to calculate condensate mass fractions and number concentrations. Deep convection has been significantly retuned to increase the sensitivity to convective inhibition. Two schemes to calculate subgrid orographic drag have been substantially modified. Topographic orientation (ridges) and low-level flow blocking effects have been incorporated into the orographic gravity wave scheme. The previous parameterization of boundary layer form drag – turbulent mountain stress (TMS) – has been replaced with the scheme of Beljaars et al. currently used in the European Center forecast model. In addition to these physics updates, new infrastructure for traceable generation of topographic forcing files has been developed. </p>
+	    				
+	    					<h5>CAM-chem</h5>
+	    					<p>CAM-chem now includes the tropospheric chemistry scheme MOZART-T1, combined with comprehensive stratospheric chemistry, coupled to MAM4 (Modal Aerosol Model with 4 modes) which includes a primary carbon mode. The tropospheric chemistry is also coupled to a VBS (volatility basis set) scheme for Secondary Organic Aerosols (SOA). The default specified dynamics configurations use MERRA2 meteorological fields from NASA/GMAO.</p>
+
+	    					<h5>WACCM</h5>
+	    					<p>WACCM6 now matches all of the CAM6 physical parameterizations, and adds significant new capabilities in the middle and upper atmosphere. WACCM6 extends the Modal Aerosol Module (MAM4) to provide a prognostic representation of stratospheric aerosols from volcanic and non-volcanic source gases. Combined with a database of SO2 emissions from volcanic eruptions, this provides a better representation of the chemistry and climate responses to volcanic eruptions. With a default horizontal resolution 4 times greater than CESM1(WACCM), WACCM6 provides improved stratospheric variability, including an internally generated quasi-biennial oscillation, and an improved climatology of sudden stratospheric warmings. WACCM6 includes updated and unified atmospheric chemistry, adding detailed tropospheric chemistry to the middle and upper atmospheric chemistry provided in CESM1(WACCM). The result of these improvements to chemistry, stratospheric variability, and volcanic aerosols is greater skill in hindcasts of the evolution of the Antarctic ozone hole, as well as ozone loss in the Arctic.</p>
+
+	    					<h5>WACCM-X</h5>
+	    					<p>This release includes an extended version of WACCM, WACCM-X v.2.0. This model extends through the thermosphere and ionosphere to above 500 km, and now includes global electrodynamics and ion transport. Other ionosphere developments include time-dependent solution of electron and ion temperatures, metastable oxygen ion chemistry, and capability for high-cadence solar forcing. Additional developments of the thermospheric components are improvements to the momentum and energy equation solvers to account for variable mean molecular mass and specific heat, a new divergence damping scheme, and cooling by atomic oxygen fine structure.</p>
+
+	    					<a href="land/default.htm"><h4>Land CLM</h4></a>
+							<p><a href="https://escomp.github.io/ctsm-docs/versions/release-clm5.0/html/tech_note/Introduction/CLM50_Tech_Note_Introduction.html#clm5-0">Developments for CLM5</a> build on the progress made in <a href="https://escomp.github.io/ctsm-docs/versions/release-clm5.0/html/tech_note/Introduction/CLM50_Tech_Note_Introduction.html#clm4-5">CLM4.5</a>. Notable changes are made to soil and plant hydrology, snow density, carbon and nitrogen cycling and coupling, and human land management. Hydrology updates include a dry surface layer-based soil evaporation resistance and a revised canopy interception parameterization. The number of ground layers is increased from 15 levels in CLM4.5 to 25 levels in CLM5 to resolve the permafrost active layer and to allow for spatially variable soil thickness, which ranges from 0.4 to 8.5 m deep based on an input dataset. Fresh snow density more realistically captures temperature effects and additionally accounts for wind effects. The maximum number of snow layers and snow amount is increased from 5 layers and 1 m snow water equivalent to 12 layers and 10 m to allow for the formation of firn over ice sheets. A new plant hydraulic stress routine explicitly models water transport through the vegetation with stomatal conductance a function of prognostic leaf water potential. An emergent feature of plant hydraulics is soil hydraulic redistribution. The Ball-Berry maximum stomatal conductance is replaced with the Medlyn conductance model, which is preferred for it’s more realistic behavior at low humidity levels. Plant nutrient dynamics are substantially updated to resolve several CLM4.5 deficiencies. The Fixation and Update of Nitrogen (FUN) model accounts for expenditure of carbon energy for nutrient uptake. Static plant carbon:nitrogen (C:N) ratios utilized in CLM4.5 are replaced with variable plant C:N ratios which allows plants to adjust their C:N ratio according to the cost of N uptake. The flexible C:N ratio eliminates the unrealistic instantaneous downregulation of potential photosynthesis rates based on soil mineral nitrogen availability as a means of representing nutrient limitation. Furthermore, stomatal conductance is now based on N-limited photosynthesis rather than on potential photosynthesis. The Leaf Use of Nitrogen for Assimilation model calculates photosynthetic capacity based on leaf N optimization under different environmental conditions.</p>
+
+							<p>Representation of human land management (agriculture, wood harvest) is extended with a global crop model (corn, wheat, soybean, cotton, rice, and sugarcane crops). Fertilization rates and irrigation equipped area are updated annually. Land unit weights can be adjusted during a simulation, which allows for vegetation-crop and vegetation-glacier transitions. More sophisticated and realistic building space heating and air conditioning prognoses interior building air temperature and waste heat. Included with CLM5 is a functionally supported version of the Functionally-Assembled Terrestrial Ecosystem Simulator (FATES). FATES is a cohort model of vegetation competition and co-existence, allowing a representation of the biosphere which accounts for the division of land into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types. FATES is not active by default in CLM5.</p>
+
+
+							<a href="land-ice/default.htm"><h4>Land Ice CISM</h4></a>
+							<p>CESM2 includes many improvements to support realistic simulations of land ice. Version 2.1 of the Community Ice Sheet Model (CISM) has a parallel, higher-order dynamical core that can accurately simulate not just slow interior flow, but also fast flow along the margins of ice sheets. CISM's parameterizations of basal sliding, iceberg calving, and other physical processes have also improved. As a result, the match to observed Greenland ice flow is much closer than with previous model versions. The surface mass balance of the Greenland and Antarctic ice sheets is now computed by default in the Community Land Model (CLM), with or without dynamic ice sheets. The surface melt climate of both ice sheets has improved with the inclusion of a deep firn model that allows for meltwater infiltration and refreezing, as well as realistic densification rates. Surface winds over ice sheets are more accurate with a new drag parameterization, and a bias in high-latitude longwave cloud forcing is much reduced. CESM now supports interactive coupling of CISM with CLM and CAM, allowing the land topography and surface types to evolve as ice sheets advance and retreat.</p>
+
+
+							<a href="ocean/default.htm"><h4>Ocean POP</h4></a>
+							<p>Since the CESM1.2 release, there have been improvements to both the physical parameterizations and numerical methods in the CESM ocean component, Parallel Ocean Program version 2 (POP2). The physics improvements include a new parameterization for mixing effects in estuaries to improve the representation of the exchange of freshwater between the terrestrial and marine branches of the hydrologic cycle; increased mesoscale eddy diffusivities at depth to improve the representation of passive tracers; use of prognostic chlorophyll for short-wave absorption; use of salinity dependent freezing-point together with the sea-ice model; and a new Langmuir mixing parameterization in conjunction with the new wave model component. The numerical improvements include a new iterative solver for the barotropic mode to reduce communication costs, particularly advantageous for high-resolution simulations on large processor counts; a new time filtering scheme based on an adaption of the Robert filter to enable sub-diurnal coupling of the ocean model; and subsequently, use of one-hour coupling frequency to explicitly resolve (sub-)diurnal and inertial periods. In addition, the K-Profile vertical mixing Parameterization (KPP) is incorporated via the Community ocean Vertical Mixing (CVMix) framework and the Caspian Sea is no longer included in the ocean model as a marginal sea. Finally, ocean biogeochemisty has been modularized under the Marine Biogeochemistry Library (MARBL) to enable portability to alternative physical frameworks.</p>
+
+
+							<a href="sea-ice/default.htm"><h4>Sea Ice CICE</h4></a>
+							<p>CESM2 has moved to the Los Alamos National Laboratory Sea Ice Model (CICE) version 5.1.2. Although its structure is very similar to that of CICE4, CICE5 has a number of new physics options. The default CICE5 configuration in CESM2 includes the following new features: a mushy-layer thermodynamics scheme, adding in prognostic salinity to the thermodynamic calculations; a level melt pond scheme that takes into account the roughness on the surface of the ice for melt pond fraction; and salinity dependent freezing point in conjunction with the ocean model. In addition, the default number of ice layers has been increased to 8 (from 4) and snow layers to 3 (from 1) to primarily help better resolve the thermodynamic calculation.</p>
+
+
+							<a href="river/default.htm"><h4>River Model MOSART</h4></a>
+							<p>The River Transport Model (RTM) is replaced with the Model for Scale Adaptive River Transport (MOSART) in which surface runoff is routed across hillslopes and then discharged along with subsurface runoff into a tributary subnetwork before entering the main channel. A primary difference is that RTM uses a linear reservoir method for river flow, whilst MOSART river flow is determined with the more physically-based kinematic wave method. RTM only produces streamflow, whereas MOSART additionally simulates time-varying channel velocities, channel water depth, and channel surface water variations.</p>
+
+
+							<a href="wave/default.htm"><h4>Wave WW3</h4></a>
+							<p>A new capability in CESM2 is the incorporation of a version of the NOAA WaveWatch-III ocean surface wave prediction model as a new CESM component. The waves are driven by winds through the coupler, and deliver three new benefits. First, the waves are used to provide the forcing necessary for including Langmuir, or wave-driven, turbulence in the ocean model, which results in bias reductions in mixed layer depths, pycnocline ventilation, and subsurface temperatures. Second, the wave statistics from the CMIP6 experiments will be contributed to the Coordinated Ocean Wave Climate Project (COWCLIP) experiment, which studies the changes in wave climate under climate change. The CESM contribution will be unique in the comparison as the waves are run in a fully coupled system. Third, the wave statistics are available now for development of other wave-related process studies and parameterizations, e.g., drag and gas transfer coefficients depending on sea state, waves in the marginal ice zone, or sea spray aerosol production. The implementation of the waves has benefitted from the wave model developers at the NOAA National Centers for Environmental Prediction (NCEP). If the wave model is not used, a theory wave feature in the Community ocean Vertical Mixing (CVMix) framework provides similar Langmuir mixing effects at lower cost.</p>
+
+
+
+							<a href="http://esmci.github.io/cime/versions/master/html/data_models/index.html"><h4>CIME Data Atmosphere Model DATM</h4></a>
+							<p>The new default CLM forcing dataset was developed for the third phase of the Global Soil Wetness Project (GSPW3). It is also the default dataset for LS3MIP and LUMIP land-only simulations. It is a 3-hourly 0.5° global forcing product (1901-2014) that is based on the NCEP 20th Century Reanalysis (20CR) version 2. 20CR output was then dynamically downscaled to T248 (0.5°) resolution using the Global Spectral Model with aspectral nudging technique. Bias correction for temperature, precipitation, and longwave radiation, and shortwave radiation were made using CRU TS v3.21 (Climate Research Unit), GPCCv6 (Global Precipitation Climatology Centre), and SRB (Surface Radiation Budget) datasets, respectively. A wind-induced snow undercatch correction was also applied. The CRUNCEP forcing dataset that is used in TRENDY is also included. Additional forcing datasets can be readily incorporated by the user.</p>
+
+							<p>To overcome various deficiencies of the existing atmospheric data sets used for forcing ocean – sea-ice coupled simulations – referred to as the Coordinated Ocean-ice Reference Experiments (CORE), a new forcing data set has been developed and made available in CESM2.1.z. The new inter-annually varying data set is based on the JRA-55 reanalysis product from the Japanese Meteorological Agency (JMA) and covers the 1958 – 2016 period. The development of the data set has been done in collaboration with our colleagues from the JMA Meteorological Research Institute, CLIVAR Ocean Model Development Panel (OMDP), and CESM Ocean Model Working Group (OMWG).</p>
+
+
+							<a href="release_download.html" class="btn btn-primary w-100 mt-5"><i class="fas fa-download"></i> Download Instructions</a>
+	    				</div>
+    				</div>
+    			</div>
+
+    			<div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <!-- Models Related Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM2 Quicklinks</h5>
+    <ul class="cat">
+        <li><a href="https://github.com/ESCOMP/CESM">CESM GitHub</a></li>
+        <li><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+        <li><a href="release_download.html">Downloading Instructions</a></li>
+        <li>
+            <a data-toggle="collapse" href="#collapseProg" aria-expanded="false" aria-controls="collapseProg"><i class="fa fa-chevron-right" aria-hidden="true" id="i-link-prog"></i>Prognostic Components</a>
+            <ul class="small bg-light text-dark rounded collapse" id="collapseProg">
+                <li class="pb-0"><a class="text-dark" href="atmosphere/default.htm">Atmosphere</a></li>
+                <li class="pb-0"><a class="text-dark" href="land/default.htm">Land</a></li>
+                <li class="pb-0"><a class="text-dark" href="land-ice/default.htm">Land Ice</a></li>
+                <li class="pb-0"><a class="text-dark" href="ocean/default.htm">Ocean</a></li>
+                <li class="pb-0"><a class="text-dark" href="river/default.htm">River Runoff</a></li>
+                <li class="pb-0"><a class="text-dark" href="sea-ice/default.htm">Sea Ice</a></li>
+                <li class="pb-0"><a class="text-dark" href="wave/default.htm">Wave</a></li>
+            </ul>
+        </li>
+        <li><a href="https://www.cgd.ucar.edu/cseg">CESM Software Engineering Group</a></li>
+        <li><a href="https://csegweb.cgd.ucar.edu/experiments/public/">Experiments, Data & Diagnostic Output</a></li>
+    </ul>
+    <br/>
+    <h5 class="widgetheading">Related Information</h5>
+    <ul class="cat">
+        <li class="hide-me"><a href="../../about/support.html">CESM Support Policy</a></li>
+        <li><a href="../../management/docs/cesm-data-management-plan-2021.pdf">Data Management &amp; Distribution Plan</a></li>
+        <li><a href="https://www.cgd.ucar.edu/cseg/development-code.html">Development Project Policies &amp; Terms of Use</a></li>
+        <li><a href="../../publications/default.htm">Publication / Acknowledgment Information</a></li>
+        <li><a href="package_copyright.html">CESM2 Included Packages Copyright</a></li>
+        <li><a href="copyright.html">CESM2 Copyright</a></li>
+    </ul>
+</div>
+                        <!-- end Models Related Include -->
+
+                        <!-- CESM Project Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM Communications</h5>
+    <ul class="cat small">
+    	<li><a href="https://bb.cgd.ucar.edu/cesm/">User Support Forums</a></li>
+    	<li><a href="../../about/faq.html#mailing-list">Mailing Lists</a></li>
+    	<li><a href="../../about/contact.html">Contact CESM</a></li>
+    	<li><a href="../../about/support.html">Support Policy</a></li>
+        <li class="hide-me"><a href="https://escomp.github.io/CESM/versions/master/html/">Latest Development Code Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+    </ul>
+</div>
+
+
+<div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat small">
+        <li>The CESM project is supported primarily by the <a href="http://www.nsf.gov/">National Science Foundation (NSF)</a>. Administration of the CESM is maintained by the <a href="http://www.cgd.ucar.edu/">Climate and Global Dynamics Laboratory (CGD)</a> at the <a href="http://www.ncar.ucar.edu/">National Center for Atmospheric Research (NCAR)</a>.</li>
+        <li><a href="http://www.cesm.ucar.edu">CESM</a> is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    // set the url
+    var url_full = window.location.href;
+
+    // check for cesm2 to hide the leatest dev code quickstart
+    if(/cesm2/.test(url_full)) {
+        var link = document.getElementById("li-cesm2");
+        link.className += " hide-me";
+    }
+
+</script>
+                    </aside>
+                </div>
+    		</div>
+    	</div>
+    </section>
+
+
+    <footer>
+        <!-- footer include -->
+        
+
+    <div class="container">
+        <!-- footer start -->
+        <div class="row">
+            <div class="col-md">
+                <div class="widget">
+                    <h5 class="widgetheading"><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">CGD Laboratory Info</a></h5>
+                    <p><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">1850 Table Mesa Drive<br>Boulder, CO, 80305</a></p>
+                    <ul class="list-style-none">
+                        <li>303.497.1000&nbsp;&nbsp;<i class="fas fa-phone"></i>&nbsp;&nbsp;Phone</li>
+                        <li>303.497.1314&nbsp;&nbsp;<i class="fas fa-print"></i>&nbsp;&nbsp;Fax</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading"><a href="../../about/Wc9217b0e02798.htm">CESM Quicklinks</a></h5>
+                <ul class="link-list">
+                    <li><a href="../../events/tutorials/Wc2ebed6407518.htm">Tutorials</a></li>
+                    <li><a href="../../events/workshops/Wc4e9f403cf13.htm">Workshops</a></li>
+                    <li><a href="../../working_groups/Wc190e721ba82d.htm">Working Groups</a></li>
+                    <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=footer">Support Forums</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Leadership</h5>
+                <ul class="link-list">
+                    <li><a href="https://staff.ucar.edu/users/gokhan">Chief Scientist - Gokhan Danabasoglu</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/SSC/?ref=footer">Scientific Steering Committee</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/working_groups/?ref=footer">Working Group Co-Chairs</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/CAB/?ref=footer">CESM Advisory Board</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Models</h5>
+                <ul class="link-list">
+                    <li><a href="../Wcc9c7389d47ec.htm">Overview</a></li>
+                    <li><a href="../../experiments/Wcdda398834fdf.htm">Experiments</a></li>
+                    <li><a href="../../projects/community-projects/Wcc1852b84e933.htm">Community Projects</a></li>
+                    <li><a href="../Wc4da67042a202.html">CESM Releases</a></li>
+                </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- sub footer start -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="copyright">
+                    <p>
+                    <span>&copy; 2021 UCAR | <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use">Terms</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="https://www.ucar.edu/">Managed by UCAR</a><br>
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br>
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </span></p>
+                    </div>
+                    <!-- end subfooter -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Media Include -->
+                    <h5 class="widgetheading social-heading">Follow Us</h5>
+                    <ul class="social-network">
+                        <li><a href="https://www.facebook.com/ncarcgdboulder/"  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/ncar_cgd"  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/national-center-for-atmospheric-research/"  title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCGfjWttSHDKu3y9pCay2KHQ"  title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <!-- end Social Media Include -->
+                </div>
+            </div>
+        </div>
+        <!-- sub footer end -->
+    </div>
+
+    <div class="copyright-nsf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <em>The CESM&reg; project is supported primarily by the National Science Foundation | This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National&nbsp;Science&nbsp;Foundation.</em>
+                </div>
+                <div class="col-lg-2">
+                    <a href="https://nsf.gov"><img src="../../Images/logos/footer-logo-nsf.png" width="60" alt="NSF Logo" title="NSF Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </footer>
+</div>
+
+<!-- javascript include -->
+<!-- scroll to top toolbar -->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!-- toasts -->
+<!--
+<div class="toast fixed-top mt-2 ml-5" role="alert" data-autohide="true" data-delay="7000">
+    <div class="toast-header">
+        <img src="/favicon.ico" class="rounded mr-2" alt="CGD Logo">
+        <h5 class="mr-auto text-primary">ISG Note</h5>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">Close ×</span>
+    </button>
+    </div>
+
+    <div class="toast-body">
+        Please pardon our dust, we are currently in the process of upgrading pages. You may encounter broken links or old themes during this process. Contact the CGD/IS staff if you need help finding information or have any feedback
+    </div>
+</div>
+-->
+
+
+
+<!-- js includes -->
+<script src="../../styles/um/js/jquery.min.js"></script>
+<script src="../../styles/um/js/popper.min.js"></script>
+<script src="../../styles/um/js/bootstrap.min.js"></script>
+<script src="../../styles/um/js/fancybox.min.js"></script> 
+<script src="../../styles/um/js/flexslider.min.js"></script>
+<script src="../../styles/um/js/custom.js"></script>
+<script src="../../styles/um/js/jquery.tablesorter.min.js"></script>
+<script src="../../styles/um/js/cookie-consent.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script>
+// initialize and show Bootstrap 4 toast
+//$('.toast').toast('show');
+
+
+// scripts for the notice bar
+// get a cookie if set
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+// set a cookie
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/default.htm";
+}
+
+// clearing the cookie
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// checking to display the banner or not
+function checkDowntimeMsg() {
+    var eventSeen = getCookie("eventSeen3");
+
+    if (eventSeen == null) {
+        // no cookie so havent seen the msg
+        $("#alert-downtime").fadeIn("fast");
+    }
+    else {
+        // have cookie so have seen message
+    }
+}
+
+// check for seeing the downtime message
+//checkDowntimeMsg();
+
+// check for closing the downtime notice
+$(".close-downtime").on('click', function() {
+    // fadeout the downtime message
+    $("#alert-downtime").fadeOut("fast");
+
+    // set the cookie so wont see next time
+    setCookie('eventSeen3','y',7);
+});
+
+// cookie consent
+window.addEventListener("load", function() {
+    window.wpcc.init( {
+        "colors": {
+            "popup": {
+                "background": "#0779bf", "text": "#ffffff", "border": "#0779bf"
+            }
+            , "button": {
+                "background": "#0779bf", "text": "#ffffff"
+            }
+        }
+        , "position":"bottom", "margin":"none", "fontsize":"tiny", "content": {
+            "href": "https://www.ucar.edu/cookie-other-tracking-technologies-notice", "message": "UCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click", "link": "here", "button": "Acknowledge"
+        }
+        , "padding":"none"
+    })
+});
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+// Script for calendar dropdown on inputs
+$('.datepicka').each(function(i, obj) {
+    // Grab the ID
+    var datepickaID = $(this).attr('id');
+
+    // Make it a picka
+    $( "#" + datepickaID ).datepicker();
+});
+
+
+// Script for the autoscroll back to top
+$(window).scroll(function(){
+	// show the scroll bar
+	if ($(this).scrollTop() > 100) {
+		$('.scrollup').fadeIn();
+	} 
+	// hide the scroll bar
+	else {
+		$('.scrollup').fadeOut();
+	}
+});
+
+// clickong on the scroll bar
+$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
+	return false;
+});
+
+
+
+
+
+$(document).ready(function () {
+    
+    $('.star').on('click', function () {
+        $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+        $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'all') {
+            $('.table tr').css('display', 'none');
+            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+            $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+    });
+
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+    // popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover({html:true});
+    });
+
+    // checking for click on details
+    $('[data-toggle="popover"]').on("click", function() {
+        // change the html
+        $(this).removeClass("badge-info");
+        $(this).addClass("badge-danger");
+
+        $(this).html("Hide Details");
+    });
+
+    // checking for hiding popover to revert back
+    $('[data-toggle="popover"]').on('hide.bs.popover', function () {
+        // change the html
+        $(this).removeClass("badge-danger");
+        $(this).addClass("badge-info");
+
+        $(this).html("More Details");
+    });
+
+});
+</script>
+
+</body>
+</html>
+
+</html>

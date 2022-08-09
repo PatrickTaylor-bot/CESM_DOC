@@ -1,0 +1,138 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*#### MAIN SITE NAV #####*/
+
+#nav_main_wrap {
+	background: #000 url(../../../images/background/mainnavback_thin.jpg) repeat-x;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 40px;
+	z-index: 2;
+	_margin: -5px 0px;
+	_overflow: hidden;
+}
+
+#nav_main {
+	max-width: 1000px; /* Adjust this width to fit your tabs and keep main nav centered */
+	margin: 0px auto;
+	height: 40px;
+	padding: 0px;
+	z-index: 3;
+}
+
+#menubar_main {
+	width: 996px;
+	z-index: 4;
+}
+
+#menubar_main, #menubar_main ul {
+	padding: 2px 0px;
+	_padding: 10px 0px;
+	margin: 0;
+	list-style: none;
+	font-family: "UbuntuRegular";
+	z-index: 10;
+}
+
+#menubar_main a {
+	display: block;
+	_display: inline;
+	text-decoration: none;
+	padding: 0px 10px 0px 10px;
+	font-size: 10.5pt;
+	color: #fff;
+	height: 30px;
+}
+
+#menubar_main a.triggeron {
+	padding: 5px 16px 0px 10px;
+	background-image: url(../../../images/menu_downarrow_gray.png);
+	_background-image: none;
+	background-repeat: no-repeat;
+	background-position: right center;
+	color: #fdd000;
+	font-weight: bold;
+}
+
+#menubar_main a.trigger {
+	padding: 5px 16px 0px 10px;
+	background-image: url(../../../images/menu_downarrow_gray.png);
+	_background-image: none;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+#menubar_main li {
+	float: left;
+	width: 9em;
+
+}
+
+#menubar_main li ul li {
+	font-size: 8pt;
+	line-height: 14pt;
+	float: none;
+	text-align: left;
+}
+
+#menubar_main li {position: relative;}
+
+/* hide from IE mac \*/
+#menubar_main li {position: static; width: auto;}
+/* end hiding from IE5 mac */
+
+#menubar_main li ul, #menubar_main ul li  {
+	width: 330px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#menubar_main ul li a  {
+	color: #565656;
+	border-bottom: 1px dotted #ffffff;
+	height: auto;
+	z-index: 30;
+}
+
+#menubar_main li ul {
+	position: absolute;
+	display: none;
+	background-color: #060e31;
+	border-top: 2px solid #BBD8EB;
+	border-right: 2px solid #3e6a9c;
+	border-bottom: 2px solid #3e6a9c;
+	border-left: 2px solid #3e6a9c;
+	padding: 5px 10px 5px 10px;
+	background-repeat: repeat-x;
+	z-index: 20;
+}
+
+#menubar_main li:hover a, #menubar_main a:focus,
+#menubar_main a:active {
+	color: #fff;
+	background-color: #3e6a9c;
+}
+
+#menubar_main li:hover ul {
+	display: block;
+}
+
+/*  use this class (.dropleft) and adjust the margin-left so that drop downs on far right buttons don't scroll outside of the viewable area  */
+
+#menubar_main li:hover ul.dropleft {  
+	display: block;
+	margin-left: -205px;
+}
+
+#menubar_main li:hover ul a {
+	color: #fff;
+	background-color: transparent;
+}
+
+#menubar_main ul a:hover {
+	background-color: #3e6a9c!important;
+	color: #FFFFFF !important;
+
+}

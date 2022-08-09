@@ -1,0 +1,1411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>CESM Research Tools: CLM4.5 in CESM1.2.0 User's Guide Documentation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Acknowledgments"
+HREF="f38.html"><META
+NAME="KEYWORD"
+CONTENT="CESM"><META
+NAME="KEYWORD"
+CONTENT="CLM"><META
+NAME="KEYWORD"
+CONTENT="CLM4.5"><META
+NAME="KEYWORD"
+CONTENT="community earth system model"><META
+NAME="KEYWORD"
+CONTENT="climate"><META
+NAME="KEYWORD"
+CONTENT="climate model"><META
+NAME="KEYWORD"
+CONTENT="earth system model"><META
+NAME="KEYWORD"
+CONTENT="land surface model"><META
+NAME="KEYWORD"
+CONTENT="hydrology"><META
+NAME="KEYWORD"
+CONTENT="biogeochemistry"><META
+NAME="KEYWORD"
+CONTENT="urban model"><META
+NAME="KEYWORD"
+CONTENT="documentation"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+><ACRONYM
+CLASS="acronym"
+>CESM</ACRONYM
+> Research Tools: <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+> in <ACRONYM
+CLASS="acronym"
+>CESM1.2.0</ACRONYM
+> User's Guide Documentation</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN21"
+></A
+>Erik Kluzek</H3
+><DIV
+CLASS="affiliation"
+><SPAN
+CLASS="orgname"
+>NCAR<BR></SPAN
+></DIV
+><SPAN
+CLASS="date"
+>Jul-13-2013
+<BR></SPAN
+><SPAN
+CLASS="releaseinfo"
+>$URL: https://svn-ccsm-models.cgd.ucar.edu/clm2/branches/cesm1_2_rel/models/lnd/clm/doc/UsersGuide/clm_ug.xml $<BR></SPAN
+><HR></DIV
+><H1
+><A
+NAME="AEN35"
+></A
+>Dedication</H1
+><P
+>&#13;Dedicated to the Land Model Working Group, winners of the 2008 <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> Distinguished Achievement Award.
+May you continue to collaborate together well, and continue to drive
+the science of land surface modeling forward with your diligent and persistent efforts.
+</P
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="f38.html"
+>Acknowledgments</A
+></DT
+><DT
+><A
+HREF="f49.html"
+>Introduction</A
+></DT
+><DT
+><A
+HREF="f101.html"
+>Introduction to the <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+> User's Guide</A
+></DT
+><DT
+><A
+HREF="f184.html"
+>Important Notes and Best Practices for Usage of <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="f243.html"
+>How to Use This Document</A
+></DT
+><DT
+><A
+HREF="f256.html"
+>What is new with <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+> in <ACRONYM
+CLASS="acronym"
+>CESM1.2.0</ACRONYM
+> since previous public releases?</A
+></DT
+><DT
+><A
+HREF="f276.html"
+>Quickstart to using <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="f321.html"
+>What is scientifically validated and functional in <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+> in <ACRONYM
+CLASS="acronym"
+>CESM1.2.0</ACRONYM
+>?</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="f321.html#standard_validated"
+>Standard Configuration and Namelist Options that are Validated</A
+></DT
+><DT
+><A
+HREF="x339.html"
+>Configure Modes NOT scientifically validated, documented, supported or, in some
+cases, even advised to be used:</A
+></DT
+><DT
+><A
+HREF="x363.html"
+>Namelist options that should NOT be exercised:</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x363.html#bld_nml_not_validated"
+>Build-Namelist options that should NOT be exercised:</A
+></DT
+><DT
+><A
+HREF="x363.html#nml_items_not_validated"
+>Namelist items that should NOT be exercised:</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="f435.html"
+>What are the UNIX utilities required to use <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+>?</A
+></DT
+><DT
+><A
+HREF="f456.html"
+>Other resources to get help from</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="f456.html#CESM_UG"
+>The <ACRONYM
+CLASS="acronym"
+>CESM</ACRONYM
+> User's-Guide</A
+></DT
+><DT
+><A
+HREF="x496.html"
+>The <ACRONYM
+CLASS="acronym"
+>CESM</ACRONYM
+> Bulletin Board</A
+></DT
+><DT
+><A
+HREF="x506.html"
+>The <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> web pages</A
+></DT
+><DT
+><A
+HREF="x545.html"
+>Reporting bugs in <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x557.html"
+>Some Acronym's and Terms We'll be Using</A
+></DT
+></DL
+></DD
+><DT
+>1. <A
+HREF="c720.html"
+>How to customize the configuration for a case with <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c720.html#compset_choice"
+>Choosing a compset using <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c720.html#I_compsets"
+>Compsets coupled to data atmosphere and stub ocean/sea-ice ("I" compsets)</A
+></DT
+><DT
+><A
+HREF="c720.html#EF_compsets"
+>Compsets coupled to active atmosphere with data ocean</A
+></DT
+><DT
+><A
+HREF="c720.html#B_compsets"
+>Fully coupled compsets with fully active ocean, sea-ice, and atmosphere</A
+></DT
+><DT
+><A
+HREF="c720.html#chose_compset_conclude"
+>Conclusion to choosing a compset</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1230.html"
+>Customizing the <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> setup</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1230.html#clm_script"
+><ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> Script configuration items</A
+></DT
+><DT
+><A
+HREF="x1230.html#setup_time_nml"
+>User Namelist</A
+></DT
+><DT
+><A
+HREF="x1230.html#precedence"
+>Precedence of Options</A
+></DT
+><DT
+><A
+HREF="x1230.html#setting_finidat"
+>Setting Your Initial Conditions File</A
+></DT
+><DT
+><A
+HREF="x1230.html#other_config"
+>Other noteworthy configuration items</A
+></DT
+><DT
+><A
+HREF="x1230.html#datm_forc_data"
+>Downloading DATM Forcing Data</A
+></DT
+><DT
+><A
+HREF="x1230.html#buildscripts"
+>Customizing via the build script files</A
+></DT
+><DT
+><A
+HREF="x1230.html#clm_configure_script"
+>More information on the <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> <B
+CLASS="command"
+>configure</B
+> script</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1867.html"
+>Customizing the <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> namelist</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1867.html#nl_def"
+>Definition of Namelist items and their default values</A
+></DT
+><DT
+><A
+HREF="x1867.html#nl_examples"
+>Examples of using different namelist features</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x11025.html"
+>Customizing the <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> Namelist and Streams files</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x11025.html#clmcru_mode_datm_settings"
+><TT
+CLASS="literal"
+>CLMCRUNCEP</TT
+> mode and it's <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> settings</A
+></DT
+><DT
+><A
+HREF="x11025.html#clmqian_mode_datm_settings"
+><TT
+CLASS="literal"
+>CLM_QIAN</TT
+> mode and it's <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> settings</A
+></DT
+><DT
+><A
+HREF="x11025.html#clm1pt_mode_datm_settings"
+><TT
+CLASS="literal"
+>CLM1PT</TT
+> mode and it's <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> settings</A
+></DT
+><DT
+><A
+HREF="x11025.html#cplhist_mode_datm_settings"
+><TT
+CLASS="literal"
+>CPLHIST3HrWx</TT
+> mode and it's <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> settings</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x11230.html"
+>Conclusion to customizing chapter</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="c11242.html"
+>Using the <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> tools to create your own input datasets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c11242.html#tool_build"
+>Common environment variables and options used in building the <ACRONYM
+CLASS="acronym"
+>FORTRAN</ACRONYM
+>
+tools</A
+></DT
+><DT
+><A
+HREF="x11521.html"
+>General information on running the <ACRONYM
+CLASS="acronym"
+>FORTRAN</ACRONYM
+> tools</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x11521.html#tool_run_namelist"
+>Running <ACRONYM
+CLASS="acronym"
+>FORTRAN</ACRONYM
+> tools with namelists</A
+></DT
+><DT
+><A
+HREF="x11521.html#tool_run_commandline"
+>Running <ACRONYM
+CLASS="acronym"
+>FORTRAN</ACRONYM
+> tools with command line options</A
+></DT
+><DT
+><A
+HREF="x11521.html#tool_run_smp"
+>Running <ACRONYM
+CLASS="acronym"
+>FORTRAN</ACRONYM
+> tools built with SMP=TRUE</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x11559.html"
+>Using <ACRONYM
+CLASS="acronym"
+>NCL</ACRONYM
+> scripts</A
+></DT
+><DT
+><A
+HREF="x11573.html"
+>The File Creation Process</A
+></DT
+><DT
+><A
+HREF="x11682.html"
+>Using the <B
+CLASS="command"
+>cprnc</B
+> tool to compare two history files</A
+></DT
+><DT
+><A
+HREF="x11704.html"
+>Using <B
+CLASS="command"
+>interpinic</B
+> to interpolate initial conditions to different
+resolutions</A
+></DT
+><DT
+><A
+HREF="x11745.html"
+>Creating an output <ACRONYM
+CLASS="acronym"
+>SCRIP</ACRONYM
+> grid file at a resolution to run the model on</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x11745.html#mknoocnmap"
+>Using <B
+CLASS="command"
+>mknocnmap.pl</B
+> to create grid and maps for single-point regional grids</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x11775.html"
+>Creating mapping files that <B
+CLASS="command"
+>mksurfdata_map</B
+> will use</A
+></DT
+><DT
+><A
+HREF="x11812.html"
+>Creating a domain file for <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> and <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x11868.html"
+>Using mksurfdata_map to create surface datasets from grid datasets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x11868.html#mksurfdata.pl"
+>Running <B
+CLASS="command"
+>mksurfdata.pl</B
+></A
+></DT
+><DT
+><A
+HREF="x11868.html#mksurfdata_map_byhand"
+>Running <B
+CLASS="command"
+>mksurfdata_map</B
+> by Hand</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x12201.html"
+>Converting unstructured grid output to gridded datasets for post processing</A
+></DT
+><DT
+><A
+HREF="x12208.html"
+>How to Customize Datasets for particular Observational Sites</A
+></DT
+><DT
+><A
+HREF="x12221.html"
+>Conclusion of tools description</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="c12225.html"
+>Adding New Resolutions or New Files to the build-namelist Database</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c12225.html#managingyourdata"
+>Managing Your Own Data-files</A
+></DT
+><DT
+><A
+HREF="x12265.html"
+>Adding Resolution Names</A
+></DT
+><DT
+><A
+HREF="x12277.html"
+>Adding or Changing Default Filenames</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x12277.html#required_files"
+>What are the required files?</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>4. <A
+HREF="c12455.html"
+>How to run some special cases</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c12455.html#CROP"
+>Running with the prognostic crop model on</A
+></DT
+><DT
+><A
+HREF="x12511.html"
+>Running with the irrigation model on (for <ACRONYM
+CLASS="acronym"
+>CLM4.0</ACRONYM
+>)</A
+></DT
+><DT
+><A
+HREF="x12536.html"
+>Spinning up the Satellite Phenology Model (<ACRONYM
+CLASS="acronym"
+>CLMSP</ACRONYM
+> spinup)</A
+></DT
+><DT
+><A
+HREF="x12544.html"
+>Spinning up the <ACRONYM
+CLASS="acronym"
+>CLM4.5</ACRONYM
+> biogeochemistry (<ACRONYM
+CLASS="acronym"
+>CLMBGC</ACRONYM
+> spinup)</A
+></DT
+><DT
+><A
+HREF="x12591.html"
+>Spinning up the <ACRONYM
+CLASS="acronym"
+>CLM4.0</ACRONYM
+> biogeochemistry Carbon-Nitrogen Model (CN spinup)</A
+></DT
+><DT
+><A
+HREF="x12640.html"
+>Spinning up the <ACRONYM
+CLASS="acronym"
+>CLM4.0</ACRONYM
+> Carbon-Nitrogen Dynamic Global Vegetation Model (CNDV spinup)</A
+></DT
+><DT
+><A
+HREF="x12663.html"
+>Running with MOAR data as atmospheric forcing to spinup the model</A
+></DT
+><DT
+><A
+HREF="x12680.html"
+>Running with your own previous simulation as atmospheric forcing to spinup the model</A
+></DT
+><DT
+><A
+HREF="x12702.html"
+>Running stand-alone <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> with transient historical CO<SUB
+>2</SUB
+>
+concentration</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="c12760.html"
+>How to run Single-Point/Regional cases</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c12760.html#which_singlept_option"
+>Which Single Point Option Should I choose?</A
+></DT
+><DT
+><A
+HREF="x12817.html"
+>Running <CODE
+CLASS="envar"
+>PTS_MODE</CODE
+> configurations</A
+></DT
+><DT
+><A
+HREF="x12854.html"
+>Warning about Running with a Single-Processor on a Batch Machine</A
+></DT
+><DT
+><A
+HREF="x12861.html"
+>Running Supported Single-point/Regional Datasets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x12861.html#sp_atm_forcing"
+>Running Supported Single-point Datasets that have their own Atmospheric Forcing</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x12938.html"
+>Creating your own single-point/regional surface datasets</A
+></DT
+><DT
+><A
+HREF="x12979.html"
+>Running with your own atmosphere forcing</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="c13134.html"
+>How to run <ACRONYM
+CLASS="acronym"
+>PTCLM1.110726</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c13134.html#PTCLMINTRO"
+>Introduction to <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x13167.html"
+>Guide to the options of <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x13167.html#PTCLMOVER"
+>Overview on using <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x13167.html#PTCLMOPTS"
+>Details on the options of <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x13410.html"
+>Examples using <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x13434.html"
+>Adding data for use by <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x13434.html#PTCLMGroupSiteLists"
+><ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> Group Site Lists</A
+></DT
+><DT
+><A
+HREF="x13434.html#PTCLMDynPFTFiles"
+>Dynamic Land-Use Change Files for use by <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x13434.html#AmeriFluxdata"
+>Converting AmeriFlux Data for use by <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="x13434.html#PTCLMUSHa1"
+><ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> transient example over a shorter time period</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x13497.html"
+>A bit about the structure of <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+>, what it does, and how it works</A
+></DT
+></DL
+></DD
+><DT
+>7. <A
+HREF="c13522.html"
+>Trouble Shooting Problems</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c13522.html#trouble_w_setup"
+>Trouble with Setup</A
+></DT
+><DT
+><A
+HREF="x13567.html"
+>Trouble with Building</A
+></DT
+><DT
+><A
+HREF="x13571.html"
+>Trouble with Running</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x13571.html#querying_log_files"
+>Tracking Problems by Querying Log Files</A
+></DT
+><DT
+><A
+HREF="x13571.html#gen_adv_dbg_runtime"
+>General Advice on Debugging Run time Problems</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>8. <A
+HREF="c13697.html"
+>Scripts for testing <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c13697.html#cesm_testing"
+>Testing <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> Using the <ACRONYM
+CLASS="acronym"
+>CESM</ACRONYM
+> Test Scripts</A
+></DT
+><DT
+><A
+HREF="x13727.html"
+>Testing <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> tools using the <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> Specific Stand-Alone Tools Testing Scripts</A
+></DT
+><DT
+><A
+HREF="x13745.html"
+>Testing <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> use the <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> test script</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="a13770.html"
+>Building the Users-Guide Documentation for <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+></A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Tables</B
+></DT
+><DT
+>1-1. <A
+HREF="c720.html#science_support_table"
+>Scientifically Supported I Compsets</A
+></DT
+><DT
+>1-2. <A
+HREF="c720.html#function_support_table"
+>Functionally Supported I Compsets</A
+></DT
+><DT
+>1-3. <A
+HREF="x1867.html#CLM_History_Fields_table"
+>CLM History Fields</A
+></DT
+><DT
+>3-1. <A
+HREF="x12277.html#table_required_files"
+>Required Files for Different Configurations and Simulation Types</A
+></DT
+><DT
+>5-1. <A
+HREF="x12979.html#atm_forcing_fields"
+>Atmosphere Forcing Fields</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Figures</B
+></DT
+><DT
+>2-1. <A
+HREF="x11573.html#mkmapdata_mksurfdata"
+>Data Flow for Creation of Surface Datasets from Raw <ACRONYM
+CLASS="acronym"
+>SCRIP</ACRONYM
+> Grid Files</A
+></DT
+><DT
+>2-2. <A
+HREF="x11573.html#CLMToolLegend"
+>Legend for Data Flow Figures</A
+></DT
+><DT
+>2-3. <A
+HREF="x11775.html#mkmapdata_details"
+>Details of running <B
+CLASS="command"
+>mkmapdata.sh</B
+></A
+></DT
+><DT
+>2-4. <A
+HREF="x11812.html#GlobalDomainFig"
+>Global Domain file creation</A
+></DT
+><DT
+>2-5. <A
+HREF="x11812.html#mknoocnmapFig"
+>Domain file creation using mknoocnmap.pl</A
+></DT
+><DT
+>2-6. <A
+HREF="x11868.html#mksurfdata_details"
+>Details of running <B
+CLASS="command"
+>mksurfdata_map</B
+></A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Examples</B
+></DT
+><DT
+>1-1. <A
+HREF="x1230.html#AEN1534"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist file</A
+></DT
+><DT
+>1-2. <A
+HREF="x1867.html#AEN10914"
+>Default <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> Namelist</A
+></DT
+><DT
+>1-3. <A
+HREF="x1867.html#AEN10924"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist adding and removing fields on primary history file</A
+></DT
+><DT
+>1-4. <A
+HREF="x1867.html#AEN10955"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist adding auxiliary history files and changing output frequency</A
+></DT
+><DT
+>1-5. <A
+HREF="x1867.html#AEN10968"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist removing all history fields</A
+></DT
+><DT
+>1-6. <A
+HREF="x1867.html#AEN10988"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist with various ways to average history fields</A
+></DT
+><DT
+>1-7. <A
+HREF="x1867.html#vector1D"
+>Example <TT
+CLASS="filename"
+>user_nl_clm</TT
+> namelist outputting some files in 1D Vector format</A
+></DT
+><DT
+>2-1. <A
+HREF="x11704.html#example_createtemplate"
+>Example of running <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> to create a template file for
+<B
+CLASS="command"
+>interpinic</B
+> to interpolate to</A
+></DT
+><DT
+>2-2. <A
+HREF="x11704.html#example_interpinic"
+>Example of building and running <B
+CLASS="command"
+>interpinic</B
+> to 
+interpolate a 1-degree <TT
+CLASS="filename"
+>finidat</TT
+> dataset to 10x15</A
+></DT
+><DT
+>2-3. <A
+HREF="x11868.html#example_mksurfdata.pl"
+>Example of running <B
+CLASS="command"
+>mksurfdata.pl</B
+> to create a 4x5 resolution
+<TT
+CLASS="filename"
+>fsurdat</TT
+> for a 1850 simulation year</A
+></DT
+><DT
+>2-4. <A
+HREF="x11868.html#getmksurfdata_map_datasets"
+>Getting the raw datasets for <B
+CLASS="command"
+>mksurfdata_map</B
+> to your local 
+machine using the <B
+CLASS="command"
+>check_input_data</B
+> script</A
+></DT
+><DT
+>4-1. <A
+HREF="c12455.html#AEN12506"
+>Example Crop Simulation</A
+></DT
+><DT
+>4-2. <A
+HREF="x12511.html#AEN12524"
+>Example Irrigation Simulation</A
+></DT
+><DT
+>4-3. <A
+HREF="x12544.html#AEN12562"
+>Example AD_SPINUP Simulation for <ACRONYM
+CLASS="acronym"
+>CLM4.5-BGC</ACRONYM
+></A
+></DT
+><DT
+>4-4. <A
+HREF="x12544.html#final_BGC_spinup"
+>Example Final <ACRONYM
+CLASS="acronym"
+>CLMBGC</ACRONYM
+> Spinup Simulation for <ACRONYM
+CLASS="acronym"
+>CLM4.5-BGC</ACRONYM
+></A
+></DT
+><DT
+>4-5. <A
+HREF="x12591.html#AEN12608"
+>Example AD_SPINUP Simulation for <ACRONYM
+CLASS="acronym"
+>CLM4.0-CN</ACRONYM
+></A
+></DT
+><DT
+>4-6. <A
+HREF="x12591.html#AEN12621"
+>Example EXIT_SPINUP Simulation for <ACRONYM
+CLASS="acronym"
+>CLM4.0-CN</ACRONYM
+></A
+></DT
+><DT
+>4-7. <A
+HREF="x12591.html#final_CN_spinup"
+>Example Final CN Spinup Simulation for <ACRONYM
+CLASS="acronym"
+>CLM4.0-CN</ACRONYM
+></A
+></DT
+><DT
+>4-8. <A
+HREF="x12640.html#AEN12649"
+>Example <ACRONYM
+CLASS="acronym"
+>CLM4.0</ACRONYM
+> CNDV Spinup Simulation</A
+></DT
+><DT
+>4-9. <A
+HREF="x12663.html#AEN12671"
+>Example Simulation with MOAR Data on yellowstone</A
+></DT
+><DT
+>4-10. <A
+HREF="x12680.html#AEN12684"
+>Example Fully Coupled Simulation to Create Data to Force Next Example Simulation</A
+></DT
+><DT
+>4-11. <A
+HREF="x12680.html#ownforce"
+>Example Simulation Forced with Data from the Previous Simulation</A
+></DT
+><DT
+>4-12. <A
+HREF="x12702.html#AEN12729"
+>Example Transient Simulation with Historical CO<SUB
+>2</SUB
+></A
+></DT
+><DT
+>5-1. <A
+HREF="x12861.html#brazil_1x1"
+>Example of running <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> over a single-point test site in Brazil
+with the default Qian atmosphere data forcing.</A
+></DT
+><DT
+>5-2. <A
+HREF="x12861.html#mexicocity"
+>Example of running <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> over the single-point of Mexicocity Mexico
+with the default Qian atmosphere data forcing.</A
+></DT
+><DT
+>5-3. <A
+HREF="x12861.html#vancouver"
+>Example of running <ACRONYM
+CLASS="acronym"
+>CLM</ACRONYM
+> over the single-point of Vancouver Canada with 
+supplied atmospheric forcing data for Vancouver.</A
+></DT
+><DT
+>5-4. <A
+HREF="x12938.html#example_using_clmusrdat"
+>Example of using <CODE
+CLASS="envar"
+>CLM_USRDAT_NAME</CODE
+> to run a simulation using user datasets for a
+specific region over Alaska</A
+></DT
+><DT
+>5-5. <A
+HREF="x12938.html#creating_boulderCO_singlept_fsurdat"
+>Example of creating a surface dataset for a single point</A
+></DT
+><DT
+>5-6. <A
+HREF="x12938.html#setting_up_case_for_own_single_point_datasets"
+>Example of setting up a case from the single-point surface dataset just created</A
+></DT
+><DT
+>5-7. <A
+HREF="x12979.html#own_force"
+>Example of setting up a case with your own atmosphere forcing</A
+></DT
+><DT
+>5-8. <A
+HREF="x12979.html#own_force_streams"
+>Example of <ACRONYM
+CLASS="acronym"
+>DATM</ACRONYM
+> streams files with your own forcing for 3-hourly data</A
+></DT
+><DT
+>6-1. <A
+HREF="c13134.html#AEN13163"
+>Example of running <ACRONYM
+CLASS="acronym"
+>PTCLM1</ACRONYM
+> for US-UMB on yellowstone</A
+></DT
+><DT
+>6-2. <A
+HREF="x13410.html#AEN13415"
+>Example of running <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> for the Mexicocity supported single point
+dataset</A
+></DT
+><DT
+>6-3. <A
+HREF="x13410.html#AEN13420"
+>Example of running <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> for a spinup simulation with Qian data for tower years.</A
+></DT
+><DT
+>6-4. <A
+HREF="x13410.html#AEN13425"
+>Example of running <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> on a user-defined machine with global PFT and soil types
+dataset</A
+></DT
+><DT
+>6-5. <A
+HREF="x13434.html#AEN13486"
+>Example of running <ACRONYM
+CLASS="acronym"
+>PTCLM</ACRONYM
+> for transient land-use 1991-2006 for US-Ha1 on yellowstone_intel</A
+></DT
+><DT
+>7-1. <A
+HREF="c13522.html#cesm_setup_problem"
+>Example of cesm_setup problem with missing datasets</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="f38.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Acknowledgments</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CESM Naming Conventions</title>
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="CESM naming conventions including experiment casenames, output filenames, post processing data" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+	<link rel="manifest" href="../../site.webmanifest">
+	<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../../styles/um/css/style.css" rel="stylesheet">
+	<link href="../../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../../www.cesm.ucar.edu/models/default.htm">CESM Models</a></li>
+                            <li class="breadcrumb-item"><a href="../current.html">CESM Supported Releases</a></li>
+                            <li class="breadcrumb-item"><a href="default.htm">CESM2</a></li>
+                            <li class="breadcrumb-item active">CESM Naming Conventions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end breadcrumb menu -->
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h1>CESM Naming Conventions</h1>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Table of Contents <span class="badge badge-secondary small float-right">Updated April 2021</span></h5>
+                            <ul class="">
+                                <li class=""><a href="#casenames">CESM Experiment Casenames</a></li>
+                                <li class="">
+                                    <a href="#outputFilenames">CESM Output Filename Conventions</a>
+                                    <ul>
+                                        <li><a href="#modelOutputFilenames">CESM Model Output Data Filenames</a></li>
+                                        <li><a href="#modelOutputLocations">CESM Model Output File Locations</a></li>
+                                        <li><a href="#exampleStaFilenames">Example of Short-Term Archive Filenames</a></li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="#ppData">Post-processing Data</a>
+                                    <ul>
+                                        <li><a href="#ppDataFilenames">Filename Requirements for Post-Processed CESM Data</a></li>
+                                        <li><a href="#ppDataExamples">Examples of Post-processed Filenames</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+
+                    <div class="post-border-bottom">
+                        <h2 id="casenames">CESM Experiment Casenames</h2>
+                        <p class="mb-0">Standardized CESM experiment case names should be used for any experiments that:</p>
+                        <ul>
+                            <li> are added to the the CESM experiments data base, or</li>
+                            <li> have caseroots in a shared CESM runs dir (at NCAR: /glade/p/cseg/runs), or</li>
+                            <li> archive output in a shared CESM archive location on disk</li>
+                        </ul>
+
+                        <div class="alert alert-danger mb-4" role="alert">
+                            <strong>Important note</strong>
+                            <br>
+                            None of the strings delimited by a "." in the casename should contain any of the special wildcard characters <strong>+, *, ?, {,}</strong> that are used by the CESM scripts in pattern matching.
+                        </div>
+
+                        <h4 class="mb-0">The convention:</h4>
+                        <p><span class="font-weight-bold small">&lt;compset char&gt;.&lt;code base&gt;.&lt;compset shortname&gt;.&lt;res shortname&gt;[.opt_desc_string].&lt;nnn&gt;[opt_char]</span></p>
+
+                        <h4 class="mb-0">Details:</h4>
+                        <ul>
+                            <li><strong>&lt;compset char&gt;</strong>
+                            is a single character, the first letter of the compset, lower case</li>
+
+                            <li><strong>&lt;code base&gt;</strong>
+                            is "e20" for cesm2.0, "e10" for cesm1.0, "c40" for ccsm4.0, "c35" for ccsm3.5</li>
+
+                            <li><strong>&lt;compset shortname&gt;</strong>
+                            is the compset shortname recognized by create_newcase</li>
+
+                            <li><strong>&lt;res shortname&gt;</strong>
+                            is the resolution shortname recognized by create_newcase</li>
+
+                            <li><strong>[.opt_desc_string]</strong>
+                                is an OPTIONAL descriptive string, the only constraint is that
+                                it must not contain a "." (as this is reserved for delineating and parsing
+                                components of the case name).  While this string is largely unconstrained,
+                                CSEG strongly encourages users to either create a very short string
+                            (eg. eight characters or less) or avoid using it altogether.</li>
+
+                            <li><strong>&lt;nnn&gt;</strong>
+                            is a 3 digit number, the smallest number that results in a unique case name</li>
+
+                            <li><strong>[opt_char]</strong>
+                                is an OPTIONAL single lower-case letter {a,b,...,z}, normally not
+                                used, but is allowed to denote a group of cases that are very closely related.
+                                Those cases would then have identical case names except for this single
+                            character suffix.</li>
+                        </ul>
+         
+
+                        <h4 class="mb-0">Examples:</h4>
+                        <tt>
+                            b.e21.B1850.f09_g17.CMIP6-piControl.001<br>
+                            b.e21.BHIST.f09_g17.CMIP6-historical.001<br>
+                            f.e20.FW1850.f09_f09_mg17.295<br>
+                            f.e21.FHIST_BGC.f09_f09_mg17.CMIP6-AMIP.003<br>
+                            g.e21.GOMIPECOIAF_JRA.TL319_g17.CMIP6-omip2.001<br>
+                            i.e21.IHIST.f09_g17.CMIP6-land-noFire.001
+                        </tt>
+                    </div>
+
+
+
+
+                    <h2 id="outputFilenames">CESM Output Filename Conventions</h2>
+                    <p class="mb-4">The naming conventions for CESM output files fall into two broad categories: those files generated by the CESM component models at run-time <em>"model output data"</em> and those created by post-processing the run-time files <em>"post-processed data"</em>.</p>
+
+                    <h3 class="mb-0" id="modelOutputFilenames">CESM Model Output Data Filenames</h3>
+                    <p>The general filename formats for output files generated at run-time by the CESM component models:</p>
+                    <p>
+                        <b>$output = $CASE.$scomp.[$type.][$string.]$date[$ending] <br/>
+                            $log    = $CASE.$gcomp.$ltype.$logdate<br/>
+                        </b>
+                        <br/>
+                        where: <br/>
+                    </p>
+                    <p>
+                        <ul>
+                            <li> <b>[]</b> denotes an optional filename element</li>
+                            <li> <b>$output</b> denotes any model history, restart, initial, or diagnostic output file</li>
+                            <li> <b>$log</b> denotes any model log file</li>
+                            <li> <b>$CASE</b> = (<b>A-Z,a-z,0-9</b>), "<b>.</b>" (dot), and/or "<b>_</b>" (underscore).
+                                <br/>
+                                $CASE is the case name character string, which must be 80 or fewer characters long.
+                                See the <nobr><a href="http://escomp.github.io/cesm/release-cesm2">
+                                CESM2 Quick Start User's Guide</a></nobr> and <nobr><a href="#casenames">
+                                CESM Experiment Naming Conventions</a></nobr> for more information on the definition of $CASE.</li>
+                                <li> <b>$scomp</b> = (<b>cam,cice,cism,clm2,cpl,dart,datm,desp,dice,dlnd,docn,drof,dwav,mosart,pop,rtm</b>)<br/>
+                                $scomp is the string that indicates the specific component-model name.</li>
+                                <li> <b>$gcomp</b> = (<b>atm,cpl,esp,glc,ice,lnd,ocn,rof,wav</b>)<br/>
+                                $gcomp is the string that indicates the generic component-model name.</li>
+                                <li> <b>[$type]</b> = (<b>h*,r*,i*,d*,e*</b>) <br/>
+                                    $type is a one-, two-, or three-character string which denotes the output
+                                    file type. In the future, more characters may be required.
+                                    $type must begin with <b>h</b> (history), <b>r</b> (restart), <b>i</b> (initial),
+                                    <b>d</b> (diagnostic) or <b>e</b> (External System Processing) 
+                                    and may be followed by up to two optional characters
+                                    <nobr>(<b>a-z,0-9</b>)</nobr>.
+                                    Certain restart $type strings have special meanings:
+                                    <b>rs</b> (cam surface restart), <b>rh</b> (restart history), and
+                                    <b>rd</b> (restart diagnostic).<br/>
+                                    One known exception to this is that the cice model sometimes generates history
+                                    files with a <b>$type</b> string of unlimited length and which may include
+                                    the "<b>_</b>" (underscore) character or other characters.<br/>
+                                    <p></p>
+                                    For <b>h</b> (history) files, the second and third characters of the pattern
+                                    <b>h*</b> signify a unique data stream that corresponds to a namelist value
+                                    defining the time period frequency in which the data variables were
+                                    written to the file. In order to make the netCDF files fully self-describing
+                                    and satisfy post-processsing requirements to distinguish unique history streams,
+                                    a new metadata field called <b>time_period_freq</b> is now written to every
+                                    history file header with one of the corresponding values:<br/><br/>
+                                    <tt>
+                                        <ul>
+                                            <li>second_N... N &#8712; {1..3599} - data are written every N seconds</li>
+                                            <li>minute_N... N &#8712; {1..59} - data are written every N minutes</li>
+                                            <li>hour_N..... N &#8712; {1..23} - data are written every N hours</li>
+                                            <li>day_N...... N &#8712; {1..31} - data are written every N days</li>
+                                            <li>month_N.... N &#8712; {1..11} - data are written every N months</li>
+                                            <li>year_N..... N &#8712; {1..99999} - data are written every N years</li>
+                                        </ul>
+                                    </tt>
+                                    <br/>
+                                    <p><span style="color:red">Important Note</span>: Even though <b>$type</b> is optional, the default settings
+                                        for the short-term archiver depend on filename patterns that adhere to these
+                                        conventions. Consequently, if the filenames do not include a <b>$type</b>
+                                        identifier then the user will need to modify the rules in the <b>$CASEROOT/env_archive.xml</b> file
+                                    to set the filename pattern matching rules correctly.</p>
+                                </li>
+
+                                <li> <b>$string</b> <br/>
+                                    $string is an optional, typically short character string
+                                    <nobr>(<b>A-Z,a-z,0-9</b>)</nobr> "<b>.</b>" (dot), "<b>_</b>" (underscore),
+                                    and/or "<b>-</b>" (dash) which is used to further
+                                    identify the history file type. The ESP (External Statistical Package) component
+                                    relies on this <b>$string</b> value to identify different output file types required
+                                    by the DART (Data Assimilation Research Testbed). For more information regarding
+                                    ESP and DART, please refer to the <a href="http://www.image.ucar.edu/DAReS/DART/">DART web site.</a></li>
+
+                                    <li> <b>$ltype</b> = <b>log</b> <br/>
+                                        $ltype is the character string <b>log</b> which denotes the model output log type.</li>
+
+                                        <li> <b>$date</b> =  (<b>yyyy-mm-dd-sssss, yyyy-mm-dd, yyyy-mm, yyyy</b>)<br/>
+                                            $date is the model date string which is based on a <b>yyyy-mm-dd-sssss</b> convention
+                                            where:
+                                            <ul>
+                                                <li> <b>yyyy</b> (0000,9999) is the year string (if necessary, yyyy can be
+                                                    increased to more than four digits, but four is the minimum and anything
+                                                greater than four requires script and code modifications)</li>
+                                                <li> <b>mm</b> (01,02,...,12) is the month string</li>
+                                                <li> <b>dd</b> (01,02,...,31) is the day string</li>
+                                                <li> <b>sssss</b> (0000,..,86399) is the second string</li>
+                                            </ul>
+                                            <br/>
+                                            In date-conforming output files,
+                                            the following are established $date strings and their meanings:<br/>
+                                            <br/>
+
+                                            <ul>
+                                                <li><b>yyyy</b> - annual average (history file)</li>
+                                                <li><b> yyyy-mm</b> - monthly average (history file)</li>
+                                                <li><b> yyyy-mm-dd</b> - daily average  (history file)</li>
+                                                <li><b> yyyy-mm-dd-sssss</b> - instantaneous or timeseries.
+                                                    This is the stamp used for restart files,
+                                                    instantaneous history files ("snapshot" files), and
+                                                    timeseries history files (the date stamp indicates the timestamp
+                                                of the first data written to the file).</li>
+                                            </ul>
+                                        </li>
+                                        <br/>
+                                        <li> <b>$logdate</b> = <b>yymmdd-hhmmss</b> <br/>
+                                            $logdate is the log-file date string, which is a real-world date string of
+                                        the form indicated in the definition.</li>
+
+                                        <li> <b>$ending</b> = (<b>.nc</b>)<br/>
+                                            $ending denotes the file format. The following optional endings are supported:
+                                            <b>.nc</b> (netCDF3, netCDF4, and netCDF4c).</li>
+                                        </ul>
+                                    </p>
+
+                                    <hr/>
+                                    <p id="modelOutputLocations"/>
+                                    <h3>CESM Model Output File Locations</h3>
+                                    <p>
+                                        Depending on the stage of the model execution and the options selected in the
+                                        CESM case, run-time output files will reside in different locations.
+                                        See the
+                                        <nobr><a href="http://escomp.github.io/cesm/release-cesm2"> CESM2 Quick Start Guide</a></nobr> for
+                                        the definitions of $RUNDIR and $DOUT_S_ROOT and how they are set.
+                                    </p>
+                                    <ul>
+                                        <li> During execution, files in the $RUNDIR directory are:</li>
+                                        <ul>
+                                            <b>
+                                                <li>$RUNDIR/$output </li>
+                                                <li>$RUNDIR/$log    </li>
+                                            </b>
+                                        </ul>
+                                        <br/>
+                                        <li> If the short-term archiving option is active, $DOUT_S = TRUE, files will be moved to the $DOUT_S_ROOT
+                                            directory following execution.  In this case, the files are segregated by component
+                                        and type (history, restart or log):</li>
+                                        <ul>
+                                            <li><b>$DOUT_S_ROOT/$CASE/$gcomp/hist/$output</b> - history and diagnostics files</li>
+                                            <li><b>$DOUT_S_ROOT/$CASE/rest/$rdate/$output</b> - all files needed for restart including initialization files</li>
+                                            <li><b>$DOUT_S_ROOT/$CASE/logs/$log</b> - log files</li>
+                                        </ul>
+                                        <br/>
+                                        where
+                                        <ul>
+                                            <li> <b>$DOUT_S_ROOT</b> is the short-term archiving root directory</li>
+                                            <li> <b>$CASE</b> is the case name</li>
+                                            <li> <b>$gcomp</b> = <b>[atm,cpl,esp,glc,ice,lnd,ocn,rof,wav]</b> is a subdirectory with history time-slice files and POP diagnostics files</li>
+                                            <li> <b>$rdate</b> = <b>yyyy-mm-dd-sssss</b> is the restart date for all files in the subdirectory</li>
+                                        </ul>
+                                    </ul>
+
+                                    <hr/>
+                                    <p id="exampleStaFilenames"/>
+                                    <h3>Example of Short-Term Archive Filenames:</h3>
+                                    The * below represents "optional" characters and  YYYY = one year prior to yyyy.<br/><br/>
+                                    [...] = $DOUT_S_ROOT<br/>
+                                    <p>
+                                        <tt>
+                                            [...]/$CASE/atm/hist/$CASE.cam.h*.yyyy-mm.nc<br/>
+                                            [...]........../hist/$CASE.cam.h*.yyyy-mm-dd-sssss.nc<br/>
+                                            [...]/...../cpl/hist/$CASE.cpl.h*.yyyy.nc<br/>
+                                            [...]/........./hist/$CASE.cpl.h*.yyyy-mm.nc<br/>
+                                            [...]/........./hist/$CASE.cpl.h*.yyyy-mm-dd.nc<br/>
+                                            [...]/........./hist/$CASE.cpl.h*.yyyy-mm-dd-sssss.nc <br/>
+                                            [...]/...../esp/hist/*                                  (External System Processing files created by <a href="https://www.image.ucar.edu/DAReS/DART/">DART</a>)<br/>
+                                            [...]/...../glc/hist/$CASE.cism.h*.yyyy-mm-dd-sssss.nc<br/>
+                                            [...]/........./hist/$CASE.cism.initial_hist.yyyy-mm-dd-sssss.nc<br/>
+                                            [...]/...../ice/hist/$CASE.cice.h.yyyy-mm.nc<br/>
+                                            [...]/...../lnd/hist/$CASE.clm2.h*.yyyy-mm.nc<br/>
+                                            [...]/........./hist/$CASE.clm2.h*.yyyy-mm-dd-sssss.nc<br/>
+                                            [...]/...../logs/[atm,cesm,cpl,glc,ice,lnd,ocn,rof,wav].log.*.[gz]<br/>
+                                            [...]/...../ocn/hist/$CASE.pop.h*.yyyy-mm.nc<br/>
+                                            [...]/........./hist/$CASE.pop.h.nday1.yyyy-mm-dd.nc<br/>		
+                                            [...]/........./hist/$CASE.pop.h.ecosys.nday1.yyyy-mm-dd.nc<br/>
+                                            [...]/........./hist/$CASE.pop.d*.yyyy-mm-dd-sssss       (diagnostics files)<br/>		
+                                            [...]/........./hist/$CASE.pop.hm.yyyy-mm-dd-sssss.nc    (movie stream) <br/>
+                                            [...]/........./hist/$CASE.pop.hs.yyyy-mm-dd-sssss.nc    (snapshot stream) <br/>
+                                            [...]/........./hist/$CASE.pop.h.once.nc                 (diagnostics and prognostics variables) <br/>
+                                            [...]/........./hist/$CASE.pop.hv.nc                     (viscosity variables) <br/>
+                                            [...]/...../rest/yyyy-mm-dd-sssss/$CASE.cam.h0.YYYY-12.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cam.i.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cam.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cam.rs.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cice.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cism.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.clm2.h0.YYYY-12.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.clm2.r.yyyy-01-01-00000<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.clm2.rh0.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.cpl.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.mosart.h0.YYYY-12.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.mosart.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.mosart.rh0.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.pop.r.yyyy-01-01-00000.nc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.pop.ro.yyyy-01-01-00000<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.ww3.r.yyyy-01-01-00000<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.atm<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.drv<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.glc<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.ice<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.lnd<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.ocn.ovf<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.ocn.restart<br/>
+                                            [...]/........../yyyy-mm-dd-sssss/$CASE.rpointer.rof<br/>
+                                        </tt>
+                                        <br/>
+                                    </p>
+                                    <hr/>
+                                    <p id="ppData"/>
+                                    <h2>Post-processing Data</h2>
+                                    <p>
+                                        CESM post-processing tools work with the files stored in the short term archive
+                                    locations defined in the previous section. Post-processing tools include:</p>
+                                    <ul>
+                                        <li>History time-slice file conversion to history variable time-series files.</li>
+                                        <li>Climatology files containing computed averages over specified time-periods spanned by the run.</li>
+                                        <li><a href="http://www2-pcmdi.llnl.gov/cmor">Climate Model Output Rewriter (CMOR)</a> compatible output filenames and sub-directories</li>
+                                        <li>Diagnostics plot sets</li>
+                                    </ul>
+                                    <p>
+                                        The <a href="../cesm2.0/python-tools/index.html">CESM python-based
+                                        parallel post-processing tools</a> are available
+                                        from the public <a href="https://github.com/NCAR/CESM_postprocessing">https://github.com/NCAR/CESM_postprocessing</a> repository
+                                        with support currently limited to NCAR machines.
+                                    </p>
+
+                                    <p>
+                                        CESM conforms to the following points in order to allow for consistant post-processing
+                                    tools handling of model output data:</p>
+                                    <ul>
+                                        <li> Model output data streams should conform to these standards as much as possible.
+                                            Unique diagnostic files or other output files could have some non-standard naming
+                                        conventions if that makes them easier to identify.</li>
+                                        <li> Restart dates are for the current timestep to run, so would be, for example,
+                                        0002-01-01-00000 if written at the end of year 1, month 12.</li>
+                                        <li> All restart filenames have the format $CASE.$scomp.r*.yyyy-mm-dd-sssss, unless information is in
+                                        the rpointer files about what auxiliary files are required.</li>
+                                        <li> All history filenames have the format $CASE.$scomp.h?[.$string].[$date][$ending].
+                                            The second character of the type and the optional string are left up to the developer.
+                                            There are no requirements, although optional string names must be coordinated with the
+                                        CESM archiving scripts.  </li>
+                                        <li> All monthly average history files look like $CASE.$scomp.h?[.$string].yyyy-mm[$ending].
+                                            The date string, NOT THE TYPE, tells you whether the file is yearly, monthly, daily
+                                            averaged or other. Starting with CESM2.0, the output netCDF history file for each component contains
+                                            the metadata variable <b>time_period_freq</b> which defines the frequency
+                                        in which the data are written. See the $type above for conventions used for this variable.  </li>
+                                        <li> History files and restart history files are connected via $CASE.$scomp.h* and
+                                            $CASE.$scomp.rh* even though the dates might be quite different.  The dates for
+                                            restart history files must conform with the restart date.  The date for history files
+                                        is set by the averaging strategy or the last date data were written.</li>
+                                        <li> Care must be used when not using the optional history character.  For instance,
+                                            for a case where you might have $CASE.$scomp.h.yyyy.nc and $CASE.$scomp.h.yyyy-mm.nc
+                                            for an annual average and monthly average outputs, the date makes the files
+                                            unique.  However, their restart equivalents will have identical names because
+                                            the date string is the yyyy-mm-dd-sssss of the restart.  There will be a conflict.
+                                        It is up to the model developer, and generally not the user, to make this robust.</li>
+                                        <li> In short:
+                                            <ul>
+                                                <li> All restart-file types start with r.</li>
+                                                <li> All history-file types start with h.</li>
+                                                <li> All initial-file types start with i.</li>
+                                                <li> All restart-file dates are of the form yyyy-mm-dd-sssss.</li>
+                                                <li> All <i>restarts of history files</i> use the history type prepended with an r.</li>
+                                                <li> The history-file date is the only indication of the type of average contained
+                                                    in the file. For example, yyyy-mm indicates the history file
+                                                contains monthly averaged fields.</li>
+                                                <li> Some models have multiple restarts, some have multiple histories, etc.
+                                                    Model developers should decide whether to attach an optional character
+                                                to the r, h or i file-type designator and what that character would be.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+
+                                    <hr/>
+                                    <p id="ppDataFilenames"/>
+                                    <h3>Filename Requirements for Post-Processed CESM Data</h3>
+                                    <p>
+                                        In the preceding section, naming conventions were established for model
+                                        output data files generated by the CESM model as it executes.
+                                        In this section, the conventions are extended in
+                                        order to define rules for data files that result from the
+                                        post-processing of CESM model output data.
+                                    </p>
+                                    <p>
+                                        Post-processed data files may include temporal averages (eg, seasonal,
+                                        annual, or decadal), spatial averages (eg, zonal, meridional, global),
+                                        timeseries, or other diagnosed quantities (eg, meridional overturning
+                                        streamfunction, barotropic streamfunction).  The following rules are
+                                        intended to provide a consistent structure for naming each of these types of
+                                        files.
+                                    </p>
+                                    <p>
+                                        The development of these naming conventions was
+                                    guided by the desire to:</p>
+                                    <ul>
+                                        <li> maintain a close and logical connection to the original model
+                                        output filenames</li>
+                                        <li> allow for the easy identification of the processed files'
+                                        contents from the filename itself</li>
+                                        <li> separate at a high level the standard CESM processed data, which
+                                            are available to the general CESM community, from
+                                            the CESM model output data or the
+                                            more specialized processed data, such as data
+                                        intended for the IPCC inter-comparison project</li>
+                                        <li> allow for the creation of unique filenames</li>
+                                    </ul>
+                                    <p>
+                                        Users are free to use their own naming conventions in their own
+                                        personal directories, but filenames of all data files that are written
+                                        to NCAR common disk directories and mass store must follow the conventions described in
+                                        this document. 
+                                    </p>
+                                    <p>
+                                        If there are particular post-processing circumstances that are not
+                                        addressed in this document, it is important to discuss them with
+                                        CSEG first, prior to creating  non-standard filenames. Only after the 
+                                        issues have been resolved and the documentation updated should the files
+                                        be created with new naming conventions.
+                                    </p>
+                                    <p>
+                                        The value of the netCDF history file metadata variable, <b>time_period_freq</b>,
+                                        defines the sub-directories locations
+                                        where files are stored during post-processsing. For example, if the 
+                                        $CASE.cam.h0.* history files corresponds to a <b>time_period_freq</b> = month_1, then
+                                        the corresponding post-processing sub-directory in the archive locations is:<br/><br/>
+                                        <tt>
+                                            [...]/$CASE/atm/hist/proc/tseries/month_1/$CASE.cam.h0.$VARNAME.yyyymm-yyyymm.nc
+                                        </tt>
+                                    </p>
+                                    <p>
+                                        All post-processed filenames conform to the following general format:
+                                    </p>
+                                    <ul>
+                                        <li><b>$DIRNAME/$FILENAME </b></li>
+                                    </ul>
+                                    where
+                                    <ul>
+                                        <li><b>$DIRNAME = $DOUT_S_ROOT/$CASE/$gcomp/$subdir/$tdir/[$tperiod] </b></li>
+                                        <li><b>$FILENAME = $CASE.$scomp.$type.$SSTRING.$TSTRING[.$ending] </b></li>
+                                    </ul>
+                                    quantities within square brackets [] are optional, and $CASE, $gcomp, $scomp,
+                                and $type are as defined above.</p>
+                                <p>
+                                    The following are definitions of the various components of $DIRNAME
+                                    and $FILENAME; note that several examples follow below, to 
+                                illustrate the use of these options.</p>
+                                <ul>
+                                    <li> <b>$subdir</b> = (<b>proc</b>) <br/>
+                                        $subdir differentiates broad classifications of processed
+                                        data files at a high level. <b>proc</b> is used for the
+                                    standard suite of CESM post-processing.</li>
+
+                                    <li> <b>$tdir</b>   = (<b>climo[.start-year.stop-year],tseries,diag</b>)<br/>
+                                        $tdir is used to distinguish time-averages from time series from diagnostic plot sets; note that 
+                                        the <b>tseries</b> directory can include timeseries of time-averaged
+                                    quantities; see examples below</li>
+
+                                    <li> <b>$tperiod</b> = [<b>hour_${N},day_${N},month_${N},year_${N}</b>] <br/>
+                                        $tperiod denotes the time period over which the data were processed.
+                                    ${N} = 1,2,3,...  </li>
+
+                                    <li> <b>$SSTRING </b><br/>
+                                        $SSTRING provides a flexible means to describe non-temporal aspects of
+                                    the file contents; the rules governing $SSTRING are listed below </li>
+
+                                    <li> <b>$TSTRING</b><br/>
+                                        $TSTRING provides a means to describe temporal aspects of the file 
+                                        contents, either a specific
+                                        time period or a range of time periods represented in the 
+                                        processed file; 
+                                    the rules governing $TSTRING are listed below </li>
+
+                                    <li> <b>$ending</b> = [<b>nc</b>]<br/>
+                                        $ending is an optional filename suffix used to describe the
+                                        file format
+                                        <ul>
+                                            <li> <b>$ending = .nc</b> indicates the file is in netCDF format</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    Both $SSTRING and $TSTRING have additional rules that are intended to allow
+                                    for the creation of a unique filename that helps to unambiguously identify the contents
+                                    of the file:
+                                </p>
+                                <ul>
+                                    <li><b>$SSTRING Format:</b>   substring1[_substring2[_substring3...]]</li>
+                                    <li><b>$SSTRING Rules:</b> 
+                                        <ol>
+                                            <li> The <i>complete absence</i> of $SSTRING has a particular meaning:
+                                                there have been no spatial operations done on the original
+                                                model history-file contents, and all of the original history-file
+                                            variables are contained within the post-processed data file</li>
+
+                                            <li> $SSTRING may contain one or more "descriptors," each of which
+                                                is denoted by <b>substring${N}</b>, ${N}=1,2,... in the format above.
+                                                A descriptor identifies important aspects of the file contents,
+                                                such as the names of fields that have been extracted from the original
+                                                history files,  or spatial operations that have been performed.
+                                                Certain standard descriptor names have been established and are
+                                            cataloged below</li>
+
+                                            <li> If there are multiple descriptors in $SSTRING,
+                                            each is separated from the other by the underscore character ("_")</li>
+
+                                            <li> $SSTRING may contain field information. For netCDF files, use the
+                                                short_name value(s), such as 
+                                            such as UU, VVEL, or UVEL_VVEL</li>
+
+                                            <li>The <i>absence of a field name</i> in $SSTRING indicates that all
+                                                fields from the original history file are included in the processed
+                                            file</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    The format and rules for $TSTRING, which
+                                    is intended to indicate the time or time periods of the original data files which
+                                    were processed in order to create this file, are as follows:
+                                </p>
+
+                                <ul>
+                                    <li><b>$TSTRING Format:</b>  datestring1[-datestring2]</li>
+                                    <li><b>$TSTRING Rules:</b> 
+                                        <ol>
+                                            <li> $TSTRING datestrings must follow the conventions for model
+                                                output files, eg
+                                                <ul>
+                                                    <li> yyyymmddhhZ &nbsp; -- instantaneous - "Z" is mandatory to indicate GMT</li>
+                                                    <li> yyyymmdd &nbsp; -- daily average </li>
+                                                    <li> yyyymm &nbsp;   -- monthly average </li>
+                                                    <li> yyyy &nbsp; -- annual average</li>
+                                                </ul>
+                                            </li>
+                                            <li> If present, the $TSTRING temporal operator 
+                                            is separated from datestring1 and datastring2 by the hyphen character ("-")</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+
+                                <hr/>
+                                <p id="ppDataExamples"/>
+                                <h3>Examples of Post-processed Filenames</h3>
+                                <p>
+                                    Combinations of the various string names are intended to provide
+                                    sufficient flexibility to describe the file contents.
+                                    The following examples are used to illustrate standard practices for post-processed data filenames 
+                                    and locations. <br/> 
+                                    ([...] = $DOUT_S_ROOT):
+                                </p>
+
+                                <ul>
+                                    <li> <b>Directory names ($DIRNAME) </b><br/>
+                                        <tt>
+                                            [...]/b.e20.B1850.f09_g17.294/atm/proc/tseries/day_1<br/>
+                                            [...]/b.e20.B1850.f09_g17.294/lnd/proc/tseries/month_1<br/>
+                                            [...]/b.e20.B1850.f09_g17.294/ice/proc/climo/b.e20.B1850.f09_g17.294/b.e20.B1850.f09_g17.294.50-100<br/>
+                                            [...]/b.e20.B1850.f09_g17.294/ocn/proc/climo.1.10<br/>
+                                            [...]/b.e20.B1850.f09_g17.294/lnd/proc/diag<br/>
+                                        </tt>
+                                    </li>
+                                    <br/>
+                                    <li> <b>Single variable time series for 50 years</b> - time series of 50 years of monthly average atmospheric UU velocities,
+                                        for the period January 400 through December 499, inclusive:<br/>
+                                        <tt>
+                                            [...]/b.e20.B1850.f09_g17.294/atm/proc/tseries/month_1/b.e20.B1850.f09_g17.294.cam.h0.UU.040001-049912.nc 
+                                        </tt>
+                                    </li>
+                                    <br/>
+                                    <li> <b>All fields in a 5 year average</b> - 5-year time average of all atmospheric model h0 history fields, 
+                                        averaged over years 2 through year 6, inclusive
+                                        (note the absence of $SSTRING)<br/>
+                                        <tt>
+                                            [...]/b.e20.B1850.f09_g17.294/atm/proc/climo/b.e20.B1850.f09_g17.294/b.e20.B1850.f09_g17.294.2-6/b.e20.B1850.f09_g17.294.cam.h0.0002-0006._ANN_climo.nc
+                                        </tt>
+                                    </li>
+                                    <br/>
+                                    <li> <b>All fields in an annual average</b> - annual average of all ocean-model monthly history fields, averaged over year 0010<br/>
+                                        <tt>
+                                            [...]/b.e20.B1850.f09_g17.294/ocn/proc/climo.1-10/b.e20.B1850.f09_g17.294.pop.h.0010.nc
+                                        </tt>
+                                    </li>
+                                    <br/>
+                                    <li> <b>50 year average for a single vaiable</b> - 50-year average of the pop temperature field (TEMP) and salinity (SALT)
+                                        averaged over years 200 through 249, inclusive, by month (mavg) and total (tavg).<br/>
+                                        <tt>
+                                            [...]/b.e20.B1850.f09_g17.294/ocn/proc/climo.200.249/mavg.0200-0249.nc
+                                            [...]/b.e20.B1850.f09_g17.294/ocn/proc/climo.200.249/tavg.0200-0249.nc
+                                        </tt>
+                                    </li>
+                                </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <!-- Models Related Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM2 Quicklinks</h5>
+    <ul class="cat">
+        <li><a href="https://github.com/ESCOMP/CESM">CESM GitHub</a></li>
+        <li><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+        <li><a href="release_download.html">Downloading Instructions</a></li>
+        <li>
+            <a data-toggle="collapse" href="#collapseProg" aria-expanded="false" aria-controls="collapseProg"><i class="fa fa-chevron-right" aria-hidden="true" id="i-link-prog"></i>Prognostic Components</a>
+            <ul class="small bg-light text-dark rounded collapse" id="collapseProg">
+                <li class="pb-0"><a class="text-dark" href="atmosphere/default.htm">Atmosphere</a></li>
+                <li class="pb-0"><a class="text-dark" href="land/default.htm">Land</a></li>
+                <li class="pb-0"><a class="text-dark" href="land-ice/default.htm">Land Ice</a></li>
+                <li class="pb-0"><a class="text-dark" href="ocean/default.htm">Ocean</a></li>
+                <li class="pb-0"><a class="text-dark" href="river/default.htm">River Runoff</a></li>
+                <li class="pb-0"><a class="text-dark" href="sea-ice/default.htm">Sea Ice</a></li>
+                <li class="pb-0"><a class="text-dark" href="wave/default.htm">Wave</a></li>
+            </ul>
+        </li>
+        <li><a href="https://www.cgd.ucar.edu/cseg">CESM Software Engineering Group</a></li>
+        <li><a href="https://csegweb.cgd.ucar.edu/experiments/public/">Experiments, Data & Diagnostic Output</a></li>
+    </ul>
+    <br/>
+    <h5 class="widgetheading">Related Information</h5>
+    <ul class="cat">
+        <li class="hide-me"><a href="../../about/support.html">CESM Support Policy</a></li>
+        <li><a href="../../management/docs/cesm-data-management-plan-2021.pdf">Data Management &amp; Distribution Plan</a></li>
+        <li><a href="https://www.cgd.ucar.edu/cseg/development-code.html">Development Project Policies &amp; Terms of Use</a></li>
+        <li><a href="../../publications/default.htm">Publication / Acknowledgment Information</a></li>
+        <li><a href="package_copyright.html">CESM2 Included Packages Copyright</a></li>
+        <li><a href="copyright.html">CESM2 Copyright</a></li>
+    </ul>
+</div>
+                        <!-- end Models Related Include -->
+
+                        <!-- CESM Project Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM Communications</h5>
+    <ul class="cat small">
+    	<li><a href="https://bb.cgd.ucar.edu/cesm/">User Support Forums</a></li>
+    	<li><a href="../../about/faq.html#mailing-list">Mailing Lists</a></li>
+    	<li><a href="../../about/contact.html">Contact CESM</a></li>
+    	<li><a href="../../about/support.html">Support Policy</a></li>
+        <li class="hide-me"><a href="https://escomp.github.io/CESM/versions/master/html/">Latest Development Code Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+    </ul>
+</div>
+
+
+<div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat small">
+        <li>The CESM project is supported primarily by the <a href="http://www.nsf.gov/">National Science Foundation (NSF)</a>. Administration of the CESM is maintained by the <a href="http://www.cgd.ucar.edu/">Climate and Global Dynamics Laboratory (CGD)</a> at the <a href="http://www.ncar.ucar.edu/">National Center for Atmospheric Research (NCAR)</a>.</li>
+        <li><a href="http://www.cesm.ucar.edu">CESM</a> is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    // set the url
+    var url_full = window.location.href;
+
+    // check for cesm2 to hide the leatest dev code quickstart
+    if(/cesm2/.test(url_full)) {
+        var link = document.getElementById("li-cesm2");
+        link.className += " hide-me";
+    }
+
+</script>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- footer include -->
+        
+
+    <div class="container">
+        <!-- footer start -->
+        <div class="row">
+            <div class="col-md">
+                <div class="widget">
+                    <h5 class="widgetheading"><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">CGD Laboratory Info</a></h5>
+                    <p><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">1850 Table Mesa Drive<br>Boulder, CO, 80305</a></p>
+                    <ul class="list-style-none">
+                        <li>303.497.1000&nbsp;&nbsp;<i class="fas fa-phone"></i>&nbsp;&nbsp;Phone</li>
+                        <li>303.497.1314&nbsp;&nbsp;<i class="fas fa-print"></i>&nbsp;&nbsp;Fax</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading"><a href="../../about/Wc9217b0e02798.htm">CESM Quicklinks</a></h5>
+                <ul class="link-list">
+                    <li><a href="../../events/tutorials/Wc2ebed6407518.htm">Tutorials</a></li>
+                    <li><a href="../../events/workshops/Wc4e9f403cf13.htm">Workshops</a></li>
+                    <li><a href="../../working_groups/Wc190e721ba82d.htm">Working Groups</a></li>
+                    <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=footer">Support Forums</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Leadership</h5>
+                <ul class="link-list">
+                    <li><a href="https://staff.ucar.edu/users/gokhan">Chief Scientist - Gokhan Danabasoglu</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/SSC/?ref=footer">Scientific Steering Committee</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/working_groups/?ref=footer">Working Group Co-Chairs</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/CAB/?ref=footer">CESM Advisory Board</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Models</h5>
+                <ul class="link-list">
+                    <li><a href="../Wcc9c7389d47ec.htm">Overview</a></li>
+                    <li><a href="../../experiments/Wcdda398834fdf.htm">Experiments</a></li>
+                    <li><a href="../../projects/community-projects/Wcc1852b84e933.htm">Community Projects</a></li>
+                    <li><a href="../Wc4da67042a202.html">CESM Releases</a></li>
+                </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- sub footer start -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="copyright">
+                    <p>
+                    <span>&copy; 2021 UCAR | <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use">Terms</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="https://www.ucar.edu/">Managed by UCAR</a><br>
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br>
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </span></p>
+                    </div>
+                    <!-- end subfooter -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Media Include -->
+                    <h5 class="widgetheading social-heading">Follow Us</h5>
+                    <ul class="social-network">
+                        <li><a href="https://www.facebook.com/ncarcgdboulder/"  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/ncar_cgd"  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/national-center-for-atmospheric-research/"  title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCGfjWttSHDKu3y9pCay2KHQ"  title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <!-- end Social Media Include -->
+                </div>
+            </div>
+        </div>
+        <!-- sub footer end -->
+    </div>
+
+    <div class="copyright-nsf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <em>The CESM&reg; project is supported primarily by the National Science Foundation | This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National&nbsp;Science&nbsp;Foundation.</em>
+                </div>
+                <div class="col-lg-2">
+                    <a href="https://nsf.gov"><img src="../../Images/logos/footer-logo-nsf.png" width="60" alt="NSF Logo" title="NSF Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </footer>
+</div>
+
+<!-- javascript include -->
+<!-- scroll to top toolbar -->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!-- toasts -->
+<!--
+<div class="toast fixed-top mt-2 ml-5" role="alert" data-autohide="true" data-delay="7000">
+    <div class="toast-header">
+        <img src="/favicon.ico" class="rounded mr-2" alt="CGD Logo">
+        <h5 class="mr-auto text-primary">ISG Note</h5>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">Close ×</span>
+    </button>
+    </div>
+
+    <div class="toast-body">
+        Please pardon our dust, we are currently in the process of upgrading pages. You may encounter broken links or old themes during this process. Contact the CGD/IS staff if you need help finding information or have any feedback
+    </div>
+</div>
+-->
+
+
+
+<!-- js includes -->
+<script src="../../styles/um/js/jquery.min.js"></script>
+<script src="../../styles/um/js/popper.min.js"></script>
+<script src="../../styles/um/js/bootstrap.min.js"></script>
+<script src="../../styles/um/js/fancybox.min.js"></script> 
+<script src="../../styles/um/js/flexslider.min.js"></script>
+<script src="../../styles/um/js/custom.js"></script>
+<script src="../../styles/um/js/jquery.tablesorter.min.js"></script>
+<script src="../../styles/um/js/cookie-consent.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script>
+// initialize and show Bootstrap 4 toast
+//$('.toast').toast('show');
+
+
+// scripts for the notice bar
+// get a cookie if set
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+// set a cookie
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/default.htm";
+}
+
+// clearing the cookie
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// checking to display the banner or not
+function checkDowntimeMsg() {
+    var eventSeen = getCookie("eventSeen3");
+
+    if (eventSeen == null) {
+        // no cookie so havent seen the msg
+        $("#alert-downtime").fadeIn("fast");
+    }
+    else {
+        // have cookie so have seen message
+    }
+}
+
+// check for seeing the downtime message
+//checkDowntimeMsg();
+
+// check for closing the downtime notice
+$(".close-downtime").on('click', function() {
+    // fadeout the downtime message
+    $("#alert-downtime").fadeOut("fast");
+
+    // set the cookie so wont see next time
+    setCookie('eventSeen3','y',7);
+});
+
+// cookie consent
+window.addEventListener("load", function() {
+    window.wpcc.init( {
+        "colors": {
+            "popup": {
+                "background": "#0779bf", "text": "#ffffff", "border": "#0779bf"
+            }
+            , "button": {
+                "background": "#0779bf", "text": "#ffffff"
+            }
+        }
+        , "position":"bottom", "margin":"none", "fontsize":"tiny", "content": {
+            "href": "https://www.ucar.edu/cookie-other-tracking-technologies-notice", "message": "UCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click", "link": "here", "button": "Acknowledge"
+        }
+        , "padding":"none"
+    })
+});
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+// Script for calendar dropdown on inputs
+$('.datepicka').each(function(i, obj) {
+    // Grab the ID
+    var datepickaID = $(this).attr('id');
+
+    // Make it a picka
+    $( "#" + datepickaID ).datepicker();
+});
+
+
+// Script for the autoscroll back to top
+$(window).scroll(function(){
+	// show the scroll bar
+	if ($(this).scrollTop() > 100) {
+		$('.scrollup').fadeIn();
+	} 
+	// hide the scroll bar
+	else {
+		$('.scrollup').fadeOut();
+	}
+});
+
+// clickong on the scroll bar
+$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
+	return false;
+});
+
+
+
+
+
+$(document).ready(function () {
+    
+    $('.star').on('click', function () {
+        $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+        $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'all') {
+            $('.table tr').css('display', 'none');
+            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+            $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+    });
+
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+    // popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover({html:true});
+    });
+
+    // checking for click on details
+    $('[data-toggle="popover"]').on("click", function() {
+        // change the html
+        $(this).removeClass("badge-info");
+        $(this).addClass("badge-danger");
+
+        $(this).html("Hide Details");
+    });
+
+    // checking for hiding popover to revert back
+    $('[data-toggle="popover"]').on('hide.bs.popover', function () {
+        // change the html
+        $(this).removeClass("badge-danger");
+        $(this).addClass("badge-info");
+
+        $(this).html("More Details");
+    });
+
+});
+</script>
+
+</body>
+</html>
+</html>
+</html>

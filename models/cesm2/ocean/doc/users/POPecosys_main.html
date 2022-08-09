@@ -1,0 +1,2629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The CESM Ocean Ecosystem Model User's Guide</title>
+
+<link rel="shortcut icon" href="../../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+    </div><!-- .atmosnav -->
+    
+    <div class="slogan"><img src="../../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+    <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+			<div class="breadcrumbs"><a href="http://www2.cesm.ucar.edu/">Home</a> &raquo; <a href="http://www2.cesm.ucar.edu/models">CESM Models</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.2">CESM1.2 Public Release</a> &raquo; <a href="http://www.cesm.ucar.edu/models/cesm1.2/pop2/">POP2</a> &raquo; The CESM Ocean Ecosystem Model User's Guide</div>
+			<h1>CESM Models</h1>
+	</div>
+ 
+	<div class="content">
+			<h2 class="title">The CESM Ocean Ecosystem Model User's Guide</h2>&nbsp;
+ 
+						<!--  ---------------------------------------------------------------------  -->
+
+
+
+
+
+<a name="top"></a>
+<P><BR>
+<h2 align="CENTER">The CESM Ocean Ecosystem Model User's Guide<p>
+<em>Nancy J. Norton<p>
+Keith Lindsay</em><p>
+National Center for Atmospheric Research<p>
+25 June 2010</h2>
+
+<P>
+
+<!--Table of Contents-->
+<h3> Contents</h3>
+
+<oL>
+<LI><A HREF="#intro">Introduction</A></LI><p>
+<LI><A HREF="#ecosys_nml">The <b>ecosys_nml</b> namelist </A></LI><p>
+<LI><A HREF="#ecosys_parms_nml">The <b>ecosys_parms_nml</b> namelist </A></LI><p>
+<LI><A HREF="#tavg">Ecosystem model output</A></LI><p>
+<UL>
+<LI><A HREF="#tavg">Ecosystem model additions to the POP <b>tavg_nml</b> namelist settings</A></LI><p>
+<LI><A HREF="#tavg_contents">Ecosystem model additions to the POP <b>tavg_contents</b> file</A></LI><p>
+</UL>
+<LI><A HREF="#tavg_autogen">Auto-generated generic extra-tracer time-averaged history (<b>tavg_contents</b>) fields</A></LI><p>
+<LI><A HREF="#setup">The ocn.ecosystem.setup.csh script</A></LI><p>
+<LI><A HREF="#customize">Customizing your ecosystem model ecosys_nml, tavg_nml, and tavg_contents settings</A></LI><p>
+  <ul>
+      <li><a href="#changeecosys_nml">ecosys_nml namelist</a></li>
+      <li><a href="#changetavg_nml">tavg_nml namelist </a></li>
+      <li><a href="#changetavg_contents">tavg_contents fields and/or streams</a></li>
+  </ul>
+  <p>
+<LI><A HREF="#change_ecosys_parms">Customizing your ecosystem model ecosys_parms_nml settings</A></LI><p>
+</oL>
+
+
+<ol>
+<BR>
+<a name="intro"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>Introduction</li></h3>
+<p>
+This User's Guide contains information on the CESM1 ocean ecosystem model namelist settings, 
+time-averaged history-file variables, and scripts. The user of
+this guide is expected to be familiar with the terminology and concepts contained in the
+ <a href="../../../cesm/index.html">CESM1 User's Guide</a>
+and the CESM1 <a href="POPusers_main.html">POP User's Guide</a>.
+<p>
+
+The CESM ocean ecosystem model executes as a submodel of the CESM POP active-ocean
+model. It is activated by adding the string <tt>'ecosys'</tt>
+to the CESM environment variable <tt>$OCN_TRACER_MODULES</tt> in the user's
+ <tt>$CASE/env_build.xml</tt> file.  Only active-ocean cases using POP 
+(eg, B-, C-, or G-type compsets) can run the CESM ocean ecosystem model.
+Typically, a user will select an ecosystem case at the CESM <tt>create_newcase</tt> stage
+by selecting an ecosystem compset in which the <tt>$OCN_TRACER_MODULES</tt> variable already
+includes the <tt>'ecosys'</tt> string, such as C- or G- compsets with "ECO" in the name (eg, compset CECO) and B compsets with "BGC" in the name.
+
+<p>
+The CESM ecosystem model code is distributed with the CESM POP model and
+resides in the same source-code directory as the main POP model.  Of particular
+interest to the ecosystem-model user is the file <tt>ecosys_parms.F90</tt>, which
+defines the parameter values in one of the two ecosystem model namelists, <tt>ecosys_parms_nml</tt>.
+
+<p>
+An extensive collection of shell scripts supports the creation of a new CESM
+$CASE via the <tt>create_newcase</tt> command.
+For the CESM ocean ecosystem model, there exists an additional, specialized script,
+<tt>ocn.ecosys.setup.csh</tt>, that is used to
+automatically generate appropriate ecosystem model settings.  This script is located in the
+POP <tt>input_templates</tt> directory.
+<p>
+In order to make changes to most of the out-of-the box ocean ecosystem settings, 
+you must modify the <tt>ocn.ecosys.setup.csh</tt>  script; in order to modify the <tt>ecosys_parms_nml</tt>
+namelist paramters, you must modify the FORTRAN file <tt>ecosys_parms.F90</tt>. A section 
+on <A HREF="#customize">customizing your ocean ecosystem settings</a> appears at the end 
+of this document.
+
+
+<BR>
+<a name="ecosys_nml"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>The <b>ecosys_nml</b> namelist </h3>
+<p>
+The <tt>ecosys_nml</tt> namelist is one of two CESM ocean ecosystem model namelists.
+The variables in the <tt>ecosys_nml</tt> namelist are set by the
+<tt>ocn.ecosys.setup.csh</tt> script and are summarized in the following table.
+<BR><P><P><P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="20%">
+<colgroup align="left" width="20%">
+<colgroup align="left" width="20%">
+<colgroup align="left" width="40%">
+<CAPTION><STRONG>Table:</STRONG>
+Ecosystem base-model namelist: <strong>ecosys_nml</strong></CAPTION>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" ><B>&amp;ecosys_nml</B></TD>
+<TD VALIGN="TOP"><B>Default value</B></TD>
+<TD VALIGN="TOP"><B>Valid values</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Parameters used to initialize the ecosystem model </B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >init_ecosys_option</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on CESM runtype </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'file', 'ccsm_startup', 'ccsm_continue', 'ccsm_branch', 'ccsm_hybrid'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >option for initializing the ecosystem model</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >init_ecosys_init_file</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on grid resolution </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'same_as_TS' or any valid filename string &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ecosystem input initialization filename for the option init_ecosys_option = 'file'</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >init_ecosys_init_file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'bin', 'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ecosystem initialization input file format suffix (binary or netCDF)</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >tracer_init_ext(:)<br>%mod_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'ALK', 'DIC', 'O2'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >any supported tracer name</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >tracer variable name; tracer_init_ext is a derived type used to read tracers from a file</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >tracer_init_ext(:)<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on the variable</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >any valid floating-point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >scale factor for the tracer (tracer_init_ext(:)%mod_varname)</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >lflux_gas_o2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >controls the reading of gas flux forcing file</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >lflux_gas_co2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >controls the reading of gas flux forcing file</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >locmip_k1_k2_bug_fix</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >if .true., apply the ocmip bug fix.  if .false., maintain backwards compatability with previous cases.</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >atm_co2_opt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based upon <tt>$OCN_CO2_TYPE</tt> setting</TD>
+<TD ALIGN="LEFT" VALIGN="TOP">'const', 'drv_prog', 'drv_diag'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >option for atmospheric CO<sub>2</sub> concentration</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >atm_co2_const</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>; set to CCSM_CO2_PPMV value</TD>
+<TD ALIGN="LEFT" VALIGN="TOP">any valid floating point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP">value of atmospheric CO<sub>2</sub> (<i>ppm, dry-air, 1 atm</i>)</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >ecosys_tadvect_ctype</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'base_model'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'base_model', or any valid advection type ('centered', 'upwind', 'lw_lim')</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >advection method for ecosystem tracers. Selecting 'base_model' results in using the same method as the base model. </td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >gas_flux_forcing_opt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'drv'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'drv','file'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >option for forcing gas fluxes. if 'drv', get forcing from CESM driver; if 'file', read from a file</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >lmarginal_seas</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >if .true., ecosystem is active in marginal seas; if .false., it is not</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >lsource_sink</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >if .true., compute time derivatives for ecosystem state variables; if .false., do not</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >comp_surf_avg_freq_opt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'never'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'never', 'nyear', 'nmonth'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > choice for frequency of comp_surf_avg </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >comp_surf_avg_freq</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >integer</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > frequency value for comp_surf_avg_opt </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >use_nml_surf_vals</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based upon runtype setting</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > if .true., namelist surf values override values from restart file</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >surf_avg_dic_const</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1944.0 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >valid floating-point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > value to be used when use_nml_surf_vals = .true.</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >surf_avg_alk_const</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >2225.0 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >valid floating-point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > value to be used when use_nml_surf_vals = .true.</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >ecosys_qsw_distrb_const</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >if .true.,  the ecosystem model sees constant qsw (has no qsw diurnal cycle)</TD> </TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > dust_flux_input<br>%filename</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based upon grid resolution</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >string &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >dust_flux input filename </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > dust_flux_input<br>%file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'bin', 'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >dust_flux input file format suffix (binary or netCDF) </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > dust_flux_input<br>%file_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'DSTSF'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'DSTSF'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >variable name in the dust_flux input file </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > dust_flux_input<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.0e-1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.0e-1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >scale factor for variable in the dust_flux input file
+(<i>kg/m<sup>2</sup>/sec</i> -> <i>g/cm<sup>2</sup>/sec</i>)</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > iron_flux_input<br>%filename</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based upon grid resolution</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >string &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >iron_flux input filename </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > iron_flux_input<br>%file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'bin', 'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >iron_flux input file format suffix (binary or netCDF) </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > iron_flux_input<br>%file_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'DSTSF'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'DSTSF'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >variable name in the iron_flux input file </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > iron_flux_input<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >6.2668e4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >6.2668e4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >scale factor for variable in the iron_flux input file
+(<i>kg/m<sup>2</sup>/sec -> nmol/cm<sup>2</sup>/sec, 3.5% iron by weight</i>)</TD>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > fesed_flux_input<br>%filename</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based upon grid resolution</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >string &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >fesed_flux input filename </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > fesed_flux_input<br>%file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'bin', 'nc'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >fesed_flux input file format suffix (binary or netCDF) </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > fesed_flux_input<br>%file_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'FESEDFLUXIN'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'FESEDFLUXIN'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >variable name in the fesed_flux input file </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > fesed_flux_input<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.1574e-6 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.1574e-6 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >scale factor for variable in the fesed_flux input file 
+(<i>umolFe/m<sup>2</sup>/day -> nmolFe/cm<sup>2</sup>/s</i>) </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > lecovars_full_depth_tavg</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >if .true.,  write ecosystem tavg variables at all depths; if .false., write
+ecosystem variables to a depth of 150m </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > lrest_po4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >controls restoring on PO<sub>4</sub></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > lrest_no3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >controls restoring on NO<sub>3</sub></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > lrest_sio3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >controls restoring on SiO<sub>3</sub></TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > rest_time_inv_surf</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >inverse restoring timescale at surface</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > rest_time_inv_deep</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >inverse restoring timescale at depth</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > rest_z0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1000.0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >shallow end of transition regime</TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > rest_z1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >2000.0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >deep end of transition regime</TD>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" > lnutr_variable_restore</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.false.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >.true., .false.    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >geographically varying nutrient restoring</TD>
+</TR>
+
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >ndep_data_type</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on <tt>$OCN_TRANSIENT</tt> setting</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'monthly-calendar', 'shr_stream', 'none'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >type of ndep forcing</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nox_flux_monthly_input<br>%filename</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on <tt>$OCN_TRANSIENT</tt> setting</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'unknown', or any valid filename  &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nox_flux_monthly: file name</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nox_flux_monthly_input<br>%file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'nc' </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'bin', 'nc' </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nox_flux_monthly: file format (binary or netCDF)</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nox_flux_monthly_input<br>%file_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'NOy_deposition' or 'nox_flux', depending on <tt>$OCN_TRANSIENT</tt> setting </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'NOy_deposition', 'nox_flux', or any valid filename  &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nox_flux_monthly: variable name on the file</td>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nox_flux_monthly_input<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 7.1429e+06 (<i>kgN/m<sup>2</sup>/sec -> nmolN/cm<sup>2</sup>/sec</i> or 1.0, depending on <tt>$OCN_TRANSIENT</tt> setting </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > any scientifically valid floating-point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >nox_flux_monthly scale factor for the specified file_varname</td>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nhy_flux_monthly_input<br>%filename</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >auto-filled <sup><a href="#footnote1">1</a></sup>, based on <tt>$OCN_TRANSIENT</tt> setting, or 'unknown'</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'unknown', or any valid filename  &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >nhy_flux_monthly_input file name</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nhy_flux_monthly_input<br>%file_fmt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'nc' </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'bin', 'nc' </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nhy_flux_monthly_input: file format (binary or netCDF)</td>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nhy_flux_monthly_input<br>%file_varname</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'NHx_deposition' or 'nhy_flux', depending on <tt>$OCN_TRANSIENT</tt> setting </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 'NHx_deposition', 'nhy_flux', or any valid filename  &le; 256 chars</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nhy_flux_monthly_input: variable name on the file</td>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >nhy_flux_monthly_input<br>%scale_factor</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > 7.1429e+06 (<i>kgN/m<sup>2</sup>/sec -> nmolN/cm<sup>2</sup>/sec</i>) or 1.0, depending on <tt>$OCN_TRANSIENT</tt> setting </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > any scientifically valid floating-point number</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >namelist input for nhy_flux_monthly_input: scale factor for nhy_flux_monthly_input<br>%file_varname</td>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >liron_patch</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > .false. </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > .true., .false. </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > flag for iron patch fertilization </td>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >gas_flux_forcing_opt</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'drv'  </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >'drv', 'file'  </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > option for forcing gas fluxes. if 'drv', fluxes are from coupler; if 'file', fluxes are read from a file  </td>
+</TR>
+
+
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+<a name="footnote1"></a>
+<p>
+<sup>1</sup> automatically set by the ocn.ecosys.setup.csh script
+
+
+<BR>
+<a name="ecosys_parms_nml"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>The <b>ecosys_parms_nml</b> namelist </h3>
+<p>
+ 
+The <tt>ecosys_parms_nml</tt> namelist is one of two CESM ocean ecosystem model namelists.
+The variables in the <tt>ecosys_parms_nml</tt> namelist are set in the
+<tt>ecosys_parms.F90</tt> file and are summarized in the following table.
+<P>
+
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="20%">
+<colgroup align="left" width="20%">
+<colgroup align="left" width="40%">
+<CAPTION><STRONG>Table:</STRONG> Ecosystem namelist: <strong>ecosys_parms_nml</strong></CAPTION>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" ><B>&amp;ecosys_parms_nml</B></TD>
+<TD VALIGN="TOP"><B>Default value</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Parameters used to initialize the ecosystem model </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_Fe_bioavail</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.02</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >fraction of Fe flux that is bioavailable    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP">parm_o2_min</TD>
+<TD ALIGN="LEFT" VALIGN="TOP">4.0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP">minimum O<sub>2</sub> needed for production and consumption
+(<i>nmol/cm<sup>3</sup></i>)</td> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_o2_min_delta   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >2.0    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >width of minimum O<sub>2</sub> range (<i>nmol/cm<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_no3_min   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >110.0    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >minimum NO<sub>3</sub> needed for denitrification (<i>mmol/m<sup>3</sup> </i>)  </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_kappa_nitrif   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.06*dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >nitrification inverse time constant <i>(1/sec)</i>    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_nitrif_par_lim   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >5.0    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PAR limit for nitrification (<i>W/m<sup>2</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_z_umax_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >2.5 * dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >maximum zoo growth rate on sphyto at T<sub>ref</sub>
+<sup> <a href="#footnote3">3</a></sup> (<i>1/sec</i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_umax_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.95 * dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > maximum zoo growth rate on diat at T<sub>ref</sub>
+<sup><a href="#footnote3">3</a></sup>  (<i>1/sec</i>)</td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_z_mort_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.08 * dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >zoo linear mort rate (<i>1/sec</i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_z_mort2_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.42 * dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >zoo quad mort rate (<i>1/sec/((mmol C/m<sup>3</sup></i>))    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_sd_remin_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.006667 * dps<sup><a href="#footnote2">2</a></sup>    </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >small detrital remineralization rate (<i>1/sec</i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_sp_kNO3   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.5 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >sphyto nitrate half saturation coefficient (<i>mmol N/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_kNO<sub>3</sub>   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >2.5   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatom nitrate half saturation coefficient (<i>mmol N/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_sp_kNH4   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.01   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >sphyto ammonium half saturation coefficient (<i>mmol N/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_kNH4   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.1   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatom ammonium half saturation coefficient (<i>mmol N/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_sp_kFe   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.03e-3   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >sphyto iron half saturation coefficient (<i>nmol Fe/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_kFe   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.08e-3   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatom iron half saturation coefficient (<i>nmol Fe/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_kSiO3   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatom si half saturation coefficient (<i>mmol SiO<sub>3</sub>/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_sp_kPO4   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.01   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >sphyto PO4 uptake (<i>mmol P/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diat_kPO4   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.1   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > diatom PO4 uptate (<i>mmol P/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_z_grz   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >1.0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >grazing coefficient for small phyto (<i>mmol C/m<sup>3</sup></i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_alphaChl   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.3 * dps<sup><a href="#footnote2">2</a></sup>   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >initial slope of P_I curve (GD98) (<i>mmol C m<sup>2</sup>/(mg Chl W sec</i>))    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_alphaChlsp   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.34 * dps<sup><a href="#footnote2">2</a></sup>   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >initial slope of P_I curve (GD98) (<i>mmol C m<sup>2</sup>/(mg Chl W sec<i/i>))    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_labile_ratio   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.65   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >fraction of loss to DOC that routed directly to DIC (<i>non-dimensional</i>)    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_alphaDiaz   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.17 * dps<sup><a href="#footnote2">2</a></sup>   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >chl. spec. init. slope of diaz. P_I curve    </td>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >parm_diaz_umax_0   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >0.9 * dps<sup><a href="#footnote2">2</a></sup>   </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >maximum zoo growth rate on diazotrophs at T<sub>ref</sub> (<i>1/sec</i>)    </td>
+</TR>
+
+
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<a name="footnote2"></a>
+<p>
+<sup>2</sup> dps = number of days in a second
+<p>
+
+<a name="footnote3"></a>
+<p>
+<sup>3</sup> T<sub>ref</sub> = 30.0 reference temperature (deg. C)
+<p>
+
+<a name="tavg"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>Ecosystem model output</h3>
+<p>
+
+The creation of POP time-averaged output files and their contents is controlled by the
+<tt>tavg_contents</tt> file and the <tt>tavg_nml</tt> namelist.  The entries in the
+<tt>tavg_contents</tt> file are used to request individual history-file output fields, and the 
+<tt>tavg_nml</tt> namelist is used to
+specify the averaging interval, the output filenames, the frequency of the file writes,
+the names of the output files, the number of the output files (output "streams"), etc. 
+For details, see the  "Time-averaged history files" section in 
+the CESM1 <a href="POPusers_main.html">POP User's Guide</a>.
+<p>
+The ecosystem model defines and controls its own output fields and files. The mechanism
+by which this is accomplished is defined in the following two sections.
+
+
+<p>
+<a name="tavg_nml"></a>
+<h3><li>Ecosystem model additions to the POP <b>tavg_nml</b> namelist settings</h3>
+<p>
+
+When a CESM ecosystem $CASE.run script is executed, the ecosystem setup script dynamically
+modifies the <tt>tavg_nml</tt> settings that appear in the POP base-model namelist input file,
+<tt>pop2_in</tt>.  The ecosystem setup script <em><b>adds</b></em> two ecosystem time-averaged
+output streams to the tavg_nml namelist. The following code block is used to define the
+settings for these additional streams. 
+If you want to change these settings, follow the instructions in the 
+<a href="#changetavg_nml"> customization</a> section below.
+<p>
+
+<pre>
+        tavg_freq_opt             = 'nday'          'nyear'
+        tavg_freq                 =  1              1
+        tavg_stream_filestrings   = 'ecosys.nday1'  'ecosys.nyear1'
+        tavg_file_freq_opt        = 'nmonth'        'nyear'
+        tavg_file_freq            =  1              1
+        tavg_start_opt            = 'nstep'         'nstep'
+        tavg_start                =  0              0
+        tavg_fmt_in               = 'nc'            'nc'
+        tavg_fmt_out              = 'nc'            'nc'
+        ltavg_has_offset_date     = .false.         .false.
+        tavg_offset_years         =  1              1
+        tavg_offset_months        =  1              1
+        tavg_offset_days          =  2              2
+        ltavg_one_time_header     = .false.         .false.
+</pre>
+<P>
+
+These <tt>tavg_nml</tt> settings create two ecosystem-specific output
+files ("streams") that will contain only ecosystem-model variables.  The first is
+a file of daily averaged fields which will be bundled together in a monthly timeseries
+file in netCDF format. That file's name will have the string 'ecosys.nday1' embedded in it.
+The second is a file of annually averaged fields written once per year in a netCDF file;
+its name will include the string 'ecosys.nyear1'.
+<p>
+
+<a name="tavg_contents"></a>
+<p><A HREF="#top" >Return to top</A><p>
+
+
+<h3><li>Ecosystem model additions to the POP <b>tavg_contents</b> file </h3>
+<p>
+
+When a CESM ecosystem $CASE.run script is executed, the ecosystem setup script dynamically
+appends time-averaged history-file variables to the POP base-model
+<tt>tavg_contents</tt> file. By appearing the in the <tt>tavg_contents</tt> file, the
+fields are "requested" and will therefore appear in the time-averaged history output files
+when the CASE is run.
+<p>
+By default, the CESM ecosystem tavg_contents variables are assigned to three different
+output streams, which are identified in the following table as $s1, $s2, and $s3.  
+The first stream, $s1, is set to 1 by the <tt>ocn.ecosys.setup.csh</tt> script. 
+This means that anything in the <tt>tavg_contents</tt> file in stream $s1 will be 
+written to the first <b>base-model</b> stream. (By default, the base-model stream 
+is a stream of monthly averaged fields).
+<p>
+The $s2 stream is the first of the two ecosystem-specific output files, and $s3 is the second.
+The actual values of $s2 and $s3 are determined at run time by the ecosystem setup script,
+depending on the number of output streams in the rest of the POP model.
+<p>
+The following table summarizes all of the ecosystem fields that are automatically
+appended to the <tt>tavg_contents</tt> file.
+Note that some entries in this table are defined, but inactive, in the <tt>ocn.ecosys.setup.csh</tt>
+script (denoted "inactive" in the Output stream number column). The user can activate them if desired;  
+if you want to change these default settings, follow the instructions in the 
+<a href="#changetavg_contents"> customization</a> section below.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="10%">
+<colgroup align="left" width="15%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Additional ecosystem time-averaged history fields</CAPTION>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" ><B>Output stream number</B></TD>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ECOSYS_ATM_PRESS</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>atmospheres  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Atmospheric Pressure for ecosys fluxes        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ECOSYS_IFRAC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>fraction </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Ice Fraction for ecosys fluxes        </TD> </TR>
+
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">ECOSYS_IFRAC_2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>fraction </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Ice Fraction for ecosys fluxes (same as ECOSYS_IFRAC; support for second output stream)       </TD> </TR>
+ 
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ECOSYS_XKW</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >XKW for ecosys fluxes </TD> </TR>
+
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">ECOSYS_XKW_2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i> cm/s </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > XKW for ecosys fluxes (same as ECOSYS_XKW; support for second output stream)</TD> </TR>
+ 
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SCHMIDT_O2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Schmidt Number        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SCHMIDT_CO2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO<sub>2</sub> Schmidt Number        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >IRON_FLUX</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>nmol/cm<sup>2</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Iron Flux        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NOx_FLUX</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>nmol/cm<sup>2</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Flux of NOx from Atmosphere        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NHy_FLUX</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>nmol/cm<sup>2</sup>/s </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Flux of NHy from Atmosphere         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PH</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Surface pH        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2SAT</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Saturation  </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >STF_O2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Oxygen Surface Flux         </TD> </TR>
+
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">STF_O2_2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Oxygen Surface Flux; (same as STF_O2; support for second output stream)         </TD> </TR>
+ 
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO2STAR</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO<sub>2</sub> Star         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DCO2STAR</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >D CO<sub>2</sub> Star         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >pCO2SURF</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>ppmv  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >surface pCO<sub>2</sub>         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DpCO2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>ppmv  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >D pCO<sub>2</sub>   </TD> </TR>
+
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DpCO2_2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>ppmv  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >D pCO<sub>2</sub>  (same as DpCO2; support for second output stream)  </TD> </TR>
+ 
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >FG_CO2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Surface Gas Flux         </TD> </TR>
+
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">FG_CO2_2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Surface Gas Flux (same as FG_CO2; support for second output stream)         </TD> </TR>
+ 
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ATM_CO2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>ppmv  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Atmospheric CO<sub>2</sub>         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvPER_DIC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon Virtual Surface Flux, PER         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvICE_DIC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon Virtual Surface Flux, ICE         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvPER_ALK</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity Virtual Surface Flux, PER         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvICE_ALK</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity Virtual Surface Flux, ICE         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PO4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Phosphate         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Nitrate         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Silicate         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NH4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Ammonia         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Iron         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Oxygen         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2_ZMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Vertical Minimum of O<sub>2</sub>         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2_ZMIN_DEPTH</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Depth of Vertical Minimum of O<sub>2</sub>         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2_PRODUCTION</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Production         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O2_CONSUMPTION</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Consumption         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >AOU</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Apparent O<sub>2</sub> Utilization         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >J_DIC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon Source Sink Term </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >ALK</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >H2CO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Carbonic Acid Concentration         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >HCO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Bicarbonate Ion Concentration         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Carbonate Ion Concentration         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >pH_3D</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >pH         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >co3_sat_calc</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO<sub>3</sub> concentration at calcite saturation         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >zsatcalc</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Calcite Saturation Depth         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >co3_sat_arag</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO<sub>3</sub> concentration at aragonite saturation         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >zsatarag</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Aragonite Saturation Depth         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Organic Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC_prod</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Production         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC_remin</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Remineralization         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >spC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phytoplankton Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >spChl</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small phytoplankton Chlorophyll         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >spCaCO3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phytoplankton CaCO<sub>3</sub>         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatChl</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Chlorophyll         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >zooC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Zooplankton Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >spFe</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phytoplankton Iron         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatSi</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Silicon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diatFe</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Iron         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diazC</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Carbon         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diazChl</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Chlorophyll         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diazFe</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Iron         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DON</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Organic Nitrogen         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOFe</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Organic Iron         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOP</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Dissolved Organic Phosphorus        </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >graze_sp</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Grazing         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >graze_diat</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Grazing         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >graze_diaz</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Grazing         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >sp_agg</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Aggregate         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >diat_agg</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Aggregate         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_sp</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto C Fixation         </TD> </TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >$s1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO3_form</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO<sub>3</sub> Formation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_diat </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom C Fixation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_diaz </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz C Fixation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_sp </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto C Fixation from NO<sub>3</sub>         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_diat </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom C Fixation from NO<sub>3</sub>        </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_diaz </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz C Fixation from NO<sub>3</sub>         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Fe_scavenge </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Iron Scavenging         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Fe_scavenge_rate </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>1/year  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Iron Scavenging Rate         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diaz_Nfix </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz N Fixation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">bSi_form </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Si Uptake         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">NITRIF </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Nitrification         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DENITRIF </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Denitrification         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">POC_PROD </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >POC Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">CaCO3_PROD </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO<sub>3</sub> Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">SiO2_PROD </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO<sub>2</sub> Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">P_iron_PROD </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >P_iron Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">POC_FLUX_IN </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >POC Flux into Cell         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">CaCO3_FLUX_IN </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO<sub>3</sub> flux into cell         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">SiO2_FLUX_IN </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO<sub>2</sub> Flux into Cell         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">P_iron_FLUX_IN </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >P_iron Flux into Cell         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">PAR_avg </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>W/m<sup>2</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PAR Average over Model Cell         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">sp_Fe_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Fe Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_Fe_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Fe Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diaz_Fe_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz Fe Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">sp_N_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto N Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_N_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom N Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">sp_PO4_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto PO<sub>4</sub> Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_PO4_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom PO<sub>4</sub> Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diaz_P_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz PO<sub>4</sub> Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_SiO3_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom SiO<sub>3</sub> Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">sp_light_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Light Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_light_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Light Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diaz_light_lim </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>none  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz Light Limitation         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DON_prod </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DON Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DOFe_prod </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOFe Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DOP_prod </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOP Production         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">sp_loss </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Loss         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diat_loss </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Loss         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">zoo_loss </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Zooplankton Loss         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diaz_loss </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz Loss         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon Source Sink Term Vertical Integral, 0-100m    </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_NO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Nitrate Source Sink Term Vertical Integral, 0-100m </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_NH4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Ammonia Source Sink Term Vertical Integral, 0-100m         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_PO4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Phosphate Source Sink Term Vertical Integral, 0-100m         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Iron Source Sink Term Vertical Integral, 0-100m       </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_SiO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Silicate Source Sink Term Vertical Integral, 0-100m</TD></TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_ALK </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity Source Sink Term Vertical Integral, 0-100m </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s   </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Oxygen Source Sink Term Vertical Integral, 0-100m    </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">Jint_100m_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Organic Carbon Source Sink Term Vertical Integral, 0-100m </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Carbon Tendency Vertical Integral, 0-100m </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_NO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP"> Dissolved Inorganic Nitrate Tendency Vertical Integral, 0-100m         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_NH4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Ammonia Tendency Vertical Integral, 0-100m        </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_PO4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Phosphate Tendency Tendency Vertical Integral, 0-100m       </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Iron Tendency Vertical Integral, 0-100m    </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_SiO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Silicate Tendency Vertical Integral, 0-100m       </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_ALK </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity Tendency Vertical Integral, 0-100m       </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Oxygen Tendency Vertical Integral, 0-100m       </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">tend_zint_100m_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Organic Carbon Tendency Vertical Integral, 0-100m </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_sp_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto C Fixation Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">CaCO3_form_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO<sub>3</sub> Formation Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_diaz_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz C Fixation Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_diat_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom C Fixation Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_sp_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto C Fixation from NO<sub>3</sub> Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_diat_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom C Fixation from NO<sub>3</sub> Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s1 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">photoC_NO3_diaz_zint </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz C Fixation from NO<sub>3</sub> Vertical Integral         </TD> </TR>
+
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">spC_zint_100m </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm   </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phytoplankton Carbon 0-100m Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">spCaCO3_zint_100m </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phytoplankton CaCO3 0-100m Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diazC_zint_100m </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Carbon 0-100m Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diatC_zint_100m </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Carbon 0-100m Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">zooC_zint_100m </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm   </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Zooplankton Carbon 0-100m Vertical Integral         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">spChl_SURF </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Small phytoplankton Chlorophyll Surface Value </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diazChl_SURF </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diazotroph Chlorophyll Surface Value         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">diatChl_SURF </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mg/m<sup>3</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Chlorophyll Surface Value         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_NO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Nitrate Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_NH4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Ammonia Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_PO4 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Phosphate Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s   </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Iron Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_SiO3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dissolved Inorganic Silicate Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">J_ALK </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>meq/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Alkalinity Source Sink Term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">UE_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">VN_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">WT_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > O<sub>2</sub> Flux Across Top Face        </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">KPP_SRC_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> tendency from KPP non local mixing term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DIA_IMPVF_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Flux Across Bottom Face from Diabatic Implicit Vertical Mixing         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFE_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Horizontal Diffusive Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFN_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Horizontal Diffusive Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFB_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >O<sub>2</sub> Horizontal Diffusive Flux across Bottom Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">UE_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">VN_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">WT_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Flux Across Top Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DIA_IMPVF_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Flux Across Bottom Face from Diabatic Implicit Vertical Mixing         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFE_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Horizontal Diffusive Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFN_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Horizontal Diffusive Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFB_DOC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOC Horizontal Diffusive Flux across Bottom Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">UE_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">VN_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Flux in grid-y direction        </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">WT_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Flux Across Top Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">KPP_SRC_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC tendency from KPP non local mixing term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DIA_IMPVF_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Flux Across Bottom Face from Diabatic Implicit Vertical Mixing         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFE_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s   </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Horizontal Diffusive Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFN_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Horizontal Diffusive Flux in grid-y direction   </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFB_DIC </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIC Horizontal Diffusive Flux across Bottom Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">UE_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">VN_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">WT_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Flux Across Top Face         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">KPP_SRC_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe tendency from KPP non local mixing term         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">DIA_IMPVF_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Flux Across Bottom Face from Diabatic Implicit Vertical Mixing         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFE_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Horizontal Diffusive Flux in grid-x direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFN_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Horizontal Diffusive Flux in grid-y direction         </TD> </TR>
+ 
+<TR> 
+<TD ALIGN="LEFT" VALIGN="TOP">$s3 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP">HDIFB_Fe </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Fe Horizontal Diffusive Flux across Bottom Face         </TD> </TR>
+ 
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >	 PV_O2 </TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i> cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > PV_O2</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PV_CO2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CO2 Piston Velocity</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DUST_FLUX</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>g/cm<sup>2</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dust Flux</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PO4_RESTORE</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup></i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >PO4 Restoring</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NO3_RESTORE</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup></i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >NO3 Restoring</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO3_RESTORE</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup></i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO3 Restoring</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >POC_REMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >POC Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO3_REMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >CaCO3 Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO2_REMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >SiO2 Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >dust_FLUX_IN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>ng/s/m<sup>2</sup></i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dust Flux into Cell</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >dust_REMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Dust Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >P_iron_REMIN</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >P_iron Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >graze_TOT</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total Grazing</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_TOT</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total C Fixation</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_TOT_zint</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total C Fixation Vertical Integral</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_TOT_zint</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Total C Fixation Vertical Integral</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_NO3_TOT</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total C Fixation from NO3</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_NO3_TOT_zint</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total C Fixation from NO3 Vertical Integral</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoC_NO3_TOT_zint</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup> cm/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Total C Fixation from NO3 Vertical Integral</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DON_remin</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DON Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOFe_remin</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOFe Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOP_remin</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >DOP Remineralization</TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoFe_sp</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Small Phyto Fe Uptake</TD>
+</TR>
+
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoFe_diat</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diatom Fe Uptake</TD>
+</TR>
+
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >inactive</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >photoFe_diaz</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>mmol/m<sup>3</sup>/s</i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >Diaz Fe Uptake</TD>
+</TR>
+
+
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+
+
+<a name="tavg_autogen"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>Auto-generated generic extra-tracer time-averaged history (<b>tavg_contents</b>) fields</a> </h3>
+<p>
+
+Every variable that appears in the POP <tt>tavg_contents</tt> input file must also be defined in the
+POP model code, which is accomplished via a call to the <tt>define_tavg_field</tt> routine for
+each variable.
+
+POP automatically generates a pre-defined set of time-averaged history output fields for each extra tracer
+(tracers other than T and S).  
+<p>
+This convenient mechanism allows a user to select these pre-defined fields in the 
+<tt>tavg_contents</tt> file for any extra model tracer without needing to modify the code.
+(See the <a href="#changetavg_contents">customization section</a> for how to select or add an 
+ecosystem field, such as an auto-generated field, to the <tt>tavg_contents</tt> file.)
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="25%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Auto-generated extra-tracer time-averaged history fields
+<strong>(passive_tracers.F90)</strong></CAPTION>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >X_SQR</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>(tracer units)<sup>2</sup>  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer squared        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >X_SURF</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Surface Value        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >X_zint_100m</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer units cm  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer 0-100m Vertical Integral        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >J_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Source Sink Term        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >Jint_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Source Sink Term Vertical Integral    </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >Jint_100m_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Source Sink Term Vertical Integral, 0-100m  </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >tend_zint_100m_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Tendency Vertical Integral, 0-100m  </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >STF_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Surface Flux </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >RESID_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Residual Surface Flux </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvPER_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Virtual Surface Flux, PER </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >FvICE_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Virtual Surface Flux, ICE </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="25%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Auto-generated extra-tracer time-averaged history fields
+<strong>(advection.F90)</strong></CAPTION>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >UE_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Flux in grid-x direction        </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >VN_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Flux in grid-y direction </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >WT_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Flux Across Top Face </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >ADV_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Vertically-Integrated Tracer Advection Tendency  </TD>
+</TR>
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="25%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Auto-generated extra-tracer time-averaged history fields
+<strong>(horizontal_mix.F90)</strong></CAPTION>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >HDIFE_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Horizontal Diffusive Flux in grid-x direction </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >HDIFN_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Horizontal Diffusive Flux in grid-y direction </TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >HDIFB_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Horizontal Diffusive Flux across Bottom Face </TD>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="25%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Auto-generated extra-tracer time-averaged history fields
+<strong>(vertical_mix.F90)</strong></CAPTION>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >DIA_IMPVF_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer flux units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer Flux Across Bottom Face from Diabatic Implicit Vertical Mixing   </TD>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" width=92%>
+<colgroup align="left" width="25%">
+<colgroup align="left" width="25%">
+<colgroup align="left" width="50%">
+<CAPTION><STRONG>Table:</STRONG> Auto-generated extra-tracer time-averaged history fields
+<strong>(vmix_kpp.F90)</strong></CAPTION>
+<TD VALIGN="TOP"><B>Name</B></TD>
+<TD VALIGN="TOP"><B>Units</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><B>Description </B></TD>
+</TR>
+
+<TR>
+<TD ALIGN="LEFT" VALIGN="TOP" >KPP_SRC_X</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" ><i>tracer tendency units  </i></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" > Tracer tendency from KPP non local mixing term </TD>
+</TR>
+
+
+<TR><TD ALIGN="LEFT" VALIGN="TOP" >/</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" >&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<a name="setup"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li> The ocn.ecosystem.setup.csh script</li></h3>
+<p>
+
+The <tt>ocn.ecosys.setup.csh</tt> script is invoked by 
+the <tt>$CASE/Buildconf/pop2.buildnml.csh</tt> script 
+each time an active-ocean CESM ecosystem <tt>$CASE.run</tt> script is executed. 
+The <tt>ocn.ecosys.setup.csh</tt> script has multiple entry points, each of which
+controls a different aspect of the ecosystem model setup. The entry points of interest
+to the user who wants to modify the out-of-the-box settings include:
+<p>
+<ul>
+<li>    <b><i>namelist</i></b> defines the <tt>ecosys_nml</tt> namelist settings
+<li>    <b><i>set_tavg_nml</i></b> adds ecosystem stream information to the 
+         POP base-model <tt>tavg_nml</tt> namelist
+<li>    <b><i>tavg_contents</i></b> adds ecosystem time-averaged output fields
+         to the POP base-model <tt>tavg_contents</tt> file
+</ul>
+
+<a name="customize"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<h3><li>Customizing your ecosystem model ecosys_nml, tavg_nml, and tavg_contents settings</h3>
+<p>
+To modifiy any of the <tt>ecosys_nml</tt> namelist parameters, the ecosystem-related <tt>tavg_nml</tt>
+namelist parameters, or the ecosystem-related <tt>tavg_contents</tt> fields,  you must modify
+the ecosystem model setup script. To do so, follow these three steps:
+
+<ol>
+
+<li>Put a copy of the <tt>ocn.ecosys.setup.csh</tt> script into your <tt>$CASE/SourceMods/src.pop2</tt>
+directory:</li><p>
+<tt> cp $CCSMROOT/models/ocn/pop2/input_templates/ocn.ecosys.setup.csh $CASE/SourceMods/src.pop2</tt> <p>
+ 
+<li>Edit your copy of the  <tt>ocn.ecosys.setup.csh</tt> script, eg:</li> <p>
+
+<tt> vi $CASE/SourceMods/src.pop2/ocn.ecosys.setup.csh</tt><p>
+
+as follows:
+           
+
+<ul>
+<a name="changeecosys_nml"></a>
+<li><h4>ecosys_nml namelist:</h4></li><p>
+Go to the  <font color="#336699"><b>"<tt>else if ($command == namelist)</b></font> then</tt>" block in your 
+<tt>$CASE/SourceMods/src.pop2/ocn.ecosys.setup.csh</tt> script and make your changes.
+
+<a name="changetavg_nml"></a>
+<li><h4>tavg_nml settings: </h4></li><p>
+Go to the  <font color="#336699"><b>"<tt>else if ($command == set_tavg_nml) then</tt></b>"</font> block in your 
+<tt>$CASE/SourceMods/src.pop2/ocn.ecosys.setup.csh</tt> script and make your changes. 
+<p>
+In this block you can change the default tavg streams information (add streams, put all
+variables into one stream, change the default filenames of the ecosystem tavg output
+streams, etc). Note that the limitations of the base model apply here; in particular,
+you cannot have more than nine tavg output streams, total. 
+<p>
+Also note that if you change the number of ecosystem tavg output streams in this namelist,
+you will also need to coordinate your changes in the tavg_contents block (see next section).<p>
+
+
+<a name="changetavg_contents"></a>
+<li><h4>tavg_contents fields and/or streams: </h4></li><p>
+Go to the  <font color="#336699"><b>"<tt>else if ($command == tavg_contents) then</tt>"</b></font> block in your </font>
+<tt>$CASE/SourceMods/src.pop2/ocn.ecosys.setup.csh</tt> script and make your changes. 
+<p>
+Here you can remove ecosystem fields from your output files (just comment them out by
+changing the first three characters in the line to "#  "). You can also add supported
+ecosystem fields (fields that have been defined in the ecosystem code via a call to subroutine
+<tt>define_tavg_field</tt>, such as the auto-generated fields) that are not included in the default.
+If the field is present in the <tt>ocn.ecosys.setup.csh</tt> script, you just need to uncomment it
+in the ocn.ecosys.setup.csh script and assign it to a valid tavg output stream.  If the field is
+supported but does not appear in the <tt>ocn.ecosys.setup.csh</tt> script, you can add its name
+and assign it to a valid stream. 
+<p>
+If the field is <em><b>not</b></em> supported, you will need
+to modify the POP base code in your $CASE/SourceMods/src.pop2 directory by adding appropriate
+calls to <tt>define_tavg_field</tt> <em><b>and</b></em> add the field to the <tt>tavg_contents</tt>
+file.
+<p>
+
+</ul>
+
+<li> Run your CASE
+</ol>
+
+<a name="change_ecosys_parms"></a>
+<p><A HREF="#top" >Return to top</A><p>
+<li><h4> Changing the ecosys_parms_nml default settings</h4></li><p>
+
+In order to change the <tt>ecosys_parms_nml</tt> default settings, you must edit the
+<tt>ecosys_parms.F90</tt> file and build (or rebuild) your CASE. This can be accomplished
+in the following four steps:  <p>
+
+<ol>
+<li>Put a copy of the <tt>ecosys_parms.F90</tt> file into your <tt>$CASE/SourceMods/src.pop2</tt>
+       directory, eg:   </li><p>
+           <tt> cp $CCSMROOT/models/ocn/pop2/source/ecosys_parms.F90 $CASE/SourceMods/src.pop2</tt> <p>
+
+<li>Edit the <tt>ecosys_parms_nml</tt> values in your copy, eg: </li><p>
+            <tt> vi $CASE/SourceMods/src.pop2/ecosys_parms.F90</tt><p>
+<li>Build the CASE interactively by issuing
+            <tt>./$CASE.build</tt> script 
+on the command line in your $CASE directory</li>  <p>
+<li>Run your CASE</li><p>
+</ol>
+<p>
+<font color="#ff9966"><strong>NOTE:</strong></font> If you do not build the case after a change to the <tt>ecosys_parms.F90</tt>
+file and before submitting your run script, the changes that you made to the <tt>ecosys_parms_nml</tt>
+values will not be in effect in your run.
+
+
+
+<p><A HREF="#top" >Return to top</A><p>
+
+<P>
+<HR>
+<P><ADDRESS>
+2010-06-25
+</ADDRESS>
+</BODY>
+</HTML>
+						<!--  ---------------------------------------------------------------------  -->
+						<!--  ---------------------------------------------------------------------  -->
+	</div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap -->
+
+<!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+
+</body>
+</html>
+  

@@ -1,0 +1,1633 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The configure utility</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="User's Guide to the Community Atmosphere Model CAM-4.0"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Running CAM via the CCSM scripts"
+HREF="x472.html"><LINK
+REL="NEXT"
+TITLE="Environment variables recognized by configure"
+HREF="x1021.html"></HEAD
+><BODY
+CLASS="appendix"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User's Guide to the Community Atmosphere Model CAM-4.0</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x472.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1021.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="appendix"
+><H1
+><A
+NAME="config"
+></A
+>Appendix A. The <B
+CLASS="command"
+>configure</B
+> utility</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="a479.html#config_opts"
+>Options to <B
+CLASS="command"
+>configure</B
+></A
+></DT
+><DT
+><A
+HREF="x1021.html"
+>Environment variables recognized by <B
+CLASS="command"
+>configure</B
+></A
+></DT
+></DL
+></DIV
+><P
+>&#13;The <B
+CLASS="command"
+>configure</B
+> utility provides a flexible way to specify a particular
+configuration of CAM.  By default it will produce the configuration files
+required to build the standard production version of CAM (currently
+FV dynamics at 1.9x2.5 horizontal resolution with 26 levels). 
+</P
+><P
+>&#13;<B
+CLASS="command"
+>configure</B
+> produces the files <TT
+CLASS="filename"
+>Filepath</TT
+> and <TT
+CLASS="filename"
+>Makefile</TT
+>.  In addition, a
+configuration cache file (<TT
+CLASS="filename"
+>config_cache.xml</TT
+> by default) is written which
+contains the values of all the configuration parameters set by <B
+CLASS="command"
+>configure</B
+>.
+The files produced by running <B
+CLASS="command"
+>configure</B
+> are written to the directory
+where CAM will be built, which by default is the directory from which
+<B
+CLASS="command"
+>configure</B
+> is executed, but can be specified to be elsewhere (see
+the <A
+HREF="a479.html#cam_bld"
+><CODE
+CLASS="option"
+>-cam_bld</CODE
+></A
+> option).
+</P
+><P
+>&#13;<B
+CLASS="command"
+>configure</B
+> will optionally perform tests to validate that the <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+>
+compiler is operational and <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+> 90 compliant, and that the linker can
+resolve references to required external libraries (<ACRONYM
+CLASS="acronym"
+>NetCDF</ACRONYM
+> and possibly
+<ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+>).  These tests will point out problems with the user environment in a
+way that is much easier to understand than looking at the output from a
+failed build of <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+>.  We strongly recommend that the first time <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is
+built on any new machine, <B
+CLASS="command"
+>configure</B
+> should be invoked to execute these
+tests (see the <A
+HREF="a479.html#cfg_test"
+><CODE
+CLASS="option"
+>-test</CODE
+></A
+> option).
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="config_opts"
+>Options to <B
+CLASS="command"
+>configure</B
+></A
+></H1
+><P
+>&#13;All configuration options can be specified using command line arguments to
+<B
+CLASS="command"
+>configure</B
+> and this is the recommended practice.  Options specified via
+command line arguments take precedence over options specified any other way.
+</P
+><P
+>&#13;At the next level of precedence a few options can be specified by setting
+environment variables.  And finally, at the lowest precedence, many options
+have hard-coded defaults.  Most of these are located in the files
+<TT
+CLASS="filename"
+>$CAM_ROOT/models/atm/cam/bld/config_files/defaults_*.xml</TT
+>.
+A few that depend on the values of other options are set by logic
+contained in the <B
+CLASS="command"
+>configure</B
+> script (a <ACRONYM
+CLASS="acronym"
+>Perl</ACRONYM
+> script). The hard-coded defaults
+are designed to produce the standard production configurations of CAM.
+</P
+><P
+>&#13;The configure script allows the user to specify compile time options such as 
+model resolution, dynamical core type, additional compiler flags, and many other 
+aspects. The user can type <KBD
+CLASS="userinput"
+>configure --help</KBD
+> for a complete
+list of available options.
+</P
+><P
+>&#13;The following options may all be specified with either one or two leading
+dashes, e.g., <CODE
+CLASS="option"
+>-help</CODE
+> or <CODE
+CLASS="option"
+>--help</CODE
+>.  The few
+options that can be expressed as single letter switches may not be clumped,
+e.g., <CODE
+CLASS="option"
+>-h -s -v</CODE
+> may <I
+CLASS="emphasis"
+>NOT</I
+> be expressed
+as <CODE
+CLASS="option"
+>-hsv</CODE
+>.  When multiple options are listed separated by a
+vertical bar either version may be used.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_cam"
+>CAM configuration</A
+></H2
+><P
+>&#13;<I
+CLASS="emphasis"
+>These options will have an effect whether running CAM as part of CCSM or
+running in a CAM standalone mode:</I
+>
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-[no]age_of_air_trcs</CODE
+></DT
+><DD
+><P
+>&#13;Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.
+</P
+></DD
+><DT
+><A
+NAME="chem"
+></A
+><CODE
+CLASS="option"
+>-chem</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Build <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> with specified chemistry package 
+[ <CODE
+CLASS="constant"
+>waccm_mozart</CODE
+> | <CODE
+CLASS="constant"
+>waccm_ghg</CODE
+> |
+  <CODE
+CLASS="constant"
+>trop_mozart</CODE
+> | <CODE
+CLASS="constant"
+>trop_ghg</CODE
+> |
+  <CODE
+CLASS="constant"
+>trop_bam</CODE
+> | <CODE
+CLASS="constant"
+>super_fast_llnl</CODE
+> |
+  <CODE
+CLASS="constant"
+>none</CODE
+> ] 
+(default: <CODE
+CLASS="constant"
+>none</CODE
+>)
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-co2_cycle</CODE
+></DT
+><DD
+><P
+>&#13;This option is meant to be used with the <CODE
+CLASS="option"
+>-ccsm_seq</CODE
+> option.
+Its use in standalone <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is not supported.
+(default: not set)
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-comp_intf</CODE
+> [ <CODE
+CLASS="constant"
+>mct</CODE
+>
+ | <CODE
+CLASS="constant"
+>esmf</CODE
+> ]</DT
+><DD
+><P
+>&#13;Specify the component interfaces
+(default: <CODE
+CLASS="constant"
+>mct</CODE
+>).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cppdefs</CODE
+> <KBD
+CLASS="userinput"
+>&#60;string&#62;</KBD
+></DT
+><DD
+><P
+>&#13;A string of user specified CPP defines.  Appended to
+Makefile defaults.  E.g. <CODE
+CLASS="option"
+>-cppdefs</CODE
+> <CODE
+CLASS="constant"
+>'-DVAR1
+    -DVAR2'</CODE
+>.  Note that a string containing whitespace will need
+to be quoted.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-dyn</CODE
+> [<CODE
+CLASS="constant"
+>eul</CODE
+> |
+ <CODE
+CLASS="constant"
+>sld</CODE
+> | <CODE
+CLASS="constant"
+>fv</CODE
+>
+ | <CODE
+CLASS="constant"
+>homme</CODE
+> ]</DT
+><DD
+><P
+>&#13;Build <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> with specified dynamical core.
+(default: <CODE
+CLASS="constant"
+>fv</CODE
+>).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-edit_chem_mech</CODE
+></DT
+><DD
+><P
+>&#13;Envokes <CODE
+CLASS="envar"
+>CAMCHEM_EDITOR</CODE
+> to allow the user to edit the chemistry mechanism file.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-hgrid</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify horizontal grid.
+For spectral grids use <CODE
+CLASS="constant"
+>nlat</CODE
+>x<CODE
+CLASS="constant"
+>nlon</CODE
+>
+where <CODE
+CLASS="constant"
+>nlat</CODE
+> and <CODE
+CLASS="constant"
+>nlon</CODE
+> are the
+number of latitude and longitude grid points respectively in the Gaussian grid.
+For FV grids use <CODE
+CLASS="constant"
+>dlat</CODE
+>x<CODE
+CLASS="constant"
+>dlon</CODE
+> where
+<CODE
+CLASS="constant"
+>dlat</CODE
+> and <CODE
+CLASS="constant"
+>dlon</CODE
+>
+are the grid cell size in degrees for latitude and longitude respectively.
+For the HOMME cubed sphere grid use <CODE
+CLASS="constant"
+>ne</CODE
+>x<CODE
+CLASS="constant"
+>np</CODE
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nadv</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Set total number of advected species to <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nadv_tt</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Set number of advected test tracers to <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nlev</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Set number of levels to <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-pcols</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Set maximum number of columns in a chunk to <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-pergro</CODE
+></DT
+><DD
+><P
+>&#13;Switch enables building CAM for perturbation growth tests.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-phys</CODE
+> [ <CODE
+CLASS="constant"
+>cam4</CODE
+> | 
+<CODE
+CLASS="constant"
+>ideal</CODE
+> | <CODE
+CLASS="constant"
+>adiabatic</CODE
+> ]</DT
+><DD
+><P
+>&#13;Physics package option (default: <CODE
+CLASS="constant"
+>cam4</CODE
+>).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-prog_species</CODE
+> <KBD
+CLASS="userinput"
+>&#60;list&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Comma separated list of prognostic mozart species packages.
+Currently available: <CODE
+CLASS="constant"
+>DST,SSLT,SO4,GHG,OC,BC,CARBON16</CODE
+>
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-usr_mech_infile</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Pathname of the user supplied chemistry mechanism file.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-waccm_phys</CODE
+></DT
+><DD
+><P
+>&#13;Switch enables the use of WACCM physics in any chemistry configuration.  
+The user does not need to set this if one of the waccm chemistry options
+is chosen.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_scam"
+>SCAM configuration</A
+></H2
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-camiop</CODE
+></DT
+><DD
+><P
+>&#13;Configure <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> to generate an IOP file that can be used to drive SCAM.
+This switch only works with the Eulerian dycore.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-scam</CODE
+></DT
+><DD
+><P
+>&#13;Compiles model in single column mode.  Only works with Eulerian dycore.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_parallel"
+>CAM parallelization</A
+></H2
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-[no]smp</CODE
+></DT
+><DD
+><P
+>&#13;Switch on [off] SMP parallelism (<ACRONYM
+CLASS="acronym"
+>OpenMP</ACRONYM
+>).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-[no]spmd</CODE
+></DT
+><DD
+><P
+>&#13;Switch on [off] SPMD parallelism (<ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+>).
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_cice"
+>CICE decomposition</A
+></H2
+><P
+>&#13;<I
+CLASS="emphasis"
+>When <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is running standalone with <ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+> the <ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+>
+  decomposition must be explicitly set using the following options:</I
+>
+<DIV
+CLASS="note"
+><BLOCKQUOTE
+CLASS="note"
+><P
+><B
+>Note: </B
+>
+*** Either set all of <CODE
+CLASS="option"
+>-cice_bsizex, -cice_bsizey,
+-cice_maxblocks</CODE
+> and <CODE
+CLASS="option"
+>cice_decomptype</CODE
+>
+or set <CODE
+CLASS="option"
+>-ntasks</CODE
+> and/or <CODE
+CLASS="option"
+>-nthreads</CODE
+> which are
+used to determine defaults for the cice decomposition. ***
+</P
+></BLOCKQUOTE
+></DIV
+>
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-cice_bsizex</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;<ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+> block size in longitude dimension.  This size must evenly
+divide the number of longitude points in the global grid.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cice_bsizey</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;<ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+> block size in latitude dimension.  This size must evenly
+divide the number of latitude points in the global grid.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cice_maxblocks</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Maximum number of <ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+> blocks per processor.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cice_decomptype</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;<ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+> decomposition type [ <CODE
+CLASS="constant"
+>cartesian</CODE
+> | <CODE
+CLASS="constant"
+>spacecurve</CODE
+> ].
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ntasks</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Number of <ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+> tasks.  Setting ntasks &#62; 0 implies -spmd.  Use -nospmd to turn off
+linking with an MPI library.  To configure for pure <ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+> specify "-ntasks N -nosmp".
+ntasks is used to determine default grid decompositions.  Currently only used by <ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nthreads</CODE
+> <KBD
+CLASS="userinput"
+>&#60;n&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Number of <ACRONYM
+CLASS="acronym"
+>OpenMP</ACRONYM
+> threads per process.  Setting nthreads &#62; 0 implies -smp.  Use -nosmp to
+turn off compilation of OMP directives.  For pure <ACRONYM
+CLASS="acronym"
+>OpenMP</ACRONYM
+> set "-nthreads N -nospmd"
+nthreads is used to determine default grid decompositions.  Currently only used by <ACRONYM
+CLASS="acronym"
+>CICE</ACRONYM
+>.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_general"
+>General options</A
+></H2
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-cache</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Name of output cache file (default: <TT
+CLASS="filename"
+>config_cache.xml</TT
+>).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cachedir</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Name of directory where output cache file is written (default: <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> build directory).
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ccsm_seq</CODE
+></DT
+><DD
+><P
+>&#13;Switch to specify that <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> is being built from within the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-help | -h</CODE
+></DT
+><DD
+><P
+>&#13;Print usage to STDOUT.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-silent | -s</CODE
+></DT
+><DD
+><P
+>&#13;Turns on silent mode - only fatal messages printed to STDOUT.
+</P
+></DD
+><DT
+><A
+NAME="cfg_test"
+></A
+><CODE
+CLASS="option"
+>-[no]test</CODE
+></DT
+><DD
+><P
+>&#13;Switch on [off] testing of Fortran compiler and linking to external libraries.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-verbose | -v</CODE
+></DT
+><DD
+><P
+>&#13;Turn on verbose echoing of settings made by configure.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-version</CODE
+></DT
+><DD
+><P
+>&#13;Echo the repository tag name used to check out this <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> distribution.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_surface_comp"
+>Surface components</A
+></H2
+><P
+>&#13;<I
+CLASS="emphasis"
+>Options for surface components used in standalone CAM mode:</I
+>
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="option"
+>-ice</CODE
+> [ <CODE
+CLASS="constant"
+>cice</CODE
+> |
+ <CODE
+CLASS="constant"
+>sice</CODE
+> | <CODE
+CLASS="constant"
+>csim4</CODE
+> | 
+ <CODE
+CLASS="constant"
+>none</CODE
+> ]</DT
+><DD
+><P
+>&#13;Specify the sea ice component.
+Default: <CODE
+CLASS="constant"
+>cice</CODE
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-lnd</CODE
+> [ <CODE
+CLASS="constant"
+>clm</CODE
+> |
+ <CODE
+CLASS="constant"
+>slnd</CODE
+> | <CODE
+CLASS="constant"
+>none</CODE
+> ]</DT
+><DD
+><P
+>&#13;Specify the land component.
+Default: <CODE
+CLASS="constant"
+>clm</CODE
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ocn</CODE
+>
+[<CODE
+CLASS="constant"
+>docn</CODE
+>|<CODE
+CLASS="constant"
+>socn</CODE
+>|
+<CODE
+CLASS="constant"
+>dom</CODE
+>|<CODE
+CLASS="constant"
+>none</CODE
+>]</DT
+><DD
+><P
+>&#13;Specify ocean component.
+Default: <CODE
+CLASS="constant"
+>dom</CODE
+>.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="config_standalone_bld"
+>CAM standalone build</A
+></H2
+><P
+>&#13;<I
+CLASS="emphasis"
+>Options for building <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> via standalone scripts:</I
+>
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><A
+NAME="cam_bld"
+></A
+><CODE
+CLASS="option"
+>-cam_bld</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory where <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> will be built.  This is where configure will write the
+output files it generates (Makefile, Filepath, etc...).  Default: ./
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cam_exe</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Name of the <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> executable.  Default: <CODE
+CLASS="constant"
+>cam</CODE
+>.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cam_exedir</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory where CAM executable will be created.  Default: CAM build directory.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cc</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;User specified C compiler.  Overrides Makefile default.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-cflags</CODE
+> <KBD
+CLASS="userinput"
+>&#60;string&#62;</KBD
+></DT
+><DD
+><P
+>&#13;A string of user specified C compiler options.  Appended to
+Makefile defaults.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-debug</CODE
+></DT
+><DD
+><P
+>&#13;Switch to turn on building <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> with compiler options for debugging.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-defaults</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Specify a configuration file which will be used to supply defaults instead of
+one of the <TT
+CLASS="filename"
+>config_files/defaults_*.xml</TT
+> files.  This file is used to specify model
+configuration parameters only.  Parameters relating to the build which
+are system dependent will be ignored.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-esmf_libdir</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>ESMF</ACRONYM
+> library and the <TT
+CLASS="filename"
+>esmf.mk</TT
+> file.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-fc</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;User specified <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+> compiler.  Overrides Makefile default.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-fflags</CODE
+> <KBD
+CLASS="userinput"
+>&#60;string&#62;</KBD
+></DT
+><DD
+><P
+>&#13;A string of user specified <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+> compiler flags.  Appended to
+Makefile defaults.
+See <A
+HREF="a479.html#cfg_fopt"
+><CODE
+CLASS="option"
+>-fopt</CODE
+></A
+> to override optimization flags.
+</P
+></DD
+><DT
+><A
+NAME="cfg_fopt"
+></A
+><CODE
+CLASS="option"
+>-fopt</CODE
+> <KBD
+CLASS="userinput"
+>&#60;string&#62;</KBD
+></DT
+><DD
+><P
+>&#13;A string of user specified <ACRONYM
+CLASS="acronym"
+>Fortran</ACRONYM
+> compiler optimization flags.  
+Overrides Makefile defaults.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-gmake</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Name of the <ACRONYM
+CLASS="acronym"
+>GNU</ACRONYM
+> make program on your system.  Supply the absolute
+pathname if the program is not in your path (or fix your path).  This is
+only needed by <B
+CLASS="command"
+>configure</B
+> for running tests via the
+<A
+HREF="a479.html#cfg_test"
+><CODE
+CLASS="option"
+>-test</CODE
+></A
+> option.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-lapack_libdir</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>LAPACK</ACRONYM
+> library.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-ldflags</CODE
+> <KBD
+CLASS="userinput"
+>&#60;string&#62;</KBD
+></DT
+><DD
+><P
+>&#13;A string of user specified load options.  Appended to
+Makefile defaults.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-linker</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;User specified linker.  Overrides Makefile default of FC.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-mpi_inc</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+> include files.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-mpi_lib</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>MPI</ACRONYM
+> library.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nc_inc</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>NetCDF</ACRONYM
+> include files.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nc_lib</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>NetCDF</ACRONYM
+> library.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-nc_mod</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>NetCDF</ACRONYM
+> module files.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-pnc_inc</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>PnetCDF</ACRONYM
+> include files.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-pnc_lib</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Directory containing <ACRONYM
+CLASS="acronym"
+>PnetCDF</ACRONYM
+> library.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-target_os</CODE
+> <KBD
+CLASS="userinput"
+>&#60;name&#62;</KBD
+></DT
+><DD
+><P
+>&#13;Override the OS setting for cross platform compilation from the following
+ list
+ [<CODE
+CLASS="constant"
+>aix</CODE
+>|<CODE
+CLASS="constant"
+>irix</CODE
+>|<CODE
+CLASS="constant"
+>linux</CODE
+>|
+ <CODE
+CLASS="constant"
+>bgl</CODE
+>|<CODE
+CLASS="constant"
+>bgp</CODE
+> ].
+  Default: OS on which configure is executed as defined by the <ACRONYM
+CLASS="acronym"
+>Perl</ACRONYM
+> $OSNAME variable.
+</P
+></DD
+><DT
+><CODE
+CLASS="option"
+>-usr_src</CODE
+> <KBD
+CLASS="userinput"
+>&#60;dir1&#62;[,&#60;dir2&#62;[,&#60;dir3&#62;[...]]]</KBD
+></DT
+><DD
+><P
+>&#13;Directories containing user source code.
+</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x472.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1021.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Running <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> via the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Environment variables recognized by <B
+CLASS="command"
+>configure</B
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

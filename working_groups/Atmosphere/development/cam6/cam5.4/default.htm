@@ -1,0 +1,1387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>candidates for CAM5.4</title>
+
+<link rel="shortcut icon" href="../../../../../favicon.ico">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../styles/atmos/styles/mainnav.css" />
+
+<!-- include jQuery library -->
+<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js" language="javascript" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="atmosnav">
+	<div id="nav_main_wrap"><!-- begin nav_main_wrap -->
+    
+    <div id="nav_main"><!-- begin nav_main -->
+        <ul id="menubar_main">
+            
+            <li>
+                <a href="http://www.cesm.ucar.edu/" class="trigger">CESM Home</a>
+            </li>
+            
+            <!-- <li>
+                <a href="/about/" class="trigger">About</a>
+                <ul>
+                    <li><a href="/about/" class="subitem">About CESM</a></li>
+                    <li><a href="/about/contact.html" class="subitem">Contact</a></li>
+                    <li><a href="/about/mission.html" class="subitem">Mission</a></li>
+                    <li><a href="/about/awards/" class="subitem" >Distinguished Achievement Awards</a></li>
+                    <li><a href="/publications/" class="subitem" >Publication Information</a></li>
+                    <li><a href="/about/support.html" class="subitem" >CESM Support Policy</a></li>
+                    <li><a href="/about/faqs.html" class="subitem" >FAQs | Frequently Asked Questions</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/management/" class="trigger">Administration</a>
+                <ul>
+                    <li><a href="/management/" class="subitem">Administration Overview</a></li>
+                    <li><a href="/management/CAB" class="subitem">CAB | CESM Advisory Board</a></li>
+                    <li><a href="/management/SSC" class="subitem">SSC | CESM Scientific Steering Committee</a></li>
+                    <li><a href="/management/governance.html" class="subitem">CESM Governance</a></li>
+                    <li><a href="/management/plans.html">Administration Plans</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/working_groups/" class="trigger">Working Groups</a>
+                <ul>
+                    <li><a href="/working_groups/" class="subitem">Overview</a></li>
+                    <li><a href="/working_groups/chairs.html" class="subitem">Working Group Co-Chairs</a></li>
+                    <li><a href="/working_groups/terms.html" class="subitem">Working Group Terms of Reference</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/amwg" class="subitem">Atmosphere Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/bgcwg" class="subitem">Biogeochemistry</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/ccwg" class="subitem">Chemistry Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/cvcwg" class="subitem">Climate Variability &amp; Change</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/liwg" class="subitem">Land Ice</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/lmwg" class="subitem">Land Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/omwg" class="subitem">Ocean Model</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pwg" class="subitem">Paleoclimate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/pcwg" class="subitem">Polar Climate</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sdwg" class="subitem">Societal Dimensions</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/sewg" class="subitem">Software Engineering</a></li>
+                    <li><a href="https://www2.cesm.ucar.edu/working-groups/wawg" class="subitem">Whole Atmosphere</a></li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                <a href="/models/" class="triggeron">Models</a>
+                <ul>
+                    <li><a href="/models/current.html" class="subitem">CESM Supported Releases</a></li>
+                    <li><a href="/models/scientifically-supported.html" class="subitem">CESM Scientifically Validated Configurations</a></li>
+                    <li><a href="/experiments/" class="subitem">Experiments</a></li>
+                    <li><a href="/models/cmip6.html" class="subitem" target="_blank">CMIP6</a></li>
+                    <li><a href="/projects/" class="subitem" target="_blank">Projects</a></li>
+                    <li><a href="/projects/community-projects/" class="subitem" target="_blank">Community Projects</a></li>
+                    <li><a href="/models/simpler-models/" class="subitem" target="_blank">Simpler Models</a></li>
+                    <li><a href="http://bb.cgd.ucar.edu/" class="subitem" target="_blank">DiscussCESM Forums (CESM Bulletin Board)</a></li>
+                    <li><a href="/models/legacy.html" class="subitem">CESM Legacy Releases</a></li>
+                    <li><a href="http://www2.cgd.ucar.edu/sections/cseg/old-general" class="subitem">Legacy Releases: Older General/Run Info</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/events/" class="trigger">Events</a>
+                <ul>
+                    <li><a href="/events/" class="subitem" >Upcoming Events</a></li>
+                    <li><a href="/events/chairs-meetings/" class="subitem" >Chairs Meetings</a></li>
+                    <li><a href="/events/scientist-meetings/" class="subitem" >Scientist Meetings</a></li>
+                    <li><a href="/events/tutorials/" class="subitem" >CESM Tutorials</a></li>
+                    <li><a href="/events/workshops" class="subitem" >CESM Workshops</a></li>
+                    
+                </ul>
+            </li> -->
+            
+        </ul>
+        
+        <!-- end nav_main -->
+    </div>
+    
+    <!-- end nav_main_wrap -->
+</div>
+
+        </div><!-- .atmosnav -->
+    
+        <div class="slogan"><img src="../../../../../styles/atmos/images/slogan.png"/></div><!-- .slogan -->	
+	<div class="logo"><a href="http://www2.cesm.ucar.edu"><img src="../../../../../styles/atmos/images/logo.png"/></a></div><!-- .logo -->
+	<div class="navsearch">
+		<!-- Google Search -->
+        <form name="google" action="http://www.google.com/cse" id="cse-search-box"> 
+ 		<div id="searchinput"> 
+   			<input type="hidden" name="cx" value="016712339613867830978:igijo92w2zo" /> 
+   			<input type="hidden" name="cof" value="FORID:9" /> 
+   			<input type="hidden" name="ie" value="UTF-8" /> 
+   			<input type="text" name="q" size="15" /> 
+   			<input type="submit" name="sa" value="Search" /> 
+ 		</div> <!-- #googlesearch -->
+		</form> 
+		<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+	</div><!-- .navsearch -->
+        <div class="atmosnav">
+		<!-- <ul>&nbsp;</ul> -->
+	</div><!-- #atmosnav -->
+   
+
+    
+	<div class="internal-header">
+        <h1>CAM5.4</h1>
+	</div>
+
+<div class="content">
+       
+      <h1 class="title">Testing changes candidates for CAM5.4</h1>
+             <br />
+
+  <h1 class="subtitle">Menu</h1>
+      <ul>
+        <li><a href="#List">List of changes<br />
+        </a>Robust changes, In progress, In developement<br />
+      </li>
+      </ul>
+      <ul>
+        <li><a href ="#Standalone">Standalone simulations</a> <br />
+        Simulations in which we look at the proposed change for CAM5.4 one at a time</li>
+  </ul>
+      <ul>
+        <li><a href="#Combined">Combined standalone simulations</a><br />
+          First attempt to combine changes for CAM5.4        </li>
+      </ul>
+      <ul>
+        <li><a href="#CAM5.4">CAM5.4: Standalone, AMIP and coupled</a><br />
+          Standalone, AMIP and coupled runs with CAM5.4 (coupled runs includes some retunings to adjust the RESTOM)<br />
+        </li>
+      </ul>
+      <ul>
+        <li><a href="#Sensitivity">Sensitivity and tuning runs</a><br />
+        Sensitivity to tuning parameters that could be used for CAM5.4</li>
+      </ul>
+      <ul>
+        <li><a href="#LWCF_diff">Tracking differences in LWCF</a><br />
+          There is a 1 W/m2 difference in LWCF between <br />
+- 
+  CAM5.4 in cam5_3_52 (this is where the changes for CAM5.4 were implemented and tested) <br />
+- CAM5.4 in cam5_3_67 (this is when the changes for CAM5.4 went on the trunk) <br />
+This is coming from the MG2 bugfix in 
+cam5_3_57        </li>
+      </ul>
+      <ul>
+        <li><a href="#mode_width">Change in mode width and dust<br />
+        </a>Change in the mode widths has a big impact on the dust.<br />
+        The dust is retuned by changing the soil erodibility file.</li>
+      </ul>
+      <ul>
+        
+        <li><a href="#tuning_w11">Tuning of CAM5.4 in coupled mode<br />
+        </a>We identified W11 as a good configuration for CAM5.4. <br />
+        Tuning of this configuration in coupled mode.      </li>
+      </ul>
+      <ul>
+        
+        <li><a href="#enso">ENSO amplitude in CAM5.4</a><br />
+          Simulations to figure out parameters responsible of the strong ENSO in CAM5.4
+          <br />
+        </li>
+      </ul>
+      <ul>
+        <li><a href="#final">Final configuration for CAM5.4<br />
+        </a>Coupled and AMIP simualtion for the final configuration of CAM5.4<br />
+        </li>
+      </ul>
+      <p><br />
+        
+        
+        <a name="List"> </a> </p>
+      <h1 class="subtitle"> List of changes </h1>
+      
+      <p><span style="color: hsla(103,96%,27%,1)"><strong>Robust changes</strong></span></p>
+             
+      <ul>
+      
+        <li><span style="color: hsla(103,96%,27%,1)">New topography for fininite volume (see C2)</span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">Modifications to the dust (see C3d)<br />
+        New file for dust erodability +  fine mode from 3.2% to 1.1% (Albani et al., 2014) + new optical properties </span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">MG2 microphysics (see C4 and C4b)</span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">New ice nucleation (see C5)</span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">32-level model (see C6)</span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">MAM4 (see C7b) </span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">New energy formulation (C8)</span></li>
+        <li><span style="color: hsla(103,96%,27%,1)">New remapping (C9)</span><span style="color: hsla(210,98%,25%,1)"><br />
+        </span></li>
+      </ul>
+      
+<p><span style="color: hsla(210,98%,25%,1)"><strong>Changes in testing </strong></span></p>  
+      <ul>
+        <li><span style="color: hsla(210,98%,25%,1)">Gravity wave code (testing)</span></li>
+        <li><span style="color: hsla(210,98%,25%,1)">MAM mode width changes (to enable prognostic sulfur)</span></li>
+        <li><span style="color: hsla(210,98%,25%,1)">Prognostic stratospheric volcanic sulfate </span><br />
+          <br />
+        </li>
+  </ul>
+         
+
+<p><span style="color: hsla(359,96%,44%,1)"><strong>Still in development </strong></span></p>
+<ul>
+    <li><span style="color: hsla(359,96%,44%,1)">External forcings<br />
+      CH4 oxidation source for H2O<br />
+    OCS oxidation source for SO2</span></li>
+    <li><span style="color: hsla(359,96%,44%,1)">CCMI inertial gravity waves (IGWs)<br />
+      Currently the
+    code related to the IGWs has a bug. It will be easily fixed, but will require re-tuning the model.</span></li>
+    <li><span style="color: hsla(359,96%,44%,1)">Convective gravity wave sources (tuning implications)</span></li>
+    <li><span style="color: hsla(359,96%,44%,1)">Consistent TMS: same parameter settings and orography files (?)</span></li>
+    <li><span style="color: hsla(359,96%,44%,1)">Convective transport and scavenging<br />
+        </span>
+      <div>
+      <div>
+      <br />
+      <br />
+    </li>
+    </ul>
+      
+            <a name="Standalone"> </a>
+  <h1 class="subtitle">Standalone Simulations </h1>
+       These simulations are simulations in which we look at the proposed change for CAM5.4 one at a time.<br />
+       <br />
+        
+ 
+       <table width="700" border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+         <tr class="background">
+           <th width="26" align="center">ID</th>
+           <th width="300" align="center">Casename</th>
+           <th width="300" align="center">Case Description</th>
+           <th width="50" align="center">Diagnostics</th>
+           <th width="169" align="center">Details/Comments</th>
+         </tr>
+         <tr align="center">
+           <td>C1</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.control.001</td>
+           <td><div align="left"> Baseline run : Out-of-the-box from cam5.3.50<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.control.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.control.001-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.control.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.control.001-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a><br /></td>
+           <td><p> Timing:<br />
+             <br />
+Model Cost:            <br />
+1135 pe-hrs/yr <br />
+<br />
+Throughput: <br />
+10.83   yrs/day <br />
+           </p></td>
+         </tr>
+         <tr align="center">
+           <td>C2</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.topo.001</td>
+           <td><div align="left"> Same as C1 <br />
+             + new topo 
+             <br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.topo.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.topo.001-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.topo.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.topo.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1 </a><br /></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C3</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001</td>
+           <td><div align="left">Same as C1 <br />
++ new file for dust erodability<br />
+dst_source2x2tuned_cam5merra_30jul13.nc <br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1 </a></td>
+           <td></td>
+         </tr>
+         <tr align="center">
+           <td>C3b</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002</td>
+           <td><div align="left">Same as C1 <br />
+             + new file for dust for dust erodability<br />
+             dst_source2x2tuned_cam5merra_30jul13.nc <br />
+             +  fine mode from 3.2% to 1.1% (Albani et al., 2014)</div></td>
+           <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1<br />
+             </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002-f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.001/">w/ C3
+               </a></p></td>
+           <td></td>
+         </tr>
+         <tr align="center">
+           <td>C3c</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003</td>
+           <td><div align="left">Same as C1 <br />
+             + new file for dust for dust erodability<br />
+             dst_source2x2tuned_cam5merra_30jul13.nc <br />
+             +  fine mode from 3.2% to 1.1% (Albani et al., 2014)<br />
+             + new optical properties           </div></td>
+           <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1<br />
+             </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.003-f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.002/">w/ C3b<br />
+               </a></p></td>
+           <td></td>
+         </tr>
+         <tr align="center">
+           <td>C3d</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.004</td>
+           <td><div align="left">Same as C1<br />
+             + new file for dust for dust erodability<br />
+             dst_source2x2tuned_cam5merra_30jul13.nc <br />
+             +  fine mode from 3.2% to 1.1% (Albani et al., 2014)<br />
+             + new optical properties
+             <br />
+           </div></td>
+           <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.004/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.004-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.004/atm/f.e13.F2000C5.f09_f09.cam5.3.50.dust_erod.004-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a>
+           </a></p></td>
+           <td></td>
+         </tr>
+         <tr align="center">
+           <td>C4</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001</td>
+           <td><div align="left">
+             <p>Same as C1 <br />
+             + MG2 microphysics<br />
+             + 
+             rhminl = 0.95 <br />
+             </p>
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001/atm/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001/atm/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>Model Cost: <br />
+               1270   pe-hrs/yr </p>
+             <p>Increase cost: 12%<br />
+           </p></td>
+         </tr>
+         <tr align="center">
+           <td>C4b</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.51.mg2.001</td>
+           <td><div align="left">
+             <p>Same as C1 <br />
+             + MG2 microphysics<br />
+             + 
+             rhminl = 0.95<br />
+             +micro_mg_num_steps   = 4             <br />
+             </p>
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.timing2/atm/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.timing2-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.timing2/atm/f.e13.F2000C5.f09_f09.cam5.3.51.mg2.timing2-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>Model Cost: <br />
+              1313   pe-hrs/yr</p>
+           <p>Increase cost: 16%<br />
+           </p></td>
+         </tr>
+         <tr align="center">
+           <td>C5</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001</td>
+           <td><div align="left">Same as C1 <br />
+             + new ice nucleation<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>Model Cost: <br />
+             1212   pe-hrs/yr <br />
+           </p>
+             <p>Increase cost: 7%</p></td>
+         </tr>
+         <tr align="center">
+           <td>C5b</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002</td>
+           <td><div align="left">Same as C1 <br />
+             + new ice nucleation<br />
+             +  &quot;DHmax&quot; = 400 microns (based on the Radar observations)<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1<br />
+             </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002-f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.001/">w/ C5</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C5c</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.005</td>
+           <td><div align="left">Same as C1 <br />
+             + new ice nucleation<br />
+             +  &quot;DHmax&quot; = 400 microns (based on the Radar observations)<br />
+             + 
+              -cppdefs -DUSE_XLIU_MOD'</div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.005/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.005-f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/">w/ C5b</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C6</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.L32.002</td>
+           <td><div align="left">Same as C1 <br />
+             + 32 vertical levels<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.L32.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.L32.002-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.L32.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.L32.002-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>Model Cost<br />
+             1180   pe-hrs/yr<br />
+           </p>
+           <p>Increase cost: 4%</p></td>
+         </tr>
+         <tr align="center">
+           <td>C7</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.mam4.001</td>
+           <td><div align="left">Same as C1 <br />
+             + MAM4<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.001-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>Model Cost: <br />
+             1257   pe-hrs/yr <br />
+           </p>
+             <p>Increase cost: 11%</p></td>
+         </tr>
+         <tr align="center">
+           <td>C7b</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.mam4.002</td>
+           <td><div align="left">Same as C1 <br />
+             + MAM4<br />
+             + new optical properties <br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.002-obs/">w/ obs</a><br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.002/atm/f.e13.F2000C5.f09_f09.cam5.3.50.mam4.002-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C8</td>
+           <td>f.e11.FAMIPC5.f09_f09.cam5_3_52_new_energy.001</td>
+           <td><div align="left">Same as C1 but AMIP<br />
+             + new energy formulation<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FAMIP/f.e11.FAMIPC5.f09_f09.cam5_3_52_new_energy.001/atm/f.e11.FAMIPC5.f09_f09.cam5_3_52_new_energy.001-f.e11.FAMIPC5.f09_f09.cam5_3_52.001/">w/ C1-AMIP</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C8b</td>
+           <td>f.e11.FAMIPC5.ne30_ne30.cam5_3_52_new_energy.001</td>
+           <td><div align="left">Same as C1 but AMIP<br />
+             + new energy formulation<br />
+             + Spectral element <br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FAMIP/f.e11.FAMIPC5.ne30_ne30.cam5_3_52_new_energy.001/atm/f.e11.FAMIPC5.ne30_ne30.cam5_3_52_new_energy.001-f.e11.FAMIPC5.ne30_ne30.cam5_3_52.001/">w/ C1-AMIP</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C9</td>
+           <td>f.e13.F2000C5.f09_f09.cam5.3.50.remapping.001</td>
+           <td><div align="left">Same as C1<br />
+             + new remapping<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.50.remapping.001/atm/f.e13.F2000C5.f09_f09.cam5.3.50.remapping.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         <tr align="center">
+           <td>C10</td>
+           <td>f.e13.FC5.f09_f09.mjmc5367.004.modeopt</td>
+           <td><div align="left">MAM mode width changes (to enable prognostics sulfur)<br />
+           </div></td>
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.FC5.f09_f09.mjmc5367.004.modeopt/atm/f.e13.FC5.f09_f09.mjmc5367.004.modeopt-f.e13.FC5.f09_f09.mjmc5367.001.default/">w/ control</a></td>
+           <td><p>&nbsp;</p></td>
+         </tr>
+         
+         <tr align="center">
+           <td>C11</td>
+           <td>f.e13.c5370.FC5.f19_f19.test.01</td>
+           <td><div align="left"> 
+             making H2O prognostic in the chemistry<br />
+               </div>
+           </td>
+           
+           <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.c5370.FC5.f19_f19.test.01/atm/f.e13.c5370.FC5.f19_f19.test.01-f.e13.c5370.FC5.f19_f19.cntl.01/">w/ control</a></td>
+                         
+           <td><p>&nbsp;</p></td>
+      
+         </tr>
+     
+      </table>
+       
+</br>     </br>      
+  <a name="Combined"> </a>
+  <h1 class="subtitle">Combined standalone Simulations </h1>
+       <p>This is the first attempt to combine changes for CAM5.4 <br />
+       </p>
+   <table width="935" border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+     <tr class="background">
+       <th width="24" align="center">ID</th>
+       <th width="321" align="center">Casename</th>
+       <th width="332" align="center">Case Description</th>
+       <th width="78" align="center">Diagnostics</th>
+       <th width="128" align="center">Details/Comments</th>
+     </tr>
+     <tr align="center">
+       <td>M1</td>
+       <td>f.e13.F2000C5.f09_f09.cam5.4_alpha02.001</td>
+       <td><div align="left"> Combined  the changes<br />
+         <br />
+         <ul>
+           <li><span style="color: hsla(103,96%,27%,1)">New topography for fininite volume (see C2)</span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">Modifications to the dust (see C3d)<br />
+             New file for dust erodability +  fine mode from 3.2% to 1.1% (Albani et al., 2014) + new optical properties </span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">MG2 microphysics (see C4 and C4b)</span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">New ice nucleation (see C5)</span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">MAM4 (see C7b) </span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">New energy formulation (C8)</span></li>
+           <li><span style="color: hsla(103,96%,27%,1)">New remapping (C9)</span><br />
+       </li>
+         </ul>
+       </div></td>
+       <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a></p>
+         <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1 (trunk head)</a><br />
+       </p></td>
+       <td><p><br />
+       </p></td>
+     </tr>
+     <tr align="center">
+       <td>M2</td>
+       <td>f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32</td>
+       <td><div align="left">Same as M1
+         <ul>
+           <li><span style="color: hsla(103,96%,27%,1)">32-level model (see C6)</span><br />
+           </li>
+         </ul>
+       </div></td>
+       <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3<br />
+         </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/">w/ M1</a></p>
+         <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1 (trunk head)</a><br />
+         </p></td>
+       <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/atm_in">namelist</a></p></td>
+     </tr>
+     <tr align="center">
+       <td>M3</td>
+       <td>f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32</td>
+       <td><div align="left">Same as M1 
+           <ul>
+             <li><span style="color: hsla(103,96%,27%,1)">32-level model (see C6)</span><br />
+       </li></ul></div></td>
+       <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3<br />
+         </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/">w/ M1</a></p>
+         <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ C1 (trunk head)</a><br />
+       </p></td>
+       <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/atm_in">namelist</a></p></td>
+     </tr>
+     
+  </table>
+       
+     <p><br />
+     </p>
+     <a name="CAM5.4" id="CAM5.4"> </a>
+  <h1 class="subtitle"> CAM5.4 </h1>
+  Standalone, AMIP and coupled runs with CAM5.4 (coupled runs includes some retunings to adjust the RESTOM)<br />
+  <br />
+     <table width="935" border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+       <tr class="background">
+         <th width="24" align="center">ID</th>
+         <th width="321" align="center">Casename</th>
+         <th width="332" align="center">Case Description</th>
+         <th width="78" align="center">Diagnostics</th>
+         <th width="128" align="center">Details/Comments</th>
+       </tr>
+       <tr align="center">
+         <td>2000_V1</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003</td>
+         <td><div align="left">Same as M2 (combined change) <br />
+           + rhminl_land = 0.01-&gt;0.<br />
+         </div></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a><br />
+         </p></td>
+         <td><p><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>AMIP_V1</td>
+         <td>f.e13.FAMIPC5.f09_f09_beta16.cam5.4_alpha02_b.002</td>
+         <td><div align="left">Same as M2 (combined change) <br />
+           + rhminl_land = 0.01-&gt;0.<br />
+         </div></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta16.cam5.4_alpha02_b.002/atm/f.e13.FAMIPC5.f09_f09_beta16.cam5.4_alpha02_b.002-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta16.cam5.4_alpha02_b.002/atm/VDIAG_f.e13.FAMIPC5.f09_f09_beta16.cam5.4_alpha02_b.002/variab.html">AMWG variab</a><br />
+           </p></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>COUPLED_V1</td>
+         <td>b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003</td>
+         <td><div align="left">
+           <p>Same as M2 (combined change) <br />
+             + rhminl_land = 0.01-&gt;0.<br />
+             + dp1 = 0.1-&gt;0.05<br />
+           </p>
+         </div></td>
+         <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003/atm/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003_eb.gif">timeseries<br />
+           </a><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003/atm/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003/atm/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003-b.e11.B1850C5CN.f09_g16.005/">w/ LENS</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16.beta16.cam5.4_alpha02_b.003/atm/CVDP/">CVDP</a><br />
+           </p></td>
+         <td><p>&nbsp; </p></td>
+       </tr>
+     </table>
+     <p><br>
+     </p>
+     <a name="Sensitivity"> </a>
+
+  <h1 class="subtitle">Sensitivity tests and tuning runs</h1>
+     <p>Sensitivity to tuning parameters that could be used for CAM5.4<br />
+     </p>
+     <table width="935" border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+       <tr class="background">
+         <th width="24" align="center">ID</th>
+         <th width="321" align="center">Casename</th>
+         <th width="332" align="center">Case Description</th>
+         <th width="78" align="center">Diagnostics</th>
+         <th width="128" align="center">Details/Comments</th>
+       </tr>
+       <tr align="center">
+         <td>S1</td>
+         <td>f.e13.F2000C5.f09_f09.<br />
+         cam5.4_alpha02.001_L32_rhminl_land</td>
+         <td><div align="left">rhminl_land = 0.01-&gt;0.<br />
+         </div></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32_rhminl_land/atm/f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32_rhminl_land-f.e13.F2000C5.f09_f09.cam5.4_alpha02.001_L32/">w/ control</a><br />
+           </p></td>
+         <td><p><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>S2</td>
+         <td>f.e13.F2000C5.f09_f09.<br />
+         cam5.3.51.ice_nucleation.002</td>
+         <td style="text-align: left"><div align="left">Same as Control<br />
+           + new ice nucleation<br />
+           +  &quot;DHmax&quot; = 400 microns (based on the Radar observations)<br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002-f.e13.F2000C5.f09_f09.cam5.3.50.control.001/">w/ Control<br />
+         </a></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S3</td>
+         <td>f.e13.F2000C5.f09_f09.<br />
+         cam5.3.51.ice_nucleation.003</td>
+         <td style="text-align: left"><div align="left">Same as S2<br />
+           +  &quot;DHmax&quot; = 350 microns (based on the Radar observations)<br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.003/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.003-f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/">w/ S2<br />
+         </a></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S4</td>
+         <td>f.e13.F2000C5.f09_f09.<br />
+         cam5.3.51.ice_nucleation.004</td>
+         <td style="text-align: left"><div align="left">Same as S2<br />
+           +  &quot;DHmax&quot; = 450 microns (based on the Radar observations)<br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.004/atm/f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.004-f.e13.F2000C5.f09_f09.cam5.3.51.ice_nucleation.002/set1/table_GLBL_ANN.asc">w/ S2<br />
+         </a></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S5</td>
+         <td>f.e13.F2000C5.f09_f09<br />
+         _beta16.cam5.4_alpha02_b.004</td>
+         <td style="text-align: left"><div align="left">Same as control <br />
+           + c0_land <br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.004/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.004-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/">w/ Control</a><br /></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S6</td>
+         <td>f.e13.F2000C5.f09_f09_<br />
+         beta16.cam5.4_alpha02_b.005</td>
+         <td style="text-align: left"><div align="left">Same as control <br />
+           + dp1<br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.005/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.005-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.004/">w/ Control</a><br /></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S7</td>
+         <td>f.e13.F2000C5.f09_f09_<br />
+         beta16.cam5.4_alpha02_b.006</td>
+         <td style="text-align: left"><div align="left">Same as control <br />
+           + cu_det_st = .true.<br />
+         </div></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.006/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.006-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/">w/ Control</a><br /></td>
+         <td><p>&nbsp;</p></td>
+       </tr>
+       <tr align="center">
+         <td>S8</td>
+         <td>b.e13.B1850C5CN.f09_g16_<br />
+           beta17_cam5.4_alpha03.003</td>
+         <td style="text-align: left"><p>Same as control<br />
+           dp1= 0.1-&gt;0.05
+         </p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ control </a>
+           </p></td>
+         <td>&nbsp;</td>
+       </tr>
+       <tr align="center">
+         <td>S9</td>
+         <td>b.e13.B1850C5CN.f09_g16_<br />
+           beta17_cam5.4_alpha03.005</td>
+         <td style="text-align: left">Same as control<br />
+           dcs = 150-&gt;300 microns<br />
+         </td>
+         <td><p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ control </a><br />
+         </p></td>
+         <td>&nbsp;</td>
+       </tr>
+       <tr align="center">
+         <td>S10</td>
+         <td>b.e13.B1850C5CN.f09_g16_<br />
+           beta17_cam5.4_alpha03.007</td>
+  <td style="text-align: left"><p>Same as control<br />
+           dcs = 150-&gt;300 microns<br />
+         </p></td>         
+        
+
+
+         <td><p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/">w/ control</a><br />
+           </p></td>
+         <td>&nbsp;</td>
+       </tr>
+       <tr align="center">
+         <td>S11</td>
+         <td>b.e13.B1850C5CN.f09_g16_<br />
+           beta17_cam5.4_alpha03.005</td>
+         <td style="text-align: left"><p>Same as control<br />
+           subgrid =1.-&gt;1.2<br />
+         </p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ control </a><br />
+           </p></td>
+         <td>&nbsp;</td>
+       </tr>
+     </table>
+  <p><a name="LWCF_diff" id="LWCF_diff"> </a> </p>
+  <h1 class="subtitle">Tracking differences in LWCF</h1>
+  <p>There is a 1 W/m2 difference in LWCF between <br />
+    - 
+  CAM5.4 in cam5_3_52 (this is where the changes for CAM5.4 were implemented and tested) <br />
+- CAM5.4 in cam5_3_67 (this is when the changes for CAM5.4 went on the trunk) <br />
+I suspect this is coming from the MG2 bugfix in 
+cam5_3_57 (Yes it is !!!)<br />
+  </p>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th align="center">ID</th>
+      <th align="center">Casename</th>
+      <th align="center">Case Description</th>
+      <th align="center">Diagnostics</th>
+      <th align="center">Details/Comments</th>
+    </tr>
+    <tr align="center">
+      <td>L1</td>
+      <td>f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003</td>
+      <td><div align="left">cam5_3_52<br />
+      </div></td>
+      <td><p><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>L2</td>
+      <td>f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002</td>
+      <td><div align="left">cam5_3_70<br />
+      </div></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/set1/table_GLBL_ANN.asc">w/ cam5_3_52</a><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>L3</td>
+      <td>f.e13.F2000C5.f09_f09_cam5.4_cam5_3_66_energy_new_mods.001</td>
+      <td><div align="left">cam5_3_67<br />
+      </div></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_66_energy_new_mods.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_66_energy_new_mods.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/set1/table_GLBL_ANN.asc">w/ cam5_3_52</a><br />
+        <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_66_energy_new_mods.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_66_energy_new_mods.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/set1/table_GLBL_ANN.asc">w/ cam5_3_70</a><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>L4</td>
+      <td>f.e13.F2000C5.f09_f09_cam5.4_cam5_3_57.001.001</td>
+      <td><div align="left">cam5_3_57<br />
+      </div></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_57.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_57.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/set1/table_GLBL_ANN.asc">w/ cam5_3_52</a><br />
+        <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_57.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_57.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/set1/table_GLBL_ANN.asc">w/ cam5_3_70 </a><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>L5</td>
+      <td>f.e13.F2000C5.f09_f09_cam5.4_cam5_3_56.001.002</td>
+      <td><div align="left">cam5_3_56<br />
+      </div></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_56.002/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_56.002-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/set1/table_GLBL_ANN.asc">w/ cam5_3_52</a><br />
+          <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_56.002/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_56.002-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/set1/table_GLBL_ANN.asc">w/ cam5_3_70 </a><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+    <tr align="center">
+      <td>L6</td>
+      <td>f.e13.F2000C5.f09_f09_cam5.4_cam5_3_52.001.001</td>
+      <td><div align="left">cam5_3_52<br />
+      </div></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_52.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_52.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/set1/table_GLBL_ANN.asc">w/ cam5_3_52</a><br />
+        <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_52.001/atm/f.e13.F2000C5.f09_f09_cam5.4_cam5_3_52.001-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/set1/table_GLBL_ANN.asc">w/ cam5_3_70 </a><br />
+      </p></td>
+      <td><p><br />
+      </p></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p><a name="mode_width" id="mode_width"> </a></p>
+  <h1 class="subtitle">Change in mode width
+     <br />
+  </h1>
+  <p>Change in the mode widths has a big impact on the dust.
+    <br />
+    The dust is retuned by changing the soil erodibility.</p>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+         <th width="23" align="center">ID</th>
+         <th width="418" align="center">Casename</th>
+         <th width="350" align="center">Case Description</th>
+         <th width="526" align="center">AMWG diag</th>
+         <th width="325" align="center">Aerosol diags</th>
+    </tr>
+       <tr align="center">
+         <td>W2</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+         cam5.4_mills01_cam5_3_70.002</td>
+         <td>Control</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/">w/ 2000_V1</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002_pi/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/">w/ 1850 aerosol</a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002-f.e13.F2000C5.f09_f09_beta16.cam5.4_alpha02_b.003/"><br />
+         </a></p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002_pi/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/aerosol.html">w/ 1850 aerosol</a><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>W3</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+         cam5.4_mills01_cam5_3_70.003</td>
+         <td>Mode width changes</td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/">w/ W2</a></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/aerosol.html">w/ W2 <br />
+          (no width change)</a><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>W4</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+         cam5.4_mills01_cam5_3_70.004</td>
+         <td style="text-align: center">Mode width changes<br />
+         modal_accum_coarse_exch=.true. <br />
+         (exchange between  accumulation and coarse modes <br />
+         in the stratosphere).</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/">w/ W2<br />
+         </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.003/">w/ W3</a></p>
+         <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004_pi/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/">w/ 1850 aerosol</a></p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004_pi/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/aerosol.html">w/ 1850 aerosol</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/aerosol.html">w/ W2 <br />
+           (no width change)</a><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>W5</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+           cam5.4_mills01_cam5_3_70.005</td>
+         <td>Same as W4<br />
+           +
+           Tuning of the dust : new erodibility file</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/">w/ W2<br />
+           </a><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/">w/ W4</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005_pi/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/">w/ 1850 aerosol</a></p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005_pi/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005_pi-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ 1850 aerosol</a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.002/aerosol.html">w/ W2 <br />
+             (no width change)</a><br />
+             <br />
+             <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.004/aerosol.html">w/ W4 </a><br />
+           </p></td>
+       </tr>
+       <tr align="center">
+         <td>W6</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+           cam5.4_mills01_cam5_3_70.006</td>
+         <td>Same as W5<br />
+           +
+           Bugfix from Mike Mills</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006-obs/">w/ obs</a><br />
+         <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/">w/ W5</a></p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ W5 </a><br />
+         </p></td>
+       </tr>
+       <tr align="center">
+         <td>W8</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+           cam5.4_mills01_cam5_3_70.008</td>
+         <td>Same as W6 <br />
+           +         Mods for RHMAX <br />
+           (same mods as in C5b)</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/">w/ W6</a></p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.008-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/aerosol.html">w/ W6</a></p></td>
+       </tr>
+       <tr align="center">
+         <td>W9</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+           cam5.4_mills01_cam5_3_70.009</td>
+         <td><p>Same as W5<br />
+           +         change in the sea-salt emission<br />
+           emis_scale = 1.35-&gt;1</p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/">w/ W5</a>
+         </p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.009-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ W5</a></p></td>
+       </tr>
+       <tr align="center">
+         <td>W10</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+           cam5.4_mills01_cam5_3_70.010</td>
+         <td>Same as W6 <br />
+           +         Bugfix from Mike Mills<br />
+           + 
+           limit mode exchange to statrosphere</td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/">w/ W5</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/">w/ W6 </a><br />
+         </p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ W5</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.006/aerosol.html">w/ W6 </a></p></td>
+       </tr>
+       <tr align="center">
+         <td>W11</td>
+         <td>f.e13.F2000C5.f09_f09_beta16.<br />
+         cam5.4_mills01_cam5_3_70.011</td>
+         <td><p>Same as W10 <br />
+           +         emis_scale = 1.-&gt;0.9<br />
+           +          Mods for RHMAX <br />
+and -cppdefs -DUSE_XLIU_MOD' <br />
+(same mods as in C5c)<br />
++ new soil erodibilty file: dst_source2x2_cam5.4_c150327.nc<br />
+         </p></td>
+         <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-obs/">w/ obs</a><br />
+           <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/">w/ W10 </a></p>
+           <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a><br />
+         </p></td>
+         <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ w5</a></td>
+       </tr>
+  </table>
+  <p><br>
+   
+ 
+   
+  
+	 
+  <a name="tuning_w11" id="tuning_w11"> </a></p>
+  <h1 class="subtitle">Tuning of W11 in coupled mode<br />
+  </h1>
+  <p>We identified w11 as a good candidate for CAM5.4. </p>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th width="23" align="center">ID</th>
+      <th width="418" align="center">Casename</th>
+      <th width="350" align="center">Case Description</th>
+      <th width="526" align="center">AMWG diag</th>
+      <th width="325" align="center">Aerosol diags</th>
+    </tr>
+    <tr align="center">
+      <td>W11</td>
+      <td>f.e13.F2000C5.f09_f09_beta16.<br />
+        cam5.4_mills01_cam5_3_70.011</td>
+      <td><p>Same as W10 <br />
+        +         emis_scale = 1.-&gt;0.9<br />
+        +          Mods for RHMAX <br />
+        and -cppdefs -DUSE_XLIU_MOD' <br />
+        (same mods as in C5c)<br />
+        + new soil erodibilty file: dst_source2x2_cam5.4_c150327.nc<br />
+      </p></td>
+      <td><p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-obs/">w/ obs</a><br />
+        <a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.010/">w/ W10 </a></p>
+        <p><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/atm/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09.cam5.3.release.001/">w/ cam5.3</a><br />
+        </p></td>
+      <td><a href="http://webext.cgd.ucar.edu/FCLIMO/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011/aerodiag/f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.011-f.e13.F2000C5.f09_f09_beta16.cam5.4_mills01_cam5_3_70.005/aerosol.html">w/ w5</a></td>
+    </tr>
+    <tr align="center">
+      <td>X2</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.002</td>
+      <td><p>Same as W11<br />
+        but in coupled mode<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X3</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.003</td>
+      <td><p>Same as X2 <br />
+        dp1= 0.1-&gt;0.05<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ X2 </a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X4</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.004</td>
+      <td><p>Same as X3 <br />
+        dcs = 150-&gt;300 microns<br />
+        dp1= 0.1-&gt;0.05        <br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.003/">w/ X3 </a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.004-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X5</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.005</td>
+      <td><p>Same as X2 <br />
+        dcs = 150-&gt;300 microns<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ X2 </a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.005-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X6</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.006</td>
+      <td><p>Same as X2 <br />
+        subgrid =1.-&gt;1.2<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/">w/ X2 </a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X7</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+      beta17_cam5.4_alpha03.007</td>
+      <td><p>Same as X6 <br />
+        dcs = 150-&gt;250 microns<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/">w/ X6 </a><br />
+        <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/CVDP/">CVDP</a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  
+  </h1>
+  <p><br />
+    <a name="enso" id="enso"> </a></p>
+  <h1 class="subtitle">ENSO amplitude in CAM5.4<br />
+  </h1>
+  <p>Simulations to figure out parameters responsible of the strong ENSO in CAM5.4 </p>
+  <table border="1" cellpadding="4" cellspacing="0" bordercolor="#808080" frame="void">
+    <tr class="background">
+      <th width="23" align="center">ID</th>
+      <th width="418" align="center">Casename</th>
+      <th width="350" align="center">Case Description</th>
+      <th width="526" align="center">AMWG diag</th>
+      <th width="325" align="center">Aerosol diags</th>
+    </tr>
+    <tr align="center">
+      <td>X2</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.002</td>
+      <td><p>Same as W11<br />
+        but in coupled mode<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002_eb.gif">timeseries</a><br />
+          <br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002-obs/">w/ obs</a><br />
+      </p>
+        <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.002.ENSO.nino3.4.analysis.png">nino3.4</a></p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X6</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.006</td>
+      <td><p>Same as X2 <br />
+        subgrid =1.-&gt;1.2<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/_b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006_eb.gif">timeseries</a><br />
+          <br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006-obs/">w/ obs</a><br />
+      </p>
+      <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006.ENSO.nino3.4.analysis.png">nino3.4</a></p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X7</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.007</td>
+      <td><p>Same as X6 <br />
+        dcs = 150-&gt;250 microns<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-obs/">w/ obs</a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/">w/ X6 </a><br />
+          <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e11.B1850C5CN.f09_g16.005/">w/ Large-ensemble </a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/CVDP/">CVDP</a><br />
+          <a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007.ENSO.nino3.4.analysis.png">nino3.4 </a><br />
+        </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X8</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.008</td>
+      <td><p>Same as X7<br />
+        + use old topography<br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008_eb.gif">timeseries</a></p>
+      <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008-obs/">w/obs</a><br />
+        <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/">w/ X7</a></p>
+      <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.008.ENSO.nino3.4.analysis.png">nino3.4</a><br />
+      </p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X9</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.009</td>
+      <td><p>Same as X7<br />
+        + dp1 = 0.05
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009-obs/">w/obs</a><br />
+        <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/">w/ X7</a></p>
+      <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.009.ENSO.nino3.4.analysis.png">nino3.4</a></p></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr align="center">
+      <td>X10</td>
+      <td>b.e13.B1850C5CN.f09_g16_<br />
+        beta17_cam5.4_alpha03.010</td>
+      <td><p>Same as X7</p>
+        <p>+ dcs = 250-&gt; 200 microns<br />
+          + co_lnd = 0.045
+          <br />
+      </p></td>
+      <td><p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010_eb.gif">timeseries</a></p>
+        <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010-obs/">w/obs</a><br />
+        <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/">w/ X7</a></p>
+      <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.010.ENSO.nino3.4.analysis.png">nino3.4</a></p></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <p><a name=final" id="final"> </a>
+  </p>
+  </p>
+  <h1 class="subtitle">CAM5.4: Final configuration<br />
+</h1>
+<p>We retained X7 for the final configuration of CAM5.4</p>
+<table border="1" cellpadding="6" cellspacing="0" bordercolor="#808080" frame="void">
+  <tr class="background">
+    <th align="center">ID</th>
+    <th align="center">Case Description</th>
+    <th align="center">Diagnostics</th>
+    <th align="center">Details/Comments</th>
+  </tr>
+  <tr align="center">
+    <td>f2000_cam5.4</td>
+    <td><div align="left">CAM standalone with climatological SSTs</div></td>
+    <td>w/ obs<br />
+      w/ cam5.3  (5-year run)</td>
+    <td>Not available</td>
+  </tr>
+  <tr align="center">
+    <td>f2000_pia_cam5.4</td>
+    <td><div align="left"> CAM standalone with climatological SSTs <br />
+      + preindustrial aerosol</div></td>
+    <td>w/ f2000_cam5.4</td>
+    <td>Not available</td>
+  </tr>
+  <tr align="center">
+    <td>famip_cam5.4</td>
+    <td><div align="left">
+      <p>AMIP run<br />
+        + COSP simulator (coming soon)<br />
+      </p>
+    </div></td>
+    <td><p><a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002/atm/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002-obs/">w/ obs (yrs 1980-2004)</a><br />
+        <a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002/atm/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002-f.e12.FAMIPC5.f09_f09.amip_L30.001/">w/ cam5.3 (yrs 1980-2004)</a><br />
+      <br />
+      <a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002/atm/VDIAG_f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002/variab.html">AMWG variability</a><br />
+      <a href="http://webext.cgd.ucar.edu/FAMIP/f.e13.FAMIPC5.f09_f09_beta17_cam5.4_alpha03.002/atm/CVDP/">CVPD package</a></p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr align="center">
+    <td align="center">b1850_cam5.4</td>
+    <td align="left"><p>Coupled run <br />
+    </p>
+      <p>Hybrid run started from large-ensemble at year 402</p></td>
+    <td><table width="200" cellspacing="0" border="1"  bordercolor="#B4B1B1">
+      <tbody>
+        <tr>
+          <td>Atm</td>
+          <td><p>&nbsp;</p>
+            <p><a href="../../../../../webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007_eb.gif">timeseries<br />
+            </a><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-obs/">w/ obs</a><br />
+              <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.006/">w/ X6 </a><br />
+              <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007-b.e11.B1850C5CN.f09_g16.005/">w/ LENS</a></p>
+            <p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/atm/CVDP/">CVDP package</a></p>
+            <p><br />
+            </p></td>
+        </tr>
+        <tr>
+          <td>Lnd</td>
+          <td>w/ LENS and obs</td>
+        </tr>
+        <tr>
+          <td>Ocn</td>
+          <td><p><a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/ocn/pdts/popdiagts.html">timeseries</a><br />
+              <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/ocn/pd.40_70/popdiag.html">w/ obs </a><br />
+              <a href="http://webext.cgd.ucar.edu/B1850/b.e13.B1850C5CN.f09_g16_beta17_cam5.4_alpha03.007/ocn/pd.b.e11.B1850C5CN.f09_g16.005.440_470.global/">w/ LENS</a></p>
+            <a href="">
+            <p>Obs: enso</p>
+            </a></td>
+        </tr>
+        <tr>
+          <td height="22">Ice</td>
+          <td>w/ LENS</td>
+        </tr>
+      </tbody>
+    </table></td>
+    <td align="center"><p>&nbsp;</p></td>
+  </tr>
+  <tr align="center">
+    <td>e1850_cam5.4_1xco2</td>
+    <td align="left">Slab Ocean Model + 1xCO2 <br /></td>
+    <td>timeseries <br />
+      w/ b1850_cam5.4</td>
+    <td>Not available</td>
+  </tr>
+  <tr align="center">
+    <td>e1850_cam5.4_2xco2</td>
+    <td align="left">Slab Ocean Model + 2xCO2</td>
+    <td>timeseries <br />
+      w/ e1850_1xco2</td>
+    <td>Not available</td>
+  </tr>
+</table>
+
+<div id="content_icon">		
+    
+    <!------------------------------------------------------------------------->
+    
+  </div><!-- .content -->
+	
+	<div class="footer">
+    <p>&copy; 2020 UCAR | <a href="https://www.ucar.edu/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" target="_blank">Copyright Issues</a> | <a href="https://www.nsf.gov/" target="_blank">Sponsored by NSF</a> | <a href="https://www.ucar.edu/" target="_blank">Managed by UCAR</a> | <a href="http://www.cesm.ucar.edu/about/contact.html">Webmaster/Feedback</a><br /><br />
+    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301</p>
+		
+	
+<!-- Google Analytics -->
+<!--
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     
+     ga('create', 'UA-2274704-2', 'auto');
+     ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+</div><!-- .footer -->
+
+</div><!-- #wrap --> 
+<!-- end content_icon -->
+<br>
+
+ <!-- OrgNavFooter Script -->
+<script>
+ 
+// CUSTOM VARIABLES
+/*
+var contactLink = "mailto:jfable@ucar.edu";     // enter your Webmaster/Feedback link. Include http:// or mailto:
+var hideOrgNav = false;        // hide the entire OrgNav from view
+var hideFooter = true;          // hide the entire OrgFooter from view
+var hideNSF = true;               // hide the NSF disclaimer
+var footerColor = '#666';       // hex color of the footer font including the #
+ 
+// DO NOT EDIT BELOW THIS POINT
+var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+if(typeof jQuery === "undefined"){
+  document.write("<scr"+"ipt src='"+jsHost+"ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type='text/javascript'></scr"+"ipt>");
+}
+document.write("<scr"+"ipt src='"+jsHost+"www2.ucar.edu/js/orgnav' type='text/javascript'></scr"+"ipt>");
+*/
+</script>
+
+<!--
+<noscript><iframe frameborder="0" width="100%" src="http://www2.ucar.edu/sites/default/modules/custom/ucar_comm_site/includes/noscript.php"></iframe></noscript>
+-->
+<!-- END OrgNavFooter Script -->
+ 
+</body>
+</html>
+  

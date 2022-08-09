@@ -1,0 +1,1114 @@
+Authors: David Williamson and Jerry Olson
+Date: Aug 16, 2011
+
+-----
+CAM4 and CAM5 temperature and moisture balances
+
+We refer to them as balances rather than budgets because they
+are the tendency terms in the prognostic equations for T and
+specific hunidity, etc. rather than budgets of the mass
+of water or internal energy.
+
+Nomenclature
+   We distinguish between the following 5 forms of water
+      and their conversions
+
+water vapor
+
+cloud liquid
+cloud ice
+   cloud water = cloud liquid + cloud ice
+
+rain
+snow
+   precipitation = rain + snow
+
+vapor, liquid and ice are predicted in time
+rain and snow are assumed to fall out in the time step they are created.
+
+
+all variables can be put on history file except those in square brackets
+   [XXXX] which denote a variable derived from history variables
+   All variables should be accumulated except state variables used
+   to calculate tendencies.
+
+First section is a symbolic summary
+Second section is an explanation
+Third section is a further summarized tree (for CAM5 only)
+
+
+-------------------------------------------------------------------
+
+---> Q (water vapor) BALANCE summary (all tendencies kg/kg/s)
+
+
+[TEQ_FV] = TAQ + PTEQ
+
+
+PTEQ = DCQ + VD01 + DMEQ
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DCQ = [DRYADJDQ] + [ZMTOTDQ] + [CMFTOTDQ] + [PCWDQ]
+
+      [ZMTOTDQ] = ZMDQ + EVAPQZM
+      [CMFTOTDQ] = CMFDQ + EVAPQCM
+      [PCWDQ] = - CME + EVAPPREC + DQSED
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DCQ = [DRYADJDQ] + [ZMTOTDQ] + CMFDQ + MACPDQ + MPDQ
+
+      [ZMTOTDQ] = ZMDQ + EVAPQZM
+
+      MACPDQ = - CMELIQ + CLDVAPADJ   (liquid and ice <--> vapor
+                                             + vertical transfer)
+                        - CLDLIQLIM   (liquid <--> vapor)
+                        - CLDICELIM   (ice --> vapor)
+
+      [MACDQ] = MACPDQ + CMELIQ
+      [MACDQ] = + CLDVAPADJ   (liquid and ice <--> vapor
+                                     + vertical transfer)
+                - CLDLIQLIM   (liquid <--> vapor)
+                - CLDICELIM   (ice --> vapor)
+
+      MPDQ = QCSEVAP - QCRESO            (liquid <--> vapor)
+           + QISEVAP - QIRESO - CMEIOUT  (ice <--> vapor)
+           + [EVAPRAIN]                  (rain --> vapor)
+           + EVAPSNOW                    (snow --> vapor)
+
+      [MICDQ] = MPDQ - CMELIQ
+
+      [MICDQ] = QCSEVAP - QCRESO - CMELIQ   (liquid <--> vapor)
+              + QISEVAP - QIRESO - CMEIOUT  (ice <--> vapor)
+              + [EVAPRAIN]                  (rain --> vapor)
+              + EVAPSNOW                    (snow --> vapor)
+
+             [EVAPRAIN] = EVAPPREC - EVAPSNOW
+             QVRES = - QCRESO - QIRESO 
+
+
+---------------------------------------------------------------------------------------
+
+---> Q BALANCE explanation (all tendencies kg/kg/s)
+
+   ===> points to an equation in the first section
+
+
+===> [TEQ_FV] = TAQ + PTEQ
+
+
+TAQ - specific humidity transport
+
+_____________________________________________
+|                                           |  
+|   the transport could be derived by:      |
+|                                           |
+|                                           |
+|   [TAQ] = [TEQ_FV] - PTEQ                 |
+|___________________________________________|
+
+
+[TEQ_FV] - total q tendency
+
+
+   [TEQ_FV] = (QAP(n)-QAP(n-1))/(time(n)-time(n-1))
+
+       QAP - Q after the parameterizations are calculated and added to Q
+       (QBP - Q before the parameterizations are calculated and
+                 after the dynamics, not used in budget)
+
+PTEQ - Total physics tendency  (calculated by [after - before]/dt)
+
+===> PTEQ = DCQ + VD01 + DMEQ
+   DCQ  - Tendency from precipitation physics
+             (calculated by [after - before]/dt)
+   VD01 - Vertical diffusion tendency (this should be called VDQ, but it ain't)
+             CAM4: H-B PBL
+             CAM5: UW PBL, includes diffusion in upper troposphere (?)
+   DMEQ - after the last physics_update, pressure values are changed to reflect
+          the change in water mass by the parameterizations. Then the specific
+          humidity is corrected giving DMEQ. The pressure correction
+          can be formulated to change the pressure alone without changing
+          the specific humidity. The two methods differ by [q dq +O(q^2 dq)]
+          compared to dq, where dq is the change made by the
+          parameterizations. The difference is just different time
+          truncation errors.
+             The  3-d pressure field is updated and returned to the
+          dynamics for the next time step. This field no longer
+          representable by the surface pressure and eta-coordinates
+          unlike the field input to the parameterizations after the
+          vertical remapping.
+             This pressure change might also affect the energy since the energy
+          conservation in the parameterizations assumes pressure does not change.
+          In this case this inconsistency is also folded into the energy fixer.
+ 
+There is a negative tracer fixer in the FV at the beginning of the physics,
+   actually done in DP_COUPLING rather than the physics proper.
+   (The so called "Byron's negative fixer"). The vertical remapping
+   operator is not strictly monotonic at the endpoints. Therefore tracers
+   can be negative in the bottom layer after the dynamics. If the layer
+   above has sufficient tracer, then enough is moved down to set the bottom
+   level tracer to a minimum value in a conservative fashion. If there is
+   not a sufficient amount available it does nothing. The fixing is done in
+   DP_COUPLING and therefore is not included in PTEQ. It is not output to the
+   history file. Therefore it is included in our derived [TEQ_FV]
+   This fixer employes a specified "small" number rather than a relative 
+   small number for each tracer and may be inconsistent resulting in a problem.
+      Because the directional slitting in the FV core monotonic operators,
+   the FV is not absolutely monotonic, and the core might produce negatives
+   before the remapping?
+
+The negative filler associated with the negative tracer checking routine used
+   in the parameterizations is also not on history file. It is also in the residual.
+   Since TAQ is on the history file, the sum of all these fixers could be
+   determined as a residual.
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+ ===>  DCQ = [DRYADJDQ] + [ZMTOTDQ] + [CMFTOTDQ] + [PCWDQ]
+
+      [DRYADJDQ] - dry convective adjustment, there is no history variable
+                   it is applied only on the top three levels and generally
+                   can be ignored
+      [ZMTOTDQ] = ZMDQ + EVAPQZM  (total change due to Zhang convection)
+         ZMDQ - Zhang moist convection tendency
+         EVAPQZM - evaporation of Zhang convective precip
+      [CMFTOTDQ] = CMFDQ + EVAPQCM  (total change due to shallow convection)
+         CMFDQ - shallow moist convection tendency
+         EVAPQCM - evaporation of shallow convective precip
+      [PCWDQ] = - CME + EVAPPREC + DQSED (total change due to prognostic cloud water)
+         CME - conversion between vapor and condensate within the stratiform cloud
+         EVAPPREC - Rate of evaporation of falling precip (liquid and snow)
+         DQSED - evaporation of cloud water sedimentation
+
+            CMELIQ = CME * (1-fice) (fraction of liq)
+                   - Rate of cond-evap of ice within the cloud
+            CMEICE = CME * fice (fraction of ice)
+                   - Rate of cond-evap of liq within the cloud
+
+            [EVAPRAIN] = EVAPPREC - EVAPSNOW
+                       - Rate of evaporation of falling precip
+            EVAPSNOW   - Rate of evaporation of falling snow
+
+            DQSED = DLSED + DISED
+               DLSED - Cloud liquid tendency from sedimentation
+               DISED - Cloud ice tendency from sedimentation
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+===>   DCQ = [DRYADJDQ] + [ZMTOTDQ] + CMFDQ + MACPDQ + MPDQ
+
+          [  - dry convective adjustment, there is no history variable
+                       it is applied only on the top three levels and generally
+                       can be ignored (we never missed it: it must be a rare event)
+
+          [ZMTOTDQ] = ZMDQ + EVAPQZM  (total change due to Zhang convection)
+
+             ZMDQ - Zhang moist convection tendency
+             EVAPQZM - evaporation of Zhang convective precip
+
+             CMFDQ - UW shallow convection tendency
+                 (NOTE: the old EVAPQCM = 0 on history file,
+                        i.e. not called with UW shallow)
+
+          MACPDQ - tendency from "macrophysics" subroutine (not an after-before)
+          MPDQ   - tendency from "microphysics" subroutine (not an after-before)
+
+
+===>      MACPDQ = - CMELIQ + CLDVAPADJ   (liquid and ice <--> vapor + vertical)
+                            - CLDLIQLIM   (liquid <--> vapor)
+                            - CLDICELIM   (ice --> vapor)
+
+
+             CMELIQ    - Rate of cond-evap of liquid within the cloud
+
+             CLDVAPADJ - prevents negative cloud liquid and ice
+                         (see CLDLIQADJ and CLDICEADJ in LIQ and ICE budgets)
+                            In layer, if enough vapor present
+                            if liquid < 0, vapor is condensed to make liquid 0
+                            if ice < 0, vapor is condensed to make ice 0
+                            If not enough vapor in that layer, transfer from lower layer
+             CLDLIQLIM - adjustment tendency to prevent cloud liquid from
+                            being too large. If liquid > ???, excess converted to vapor
+             CLDICELIM - prevent inconsistent cloud ice and ice cloud fraction
+                            If ice cloud fraction is 0, but cloud ice is positive,
+                            cloud ice converted to vapor
+
+
+
+===>      MPDQ = QCSEVAP - QCRESO            (liquid <--> vapor)
+               + QISEVAP - QIRESO - CMEIOUT  (ice <--> vapor)
+               + [EVAPRAIN]                  (rain --> vapor)
+               + EVAPSNOW                    (snow --> vapor)
+
+
+             QCSEVAP - Rate of evaporation of falling cloud liquid 
+             QISEVAP - Rate of sublimation of falling cloud ice   
+             QCRESO  -  Residual condensation term for cloud liquid
+             QIRESO  - Residual deposition term for cloud ice
+             CMEIOUT - Rate of deposition/sublimation of cloud ice
+             EVAPSNOW - Rate of evaporation of falling snow          
+             [EVAPRAIN] = EVAPPREC - EVAPSNOW
+
+                [EVAPRAIN] = EVAPPREC - EVAPSNOW
+                     EVAPPREC - Rate of evaporation of falling precip        
+
+                [CMETOT] = CMELIQ + CMEIOUT
+                there is a CMEICE on history file, but it has no meaning and is 0
+
+                QVRES - Rate of residual condensation (removes any supersaturation
+                        with respect to water after updating all the microphysics
+                        tendencies for q and T (static energy)
+                QVRES = - QCRESO - QIRESO 
+
+
+---------------------------------------------------------------------------------------
+
+---> Q BALANCE tree
+
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+TAQ
+PTEQ
+   DCQ
+      [DRYADJDQ]
+      [ZMTOTDQ]
+         ZMDQ
+         EVAPQZM
+      CMFDQ
+      MACPDQ
+         CMELIQ
+         [NONPHYSDQ]
+            CLDVAPADJ
+            CLDLIQLIM
+            CLDICELIM
+      MPDQ      (following also in 5th level CLDLIQ and CLDICE file nd in MPDT)
+         QCSEVAP
+         QCRESO
+         QISEVAP
+         QIRESO
+         CMEIOUT
+         EVAPPREC
+         EVAPSNOW
+   VD01
+   DMEQ
+
+other combinations
+
+      [MACDQ]
+         MACPDQ
+         CMELIQ
+   or
+      [MACDQ]
+         CLDVAPADJ
+         CLDLIQLIM
+         CLDICELIM
+
+      [MICDQ]
+         MPDQ
+         CMELIQ
+   or
+      [MICDQ]
+         QCSEVAP
+         QCRESO
+         CMELIQ
+         QISEVAP
+         QIRESO
+         CMEIOUT
+         [EVAPRAIN]
+            EVAPPREC
+            EVAPSNOW
+         EVAPSNOW
+
+      QVRES
+         QCRESO
+         QIRESO
+
+
+
+         [DQCONV] = [ZMTOTDQ] + CMFDQ
+ 
+         [NONPHYSDQ] = CLDVAPADJ - CLDLIQLIM - CLDICELIM
+
+
+
+-------------------------------------------------------------------
+
+---> CLDLIQ and CLDICE (CLOUD LIQUID AND ICE) BALANCE summary
+        (all tendencies kg/kg/s)
+
+[TECLDLIQ_FV] = TACLDLIQ + PTECLDLIQ + [TECLDLIQ_RES]
+[TECLDICE_FV] = TACLDICE + PTECLDICE + [TECLDICE_RES]
+
+
+
+PTECLDLIQ = DCCLDLIQ + VDCLDLIQ + DMECLDLIQ
+PTECLDICE = DCCLDICE + VDCLDICE + DMECLDICE
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DCCLDLIQ = ZMDLIQ + CMFDLIQ + ZMDLF + CMELIQ - LIQ2PR + DLSED + REPARTLIQ
+   DCCLDICE = ZMDICE + CMFDICE         + CMEICE - ICE2PR + DISED + REPARTICE
+
+      CME = CMELIQ + CMEICE (see water vapor equation)
+
+      [PRODPREC] = ICE2PR + LIQ2PR
+
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DCCLDLIQ = ZMDLIQ + CMFDLIQ + MACPDLIQ + MPDLIQ + DPDLFLIQ + SHDLFLIQ
+   DCCLDICE = ZMDICE + CMFDICE + MACPDICE + MPDICE + DPDLFICE + SHDLFICE
+
+      MACPDLIQ = CMELIQ + CLDLIQADJ + CLDLIQLIM  (liquid <--> vapor)
+      MACPDICE =          CLDICEADJ + CLDICELIM  (ice   <--> vapor)
+
+      MPDLIQ = [QCSEDDT] + MPDW2V + MPDW2I + MPDW2P
+      MPDICE = [QISEDDT] + MPDI2V + MPDI2W + MPDI2P
+
+            [QCSEDDT] = QCSEDTEN + QCSEVAP
+            [QISEDDT] = QISEDTEN + QISEVAP
+
+         MPDW2V = - QCSEVAP + QCRESO                                    (liquid <--> vapor)
+         MPDW2I = - MNUCCCO - MNUCCTO - BERGO + MELTO - HOMOO - MSACWIO (liquid <--> ice)
+         MPDW2P = - PRAO - PRCO                                         (liquid --> rain)
+                  - PSACWSO - BERGSO                                    (liquid --> snow)
+
+         MPDI2V = - QISEVAP + QIRESO + CMEIOUT                          (ice <--> vapor)
+         MPDI2W = + MNUCCCO + MNUCCTO + BERGO - MELTO + HOMOO + MSACWIO (ice <--> liquid)
+         MPDI2P = - PRCIO - PRAIO                                       (ice --> snow)
+
+            (MPDW2I = - MPDI2W)
+
+
+---------------------------------------------------------------------------------------
+
+---> CLDLIQ and CLDICE (CLOUD LIQUID AND ICE) BALANCES  explanation
+        (all tendencies kg/kg/s)
+
+
+===> [TECLDLIQ_FV] = TACLDLIQ + PTECLDLIQ + [TECLDLIQ_RES]
+===> [TECLDICE_FV] = TACLDICE + PTECLDICE + [TECLDICE_RES]
+
+
+        [TECLDLIQ_FV] - total CLDLIQ tendency
+        [TECLDICE_FV] - total CLDICE tendency
+
+           [TECLDLIQ_FV(n)] = (CLDLIQAP(n) - CLDLIQAP(n-1))/(t(n) - t(n-1))
+           [TECLDICE_FV(n)] = (CLDICEAP(n) - CLDICEAP(n-1))/(t(n) - t(n-1))
+
+        TACLDLIQ - Cloud liquid transport
+        TACLDICE - Cloud ice transport
+
+____________________________________________________________________________
+|                                                                          |
+|   the transport could be derived by:                                     |
+|                                                                          |
+|   [TACLDLIQ_FV] - Cloud liquid transport                                 |
+|   [TACLDICE_FV] - Cloud ice transport                                    |
+|                                                                          |
+|                                                                          |
+|      [TACLDLIQ_FV(n)] = (CLDLIQBP(n) - CLDLIQAP(n-1))/(t(n) - t(n-1))    |
+|      [TACLDICE_FV(n)] = (CLDICEBP(n) - CLDICEAP(n-1))/(t(n) - t(n-1))    |
+|                                                                          |
+|__________________________________________________________________________|
+
+
+
+       PTECLDLIQ - Total physics tendency  (calculated by [after - before]/dt)
+       PTEICELIQ - Total physics tendency  (calculated by [after - before]/dt)
+
+       [TECLDLIQ_RES] - residual which is not zero because TECLDLIQ and TACLDLIQ
+                        are based on dry mixing ratios and DCCLDLIQ and VDCLDLIQ
+                        are based on moist mixing ratios
+                        (as are all the components of DCCLDLIQ )
+
+           [TECLDLIQ_RES] = [TECLDLIQ_FV] - PTECLDLIQ - TACLDLIQ
+           [TECLDICE_RES] = [TECLDICE_FV] - PTECLDICE - TACLDICE
+
+
+____________________________________________________________________________
+|                                                                          |
+|  Note: if we want to ignore [TECLDLIQ_RES] and [TECLDICE_RES],           |
+|        which should be negligible for practical analysis,                |
+|        and if we do not want to put CLDLIQBP and CLDICEBP on the         |
+|        history files along with CLDLIQAP and CLDICEAP,                   |
+|        the advection can be calculated from                              |
+|           [TACLDICE_FV] = [TECLDLIQ_FV] - PTECLDLIQ                      |
+|           [TACLDICE_FV] = [TECLDICE_FV] - PTEICELIQ                      |
+|                                                                          |
+|__________________________________________________________________________|
+
+
+
+===> PTECLDLIQ = DCCLDLIQ + VDCLDLIQ + DMECLDLIQ
+===> PTECLDICE = DCCLDICE + VDCLDICE + DMECLDICE
+
+   DCCLDLIQ - CLDLIQ tendency from precipitation physics
+                   (calculated by [after - before]/dt)
+   VDCLDLIQ - CLDLIQ tendency from vertical diffusion
+   DMECLDLIQ - Tendency of CLDLIQ for dry mass adjustment
+               (see DMEQ in water vapor equation)
+
+   DCCLDICE - CLDICE tendency from precipitation physics
+                   (calculated by [after - before]/dt)
+   VDCLDICE - CLDICE tendency from vertical diffusion
+   DMECLDICE - Tendency of CLDICE for dry mass adjustment
+               (see DMEQ in water vapor equation)
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+===>       DCCLDLIQ = ZMDLIQ + CMFDLIQ + ZMDLF + CMELIQ - LIQ2PR + DLSED + REPARTLIQ
+===>       DCCLDICE = ZMDICE + CMFDICE         + CMEICE - ICE2PR + DISED + REPARTICE
+
+   ZMDICE - Cloud ice tendency - Zhang-McFarlane convection
+   ZMDLIQ - Cloud liq tendency - Zhang-McFarlane convection
+                (presumably transport? and detrainment)
+
+   CMFDICE - Cloud ice tendency - Hack shallow convection
+   CMFDLIQ - Cloud liq tendency - Hack shallow convection
+                (presumably transport? and detrainment)
+
+   ZMDLF - Detrained liquid water from Zhang+Hack convection
+                (contrary to code comments which say ZM convection)
+
+      sedimentation
+   DLSED - Cloud liquid tendency from sedimentation (includes evaporation)
+   DISED - Cloud ice tendency from sedimentation (includes evaporation)
+
+      liquid <--> vapor
+   CMELIQ - Rate of cond-evap of liquid within the cloud
+
+      ice <--> vapor
+   CMEICE - Rate of cond-evap of ice within the cloud
+
+      liquid <--> ice
+   REPARTLIQ - Cloud ice tendency from cloud ice/liquid repartitioning
+   REPARTICE - Cloud liq tendency from cloud ice/liquid repartitioning
+                  a strong repartioning of all liquid and ice, including
+                  detrained liquid, so that the partition is near the
+                  temperature dependent curve in the original RK
+
+      liquid --> precip
+   LIQ2PR - Rate of conversion of liquid to precip
+
+      ice --> precip
+   ICE2PR - Rate of conversion of ice to precip
+
+      CME = CMELIQ + CMEICE (see water vapor equation)
+      [PRODPREC] = ICE2PR + LIQ2PR
+                 - Rate of conversion of condensate to precip (kg/kg/s)
+                   coming out of stratiform module
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+===>    DCCLDLIQ = ZMDLIQ + CMFDLIQ + MACPDLIQ + MPDLIQ + DPDLFLIQ + SHDLFLIQ
+===>    DCCLDICE = ZMDICE + CMFDICE + MACPDICE + MPDICE + DPDLFICE + SHDLFICE
+
+   ZMDICE - Cloud ice tendency - Zhang-McFarlane convection
+   ZMDLIQ - Cloud liq tendency - Zhang-McFarlane convection
+                (presumably transport since detrainment is below)
+   DPDLFICE - Cloud ice tendency - Zhang-McFarlane convection, detrained ice
+   DPDLFLIQ - Cloud liq tendency - Zhang-McFarlane convection, detrained liquid
+
+   CMFDICE - Cloud ice tendency - UW shallow convection
+   CMFDLIQ - Cloud liq tendency - UW shallow convection
+                (presumably transport since detrainment is below)
+   SHDLFICE - Cloud ice tendency - UW shallow convection, detrained ice
+   SHDLFLIQ - Cloud liq tendency - UW shallow convection, detrained liquid
+
+   MACPDLIQ - tendency of cloud liquid from macrophysics subroutine
+   MACPDICE - tendency of cloud ice    from macrophysics subroutine
+      calculated by
+         (CLDLIQ_after - CLDLIQ_before)/DT
+         (CLDICE_after - CLDICE_before)/DT
+
+   MPDLIQ - tendency of cloud liquid from microphysics subroutine
+   MPDICE - tendency of cloud ice    from microphysics subroutine
+      calculated by
+         (CLDLIQ_after - CLDLIQ_before)/DT
+         (CLDICE_after - CLDICE_before)/DT
+
+
+===>       MACPDLIQ = CMELIQ + CLDLIQADJ + CLDLIQLIM  (liquid <--> vapor)
+===>       MACPDICE =          CLDICEADJ + CLDICELIM  (ice   <--> vapor)
+
+               CMELIQ - see vapor equation
+               CLDLIQADJ -  prevents negative cloud liquid
+                            In layer, if enough vapor present
+                            if liquid < 0, vapor is condensed to make liquid 0
+                            If not enough vapor in that layer, transfer from lower layer
+               CLDICEADJ - prevents negative cloud ice
+                            In layer, if enough vapor present
+                            if ice < 0, vapor is condensed to make ice 0
+                            If not enough vapor in that layer, transfer from lower layer
+                         CLDLIQADJ and CLDICEADJ are local. In the vapor equation CLDVAPADJ
+                         includes these two conversions and any required vertical transfer
+               CLDLIQLIM - see vapor equation
+               CLDICELIM - see vapor equation
+
+
+
+===>       MPDLIQ = [QCSEDDT] + MPDW2V + MPDW2I + MPDW2P
+===>       MPDICE = [QISEDDT] + MPDI2V + MPDI2W + MPDI2P
+
+                [QCSEDDT] - Cloud liquid mixing ratio tendency from sedimentation
+                [QISEDDT] - Cloud ice   mixing ratio tendency from sedimentation
+
+===>                [QCSEDDT] = QCSEDTEN + QCSEVAP
+===>                [QISEDDT] = QISEDTEN + QISEVAP
+
+                       QCSEDTEN - Cloud water mixing ratio tendency from
+                                  sedimentation including evaporation QCSEVAP
+                       QISEDTEN - Cloud ice   mixing ratio tendency from
+                                  sedimentation including evaporation QISEVAP
+
+           MPDW2V - liquid <--> vapor
+           MPDW2I - liquid <--> ice
+           MPDW2P - liquid --> precip
+
+           MPDI2V - ice <--> vapor
+           MPDI2W - ice <--> liquid
+           MPDI2P - ice --> precip
+
+
+===>          MPDW2V = - QCSEVAP + QCRESO                                   
+===>          MPDW2I = - MNUCCCO - MNUCCTO - BERGO + MELTO - HOMOO - MSACWIO
+===>          MPDW2P = - PRAO - PRCO                                        
+===>                   - PSACWSO - BERGSO                                   
+
+===>          MPDI2V = - QISEVAP + QIRESO + CMEIOUT                         
+===>          MPDI2W = + MNUCCCO + MNUCCTO + BERGO - MELTO + HOMOO + MSACWIO
+===>          MPDI2P = - PRCIO - PRAIO                                      
+
+===>             (MPDW2I = - MPDI2W)
+
+
+      liquid <--> vapor
+   QCSEVAP - Rate of evaporation of falling cloud liquid
+   QCRESO  - Residual condensation term for cloud liquid
+             (liquid component of QVRES in vapor equation)
+
+      ice <--> vapor
+   QISEVAP - Rate of sublimation of falling cloud ice
+   QIRESO  - Residual deposition term for cloud ice
+             (ice component of QVRES in vapor equation)
+   CMEIOUT - Rate of deposition/sublimation of cloud ice
+
+      liquid <--> ice
+   MNUCCCO - Immersion freezing of cloud liquid
+   MNUCCTO - contact freezing of cloud liquid
+   BERGO - Conversion of cloud liquid to cloud ice from bergeron
+   MELTO - Melting of cloud ice
+   HOMOO - Homogeneous freezing of cloud liquid
+   MSACWIO - Conversion of cloud liquid from rime-splintering
+
+      liquid --> precip
+   PRCO - Autoconversion of cloud liquid
+   PRAO - Accretion of cloud liquid by rain
+   PSACWSO - Accretion of cloud liquid by snow
+   BERGSO - Conversion of cloud liquid to snow from bergeron
+
+      ice --> precip
+   PRCIO - Autoconversion of cloud ice
+   PRAIO - Accretion of cloud ice by rain ("to snow" in code comment)
+
+
+---------------------------------------------------------------------------------------
+
+
+---> CLDLIQ and CLDICE (CLOUD LIQUID AND ICE) BALANCES  tree
+
+
+TACLDLIQ
+PTECLDLIQ
+   DCCLDLIQ
+      ZMDLIQ
+      CMFDLIQ
+      MACPDLIQ
+         CMELIQ
+         CLDLIQADJ
+         CLDLIQLIM
+      MPDLIQ
+         [QCSEDDT]
+            QCSEDTEN
+            QCSEVAP
+         MPDW2V
+            QCSEVAP
+            QCRESO
+         MPDW2I
+            MNUCCCO
+            MNUCCTO
+            BERGO
+            MELTO
+            HOMOO
+            MSACWIO
+         MPDW2P
+            PRAO
+            PRCO
+            PSACWSO
+            BERGSO
+      DPDLELIQ
+      SHDLFLIQ
+   VDVLDLIQ
+   DMECLDLIQ  should be small, calculate as residual
+CLDLIQAP
+
+
+
+
+TACLDICE
+PTECLDICE
+   DCCLDICE
+      ZMDICE
+      CMFDICE
+      MACPDICE
+         CLDICEADJ
+         CLDICELI
+      MPDICE
+         [QISEDDT]
+            QISEDTEN
+            QISEVAP
+         MPDI2V
+            QISEVAP
+            QIRESO
+            CMEIOUT
+         MPDI2W  {= - MPDW2I)
+            MNUCCCO
+            MNUCCTO
+            BERGO
+            MELTO
+            HOMOO
+            MSACWIO
+         MPDI2P
+            PRCIO
+            PRAIO
+      DPDLEICE
+      SHDLFICE
+   VDVLDICE
+   DMECLDICE  should be small, calculate as residual
+CLDICEAP
+
+
+
+
+---------------------------------------------------------------------------------------
+
+
+---> T BALANCE summary  (all tendencies K/s)
+
+
+[ADIAB4_FV] - adiabatic or dynamical tendency
+
+   [ADIAB4_FV] = [TTEND_FV] - (PTTEND + TFIX)
+
+
+[TTEND_FV] - total T tendency
+                  (not available in FV core, would require saving old T,
+                   must be diagnosed from instantaneous samples)
+
+   [TTEND_FV] = (TAP(n)-TAP(n-1))/(time(n)-time(n-1))
+
+       TAP - T after the parameterizations are calculated (and added to T)
+       (TBP - T before the parameterizations are calculated and
+                after the dynamics, not used in budget)
+
+
+PTTEND - Total physics tendency
+TFIX - Energy fixer (note: TFIX is a constant but output as a 2-d field
+                           since history files do not output constants.)
+                    (a 3-d version [TFIX3] can be derived)
+
+
+PTTEND = DTCOND + QRS + QRL + DTV + TTGWORO
+   DTCOND - Precipitation physics tendency
+   QRS - Solar heating rate
+   QRL - Longwave heating rate
+   DTV - Vertical diffusion tendency
+   TTGWORO - Gravity wave tendency
+
+   [RADD] = QRS + QRL
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DTCOND = [DRYADJDT] + [ZMTOTDT] + [CMFTOTDT] + [PCWDT]
+
+      [ZMTOTDT] = ZMDT + EVAPTZM
+      [CMFTOTDT] = CMFDT + EVAPTCM
+      [PCWDT] = HPROGCLD/CPAIR + HSED/CPAIR
+
+          [EVRNTZM] = EVAPTZM - FZSNTZM - EVSNTZM
+          [EVRNTCM] = EVAPTCM - FZSNTCM - EVSNTCM
+          
+          HPROGCLD = HCME + HEVAP + HFREEZ + HMELT + HREPART
+
+          CPAIR  = 1.00464e3 J/(kg K)
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+   DTCOND = [DRYADJDT] + [ZMTOTDT] + [CMDTOTDT] + MACPDT/CPAIR + MPDT/CPAIR
+
+
+      [ZMTOTDT] = ZMDT + EVAPTZM + ZMMTT + DPDLFT
+      [CMDTOTDT] = CMFDT + SHDLFT
+
+          [EVRNTZM] = EVAPTZM - FZSNTZM - EVSNTZM
+
+
+         [DTCONV] = ZMDT + EVAPTZM + ZMMTT + CMFDT + DPDLFT + SHDLFT
+                    (total change due to convection)
+
+
+      MACPDT =
+               + L_v*CMELIQ + L_v*CLDLIQADJ + L_v*CLDLIQLIM     (liquid <--> vapor)
+                      + (L_v+L_i)*CLDICEADJ + (L_v+L_i)*CLDICELIM   (ice --> vapor)
+
+
+      MPDT =
+             - L_v*QCSEVAP       + L_v*QCRESO             (liquid <--> vapor)
+             - (L_v+L_i)*QISEVAP + (L_v+L_i)*QIRESO + (L_v+L_i)*CMEIOUT
+                                                          (ice <--> vapor)
+             - L_v*[EVAPRAIN]                             (rain --> vapor)
+             - (L_v+L_i)*EVAPSNOW                         (snow --> vapor)
+
+             - L_i*MPDW2I                                 (liquid --> ice)
+             + L_i*(PSACWSO + BERGSO)                     (liquid --> snow)
+
+             + L_i*MNUCCRO            (heterogeneous freezing of rain --> snow)
+             + L_i*PRACSO             (accretion of rain by snow)
+             + MELTSDT                (melting of snow to rain              - W/Kg)
+             + FRZRDT                 (Homogeneous freezing of rain to snow - W/Kg)
+ 
+
+
+                  [NONPHYSDT] = L_v*CLDLIQADJ + (L_v+L_i)*CLDICEADJ
+                              + (L_v+L_i)*CLDICELIM + L_v*QCRESO + (L_v+L_i)*QIRESO
+                         - prevent nonphysical states by making arbitrary corrections,
+                           should always be small compared to the physical terms
+
+
+---------------------------------------------------------------------------------------
+
+
+---> T BALANCE explanation (all tendencies K/s)
+
+   ===> points to an equation in the first section
+
+
+[ADIAB4_FV] - adiabatic or dynamical tendency
+             (cannot partition into horizontal and vertical)
+
+===>    [ADIAB4_FV] = [TTEND_FV] - (PTTEND + TFIX)
+
+
+[TTEND_FV] - total T tendency
+                  (not available in FV core, would require saving old T,
+                   must be diagnosed from instantaneous samples)
+
+===>    [TTEND_FV] = (TAP(n)-TAP(n-1))/(time(n)-time(n-1))
+
+       TAP - T after the parameterizations are calculated (and added to T)
+       (TBP - T before the parameterizations are calculated and
+                after the dynamics, not used in budget)
+
+
+PTTEND - Total physics tendency
+TFIX - Energy fixer - this is intended to fix energy lost by dynamics
+                      but includes an inconsistency introduced in the
+                      parameterizations.  The updated T passed to the
+                      dynamics is from the accumulation of the DELTA T
+                      from each parameterization, not the T from
+                      physics_update which is obtained by inverting
+                      the accumulated, updated dry static energy.
+                      The beginning energy to the fixer is that dry
+                      static energy, and the ending energy is the
+                      dry static energy from the dynamical core.
+                      BUT see also DMEQ in vapor budget for another
+                      possible energy inconsistency.
+                  (note: TFIX is a constant but output as a 2-d field
+                         since history files do not output constants.)
+                  (a 3-d version [TFIX3] can be derived)
+
+
+===> PTTEND = DTCOND + QRS + QRL + DTV + TTGWORO
+        DTCOND - Precipitation physics tendency
+        QRS - Solar heating rate
+        QRL - Longwave heating rate
+        DTV - Vertical diffusion tendency
+        TTGWORO - Gravity wave tendency
+
+        [RADD] = QRS + QRL
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM4 !!!!!
+ !!!!!!!!!!!!!!!!
+
+===> DTCOND = [DRYADJDT] + [ZMTOTDT] + [CMFTOTDT] + [PCWDT]
+
+        DTCOND - calculated via (after - before)/dt
+
+        [DRYADJDT] - dry convective adjustment, there is no history variable
+                     it is applied only on the top three levels and generally
+                     can be ignored (we never missed it: it must be a rare event)
+
+===>    [ZMTOTDT] = ZMDT + EVAPTZM  (total change due to Zhang convection)
+           ZMDT - Zhang moist convection tendency (creating rain only)
+           EVAPTZM - T tendency from snow formation and rain and snow evaporation
+                     of Zhang convective precip
+              FZSNTZM (subset of EVAPTZM) - T tendency from rain freezing to snow
+                                            assocoated with Zhang convective precip
+              EVSNTZM (subset of EVAPTZM) - T tendency from snow melting to rain
+                                            associated with Zhang convective precip
+===>       [EVRNTZM] = EVAPTZM - FZSNTZM - EVSNTZM
+               T tendency from evaporation of rain from Zhang convection
+
+
+===>    [CMFTOTDT] = CMFDT + EVAPTCM  (total change due to shallow convection)
+           CMFDT - shallow moist convection tendency
+           EVAPTCM - T tendency from snow formation and rain and snow evaporation
+                     of shallow convective precip
+              FZSNTCM (subset of EVAPTCM) - T tendency from rain freezing to snow
+                                            assocoated with shallow convective precip
+              EVSNTCM (subset of EVAPTCM) - T tendency from snow melting to rain
+                                            associated with shallow convective precip
+===>       [EVRNTCM] = EVAPTCM - FZSNTCM - EVSNTCM
+               T tendency from evaporation of rain from shallow convection
+
+===>    [PCWDT] = HPROGCLD/CPAIR + HSED/CPAIR
+
+            HPROGCLD - energy (W/kg) from prognostic cloud water (stratiform)
+            HSED - energy (W/kg) from evaporation of sedimentaton
+
+          
+===>    HPROGCLD = HCME + HEVAP + HFREEZ + HMELT + HREPART
+
+            HCME - energy (W/kg) due to conversion between vapor and condensate
+                   (both liquid and ice) within the stratiform cloud
+                   (+ for vapor to condensate)
+                   corresponds to CME in DCQ (+ for vapor to condensate)
+            HEVAP - energy (W/kg) due to evaporation of falling precip (i.e. the stuff
+                    created by CME)
+                    equivalent to EVAPPREC, there is no heating term at the moment
+                    in the model equivalent to EVAPSNOW - we can add it
+            HMELT - energy (W/kg) due to melting of cloud ice (no effect on vapor)
+            HFREEZ - energy (W/kg) due to freezing of cloud water (no effect on vapor)
+            HREPART - energy (W/kg) according to addfld call 'Heating from cloud
+                      ice/liquid repartitioning' but it is separate from HMELT and HFREEZ
+
+                   CPAIR  = 1.00464e3 J/(kg K)
+
+
+ !!!!!!!!!!!!!!!!
+ !!!!! CAM5 !!!!!
+ !!!!!!!!!!!!!!!!
+
+===>    DTCOND = [DRYADJDT] + [ZMTOTDT] + [CMDTOTDT] + MACPDT/CPAIR + MPDT/CPAIR
+
+        DTCOND - calculated via (after - before)/dt
+
+        [DRYADJDT] - dry convective adjustment, there is no history variable
+                     it is applied only on the top three levels and generally
+                     can be ignored (we never missed it: it must be a rare event)
+
+===>    [CMDTOTDT] = CMFDT + SHDLFT
+           CMFDT - shallow moist convection tendency
+           SPDLFT - shallow convection detrainment, phase change (liquid --> ice) (K/s)
+
+===>    [ZMTOTDT] = ZMDT + EVAPTZM + ZMMTT + DPDLFT (total change due to Zhang convection)
+           ZMDT - Zhang moist convection tendency (creating rain only)
+           ZMMTT - heating from convective momentum transport
+           EVAPTZM - T tendency from snow formation and rain and snow evaporation
+                     of Zhang convective precip
+              FZSNTZM (subset of EVAPTZM) - T tendency from rain freezing to snow
+                                            assocoated with Zhang convective precip
+              EVSNTZM (subset of EVAPTZM) - T tendency from snow melting to rain
+                                            associated with Zhang convective precip
+           DPDLFT - Zhang convection detrainment, phase change (liquid --> ice) (K/s)
+
+===>       [EVRNTZM] = EVAPTZM - FZSNTZM - EVSNTZM
+               T tendency from evaporation of rain from Zhang convection
+
+
+===>          [DTCONV] = ZMDT + EVAPTZM + CMFDT + DPDLFT + SHDLFT
+                  (total change due to convection)
+
+
+
+                MACPDT and MPDT are not calculated via after and before differences,
+                they accumulate in the macrophysics and microphysics routines
+
+
+===>    MACPDT =
+                 + L_v*CMELIQ + L_v*CLDLIQADJ + L_v*CLDLIQLIM     (liquid <--> vapor)
+                        + (L_v+L_i)*CLDICEADJ + (L_v+L_i)*CLDICELIM   (ice --> vapor)
+
+                              + L_i*CLDICEDET                         (ice --> liquid)
+
+
+             CMELIQ    - Rate of cond-evap of liquid within the cloud
+             CLDLIQADJ - prevents negative cloud liquid
+                            In layer, if enough vapor present
+                            if liquid < 0, vapor is condensed to make liquid 0
+                            If not enough vapor in that layer, transfer from lower layer
+                            Any vertical transfer is in CLDVAPADJ in the vapor equation
+                            and is not included in CLDLIQADJ
+             CLDLIQLIM - adjustment tendency to prevent cloud liquid from
+                            being too large. If liquid > ???, excess converted to vapor
+             CLDICEADJ - prevents negative cloud ice
+                            In layer, if enough vapor present
+                            if ice < 0, vapor is condensed to make ice 0
+                            If not enough vapor in that layer, transfer from lower layer
+                            Any vertical transfer is in CLDVAPADJ in the vapor equation
+                            and is not included in CLDLIQADJ
+             CLDICELIM - prevent inconsistent cloud ice and ice cloud fraction
+                            If ice cloud fraction is 0, but cloud ice is positive,
+                            cloud ice converted to vapor
+
+
+===>    MPDT =
+               - L_v*QCSEVAP       + L_v*QCRESO             (liquid <--> vapor)
+               - (L_v+L_i)*QISEVAP + (L_v+L_i)*QIRESO + (L_v+L_i)*CMEIOUT
+                                                            (ice <--> vapor)
+               - L_v*[EVAPRAIN]                             (rain --> vapor)
+               - (L_v+L_i)*EVAPSNOW                         (snow --> vapor)
+
+               - L_i*MPDW2I                                 (liquid --> ice)
+               + L_i*(PSACWSO + BERGSO)                     (liquid --> snow)
+
+               + L_i*MNUCCRO                                (rain --> snow)
+               + L_i*PRACSO                                 (rain --> snow)
+               + MELTSDT                                    (snow --> rain)
+               + FRZRDT                                     (rain --> snow)
+
+
+                  QCSEVAP - Rate of evaporation of falling cloud liquid 
+                  QISEVAP - Rate of sublimation of falling cloud ice   
+                  QCRESO  -  Residual condensation term for cloud liquid
+                  QIRESO  - Residual deposition term for cloud ice
+                  CMEIOUT - Rate of deposition/sublimation of cloud ice
+                  EVAPSNOW - Rate of evaporation of falling snow          
+                  [EVAPRAIN] = EVAPPREC - EVAPSNOW
+
+                  MPDW2I  - liquid <--> ice
+                     MPDW2I = - MNUCCCO - MNUCCTO - BERGO + MELTO - HOMOO - MSACWIO
+                        MNUCCCO - Immersion freezing of cloud liquid
+                        MNUCCTO - contact freezing of cloud liquid
+                        BERGO - Conversion of cloud liquid to cloud ice from bergeron
+                        MELTO - Melting of cloud ice
+                        HOMOO - Homogeneous freezing of cloud liquid
+                        MSACWIO - Conversion of cloud liquid from rime-splintering
+
+                  PSACWSO - Accretion of cloud liquid by snow
+                  BERGSO  - Conversion of cloud liquid to snow from bergeron
+
+                  MNUCCRO - heterogeneous freezing of rain to snow
+                  PRACSO  - accretion of rain by snow
+                  MELTSDT - melting of snow to rain (W/Kg)
+                  FRZRDT  - Homogeneous freezing of rain to snow (W/Kg)
+
+
+
+
+                  [NONPHYSDT] = L_v*CLDLIQADJ + (L_v+L_i)*CLDICEADJ
+                              + (L_v+L_i)*CLDICELIM + L_v*QCRESO + (L_v+L_i)*QIRESO
+                         - prevent nonphysical states by making arbitrary corrections,
+                           should always be small compared to the physical terms
+
+
+
+---------------------------------------------------------------------------------------
+
+---> T BALANCE tree
+
+
+TAP
+TFIX
+PTTEND
+   DTCOND
+      [DRYADJDT]
+      [ZMTOTDT]
+         ZMDT
+         EVAPTZM
+            FZSNTZM
+            EVSNTZM
+            [EVRNTZM]
+         ZMMTT
+         DPDLFT
+      [CMFTOTDT]
+         CMFDT
+         SHDLFT
+      MACPDT
+         CMELIQ
+         [NONPHYSDT]
+            CLDLIQADJ
+            CLDLIQLIM
+            CLDICEADJ
+            CLDICELIM
+            CLDICEDET
+      MPDT  (following are all on 5th level CLDLIQ and CLDICE  and in MPDQ)
+         QCSEVAP
+         QCRESO
+         QISEVAP
+         QIRESO
+         CMEIOUT
+        [EVAPRAIN]
+            EVAPPREC
+            EVAPSNOW
+         EVAPSNOW
+         MPDW2I   (akso in 4th level CLDLIQ  (= -MPDI2W in CLDICE))
+         PSACWSO  (akso in 5th level CLDLIQ)
+         BERGSO   (akso in 5th level CLDLIQ)
+         (following are rain-snow conversion, only in T budget)
+         (following are included with the 5th level CLDLIQ CLDICE budget terms)
+         MNUCCRO
+         PRACSO
+         MELTSDT
+         FRZRDT
+   QRS
+   QRL
+   DTV
+   TTGWORO
+
+
+      [DTCONV] = [ZMTOTDT] + [CMFTOTDT]
+               = ZMDT + EVAPTZM + ZMMTT + DPDLFT + CMFDT + SHDLFT
+
+-------------
+
+
+
+
+

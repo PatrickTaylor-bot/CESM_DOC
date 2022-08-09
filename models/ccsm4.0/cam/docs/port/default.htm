@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Port Validation for CAM</title>
+
+<link rel="stylesheet" type="text/css" 
+href="http://www.cesm.ucar.edu/models/atm-cam/port/stylesheet.css">
+
+</head>
+
+<body>
+
+<h1>Port Validation for CAM</h1>
+
+<h3>Introduction</h3>
+
+<p>Below we outline an inexpensive procedure based on a <a
+href="pergro-test.html">perturbation
+growth test</a> that can establish port validity with reasonable
+confidence.  While it is highly likely that a successful perturbation
+growth test indicates a valid port, the ultimate assurance that ported code
+is running correctly comes from running a full climate simulation and
+comparing it to a control simulation produced by the trusted model.  For
+that purpose we provide the <a
+href="../../../model_esg/default.htm">climatology
+files</a> from CAM control runs, and <a
+href="https://svn-ccsm-release.cgd.ucar.edu/model_diagnostics/atm/cam/">diagnostic
+tools</a> to use for comparing your model run with the CAM controls.
+</p>
+<p>Although the results of the perturbation growth test do not provide
+definitive port validity, we find the test to be extremely useful because
+it fails reliably, indicating that there is a problem with the port that
+needs to be fixed before incurring the expense of a full climate
+simulation.
+</p>
+
+<h3>Perturbation simulation controls</h3>
+
+<p>Each model configuration listed below is linked to a tar file that
+contains:</p>
+<ul>
+<li>the history file from the control run containing the T and PS fields
+for each timestep,
+</li>
+<li>a text file (produced by <code>cprncdf</code>) containing the RMS
+differences between a perturbation run and the control run.
+</li>
+</ul>
+
+<p><a href="cam40_f1.9ph_ibm.tar.gz">CAM-4.0, Finite-Volume dycore, 1.9x2.5-L26,
+IBM</a>. &nbsp;&nbsp; [<a href="cam40_f1.9ph_ibm.txt">details</a>] <br>
+</p>
+
+<h3>Example: Validate port of CAM-4.0 to a Linux cluster</h3>
+
+<p>The example below assumes that the validation will be done for the
+Finite-Volume dycore at 1.9x2.5-L26 resolution, and that the control simulation from
+the NCAR run has been downloaded.
+</p>
+
+<ol>
+
+<li><span class="title">Configure CAM - </span> 
+To build CAM for perturbation growth testing the configure command
+<em>must</em> be invoked with the <code>-pergro</code> option.  The default dycore/resolution 
+is Finite-Volume, 1.9x2.5, but it can be explicitly set for clarity.  Also, suppose 
+the Linux cluster being evaluated has the Lahey Fortran compiler installed.  
+Since PGI compilers are the default assumed in the CAM Makefile the compiler must 
+also be explicitly declared (<code>-fc lf95</code>).  And finally, the default parallelization
+on Linux platforms is none (i.e., serial).  We wish to use MPI and this must also be
+explicitly specified with the number of mpi tasks being used, in this example we used 8 (<code>-ntasks 8</code>).
+<br><pre>
+% configure -dyn fv -hgrid 1.9x2.5 -fc lf95 -ntasks 8 -pergro
+</pre>
+<p><em>NOTE:</em> This <code>configure</code> command assumes that the
+netCDF and MPI include/library directories are specified in
+your environment.  If not then add the appropriate locations to the
+<code>configure</code> command-line, or set the locations using the
+environment variables.
+</p>
+</li>
+
+<li><span class="title">Run CAM - </span>
+The namelist for a two day run with no perturbation applied to the initial
+temperature field is set up as follows:
+<br><pre>
+% build-namelist -s -case cam4.0_port -runtype startup \
+ -namelist "&camexp stop_option='ndays', stop_n=2 nhtfrq=1 ndens=1 \
+   mfilt=97 hfilename_spec='h%t.nc' empty_htapes=.true. \
+   fincl1='T:I','PS:I' aqua_planet=.true. /"
+</pre>
+<p>This specifies a two-day initial run, in "aqua-planet" mode, with real*8
+precision output of just the T and PS fields at every timestep.  Additional
+variables set for convenience specify writing history output every timestep, 
+writing all timesteps to one output file, use 64-bit NetCDF format for output, 
+and renaming the history file to 'h0.nc'.  Note
+that output of the PS field is required for computing the difference
+statistic which is a mass weighted RMS value.
+</p>
+</li>
+
+<li><span class="title">Compute RMS temperature differences - </span>
+The temperature difference of interest is between the run just completed
+(in file <code>h0.nc</code>), and the downloaded control run (in file
+<code>f1.9ph_ibm.nc</code>).  Using the perl script <a
+href="pergro-utils.tar.gz"><code>cprncdf</code></a> this difference will be
+calculated for each timesample in the file with the command:
+<br><pre>
+% cprncdf f1.9ph_ibm.nc h0.nc > RMST_f1.9_cmp_ibm
+</pre>
+<p>Note that when <code>cprncdf</code> is invoked this way it will run
+<code>cprnc</code> on the history files before striping out the RMS T
+values.  So the <code>cprnc</code> utility must already be built and in
+your path.  <code>cprnc</code> comes with the CAM
+distribution (in the <code>models/atm/cam/tools/cprnc</code> directory).
+</p>
+</li>
+
+<li><span class="title">Plot RMS temperature differences - </span>
+
+Finally we need to plot the difference growth curve produced in the
+previous step (in file <code>RMST_f1.9_cmp_ibm</code>) against the
+perturbation growth curve for the control run (downloaded with the control
+history file, in file <code>RMST_f1.9ph_ibm_aqpgro</code>).  This can be
+done with the perl script <a
+href="pergro-utils.tar.gz"><code>cprncplt</code></a> via the following
+command:
+<br><pre>
+% cprncplt -b -t -pltitle "cam4.0, FV-1.9x2.5, port validation" \
+  -l "perturbation: cam4.0(ibm)","difference: cam4.0(ibm) - cam4.0(pc/lf95)" \
+  RMST_f1.9ph_ibm_aqpgro RMST_f1.9_cmp_ibm
+</pre>
+<p>The script <code>cprncplt</code> assumes that the <a
+href="http://yorick.sourceforge.net/"><code>yorick</code></a>
+utility is installed and in your path.  The arguments tell the script to
+run in batch mode (<code>-b</code>), plot time in days rather than timestep
+number (<code>-t</code>, this option assumes there is two days worth of
+data in the file), add a title (<code>-pltitle
+"string"</code>), and add line legends (<code>-l "line1","line2"</code>).
+In batch mode the plot output is written to the postscript file
+<code>pertGrowth.ps</code>.  Here is the plot from a linux cluster at NCAR:
+</p>

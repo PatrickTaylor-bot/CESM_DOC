@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>User's Guide to the Community Atmosphere Model CAM-4.0</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Acknowledgments"
+HREF="f11.html"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>User's Guide to the Community Atmosphere Model CAM-4.0</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN5"
+></A
+>Brian Eaton</H3
+><DIV
+CLASS="affiliation"
+><SPAN
+CLASS="orgname"
+> NCAR <BR></SPAN
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="f11.html"
+>Acknowledgments</A
+></DT
+><DT
+>1. <A
+HREF="c16.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c16.html#help"
+>Getting Help -- Other User Resources</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c16.html#cam_homepage"
+>The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Web Page</A
+></DT
+><DT
+><A
+HREF="c16.html#cam_bb"
+>The <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Bulletin Board</A
+></DT
+><DT
+><A
+HREF="c16.html#cam_bugs"
+>Reporting bugs</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>2. <A
+HREF="c107.html"
+>Building and Running <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c107.html#interactive_session"
+>Sample Interactive Session</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c107.html#config_serial"
+>Configuring <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> for serial execution</A
+></DT
+><DT
+><A
+HREF="c107.html#config_para"
+>Configuring <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> for parallel execution</A
+></DT
+><DT
+><A
+HREF="c107.html#build"
+>Building <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+></A
+></DT
+><DT
+><A
+HREF="c107.html#bldnl_default"
+>Building the Namelist</A
+></DT
+><DT
+><A
+HREF="c107.html#acquire_inputdata"
+>Acquiring Input Datasets</A
+></DT
+><DT
+><A
+HREF="c107.html#run_cam"
+>Running CAM</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x464.html"
+>Sample Run Scripts</A
+></DT
+><DT
+><A
+HREF="x467.html"
+>Examples</A
+></DT
+><DT
+><A
+HREF="x472.html"
+>Running <ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> via the <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> scripts</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="a479.html"
+>The <B
+CLASS="command"
+>configure</B
+> utility</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a479.html#config_opts"
+>Options to <B
+CLASS="command"
+>configure</B
+></A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a479.html#config_cam"
+>CAM configuration</A
+></DT
+><DT
+><A
+HREF="a479.html#config_scam"
+>SCAM configuration</A
+></DT
+><DT
+><A
+HREF="a479.html#config_parallel"
+>CAM parallelization</A
+></DT
+><DT
+><A
+HREF="a479.html#config_cice"
+>CICE decomposition</A
+></DT
+><DT
+><A
+HREF="a479.html#config_general"
+>General options</A
+></DT
+><DT
+><A
+HREF="a479.html#config_surface_comp"
+>Surface components</A
+></DT
+><DT
+><A
+HREF="a479.html#config_standalone_bld"
+>CAM standalone build</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1021.html"
+>Environment variables recognized by <B
+CLASS="command"
+>configure</B
+></A
+></DT
+></DL
+></DD
+><DT
+>B. <A
+HREF="a1072.html"
+>The <B
+CLASS="command"
+>build-namelist</B
+> utility</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a1072.html#bldnl_opts"
+>Options to <B
+CLASS="command"
+>build-namelist</B
+></A
+></DT
+><DT
+><A
+HREF="x1236.html"
+>Environment variables used by <B
+CLASS="command"
+>build-namelist</B
+></A
+></DT
+></DL
+></DD
+><DT
+>C. <A
+HREF="a1263.html"
+><ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Namelist Variables</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="f11.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Acknowledgments</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

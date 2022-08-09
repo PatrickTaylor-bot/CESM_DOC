@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 2. Building and Running CAM</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="prev" href="ch01s02.html" title="1.2. Getting Help -- Other User Resources" /><link rel="next" href="ch02s02.html" title="2.2. Sample Run Scripts" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 2. Building and Running <acronym class="acronym">CAM</acronym></th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="bld_run_cam"></a>Chapter 2. Building and Running <acronym class="acronym">CAM</acronym></h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="ch02.html#interactive_session">2.1. Sample Interactive Session</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch02.html#config_serial">2.1.1. Configuring <acronym class="acronym">CAM</acronym> for serial execution</a></span></dt><dt><span class="sect2"><a href="ch02.html#config_fc">2.1.2. Specifying the <acronym class="acronym">Fortran</acronym> compiler</a></span></dt><dt><span class="sect2"><a href="ch02.html#compiler_wrapper">2.1.3. Dealing with compiler wrappers</a></span></dt><dt><span class="sect2"><a href="ch02.html#config_para">2.1.4. Configuring <acronym class="acronym">CAM</acronym> for parallel execution</a></span></dt><dt><span class="sect2"><a href="ch02.html#build">2.1.5. Building <acronym class="acronym">CAM</acronym></a></span></dt><dt><span class="sect2"><a href="ch02.html#bldnl_default">2.1.6. Building the Namelist</a></span></dt><dt><span class="sect2"><a href="ch02.html#acquire_inputdata">2.1.7. Acquiring Input Datasets</a></span></dt><dt><span class="sect2"><a href="ch02.html#run_cam">2.1.8. Running CAM</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch02s02.html">2.2. Sample Run Scripts</a></span></dt></dl></div><p>
+This chapter describes how to build and run <acronym class="acronym">CAM</acronym> in its standalone
+configuration.  We do not provide scripts that are setup to work out of the
+box on a particular set of platforms.  If you would like this level of
+support then consider running <acronym class="acronym">CAM</acronym> from the <acronym class="acronym">CESM</acronym> scripts (see
+<a class="ulink" href="../../../cesm/doc/usersguide/book1.html" target="_top">
+<acronym class="acronym">CESM</acronym>-1.2 User's Guide</a>).  We do however provide some examples of
+simple run scripts which should provide a useful starting point for writing
+your own scripts (see <a class="xref" href="ch02s02.html" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a>).
+</p><p>
+In order to build and run <acronym class="acronym">CAM</acronym> the following are required:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>The source tree.  <acronym class="acronym">CAM</acronym>-5.3
+    is distributed with <acronym class="acronym">CESM</acronym>-1.2.  To obtain the source code go to
+    the section "Acquiring the Code" on the 
+    <a class="ulink" href="../../../index.html" target="_top"><acronym class="acronym">CESM</acronym>
+    Home Page</a>.  When we refer to the root of the <acronym class="acronym">CAM</acronym> source tree,
+    this is the same directory as the root of the <acronym class="acronym">CESM</acronym> source tree.  This
+    directory is referred to throughout this document as $<code class="envar">CAM_ROOT</code>.
+</p></li><li class="listitem"><p><acronym class="acronym">Perl</acronym> (version 5.4 or later).
+</p></li><li class="listitem"><p>A <acronym class="acronym">GNU</acronym> version of the <span class="command"><strong>make</strong></span> utility.
+</p></li><li class="listitem"><p><acronym class="acronym">Fortran</acronym> and C compilers.  The <acronym class="acronym">Fortran</acronym> compiler needs to
+    support at least the <acronym class="acronym">Fortran</acronym>95 standard.
+</p></li><li class="listitem"><p>A <acronym class="acronym">NetCDF</acronym> library (version 4.1.3 or later) that has the
+    <acronym class="acronym">Fortran</acronym> APIs built using the same <acronym class="acronym">Fortran</acronym> compiler that is used
+    to build the rest of the <acronym class="acronym">CAM</acronym> code.  This library is used extensively
+    by <acronym class="acronym">CAM</acronym> both to read input datasets and to write the output datasets.
+    The <acronym class="acronym">NetCDF</acronym> source code is available
+    <a class="ulink" href="http://www.unidata.ucar.edu/downloads/netcdf/" target="_top">here</a>.
+    We have updated the required <acronym class="acronym">NetCDF</acronym> library version from 3.6 to 4.1.3
+    due to a recently discovered bug which affects all previous versions of
+    the <acronym class="acronym">NetCDF</acronym> library.  The bug only occurs in special circumstances
+    that are not that easy to replicate, however the result is that corrupt
+    files are silently created.  A more complete description of the bug is
+    <a class="ulink" href="https://www.unidata.ucar.edu/jira/browse/NCF-22" target="_top">here</a>.
+</p></li><li class="listitem"><p>Input datasets.  The required datasets depend on the <acronym class="acronym">CAM</acronym>
+    configuration.  Determining which datasets are required for any
+    configuration is discussed in <a class="xref" href="ch02.html#bldnl_default" title="2.1.6. Building the Namelist">Section 2.1.6, “Building the Namelist”</a>.
+    Acquiring those datasets is discussed in <a class="xref" href="ch02.html#acquire_inputdata" title="2.1.7. Acquiring Input Datasets">Section 2.1.7, “Acquiring Input Datasets”</a>.
+</p></li></ul></div><p>
+</p><p>
+To build <acronym class="acronym">CAM</acronym> for SPMD execution it will also be necessary to have an
+<acronym class="acronym">MPI</acronym> library (version 1 or later).  As with the <acronym class="acronym">NetCDF</acronym> library, the
+<acronym class="acronym">Fortran</acronym> API should be build using the same <acronym class="acronym">Fortran</acronym> compiler that is
+used to build the rest of <acronym class="acronym">CAM</acronym>.  Otherwise linking to the library may
+encounter difficulties, usually due to inconsistencies in <acronym class="acronym">Fortran</acronym> name
+mangling.
+</p><p>
+Building and running <acronym class="acronym">CAM</acronym> takes place in the following steps:
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Configure model</p></li><li class="listitem"><p>Build model</p></li><li class="listitem"><p>Build namelist</p></li><li class="listitem"><p>Execute model</p></li></ol></div><p><strong>Configure model. </strong>
+This step is accomplished by running
+the <span class="command"><strong>configure</strong></span> utility to set the compile-time parameters such as the
+dynamical core (Eulerian Spectral, Semi-Lagrangian Spectral, Finite Volume,
+or Spectral Element), horizontal grid resolution, and the type of parallelism to
+employ (shared-memory and/or distributed memory).  The <span class="command"><strong>configure</strong></span> utility
+is discussed in <a class="xref" href="apa.html" title="Appendix A. The configure utility">Appendix A, <em>The <span class="command"><strong>configure</strong></span> utility</em></a>.
+</p><p><strong>Build model. </strong>
+This step includes compiling and linking
+the executable using the <acronym class="acronym">GNU</acronym> make command (<span class="command"><strong>gmake</strong></span>). <span class="command"><strong>configure</strong></span> creates
+a Makefile in the directory where the build is to take place. The user then
+need only change to this directory and execute the <span class="command"><strong>gmake</strong></span> command.
+</p><p><strong>Build namelist. </strong>
+This step is accomplished by running the
+<span class="command"><strong>build-namelist</strong></span> utility, which supports a variety of options to control the
+run-time behavior of the model.  Any namelist variable recognized by <acronym class="acronym">CAM</acronym>
+can be changed by the user via the <span class="command"><strong>build-namelist</strong></span> interface.  There is also a high
+level "use case" functionality which makes it easy for the user to specify
+a consistent set of namelist variable settings for running particular types
+of experiments.  The <span class="command"><strong>build-namelist</strong></span> utility is discussed in
+<a class="xref" href="apb.html" title="Appendix B. The build-namelist utility">Appendix B, <em>The <span class="command"><strong>build-namelist</strong></span> utility</em></a>.
+</p><p><strong>Execute model. </strong>
+This step includes the actual invocation
+of the executable. When running using distributed memory parallelism this
+step requires knowledge of how your machine invokes (or "launches") <acronym class="acronym">MPI</acronym> executables. When
+running with shared-memory parallelism (using <acronym class="acronym">OpenMP</acronym>) you may also set the number of
+<acronym class="acronym">OpenMP</acronym> threads.  On most HPC platforms access to the compute resource is
+through a batch queue system.  The sample run scripts discussed in
+<a class="xref" href="ch02s02.html" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a> show how to set the batch queue resources on
+several HPC platforms.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="interactive_session"></a>2.1. Sample Interactive Session</h2></div></div></div><p>
+The following sections present an interactive <acronym class="acronym">C</acronym> shell session to build and
+run a default version of <acronym class="acronym">CAM</acronym>.  Most often these steps will be
+encapsulated in shell scripts.  An important advantage of using a script is
+that it acts to document the run you've done.  Knowing the source code
+tree, and the <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> commands provides all the information
+needed to replicate a run.
+</p><p>
+For the interactive session the shell variable <code class="filename">camcfg</code> is set to the
+directory in the source tree that contains the <acronym class="acronym">CAM</acronym> <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span>
+utilities ($<code class="envar">CAM_ROOT</code>/models/atm/cam/bld).
+</p><pre class="screen">
+Much of the example code in this document is set off in sections like this.
+Many examples refer to files in the distribution source tree using
+filepaths that are relative to distribution root directory, which we
+denote, using a <acronym class="acronym">UNIX</acronym> shell syntax, by $CAM_ROOT.  The notation indicates
+that <code class="envar">CAM_ROOT</code> is a shell variable that contains the filepath.  This could
+just as accurately be referred to as $CCSMROOT since the root directory of
+the <acronym class="acronym">CESM</acronym> distribution is the same as the root of the <acronym class="acronym">CAM</acronym> distribution
+which is contained within it.
+</pre><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_serial"></a>2.1.1. Configuring <acronym class="acronym">CAM</acronym> for serial execution</h3></div></div></div><p>
+We start by changing into the directory in which the CAM executable will be
+built, and then setting the environment variables <code class="envar">INC_NETCDF</code> and <code class="envar">LIB_NETCDF</code> which
+specify the locations of the <acronym class="acronym">NetCDF</acronym> include files and library.  This
+information is required by <span class="command"><strong>configure</strong></span> in order for it to produce the
+<code class="filename">Makefile</code>.  The <acronym class="acronym">NetCDF</acronym> library is require by all <acronym class="acronym">CAM</acronym> builds.  The
+directories given are just examples; the locations of the <acronym class="acronym">NetCDF</acronym> include
+files and library are system dependent.  The information provided by these
+environment variables could alternatively be provided via the commandline
+arguments <strong class="userinput"><code>-nc_inc</code></strong> and <strong class="userinput"><code>-nc_lib</code></strong>.
+</p><p><strong>NOTE: </strong>
+A common problem is to encounter build failures due to specifying a
+<acronym class="acronym">NetCDF</acronym> library which was built with a different <acronym class="acronym">Fortran</acronym> compiler than
+the one used to build <acronym class="acronym">CAM</acronym>.  Consult your system's documentation (or some
+other knowledgeable source) to find the location of the <acronym class="acronym">NetCDF</acronym> library
+which was built with the <acronym class="acronym">Fortran</acronym> compiler you intend to use.
+</p><pre class="screen">
+% cd /work/user/cam_test/bld
+% setenv INC_NETCDF /usr/local/include
+% setenv LIB_NETCDF /usr/local/lib
+</pre><p>
+Next we issue the <span class="command"><strong>configure</strong></span> command (see the example just below).  The argument
+<strong class="userinput"><code>-dyn fv</code></strong> specifies using the FV dynamical core
+which is the default for <acronym class="acronym">CAM</acronym>5, but we recommend always adding the
+dynamical core (dycore for short) argument to <span class="command"><strong>configure</strong></span> commands for clarity.  The argument 
+<strong class="userinput"><code>-hgrid 10x15</code></strong> specifies the horizontal grid.  This is
+the coarsest grid available for the FV dycore in <acronym class="acronym">CAM</acronym> and is often useful
+for testing purposes.
+</p><p>
+We recommend using the <strong class="userinput"><code>-test</code></strong> option the first time
+CAM is built on any machine.  This will check that the environment is
+properly set up so that the Fortran compiler works and can successfully
+link to the <acronym class="acronym">NetCDF</acronym> and <acronym class="acronym">MPI</acronym> (if SPMD is enabled) libraries.
+Furthermore, if the configuration is for serial execution, then the tests
+will include both build and run phases which may be useful in exposing run
+time problems that don't show up during the build, for example when shared
+libraries are linked dynamically.  If any tests fail then it is useful to
+rerun the <span class="command"><strong>configure</strong></span> command and add the <strong class="userinput"><code>-v</code></strong> option
+which will produce verbose output of all aspects of the configuration
+process including the tests.  If the configuration is for an SPMD build,
+then no attempt to run the tests will be made.  Typically <acronym class="acronym">MPI</acronym> runs must
+be submitted to a batch queue and are not enabled from interactive
+sessions.  Also the method of launching an <acronym class="acronym">MPI</acronym> job is system dependent.
+But the build and static linking will still be tested.
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -nospmd -nosmp -test 
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -nx 24 -ny 19 -bsizex 6 -bsizey 19 -maxblocks 4 -decomptype blkrobin \
+  -cache config_cache_cice.xml -cachedir /work/user/cam_test/bld
+CICE configure done.
+MCT configure is done.
+creating /work/user/cam_test/bld/Filepath
+creating /work/user/cam_test/bld/Makefile
+creating /work/user/cam_test/bld/config.h
+creating /work/user/cam_test/bld/config_cache.xml
+Looking for a valid GNU make... using gmake
+Testing for Fortran 90 compatible compiler... using pgf95
+Test linking to NetCDF library... ok
+CAM configure done.
+</pre><p>
+The first line of output from the <span class="command"><strong>configure</strong></span> command is an echo of the
+system command that <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> issues to invoke the <acronym class="acronym">CICE</acronym>
+<span class="command"><strong>configure</strong></span> utility.  <acronym class="acronym">CICE</acronym>'s <span class="command"><strong>configure</strong></span> is responsible for setting the
+values of the CPP macros that are needed to build the <acronym class="acronym">CICE</acronym> code.
+</p><p>
+After the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span> is complete the <acronym class="acronym">MCT</acronym> <span class="command"><strong>configure</strong></span> script is
+executed to create the Makefile for building <acronym class="acronym">MCT</acronym> as a separate library.
+There is a status line output to indicate success of that process.
+</p><p>
+The next four lines of output inform the user of the files being created
+by <span class="command"><strong>configure</strong></span>.  All these files except for the cache file are required to
+be in the CAM build directory, so it is generally easiest to be in that
+directory when <span class="command"><strong>configure</strong></span> is invoked.
+</p><p>
+The output from the <strong class="userinput"><code>-test</code></strong> option tells us that
+<span class="command"><strong>gmake</strong></span> is a GNU Make on this machine; that the <acronym class="acronym">Fortran</acronym> compiler
+is <span class="command"><strong>pgf95</strong></span>; and that code compiled with the <acronym class="acronym">Fortran</acronym>
+compiler can be successfully linked to the <acronym class="acronym">NetCDF</acronym> library.  The <acronym class="acronym">CAM</acronym>
+<span class="command"><strong>configure</strong></span> script is the place where the default compilers are specified.  On
+<acronym class="acronym">Linux</acronym> systems the default is <span class="command"><strong>pgf95</strong></span>.  Finally, since
+this is a serial configuration no test for linking to the <acronym class="acronym">MPI</acronym> library was
+done.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_fc"></a>2.1.2. Specifying the <acronym class="acronym">Fortran</acronym> compiler</h3></div></div></div><p>
+In the previous section the <span class="command"><strong>configure</strong></span> command was issued without
+specifying which <acronym class="acronym">Fortran</acronym> compiler to use.  For that to work we were
+depending on the <acronym class="acronym">CAM</acronym> <span class="command"><strong>configure</strong></span> script to select a default compiler.  One of the
+differences between the <acronym class="acronym">CAM</acronym> standalone build and a build using the <acronym class="acronym">CESM</acronym>
+scripts is that <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> provides defaults
+based on the operating system name (as determined by the <acronym class="acronym">Perl</acronym> internal
+variable <code class="envar">$OSNAME</code>), while the <acronym class="acronym">CESM</acronym> scripts require the user
+to specify a specific machine (and compiler if the machine supports more than one)
+as an argument to the <span class="command"><strong>create_newcase</strong></span> command.
+</p><p>
+The <acronym class="acronym">CAM</acronym> makefile currently recognizes the following operating systems
+and compilers.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">AIX</span></dt><dd><p>
+xlf95_r, mpxlf95_r
+</p></dd><dt><span class="term">Linux</span></dt><dd><p>pgf95 (this is the default)</p><p>lf95</p><p>ifort</p><p>gfortran (has had minimal testing)</p><p>pathf90 (has had minimal testing)</p></dd><dt><span class="term">Darwin</span></dt><dd><p>
+xlf95_r, mpxlf95_r, ifort
+</p></dd><dt><span class="term">BGL</span></dt><dd><p>
+blrts_xlf95
+</p></dd><dt><span class="term">BGP</span></dt><dd><p>
+mpixlf95_r
+</p></dd></dl></div><p>
+The above list contains two <acronym class="acronym">IBM</acronym> Blue Gene machines; BGL and BGP.  The
+executables on these machines are produced by cross compilation and hence
+the configure script is not able to determine the machine for which the
+build is intented.  In this case the user must supply this information to
+<span class="command"><strong>configure</strong></span> by using the <strong class="userinput"><code>-target_os</code></strong> option with the
+values of either <strong class="userinput"><code>bgl</code></strong> or <strong class="userinput"><code>bgp</code></strong>.
+</p><p>
+On a <acronym class="acronym">Linux</acronym> platform several compilers are recognized with the default
+being <span class="command"><strong>pgf95</strong></span>.  It is assumed that the compiler to be used is in the user's
+path (i.e., in one of the directories in the <code class="envar">PATH</code> environment variable).
+If it isn't then the <strong class="userinput"><code>-test</code></strong> option will issue an
+error indicating that the compiler was not found.
+</p><p>
+Suppose for example that one would like to use the <acronym class="acronym">Intel</acronym> compiler on a
+local <acronym class="acronym">Linux</acronym> system.  The <acronym class="acronym">CAM</acronym> makefile recognizes <span class="command"><strong>ifort</strong></span> as the name
+of the <acronym class="acronym">Intel</acronym> compiler.  To invoke this compiler use
+the <strong class="userinput"><code>-fc</code></strong> argument to <span class="command"><strong>configure</strong></span>.  The following
+example illustrates the output you get when the compiler you ask for isn't
+in your <code class="envar">PATH</code>:
+</p><pre class="screen">
+% $camcfg/configure -fc ifort -dyn fv -hgrid 10x15 -nospmd -nosmp -test 
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 1 -nthreads 1 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+FAILURE: MCT configure
+</pre><p>
+In previous <acronym class="acronym">CAM</acronym> versions this problem would be caught by
+the <strong class="userinput"><code>-test</code></strong> option, but with the addition of <acronym class="acronym">MCT</acronym>'s
+<span class="command"><strong>configure</strong></span> the problem is now detected there.  By default <acronym class="acronym">MCT</acronym> will be
+build in a subdirectory of the build directory
+named <code class="filename">mct</code>.  That directory will contain a
+file, <code class="filename">config.log</code>, which should be examined to track
+down the cause of the failure.  In this case the file contains the message:
+</p><pre class="screen">
+$CAM_ROOT/models/utils/mct/configure: line 3558: ifort: command not found
+</pre><p>
+This means that the <code class="envar">PATH</code> environment variable has not been correctly set.
+The first thing to try is to verify the directory that contains the
+compiler, and then to prepend this directory name to the <code class="envar">PATH</code> environment
+variable.
+</p><p><strong>NOTE: </strong>
+We have made progress porting <acronym class="acronym">CAM</acronym> to the <span class="command"><strong>gfortran</strong></span>
+compiler, but it is still not regularly tested or used for production work.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="compiler_wrapper"></a>2.1.3. Dealing with compiler wrappers</h3></div></div></div><p>
+Another instance where the user needs to supply information about the
+<acronym class="acronym">Fortran</acronym> compiler type to configure is when the compiler is being invoked
+by a wrapper script.  A common example of this is using the <span class="command"><strong>mpif90</strong></span>
+command to invoke the <acronym class="acronym">Fortran</acronym> compiler that was used to build the <acronym class="acronym">MPI</acronym>
+libraries.  This facilitates correct compilation and linking with the <acronym class="acronym">MPI</acronym>
+libraries without the user needing to add the required include and library
+directories, or library names.  The same benefit is provided by the <span class="command"><strong>ftn</strong></span>
+wrapper used on Cray XT and XE systems.  In the usual case that a <acronym class="acronym">Linux</acronym>
+OS is being used, since the <acronym class="acronym">CAM</acronym> makefile will not recognize these
+compiler names, it will assume that the default compiler is being used, and
+thus will supply compiler arguments that are appropriate for <span class="command"><strong>pgf90</strong></span>.  The
+compilation will fail if <span class="command"><strong>pgf90</strong></span> is not the compiler being invoked by the
+wrapper script (invoking <span class="command"><strong>configure</strong></span> with the <strong class="userinput"><code>-test</code></strong>
+option is a good way to catch this problem).  The way to specify which
+<acronym class="acronym">Fortran</acronym> compiler is being invoked by a wrapper script is via the
+<strong class="userinput"><code>-fc_type</code></strong> argument to configure.  This argument takes
+one of the values <strong class="userinput"><code>pgi</code></strong>, <strong class="userinput"><code>lahey</code></strong>,
+<strong class="userinput"><code>intel</code></strong>, <strong class="userinput"><code>pathscale</code></strong>, <strong class="userinput"><code>gnu</code></strong>,
+or <strong class="userinput"><code>xlf</code></strong>.
+</p><p>
+<acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> script attempts to determine the compiler type when a
+compiler specific name is used.  It does so by a regular expression match
+against the unique part of specific compiler names (e.g., any compiler name
+matching 'pgf' will be given the default type of pgi).  If the default is
+wrong then the user will need to manually override the default via setting
+the <strong class="userinput"><code>-fc_type</code></strong> argument.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="config_para"></a>2.1.4. Configuring <acronym class="acronym">CAM</acronym> for parallel execution</h3></div></div></div><p>
+Before moving on to building <acronym class="acronym">CAM</acronym> we address configuring the executable for
+parallel execution.  But before talking about configuration specifics let's
+briefly discuss the parallel execution capabilities of <acronym class="acronym">CAM</acronym>.
+</p><p>
+<acronym class="acronym">CAM</acronym> makes use of both distributed memory parallelism implemented using
+<acronym class="acronym">MPI</acronym> (referred to throughout this document
+as <a class="ulink" href="http://en.wikipedia.org/wiki/SPMD" target="_top">SPMD</a>), and shared
+memory parallelism implemented using <acronym class="acronym">OpenMP</acronym> (referred to
+as <a class="ulink" href="http://en.wikipedia.org/wiki/Symmetric_multiprocessing" target="_top">SMP</a>).
+Each of these parallel modes may be used independently of the other, or
+they may be used at the same time which we refer to as "hybrid mode".  When
+talking about the SPMD mode we usually refer to the <acronym class="acronym">MPI</acronym> processes as
+"tasks", and when talking about the SMP mode we usually refer to the <acronym class="acronym">OpenMP</acronym>
+processes as "threads".  A feature of <acronym class="acronym">CAM</acronym> which is very helpful in code
+development work is that the simulation results are independent of the
+number of tasks and threads used.
+</p><p>
+Now consider configuring <acronym class="acronym">CAM</acronym> to run in pure SPMD mode.  Prior to the
+introduction of <acronym class="acronym">CICE</acronym> as the sea ice model
+SPMD was turned on using the <strong class="userinput"><code>-spmd</code></strong> option.
+But if we try that now we find the following:
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -spmd -nosmp
+**    ERROR: If CICE decomposition parameters are not specified, then
+**    -ntasks must be specified to determine a default decomposition
+**    for a pure MPI run.  The setting was:  ntasks=
+</pre><p>
+A requirement of the <acronym class="acronym">CICE</acronym> model is that its grid decomposition (which is
+independent of <acronym class="acronym">CAM</acronym>'s decomposition even when the two models are using the
+same horizontal grid) must be specified at build time.  In order for
+<acronym class="acronym">CICE</acronym>'s <span class="command"><strong>configure</strong></span> to set the decomposition it needs to know how much
+parallelism is going to be used.  This information is provided by
+specifying the number of <acronym class="acronym">MPI</acronym> tasks that the job will use via setting
+the <strong class="userinput"><code>-ntasks</code></strong> argument.
+</p><p><strong>NOTE: </strong> The default <acronym class="acronym">CICE</acronym> decomposition can be overridden by
+setting it explicitly using the <span class="command"><strong>configure</strong></span> options provided for that
+purpose.
+</p><p>
+When running <acronym class="acronym">CAM</acronym> in <acronym class="acronym">SPMD</acronym> mode the build procedure must be able to find
+the <acronym class="acronym">MPI</acronym> include files and library.  The recommended method for doing this
+is to use scripts provided by the <acronym class="acronym">MPI</acronym> installation to invoke the compiler
+and linker.  On <acronym class="acronym">Linux</acronym> systems a common name for this script is <span class="command"><strong>mpif90</strong></span>.
+The <acronym class="acronym">CAM</acronym> Makefile does not currently use this script by default on <acronym class="acronym">Linux</acronym>
+platforms, so the user must explicitly specify it on the <span class="command"><strong>configure</strong></span>
+commandline using the <strong class="userinput"><code>-fc</code></strong> argument: 
+</p><pre class="screen">
+% $camcfg/configure -fc mpif90 -fc_type pgi -cc mpicc -dyn fv -hgrid 10x15 -ntasks 6 -nosmp -test
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 6 -nthreads 1 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+MCT configure is done.
+creating /work/user/cam_test/bld/Filepath
+creating /work/user/cam_test/bld/Makefile
+creating /work/user/cam_test/bld/config.h
+creating /work/user/cam_test/bld/config_cache.xml
+Looking for a valid GNU make... using gmake
+Testing for Fortran 90 compatible compiler... using mpif90
+Test linking to NetCDF library... ok
+Test linking to MPI library... ok
+CAM configure done.
+</pre><p>
+Notice that the number of tasks specified to <acronym class="acronym">CAM</acronym>'s <span class="command"><strong>configure</strong></span> is passed
+through to the commandline that invokes the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span>.  Generally
+any number of tasks that is appropriate for <acronym class="acronym">CAM</acronym> to use for a particular
+horizontal grid will also work for <acronym class="acronym">CICE</acronym>.  But it is possible to get an
+error from <acronym class="acronym">CICE</acronym> at this point in which case either the number of tasks
+requested should be adjusted, or the options that set the <acronym class="acronym">CICE</acronym>
+decomposition explicitly will need to be used.
+</p><p><strong>NOTE: </strong>
+The use of the <strong class="userinput"><code>-ntasks</code></strong> argument to <span class="command"><strong>configure</strong></span>
+implies building for SPMD.  This means that an <acronym class="acronym">MPI</acronym> library will be
+required.  Hence, the specification <strong class="userinput"><code>-ntasks 1</code></strong> is not
+the same as building for serial execution which is done via
+the <strong class="userinput"><code>-nospmd</code></strong> option and does not require a full <acronym class="acronym">MPI</acronym>
+library.  (Implementation detail: when building for serial mode a special
+serial MPI library is used which basically provides a complete <acronym class="acronym">MPI</acronym> API,
+but doesn't do any message passing.)
+</p><p>
+Next consider configuring <acronym class="acronym">CAM</acronym> to run in pure SMP mode.  Similarly to
+<acronym class="acronym">SPMD</acronym> mode, prior to the introduction of the sea ice component <acronym class="acronym">CICE</acronym> the
+<acronym class="acronym">SMP</acronym> mode was turned on using the <strong class="userinput"><code>-smp</code></strong> option.  But
+with <acronym class="acronym">CAM</acronym>5 that will result in the same error from <acronym class="acronym">CICE</acronym> that we obtained
+above from attempting to use <strong class="userinput"><code>-spmd</code></strong>.  If we are going
+to run the <acronym class="acronym">CICE</acronym> code in parallel, we need to specify up front how much
+parallelism will be used so that the <acronym class="acronym">CICE</acronym> <span class="command"><strong>configure</strong></span> utility can set the
+CPP macros that determine the grid decomposition.  We specify the amount of
+SMP parallelism by setting the <strong class="userinput"><code>-nthreads</code></strong> option as
+follows:
+</p><pre class="screen">
+% $camcfg/configure -dyn fv -hgrid 10x15 -nospmd -nthreads 6 -test
+Issuing command to the CICE configure utility:
+  $CAM_ROOT/models/ice/cice/bld/configure -hgrid 10x15 -cice_mode prescribed \
+  -ntr_aero 0 -ntasks 1 -nthreads 6 -cache config_cache_cice.xml \
+  -cachedir /work/user/cam_test/bld
+CICE configure done.
+...
+</pre><p>
+We see that the number of threads has been passed through to the <acronym class="acronym">CICE</acronym>
+<span class="command"><strong>configure</strong></span> command.
+</p><p><strong>NOTE: </strong>
+The use of the <strong class="userinput"><code>-nthreads</code></strong> argument to <span class="command"><strong>configure</strong></span>
+implies building for SMP.  This means that the <acronym class="acronym">OpenMP</acronym> directives will be
+compiled.  Hence, the specification <strong class="userinput"><code>-nthreads 1</code></strong> is
+not the same as building for serial execution which is done via
+the <strong class="userinput"><code>-nosmp</code></strong> option and does not require a compiler
+that supports <acronym class="acronym">OpenMP</acronym>.
+</p><p>
+Finally, to configure <acronym class="acronym">CAM</acronym> for hybrid mode, simply specify both
+the <strong class="userinput"><code>-ntasks</code></strong> and <strong class="userinput"><code>-nthreads</code></strong>
+arguments to <span class="command"><strong>configure</strong></span>.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="build"></a>2.1.5. Building <acronym class="acronym">CAM</acronym></h3></div></div></div><p>
+Once <span class="command"><strong>configure</strong></span> is successful, build <acronym class="acronym">CAM</acronym> by issuing the make
+command:
+</p><pre class="screen">
+% gmake -j2  &gt;&amp;! make.out
+</pre><p>
+The argument <strong class="userinput"><code>-j2</code></strong> is given to allow a parallel build
+using 2 processes.  The optimal number of processes to use depends on the
+compute resource available.  There is a lot of available parallelism in the
+build procedure, so using 16 or even 32 processes may speed things up
+considerably.  Note however that the build happens in shared (not
+distributed) memory.  So specifying more processes than there are
+processors in a shared memory node is generally not helpful (although the
+presence of hyperthreading or SMT on a node may provide an advantage to
+specifying twice the number of processors).
+</p><p>
+It is useful to redirect the output from <span class="command"><strong>make</strong></span> to a file for later
+reference.  This file contains the exact commands that were issued to
+compile each file and the final command which links everything into an
+executable file.  Relevant information from this file should be included
+when posting a bug report concerning a build failure.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="bldnl_default"></a>2.1.6. Building the Namelist</h3></div></div></div><p>
+The first step in the run procedure is to generate the namelist files.  The
+safest way to generate consistent namelist settings is via the <span class="command"><strong>build-namelist</strong></span>
+utility.  Even in the case where only a slight modification to the namelist
+is desired, the best practice is to provide the modified value as an
+argument to <span class="command"><strong>build-namelist</strong></span> and allow it to actually generate the namelist files.
+</p><p><strong>NOTE: </strong>
+The default configuration of <acronym class="acronym">CAM</acronym> using the
+<strong class="userinput"><code>cam5</code></strong> physics package requires that about 60
+datasets and dozens of parameter values be specified in order to run
+correctly.  Trying to manage namelists of that complexity by hand editing
+files is extremely error prone and is strongly discouraged.  User
+modifications to the default namelist settings can be made in a number of
+ways while still letting <span class="command"><strong>build-namelist</strong></span> actually generate the final namelist.  In
+particular, the
+<strong class="userinput"><code>-namelist</code></strong>, <strong class="userinput"><code>-infile</code></strong>,
+and <strong class="userinput"><code>-use_case</code></strong> arguments to <span class="command"><strong>build-namelist</strong></span> are all
+mechanisms by which the user can override default values or specify
+additional namelist variables and still allow build-namelist to do the
+error and consistency checking which makes the namelist creation process
+more robust.
+</p><p>
+The following interactive C shell session builds a default namelist for
+<acronym class="acronym">CAM</acronym>.  We assume that a successful execution of <span class="command"><strong>configure</strong></span> was performed
+in the build directory as discussed in the previous sections.  This is an
+essential prerequisite because the <code class="filename">config_cache.xml</code>
+file produced by <span class="command"><strong>configure</strong></span> is a required input file to <span class="command"><strong>build-namelist</strong></span>.  One of
+the responsibilities of <span class="command"><strong>build-namelist</strong></span> is to set appropriate default values for
+many namelist variables, and it can only do this if it knows how the <acronym class="acronym">CAM</acronym>
+executable was configured.  That information is present in the cache file.
+As in the previous section
+the shell variable <code class="filename">camcfg</code> is set to the CAM configuration
+directory ($<code class="envar">CAM_ROOT</code>/models/atm/cam/bld).
+</p><p>
+We begin by changing into the directory where <acronym class="acronym">CAM</acronym> will be run.  It is
+usually convenient to have the run directory be separate from the build
+directory.  Possibly a number of different runs will be done that each need
+to have a separate run directory for the output files, but will all use the
+same executable file from a common build directory.  It is, of course,
+possible to execute <span class="command"><strong>build-namelist</strong></span> in the build directory since that's where the
+cache file is and so you don't need to specify to <span class="command"><strong>build-namelist</strong></span> where to find
+that file (it looks in the current working directory by default).  But
+then, assuming you plan to run <acronym class="acronym">CAM</acronym> in a different directory, all the
+files produced by <span class="command"><strong>build-namelist</strong></span> need to be copied to the run directly.  If you're
+running <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> from a script, then you need to know how to
+specify the filenames for the files that need to be copied.  For this
+reason it's more robust to change to the run directory and execute <span class="command"><strong>build-namelist</strong></span>
+there.  That way if there's a change to the files that are produced, your
+script doesn't break due to the files not all getting copied to the run
+directory.
+</p><p>
+Next we set the <code class="envar">CSMDATA</code> environment variable to point to the root
+directory of the tree containing the input data files.  Note that this is
+a required input for <span class="command"><strong>build-namelist</strong></span> (this information may alternatively be
+provided using the <strong class="userinput"><code>-csmdata</code></strong> argument).  If not
+provided then <span class="command"><strong>build-namelist</strong></span> will fail with an informative message.  The
+information is required because many of the namelist variables have values
+that are absolute filepaths.  These filepaths are resolved by <span class="command"><strong>build-namelist</strong></span> by
+prepending the <code class="envar">CSMDATA</code> root to the relative filepaths that are stored in
+the default values database.
+</p><p>
+The <span class="command"><strong>build-namelist</strong></span> commandline contains the <strong class="userinput"><code>-config</code></strong> argument
+which is used to point to the cache file which was produced in the build
+directory.  It also contains the <strong class="userinput"><code>-test</code></strong> argument,
+explained further below.
+</p><pre class="screen">
+% cd /work/user/cam_test
+% setenv CSMDATA /fs/cgd/csm/inputdata
+% $camcfg/build-namelist -test -config /work/user/cam_test/bld/config_cache.xml
+Writing CICE namelist to ./ice_in 
+Writing RTM namelist to ./rof_in 
+Writing DOCN namelist to ./docn_ocn_in 
+Writing DOCN stream file to ./docn.stream.txt 
+Writing CLM namelist to ./lnd_in 
+Writing driver namelist to ./drv_in 
+CAM writing dry deposition namelist to drv_flds_in 
+Writing ocean component namelist to ./docn_in 
+CAM writing namelist to atm_in 
+Checking whether input datasets exist locally...
+OK -- found depvel_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/depvel_monthly.nc
+OK -- found tracer_cnst_filelist = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid/oxid_1.9x2.5_L26_clim_list.c090805.txt
+OK -- found tracer_cnst_datapath = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid
+OK -- found depvel_lnd_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/regrid_vegetation.nc
+OK -- found xs_long_file = /fs/cgd/csm/inputdata/atm/waccm/phot/temp_prs_GT200nm_jpl06_c080930.nc
+OK -- found rsf_file = /fs/cgd/csm/inputdata/atm/waccm/phot/RSF_GT200nm_v3.0_c080416.nc
+OK -- found clim_soilw_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/clim_soilw.nc
+OK -- found exo_coldens_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/phot/exo_coldens.nc
+OK -- found tracer_cnst_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/oxid/oxid_1.9x2.5_L26_1850-2005_c091123.nc
+OK -- found season_wes_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/dvel/season_wes.nc
+OK -- found solar_data_file = /fs/cgd/csm/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc
+OK -- found soil_erod = /fs/cgd/csm/inputdata/atm/cam/dst/dst_10x15_c090203.nc
+OK -- found bndtvs = /fs/cgd/csm/inputdata/atm/cam/sst/sst_HadOIBl_bc_10x15_clim_c050526.nc
+OK -- found focndomain = /fs/cgd/csm/inputdata/atm/cam/ocnfrac/domain.camocn.10x15_USGS_070807.nc
+OK -- found tropopause_climo_file = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart/ub/clim_p_trop.nc
+OK -- found fpftcon = /fs/cgd/csm/inputdata/lnd/clm2/pftdata/pft-physiology.c110425.nc
+OK -- found fsnowaging = /fs/cgd/csm/inputdata/lnd/clm2/snicardata/snicar_drdt_bst_fit_60_c070416.nc
+OK -- found fatmlndfrc = /fs/cgd/csm/inputdata/share/domains/domain.lnd.fv10x15_USGS.110713.nc
+OK -- found fsnowoptics = /fs/cgd/csm/inputdata/lnd/clm2/snicardata/snicar_optics_5bnd_c090915.nc
+OK -- found fsurdat = /fs/cgd/csm/inputdata/lnd/clm2/surfdata/surfdata_10x15_simyr2000_c090928.nc
+OK -- found prescribed_ozone_datapath = /fs/cgd/csm/inputdata/atm/cam/ozone
+OK -- found prescribed_ozone_file = /fs/cgd/csm/inputdata/atm/cam/ozone/ozone_1.9x2.5_L26_2000clim_c091112.nc
+OK -- found liqopticsfile = /fs/cgd/csm/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t298_c080428.nc
+OK -- found iceopticsfile = /fs/cgd/csm/inputdata/atm/cam/physprops/iceoptics_c080917.nc
+OK -- found water_refindex_file = /fs/cgd/csm/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
+OK -- found ncdata = /fs/cgd/csm/inputdata/atm/cam/inic/fv/cami_0000-01-01_10x15_L30_c081013.nc
+OK -- found bnd_topo = /fs/cgd/csm/inputdata/atm/cam/topo/USGS-gtopo30_10x15_remap_c050520.nc
+OK -- found ext_frc_specifier for SO2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so2_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for num_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a1_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for num_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_oc_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_elev_2000_c090726.nc
+OK -- found ext_frc_specifier for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_elev_2000_c090726.nc
+OK -- found srf_emis_specifier for DMS = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/aerocom_mam3_dms_surf_2000_c090129.nc
+OK -- found srf_emis_specifier for SO2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so2_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for SOAG = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_soag_1.5_surf_2000_c100217.nc
+OK -- found srf_emis_specifier for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for num_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a1_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for num_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_oc_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_surf_2000_c090726.nc
+OK -- found srf_emis_specifier for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_surf_2000_c090726.nc
+OK -- found mode_defs for so4_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found mode_defs for pom_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocpho_rrtmg_c101112.nc
+OK -- found mode_defs for soa_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+OK -- found mode_defs for bc_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc
+OK -- found mode_defs for dst_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/dust4_rrtmg_c090521.nc
+OK -- found mode_defs for ncl_a1 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for so4_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found mode_defs for soa_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc
+OK -- found mode_defs for ncl_a2 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for dst_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/dust4_rrtmg_c090521.nc
+OK -- found mode_defs for ncl_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc
+OK -- found mode_defs for so4_a3 = /fs/cgd/csm/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc
+OK -- found rad_climate for mam3_mode1 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc
+OK -- found rad_climate for mam3_mode2 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc
+OK -- found rad_climate for mam3_mode3 = /fs/cgd/csm/inputdata/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc
+</pre><p>
+The first nine lines of output from <span class="command"><strong>build-namelist</strong></span> inform the user about the files
+that have been created.  There are namelist files for the ice component
+(<code class="filename">ice_in</code>), the river runoff component
+(<code class="filename">rof_in</code>), the land component
+(<code class="filename">lnd_in</code>), the data ocean component
+(<code class="filename">docn_in</code>, <code class="filename">docn_ocn_in</code>), the
+atmosphere component (<code class="filename">atm_in</code>), the driver
+(<code class="filename">drv_in</code>), and a file that is read by both the
+atmosphere and land components (<code class="filename">drv_flds_in</code>).  There
+is also a "stream file" (<code class="filename">docn.stream.txt</code>) which is
+read by the data ocean component.  Note that these filenames are hardcoded
+in the components and cannot be changed without source code modifications.
+</p><p>
+The next section of output is the result of using
+the <strong class="userinput"><code>-test</code></strong> argument to <span class="command"><strong>build-namelist</strong></span>.  As with <span class="command"><strong>configure</strong></span>
+we recommend using this argument whenever a model configuration is being
+run for the first time.  It checks that each of the files that are present
+in the generated namelists can be found in the input data tree whose root
+is given by the <code class="envar">CSMDATA</code> environment variable.  If a file is not found
+then the user will need to take steps to make that file accessible to the
+executing model before a successful run will be possible.  The following is
+a list of possible actions:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Acquire the missing file.  If this is a default file
+    supplied by the <acronym class="acronym">CESM</acronym> project then you will be able to download the
+    file from the project's svn data repository (see 
+    <a class="xref" href="ch02.html#acquire_inputdata" title="2.1.7. Acquiring Input Datasets">Section 2.1.7, “Acquiring Input Datasets”</a>). </p></li><li class="listitem"><p>If you have write permissions in the directory under
+    $<code class="envar">CSMDATA</code> then add the missing file to the appropriate
+    location there.
+</p></li><li class="listitem"><p>If you don't have write permissions under $<code class="envar">CSMDATA</code> then
+    put the file in a place where you can (for example, your run directory)
+    and rerun <span class="command"><strong>build-namelist</strong></span> with an explicit setting for the file using your
+    specific filepath.</p></li></ul></div><p>
+
+</p><div class="example"><a id="bldnl_ex01"></a><p class="title"><strong>Example 2.1. Use <span class="command">build-namelist</span> to specify a dataset in a non-default location.</strong></p><div class="example-contents"><p>
+Suppose that the 
+<strong class="userinput"><code>-test</code></strong> option informed you that the
+<code class="varname">ncdata</code>
+file <code class="filename">cami_0000-01-01_10x15_L30_c081013.nc</code> was not
+found.  You acquire the file from the data repository, but don't have
+permissions to write in the $<code class="envar">CSMDATA</code> tree.  So you put the file in your
+run directory and issue a <span class="command"><strong>build-namelist</strong></span> command that looks like this:
+</p><pre class="screen">
+% $camcfg/build-namelist -config /work/user/cam_test/bld/config_cache.xml \
+  -namelist "&amp;atm ncdata='/work/user/cam_test/cami_0000-01-01_10x15_L30_c081013.nc' /"
+</pre><p>
+Now the namelist in <code class="filename">atm_in</code> will contain an initial
+file (specified by namelist variable <code class="varname">ncdata</code>) which
+will be found by the executing <acronym class="acronym">CAM</acronym> model.
+</p></div></div><br class="example-break" /></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="acquire_inputdata"></a>2.1.7. Acquiring Input Datasets</h3></div></div></div><p>
+If you are doing a standard production run that is supported in the <acronym class="acronym">CESM</acronym>
+scripts, then using those scripts will automatically invoke a utility to
+acquire needed input datasets.  The information in this section is to aid
+developers using <acronym class="acronym">CAM</acronym> standalone scripts.
+</p><p>
+The input datasets required to run <acronym class="acronym">CAM</acronym> are available from a Subversion
+repository located here:
+<a class="ulink" href="https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/" target="_top">https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/</a>.
+The user name and password for the input data repository will be the same
+as for the code repository (which are provided to users when they register
+to acquire access to the <acronym class="acronym">CESM</acronym> source code repository).
+</p><div class="example"><a id="acquire_inputdata_ex01"></a><p class="title"><strong>Example 2.2. Acquire missing dataset</strong></p><div class="example-contents"><p>
+If you have a list of files that you need to acquire before running
+<acronym class="acronym">CAM</acronym>, then you can either just issue commands interactively, or if your
+list is rather long then you may want to put the commands into a shell
+script.  For example, 
+suppose after running <span class="command"><strong>build-namelist</strong></span> with the <strong class="userinput"><code>-test</code></strong> option
+you find that you need to acquire the file
+<code class="filename">/fs/cgd/csm/inputdata/atm/cam/inic/fv/cami_0000-01-01_10x15_L26_c030918.nc</code>.
+And let's assume that <code class="filename">/fs/cgd/csm/inputdata/</code> is the
+root directory of the inputdata tree, and that you have permissions to
+write there.  If the subdirectory <code class="filename">atm/cam/inic/fv/</code>
+doesn't already exist, then create it.  Finally, issue the following
+commands at an interactive C shell prompt:
+</p><pre class="screen">
+% set svnrepo='https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata'
+% cd /fs/cgd/csm/inputdata/atm/cam/inic/fv
+% svn export $svnrepo/atm/cam/inic/fv/cami_0000-01-01_10x15_L26_c030918.nc
+Error validating server certificate for 'https://svn-ccsm-inputdata.cgd.ucar.edu:443':
+ - The certificate is not issued by a trusted authority. Use the
+   fingerprint to validate the certificate manually!
+ - The certificate hostname does not match.
+ - The certificate has expired.
+Certificate information:
+ - Hostname: localhost.localdomain
+ - Valid: from Feb 20 23:32:25 2008 GMT until Feb 19 23:32:25 2009 GMT
+ - Issuer: SomeOrganizationalUnit, SomeOrganization, SomeCity, SomeState, --
+ - Fingerprint: 86:01:bb:a4:4a:e8:4d:8b:e1:f1:01:dc:60:b9:96:22:67:a4:49:ff
+(R)eject, accept (t)emporarily or accept (p)ermanently? p
+A    cami_0000-01-01_10x15_L26_c030918.nc
+Export complete.
+</pre><p>
+The messages about validating the server certificate will only occur for
+the first file that you export if you answer "p" to the question as in the
+example above.
+</p></div></div><br class="example-break" /></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="run_cam"></a>2.1.8. Running CAM</h3></div></div></div><p>
+Once the namelist files have successfully been produced, and the necessary
+input datasets are available, the model is ready to run.  Usually <acronym class="acronym">CAM</acronym>
+will be run with SPMD parallelization enabled, and this requires setting up
+MPI resources and possibly dealing with batch queues.  These issues will be
+addressed briefly in <a class="xref" href="ch02s02.html" title="2.2. Sample Run Scripts">Section 2.2, “Sample Run Scripts”</a>.  But for a simple test
+in serial mode executed from an interactive shell, we only need to issue
+the following command:
+</p><pre class="screen">
+% /work/user/cam_test/bld/cam &gt;&amp;! cam.log
+</pre><p>
+The commandline above redirects STDOUT and STDERR to the
+file <code class="filename">cam.log</code>.  The <acronym class="acronym">CAM</acronym> logfile contains a
+substantial amount of information from all components that can be used to
+verify that the model is running as expected.  Things like namelist variable
+settings, input datasets used, and output datasets created are all echoed
+to the log file.  This is the first place to look for problems when a model
+run is unsuccessful.  It is also very useful to include relevant
+information from the logfile when submitting bug reports.
+</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.2. Getting Help -- Other User Resources </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.2. Sample Run Scripts</td></tr></table></div></body></html>

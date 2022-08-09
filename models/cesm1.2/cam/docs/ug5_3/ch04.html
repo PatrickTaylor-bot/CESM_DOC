@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 4. Model Output</title><link rel="stylesheet" type="text/css" href="ug_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="up" href="index.html" title="User's Guide to the Community Atmosphere Model CAM-5.3" /><link rel="prev" href="ch03.html" title="Chapter 3. Input datasets" /><link rel="next" href="ch05.html" title="Chapter 5. Physics modifications via the namelist" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. Model Output</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="model_out"></a>Chapter 4. Model Output</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="ch04.html#hist_files">4.1. Model History Files</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch04.html#hist_general">4.1.1. General Features of History Files</a></span></dt><dt><span class="sect2"><a href="ch04.html#hist_fields">4.1.2. Default History Fields and Master Field Lists</a></span></dt></dl></dd></dl></div><p>
+<acronym class="acronym">CAM</acronym> produces a series of <acronym class="acronym">NetCDF</acronym> format history files containing
+atmospheric gridpoint data generated during the course of a run. It
+also produces a series of <acronym class="acronym">NetCDF</acronym> format restart files necessary to continue a
+run once it has terminated successfully and a series of initial
+conditions files that may be used to initialize new simulations. The
+contents of these datasets are described below.  
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="hist_files"></a>4.1. Model History Files</h2></div></div></div><p>
+History files contain model data values written at specified frequencies
+during a run.  Options are also available to record averaged,
+instantaneous, maximum, or minimum values on a field-by-field basis.  If
+the user wishes to see a field written at more than one time frequency
+(e.g. daily, hourly), additional history files must be declared.  This
+functionality is available via setting namelist variables.
+</p><p>
+History files may be visualized using various commercial or freely
+available tools.  Examples include the the NCAR Graphics package (via NCL),
+CDAT, FERRET, ncview, MATLAB, and IDL. For a list of software tools
+for interacting with NetCDF files, view the <acronym class="acronym">UNIDATA</acronym> maintained link
+<a class="ulink" href="http://www.unidata.ucar.edu/software/netcdf/software.html" target="_top">
+Software for Manipulating or Displaying NetCDF Data</a>.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="hist_general"></a>4.1.1. General Features of History Files</h3></div></div></div><p>
+<acronym class="acronym">CAM</acronym> writes a sequence of time samples
+to each of its specified history files.  There can
+currently be from one to six history file streams, and each stream has its
+own set of the following attributes:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+fields
+</p></li><li class="listitem"><p>
+output frequency
+</p></li><li class="listitem"><p>
+maximun number of time samples in a file
+</p></li><li class="listitem"><p>
+output precision (4-byte or 8-byte floats)
+</p></li><li class="listitem"><p>
+output domain (global or rectangular subdomains)
+</p></li></ul></div><p>
+
+</p><p>
+Each time sample in a history file has an associated timestamp which
+conforms to the <a class="ulink" href="http://cfconventions.org/" target="_top"><acronym class="acronym">CF</acronym> metadata
+conventions</a>.  The time unit used in <acronym class="acronym">CAM</acronym>'s output files is
+"days since reference date" where the reference date is the run start date
+by default, but can be customized via the <code class="varname">ref_ymd</code> and <code class="varname">ref_tod</code> namelist
+variables.  The variables relevant to the timestamps are the following
+(from the output of the <acronym class="acronym">NetCDF</acronym> <span class="command"><strong>ncdump</strong></span> utility):
+</p><pre class="screen">
+        double time(time) ;
+                time:long_name = "time" ;
+                time:units = "days since 0000-01-01 00:00:00" ;
+                time:calendar = "noleap" ;
+                time:bounds = "time_bnds" ;
+
+        double time_bnds(time, nbnd) ;
+                time_bnds:long_name = "time interval endpoints" ;
+
+        int date(time) ;
+                date:long_name = "current date (YYYYMMDD)" ;
+
+        int datesec(time) ;
+                datesec:long_name = "current seconds of current date" ;
+</pre><p>
+</p><p>
+The variable names, <code class="varname">time</code>, <code class="varname">time_bnds</code>, <code class="varname">date</code>, and <code class="varname">datesec</code> are all
+local conventions.  What makes the history files <acronym class="acronym">CF</acronym> compliant is that the
+time coordinate, <code class="varname">time</code>, can be identified by it's units attribute "days
+since 0000-01-01 00:00:00".  The reference date is in the form YYYY-MM-DD
+HH:MM:SS where YYYY, MM, DD, HH, MM, SS are year, month, day, hour, minute,
+second respectively, and a missing timezone defaults to UTC.  The
+<code class="varname">calendar</code> and <code class="varname">bounds</code> attributes are also part of <acronym class="acronym">CF</acronym>.  The <code class="varname">calendar</code>
+value "<code class="literal">noleap</code>" denotes the Gregorian calendar with no leap years.  The
+<code class="varname">bounds</code> value <code class="varname">time_bnds</code> denotes that the variable with the name
+<code class="varname">time_bnds</code> contains the timestamps that bound the time intervals over
+which an operation such as computing an averager or a minimum or maximum
+value has been applied.  Whether or not the interval specified by
+<code class="varname">time_bnds</code> is relevent depends on the individual variables, e.g., a single
+file can contain both instantaneous and time averaged fields.  The type of
+the time operation that has been applied is contained in the <code class="varname">cell_methods</code>
+attribute of each variable, e.g.,
+
+</p><pre class="screen">
+        float T(time, lev, lat, lon) ;
+                T:mdims = 1 ;
+                T:units = "K" ;
+                T:long_name = "Temperature" ;
+                T:cell_methods = "time: mean" ;
+</pre><p>
+
+The <code class="varname">cell_methods</code> attribute for the temperature variable indicates that it
+is being output as a time averaged field.  If temperature was instantaneous
+then the <code class="varname">cell_methods</code> attribute would not be present since instantaneous
+is the default.
+</p><p>
+The variables <code class="varname">date</code> and <code class="varname">datesec</code> are for convenience only; they don't
+play any role in terms of <acronym class="acronym">CF</acronym> compliance.  The <code class="varname">date</code> variable is an
+integer which is encoded to contain the digits YYYYMMDD where YYYY, MM, and
+DD are the year, month, and day of month respectively.  <code class="varname">datesec</code> is
+the integer number of seconds past 0Z in the current day.  The variables
+<code class="varname">date</code> and <code class="varname">datesec</code> are redundant in the sense that they can be recovered
+from the <code class="varname">time</code> variable via a date calculation using the specified
+calendar.
+</p><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="timestamp_location"></a>Timestamps and time intervals</h4></div></div></div><p>
+<span class="emphasis"><em>The timestamp associated with each time sample in a history file
+is the model time at the end of the timestep during which the model writes
+data to the disk</em></span>.  In the case of instantaneous data the meaning
+is clear.  However when the data is representative of a time interval, the
+timestamp corresponds to <span class="emphasis"><em>the end of the interval</em></span>.
+</p><p>
+This is often a point of confusion when looking at history files.  Since
+the endpoint of one interval is the same as the begining of the next
+interval, when looking at a monthly average for January, which has a
+timestamp of 0Z on Feb 01, at first glance the timestamp would seem to
+correspond to a February average.  Hence it's important for post processing
+tools to make use of the data in the <code class="varname">time_bnds</code> variable so that the time
+interval endpoints can be used to compute an interval midpoint which is the
+more appropriate timestamp to associate with the interval.
+</p><div class="example"><a id="timestamps_mon_avg"></a><p class="title"><strong>Example 4.1. Timestamps for a year of monthly averages</strong></p><div class="example-contents"><p>
+Here are the timestamps and corresponding time interval bounds for a one
+year sequence of monthly averages starting at 0000-01-01 00:00:00.
+
+</p><pre class="screen">
+Month    time    date   datesec   time_bnds
+Jan       31      201      0        0,  31
+Feb       59      301      0       31,  59
+Mar       90      401      0       59,  90
+Apr      120      501      0       90, 120
+May      151      601      0      120, 151
+Jun      181      701      0      151, 181
+Jul      212      801      0      181, 212
+Aug      243      901      0      212, 243
+Sep      273     1001      0      243, 273
+Oct      304     1101      0      273, 304
+Nov      334     1201      0      304, 334
+Dec      365    10101      0      334, 365
+</pre><p>
+</p></div></div><br class="example-break" /></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="multiple_time_samples"></a>Multiple time samples in a single file</h4></div></div></div><p>
+<acronym class="acronym">CAM</acronym>'s default history output is a sequence of monthly averaged fields,
+written with one time sample per file.  This restriction is related to the
+default file naming scheme which uses the string "YYYY-MM" to indicate the
+year and month of the average contained in the file.  However in general it
+is possible to write multiple time samples in any of the history file
+streams that don't contain monthly time intervals.  However there is one
+somewhat unexpected "feature" of multiple time sample files that we wish to
+point out here.
+</p><div class="example"><a id="timestamps_daily_avg"></a><p class="title"><strong>Example 4.2. Timestamps for five daily averages</strong></p><div class="example-contents"><p>
+Here are the timestamps and corresponding time interval bounds for all time
+samples written to a single file from a 5 day run
+starting at 0000-01-01 00:00:00.
+
+</p><pre class="screen">
+Sample    time    date   datesec   time_bnds
+1           0      101     0         0, 0
+2           1      102     0         0, 1
+3           2      103     0         1, 2
+4           3      104     0         2, 3
+5           4      105     0         4, 5
+6           5      106     0         5, 6
+</pre><p>
+</p><p>
+Instead of ending up with a file containing five time samples, i.e., a
+daily average for each of the first five days of January, we get six time
+samples.  The first one looks a bit strange since the time bounds are
+indicating an interval of zero duration.  But in fact that's correct for the
+first time sample which is instantaneous data representing the initial
+conditions which have only been modify by a partial first step up to the
+point of the radiation calculation.  This "extra" time sample from the
+initialization phase is included in every history file except for the
+monthly average file.  An unfortunate consequence of this extra time sample
+is that it's not possible to create a sequence of files with the same
+number of time intervals since the first file in the sequence will always
+have one fewer time interval than the rest due to the inclusion of the time
+zero sample.
+</p></div></div><br class="example-break" /></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="hist_fields"></a>4.1.2. Default History Fields and Master Field Lists</h3></div></div></div><p>
+<acronym class="acronym">CAM</acronym> is set up by default to output a set of fields to a single monthly
+average history file.  There is a much larger set of available fields,
+known as the "master field list," from which the user can choose fields of
+interest to add to the history file via namelist settings.  Both the set of
+default fields and the master field list depend on how <acronym class="acronym">CAM</acronym> is configured.
+Due to the large number of fields we have chosen to make lists of fields
+for some standard configuration available via linked documents rather than
+to inline the lists here.  Each of the field list documents is comprised of
+tables containing the lists of fields that are output by default as well as
+the master field list.
+</p><p><strong>NOTE: </strong>
+The master field list tables may contain some fields that are not actually
+available for output.  The presence of a field in the master field list is
+a necessary, but not sufficient condition that the corresponding field in
+the history file will contain valid data.  This is because in some
+instances fields are added to the master field list (this is done in the
+source code) even though that field may not be computed in the
+configuration that is built (specified via the arguments to <span class="command"><strong>configure</strong></span>).
+When adding non-default fields to the history file it's important to check
+that the fields contain reasonable data before doing a long run.
+</p><p>
+The following links provide tables of default and master field lists for
+some standard model configurations which are characterized by the values of
+the <code class="option">-dyn</code>, <code class="option">-phys</code>,
+and <code class="option">-chem</code> arguments to <span class="command"><strong>configure</strong></span>.  The source of the
+information in these tables is <acronym class="acronym">CAM</acronym>'s default log file, so you can always
+look there for any configuration not included in the list below.
+
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4.html" target="_top">
+    fv, cam4, none</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_trop_bam.html" target="_top">
+    fv, cam4, trop_bam</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam5.html" target="_top">
+    fv, cam5, trop_mam3</a>
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_waccm.html" target="_top">
+    fv, cam4, waccm_mozart</a> (use_case: waccm_2000_cam4)
+</p></li><li class="listitem"><p>
+    <a class="ulink" href="hist_flds_fv_cam4_super_fast_llnl.html" target="_top">
+    fv, cam4, super_fast_llnl</a> (use_case: 2000_cam4_super_fast_llnl)
+</p></li></ul></div><p>
+</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Input datasets </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. Physics modifications via the namelist</td></tr></table></div></body></html>

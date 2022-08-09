@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Environment variables used by build-namelist</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="User's Guide to the Community Atmosphere Model CAM-4.0"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="The build-namelist utility"
+HREF="a1072.html"><LINK
+REL="PREVIOUS"
+TITLE="The build-namelist utility"
+HREF="a1072.html"><LINK
+REL="NEXT"
+TITLE="CAM Namelist Variables"
+HREF="a1263.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>User's Guide to the Community Atmosphere Model CAM-4.0</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="a1072.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix B. The <B
+CLASS="command"
+>build-namelist</B
+> utility</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="a1263.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="bldnl_env"
+>Environment variables used by <B
+CLASS="command"
+>build-namelist</B
+></A
+></H1
+><P
+>&#13;The environment variables recognized by <B
+CLASS="command"
+>build-namelist</B
+> are
+presented below.
+</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><CODE
+CLASS="envar"
+>CSMDATA</CODE
+></DT
+><DD
+><P
+>&#13;Root directory of <ACRONYM
+CLASS="acronym"
+>CCSM</ACRONYM
+> input data.
+Note that the commandline argument <CODE
+CLASS="option"
+>-csmdata</CODE
+> takes
+precedence over the environment variable.
+</P
+></DD
+><DT
+><CODE
+CLASS="envar"
+>OMP_NUM_THREADS</CODE
+></DT
+><DD
+><P
+>&#13;If values of the specific variables that set the thread count for each
+component, i.e., <KBD
+CLASS="userinput"
+>atm_nthreads</KBD
+>, <KBD
+CLASS="userinput"
+>cpl_nthreads</KBD
+>,
+<KBD
+CLASS="userinput"
+>ice_nthreads</KBD
+>, <KBD
+CLASS="userinput"
+>lnd_nthreads</KBD
+>,
+or <KBD
+CLASS="userinput"
+>ocn_nthreads</KBD
+>, are set via
+the <CODE
+CLASS="option"
+>-namelist</CODE
+>, or <CODE
+CLASS="option"
+>-infile</CODE
+> options, then
+these values have highest precedence.  The <CODE
+CLASS="envar"
+>OMP_NUM_THREADS</CODE
+>
+environment variable has next highest precedence for setting any of the
+component specific thread count variables.  Lowest precedence for setting
+these variables is the value of <CODE
+CLASS="option"
+>nthreads</CODE
+> from the configure cache file.
+</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="a1072.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="a1263.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The <B
+CLASS="command"
+>build-namelist</B
+> utility</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="a1072.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><ACRONYM
+CLASS="acronym"
+>CAM</ACRONYM
+> Namelist Variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

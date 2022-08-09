@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CESM Metrics</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Metrics and stats about the users of CESM" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-2274704-2');
+	</script>
+
+
+
+	<!-- icon includes -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+	<link rel="manifest" href="../site.webmanifest">
+	<link rel="mask-icon" href="../safari-pinned-tab.svg" color="#2b5797">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<!-- stylesheet includes -->
+	<!--<link href="/styles/dev/css/fonts.css" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet"> 
+	<link href="../styles/um/css/font-awesome-all.css" rel="stylesheet">
+	<link href="../styles/um/css/bootstrap.css" rel="stylesheet">
+	<link href="../styles/um/css/flexslider.css" rel="stylesheet">
+	<link href="../styles/um/css/fancybox.min.css" rel="stylesheet">
+	<link href="../styles/um/css/default.css" rel="stylesheet" />
+	<link href="../styles/um/css/style.css" rel="stylesheet">
+	<link href="../styles/um/css/cookie-consent.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/um/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- meta for social sharing images -->
+    <meta property="og:title" content="CESM Metrics">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cesm.ucar.edu/metrics">
+    <meta property="og:description" content="Metrics and stats about the users of CESM">
+    <meta property="og:image" content="https://www.cesm.ucar.edu/about/img/cesm_press-release.jpg">
+
+    <style type="text/css">
+    	.legend-div {
+    		display: inline-block;
+    		width: 100%;
+    		font-size: 13px;
+    	}
+
+    	.legend-div ul {
+    		list-style: none !important;
+    		display: flex;
+    		flex-direction: row-reverse;
+    		width: 100%;
+    		padding: 0px;
+    		margin-bottom: 0px;
+    	}
+
+    	.legend-div ul li {
+    		display: flex;
+    		flex: 0 0 auto;
+    	}
+
+    	.legend-div ul li:last-child {
+    		/*float: right !important;*/
+    		margin-right: auto;
+    	}
+
+    	.legend-div ul li span {
+    		width: 15px;
+    		height: 15px;
+    		margin-right: 5px;
+    		border-radius: 10px;
+    		vertical-align: middle;
+    	}
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- navbar include -->
+    <noscript>
+        <div id="no-script" class="alert alert-danger" role="alert">
+            <p><i class="fas fa-exclamation-triangle"></i> This site depends on Javascript for full functionality</p>
+            <p>Please enable and reload the page</p>
+        </div>
+    </noscript>
+
+
+    <!-- notice bar -->
+    <div class="alert alert-warning text-center hide-me" role="alert" id="alert-downtime">
+        <button type="button" class="close close-downtime" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h5><i class="fas fa-clipboard-list"></i> 2022 CESM Workshop Registration</h5>
+        <p class="mb-2">Registration for the The 27th Annual CESM Workshop, taking place 13-16 June 2022, is now open!</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-success close-downtime small mb-0" href="../events/workshops/register/Wc307b98da9a00.htm">Register Here</a>
+            <a class="btn btn-sm btn-info close-downtime small mb-0" href="../events/workshops/2022/Wc4158ea09aa95.htm">Learn More</a>
+            <a class="btn btn-sm btn-warning close-downtime small mb-0">Close Message</a>
+        </div>
+    </div>
+
+
+
+
+    <nav class="navbar navbar-expand-md pt-0 ">
+        <div class="container align-items-start">
+            <div class="navbar-logo-nsf">
+                <p>Sponsored&nbsp;By</p>
+                <a class="" href="https://nsf.gov/">
+                    <img src="../images/logos/nav-logo-nsf.png" title="NCAR is sponsored by the NSF" alt="NCAR is sponsored by the NSF" class="img-fluid" width="35">
+                </a>
+            </div>
+
+            <ul class="list-inline mr-auto mb-0 mt-2">
+                <li class="list-inline-item navbar-logo-stack ">
+                    <a href="https://ncar.ucar.edu/" class="nav-link nav-link-ncar p-0">
+                        <img src="../images/logos/logo-ncar-active-large.png" alt="NCAR Logo" title="NCAR Logo">
+                    </a>
+                    <a href="https://www.ucar.edu/" class="nav-link p-0">
+                        <img src="../images/logos/logo-ucar-inactive-large.png" alt="UCAR Logo" title="UCAR Logo">
+                    </a>
+                </li>
+
+                <li class="list-inline-item navbar-logo-cesm ">
+                    <a class="nav-link p-0" href="../Wc3449bfab27af.htm">Community Earth System Model<br>CESM&nbsp;&reg;</a>
+                </li> 
+
+                <li class="list-inline-item navbar-logo-cesm hide-me-nav">
+                    <a class="nav-link p-0" href="../Wc3449bfab27af.htm">Community Earth<br>System Model&nbsp;&reg;</a>
+                </li> 
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse flex-md-column mt-2" id="navbarCollapse">
+
+                <div class="d-flex ml-auto">
+                    <div class="nav-item-top">
+                        <a class="nav-link" href="../publications/Wc512d452813.htm">Publications</a>
+                    </div>
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAbout" href="#about" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-about" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="../about/Wc4682ed65a072.htm">About Overview</a>
+                            <a class="dropdown-item" href="../about/Wc41f0926ae0d9.html">Contact</a>
+                            <a class="dropdown-item" href="../about/Wca62569b79f49.html">Mission</a>
+                            <a class="dropdown-item" href="../Wcf13f57fb9f8.htm">Metrics</a>
+                            <a class="dropdown-item" href="../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a>
+                            <a class="dropdown-item" href="../publications/Wc512d452813.htm">Publication Information</a>
+                            <a class="dropdown-item" href="../about/Wc4d448566b0d0.html">CESM Support Policy</a>
+                            <a class="dropdown-item" href="../about/Wcbd4ebba6880c.html">FAQs</a>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-item-top dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownHelp" href="#help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-question-circle" aria-hidden="true"></i>&nbsp;Help</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" id="dropdown-menu-help" aria-labelledby="navbarDropdownHelp">
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a>
+                            <a class="dropdown-item" href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a>
+                        </div>
+                    </div>
+
+                    
+                    <form class="form-inline position-relative ml-auto" role="search" method="get" action="../search/default.htm">
+                        <input class="input-group-input" name="q" placeholder="SEARCH ..." value="" aria-label="Enter Search Text" type="text">
+
+                        <div class="input-group-button">
+                            <button type="submit" class="button-search" value="Submit" aria-label="Submit Search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <ul class="navbar-nav ml-auto navbar-nav-links">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownAdministration" href="#administration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownAdministration">
+                            <a class="dropdown-item" href="../management/Wcc13a9ee1809b.htm">Administration Overview</a>
+                            <a class="dropdown-item" href="../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a>
+                            <a class="dropdown-item" href="../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a>
+                            <a class="dropdown-item" href="../management/Wcbdd42d0b88ea.html">CESM Governance</a>
+                            <a class="dropdown-item" href="../management/Wc895ccddb9fce.html">Administration Plans</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownWorkingGroups" href="#workinggroups" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Working Groups</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownWorkingGroups">
+                            <a class="dropdown-item" href="../working_groups/Wc65f2ddfc4d9e.htm">Working Groups Overview</a>
+                            <a class="dropdown-item" href="../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a>
+                            <a class="dropdown-item" href="../working_groups/Wc3a7044ab4845.html">Terms of Reference</a>
+                            <a class="dropdown-item" href="../working_groups/Atmosphere/Wc1815cffb0a86.htm">Atmosphere Model</a>
+                            <a class="dropdown-item" href="../working_groups/Biogeo/Wc53eb8f496ff0.htm">Biogeochemistry</a>
+                            <a class="dropdown-item" href="../working_groups/Chemistry/Wce7e5098be56.htm">Chemistry Climate</a>
+                            <a class="dropdown-item" href="../working_groups/CVC/Wc59a52ed79a3e.htm">Climate Variability &amp; Change</a>
+                            <a class="dropdown-item" href="../working-groups/earth-system-prediction/Wc2d7e26848e78.htm">Earth System Prediction</a>
+                            <a class="dropdown-item" href="../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">Land Ice</a>
+                            <a class="dropdown-item" href="../working_groups/Land/Wc68f4fa04493d.htm">Land Model</a>
+                            <a class="dropdown-item" href="../working_groups/Ocean/Wc7f1dfc675f00.htm">Ocean Model</a>
+                            <a class="dropdown-item" href="../working_groups/Paleo/Wcb3576eaf40fc.htm">Paleoclimate</a>
+                            <a class="dropdown-item" href="../working_groups/Polar/Wc62c6f6c03596.htm">Polar Climate</a>
+                            <a class="dropdown-item" href="../working_groups/Societal/Wce3e53c5e7db8.htm">Societal Dimensions</a>
+                            <a class="dropdown-item" href="../working_groups/Software/Wcb76155708f79.htm">Software Engineering</a>
+                            <a class="dropdown-item" href="../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">Whole Atmosphere</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownResearch" href="#research" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownResearch">
+                            <a class="dropdown-item" href="../models/Wcc5a5d9505e02.htm">Overview</a>
+                            <a class="dropdown-item" href="../models/Wc46e54394790a.html">CESM Releases</a>
+                            <a class="dropdown-item" href="https://csegweb.cgd.ucar.edu/experiments/public/?ref=nav">Scientifically Validated</a>
+                            <a class="dropdown-item" href="../experiments/Wca1ac0c97dc7.htm">Experiments</a>
+                            <a class="dropdown-item" href="../models/Wceaf9ebcbf058.html">CMIP6</a>
+                            <a class="dropdown-item" href="../projects/Wc52d49be327b0.htm">Projects</a>
+                            <a class="dropdown-item" href="../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a>
+                            <a class="dropdown-item" href="../models/simpler-models/Wc340f787b10c9.htm">Simpler Models</a>
+                            <a class="dropdown-item" href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a>
+                            <a class="dropdown-item" href="../models/Wcfecbc74fe52a.html">Legacy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pb-0" id="navbarDropdownEvents" href="#events" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+                        <div class="dropdown-menu shadow dropdown-menu-right" aria-labelledby="navbarDropdownEvents">
+                            <a class="dropdown-item" href="../events/Wc2677660c09ac.htm">Upcoming</a>
+                            <a class="dropdown-item" href="../events/Wc40f6ad8263a5.html">Past Events</a>
+                            <a class="dropdown-item" href="../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a>
+                            <a class="dropdown-item" href="../events/tutorials/Wc65159099e150.htm">Tutorials</a>
+                            <a class="dropdown-item" href="../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a>
+                            <a class="dropdown-item" href="../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- start breadcrumb menu -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../default.htm"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="../about/default.htm">About CESM</a></li>
+                            <li class="breadcrumb-item active">CESM Metrics</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end breadcrumb menu -->
+
+
+        <section id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="post-image">
+                            <div class="post-heading">
+                                <h1>CESM Metrics</h1>
+                            </div>
+                        </div>
+
+                        <div class="row load-me">
+			            	<div class="col">
+			            		<div class="w-100 text-center bg-white rounded pb-3">
+				            		<img src="../Images/load-earth.gif" alt="Loading...">
+				            		<h5>Loading...</h5>
+				            	</div>
+			            	</div>
+			            </div>
+
+			            <div class="hide-me page-hide-me">
+			            	<!-- start the tables -->
+			                <div class="card mb-3 hide-me">
+	                        	<div class="card-body">
+			                        <h2>Tables</h2>
+			                        <h4 id="svn-checkouts-table">SVN &amp; GitHub Stats</h4>
+			                        <table class="table table-sm table-striped sort">
+			                        	<thead>	
+			                        		<th>Year</th>
+			                        		<th>Checkouts</th>
+			                        	</thead>
+
+			                        	<tbody id="table-svn">
+			                        		<tr>
+			                        			<td>-</td>
+			                        			<td>-</td>
+			                        		</tr>
+			                        	</tbody>
+			                        </table>
+			                    </div>
+			                </div>
+
+	                        <div class="card">
+	                        	<div class="card-body">
+			                        <h2>Github Stats</h2>
+			                        <p>Below are the stats from the ESCOMP CESM Github repository: <a class="" href="https://github.com/ESCOMP/CESM">https://github.com/ESCOMP/CESM</a></p>
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="github-clones" class="card-header">
+			                                CESM Github Clones Stats 
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: rgb(124, 113, 179);">Total Count: <span id="clones-total-count"></span></span>
+			                                    <span class="hide-me badge badge-primary" style="background-color: rgb(49, 115, 186);">Total Unique: <span id="clones-total-unique"></span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-div-github-clones" class="legend-div"></div>
+			                                <canvas id="graph-clones"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="clones-start"></span> - <span id="clones-end"></span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm">
+			            			    <h5 id="github-views" class="card-header">
+			                                CESM Github View Stats 
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: rgb(124, 113, 179);">Total Count: <span id="views-total-count"></span></span>
+			                                    <span class="hide-me badge badge-primary" style="background-color: rgb(49, 115, 186);">Total Unique: <span id="views-total-unique"></span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-div-github-views" class="legend-div"></div>
+			                                <canvas id="graph-views"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="views-start"></span> - <span id="views-end"></span>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+
+
+			                <div class="card mt-3" id="svn-checkouts">
+	                        	<div class="card-body">
+			                        <h2 class="">SVN Stats</h2>
+
+			                        <p>Below are the stats from the CGD CCSM Model Input Data SVN repository:<br><a href="https://svn-ccsm-inputdata.cgd.ucar.edu/">https://svn-ccsm-inputdata.cgd.ucar.edu/</a></p>
+			                        <div class="card shadow-sm">
+			            			    <h5 class="card-header">
+			                                CCSM Input Data SVN Checkout Stats 
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: rgb(124, 113, 179);">Total Count: <span id="svn-total-count-input"></span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-div-svn-input" class="legend-div"></div>
+			                                <canvas id="graph-svn-input"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="svn-start-input"></span> - <span id="svn-end-input"></span>
+			                            </div>
+			                        </div>
+
+			                        <p class="mt-3">Below are the stats from the CGD Community Climate System Models SVN repository:<br><a href="https://svn-ccsm-models.cgd.ucar.edu/">https://svn-ccsm-models.cgd.ucar.edu/</a></p>
+			                        <div class="card shadow-sm">
+			            			    <h5 class="card-header">
+			                                Community Climate System Models SVN Checkout Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: rgb(124, 113, 179);">Total Count: <span id="svn-total-count"></span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-div-svn" class="legend-div"></div>
+			                                <canvas id="graph-svn"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="svn-start"></span> - <span id="svn-end"></span>
+			                            </div>
+			                        </div>
+
+			                    </div>
+		                    </div>
+
+		                    <div class="card mt-3">
+	                        	<div class="card-body">
+			                        <h2>Website Stats</h2>
+			                        <h4>All stats</h4>
+			                        <p>Below are the complete stats for the DiscussCESM website (&nbsp;<a class="" href="https://bb.cgd.ucar.edu/cesm">https://bb.cgd.ucar.edu/cesm</a>&nbsp;) and CESM website (&nbsp;<a class="" href="../default.htm">https://www.cesm.ucar.edu</a>&nbsp;)</p>
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-all" class="card-header">
+			                            	DiscussCESM Forum Stats
+			                                <div class="float-right hide-me">
+			                                    <span class="badge badge-primary" style="background-color: #f77f00;">Total Posts: <span id="forum-total-count">5816</span></span>
+			                                    <span class="badge badge-primary" style="background-color: #71B37C;">Total Threads: <span id="forum-total-unique">2558</span></span>
+			                                    <span class="badge badge-primary" style="background-color: #7c71b3;">Total Users: <span id="forum-total-users">1808</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum" class="legend-div"></div>
+			                                <canvas id="graph-forum"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-web" class="card-header">
+			                            	DiscussCESM Web Stats
+			                                <div class="float-right hide-me">
+			                                    <span class="badge badge-primary" style="background-color: #71B37C;">Total Pageviews: <span id="forum-total-web-count">-</span></span>
+			                                    <span class="badge badge-primary" style="background-color: #7c71b3;">Unique Pageviews: <span id="forum-total-web-unique">-</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum-web" class="legend-div"></div>
+			                                <canvas id="graph-forum-web"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm">
+			                            <h5 id="cesm-web" class="card-header">
+			                            	CESM Web Stats
+			                                <div class="float-right hide-me">
+			                                    <span class="badge badge-primary" style="background-color: #71B37C;">Total Pageviews: <span id="cesm-total-web-count">-</span></span>
+			                                    <span class="badge badge-primary" style="background-color: #7c71b3;">Unique Pageviews: <span id="cesm-total-web-unique">-</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-cesm-web" class="legend-div"></div>
+			                                <canvas id="graph-cesm-web"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="cesm-start">2014-01-01</span> - <span id="cesm-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+
+
+			                        <h4 class="mt-3">Aggregated stats</h4>
+			                        <p>Below are the aggregated user stats from the DiscussCESM website: <a class="" href="https://bb.cgd.ucar.edu/cesm">https://bb.cgd.ucar.edu/cesm</a></p>
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-users" class="card-header">
+			                            	DiscussCESM Users Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: #7c71b3;">Total Users: <span id="forum-total-users">2725</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum-users" class="legend-div"></div>
+			                                <canvas id="graph-forum-users"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-threads" class="card-header">
+			                            	DiscussCESM Threads Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: #71B37C;">Total Threads: <span id="forum-total-users">3317</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum-threads" class="legend-div"></div>
+			                                <canvas id="graph-forum-threads"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-posts" class="card-header">
+			                            	DiscussCESM Posts Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: #f77f00;">Total Posts: <span id="forum-total-users">9324</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum-posts" class="legend-div"></div>
+			                                <canvas id="graph-forum-posts"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+			                        <div class="card shadow-sm mb-3">
+			                            <h5 id="forum-web-total" class="card-header">
+			                            	DiscussCESM Total Web Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: #7c71b3;">Total Pageviews: <span id="forum-total-web-count">945177</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum-web-total" class="legend-div"></div>
+			                                <canvas id="graph-forum-web-total"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="forum-start">2014-01-01</span> - <span id="forum-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+
+
+			                        <div class="card shadow-sm">
+			                            <h5 id="cesm-web-total" class="card-header">
+			                            	CESM Total Web Stats
+			                                <div class="float-right">
+			                                    <span class="badge badge-primary" style="background-color: #71B37C;">Total Pageviews: <span id="cesm-total-web-count">1674968</span></span>
+			                                </div>
+			                            </h5>
+			                            <div class="card-body">
+			                            	<div id="legend-forum" class="legend-div"></div>
+			                                <canvas id="graph-cesm-web-total"></canvas>
+			                            </div>
+			                            <div class="card-footer text-muted small">
+			                                Stats date range: <span id="cesm-start">2014-01-01</span> - <span id="cesm-end">2020-12-31</span>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+
+			                
+			            </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4">
+                        <aside class="right-sidebar">
+                            <!-- About Include -->
+                            <div class="widget">
+    <h5 class="widgetheading">About CESM</h5>
+    <ul class="cat">
+        <li><a href="../about/default.htm">Overview</a></li>
+        <li><a href="../about/contact.html">Contact</a></li>
+        <li><a href="../about/mission.html">Mission</a></li>
+        <li><a href="default.htm">Metrics</a></li>
+        <li><a href="../about/awards/default.htm">Awards</a></li>
+        <li><a href="../publications/default.htm">Publications</a></li>
+        <li><a href="../about/support.html">Support Policy</a></li>
+        <li><a href="../about/faq.html">FAQs</a></li>
+    </ul>
+</div>
+
+                            <!-- CESM Project Include -->
+                            <div class="widget">
+    <h5 class="widgetheading">CESM Communications</h5>
+    <ul class="cat small">
+    	<li><a href="https://bb.cgd.ucar.edu/cesm/">User Support Forums</a></li>
+    	<li><a href="../about/faq.html#mailing-list">Mailing Lists</a></li>
+    	<li><a href="../about/contact.html">Contact CESM</a></li>
+    	<li><a href="../about/support.html">Support Policy</a></li>
+        <li class="hide-me"><a href="https://escomp.github.io/CESM/versions/master/html/">Latest Development Code Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.2/html/">CESM2.2 Quickstart Guide</a></li>
+        <li id="li-cesm2"><a href="https://escomp.github.io/CESM/versions/cesm2.1/html/">CESM2.1 Quickstart Guide</a></li>
+    </ul>
+</div>
+
+
+<div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat small">
+        <li>The CESM project is supported primarily by the <a href="http://www.nsf.gov/">National Science Foundation (NSF)</a>. Administration of the CESM is maintained by the <a href="http://www.cgd.ucar.edu/">Climate and Global Dynamics Laboratory (CGD)</a> at the <a href="http://www.ncar.ucar.edu/">National Center for Atmospheric Research (NCAR)</a>.</li>
+        <li><a href="http://www.cesm.ucar.edu">CESM</a> is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+
+
+
+<script type="text/javascript">
+    // set the url
+    var url_full = window.location.href;
+
+    // check for cesm2 to hide the leatest dev code quickstart
+    if(/cesm2/.test(url_full)) {
+        var link = document.getElementById("li-cesm2");
+        link.className += " hide-me";
+    }
+
+</script>
+                        </aside>
+
+                        <aside class="right-sidebar sticky-top rounded" style="top: 2rem;">
+                        	<div class="widget">
+							    <h5 class="widgetheading">Graph Quicklinks</h5>
+							    <ul class="cat">
+							    	<li><a href="#github-clones">CESM Github Clones Stats</a></li>
+							    	<li><a href="#github-views">CESM Github View Stats</a></li>
+							    	<li><a href="#svn-checkouts">CCSM Input Data SVN Checkout Stats</a></li>
+							    	<li><a href="#forum-all">DiscussCESM Forum Stats</a></li>
+							    	<li><a href="#forum-web">DiscussCESM Web Stats</a></li>
+							    	<li><a href="#cesm-web">CESM Web Stats</a></li>
+							    	<li><a href="#forum-users">DiscussCESM Users Stats</a></li>
+							    	<li><a href="#forum-threads">DiscussCESM Threads Stats</a></li>
+							    	<li><a href="#forum-posts">DiscussCESM Posts Stats</a></li>
+							    	<li><a href="#forum-web-total">DiscussCESM Total Web Stats</a></li>
+							    	<li><a href="#cesm-web-total">CESM Total Web Stats</a></li>
+							    </ul>
+
+							    <div class="hide-me">
+								    <h5 class="widgetheading mt-3">Table Quicklinks</h5>
+								    <ul class="cat">
+								    	<li><a href="#svn-checkouts-table">CCSM Input Data SVN Checkout Stats</a></li>
+								    	<li><a href="#forum-all-table">DiscussCESM Forum Stats</a></li>
+								    </ul>
+								</div>
+							</div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer>
+            <!-- footer -->
+            
+
+    <div class="container">
+        <!-- footer start -->
+        <div class="row">
+            <div class="col-md">
+                <div class="widget">
+                    <h5 class="widgetheading"><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">CGD Laboratory Info</a></h5>
+                    <p><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=footer">1850 Table Mesa Drive<br>Boulder, CO, 80305</a></p>
+                    <ul class="list-style-none">
+                        <li>303.497.1000&nbsp;&nbsp;<i class="fas fa-phone"></i>&nbsp;&nbsp;Phone</li>
+                        <li>303.497.1314&nbsp;&nbsp;<i class="fas fa-print"></i>&nbsp;&nbsp;Fax</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading"><a href="../about/Wc9217b0e02798.htm">CESM Quicklinks</a></h5>
+                <ul class="link-list">
+                    <li><a href="../events/tutorials/Wc2ebed6407518.htm">Tutorials</a></li>
+                    <li><a href="../events/workshops/Wc4e9f403cf13.htm">Workshops</a></li>
+                    <li><a href="../working_groups/Wc190e721ba82d.htm">Working Groups</a></li>
+                    <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=footer">Support Forums</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Leadership</h5>
+                <ul class="link-list">
+                    <li><a href="https://staff.ucar.edu/users/gokhan">Chief Scientist - Gokhan Danabasoglu</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/SSC/?ref=footer">Scientific Steering Committee</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/working_groups/?ref=footer">Working Group Co-Chairs</a></li>
+                    <li><a href="http://www.cesm.ucar.edu/management/CAB/?ref=footer">CESM Advisory Board</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="widget">
+                <h5 class="widgetheading">CESM Models</h5>
+                <ul class="link-list">
+                    <li><a href="../models/Wcc9c7389d47ec.htm">Overview</a></li>
+                    <li><a href="../experiments/Wcdda398834fdf.htm">Experiments</a></li>
+                    <li><a href="../projects/community-projects/Wcc1852b84e933.htm">Community Projects</a></li>
+                    <li><a href="../models/Wc4da67042a202.html">CESM Releases</a></li>
+                </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+
+
+        <!-- sub footer start -->
+        <div id="sub-footer">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="copyright">
+                    <p>
+                    <span>&copy; 2021 UCAR | <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.ucar.edu/terms-of-use">Terms</a> | <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="https://www.ucar.edu/">Managed by UCAR</a><br>
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br>
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </span></p>
+                    </div>
+                    <!-- end subfooter -->
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Social Media Include -->
+                    <h5 class="widgetheading social-heading">Follow Us</h5>
+                    <ul class="social-network">
+                        <li><a href="https://www.facebook.com/ncarcgdboulder/"  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/ncar_cgd"  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/national-center-for-atmospheric-research/"  title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCGfjWttSHDKu3y9pCay2KHQ"  title="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <!-- end Social Media Include -->
+                </div>
+            </div>
+        </div>
+        <!-- sub footer end -->
+    </div>
+
+    <div class="copyright-nsf">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <em>The CESM&reg; project is supported primarily by the National Science Foundation | This material is based upon work supported by the National Center for Atmospheric Research, a major facility sponsored by the National Science Foundation and managed by the University Corporation for Atmospheric Research. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National&nbsp;Science&nbsp;Foundation.</em>
+                </div>
+                <div class="col-lg-2">
+                    <a href="https://nsf.gov"><img src="../Images/logos/footer-logo-nsf.png" width="60" alt="NSF Logo" title="NSF Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            <!-- end footer -->
+        </footer>
+    </div>
+
+
+    <!-- javascript -->
+    <!-- scroll to top toolbar -->
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+<!-- toasts -->
+<!--
+<div class="toast fixed-top mt-2 ml-5" role="alert" data-autohide="true" data-delay="7000">
+    <div class="toast-header">
+        <img src="/favicon.ico" class="rounded mr-2" alt="CGD Logo">
+        <h5 class="mr-auto text-primary">ISG Note</h5>
+        <small class="text-muted"></small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">Close ×</span>
+    </button>
+    </div>
+
+    <div class="toast-body">
+        Please pardon our dust, we are currently in the process of upgrading pages. You may encounter broken links or old themes during this process. Contact the CGD/IS staff if you need help finding information or have any feedback
+    </div>
+</div>
+-->
+
+
+
+<!-- js includes -->
+<script src="../styles/um/js/jquery.min.js"></script>
+<script src="../styles/um/js/popper.min.js"></script>
+<script src="../styles/um/js/bootstrap.min.js"></script>
+<script src="../styles/um/js/fancybox.min.js"></script> 
+<script src="../styles/um/js/flexslider.min.js"></script>
+<script src="../styles/um/js/custom.js"></script>
+<script src="../styles/um/js/jquery.tablesorter.min.js"></script>
+<script src="../styles/um/js/cookie-consent.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+
+<script>
+// initialize and show Bootstrap 4 toast
+//$('.toast').toast('show');
+
+
+// scripts for the notice bar
+// get a cookie if set
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+// set a cookie
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/default.htm";
+}
+
+// clearing the cookie
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+// checking to display the banner or not
+function checkDowntimeMsg() {
+    var eventSeen = getCookie("eventSeen3");
+
+    if (eventSeen == null) {
+        // no cookie so havent seen the msg
+        $("#alert-downtime").fadeIn("fast");
+    }
+    else {
+        // have cookie so have seen message
+    }
+}
+
+// check for seeing the downtime message
+//checkDowntimeMsg();
+
+// check for closing the downtime notice
+$(".close-downtime").on('click', function() {
+    // fadeout the downtime message
+    $("#alert-downtime").fadeOut("fast");
+
+    // set the cookie so wont see next time
+    setCookie('eventSeen3','y',7);
+});
+
+// cookie consent
+window.addEventListener("load", function() {
+    window.wpcc.init( {
+        "colors": {
+            "popup": {
+                "background": "#0779bf", "text": "#ffffff", "border": "#0779bf"
+            }
+            , "button": {
+                "background": "#0779bf", "text": "#ffffff"
+            }
+        }
+        , "position":"bottom", "margin":"none", "fontsize":"tiny", "content": {
+            "href": "https://www.ucar.edu/cookie-other-tracking-technologies-notice", "message": "UCAR uses cookies to make our website function; however, UCAR cookies do not collect personal information about you. When using our website, you may encounter embedded content, such as YouTube videos and other social media links, that use their own cookies. To learn more about third-party cookies on this website, and to set your cookie preferences, click", "link": "here", "button": "Acknowledge"
+        }
+        , "padding":"none"
+    })
+});
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+// Script for calendar dropdown on inputs
+$('.datepicka').each(function(i, obj) {
+    // Grab the ID
+    var datepickaID = $(this).attr('id');
+
+    // Make it a picka
+    $( "#" + datepickaID ).datepicker();
+});
+
+
+// Script for the autoscroll back to top
+$(window).scroll(function(){
+	// show the scroll bar
+	if ($(this).scrollTop() > 100) {
+		$('.scrollup').fadeIn();
+	} 
+	// hide the scroll bar
+	else {
+		$('.scrollup').fadeOut();
+	}
+});
+
+// clickong on the scroll bar
+$('.scrollup').click(function(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
+	return false;
+});
+
+
+
+
+
+$(document).ready(function () {
+    
+    $('.star').on('click', function () {
+        $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+        $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+        var $target = $(this).data('target');
+        if ($target != 'all') {
+            $('.table tr').css('display', 'none');
+            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+        } else {
+            $('.table tr').css('display', 'none').fadeIn('slow');
+        }
+    });
+
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+
+    // popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover({html:true});
+    });
+
+    // checking for click on details
+    $('[data-toggle="popover"]').on("click", function() {
+        // change the html
+        $(this).removeClass("badge-info");
+        $(this).addClass("badge-danger");
+
+        $(this).html("Hide Details");
+    });
+
+    // checking for hiding popover to revert back
+    $('[data-toggle="popover"]').on('hide.bs.popover', function () {
+        // change the html
+        $(this).removeClass("badge-danger");
+        $(this).addClass("badge-info");
+
+        $(this).html("More Details");
+    });
+
+});
+</script>
+
+    <script src="../styles/um/js/chartjs.js"></script> 
+    <script>
+        // function for init CESM clones graph - ALL
+        function initGraphClones() {
+            $.ajax({
+                url: "files/clones.json",
+                dataType: "json",
+                success: function( data ) {
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_uniques = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+                    var count_uniques = 0;
+        		    var count_start = data.clones[0].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+        		    var count_end = data.clones[data.clones.length-1].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                    // set the clones array
+                    var array_clones = data.clones;
+
+
+                    // loop thru the data now
+                    for (a=0; a<array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // set the vars
+                        var timestamp_pre = array_data.timestamp;
+                        var count = array_data.count;
+                        var uniques = array_data.uniques;
+
+                        // pull out the timestamp
+                        var timestamp = timestamp_pre.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                        // push in the vars
+                        array_labels.push(timestamp);
+                        array_count.push(count);
+                        array_uniques.push(uniques);
+
+            			// update starting data
+            			var count_count = count_count + count;
+            			var count_uniques = count_uniques + uniques;
+                    }
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [
+                            {
+                                label: 'Uniques',
+                                backgroundColor: 'rgb(49, 115, 186)',
+                                data: array_uniques
+                            }, 
+                            {
+                                label: 'Count',
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                data: array_count
+                            }
+                        ]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-clones').getContext('2d');
+                    window.graphClones = new Chart(ctx, {
+                        type: 'line',
+                        data: data_chart,
+
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        userCallback: function(item, index) {
+                                            if (!(index % 50)) return item;
+                                        },
+                                        autoSkip: false
+                                    },
+                                    display: true
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            },
+
+                            layout: {
+                                padding: {
+                                    left: 0,
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0
+                                }
+                            },      
+
+                            title: {
+                                display: false,
+                                text: 'CESM Github Clones'
+                            },
+
+                            legend: {
+                                display: false,
+                                position: 'top',
+
+                            },
+
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false
+                            },
+
+                            elements: {
+                                point: {
+                                    radius: 0
+                                }
+                            },
+
+                            responsive: true,
+                            maintainAspectRatio: true
+                        }
+                    });
+
+
+                    // update the total count HTML BLAHHH
+                    $("#clones-total-count").html(count_count);
+                    $("#clones-total-unique").html(count_uniques);
+                    $("#clones-start").html(count_start);
+                    $("#clones-end").html(count_end);
+                }
+            });
+        }
+
+        // function for init CESM clones graph - MONTHLY
+        function initGraphClonesMonth() {
+            $.ajax({
+                url: "files/clones.json",
+                dataType: "json",
+                success: function( data ) {
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_uniques = [];
+                    var array_count_total = [];
+                    var array_uniques_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+                    var count_uniques = 0;
+        		    var count_start = data.clones[0].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+        		    var count_end = data.clones[data.clones.length-1].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                    // set the clones array
+                    var array_clones = data.clones;
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+                    var uniques_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // set the vars
+                        var timestamp_pre = array_data.timestamp;
+                        var count = array_data.count;
+                        var uniques = array_data.uniques;
+
+                        // pull out the timestamp JUST YEAR-MONTH
+                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}-[0-9]{2}/g);
+
+                        // check for first run to add first timestamp
+                        if (a==0) {
+                        	// add the first timestamp
+                        	array_labels.push(timestamp_year[0]);
+                        }
+
+                        // check if the timestamp is already added
+                        if($.inArray(timestamp_year[0], array_labels) == -1) {
+                        	// not in array
+                        	// new timestamp is not like previous so add to array
+                        	array_labels.push(timestamp_year[0]);
+
+                        	// push in the data
+	                        array_count.push(count_compare);
+	                        array_uniques.push(uniques_compare);
+
+	                        // check to make sure its first push for total data
+	                        if (array_count_total.length<=0) {
+	                        	// first data so push in
+	                        	array_count_total.push(count_compare);
+		                        array_uniques_total.push(uniques_compare);
+	                        }
+	                        // not first so grab prev, add new, and push in
+	                        else {
+	                        	// set the prev values
+	                        	var count_last = array_count_total.slice(-1)[0];
+	                        	var uniques_last = array_uniques_total.slice(-1)[0];
+
+	                        	// now add
+	                        	var count_new = count_last + count_compare;
+	                        	var uniques_new = uniques_last + uniques_compare;
+
+	                        	// now push it, push it real good
+	                        	array_count_total.push(count_new);
+		                        array_uniques_total.push(uniques_new);
+	                        }
+
+	                        // reset the counters
+	                        count_compare = 0;
+	                        uniques_compare = 0;
+                        }
+
+                    	// bump up the counters
+                    	count_compare = count_compare + count;
+                    	uniques_compare = uniques_compare + uniques;
+                        
+
+
+            			// update starting data
+            			var count_count = count_count + count;
+            			var count_uniques = count_uniques + uniques;
+
+
+            			// set the timestamp to compare next loop
+            			timestamp_compare = timestamp_year[0];
+
+
+            			// checking for last run to add in the last values
+            			if (a==(array_clones.length - 1)) {
+            				// push in the data
+	                        array_count.push(count_compare);
+	                        array_uniques.push(uniques_compare);
+
+
+	                        // push in the total data now
+	                        // set the prev values
+	                    	var count_last = array_count_total.slice(-1)[0];
+	                    	var uniques_last = array_uniques_total.slice(-1)[0];
+
+	                    	// now add
+	                    	var count_new = count_last + count_compare;
+	                    	var uniques_new = uniques_last + uniques_compare;
+
+	                    	// now push it, push it real good
+	                    	array_count_total.push(count_new);
+	                        array_uniques_total.push(uniques_new);
+
+	                        // reset the counters just in case
+	                        count_compare = 0;
+	                        uniques_compare = 0;
+            			}
+                    }
+
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [ {
+							type:'line',
+							label: "Total Count",
+							data: array_count_total,
+							fill: false,
+							borderColor: '#f77f00',
+							backgroundColor: '#f77f00',
+							borderWidth: 2,
+							fill: false,
+							yAxisID: 'line'
+			            }, {
+							type: 'bar',
+							label: "Count",
+							data: array_count,
+							backgroundColor: 'rgb(124, 113, 179)',
+							borderColor: 'rgb(124, 113, 179)',
+							boderWidth: 2,
+							yAxisID: 'bar'
+			            }]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-clones').getContext('2d');
+                    window.graphForum = new Chart(ctx, {
+						type: 'bar',
+						data: data_chart,
+						options: {
+							responsive: true,
+							legend: false,
+					        legendCallback: function(chart) {
+					        	// blah blah
+					        },
+							title: {
+								display: false,
+								text: 'DiscussCESM Stats'
+							},
+							tooltips: {
+								mode: 'index',
+								intersect: true
+							},
+							scales: {
+						      yAxes: [{
+						        id: 'bar',
+						        type: 'linear',
+						        position: 'left',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }, {
+						        id: 'line',
+						        type: 'linear',
+						        position: 'right',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }]
+						    },
+
+						    responsive: true,
+		                    maintainAspectRatio: true
+						}
+					});
+
+
+                    // update the total count HTML BLAHHH
+                    $("#clones-total-count").html(count_count);
+                    $("#clones-total-unique").html(count_uniques);
+                    $("#clones-start").html(count_start);
+                    $("#clones-end").html(count_end);
+                }
+            });
+
+			$('#legend-div-github-clones').html(graphForum.generateLegend());
+			console.log(document.getElementById('legend-div-github-clones'));
+        }
+
+
+
+        // function for init CESM views graph start - ALL
+        function initGraphViews() {
+            $.ajax({
+                url: "files/views.json",
+                dataType: "json",
+                success: function( data ) {
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_uniques = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+                    var count_uniques = 0;
+                    var count_start = data.views[0].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+                    var count_end = data.views[data.views.length-1].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                    // set the views array
+                    var array_views = data.views;
+
+                    // loop thru the data now
+                    for (a=0; a<array_views.length; a++) {
+                        // get the data array
+                        var array_data = array_views[a];
+
+                        // set the vars
+                        var timestamp_pre = array_data.timestamp;
+                        var count = array_data.count;
+                        var uniques = array_data.uniques;
+
+                        // pull out the timestamp
+                        var timestamp = timestamp_pre.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                        // push in the vars
+                        array_labels.push(timestamp);
+                        array_count.push(count);
+                        array_uniques.push(uniques);
+
+                        // update starting data
+                        var count_count = count_count + count;
+                        var count_uniques = count_uniques + uniques;
+                    }
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [
+                            {
+                                label: 'Uniques',
+                                backgroundColor: 'rgb(49, 115, 186)',
+                                data: array_uniques
+                            }, 
+                            {
+                                label: 'Count',
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                data: array_count
+                            }
+                        ]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-views').getContext('2d');
+                    window.graphViews = new Chart(ctx, {
+                        type: 'line',
+                        data: data_chart,
+
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        userCallback: function(item, index) {
+                                            if (!(index % 50)) return item;
+                                        },
+                                        autoSkip: false
+                                    },
+                                    display: true
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            },
+                            
+                            layout: {
+                                padding: {
+                                    left: 0,
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0
+                                }
+                            },      
+
+                            title: {
+                                display: false,
+                                text: 'CESM Github Views'
+                            },
+
+                            legend: {
+                                display: false,
+                                position: 'top',
+                            },
+
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false
+                            },
+
+                            elements: {
+                                point: {
+                                    radius: 0
+                                }
+                            },
+
+                            responsive: true,
+                            maintainAspectRatio: true
+                        }
+                    });
+                    $("#views-total-count").html(count_count);
+                    $("#views-total-unique").html(count_uniques);
+                    $("#views-start").html(count_start);
+                    $("#views-end").html(count_end);
+                },
+                // on ajax error
+                error: function(jqXHR, textStatus, errorThrown) {
+                    //console.log(textStatus, errorThrown);
+                }
+            });
+        }
+
+        // function for init CESM views graph - MONTHLY
+        function initGraphViewsMonth() {
+            $.ajax({
+                url: "files/views.json",
+                dataType: "json",
+                success: function( data ) {
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_uniques = [];
+                    var array_count_total = [];
+                    var array_uniques_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+                    var count_uniques = 0;
+        		    var count_start = data.views[0].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+        		    var count_end = data.views[data.views.length-1].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                    // set the views array
+                    var array_clones = data.views;
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+                    var uniques_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // set the vars
+                        var timestamp_pre = array_data.timestamp;
+                        var count = array_data.count;
+                        var uniques = array_data.uniques;
+
+                        // pull out the timestamp JUST YEAR-MONTH
+                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}-[0-9]{2}/g);
+
+                        // check for first run to add first timestamp
+                        if (a==0) {
+                        	// add the first timestamp
+                        	array_labels.push(timestamp_year[0]);
+                        }
+
+                        // check if the timestamp is already added
+                        if($.inArray(timestamp_year[0], array_labels) == -1) {
+                        	// not in array
+                        	// new timestamp is not like previous so add to array
+                        	array_labels.push(timestamp_year[0]);
+
+                        	// push in the data
+	                        array_count.push(count_compare);
+	                        array_uniques.push(uniques_compare);
+
+	                        // check to make sure its first push for total data
+	                        if (array_count_total.length<=0) {
+	                        	// first data so push in
+	                        	array_count_total.push(count_compare);
+		                        array_uniques_total.push(uniques_compare);
+	                        }
+	                        // not first so grab prev, add new, and push in
+	                        else {
+	                        	// set the prev values
+	                        	var count_last = array_count_total.slice(-1)[0];
+	                        	var uniques_last = array_uniques_total.slice(-1)[0];
+
+	                        	// now add
+	                        	var count_new = count_last + count_compare;
+	                        	var uniques_new = uniques_last + uniques_compare;
+
+	                        	// now push it, push it real good
+	                        	array_count_total.push(count_new);
+		                        array_uniques_total.push(uniques_new);
+	                        }
+
+	                        // reset the counters
+	                        count_compare = 0;
+	                        uniques_compare = 0;
+                        }
+
+                    	// bump up the counters
+                    	count_compare = count_compare + count;
+                    	uniques_compare = uniques_compare + uniques;
+                        
+
+
+            			// update starting data
+            			var count_count = count_count + count;
+            			var count_uniques = count_uniques + uniques;
+
+
+            			// set the timestamp to compare next loop
+            			timestamp_compare = timestamp_year[0];
+
+
+            			// checking for last run to add in the last values
+            			if (a==(array_clones.length - 1)) {
+            				// push in the data
+	                        array_count.push(count_compare);
+	                        array_uniques.push(uniques_compare);
+
+
+	                        // push in the total data now
+	                        // set the prev values
+	                    	var count_last = array_count_total.slice(-1)[0];
+	                    	var uniques_last = array_uniques_total.slice(-1)[0];
+
+	                    	// now add
+	                    	var count_new = count_last + count_compare;
+	                    	var uniques_new = uniques_last + uniques_compare;
+
+	                    	// now push it, push it real good
+	                    	array_count_total.push(count_new);
+	                        array_uniques_total.push(uniques_new);
+
+	                        // reset the counters just in case
+	                        count_compare = 0;
+	                        uniques_compare = 0;
+            			}
+                    }
+
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [ {
+							type:'line',
+							label: "Total Pageviews",
+							data: array_count_total,
+							fill: false,
+							borderColor: '#f77f00',
+							backgroundColor: '#f77f00',
+							borderWidth: 2,
+							fill: false,
+							yAxisID: 'line'
+			            }, {
+							type: 'bar',
+							label: "Pageviews",
+							data: array_count,
+							backgroundColor: 'rgb(124, 113, 179)',
+							borderColor: 'rgb(124, 113, 179)',
+							boderWidth: 2,
+							yAxisID: 'bar'
+			            }]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-views').getContext('2d');
+                    window.graphForum = new Chart(ctx, {
+						type: 'bar',
+						data: data_chart,
+						options: {
+							responsive: true,
+							legend: false,
+                            legendCallback: function(chart) {
+                                // blah blah
+                            },
+							title: {
+								display: false,
+								text: 'DiscussCESM Stats'
+							},
+							tooltips: {
+								mode: 'index',
+								intersect: true
+							},
+							scales: {
+						      yAxes: [{
+						        id: 'bar',
+						        type: 'linear',
+						        position: 'left',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }, {
+						        id: 'line',
+						        type: 'linear',
+						        position: 'right',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }]
+						    },
+
+						    responsive: true,
+		                    maintainAspectRatio: true
+						}
+					});
+
+
+                    // update the total count HTML BLAHHH
+                    $("#views-total-count").html(count_count);
+                    $("#views-total-unique").html(count_uniques);
+                    $("#views-start").html(count_start);
+                    $("#views-end").html(count_end);
+                }
+            });
+
+			$('#legend-div-github-views').html(graphForum.generateLegend());
+        }
+
+
+        // function for init CESM SVN graph of models data - MONTHLY
+        function initGraphSVNMonth() {
+            $.ajax({
+                url: "files/svn-models.csv",
+                dataType: "text",
+                success: function( data ) {
+                	// need to parse the CSV data into an array to use
+					var array_clones = data.split(/\r\n|\n/);
+
+
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_count_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+        		    var count_start = "2014";
+        		    var count_end = "2019";
+
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<=array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // check if its not blank 
+                        if ((array_data !== "") && (array_data !== undefined)) {
+	                        // set the vars
+	                        var timestamp_match = array_data.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/);
+	                        var count_match = array_data.match(/[0-9]+$/);
+
+	                        // set more vars
+	                        var timestamp_pre = timestamp_match[0];
+	                        var count = parseInt(count_match[0]);
+
+	                        // pull out the timestamp JUST YEAR-MONTH
+	                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}/g);
+
+
+	                        // check for first loop run to add first timestamp
+	                        if (a==0) {
+	                        	// add the first timestamp
+	                        	array_labels.push(timestamp_year[0]);
+	                        }
+
+	                        // check if the timestamp is already added, start of new label
+	                        if($.inArray(timestamp_year[0], array_labels) == -1) {
+	                        	// not in array
+	                        	// new timestamp is not like previous so add to array
+	                        	array_labels.push(timestamp_year[0]);
+
+	                        	// push in the data
+		                        array_count.push(count_compare);
+
+		                        // check to make sure its first push for total data
+		                        if (array_count_total.length<=0) {
+		                        	// first data so push in
+		                        	array_count_total.push(count_compare);
+		                        }
+		                        // not first so grab prev, add new, and push in
+		                        else {
+		                        	// set the prev values
+		                        	var count_last = array_count_total.slice(-1)[0];
+
+		                        	// now add
+		                        	var count_new = count_last + count_compare;
+
+		                        	// now push it, push it real good
+		                        	array_count_total.push(count_new);
+		                        }
+
+		                        // reset the counters
+		                        count_compare = 0;
+	                        }
+
+	                    	// bump up the counters
+	                    	count_compare = count_compare + count;                        
+
+
+	            			// update starting data
+	            			var count_count = count_count + count;
+
+
+	            			// set the timestamp to compare next loop
+	            			timestamp_compare = timestamp_year[0];
+
+	            			// checking for last run to add in the last values
+	            			if (a==(array_clones.length - 2)) {
+	            				console.log("LAST");
+
+	            				// push in the data
+		                        array_count.push(count_compare);
+
+
+		                        // push in the total data now
+		                        // set the prev values
+		                    	var count_last = array_count_total.slice(-1)[0];
+
+		                    	// now add
+		                    	var count_new = count_last + count_compare;
+
+		                    	// now push it, push it real good
+		                    	array_count_total.push(count_new);
+
+		                        // reset the counters just in case
+		                        count_compare = 0;
+	            			}
+	            		}
+                    }
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [ {
+							type:'line',
+							label: "Total Checkouts",
+							data: array_count_total,
+							fill: false,
+							borderColor: '#f77f00',
+							backgroundColor: '#f77f00',
+							borderWidth: 2,
+							fill: false,
+							yAxisID: 'line'
+			            }, {
+							type: 'bar',
+							label: "Checkouts",
+							data: array_count,
+							backgroundColor: 'rgb(124, 113, 179)',
+							borderColor: 'rgb(124, 113, 179)',
+							boderWidth: 2,
+							yAxisID: 'bar'
+			            }]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-svn').getContext('2d');
+                    window.graphForum = new Chart(ctx, {
+						type: 'bar',
+						data: data_chart,
+						options: {
+							responsive: true,
+							legend: false,
+                            legendCallback: function(chart) {
+                                // blah blah
+                            },
+							title: {
+								display: false,
+								text: 'DiscussCESM Stats'
+							},
+							tooltips: {
+								mode: 'index',
+								intersect: true
+							},
+							scales: {
+						      yAxes: [{
+						        id: 'bar',
+						        type: 'linear',
+						        position: 'left',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }, {
+						        id: 'line',
+						        type: 'linear',
+						        position: 'right',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }]
+						    },
+
+						    responsive: true,
+		                    maintainAspectRatio: true
+						}
+					});
+
+
+                    // update the total count HTML BLAHHH
+                    $("#svn-total-count").html(count_count);
+                    $("#svn-start").html(count_start);
+                    $("#svn-end").html(count_end);
+                },
+                // on ajax error
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+
+			$('#legend-div-svn').html(graphForum.generateLegend());
+        }
+
+        // function for init CESM SVN graph of input data - MONTHLY
+        function initGraphSVNMonthInput() {
+            $.ajax({
+                url: "files/svn-input.csv",
+                dataType: "text",
+                success: function( data ) {
+                	// need to parse the CSV data into an array to use
+					var array_clones = data.split(/\r\n|\n/);
+
+
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_count_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+        		    var count_start = "2014";
+        		    var count_end = "2019";
+
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<=array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // check if its not blank 
+                        if ((array_data !== "") && (array_data !== undefined)) {
+	                        // set the vars
+	                        var timestamp_match = array_data.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/);
+	                        var count_match = array_data.match(/[0-9]+$/);
+
+	                        // set more vars
+	                        var timestamp_pre = timestamp_match[0];
+	                        var count = parseInt(count_match[0]);
+
+	                        // pull out the timestamp JUST YEAR-MONTH
+	                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}/g);
+
+
+	                        // check for first loop run to add first timestamp
+	                        if (a==0) {
+	                        	// add the first timestamp
+	                        	array_labels.push(timestamp_year[0]);
+	                        }
+
+	                        // check if the timestamp is already added, start of new label
+	                        if($.inArray(timestamp_year[0], array_labels) == -1) {
+	                        	// not in array
+	                        	// new timestamp is not like previous so add to array
+	                        	array_labels.push(timestamp_year[0]);
+
+	                        	// push in the data
+		                        array_count.push(count_compare);
+
+		                        // check to make sure its first push for total data
+		                        if (array_count_total.length<=0) {
+		                        	// first data so push in
+		                        	array_count_total.push(count_compare);
+		                        }
+		                        // not first so grab prev, add new, and push in
+		                        else {
+		                        	// set the prev values
+		                        	var count_last = array_count_total.slice(-1)[0];
+
+		                        	// now add
+		                        	var count_new = count_last + count_compare;
+
+		                        	// now push it, push it real good
+		                        	array_count_total.push(count_new);
+		                        }
+
+		                        // reset the counters
+		                        count_compare = 0;
+	                        }
+
+	                    	// bump up the counters
+	                    	count_compare = count_compare + count;                        
+
+
+	            			// update starting data
+	            			var count_count = count_count + count;
+
+
+	            			// set the timestamp to compare next loop
+	            			timestamp_compare = timestamp_year[0];
+
+	            			// checking for last run to add in the last values
+	            			if (a==(array_clones.length - 2)) {
+	            				console.log("LAST");
+
+	            				// push in the data
+		                        array_count.push(count_compare);
+
+
+		                        // push in the total data now
+		                        // set the prev values
+		                    	var count_last = array_count_total.slice(-1)[0];
+
+		                    	// now add
+		                    	var count_new = count_last + count_compare;
+
+		                    	// now push it, push it real good
+		                    	array_count_total.push(count_new);
+
+		                        // reset the counters just in case
+		                        count_compare = 0;
+	            			}
+	            		}
+                    }
+
+                    // make the variable of data to use in the graph
+                    var data_chart = {
+                        labels: array_labels,
+                        datasets: [ {
+							type:'line',
+							label: "Total Checkouts",
+							data: array_count_total,
+							fill: false,
+							borderColor: '#f77f00',
+							backgroundColor: '#f77f00',
+							borderWidth: 2,
+							fill: false,
+							yAxisID: 'line'
+			            }, {
+							type: 'bar',
+							label: "Checkouts",
+							data: array_count,
+							backgroundColor: 'rgb(124, 113, 179)',
+							borderColor: 'rgb(124, 113, 179)',
+							boderWidth: 2,
+							yAxisID: 'bar'
+			            }]
+                    };
+
+                    // drawing the graph
+                    var ctx = document.getElementById('graph-svn-input').getContext('2d');
+                    window.graphForum = new Chart(ctx, {
+						type: 'bar',
+						data: data_chart,
+						options: {
+							responsive: true,
+							legend: false,
+                            legendCallback: function(chart) {
+                                // blah blah
+                            },
+							title: {
+								display: false,
+								text: 'DiscussCESM Stats'
+							},
+							tooltips: {
+								mode: 'index',
+								intersect: true
+							},
+							scales: {
+						      yAxes: [{
+						        id: 'bar',
+						        type: 'linear',
+						        position: 'left',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }, {
+						        id: 'line',
+						        type: 'linear',
+						        position: 'right',
+						        ticks: {
+		                                    beginAtZero:true
+		                                }
+						      }]
+						    },
+
+						    responsive: true,
+		                    maintainAspectRatio: true
+						}
+					});
+
+
+                    // update the total count HTML BLAHHH
+                    $("#svn-total-count-input").html(count_count);
+                    $("#svn-start-input").html(count_start);
+                    $("#svn-end-input").html(count_end);
+                },
+                // on ajax error
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+
+			$('#legend-div-svn-input').html(graphForum.generateLegend());
+        }
+
+        // function for init DiscussCESM graph
+        function initGraphForum() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019", "2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Posts",
+					data: [1573, 1395, 744, 517, 603, 984, 3508],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'line'
+	            }, {
+					type: 'bar',
+					label: "Threads",
+					data: [587, 548, 413, 338, 309, 363, 759],
+					backgroundColor: '#71B37C',
+					borderColor: '#71B37C',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }, {
+					type: 'bar',
+					label: "New Users",
+					data: [289, 262, 260, 252, 282, 463, 917],
+					backgroundColor: '#7c71b3',
+					borderColor: '#7c71b3',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-forum').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'line',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init DiscussCESM graph
+        // TODO BLAHBLAH - the graph thats controling all labels
+        function initGraphForumWebTotal() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Total",
+					data: [115073, 254195, 375503, 509610, 638531, 777619, 945177],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'line'
+	            }, {
+					type: 'bar',
+					label: "* Segment",
+					data: [115073, 139122, 121308, 134107, 128921, 139088, 167558],
+					backgroundColor: '#7c71b3',
+					borderColor: '#7c71b3',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-forum-web-total').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'line',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init DiscussCESM web graph
+        function initGraphForumWeb() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type: 'bar',
+					label: "Total Pageviews",
+					data: [115073, 139122, 121308, 134107, 128921, 139088, 167558],
+					backgroundColor: '#71B37C',
+					borderColor: '#71B37C',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }, {
+					type: 'bar',
+					label: "Unique Pageviews",
+					data: [84661, 101919, 92146, 104246, 99426, 106232, 127869],
+					backgroundColor: '#7c71b3',
+					borderColor: '#7c71b3',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-forum-web').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init CESM web graph
+        function initGraphCESMWeb() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type: 'bar',
+					label: "Total Pageviews",
+					data: [53256, 327455, 345211, 332382, 349348, 380701, 396165],
+					backgroundColor: '#71B37C',
+					borderColor: '#71B37C',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }, {
+					type: 'bar',
+					label: "Unique Pageviews",
+					data: [38554, 238483, 247336, 231323, 250106, 273001, 292286],
+					backgroundColor: '#7c71b3',
+					borderColor: '#7c71b3',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-cesm-web').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init DiscussCESM graph
+        function initGraphCESMWebTotal() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Total Pageviews",
+					data: [38554, 277037, 524373, 755696, 1005802, 1278803, 1674968],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'line'
+	            }, {
+					type: 'bar',
+					label: "Pageviews",
+					data: [38554, 238483, 247336, 231323, 250106, 273001, 396165],
+					backgroundColor: '#71B37C',
+					borderColor: '#71B37C',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-cesm-web-total').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'line',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+
+        // function for init DiscussCESM graph of threads
+        function initGraphForumThreads() {
+        	var data_forum_threads = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Total Threads",
+					data: [587, 1135, 1548, 1886, 2195, 2558, 3317],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'line'
+	            }, {
+					type: 'bar',
+					label: "Threads",
+					data: [587, 548, 413, 338, 309, 363, 759],
+					backgroundColor: '#71B37C',
+					borderColor: '#71B37C',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctxThreads = document.getElementById('graph-forum-threads').getContext('2d');
+			window.graphForumThreads = new Chart(ctxThreads, {
+				type: 'bar',
+				data: data_forum_threads,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'line',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init DiscussCESM graph of users
+        function initGraphForumUsers() {
+        	var data_forum_users = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Total Users",
+					data: [289, 551, 811, 1063, 1345, 1808, 2725],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'lineUsers'
+	            }, {
+					type: 'bar',
+					label: "New Users",
+					data: [289, 262, 260, 252, 282, 463, 917],
+					backgroundColor: '#7c71b3',
+					borderColor: '#7c71b3',
+					boderWidth: 2,
+					yAxisID: 'barUsers'
+	            }]
+	        };
+	        
+			var ctxUsers = document.getElementById('graph-forum-users').getContext('2d');
+			window.graphForumUsers = new Chart(ctxUsers, {
+				type: 'bar',
+				data: data_forum_users,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'barUsers',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'lineUsers',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+        // function for init DiscussCESM graph
+        function initGraphForumPosts() {
+        	var data_forum = {
+	            labels: ["2014","2015","2016","2017","2018","2019","2020"],
+	            datasets: [ {
+					type:'line',
+					label: "Total Posts",
+					data: [1573, 2968, 3712, 4229, 4832, 5816, 9324],
+					fill: false,
+					borderColor: '#f77f00',
+					backgroundColor: '#f77f00',
+					borderWidth: 2,
+					fill: false,
+					yAxisID: 'line'
+	            }, {
+					type: 'bar',
+					label: "Posts",
+					data: [1573, 1395, 744, 517, 603, 984, 3508],
+					backgroundColor: '#73000a',
+					borderColor: '#73000a',
+					boderWidth: 2,
+					yAxisID: 'bar'
+	            }]
+	        };
+	
+			var ctx = document.getElementById('graph-forum-posts').getContext('2d');
+			window.graphForum = new Chart(ctx, {
+				type: 'bar',
+				data: data_forum,
+				options: {
+					responsive: true,
+					title: {
+						display: false,
+						text: 'DiscussCESM Stats'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: true
+					},
+					scales: {
+				      yAxes: [{
+				        id: 'bar',
+				        type: 'linear',
+				        position: 'right',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }, {
+				        id: 'line',
+				        type: 'linear',
+				        position: 'left',
+				        ticks: {
+                                    beginAtZero:true
+                                }
+				      }]
+				    },
+
+				    responsive: true,
+                    maintainAspectRatio: true
+				}
+			});
+        }
+
+
+        // function for tables
+        function initTableSVN() {
+        	$.ajax({
+                url: "files/svn-models.csv",
+                dataType: "text",
+                success: function( data ) {
+                	// need to parse the CSV data into an array to use
+					var array_clones = data.split(/\r\n|\n/);
+
+
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_count_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+        		    var count_start = "2014";
+        		    var count_end = "2019";
+
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<=array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // check if its not blank 
+                        if ((array_data !== "") && (array_data !== undefined)) {
+	                        // set the vars
+	                        var timestamp_match = array_data.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/);
+	                        var count_match = array_data.match(/[0-9]+$/);
+
+	                        // set more vars
+	                        var timestamp_pre = timestamp_match[0];
+	                        var count = parseInt(count_match[0]);
+
+	                        // pull out the timestamp JUST YEAR-MONTH
+	                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}/g);
+
+
+	                        // check for first loop run to add first timestamp
+	                        if (a==0) {
+	                        	// add the first timestamp
+	                        	array_labels.push(timestamp_year[0]);
+	                        }
+
+	                        // check if the timestamp is already added, start of new label
+	                        if($.inArray(timestamp_year[0], array_labels) == -1) {
+	                        	// not in array
+	                        	// new timestamp is not like previous so add to array
+	                        	array_labels.push(timestamp_year[0]);
+
+	                        	// push in the data
+		                        array_count.push(count_compare);
+
+		                        // check to make sure its first push for total data
+		                        if (array_count_total.length<=0) {
+		                        	// first data so push in
+		                        	array_count_total.push(count_compare);
+		                        }
+		                        // not first so grab prev, add new, and push in
+		                        else {
+		                        	// set the prev values
+		                        	var count_last = array_count_total.slice(-1)[0];
+
+		                        	// now add
+		                        	var count_new = count_last + count_compare;
+
+		                        	// now push it, push it real good
+		                        	array_count_total.push(count_new);
+		                        }
+
+		                        // reset the counters
+		                        count_compare = 0;
+	                        }
+
+	                    	// bump up the counters
+	                    	count_compare = count_compare + count;                        
+
+
+	            			// update starting data
+	            			var count_count = count_count + count;
+
+
+	            			// set the timestamp to compare next loop
+	            			timestamp_compare = timestamp_year[0];
+
+	            			// checking for last run to add in the last values
+	            			if (a==(array_clones.length - 2)) {
+	            				//console.log("LAST");
+
+	            				// push in the data
+		                        array_count.push(count_compare);
+
+
+		                        // push in the total data now
+		                        // set the prev values
+		                    	var count_last = array_count_total.slice(-1)[0];
+
+		                    	// now add
+		                    	var count_new = count_last + count_compare;
+
+		                    	// now push it, push it real good
+		                    	array_count_total.push(count_new);
+
+		                        // reset the counters just in case
+		                        count_compare = 0;
+	            			}
+	            		}
+                    }
+
+                    // start the html for the table body
+                    var tablehtml = [];
+
+                    // loop thru the array of labels to make the tr rows
+                    for (a=0; a<array_labels.length; a++) {
+                    	// set the vars
+                    	var label_year = array_labels[a];
+                    	var label_count = array_count[a];
+
+                    	// make the html
+                    	tablehtml.push('<tr id="svn-tr-' + label_year + '"><td>' + label_year + '</td><td id="svn-td-' + label_year + '">' + label_count + '</td></tr>');
+                    }
+
+                    // join the array of stuff
+                    tablehtml.join("");
+
+                    // insert into the table
+                    $("#table-svn").html(tablehtml);
+                }
+            });
+        
+			// now grab the github stats to add in
+			$.ajax({
+                url: "files/clones.json",
+                dataType: "json",
+                success: function( data ) {
+                    // set the arrays to add into
+                    var array_labels = [];
+                    var array_count = [];
+                    var array_uniques = [];
+                    var array_count_total = [];
+                    var array_uniques_total = [];
+
+
+                    // grab the starting data
+                    var count_count = 0;
+                    var count_uniques = 0;
+                    var count_start = data.clones[0].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+                    var count_end = data.clones[data.clones.length-1].timestamp.match(/[0-9]+-[0-9]+-[0-9]+/g);
+
+                    // set the clones array
+                    var array_clones = data.clones;
+
+                    // set the starting compare vars
+                    var timestamp_compare = "";
+                    var count_compare = 0;
+                    var uniques_compare = 0;
+
+
+                    // loop thru the data now
+                    for (a=0; a<array_clones.length; a++) {
+                        // get the data array
+                        var array_data = array_clones[a];
+
+                        // set the vars
+                        var timestamp_pre = array_data.timestamp;
+                        var count = array_data.count;
+                        var uniques = array_data.uniques;
+
+                        // pull out the timestamp JUST YEAR-
+                        var timestamp_year = timestamp_pre.match(/^[0-9]{4}/g);
+                        var ts_year = timestamp_year[0];
+
+                        // check for first run to add first timestamp
+                        if (a==0) {
+                            // add the first timestamp
+                            array_labels.push(ts_year);
+                        }
+
+                        // check if the timestamp is already added
+                        if($.inArray(ts_year, array_labels) == -1) {
+                            // not in array
+                            // new timestamp is not like previous so add to array
+                            array_labels.push(ts_year);
+
+                            // push in the data
+                            array_count.push(count_compare);
+                            array_uniques.push(uniques_compare);
+
+                            // check to make sure its first push for total data
+                            if (array_count_total.length<=0) {
+                                // first data so push in
+                                array_count_total.push(count_compare);
+                                array_uniques_total.push(uniques_compare);
+                            }
+                            // not first so grab prev, add new, and push in
+                            else {
+                                // set the prev values
+                                var count_last = array_count_total.slice(-1)[0];
+                                var uniques_last = array_uniques_total.slice(-1)[0];
+
+                                // now add
+                                var count_new = count_last + count_compare;
+                                var uniques_new = uniques_last + uniques_compare;
+
+                                // now push it, push it real good
+                                array_count_total.push(count_new);
+                                array_uniques_total.push(uniques_new);
+                            }
+
+                            // reset the counters
+                            count_compare = 0;
+                            uniques_compare = 0;
+                        }
+
+                        // bump up the counters
+                        count_compare = count_compare + count;
+                        uniques_compare = uniques_compare + uniques;
+                        
+
+
+                        // update starting data
+                        var count_count = count_count + count;
+                        var count_uniques = count_uniques + uniques;
+
+
+                        // set the timestamp to compare next loop
+                        timestamp_compare = ts_year;
+
+
+                        // checking for last run to add in the last values
+                        if (a==(array_clones.length - 1)) {
+                            // push in the data
+                            array_count.push(count_compare);
+                            array_uniques.push(uniques_compare);
+
+
+                            // push in the total data now
+                            // set the prev values
+                            var count_last = array_count_total.slice(-1)[0];
+                            var uniques_last = array_uniques_total.slice(-1)[0];
+
+                            // now add
+                            var count_new = count_last + count_compare;
+                            var uniques_new = uniques_last + uniques_compare;
+
+                            // now push it, push it real good
+                            array_count_total.push(count_new);
+                            array_uniques_total.push(uniques_new);
+
+                            // reset the counters just in case
+                            count_compare = 0;
+                            uniques_compare = 0;
+                        }
+                    }
+
+                    // loop thru the array to pull the uniques
+                    for (b=0; b<array_labels.length; b++) {
+                    	// set the vars
+                    	var label_year = array_labels[b];
+                    	var label_count = array_uniques[b];
+
+                    	// make sure it's not 2020 TODO make less static
+                    	if (label_year !== "2020") {
+                    		// grab the row first to add
+                    		var prev_count = $("#svn-td-" + label_year).text();
+
+                    		// add it up
+                    		var new_count = parseInt(label_count) + parseInt(prev_count);
+
+
+                    		// set the row to add in
+                    		$("#svn-td-" + label_year).append(" +" + label_count + " GitHub checkouts");
+                    		//$("#svn-td-" + label_year).text(new_count);
+                    	}
+
+                    }
+                }
+            });
+
+        }
+
+
+        $(document).ready(function() {
+	        // call the graph functions
+	        //initGraphClones();
+	        //initGraphViews();
+	        initGraphForum();
+	        initGraphForumUsers();
+	        initGraphForumThreads();
+	        initGraphForumPosts();
+	        initGraphForumWeb();
+	        initGraphForumWebTotal();
+
+	        // DEV
+	        initGraphClonesMonth();
+	        initGraphViewsMonth();
+	        initGraphSVNMonth();
+	        initGraphSVNMonthInput();
+	        initGraphCESMWeb();
+	        initGraphCESMWebTotal();
+
+
+	        // tables
+	        initTableSVN();
+	    });
+
+	    // once the window has been loaded fade in the tables
+		$(window).on('load', function() {
+			// fade out the load-me
+			$(".load-me").fadeOut("slow", function() {
+				// fade in the hidden
+				$(".page-hide-me").fadeIn("fast");
+			});
+		});
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN"
+         "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Perturbation Growth Test Procedure</title>
+
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+
+<body>
+
+<h1>Perturbation Growth Test Procedure</h1>
+
+<h3>Introduction</h3>
+
+<p>It is often of interest to validate that the
+difference between two model runs is due only to machine epsilon (i.e.,
+roundoff) size differences that could have been introduced by, for example,
+</p>
+
+<ul>
+<li>running the same code on different machine architectures,
+</li>
+<li>running the same code on the same machine architectures, but with different
+compilation or runtime environments, or
+</li>
+<li>running two code versions that have only structural or perhaps order of
+operation differences on the same machine.
+</li>
+</ul>
+
+<p>The nature of global atmospheric models such as CAM is that small
+solution differences grow rapidly, and hence can hide small errors due to
+coding, computer system, or porting.  The perturbation growth test
+described here [<a href=#Ros97>Ros97</a>] was designed as an inexpensive
+test to give reasonable confidence that solution differences are due only
+to rounding differences.  There are, however, two important points to keep
+in mind.
+</p>
+
+<ul>
+
+<li>A successful test is <em>not sufficient</em> to guarantee that model
+solution differences are due only to roundoff differences.  Reasons for
+this include the following.
+
+<ul>
+<li>Some parameterizations in CAM are extremely sensitive to small
+perturbations, and in order to have CAM produce simulations that exhibit
+"acceptable" perturbation growth, it must be run in a special configuration
+in which some code is disabled via a CPP macro (<code>PERGRO</code>).
+</li>
+<li>The CLM is extremely sensitive to small perturbations and so the tests are
+done in "aqua-planet" mode which eliminates interaction with the land
+model.
+</li>
+<li>The length of the test is only two days which will only produce a
+subset of possible atmospheric states, and can't exercise all the code switches
+that control things like reading boundary datasets.
+</li>
+</ul>
+
+<p>Hence, not all of CAM's production code is exercised by this test.</p>
+</li>
+
+<li>Models producing simulations that are the "same to roundoff"
+(defined as simulations that pass this test) are not guaranteed to produce
+the same climate.  Validating a model's climate still requires that climate
+simulations and diagnostics be performed.
+</li>
+
+</ul>
+
+<p>In spite of the preceding disclaimers, the perturbation growth test is a
+valuable tool because:
+</p>
+
+<ul>
+<li> it reliably points out when there is a problem that is making larger
+than roundoff size changes to the solution, and
+</li>
+<li>it verifies when a change in the solution is characteristic of the
+change we expect from roundoff level differences.
+</li>
+</ul>
+
+<h3>Test Description</h3>
+
+<p>To perform the test requires three model simulations, each two days in
+duration.  The first two are done with the control (trusted) model and
+differ due to a perturbation introduced into the lowest-order bits of the
+initial values of the temperature field of one of the runs.  The difference
+between these simulations, as measured by the time evolution of the RMS
+temperature difference, is used to characterize the perturbation growth of
+the control model.  The third run is done with the model being tested.  The
+difference between the test simulation and either of the simulations from
+the control model characterizes the growth of the difference between the
+models.
+</p>
+
+<p>We say that the test simulation is "within roundoff" of the control
+simulation if the difference growth does not substantially exceed the
+perturbation growth.  Unfortunately, we can't be more precise than
+"substantially exceed".  After gaining alot of practical experience doing
+tests of this type, we often find that the difference and perturbation
+growth curves will lie nearly on top of one another with the perturbation
+curve lying above the difference curve at times, and lying below it at
+other times.
+</p>
+
+<p>The main reason we find this test so useful is that when it fails it
+generally fails spectacularly, i.e., the difference curve will exceed the
+perturbation curve by many orders of magnitude within a few model
+timesteps.  On the other hand, a "passed" test may be fuzzy, for example,
+when the difference curve is consistently above the perturbation curve, but
+never exceeds it by more than an order of magnitude.  As mentioned
+previously, at this point it's time to perform a full blown climate
+validation.
+</p>
+
+<h3>Procedure Details</h3>
+
+<p>Below the procedure to perform a perturbation growth test is described
+in detail.  The example illustrates the test for the T42 Eulerian dycore,
+but any dycore, resolution, or constituent scenario could be used.
+</p>
+
+<ol>
+
+<li><span class="title">Configure CAM - </span> 
+To build CAM for perturbation growth testing the configure command
+<em>must</em> be invoked with the <code>-pergro</code> option (in addition
+to any options that are specific to the model configuration being tested).
+<br><pre>
+% configure -pergro
+</pre>
+</li>
+
+<li><span class="title">Run CAM - </span>
+Three two-day simulations are required:
+<p>
+<ul>
+<li>Run the control model with no perturbation applied to the initial
+conditions.</li>
+<li>Run the control model with a perturbation applied to the initial
+temperature field.</li>
+<li>Run the model being tested with no perturbation applied to the initial
+conditions.</li>
+</ul>
+</p>
+<p>The namelist for a two day run with no perturbation applied to the initial
+conditions is set up as follows:
+</p>
+<pre>
+% build-namelist -s -case camrun -runtype startup \
+ -namelist "&camexp stop_option='ndays', stop_n=2 nhtfrq=1 ndens=1 \
+   mfilt=97 hfilename_spec='h%t.nc' empty_htapes=.true. \
+   fincl1='T:I','PS:I' aqua_planet=.true. /"
+</pre>
+<p>This specifies a two-day initial run, in "aqua-planet" mode, with real*8
+precision output of just the T and PS fields at every timestep.  Additional
+variables set for convenience specify writing history output every timestep, 
+writing all timesteps to one output file, use 64-bit NetCDF format for output, 
+and renaming the history file to 'h0.nc'.  Note
+that output of the PS field is required for computing the difference
+statistic which is a mass weighted RMS value.
+</p>
+<p>The namelist for a two day run with a perturbation applied to the
+initial temperature field is set up just as above, but with the added
+namelist variable "<code>pertlim=1.e-14</code>".
+</p>
+</li>
+
+<li><span class="title">Compute RMS temperature differences - </span>
+The following mass weighted RMS temperature differences need to be computed:
+<p>
+<ul>
+<li>The difference between the two control model runs, one with no
+perturbation applied and the second with a perturbed initial temperature
+field.  This difference is used to plot the perturbation growth curve.
+</li>
+<li>The difference between either run with the control model, and the run
+with the test model.  This difference is used to plot the difference growth
+curve.
+</li>
+</ul>
+</p>
+
+<p>Mass weighted RMS differences for all fields in two CAM history files
+are computed using the tool <code>cprnc</code> which is distributed with
+CAM (in the <code>models/atm/cam/tools/cprnc</code> directory).  The output
+from <code>cprnc</code> will contain a line formatted as follows for each
+temperature timesample in the two files:
+</p>
+<pre>
+ MASS WEIGHTED RMS T        6.6882E-12
+</pre>
+
+<p>A tool can be written in the user's favorite scripting language to strip
+the RMS values from the <code>cprnc</code> output to make them available
+for plotting.  An example of such a tool, <a
+href="pergro-utils.tar.gz"><code>cprncdf</code></a>, is a perl script
+which, if given one filename argument, assumes that the file contains
+output from <code>cprnc</code> and strips the RMS T values from the file.
+If <code>cprncdf</code> is given two filename arguments it assumes they are
+CAM history files on which it invokes <code>cprnc</code> and then processes
+its output.  <code>cprncdf</code> writes output which looks
+like this to stdout:
+</p>
+<pre>
+e48pm_lf_aqpgro
+e48ph_aqpgro
+T
+0 4.9115E-12
+1 5.8276E-12
+2 6.6468E-12
+3 5.0961E-12
+...
+</pre>
+
+<p>The 3 header lines are comprised of the case names from each of the runs
+and the name of the variable that the RMS values are for.
+(<code>cprncdf</code> has a command-line option that allows outputting the
+RMS differences of any variable in the two files.)  Then there is a line
+for each timesample in the files for which the RMS value is not zero.  The
+first value in the line is the timestep number, followed by the RMS value.
+</p>
+</li>
+
+<li><span class="title">Plot RMS temperature differences - </span> The
+final step is to compare the perturbation and difference growth curves.
+Any plotting tool with the ability to create semi-log line plots is
+sufficient.  An example of such a tool, <a href="pergro-utils.tar.gz">
+<code>cprncplt</code></a>, is a perl script which reads files in the format
+generated by <code>cprncdf</code> (one file for each line in the plot) and
+then invokes a scientific data processing and plotting tool called <a
+href="ftp://ftp-icf.llnl.gov/pub/Yorick/doc/index.html">
+<code>yorick</code></a> to do the plotting.  <code>yorick</code> must be
+installed on your system for this script to be used.
+
+</li>
+
+</ol>
+
+<!--========================================================================= -->
+<h3>References</h3>
+
+<dl>
+
+<dt><a name="Ros97"></a>[Ros97]</dt>
+<dd>Rosinski, J. M., and D. L. Williamson, <em>The accumulation of rounding
+  errors and port validation for global atmospheric models</em>, SIAM
+  J. SCI. COMPUT. 18(2), pp. 552-564, 1997. </dd>
+
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+    <LINK REL="SHORTCUT ICON"
+        HREF="../../www.cesm.ucar.edu/styles/modern/img/favicon.png">
+<head>
+<meta charset="utf-8">
+<title>LIWG | Developers' Guidelines</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+
+
+<!-- css -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+<!-- icon includes -->
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../site.webmanifest">
+<link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+<!-- stylesheet includes -->
+<link href="../../styles/modern/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../../styles/modern/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="../../styles/modern/css/flexslider.css" rel="stylesheet" />
+<link href="../../styles/modern/css/style.css" rel="stylesheet" />
+<link href="../../styles/atmos/styles/fonts.css" rel="stylesheet">
+<!-- <link href="/styles/modern/css/jcarousel.css" rel="stylesheet" /> -->
+
+
+<!-- Theme skin -->
+<link href="../../styles/modern/skins/default.css" rel="stylesheet" />
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+	<script src="/styles/modern/js/html5shiv.js"></script>
+ <![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                
+                <!-- navbar header -->
+                <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://www2.ucar.edu/">UCAR | &nbsp;</a>
+    <a class="navbar-brand" href="https://ncar.ucar.edu/">NCAR | &nbsp;</a>
+    <a class="navbar-brand" href="http://www.cesm.ucar.edu/">
+        <span>CESM&reg;</span> : : <span>Community Earth System Model</span></a>
+</div>
+
+                <!-- end navbar header -->
+                
+                <!-- search -->
+                <div class="search-container">
+    <div class="navbar-search">
+        <!-- script based off ncar google site search  -->
+        <script>
+            (function() {
+                var cx = '016712339613867830978:dnnyonaymh0';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();  
+        </script>
+        <gcse:searchbox-only resultsUrl="/search"></gcse:searchbox-only>
+    </div>
+</div>
+                <!-- end search -->
+                
+                <!-- main navigation -->
+                
+                <div class="navbar-collapse collapse ">
+                    
+                    <ul class="nav navbar-nav">
+                        
+                        <li><a href="../../Wc93fb2ea50e0b.html">Home</a></li>
+                        
+                        <li class="dropdown">
+                            <a href="../../about/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">About <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../about/Wc4682ed65a072.htm">Overview</a></li>
+                                <li><a href="../../about/Wc41f0926ae0d9.html">Contact</a></li>
+                                <li><a href="../../about/Wca62569b79f49.html">Mission</a></li>
+                                <li><a href="../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a></li>
+                                <li><a href="../../publications/Wc512d452813.htm">Publication Information</a></li>
+                                <li><a href="../../about/Wc4d448566b0d0.html">CESM Support Policy</a></li>
+                                <li><a href="../../about/Wcbd4ebba6880c.html">FAQs</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../management/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Administration<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../management/Wcc13a9ee1809b.htm">Overview</a></li>
+                                <li><a href="../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a></li>
+                                <li><a href="../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a></li>
+                                <li><a href="../../management/Wcbdd42d0b88ea.html">CESM Governance</a></li>
+                                <li><a href="../../management/Wc895ccddb9fce.html">Administration Plans</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown active">
+                            <a href="../default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Working Groups<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../Wc65f2ddfc4d9e.htm">Overview</a></li>
+                                <li><a href="../Wc182d15bc2c0e.html">Co-Chairs</a></li>
+                                <li><a href="../Wc3a7044ab4845.html">Terms of Reference</a></li>
+                                <li><a href="../Atmosphere/Wc1815cffb0a86.htm">AMWG</a></li>
+                                <li><a href="../Biogeo/Wc53eb8f496ff0.htm">BGCWG</a></li>
+                                <li><a href="../Chemistry/Wce7e5098be56.htm">CCWG</a></li>
+                                <li><a href="../CVC/Wc59a52ed79a3e.htm">CVCWG</a></li>
+                                <li><a href="Wc8ea7f75ec0ee.htm">LIWG</a></li>
+                                <li><a href="../Land/Wc68f4fa04493d.htm">LMWG</a></li>
+                                <li><a href="../Ocean/Wc7f1dfc675f00.htm">OMWG</a></li>
+                                <li><a href="../Paleo/Wcb3576eaf40fc.htm">PWG</a></li>
+                                <li><a href="../Polar/Wc62c6f6c03596.htm">PCWG</a></li>
+                                <li><a href="../Societal/Wce3e53c5e7db8.htm">SDWG</a></li>
+                                <li><a href="../Software/Wcb76155708f79.htm">SEWG</a></li>
+                                <li><a href="../Whole-Atmosphere/Wccd2d6f15a273.htm">WAWG</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../models/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Models<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../models/Wcc5a5d9505e02.htm">Overview</a></li>
+                                <li><a href="../../models/Wc46e54394790a.html">CESM Releases</a></li>
+                                <li><a href="../../models/Wc2d37fd4892b7.html">Scientifically Validated</a></li>
+                                <li><a href="../../experiments/Wca1ac0c97dc7.htm">Experiments</a></li>
+                                <li><a href="../../models/Wceaf9ebcbf058.html">CMIP6</a></li>
+                                <li><a href="../../projects/Wc52d49be327b0.htm">Projects</a></li>
+                                <li><a href="../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a></li>
+                                <li><a href="../../models/simpler-models/Wc340f787b10c9.htm">Simpler Models</a></li>
+                                <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="../../models/Wcfecbc74fe52a.html">Legacy</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../events/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Events<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../events/Wc2677660c09ac.htm">Upcoming</a></li>
+                                <li><a href="../../events/Wc40f6ad8263a5.html">Past Events</a></li>
+                                <li><a href="../../events/chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a></li>
+                                <li><a href="../../events/tutorials/Wc65159099e150.htm">Tutorials</a></li>
+                                <li><a href="../../events/workshops/Wc98eb8bcbcb70.htm">Workshops</a></li>
+                                <li><a href="../../events/wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a></li>
+                            </ul>
+                        </li>
+
+                        <li id="" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 4px 0 0 0;" data-hover="dropdown" data-delay="0" data-close-others="false"> 
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color:#3E6A9C; vertical-align: bottom;">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i> Help <span class="caret"></span> 
+                                </button>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" style="margin-top: 7px;">
+                                <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a></li>
+                                <li><a href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="t-hlp">CGD Help Desk</a></li>
+                                <li><span id="s-hlp"></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+                <script>
+                var tm='mailto', ru='help', ta='@', md='cgd.ucar.edu', te=document.getElementById('a-hlp'), se=document.getElementById('s-hlp'), te=document.getElementById('t-hlp'); 
+                //te.innerHTML='<a style="padding:4px 0 0 0;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'"><button type="button" class="btn btn-primary btn-sm" style="background-color:#3173ba;"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></a>';
+                se.innerHTML='<a style="text-transform:lowercase;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'">[ '+ru+ta+md+' ]</a>';
+                te.href = tm+':'+ru+ta+md;
+                </script>
+                <!-- end main navigation -->
+                
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="breadcrumb">
+					<li><a href="../../index.html"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li><a href="../default.htm">CESM Working Groups</a><i class="icon-angle-right"></i></li>
+                    <li><a href="default.htm">LIWG</a><i class="icon-angle-right"></i></li>
+					<li class="active">Developers' Guidelines</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<article>
+						<div class="post-image">
+							<div class="post-heading">
+								<h1>LIWG Developers' Guidelines</h1>
+							</div>
+							
+						</div>
+                        
+                        <p dir="ltr"><h2>Current status</h2></p>
+                        <p dir="ltr"><span>We are currently working on a beta version of CISM2.0. In this beta version, the development process has been relatively uncontrolled. Once CISM2.0 is released, tighter controls on code changes will be put in place; the rest of this document describes the process that we are moving towards.</span></p>
+                        <p>&nbsp;</p>
+                        <p><h2>Background</h2></p>
+                        <p>The ice sheet model code in CESM is split across two repositories: the glimmer-cism repository and the CESM repository. The glimmer-cism repository contains all code and build scripts needed to build a standalone version of CISM (i.e., outside the framework of CESM or any other climate model). Standalone CISM includes its own test suite. Most development is first carried out here, with initial testing done on the standalone model.</p>
+                        <p dir="ltr"><span>The CESM repository pulls in all code from the glimmer-cism repository (as an svn external). CESM has its own test suite, which tests the integration of the glimmer-cism code with CESM in various configurations. An implication of this configuration is that changes from the glimmer-cism repository can be pulled in to CESM at any time – changes to the glimmer-cism trunk do not need to be immediately incorporated into the CESM trunk. This setup could potentially allow the CESM trunk to have tighter change controls than the glimmer-cism trunk.</span></p>
+                        <p>&nbsp;</p>
+                        <p dir="ltr"><h2>Scientific approval process, and basic development process</h2></p>
+                        <p>Any significant change requires scientific approval from the LIWG. This includes both (a) significant answer changes to default model configurations or other important model configurations, and (b) significant new features.</p>
+                        <p dir="ltr"><span>Code introducing new features to the default configuration is allowed to be merged with the trunk under the following circumstances and pending approval by the LIWG:</span></p>
+                        <ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>New code adds significant, new and novel scientific capabilities</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>New code adds significant improvements in computational and/or numerical performance</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>New code improves model diagnostic output (e.g., with respect to observations)</span></p>
+                            </li>
+                        </ol>
+                        <p dir="ltr"><span>The above items will be assessed using standard test cases that verify and validate model output and performance, relative to the current version of the code on the trunk.</span></p>
+                        <p dir="ltr"><span>We envision two types of development; the development process will differ for these two types:</span></p>
+                        <ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Development that the LIWG decides ahead of time is a high priority and should be done. This development will likely make it to the trunk eventually, unless it is found to have major flaws. This type of development should involve scientific and software liaisons throughout the development process, and especially in the early design phases where this involvement is most helpful. Assuming the liaisons have been consulted throughout development, only minor revisions will generally be needed when it comes time to bring the code to the trunk. </span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>More exploratory development, which a collaborator takes the initiative to undertake. For changes that the developer hopes to bring to the trunk eventually, the developer is still strongly encouraged to consult with scientific and software liaisons in the early design phases. (Even a small amount of design discussion can save significant time later.) However, because the liaisons’ time is limited, this type of development will probably have only limited input from scientific and software liaisons throughout the rest of development. As the development nears completion, the developer will run simulations showing that the development is correct and improves the model in one of the ways laid out above. At that point, the LIWG will decide whether this development should be brought to the trunk. </span><strong>Any code developed in this manner should be viewed as a prototype, which may need to be rewritten substantially before it can be brought to the trunk, in order to ensure that it follows existing coding standards and keeps the code base maintainable. </strong><span>In general, the burden for rewriting the code will fall on the original developer. However, scientific and software liaisons can lend their support here, with the level of support determined by the priority of the development to the LIWG.</span></p>
+                            </li>
+                        </ol>
+                        <p>Note that some kinds of changes do <strong>not</strong> require scientific approval. This includes:</p>
+                        <ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Minor bug fixes that do not change answers significantly, or change answers only in seldom-used configurations</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Code refactoring that changes answers by no more than roundoff</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Cosmetic code changes (which should not change answers at all)</span></p>
+                            </li>
+                        </ol>
+                        <p>However, depending on the nature of the change, the developer may be required to demonstrate that answers do not change significantly, e.g., by showing differences between a new and old simulation.</p>
+                        <p>&nbsp;</p>
+                        <p dir="ltr"><h2>Software engineering approval process</h2></p>
+                        <p>All changes are subject to approval by the software engineering gatekeeper, including minor changes that are not subject to scientific approval. However, for minor changes (especially cosmetic changes that do not change answers), the gatekeeper may decide that a review is unnecessary. The gatekeeper’s role in this process is to ensure that all changes follow coding best practices and conventions (<strong>these will be articulated in a separate document</strong>), as well as to ensure that the code evolves in a maintainable way. In addition, the gatekeeper should evaluate whether new code has any undesirable interactions with other parts of the system, which may not have been considered by the original developer.</p>
+                        <p>For small problems identified by the gatekeeper, the gatekeeper will work with the developer to fix these problems. However, for larger problems, including problems with the overall design of the new code, the gatekeeper may return the code to the developer for revision, with guidance as to what changes would be needed for this code to be acceptable for the trunk.</p>
+                        <p><strong>Developers are strongly encouraged to consult with the software engineering gatekeeper and other experienced members of the LIWG before undertaking any major developments that they would eventually like to bring to the trunk.</strong> Early design discussions can save significant time later, by preventing the need for a substantial rewrite of the code. Code that is developed without initial design discussions and periodic ongoing discussions with other developers should be viewed as a prototype. This prototype code may require substantial revisions before being accepted.</p>
+                        <p>&nbsp;</p>
+                        <p dir="ltr"><h2>Trunk policy</h2></p>
+                        <p dir="ltr"><span>Code must be well-tested before it can come to the main development trunk. This testing should include at least the standard test suite. (There is one test suite for the standalone glimmer-cism repository, and another for the CESM repository.) In addition, developers should perform any additional tests that they feel are required to ensure that their new features are working as intended. Developers, in consultation with the software engineering gatekeeper, should consider whether these additional tests should be incorporated into the standard test suite, to ensure that their new features continue to work in the future. </span></p>
+                        <p>Code in the glimmer-cism repository does not necessarily have to undergo CESM testing before being brought to the trunk – the standalone test suite is sufficient. The CESM test suite will be run before the CESM repository is updated to include the latest glimmer-cism code.</p>
+                        <p>Trunk commits are envisioned as happening every 1 – 2 weeks. In general, each commit to the trunk (either the glimmer-cism trunk or the CESM trunk) will be associated with a unique trunk tag.</p>
+                        <p>&nbsp;</p>
+                        <p dir="ltr"><h2>Development branches</h2></p>
+                        <p dir="ltr"><span>Development branches are generally used for two purposes:</span></p>
+                        <p><span><span><br /></span></span></p>
+                        <ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Development of new features: any change of more than a few lines can warrant the use of a feature branch.</span></p>
+                            </li>
+                            <ol type="a">
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>Developers are strongly encouraged to periodically update their branch to the latest trunk version. </span><span>(<strong>A separate document will provide guidance about this.</strong>)</span></p>
+                                </li>
+                            </ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>As a holding area for minor, trunk-bound changes: the purpose of these branches is to avoid needing to run the full test suite on every minor change. These just apply to the glimmer-cism repository, not the CESM repository.</span></p>
+                            </li>
+                            <ol type="a">
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>For example, if the last trunk tag was cism2_0_00, then there could be a branch named to_be_2_0_01T (where the final T stands for “trunk”). </span></p>
+                                </li>
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>A limited set of developers (including the software engineering gatekeeper, as well as LIWG co-chairs and liaisons) can commit minor changes to these branches directly. Others can commit minor changes with permission. </span></p>
+                                </li>
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>In general, these branches should only include bit-for-bit changes. Answer-changing modifications generally warrant their own trunk tag, so that answer-changing modifications don’t mask problems with changes that are intended to be bit-for-bit.</span></p>
+                                </li>
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>Larger commits to these branches may still require running a small subset of the test suite to catch any problems early</span></p>
+                                </li>
+                                <li dir="ltr">
+                                    <p dir="ltr"><span>We aim to bring these branches to the trunk every 1 – 2 weeks. </span></p>
+                                </li>
+                            </ol></ol>
+                        <p><span><span><br /></span></span></p>
+                        <p dir="ltr"><span>The line between what size development warrants its own branch (which will become its own trunk tag) vs being small enough to go onto a shared, “holding-area” branch is somewhat blurry. This will need to be determined from experience. However, note that answer-changing modifications (even roundoff-level) almost always warrant their own trunk tag.</span></p>
+                        <p>&nbsp;</p>
+                        <p dir="ltr"><h2>Testing Responsibilities</h2></p>
+                        <p>For feature branches –&nbsp;which generally involve a single developer or a small, coordinated group of developers – the developers are responsible for running the standalone CISM test suite, and getting all tests to pass.</p>
+                        <p>For “holding area” branches, the software engineering gatekeeper is responsible for testing. However, (s)he may require that people checking in changes to this branch run a small subset of the standalone test suite before making any commits.</p>
+                        <p>The software engineering gatekeeper is responsible for incorporating the glimmer-cism code base into the CESM repository, and for running the CESM tests when this occurs. However, since the CESM tests often catch problems in the glimmer-cism code that were not caught by the standalone test suite, it is the responsibility of the original developers to fix any problems that are revealed in this testing.</p>
+                        <p>&nbsp;</p>
+                        <p><span><span><br /></span></span><h2>Summary of process for bringing a new development to the trunk</h2></p>
+                        <p dir="ltr"><span>The following summarizes the process for bringing a major new development to the trunk. Note that many of these steps should actually be performed periodically, earlier in the development process. For example, developers should periodically update their branch to the trunk, and should periodically run the test suite rather than saving testing for the end of the process when it is hard to determine what changes have caused a test to fail. In addition, it is helpful to involve the software engineering gatekeeper and other developers earlier in the process to avoid the need for major revisions.</span></p>
+                        <ol>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Get scientific approval to bring this development to the trunk</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Update branch to latest version of trunk</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Run standalone test suite, and any other tests that the developer feels are necessary to verify new functionality</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Software engineering gatekeeper reviews code. If major revisions are needed, the developer will have to make these revisions and then repeat steps 2 &amp; 3, followed by a re-review.</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Gatekeeper runs CESM test suite</span></p>
+                            </li>
+                            <li dir="ltr">
+                                <p dir="ltr"><span>Once standalone test suite &amp; CESM test suite pass, gatekeeper checks in to trunk, makes trunk tag.</span></p>
+                            </li>
+                        </ol>
+                        
+			</div>
+			<div class="col-lg-4">
+				<aside class="right-sidebar">
+				
+                <!-- LIWG Info Include -->
+                <div class="widget">
+    <h5 class="widgetheading">LIWG Information</h5>
+    <ul class="cat">
+        <li><a href="priorities/default.htm">LIWG Priorities</a></li>
+        <li><a href="developer-guidelines.html">Developers' Guidelines</a></li>
+        <li><a href="projects.html">LIWG Projects</a></li>
+        <li><a href="http://oceans11.lanl.gov/cism/">Community Ice Sheet Model</a></li>
+        <li><a href="../../events/default.htm">Upcoming Meetings</a></li>
+        <li><a href="../../events/past-events.html">Past Meetings</a></li>
+    </ul>
+</div>
+
+                <!-- end LIWG Info Include -->
+                
+                <!-- LIWG Related Info Include -->
+                <div class="widget">
+    <h5 class="widgetheading">LIWG Communication</h5>
+    <ul class="cat">
+        <li>Email: <a href="mailto:ccsm-liwg@cgd.ucar.edu">LIWG Members</a></li>
+        <li><a href="http://mailman.cgd.ucar.edu/mailman/listinfo/ccsm-liwg">Subscribe to CESM LIWG List</a></li>
+        <li><a href="http://bb.cgd.ucar.edu/">DiscussCESM</a></li>
+    </ul>
+</div>
+                <!-- end LIWG Related Info Include -->
+                
+                <!-- WG Info Include -->
+                <div class="widget">
+    <h5 class="widgetheading">Working Group Info</h5>
+    <ul class="cat">
+        <li><a href="../default.htm" id="cesm-1">CESM Working Group Home</a></li>
+        <li><a href="../chairs.html" id="cesm-2">CESM Working Group Co-Chairs</a></li>
+        <li><a href="../terms.html" id="cesm-3">CESM Working Group Co-Chairs Terms of Reference</a></li>
+        <li><a href="mailto:wg-cochairs@cgd.ucar.edu">Email CESM Working Group Co-Chairs</a></li>
+        <li><a href="mailto:fair@ucar.edu">Email CESM Contact</a></li>
+    </ul>
+</div>
+
+
+<script>
+    // Parent folder function
+    function getParentFolder(url) {
+        if ( !url ) url = window.location.href;
+        url = url.lastIndexOf('../../default.htm') == (url.length -1) ? url.substr(0,url.length-1) : url.substr(0,url.lastIndexOf('../../default.htm'));
+        return url.substr(url.lastIndexOf('../../default.htm') + 1);
+    }
+
+    // Set the vars
+    var pathname = window.location.pathname;
+    var url_full = window.location.href;
+    var page     = pathname.split("../../default.htm").pop();
+    var folder   = getParentFolder(url_full);
+    var folder_first = window.location.pathname.split('../../default.htm')[1];
+
+    // Check the page for the right link to be active
+    if(page === "") {
+        var link = document.getElementById("cesm-1");
+        link.className += " link-active";
+    }
+    if(page === "chairs.html") {
+        var link = document.getElementById("cesm-2");
+        link.className += " link-active";
+    }
+    if(page === "terms.html") {
+        var link = document.getElementById("cesm-3");
+        link.className += " link-active";
+    }
+
+</script>
+                <!-- end WG Include -->
+				
+				</aside>
+			</div>
+		</div>
+	</div>
+	</section>
+	<footer>
+	<div class="container">
+        
+        <!-- footer -->
+        <div class="row">
+<div class="col-lg-3">
+    <div class="widget">
+        <h5 class="widgetheading">CESM&trade; Leadership</h5>
+        <p>
+        CESM Chief Scientist | Gokhan Danabasoglu<br>
+        </p>
+        <p>
+        <a href="http://www.cesm.ucar.edu/working_groups/">Working Group Co-Chairs</a><br />
+        <a href="http://www.cesm.ucar.edu/management/SSC/"> SSC | Scientific Steering Committee</a><br />
+        <a href="http://www.cesm.ucar.edu/management/CAB/">CAB | CESM Advisory Board</a>
+        </p>
+    </div>
+</div>
+<div class="col-lg-3">
+    <div class="widget">
+        <h5 class="widgetheading">CESM&trade; Sponsors</h5>
+        <ul class="link-list">
+        <li><a href="http://www.nsf.gov/">NSF | National Science Foundation</a></li>
+        <li><a href="http://www.energy.gov/">DOE | U.S. Department of Energy</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-3">
+    <div class="widget">
+        <h5 class="widgetheading">CESM&trade; Administration</h5>
+        <ul class = "link-list">
+        <li><a href="http://www2.cgd.ucar.edu">CGD | Climate &amp; Global Dynamics Laboratory</a></li>
+        <li><a href="http://www.ncar.ucar.edu">NCAR | National Center for Atmospheric Research</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-3">
+    <div class="widget">
+        <h5 class="widgetheading">CGD | Climate &amp; Global Dynamics Laboratory</h5>
+        <p>CGD Laboratory Office<br />
+        Phone: 303.497.1740<br />
+        Fax: 303.497.1314</p>
+        <div class="clear">
+    </div>
+</div>
+</div>
+
+        <!-- end footer -->
+        
+    </div>
+        <div id="sub-footer">
+            <!-- navbar subfooter -->
+            <div class="row">
+    <div class="col-lg-6">
+        <div class="copyright">
+            <p>
+            <span>&copy; 2019 UCAR | <a href="http://www2.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="http://www2.ucar.edu/terms-of-use">Terms</a> | <a href="https://www2.ucar.edu/notification-copyright-infringement-digital-millennium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="http://www.ucar.edu/">Managed by UCAR</a><br />
+                Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+                Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                </p>
+                
+</div>
+
+            <!-- end subfooter -->
+        </div>
+            <div class="col-lg-6">
+                <!-- Social Media Include -->
+                
+        <em class="copyright">The National Center for Atmospheric Research is sponsored by the National Science Foundation. Any opinions, findings and conclusions or recommendations expressed in this publication are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</em>
+        <!-- <ul class="social-network">
+            <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+        </ul> -->
+                <!-- end Social Media Include -->
+            </div>
+            </div>
+</div>
+</div>
+</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+ ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- <script src="/styles/modern/js/jquery.js"></script> outdated version -->
+<script src="../../styles/modern/js/jquery.min.js"></script> 
+<script src="../../styles/modern/js/jquery.migrate.js"></script>
+<script src="../../styles/modern/js/bootstrap.min.js"></script>
+<script src="../../styles/modern/js/jquery.fancybox.pack.js"></script>
+<script src="../../styles/modern/js/jquery.fancybox-media.js"></script>
+<script src="../../styles/modern/js/google-code-prettify/prettify.js"></script>
+<script src="../../styles/modern/js/jquery.flexslider.js"></script>
+<script src="../../styles/modern/js/animate.js"></script>
+<script src="../../styles/modern/js/custom.js"></script>
+<script src="../../styles/modern/js/jquery.tablesorter.min.js"></script> 
+<!-- <script src="/styles/modern/js/jquery.easing.1.3.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/jquery.quicksand.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/setting.js"></script> missing file -->
+
+<script>
+// Check if the nsf badge is there
+if ( !($(".nsf-header")[0]) ) {
+	// create the nsf badge div
+	var div = '<div class="nsf-header"> <a href="http://www.nsf.gov/"> <img src="../../styles/modern/includes/header/ncar_header_nsf_only.png"title="Sponsored by NSF"alt="Sponsored by NSF"> </a> </div>';
+
+	// insert it
+	$('.search-container').after(div);
+}
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+$(document).ready(function() {
+	// script to dropdown the Prognostic Components options
+	$("#link-prog").click(function() {
+	  // check to make sure if it is hidden
+	  if ($("#u-link-prog").is(":visible")) {
+	    // its not hidden so change arrow and hide
+	    $("#i-link-prog").attr("class", "fa fa-chevron-right");
+	    $("#u-link-prog").slideUp("fast");
+	  }
+	  else {
+	    // its hidden so change arrow and show
+	    $("#i-link-prog").attr("class", "fa fa-chevron-down");
+	    $("#u-link-prog").slideDown("fast");
+	  }
+	});
+});
+</script>
+
+</body>
+</html>

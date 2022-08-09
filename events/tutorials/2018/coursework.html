@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CESM Tutorial | 2018 Coursework</title>
+    <link rel="shortcut icon" href="../../../www.cesm.ucar.edu/styles/modern/img/favicon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+
+    <!-- css -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-2274704-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2274704-2');
+</script>
+
+
+<!-- icon includes -->
+<link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+<link rel="manifest" href="../../../site.webmanifest">
+<link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+<!-- stylesheet includes -->
+<link href="../../../styles/modern/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../../../styles/modern/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="../../../styles/modern/css/flexslider.css" rel="stylesheet" />
+<link href="../../../styles/modern/css/style.css" rel="stylesheet" />
+<link href="../../../styles/atmos/styles/fonts.css" rel="stylesheet">
+<!-- <link href="/styles/modern/css/jcarousel.css" rel="stylesheet" /> -->
+
+    <!-- Theme skin -->
+    <link href="../../../styles/modern/skins/default.css" rel="stylesheet" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="/styles/modern/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+        ul.pager {
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- header start -->
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <!-- navbar header -->
+                <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://www2.ucar.edu/">UCAR | &nbsp;</a>
+    <a class="navbar-brand" href="https://ncar.ucar.edu/">NCAR | &nbsp;</a>
+    <a class="navbar-brand" href="http://www.cesm.ucar.edu/">
+        <span>CESM&reg;</span> : : <span>Community Earth System Model</span></a>
+</div>
+
+                <!-- end navbar header -->
+
+                <!-- search -->
+                <div class="search-container">
+    <div class="navbar-search">
+        <!-- script based off ncar google site search  -->
+        <script>
+            (function() {
+                var cx = '016712339613867830978:dnnyonaymh0';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();  
+        </script>
+        <gcse:searchbox-only resultsUrl="/search"></gcse:searchbox-only>
+    </div>
+</div>
+                <!-- end search -->
+
+                <!-- NSF header -->
+                
+<div class="nsf-header">
+<a href="http://www.nsf.gov/">
+<img src="../../../styles/modern/includes/header/ncar_header_nsf_only.png"
+    title="Sponsored by NSF"
+    alt="Sponsored by NSF">
+</a>
+</div>
+
+                <!-- end NSF header -->
+
+                <!-- main navigation -->
+                
+                
+                <div class="navbar-collapse collapse ">
+                    
+                    <ul class="nav navbar-nav">
+                        
+                        <li><a href="../../../Wc93fb2ea50e0b.html">Home</a></li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../about/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">About <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../about/Wc4682ed65a072.htm">Overview</a></li>
+                                <li><a href="../../../about/Wc41f0926ae0d9.html">Contact</a></li>
+                                <li><a href="../../../about/Wca62569b79f49.html">Mission</a></li>
+                                <li><a href="../../../about/awards/Wcf3fae3bb3d60.htm">Distinguished Achievement Awards</a></li>
+                                <li><a href="../../../publications/Wc512d452813.htm">Publication Information</a></li>
+                                <li><a href="../../../about/Wc4d448566b0d0.html">CESM Support Policy</a></li>
+                                <li><a href="../../../about/Wcbd4ebba6880c.html">FAQs</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../management/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Administration<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../management/Wcc13a9ee1809b.htm">Overview</a></li>
+                                <li><a href="../../../management/CAB/Wc29ddf8c8a95f.htm">CAB | CESM Advisory Board</a></li>
+                                <li><a href="../../../management/SSC/Wcb0bed885297.htm">SSC | Scientific Steering Committee</a></li>
+                                <li><a href="../../../management/Wcbdd42d0b88ea.html">CESM Governance</a></li>
+                                <li><a href="../../../management/Wc895ccddb9fce.html">Administration Plans</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../working_groups/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Working Groups<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../working_groups/Wc65f2ddfc4d9e.htm">Overview</a></li>
+                                <li><a href="../../../working_groups/Wc182d15bc2c0e.html">Co-Chairs</a></li>
+                                <li><a href="../../../working_groups/Wc3a7044ab4845.html">Terms of Reference</a></li>
+                                <li><a href="../../../working_groups/Atmosphere/Wc1815cffb0a86.htm">AMWG</a></li>
+                                <li><a href="../../../working_groups/Biogeo/Wc53eb8f496ff0.htm">BGCWG</a></li>
+                                <li><a href="../../../working_groups/Chemistry/Wce7e5098be56.htm">CCWG</a></li>
+                                <li><a href="../../../working_groups/CVC/Wc59a52ed79a3e.htm">CVCWG</a></li>
+                                <li><a href="../../../working_groups/Land+Ice/Wc8ea7f75ec0ee.htm">LIWG</a></li>
+                                <li><a href="../../../working_groups/Land/Wc68f4fa04493d.htm">LMWG</a></li>
+                                <li><a href="../../../working_groups/Ocean/Wc7f1dfc675f00.htm">OMWG</a></li>
+                                <li><a href="../../../working_groups/Paleo/Wcb3576eaf40fc.htm">PWG</a></li>
+                                <li><a href="../../../working_groups/Polar/Wc62c6f6c03596.htm">PCWG</a></li>
+                                <li><a href="../../../working_groups/Societal/Wce3e53c5e7db8.htm">SDWG</a></li>
+                                <li><a href="../../../working_groups/Software/Wcb76155708f79.htm">SEWG</a></li>
+                                <li><a href="../../../working_groups/Whole-Atmosphere/Wccd2d6f15a273.htm">WAWG</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                            <a href="../../../www.cesm.ucar.edu/models/default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Models<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../../models/Wcc5a5d9505e02.htm">Overview</a></li>
+                                <li><a href="../../../models/Wc46e54394790a.html">CESM Releases</a></li>
+                                <li><a href="../../../models/Wc2d37fd4892b7.html">Scientifically Validated</a></li>
+                                <li><a href="../../../experiments/Wca1ac0c97dc7.htm">Experiments</a></li>
+                                <li><a href="../../../models/Wceaf9ebcbf058.html">CMIP6</a></li>
+                                <li><a href="../../../projects/Wc52d49be327b0.htm">Projects</a></li>
+                                <li><a href="../../../projects/community-projects/Wcc27140be98b9.htm">Community Projects</a></li>
+                                <li><a href="../../../models/simpler-models/Wc340f787b10c9.htm">Simpler Models</a></li>
+                                <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=nav">DiscussCESM <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="../../../models/Wcfecbc74fe52a.html">Legacy</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown active">
+                            <a href="../../default.htm" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Events<b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../Wc2677660c09ac.htm">Upcoming</a></li>
+                                <li><a href="../../Wc40f6ad8263a5.html">Past Events</a></li>
+                                <li><a href="../../chairs-meetings/Wc104bd9598325.htm">Chairs Meetings</a></li>
+                                <li><a href="../Wc65159099e150.htm">Tutorials</a></li>
+                                <li><a href="../../workshops/Wc98eb8bcbcb70.htm">Workshops</a></li>
+                                <li><a href="../../wg-meetings/Wc9a3cd52758a0.htm">WG Meetings</a></li>
+                            </ul>
+                        </li>
+
+                        <li id="" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 4px 0 0 0;" data-hover="dropdown" data-delay="0" data-close-others="false"> 
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color:#3E6A9C; vertical-align: bottom;">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i> Help <span class="caret"></span> 
+                                </button>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" style="margin-top: 7px;">
+                                <li><a href="https://bb.cgd.ucar.edu/cesm/?ref=nav">CESM Model Support <i class="fas fa-external-link-alt"></i></a></li>
+                                <li><a href="http://www.cgd.ucar.edu/about/lab-office.html?ref=nav">CGD Lab Office</a></li>
+                                <li><a href="http://www.cgd.ucar.edu/people/contacts.html?ref=nav">CGD Lab Contacts</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="t-hlp">CGD Help Desk</a></li>
+                                <li><span id="s-hlp"></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+                <script>
+                var tm='mailto', ru='help', ta='@', md='cgd.ucar.edu', te=document.getElementById('a-hlp'), se=document.getElementById('s-hlp'), te=document.getElementById('t-hlp'); 
+                //te.innerHTML='<a style="padding:4px 0 0 0;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'"><button type="button" class="btn btn-primary btn-sm" style="background-color:#3173ba;"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></a>';
+                se.innerHTML='<a style="text-transform:lowercase;" href="'+tm+':'+ru+ta+md+'" title="'+ru+ta+md+'">[ '+ru+ta+md+' ]</a>';
+                te.href = tm+':'+ru+ta+md;
+                </script>
+                <!-- end main navigation -->
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+    
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="breadcrumb">
+                        <li><a href="../../../index.html"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                        <li><a href="../../default.htm">CESM Events</a><i class="icon-angle-right"></i></li>
+                        <li><a href="../default.htm">Tutorials</a><i class="icon-angle-right"></i></li>
+                        <li><a href="default.htm">2018</a><i class="icon-angle-right"></i></li>
+                        <li class="active">Coursework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <article>
+                        <div class="post-image">
+                            <div class="post-heading">
+                                <h1>2018 CESM Tutorial Coursework</h1>
+                            </div>
+                        </div>
+
+
+                        <div class="post-border-bottom">
+                            <h2>Monday, August 6</h2>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Welcome</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Intro, Logistics
+                                        <br>
+                                        <strong>Speakers</strong>: Cecile Hannay, Jean-Francois Lamarque, Barbara Ballard, Carolyn Brinkworth
+                                    </div>
+				    
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Welcome_Logistics.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_welcome.mp4">Videos</a></li>                                               
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Lectures</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Introduction to the coupled system
+                                        <br>
+                                        <strong>Speaker</strong>: Gokhan Danabasoglu
+                                    </div>
+                                    <div class="col-sm-6 text-left">
+                                        <nav aria-label="...">
+					  <ul class="pager">
+                                            <li><a href="files/Lecture1-danabasoglu.pdf">Slides</a></li>
+                                            <li><a href="videos/2018_CESM_tutorial_gokhan_danabasoglu.mp4">Videos</a></li>                                              
+                                          </ul>                      
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Atmosphere Modeling I: Intro &amp; Dynamics 
+                                        <br>
+                                        <strong>Speaker</strong>: Peter Lauritzen
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture2-lauritzen.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_peter_lauritzen.mp4">Videos</a></li>                                                 
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Atmosphere Modeling II: Physics
+                                        <br>
+                                        <strong>Speaker</strong>: Julio Bacmeister
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture3-bacmeister.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_julio_bacmeister.mp4">Videos</a></li>                                                
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Practicals</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: NCAR computing environment
+                                        <br>
+                                        <strong>Speaker</strong>: Rory Kelly
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Practical1-kelly.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_rory_kelly.mp4">Videos</a></li>                                                
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Introduction to CESM2
+                                        <br>
+                                        <strong>Speaker</strong>: Alice Bertini
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Practical1-bertini.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_alice_bertini.mp4">Videos</a></li>                                                 
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="post-border-bottom">
+                            <h2>Tuesday, August 7</h2>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Lectures</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Atmosphere Modeling III: WACCM 
+                                        <br>
+                                        <strong>Speaker</strong>: Mike Mills
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture4a-mills.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_michael_mills.mp4">Videos</a></li>
+					    </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Atmos. Modeling IV: Chemistry, Aerosols 
+                                        <br>
+                                        <strong>Speaker</strong>: Simone Tilmes
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture4b-tilmes.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_simone_tilmes.mp4">Videos</a></li>                                                  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Land Modeling I: Biogeophysics
+                                        <br>
+                                        <strong>Speaker</strong>: Dave Lawrence
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture5-lawrence.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_david_lawrence.mp4">Videos</a></li>                                                 
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Applications</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Going to extremes in the "New Arctic"
+                                        <br>
+                                        <strong>Speaker</strong>: Laura Landrum
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications1-landrum.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_laura_landrum.mp4">Videos</a></li>                                             
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: What have I learned from CESM large ensemble experiments? 
+                                        <br>
+                                        <strong>Speaker</strong>: Haiyan Teng
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications1-teng.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_haiyan_teng.mp4">Videos</a></li>                                               
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Global responses in idealized climate model experiments 
+                                        <br>
+                                        <strong>Speaker</strong>: Brian Medeiros
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications1-medeiros.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_brian_medeiros.mp4">Videos</a></li>                                                
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Evaluating terrestrial biogeochemisty in CLM 
+                                        <br>
+                                        <strong>Speaker</strong>: Will Weider
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications1-wieder.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_will_wieder.mp4">Videos</a></li>                                        
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Specialized Talk</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Simpler Models
+                                        <br>
+                                        <strong>Speaker</strong>: Isla Simpson
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Specialized-simpson.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_isla_simpson.mp4">Videos</a></li>                                            
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Practical</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Run CESM: Simple Modifications
+                                        <br>
+                                        <strong>Speaker</strong>: Christine Shields
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Practical2-shields.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_christine_shields.mp4">Videos</a></li>                                  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-border-bottom">
+                            <h2>Wednesday, August 8</h2>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Lectures</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Land Modeling II: Biogeochemistry: Ecosystem Modeling
+                                        <br>
+                                        <strong>Speaker</strong>: Danica Lombardozzi
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture6-lombardozzi.pdf">Slides</a></li>
+						<li><a href="videos/2018_CESM_tutorial_danica_lombardozzi.mp4">Videos</a></li>                              
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Ocean Modeling I
+                                        <br>
+                                        <strong>Speaker</strong>: Susan Bates
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture7-bates.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_susan_bates.mp4">Videos</a></li>              
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Applications</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Using the high resolution CESM to study tropical storms
+                                        <br>
+                                        <strong>Speaker</strong>: Nan Rosenbloom
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications2-rosenbloom.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_nan_rosenbloom.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Climate and Carbon impacts of Land Use and Land Cover Change in CESM
+                                        <br>
+                                        <strong>Speaker</strong>: Peter Lawrence
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications2-lawrence.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_peter_lawrence.mp4">Videos</a></li> 
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Precipitation, Convection and Variability: Frightening yet fascinating
+                                        <br>
+                                        <strong>Speaker</strong>:Rich  Neale
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications2-neale.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_rich_neale.mp4">Videos</a></li>           
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Understanding the climate extremes of 55 million years ago with CESM and data
+                                        <br>
+                                        <strong>Speaker</strong>: Christine Shields
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Applications2-shields.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_christine_shields2.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Specialized Talk</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Model development: Coupling/Tuning
+                                        <br>
+                                        <strong>Speaker</strong>: Cecile Hannay
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Specialized-hannay.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_cecile_hannay.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Practical</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Diagnostics and Output
+                                        <br>
+                                        <strong>Speaker</strong>: Adam Phillips
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Practical3-phillips.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_adam_phillips.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-border-bottom">
+                            <h2>Thursday, August 9</h2>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Lectures</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Ocean Biogeochemistry
+                                        <br>
+                                        <strong>Speaker</strong>: Matt Long
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture8-long.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_matthew_long.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Land Ice Modeling
+                                        <br>
+                                        <strong>Speaker</strong>: Bill Lipscomb
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture9-lipscomb.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_william_lipscomb.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Sea Ice Modeling
+                                        <br>
+                                        <strong>Speaker</strong>: Alice DuVivier
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Lecture10-duvivier.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_alice_duvivier.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Meet a Scientist</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Sign up to meet one of our CESM Scientist
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="https://docs.google.com/document/d/1QbA7UH3EhFMFWTpM_sAK1899IK2MBzz5ZiXaWlukMlU/edit?usp=sharing">Scientist's bios</a></li>
+                                                
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Specialized Talk</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Porting Session
+                                        <br>
+                                        <strong>Speaker</strong>: Jim Edwards
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                                <li><a href="files/Specialized-edwards.pdf">Slides</a></li>
+                                                <li><a href="videos/2018_CESM_tutorial_jim_edwards.mp4">Videos</a></li>  
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Practical</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="col-sm-6">
+                                        <strong>Topic</strong>: Namelist and Code Modificatioms
+                                        <br>
+                                        <strong>Speaker</strong>: Cecile Hannay
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <nav aria-label="...">
+                                            <ul class="pager">
+                                              <li><a href="files/Practical4-intro-hannay.pdf">Overview</a></li>
+                                              <li><a href="files/Practical4-exercise-hannay.pdf">Exercises</a></li>
+                                              <li><a href="videos/2018_CESM_tutorial_cecile_hannay2.mp4">Videos</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h2>Friday, August 10</h2>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Lecture</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Topic</strong>: Ocean Modeling II
+                                    <br>
+                                    <strong>Speaker</strong>: Peter Gent
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                            <li><a href="files/Lecture11-gent.pdf">Slides</a></li>
+                                            <li><a href="videos/2018_CESM_tutorial_peter_gent.mp4">Videos</a></li>  
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Application</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Topic</strong>: Using CESM to understand ENSO teleconnections
+                                    <br>
+                                    <strong>Speaker</strong>: Clara Deser
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                            <li><a href="files/Applications3-deser.pdf">Slides</a></li>
+                                            <li><a href="videos/2018_CESM_tutorial_clara_deser.mp4">Videos</a></li>  
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Closing</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Topic</strong>:Closing remarks 
+                                    <br>
+                                    <strong>Speaker</strong>: Cecile Hannay 
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                            <li><a href="files/Closing_remarks.pdf">Slides</a></li>
+                                            <li><a href="videos/2018_CESM_tutorial_closing_remarks.mp4">Videos</a></li>  
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+						
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Practicals</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Breakout Topic</strong>: Ocean/Sea Ice/ Land Ice
+                                    <br>
+                                    <strong>Speakers</strong>: Alper Altunas, Dave Bailey, Bill Sacks/ Gunter Leguy
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                          <li><a href="files/Breakout-iceocean.pdf">Ocean/Sea-ice</a></li>
+					  <li><a href="files/Breakout-landice.pdf">Land-ice</a></li>
+                                            
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Breakout Topic</strong>: Land/BGC
+                                    <br>
+                                    <strong>Speakers</strong>: Keith Oleson, Erik Kluzek, Matt Long
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                          <li><a href="files/Breakout-land.pdf">Land</a></li>
+					  <li><a href="files/Breakout-BGC.pdf">BGC</a></li>             
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <strong>Breakout Topic</strong>: Atm/Chem/WACCM
+                                    <br>
+                                    <strong>Speakers</strong>: Dani Coleman, Mike Mills
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <nav aria-label="...">
+                                        <ul class="pager">
+                                            <li><a href="files/Breakout-atm.pdf">Atm</a></li>
+                                            <li><a href="files/Breakout-waccm-camchem.pdf">WACCM/cam-chem</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </article>
+                </div>
+
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <!-- CESM Project Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">CESM Project</h5>
+    <ul class="cat">
+        <li>CESM is a fully-coupled, community, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states.</li>
+    </ul>
+</div>
+                        <!-- end CESM Project Include -->
+
+                        <!-- Events Include -->
+                        <div class="widget">
+    <h5 class="widgetheading">Events</h5>
+    <ul class="cat">
+        <li><a id="events-1" href="../../default.htm">Upcoming</a></li>
+        <li><a id="events-2" href="../../past-events.html">Past Events</a></li>
+        <li><a id="events-3" href="../../chairs-meetings/default.htm">Chairs Meetings</a></li>
+        <li><a id="events-4" href="../default.htm">Tutorials</a></li>
+        <li><a id="events-5" href="../../workshops/default.htm">Workshops</a></li>
+        <li><a id="events-6" href="../../wg-meetings/default.htm">WG Meetings</a></li>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    // Parent folder function
+    function getParentFolder(url) {
+        if ( !url ) url = window.location.href;
+        url = url.lastIndexOf('../../../default.htm') == (url.length -1) ? url.substr(0,url.length-1) : url.substr(0,url.lastIndexOf('../../../default.htm'));
+        return url.substr(url.lastIndexOf('../../../default.htm') + 1);
+    }
+
+    // Grab tha URL
+    var pathname = window.location.pathname;
+    var url_full = window.location.href;
+    var page     = pathname.split("../../../default.htm").pop();
+    var folder   = getParentFolder(url_full);
+
+
+
+    // Checking which page
+    if(/\/tutorials\//.test(pathname) === true) {
+        var link = document.getElementById("events-4");
+        link.className += " link-active";
+    }
+
+
+</script>
+                        <!-- end Events Include -->
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- footer -->
+        <div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CGD Laboratory Info</h5>
+                <p><a href="http://www.cgd.ucar.edu/about/lab-office.html">CGD Laboratory Office</a>
+                <br>
+                <i class="fa fa-location-arrow"></i> 1850 Table Mesa Drive
+                <br>
+                Boulder, CO, 80305
+                <br><br>
+                303.497.1000 <i class="fa fa-phone"></i> Phone
+                <br>
+                303.497.1314 <i class="fa fa-print"></i> Fax</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Sponsors</h5>
+                <ul class="link-list">
+                <li><a href="http://www.nsf.gov/" target="_blank">NSF | National Science Foundation</a></li>
+                <li><a href="http://www.energy.gov/" target="_blank">DOE | U.S. Department of Energy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Leadership</h5>
+                <p>
+                CESM Chief Scientist | Gokhan Danabasoglu<br>
+                </p>
+                <p>
+                <a href="http://www.cesm.ucar.edu/working_groups/">Working Group Co-Chairs</a><br />
+                <a href="http://www.cesm.ucar.edu/management/SSC/"> SSC | Scientific Steering Committee</a><br />
+                <a href="http://www.cesm.ucar.edu/management/CAB/">CAB | CESM Advisory Board</a>
+                </p>
+            </div>
+        </div>
+
+        
+
+        <div class="col-lg-3">
+            <div class="widget">
+                <h5 class="widgetheading">CESM&trade; Administration</h5>
+                <ul class = "link-list">
+                <li><a href="http://www2.cgd.ucar.edu">CGD | Climate &amp; Global Dynamics Laboratory</a></li>
+                <li><a href="http://www.ncar.ucar.edu">NCAR | National Center for Atmospheric Research</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>  
+    </div>
+
+
+    <div id="sub-footer">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="copyright">
+                    <p>
+                    <span>&copy; 2019 UCAR | <a href="http://www2.ucar.edu/privacy-policy">Privacy Policy</a> | <a href="http://www2.ucar.edu/terms-of-use">Terms</a> | <a href="https://www2.ucar.edu/notification-copyright-infringement-digital-millennium-copyright-act">Copyright Issues</a> | <a href="http://www.nsf.gov/">Sponsored by NSF</a> | <a href="http://www.ucar.edu/">Managed by UCAR</a><br />
+                    Postal Address: P.O. Box 3000, Boulder, CO 80307-3000<br />
+                    Shipping Address: 3090 Center Green Drive, Boulder, CO 80301
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <em class="copyright">The CESM&trade; project is supported primarily by the National Science Foundation.
+                <br>
+                This material is based upon work supported by the <a href="https://ncar.ucar.edu/">National Center for Atmospheric Research</a>, a major facility sponsored by the <a href="https://www.nsf.gov/">National Science Foundation</a> and managed by the <a href="https://www.ucar.edu/">University Corporation for Atmospheric Research</a>. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the <a href="https://www.nsf.gov/">National Science Foundation</a>.</em>
+
+                
+                <!-- 
+                <em class="copyright">The National Center for Atmospheric Research is sponsored by the National Science Foundation. Any opinions, findings and conclusions or recommendations expressed in this material do not necessarily reflect the views of the National Science Foundation.</em>
+                <ul class="social-network">
+                    <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12 copyright">
+    
+    </div>
+    </div>
+</div>
+
+        <!-- end footer -->
+    </footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- <script src="/styles/modern/js/jquery.js"></script> outdated version -->
+<script src="../../../styles/modern/js/jquery.min.js"></script> 
+<script src="../../../styles/modern/js/jquery.migrate.js"></script>
+<script src="../../../styles/modern/js/bootstrap.min.js"></script>
+<script src="../../../styles/modern/js/jquery.fancybox.pack.js"></script>
+<script src="../../../styles/modern/js/jquery.fancybox-media.js"></script>
+<script src="../../../styles/modern/js/google-code-prettify/prettify.js"></script>
+<script src="../../../styles/modern/js/jquery.flexslider.js"></script>
+<script src="../../../styles/modern/js/animate.js"></script>
+<script src="../../../styles/modern/js/custom.js"></script>
+<script src="../../../styles/modern/js/jquery.tablesorter.min.js"></script> 
+<!-- <script src="/styles/modern/js/jquery.easing.1.3.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/jquery.quicksand.js"></script> missing file -->
+<!-- <script src="/styles/modern/js/portfolio/setting.js"></script> missing file -->
+
+<script>
+// Check if the nsf badge is there
+if ( !($(".nsf-header")[0]) ) {
+	// create the nsf badge div
+	var div = '<div class="nsf-header"> <a href="http://www.nsf.gov/"> <img src="../../../styles/modern/includes/header/ncar_header_nsf_only.png"title="Sponsored by NSF"alt="Sponsored by NSF"> </a> </div>';
+
+	// insert it
+	$('.search-container').after(div);
+}
+
+// Script for table sorting
+$(".sort").tablesorter({ widgets: ['zebra'] });
+
+
+$(document).ready(function() {
+	// script to dropdown the Prognostic Components options
+	$("#link-prog").click(function() {
+	  // check to make sure if it is hidden
+	  if ($("#u-link-prog").is(":visible")) {
+	    // its not hidden so change arrow and hide
+	    $("#i-link-prog").attr("class", "fa fa-chevron-right");
+	    $("#u-link-prog").slideUp("fast");
+	  }
+	  else {
+	    // its hidden so change arrow and show
+	    $("#i-link-prog").attr("class", "fa fa-chevron-down");
+	    $("#u-link-prog").slideDown("fast");
+	  }
+	});
+});
+</script>
+
+</body>
+</html>

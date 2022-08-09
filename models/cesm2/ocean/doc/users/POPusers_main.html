@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Parallel Ocean Program (POP) User Guide</TITLE>
+<META NAME="description" CONTENT="Parallel Ocean Program (POP) User Guide">
+<META NAME="keywords" CONTENT="POPusers_main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="POPusers_main.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html60"
+  HREF="node1.html">
+<BR>
+<B> Next:</B> <A NAME="tex2html61"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html59"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H1 ALIGN="CENTER">Parallel Ocean Program (POP) User Guide</H1>
+<DIV>
+
+<P ALIGN="CENTER"><STRONG>Version 2.1</STRONG></P>
+<P ALIGN="CENTER"><I>        Los Alamos National Laboratory</I></P>
+<P ALIGN="CENTER"><STRONG>23 March 2003</STRONG></P>
+<P ALIGN="CENTER"><SMALL>        LACC 99-18</SMALL></P>
+<P ALIGN="CENTER"><STRONG> Revised for Community Earth System Model</STRONG></P>
+<P ALIGN="CENTER"><I>      National Center for Atmospheric Research</I></P>
+<P ALIGN="CENTER"><STRONG> 10 June 2010</STRONG></P>
+</DIV>
+
+<P>
+
+<H3>Abstract:</H3>
+<DIV>
+
+<P>
+This version of the POP User Guide, a modification of the original 2003 Los Alamos National Laboratory (LANL) document, contains detailed instructions for operating the Community Earth System Model (CESM) version of the POP2 model.
+<p>
+
+Topics include:
+
+<P>
+
+<UL>
+<LI>How to compile POP, including compile-time options 
+
+<P>
+</LI>
+<LI>How to run POP, including run-time options in <EM>namelist</EM>
+      input
+
+<P>
+</LI>
+<LI>Procedures for preparing auxiliary input files that are
+      needed if you are setting up a new grid
+
+<P>
+</LI>
+<LI>Options for model diagnostics
+
+<P>
+</LI>
+<LI>Options for model output files and formats
+</LI>
+</UL>
+
+<P>
+Throughout this manual, it is assumed that the operating
+system is some variant of Unix.  However, stand-alone LANL POP has been run
+on
+<A HREF="node95.html#sec:PCPOP">PCs under windows</A>.
+
+<P>
+CESM users who want to gain a more in-depth understanding of the model physics are
+encouraged to read the User's Guide companion document, 
+<a href="../sci/POPRefManual.pdf"> The Parallel Ocean Program (POP) Reference Manual</a>.
+
+<P>
+If you are using POP as a component of the NCAR Community Earth System Model,
+technical support is provided by NCAR (<a href="mailto:cesm-help@cgd.ucar.edu">cesm-help@cgd.ucar.edu<a>).
+
+
+<P>
+<P> 
+<h3>CESM Notes</h3>
+The CESM version of the Parallel Ocean Program User Guide, which you are now reading, is based on the LANL version, but it has been
+customized to include information about CESM-specific POP options. Important CESM
+information has been noted throughout this guide: in the text, special subsections labeled
+"CESM1 Notes" have been added and in tables, new CESM columns appear.
+<p>
+Send CESM POP2 bug reports to the CESM helpdesk at
+<a href="mailto:cesm-help@cgd.ucar.edu">cesm-help@cgd.ucar.edu<a>
+
+<P>
+</DIV>
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL>
+<LI><A NAME="tex2html62"
+  HREF="node1.html">Contents</A>
+<LI><A NAME="tex2html63"
+  HREF="node2.html">List of Figures</A>
+<LI><A NAME="tex2html64"
+  HREF="node3.html">List of Tables</A>
+<LI><A NAME="tex2html65"
+  HREF="node4.html">Introduction</A>
+<UL>
+<LI><A NAME="tex2html66"
+  HREF="node5.html">Brief history of POP development</A>
+<LI><A NAME="tex2html67"
+  HREF="node6.html">Improvements introduced in POP</A>
+<UL>
+<LI><A NAME="tex2html68"
+  HREF="node7.html">Surface-pressure formulation of barotropic mode</A>
+<LI><A NAME="tex2html69"
+  HREF="node8.html">Free-surface boundary condition</A>
+<LI><A NAME="tex2html70"
+  HREF="node9.html">Latitudinal scaling of horizontal diffusion</A>
+<LI><A NAME="tex2html71"
+  HREF="node10.html">Pressure-averaging</A>
+<LI><A NAME="tex2html72"
+  HREF="node11.html">Designed for parallel computers</A>
+<LI><A NAME="tex2html73"
+  HREF="node12.html">General orthogonal coordinates in horizontal</A>
+</UL>
+<LI><A NAME="tex2html74"
+  HREF="node13.html">POP applications to date</A>
+<UL>
+<LI><A NAME="tex2html75"
+  HREF="node14.html">High-resolution global and regional modeling</A>
+<LI><A NAME="tex2html76"
+  HREF="node15.html">Coupled models</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html77"
+  HREF="node16.html">Installing and Building POP</A>
+<UL>
+<LI><A NAME="tex2html78"
+  HREF="node17.html">Supported architectures</A>
+<LI><A NAME="tex2html79"
+  HREF="node18.html">Obtaining the POP code</A>
+<LI><A NAME="tex2html80"
+  HREF="node19.html">Creating a run directory</A>
+<LI><A NAME="tex2html81"
+  HREF="node20.html">Building POP</A>
+<UL>
+<LI><A NAME="tex2html82"
+  HREF="node21.html">Make Procedure</A>
+</UL>
+<LI><A NAME="tex2html83"
+  HREF="node22.html">Domain decomposition</A>
+<LI><A NAME="tex2html84"
+  HREF="node23.html">Compile-time options</A>
+<UL>
+<LI><A NAME="tex2html85"
+  HREF="node24.html">Domain</A>
+<LI><A NAME="tex2html86"
+  HREF="node25.html">Blocks</A>
+<LI><A NAME="tex2html87"
+  HREF="node26.html">Coupled model runs</A>
+<LI><A NAME="tex2html88"
+  HREF="node27.html">Debugging</A>
+</UL>
+<LI><A NAME="tex2html89"
+  HREF="node28.html">Testing POP</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html90"
+  HREF="node29.html">Running POP</A>
+<UL>
+<LI><A NAME="tex2html91"
+  HREF="node30.html">Operational control</A>
+<UL>
+<LI><A NAME="tex2html92"
+  HREF="node31.html">Processor configuration</A>
+<LI><A NAME="tex2html93"
+  HREF="node32.html">Input/Output</A>
+<LI><A NAME="tex2html94"
+  HREF="node33.html">Time management</A>
+</UL>
+<LI><A NAME="tex2html95"
+  HREF="node34.html">Grid and bottom-topography definition</A>
+<LI><A NAME="tex2html96"
+  HREF="node35.html">Initializing the model state</A>
+<UL>
+<LI><A NAME="tex2html97"
+  HREF="node36.html">Temperature and salinity distribution</A>
+<LI><A NAME="tex2html98"
+  HREF="node37.html">Restart control</A>
+</UL>
+<LI><A NAME="tex2html99"
+  HREF="node38.html">Computational options</A>
+<UL>
+<LI><A NAME="tex2html100"
+  HREF="node39.html">Barotropic mode solver</A>
+<LI><A NAME="tex2html101"
+  HREF="node40.html">Advection methods</A>
+<LI><A NAME="tex2html102"
+  HREF="node41.html">Pressure gradient options</A>
+</UL>
+<LI><A NAME="tex2html103"
+  HREF="node42.html">Vertical mixing and convection parameterizations</A>
+<UL>
+<LI><A NAME="tex2html104"
+  HREF="node43.html">Constant coefficients</A>
+<LI><A NAME="tex2html105"
+  HREF="node44.html">Richardson-number mixing</A>
+<LI><A NAME="tex2html106"
+  HREF="node45.html">KPP mixing </A>
+</UL>
+<LI><A NAME="tex2html107"
+  HREF="node46.html">Horizontal mixing parameterizations</A>
+<UL>
+<LI><A NAME="tex2html108"
+  HREF="node47.html">Laplacian horizontal mixing.</A>
+<LI><A NAME="tex2html109"
+  HREF="node48.html">Biharmonic horizontal mixing.</A>
+<LI><A NAME="tex2html110"
+  HREF="node49.html">Gent-McWilliams isopycnic tracer diffusion</A>
+<LI><A NAME="tex2html111"
+  HREF="node50.html">Anisotropic viscosity options</A>
+</UL>
+<LI><A NAME="tex2html112"
+  HREF="node51.html">Physical process options</A>
+<UL>
+<LI><A NAME="tex2html113"
+  HREF="node52.html">Equation of state approximation</A>
+<LI><A NAME="tex2html114"
+  HREF="node53.html">Baroclinic-mode parameters</A>
+<LI><A NAME="tex2html115"
+  HREF="node54.html">Sea-ice emulation parameters</A>
+<LI><A NAME="tex2html222a"
+  HREF="node54a.html">Overflow parameters</A>
+<LI><A NAME="tex2html222b"
+  HREF="node54b.html">Passive tracers</A>
+<LI><A NAME="tex2html116"
+  HREF="node55.html">Topographic stress</A>
+</UL>
+<LI><A NAME="tex2html117"
+  HREF="node56.html">Forcing options (ocean-only mode)</A>
+<UL>
+<LI><A NAME="tex2html118"
+  HREF="node57.html">Periodicity of forcing data</A>
+<LI><A NAME="tex2html119"
+  HREF="node58.html">Temporal interpolation of forcing data</A>
+<LI><A NAME="tex2html120"
+  HREF="node59.html">Forcing formulation</A>
+<UL>
+<LI><A NAME="tex2html121"
+  HREF="node60.html"><TT>shf_formulation</TT> options:</A>
+<LI><A NAME="tex2html122"
+  HREF="node61.html"><TT>sfwf_formulation</TT> options:</A>
+<LI><A NAME="tex2html123"
+  HREF="node62.html"><TT>pt,s_interior_formulation</TT> options:</A>
+</UL>
+<LI><A NAME="tex2html124"
+  HREF="node63.html">Forcing files</A>
+<LI><A NAME="tex2html125"
+  HREF="node64.html">Forcing units</A>
+<LI><A NAME="tex2html126"
+  HREF="node65.html">Updating the forcing values</A>
+<LI><A NAME="tex2html127"
+  HREF="node66.html">Forcing modules</A>
+<LI><A NAME="tex2html128"
+  HREF="node67.html">Forcing namelists</A>
+</UL>
+<LI><A NAME="tex2html129"
+  HREF="node68.html">Running POP in coupled mode</A>
+<UL>
+<LI><A NAME="tex2html130"
+  HREF="node69.html">Real-time X-window display</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html131"
+  HREF="node70.html">Model diagnostics and output</A>
+<UL>
+<LI><A NAME="tex2html132"
+  HREF="node71.html">Output formats</A>
+<UL>
+<LI><A NAME="tex2html133"
+  HREF="node72.html">netCDF</A>
+<LI><A NAME="tex2html134"
+  HREF="node73.html">binary</A>
+</UL>
+<LI><A NAME="tex2html135"
+  HREF="node74.html">File-naming convention</A>
+<LI><A NAME="tex2html136"
+  HREF="node75.html">Model diagnostics</A>
+<UL>
+<LI><A NAME="tex2html137"
+  HREF="node76.html">Transport diagnostics</A>
+</UL>
+<LI><A NAME="tex2html138"
+  HREF="node77.html">Model output files</A>
+<UL>
+<LI><A NAME="tex2html139"
+  HREF="node78.html">Time-averaged history files </A>
+<LI><A NAME="tex2html140"
+  HREF="node79.html">Snapshot history files </A>
+<LI><A NAME="tex2html141"
+  HREF="node80.html">Movie files </A>
+<LI><A NAME="tex2html142"
+  HREF="node81.html">Current meters, drifters and hydrographic sections.</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html143"
+  HREF="node82.html">POP tools</A>
+<UL>
+<LI><A NAME="tex2html144"
+  HREF="node83.html">Visualizing output</A>
+<LI><A NAME="tex2html145"
+  HREF="node84.html">Transformations from general grids</A>
+<LI><A NAME="tex2html146"
+  HREF="node85.html">File format conversion</A>
+<LI><A NAME="tex2html147"
+  HREF="node86.html">Generating grid and bottom topography files</A>
+<UL>
+<LI><A NAME="tex2html148"
+  HREF="node87.html">Horizontal grid and topography</A>
+<LI><A NAME="tex2html149"
+  HREF="node88.html">Vertical grid</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html150"
+  HREF="node89.html">Trouble-shooting</A>
+<UL>
+<LI><A NAME="tex2html151"
+  HREF="node90.html">Timestep stability criteria</A>
+<LI><A NAME="tex2html152"
+  HREF="node91.html">Checking the global energy and work balances</A>
+<LI><A NAME="tex2html153"
+  HREF="node92.html">Getting the right combination of mixing options</A>
+<LI><A NAME="tex2html154"
+  HREF="node93.html">Getting the right combination of forcing options</A>
+<LI><A NAME="tex2html155"
+  HREF="node94.html">Properly normalizing input salinity values</A>
+<LI><A NAME="tex2html156"
+  HREF="node95.html">Running POP on PCs</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html157"
+  HREF="node96.html">References</A>
+<LI><A NAME="tex2html158"
+  HREF="node97.html">Bibliography</A>
+<LI><A NAME="tex2html159"
+  HREF="node98.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html60"
+  HREF="node1.html">
+<BR>
+<B> Next:</B> <A NAME="tex2html61"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html59"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-06-10
+</ADDRESS>
+</BODY>
+</HTML>

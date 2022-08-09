@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>CAM Reference Manual</title><link rel="stylesheet" type="text/css" href="cam_doc_style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /></head><body><div class="book"><div class="titlepage"><div><div><h1 class="title"><a id="idm139955892144064"></a>CAM Reference Manual</h1></div><div><p class="pubdate">This document was last updated on
+2015-11-23 08:53:25.
+</p></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#intro">1. Introduction</a></span></dt><dd><dl><dt><span class="sect1"><a href="#vision">1.1. Vision</a></span></dt></dl></dd><dt><span class="chapter"><a href="#code_convs">2. Coding Conventions</a></span></dt><dt><span class="chapter"><a href="#arch">3. Architecture</a></span></dt><dd><dl><dt><span class="sect1"><a href="#component_interface">3.1. Component Interface</a></span></dt><dd><dl><dt><span class="sect2"><a href="#component_interface_docs">3.1.1. Component Interface Documentation</a></span></dt></dl></dd><dt><span class="sect1"><a href="#component_design">3.2. Component Design</a></span></dt></dl></dd><dt><span class="chapter"><a href="#phys_drv">4. Physics Driver</a></span></dt><dd><dl><dt><span class="sect1"><a href="#physpkg_drv">4.1. Physics Drivers and Data Structures</a></span></dt><dd><dl><dt><span class="sect2"><a href="#physpkg_dims">4.1.1. Array dimensions</a></span></dt><dt><span class="sect2"><a href="#physpkg_prec">4.1.2. Precision of real data</a></span></dt><dt><span class="sect2"><a href="#physpkg_derived">4.1.3. Derived data types</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#phys_pkg">5. Column Physics Packages</a></span></dt><dd><dl><dt><span class="sect1"><a href="#physpkg_intro">5.1. Overview</a></span></dt><dt><span class="sect1"><a href="#physpkg_req">5.2. Requirements</a></span></dt></dl></dd><dt><span class="chapter"><a href="#phys_pkg_utils">6. Physics Package Utilities</a></span></dt><dd><dl><dt><span class="sect1"><a href="#rad_cnst_intro">6.1. Radiative Constituents</a></span></dt><dd><dl><dt><span class="sect2"><a href="#rad_cnst_ui">6.1.1. User Interface</a></span></dt><dt><span class="sect2"><a href="#rad_cnst_api">6.1.2. Application Programmer Interface</a></span></dt><dt><span class="sect2"><a href="#rad_cnst_examples">6.1.3. Use in CAM</a></span></dt></dl></dd><dt><span class="sect1"><a href="#subcol_intro">6.2. Subcolumns</a></span></dt><dd><dl><dt><span class="sect2"><a href="#subcol_scheme">6.2.1. Subcolumn schemes</a></span></dt><dt><span class="sect2"><a href="#subcol_fields">6.2.2. Subcolumn fields</a></span></dt><dt><span class="sect2"><a href="#subcol_usage">6.2.3. Subcolumn usage</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#infrastructure_utils">7. Infrastructure Utilities</a></span></dt><dd><dl><dt><span class="sect1"><a href="#camgrid_intro">7.1. CAM Grids</a></span></dt><dd><dl><dt><span class="sect2"><a href="#hcoords">7.1.1. Horizontal Coordinates</a></span></dt></dl></dd></dl></dd><dt><span class="bibliography"><a href="#idm139955890530624">References</a></span></dt></dl></div><div class="list-of-figures"><p><strong>List of Figures</strong></p><dl><dt>3.1. <a href="#comp-intr-dep">Component Interface Dependencies</a></dt><dt>6.1. <a href="#radcnst_depends">Radiative Constituents Module Dependencies</a></dt></dl></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="intro"></a>Chapter 1. Introduction</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#vision">1.1. Vision</a></span></dt></dl></div><p>
+This manual is intended for anyone who plans to get their hands dirty
+modifying <acronym class="acronym">CAM</acronym> code.  <span class="emphasis"><em>It is a work in progress</em></span>!  So
+despite our best intentions to provide exactly what you need to know in
+order to add your new science or diagnostic capability to <acronym class="acronym">CAM</acronym>,
+undoubtedly we will fall short.  If you don't find the information you need
+here, then please post to the <acronym class="acronym">CESM</acronym> bulletin board using the <acronym class="acronym">CAM</acronym> forum
+for 
+<a class="ulink" href="http://bb.cgd.ucar.edu/forums/making-changes-source-code" target="_top"> 
+MAKING CHANGES TO THE SOURCE CODE
+</a>.
+</p><p>
+The following list contains the topics we hope to address... eventually.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+<acronym class="acronym">CAM</acronym>'s high level architecture
+</p></li><li class="listitem"><p>
+interface design for the dynamics and physics packages
+</p></li><li class="listitem"><p>
+utilities for the dynamics and physics packages
+</p></li><li class="listitem"><p>
+driver layers
+</p></li><li class="listitem"><p>
+top level data structures for physics and dynamics
+</p></li><li class="listitem"><p>
+coupling between the physics and dynamics packages
+</p></li><li class="listitem"><p>
+infrastructure utilities (e.g., output and time management)
+</p></li><li class="listitem"><p>
+design of the <span class="command"><strong>configure</strong></span> and <span class="command"><strong>build-namelist</strong></span> utilities
+</p></li></ul></div><p>
+
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="vision"></a>1.1. Vision</h2></div></div></div><p>
+<acronym class="acronym">CAM</acronym> must produce high quality simulations for use in a wide variety of
+activities, for example:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+as the atmosphere component of <acronym class="acronym">CESM</acronym> it is used for studying climate change
+and climate variability, and to produce simulations for national and
+international assessment activities;
+</p></li><li class="listitem"><p>
+as the atmosphere component of data assimilation
+systems (e.g., DART) it must make accurate weather and constituent transport
+forecasts;
+</p></li><li class="listitem"><p>
+as a standalone model it is used for research in the development of new
+dynamical cores and parameterizations of subgrid-scale physics and
+chemistry.
+</p></li></ul></div><p>
+</p><p>
+The use of <acronym class="acronym">CAM</acronym> in climate research and assessment activities, and for data
+assimilation requires high performance, which must be achievable on a wide
+variety of computer architectures.
+</p><p>
+The use of <acronym class="acronym">CAM</acronym> in research and development environments requires that its
+design be modular to facilitate change, and the addition of new
+functionality.
+</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="code_convs"></a>Chapter 2. Coding Conventions</h1></div></div></div><p>
+One consequence of being a community effort is that <acronym class="acronym">CAM</acronym> has a large and
+diverse group of developers.  We also include code that was not written
+specifically for <acronym class="acronym">CAM</acronym>.  Hence the contributed <acronym class="acronym">CAM</acronym> code base does not
+conform to any consistent standard, and the project has never had the
+resources to attempt to enforce a standard.
+</p><p>
+The purpose of coding conventions is to facilitate the production of
+readable, testable, and maintainable code.  Taking into account the
+realities of how <acronym class="acronym">CAM</acronym>'s code has been developed, our approach to coding
+conventions is to allow considerable flexibility in matters of style, and
+to encourage best coding practices on matters of substance.  Our current
+thoughts on this are 
+<a class="ulink" href="https://wiki.ucar.edu/display/ccsm/Draft+of+Coding+Standards+for+CAM" target="_top">
+maintained on this wiki page</a>.
+</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="arch"></a>Chapter 3. Architecture</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#component_interface">3.1. Component Interface</a></span></dt><dd><dl><dt><span class="sect2"><a href="#component_interface_docs">3.1.1. Component Interface Documentation</a></span></dt></dl></dd><dt><span class="sect1"><a href="#component_design">3.2. Component Design</a></span></dt></dl></div><p>
+At the highest level <acronym class="acronym">CAM</acronym> is designed to be a component in an Earth system
+model.  This architecture requires each component to provide initialize,
+run, and finalize methods, along with import and export state objects
+designed to allow communication with other other components mediated by a
+coupling component.  The coupling component acts as the system driver and
+provides capabilities such as mapping between different component grids,
+merging from several source components to a destination component,
+computation of physical quantities such as fluxes which require input from
+multiple components, and the computation of diagnostics.  The <acronym class="acronym">CESM</acronym> uses
+the <acronym class="acronym">CPL7</acronym> coupling component which is documented
+<a class="ulink" href="../../../cpl7/default.htm" target="_top">here</a>, and described in the paper
+<a class="xref" href="#craig2012" title="A new flexible coupler for earth system modeling developed for CCSM4 and CESM1">Craig et al.[2012]</a>.
+</p><p>
+The <acronym class="acronym">CAM</acronym> component employs a modular design to provide flexibility in
+incorporating new dynamical cores and parameterized physics packages.  The
+design allows the dynamical core and the physics package to use different
+grids and/or different grid decompositions, and uses an internal
+dynamics-physics coupler which is independent of the high level coupler for
+the Earth system components.  It contains a multi-level approach to the
+physics driver layers which facilitates supporting multiple physics
+packages, both new and old, from the same code base.  And it provides
+physics infrastructure services that help coordinate the actions of the
+various physics packages.
+</p><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="component_interface"></a>3.1. Component Interface</h2></div></div></div><p>
+The <acronym class="acronym">CAM</acronym> component interface is implemented in two layers.  This
+architecture insulates the <acronym class="acronym">CAM</acronym> specific data structures used by
+the import and export state objects from the data structures used by the
+coupling component.  The modules that implement this design are outlined
+in <a class="xref" href="#comp-intr-dep" title="Figure 3.1. Component Interface Dependencies">Figure 3.1, “Component Interface Dependencies”</a>.
+</p><div class="figure"><a id="comp-intr-dep"></a><p class="title"><strong>Figure 3.1. Component Interface Dependencies</strong></p><div class="figure-contents"><pre class="synopsis">
+Modules at the tails of the arrows depend on the modules at the heads of
+the arrows.
+</pre><div class="mediaobject"><img src="figures/comp-intr-dep.png" alt="Component Interface Dependencies" /></div></div></div><br class="figure-break" /><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="component_interface_docs"></a>3.1.1. Component Interface Documentation</h3></div></div></div><p>
+The <acronym class="acronym">CAM</acronym> component interface is implemented in the following modules:
+
+</p><div class="glosslist"><dl><dt><span class="glossterm">
+<a class="ulink" href="../cesm1_2_2_doxy/html/classatm__comp__mct.html" target="_top"><code class="classname">atm_comp_mct</code></a>
+</span></dt><dd class="glossdef"><p>
+The <code class="classname">atm_comp_mct</code> module is a translation layer which implements the
+generic atmosphere component interfaces required by <acronym class="acronym">CPL7</acronym> using the <acronym class="acronym">CAM</acronym>
+component interfaces provided by <code class="classname">cam_comp</code> and the <acronym class="acronym">CAM</acronym> import and export
+state objects provided by <code class="classname">camsrfexch</code>.  <code class="classname">atm_comp_mct</code> does the
+translation between the <acronym class="acronym">MCT</acronym> data structures used by the coupler and
+<acronym class="acronym">CAM</acronym>'s data structures.
+</p></dd><dt><span class="glossterm">
+<a class="ulink" href="../cesm1_2_2_doxy/html/classcam__comp.html" target="_top"><code class="classname">cam_comp</code></a>
+</span></dt><dd class="glossdef"><p>
+The <code class="classname">cam_comp</code> module provides <acronym class="acronym">CAM</acronym>'s component interfaces, i.e., the
+initial, run, and final methods.
+</p></dd><dt><span class="glossterm">
+<a class="ulink" href="../cesm1_2_2_doxy/html/classcamsrfexch.html" target="_top"><code class="classname">camsrfexch</code></a>
+</span></dt><dd class="glossdef"><p>
+The <code class="classname">camsrfexch</code> module provides <acronym class="acronym">CAM</acronym>'s import and export state objects.
+</p></dd></dl></div><p>
+
+</p></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="component_design"></a>3.2. Component Design</h2></div></div></div><p>
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+The dynamics and physics packages may use different grids, and if using the
+same grid may use different decompositions of that grid.
+</p></li><li class="listitem"><p>
+</p></li><li class="listitem"><p>
+</p></li></ul></div><p>
+</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="phys_drv"></a>Chapter 4. Physics Driver</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#physpkg_drv">4.1. Physics Drivers and Data Structures</a></span></dt><dd><dl><dt><span class="sect2"><a href="#physpkg_dims">4.1.1. Array dimensions</a></span></dt><dt><span class="sect2"><a href="#physpkg_prec">4.1.2. Precision of real data</a></span></dt><dt><span class="sect2"><a href="#physpkg_derived">4.1.3. Derived data types</a></span></dt></dl></dd></dl></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="physpkg_drv"></a>4.1. Physics Drivers and Data Structures</h2></div></div></div><p>
+The top level physics drivers are <code class="methodname">phys_run1</code> and <code class="methodname">phys_run2</code>.  These
+subroutines call subordinate drivers which split the physics packages into
+two groups.  The first group managed by the driver <code class="methodname">tphysbc</code> is called
+before the coupling with surface processes, while the second group managed
+by the driver <code class="methodname">tphysac</code> is called after coupling.
+</p><p>
+The fundamental data structure used by the physics driver was designed for
+performance on a wide range of computer architectures.  It can be tuned for
+vector or non-vector systems, to provide load balancing while minimizing
+communication overhead, and to exploit the optimal mix of distributed
+Message Passing Interface (MPI) processes and shared OpenMP threads
+<a class="xref" href="#worley2005" title="Performance Portability in the Physical Parameterizations of the Community Atmospheric Model">Worley et al. [2005]</a>.  The data structure contains an arbitrary
+collection of vertical columns, and is referred to as a "chunk."  There are
+no assumptions about the horizonal locations of the columns, e.g., they are
+not necessarily neighbors in the global grid.  The chunks are defined in
+the module <code class="classname">phys_grid</code> which provides query functions that return the
+number of columns in each chunk and the latitude, longitude coordinates of
+the individual columns in a chunk.  The "physics grid" decomposition is a
+collection of disjoint chunks, i.e., each column in the global grid is
+contained in exactly one chunk.
+</p><p>
+SPMD parallelism is achieved by allocating a subset of the chunks that
+comprise the physics grid to each MPI process.  In each MPI process the
+physics driver may optionally perform SMP parallelism by distributing the
+calculations on these chunks among the available threads.  The calls to
+<code class="methodname">tphysbc</code> and <code class="methodname">tphysac</code> are inside threaded loops.  A single call
+to either <code class="methodname">tphysbc</code> or <code class="methodname">tphysac</code> passes only a single chunk of
+the decomposed physics grid, and this data is then passed to the individual
+physics packages.
+</p><p>
+The data on a chunk of the physics grid which is passed to a physics
+package interface routine is actually a variable of a derived type that
+contains multiple fields defined on a chunk.  Several derived types are
+defined in module <code class="classname">physics_types</code>.  The type <code class="varname">physics_state</code>
+contains fields that define the physics state.  A variable of this type is
+passed with intent <code class="code">in</code> to the individual physics packages to enforce
+the requirement that a physics package may not directly modifiy the model
+state.  The type <code class="varname">physics_ptend</code> contains fields that represent the
+tendencies to state variables from an individual parameterization.  A
+variable of this type is passed with intent <code class="code">out</code> from the individual
+physics packages.  The update of the physics state is done by the method
+<code class="methodname">physics_update</code> which is part of the <code class="classname">physics_types</code> module.
+A call to <code class="methodname">physics_update</code> is made after each call to a physics
+package so that the state and/or the total physics tendency may be updated.
+The derived type that contains the fields for the total physics tendency is
+<code class="varname">physics_tend</code>.
+</p><p>
+Information not contained in the state structure may be communicated
+between parameterizations and across time steps using the physics buffer
+utility module. This module handles all issues of allocating space, cycling
+time levels, and reading and writing restart information for data in the
+buffer.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="physpkg_dims"></a>4.1.1. Array dimensions</h3></div></div></div><p>
+Array dimensions for chunks (<code class="varname">pcols</code> and <code class="varname">pver</code>) are from the module
+<code class="classname">ppgrid</code>.  The array dimension for advected constituents (<code class="varname">pcnst</code>) is from
+the module <code class="classname">constituents</code>.  Currently the parameters <code class="varname">pcols</code>, <code class="varname">pver</code>, and
+<code class="varname">pcnst</code> are set by the cpp macros <code class="varname">PCOLS</code>, <code class="varname">PLEV</code>, and <code class="varname">PCNST</code> during the
+build process.
+</p><pre class="screen">
+integer, parameter ::&amp;
+   pcols = PCOLS, &amp;! maximum number of columns in a chunk
+   pver  = PLEV,  &amp;! number of vertical levels
+   pcnst = PCNST   ! number of advected constituents
+</pre><p>
+Note that currently <acronym class="acronym">CAM</acronym> uses the same number of vertical levels in both the
+dynamics and physics grid.  But the data structures allow the flexibility
+to change this in the future.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="physpkg_prec"></a>4.1.2. Precision of real data</h3></div></div></div><p>
+The precision of real data passing through the interface is specified by
+the kind parameter <code class="varname">shr_kind_r8</code> in module <code class="classname">shr_kind_mod</code>.  This
+value is set to give 8-byte floating point representations.  At the top of
+most <acronym class="acronym">CAM</acronym> modules will be the following code segment which provides the
+shorthand notation, <code class="code">r8</code>, as a convenience for shorter type
+declaration statements.
+</p><pre class="screen">
+use shr_kind_mod,  only: r8 =&gt; shr_kind_r8
+</pre></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="physpkg_derived"></a>4.1.3. Derived data types</h3></div></div></div><p>
+The argument lists of the public interface methods are insulated from
+changes in the specific fields that may need to be passed through them by
+encapsulating the fields in several derived data types.  The components of
+these types use the chunk data structure.
+</p><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="physpkg_state"></a>Physics state</h4></div></div></div><p>
+The physics driver stores the physics state using the derived type,
+<code class="varname">physics_state</code> which is defined in the <code class="classname">physics_types</code> module.  The
+<code class="varname">physics_state</code> type contains the state variables as well as variables
+derived from the state that are passed between the physics and dynamics.
+</p><p>
+Memory for an array of physics state objects (each object stores a single
+"chunk" of data) is allocated by the <code class="methodname">physics_type_alloc</code> routine called
+from <code class="methodname">phys_init</code>.  The state data from the dynamical core (stored in dycore
+specific data structures) is rearranged to the physics data structure by
+the <code class="methodname">d_p_coupling</code> routine, and is passed as input to the top level physics
+driver <code class="methodname">phys_run1</code> from where it is subsequently passed through the
+interface subroutines of the individual packages.  A package is not
+allowed to change the values of these fields.  A package which is designed
+to directly change its input state must use a local copy of the appropriate
+input fields.
+</p><p>
+The physics state derived type is defined as follows:
+</p><pre class="screen">
+  type physics_state
+     integer                                     :: &amp;
+          lchnk,                &amp;! chunk index
+          ngrdcol,              &amp;! -- Grid        -- number of active columns (on the grid)
+          nsubcol(pcols),       &amp;! -- Sub-columns -- number of active sub-columns in each grid column
+          psetcols=0,           &amp;! --             -- max number of columns set - if subcols = pcols*psubcols, else = pcols
+          ncol=0,               &amp;! --             -- sum of nsubcol for all ngrdcols - number of active columns
+          indcol(pcols*psubcols) ! --             -- indices for mapping from subcols to grid cols
+     real(r8), dimension(:), allocatable         :: &amp;
+          lat,     &amp;! latitude (radians)
+          lon,     &amp;! longitude (radians)
+          ps,      &amp;! surface pressure
+          psdry,   &amp;! dry surface pressure
+          phis,    &amp;! surface geopotential
+          ulat,    &amp;! unique latitudes  (radians)
+          ulon      ! unique longitudes (radians)
+     real(r8), dimension(:,:),allocatable        :: &amp;
+          t,       &amp;! temperature (K)
+          u,       &amp;! zonal wind (m/s)
+          v,       &amp;! meridional wind (m/s)
+          s,       &amp;! dry static energy
+          omega,   &amp;! vertical pressure velocity (Pa/s) 
+          pmid,    &amp;! midpoint pressure (Pa) 
+          pmiddry, &amp;! midpoint pressure dry (Pa) 
+          pdel,    &amp;! layer thickness (Pa)
+          pdeldry, &amp;! layer thickness dry (Pa)
+          rpdel,   &amp;! reciprocal of layer thickness (Pa)
+          rpdeldry,&amp;! recipricol layer thickness dry (Pa)
+          lnpmid,  &amp;! ln(pmid)
+          lnpmiddry,&amp;! log midpoint pressure dry (Pa) 
+          exner,   &amp;! inverse exner function w.r.t. surface pressure (ps/p)^(R/cp)
+          zm        ! geopotential height above surface at midpoints (m)
+
+     real(r8), dimension(:,:,:),allocatable      :: &amp;
+          q         ! constituent mixing ratio (kg/kg moist or dry air depending on type)
+
+     real(r8), dimension(:,:),allocatable        :: &amp;
+          pint,    &amp;! interface pressure (Pa)
+          pintdry, &amp;! interface pressure dry (Pa) 
+          lnpint,  &amp;! ln(pint)
+          lnpintdry,&amp;! log interface pressure dry (Pa) 
+          zi        ! geopotential height above surface at interfaces (m)
+
+     real(r8), dimension(:),allocatable          :: &amp;
+          te_ini,  &amp;! vertically integrated total (kinetic + static) energy of initial state
+          te_cur,  &amp;! vertically integrated total (kinetic + static) energy of current state
+          tw_ini,  &amp;! vertically integrated total water of initial state
+          tw_cur    ! vertically integrated total water of new state
+     integer :: count ! count of values with significant energy or water imbalances
+     integer, dimension(:),allocatable           :: &amp;
+          latmapback, &amp;! map from column to unique lat for that column
+          lonmapback, &amp;! map from column to unique lon for that column
+          cid        ! unique column id
+     integer :: ulatcnt, &amp;! number of unique lats in chunk
+                uloncnt   ! number of unique lons in chunk
+
+     ! Whether allocation from dycore has happened.
+     logical :: dycore_alloc = .false.
+
+     ! WACCM variables set by dycore
+     real(r8), dimension(:,:),allocatable        :: &amp;
+          uzm,     &amp;  ! zonal wind for qbo (m/s)
+          frontgf, &amp;  ! frontogenesis function
+          frontga     ! frontogenesis angle
+
+  end type physics_state
+</pre></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="physpkg_ptend"></a>Physics package tendency</h4></div></div></div><p>
+The <code class="varname">physics_ptend</code> type stores tendencies and their associated
+boundary fluxes for a single package.  A variable of this type is an intent
+<code class="code">out</code> argument to the <acronym class="acronym">CAM</acronym> interface for each package.  In the
+driver layer these objects are passed to the <code class="methodname">physics_update</code> routine which
+is called after each package and used to update state and
+accumulated tendency objects.
+</p><p>
+The package tendency derived type is defined as follows:
+</p><pre class="screen">
+  type physics_ptend
+
+     integer   ::   psetcols=0 ! max number of columns set- if subcols = pcols*psubcols, else = pcols
+
+     character*24 :: name    ! name of parameterization which produced tendencies.
+
+     logical ::             &amp;
+          ls,               &amp;! true if dsdt is returned
+          lu,               &amp;! true if dudt is returned
+          lv                &amp;! true if dvdt is returned
+
+     logical,dimension(pcnst) ::  lq = .false.  ! true if dqdt() is returned
+
+     integer ::             &amp;
+          top_level,        &amp;! top level index for which nonzero tendencies have been set
+          bot_level          ! bottom level index for which nonzero tendencies have been set
+
+     real(r8), dimension(:,:),allocatable   :: &amp;
+          s,                &amp;! heating rate (J/kg/s)
+          u,                &amp;! u momentum tendency (m/s/s)
+          v                  ! v momentum tendency (m/s/s)
+     real(r8), dimension(:,:,:),allocatable :: &amp;
+          q                  ! consituent tendencies (kg/kg/s)
+
+     ! boundary fluxes
+     real(r8), dimension(:),allocatable     ::&amp;
+          hflux_srf,     &amp;! net heat flux at surface (W/m2)
+          hflux_top,     &amp;! net heat flux at top of model (W/m2)
+          taux_srf,      &amp;! net zonal stress at surface (Pa)
+          taux_top,      &amp;! net zonal stress at top of model (Pa)
+          tauy_srf,      &amp;! net meridional stress at surface (Pa)
+          tauy_top        ! net meridional stress at top of model (Pa)
+     real(r8), dimension(:,:),allocatable   ::&amp;
+          cflx_srf,      &amp;! constituent flux at surface (kg/m2/s)
+          cflx_top        ! constituent flux top of model (kg/m2/s)
+
+  end type physics_ptend
+</pre></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="physpkg_tend"></a>Physics accumulated tendency</h4></div></div></div><p>
+The physics driver stores the accumulated tendencies from all of the
+individual physics packages using the tendency structure <code class="varname">physics_tend</code>
+which is defined in the <code class="classname">physics_types</code> module.  The <code class="varname">physics_tend</code> type
+stores the tendencies that are passed from the physics to the dynamics.
+</p><p>
+Memory for an array of physics tendency objects is allocated in the same
+place as the memory for the state objects.  The array is passed to the top
+level physics drivers, however, unlike the state objects, the accumulated
+tendency objects are not passed to individual physics packages.  Instead it
+is updated in the driver code by the <code class="methodname">physics_update</code> routine after the
+call to each of the physics packages returns its own tendencies.
+</p><p>
+The physics tendency derived type is defined as follows:
+</p><pre class="screen">
+  type physics_tend
+
+     integer   ::   psetcols=0 ! max number of columns set- if subcols = pcols*psubcols, else = pcols
+
+     real(r8), dimension(:,:),allocatable        :: dtdt, dudt, dvdt
+     real(r8), dimension(:),  allocatable        :: flx_net
+     real(r8), dimension(:),  allocatable        :: &amp;
+          te_tnd,  &amp;! cumulative boundary flux of total energy
+          tw_tnd    ! cumulative boundary flux of total water
+  end type physics_tend
+</pre></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="import_state"></a>Import state</h4></div></div></div><p>
+The import state contains the fields that are sent to <acronym class="acronym">CAM</acronym> from the
+coupler.  It is an object of type <code class="varname">cam_in_t</code> defined in the <code class="classname">camsrfexch</code>
+module.
+</p><p>
+The import state object uses the physics decomposition and is defined as follows:
+</p><pre class="screen">
+  type cam_in_t    
+     integer  :: lchnk                   ! chunk index
+     integer  :: ncol                    ! number of active columns
+     real(r8) :: asdir(pcols)            ! albedo: shortwave, direct
+     real(r8) :: asdif(pcols)            ! albedo: shortwave, diffuse
+     real(r8) :: aldir(pcols)            ! albedo: longwave, direct
+     real(r8) :: aldif(pcols)            ! albedo: longwave, diffuse
+     real(r8) :: lwup(pcols)             ! longwave up radiative flux
+     real(r8) :: lhf(pcols)              ! latent heat flux
+     real(r8) :: shf(pcols)              ! sensible heat flux
+     real(r8) :: wsx(pcols)              ! surface u-stress (N)
+     real(r8) :: wsy(pcols)              ! surface v-stress (N)
+     real(r8) :: tref(pcols)             ! ref height surface air temp
+     real(r8) :: qref(pcols)             ! ref height specific humidity 
+     real(r8) :: u10(pcols)              ! 10m wind speed
+     real(r8) :: ts(pcols)               ! merged surface temp 
+     real(r8) :: sst(pcols)              ! sea surface temp
+     real(r8) :: snowhland(pcols)        ! snow depth (liquid water equivalent) over land 
+     real(r8) :: snowhice(pcols)         ! snow depth over ice
+     real(r8) :: fco2_lnd(pcols)         ! co2 flux from lnd
+     real(r8) :: fco2_ocn(pcols)         ! co2 flux from ocn
+     real(r8) :: fdms(pcols)             ! dms flux
+     real(r8) :: landfrac(pcols)         ! land area fraction
+     real(r8) :: icefrac(pcols)          ! sea-ice areal fraction
+     real(r8) :: ocnfrac(pcols)          ! ocean areal fraction
+     real(r8), pointer, dimension(:) :: ram1  !aerodynamical resistance (s/m) (pcols)
+     real(r8), pointer, dimension(:) :: fv    !friction velocity (m/s) (pcols)
+     real(r8), pointer, dimension(:) :: soilw !volumetric soil water (m3/m3)
+     real(r8) :: cflx(pcols,pcnst)      ! constituent flux (evap)
+     real(r8) :: ustar(pcols)            ! atm/ocn saved version of ustar
+     real(r8) :: re(pcols)               ! atm/ocn saved version of re
+     real(r8) :: ssq(pcols)              ! atm/ocn saved version of ssq
+     real(r8), pointer, dimension(:,:) :: depvel ! deposition velocities
+  end type cam_in_t    
+</pre></div><div class="sect3"><div class="titlepage"><div><div><h4 class="title"><a id="export_state"></a>Export state</h4></div></div></div><p>
+The export state contains the fields that are sent from <acronym class="acronym">CAM</acronym> to the
+coupler.  It is an object of type <code class="varname">cam_out_t</code> defined in the <code class="classname">camsrfexch</code>
+module.
+</p><p>
+The export state object uses the physics decomposition and is defined as follows:
+</p><pre class="screen">
+  type cam_out_t 
+     integer  :: lchnk               ! chunk index
+     integer  :: ncol                ! number of columns in chunk
+     real(r8) :: tbot(pcols)         ! bot level temperature
+     real(r8) :: zbot(pcols)         ! bot level height above surface
+     real(r8) :: ubot(pcols)         ! bot level u wind
+     real(r8) :: vbot(pcols)         ! bot level v wind
+     real(r8) :: qbot(pcols,pcnst)   ! bot level specific humidity
+     real(r8) :: pbot(pcols)         ! bot level pressure
+     real(r8) :: rho(pcols)          ! bot level density	
+     real(r8) :: netsw(pcols)        !	
+     real(r8) :: flwds(pcols)        ! 
+     real(r8) :: precsc(pcols)       !
+     real(r8) :: precsl(pcols)       !
+     real(r8) :: precc(pcols)        ! 
+     real(r8) :: precl(pcols)        ! 
+     real(r8) :: soll(pcols)         ! 
+     real(r8) :: sols(pcols)         ! 
+     real(r8) :: solld(pcols)        !
+     real(r8) :: solsd(pcols)        !
+     real(r8) :: thbot(pcols)        ! 
+     real(r8) :: co2prog(pcols)      ! prognostic co2
+     real(r8) :: co2diag(pcols)      ! diagnostic co2
+     real(r8) :: psl(pcols)
+     real(r8) :: bcphiwet(pcols)     ! wet deposition of hydrophilic black carbon
+     real(r8) :: bcphidry(pcols)     ! dry deposition of hydrophilic black carbon
+     real(r8) :: bcphodry(pcols)     ! dry deposition of hydrophobic black carbon
+     real(r8) :: ocphiwet(pcols)     ! wet deposition of hydrophilic organic carbon
+     real(r8) :: ocphidry(pcols)     ! dry deposition of hydrophilic organic carbon
+     real(r8) :: ocphodry(pcols)     ! dry deposition of hydrophobic organic carbon
+     real(r8) :: dstwet1(pcols)      ! wet deposition of dust (bin1)
+     real(r8) :: dstdry1(pcols)      ! dry deposition of dust (bin1)
+     real(r8) :: dstwet2(pcols)      ! wet deposition of dust (bin2)
+     real(r8) :: dstdry2(pcols)      ! dry deposition of dust (bin2)
+     real(r8) :: dstwet3(pcols)      ! wet deposition of dust (bin3)
+     real(r8) :: dstdry3(pcols)      ! dry deposition of dust (bin3)
+     real(r8) :: dstwet4(pcols)      ! wet deposition of dust (bin4)
+     real(r8) :: dstdry4(pcols)      ! dry deposition of dust (bin4)
+  end type cam_out_t 
+</pre></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="phys_pkg"></a>Chapter 5. Column Physics Packages</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#physpkg_intro">5.1. Overview</a></span></dt><dt><span class="sect1"><a href="#physpkg_req">5.2. Requirements</a></span></dt></dl></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="physpkg_intro"></a>5.1. Overview</h2></div></div></div><p>
+This chapter describes the <acronym class="acronym">CAM</acronym> interface for a column physics package.
+The term "physics package" is used generically to refer to the software
+implementation of one or more parameterized physics or chemistry processes.
+By "parameterized" we imply that the process happens on spatial or temporal
+scales that are not resolved by the model's grid or time step size.  The
+goal is to present the details necessary for a developer to be able to test a
+new package in <acronym class="acronym">CAM</acronym> as efficiently as possible.  In the simplest case a
+one may be able to run <acronym class="acronym">CAM</acronym> with a physics package that replaces a
+standard <acronym class="acronym">CAM</acronym> package by writing a module that implements the interface
+specified here.  No modification to the <acronym class="acronym">CAM</acronym> code would be required, just
+a rebuild of <acronym class="acronym">CAM</acronym> with the new interface module replacing the <acronym class="acronym">CAM</acronym>
+interface module.
+</p><p>
+The interface comprises methods to initialize the package, and to run the
+package for a model timestep.  It is designed to be uniform regardless of
+the nature of the package's internal timestep, and to be as flexible as
+possible, without imposing significant computational or memory overhead.
+</p><p>
+Writing the <acronym class="acronym">CAM</acronym> interface for a physics package will be simplified if the
+package follows the coding standards of <a class="xref" href="#kalnay89" title="Rules for Interchange of Physics Parameterizations">Kalnay et al.[1989]</a>.
+The basic philosophy
+behind the package coding standards is that a physics package should only
+be responsible for doing a calculation on the caller's computational state.
+The responsibilities of I/O, parallelization, and communicating variables
+between parameterizations are left to the model infrastructure.  In <acronym class="acronym">CAM</acronym> the
+physics package interface is called below the level where parallelization
+details are implemented.  The I/O services are provided to the physics
+package via use association of model utilities in the <acronym class="acronym">CAM</acronym> interface
+methods.
+</p><p>
+The <acronym class="acronym">CAM</acronym> physics drivers are responsible for determining the sequence and the
+time or process splitting of the individual physics packages.  An overview
+of the physics driver is presented since its design motivates many of the
+design decisions of the physics package interface.
+</p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="physpkg_req"></a>5.2. Requirements</h2></div></div></div><p>
+The responsibility of each physics package is to perform a calculation on
+the current model state, and to return a tendency representing how the
+process changes the state in a single model timestep.  Responsibility
+for updating the model state rests with the CAM physics driver.  This
+allows for a consistent method of controlling whether the physical
+processes are treated in a time or process split manner.  All packages must
+be able to record their net forcing on the output history files. This is
+necessary for diagnostic purposes.  It follows that all packages must
+calculate a tendency, regardless of whether they use a forward or backward
+step internally.  These requirements, which are enforced by the interface
+design, can be summarized:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+Physics packages must not change the model state.
+</p></li><li class="listitem"><p>
+Physics packages must return tendencies for any model state
+variables that they wish to change.
+</p></li></ul></div><p>
+</p><p>
+The following set of requirements are not enforced by the interface, but
+must instead be enforced by the mathematical formulation and the algorithm
+design of each physics parameterization.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+All column physics packages are required to conserve the vertical
+integral of:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+the mass of each constituent (including sources and sinks)
+</p></li><li class="listitem"><p>
+momentum (including boundary forces)
+</p></li><li class="listitem"><p>
+total energy (including boundary fluxes)
+</p></li><li class="listitem"><p>
+dry static energy (including boundary fluxes and kinetic energy dissipation)
+</p></li></ul></div><p>
+</p></li></ul></div><p>
+</p><p>
+The interface design requires that each column physics package which
+produces a mass, momentum, or energy tendency must provide any boundary
+forces or fluxes associated with those tendencies so that the appropriate
+balance can be checked by the physics driver.
+</p></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="phys_pkg_utils"></a>Chapter 6. Physics Package Utilities</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#rad_cnst_intro">6.1. Radiative Constituents</a></span></dt><dd><dl><dt><span class="sect2"><a href="#rad_cnst_ui">6.1.1. User Interface</a></span></dt><dt><span class="sect2"><a href="#rad_cnst_api">6.1.2. Application Programmer Interface</a></span></dt><dt><span class="sect2"><a href="#rad_cnst_examples">6.1.3. Use in CAM</a></span></dt></dl></dd><dt><span class="sect1"><a href="#subcol_intro">6.2. Subcolumns</a></span></dt><dd><dl><dt><span class="sect2"><a href="#subcol_scheme">6.2.1. Subcolumn schemes</a></span></dt><dt><span class="sect2"><a href="#subcol_fields">6.2.2. Subcolumn fields</a></span></dt><dt><span class="sect2"><a href="#subcol_usage">6.2.3. Subcolumn usage</a></span></dt></dl></dd></dl></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="rad_cnst_intro"></a>6.1. Radiative Constituents</h2></div></div></div><p>
+An important consideration in setting up a simulation with <acronym class="acronym">CAM</acronym> is to
+specify the distributions and properties of the radiatively active
+atmospheric constituents.  The term "radiatively active" here refers to any
+constituent which affects the calculations done by the radiative transfer
+parameterization.  The affect may be direct via calculation of the optical
+properties of the constituent, or may be indirect via the impact of the
+constituent on cloud microphysics and subsequent cloud optics calculations.
+</p><p>
+<acronym class="acronym">CAM</acronym> has the flexibility to provide the distributions of radiatively
+active constituents via
+many different modules that fit into three general categories:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p> 
+prognostic distributions which are the result of prognostic chemistry
+or aerosol parameterizations
+</p></li><li class="listitem"><p> 
+prescribed distributions which are the result of interpolating input
+datasets
+</p></li><li class="listitem"><p> 
+diagnostic distributions which are derived from other
+prescribed or prognostic constituents
+</p></li></ul></div><p>
+
+
+It is possible to have different combinations of the modules that provide
+constituent distributions active in a single <acronym class="acronym">CAM</acronym> run.  Some of the
+reasons for supporting this wide range of sources for the constituent
+distributions are:
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p> The use of prescribed specie distributions is
+computationally less expensive than prognostic schemes, and thus is often
+the best option when either the cost of a prognostic scheme is prohibitive,
+or when the additional detail provided by a prognostic scheme is not
+crucial to the simulation.
+</p></li><li class="listitem"><p> During the development of prognostic schemes it is often
+desirable to run simulations where prescribed species are affecting the
+climate and keeping the run stable.
+</p></li><li class="listitem"><p>
+Diagnostic radiation calculations may be desired using different specie
+distributions than the ones that are affecting the climate.
+</p></li></ul></div><p>
+</p><p>
+As a brief historical aside, in <acronym class="acronym">CAM</acronym>3 and earlier versions it was
+generally assumed that if a prognostic distribution of a specie was
+available, then that distribution would be used in the radiation
+computation.  Otherwise a prescribed version of the specie would be used.
+There were namelist based overrides for these choices for certain species,
+and there were multiple sources of the prescribed species in some
+circumstances.  The logic for deciding which version of specie would affect
+the climate was split between the namelist input and hardcoded logic.  As a
+consequence it could be quite challenging and require substantial digging
+through code to determine exactly which species were affecting the climate
+for any particular simulation.
+</p><p>
+During the development of <acronym class="acronym">CAM</acronym>4 the decision was made to have the namelist
+input contain a complete specification of which constituent distributions
+and properties were being used in the radiation calculations that affect
+the climate as well as in the optional diagnostic radiation calculations.
+Explicit specification of constituents through the namelist will clarify
+which distribution is being used, give a consistent interface to all gasses
+and aerosols, and provide an easier way to test the radiative effects of
+different distributions, and optics.
+</p><p>
+The scientific requirements to precisely describe the radiatively active
+constituents and to have the ability to use constituents from many
+different sources may be translated into the following software
+requirements which serve as the primary design criteria for the radiative
+constituent interfaces.
+
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p> The user interface should provide for an explicit
+specification of all atmospheric constituent distributions and properties
+that affect the calculations done by the radiation parameterization.  This
+specification should be made for the calculations that affect the climate
+as well as for optional diagnostic calculations.
+</p></li><li class="listitem"><p> The API to be used by the radiation, optics, and
+microphysics parameterizations should isolate them from needing to know the
+source of a requested constituent distribution or property.  This implies
+that all the logic to determine the source of constituent distributions and
+properties is contained in the module that implements this API and is not
+duplicated in all the parameterizations that need access to constituent
+data.  <a class="xref" href="#radcnst_depends" title="Figure 6.1. Radiative Constituents Module Dependencies">Figure 6.1, “Radiative Constituents Module Dependencies”</a> contains a schematic representation of
+this design.
+</p></li></ul></div><p>
+
+</p><div class="figure"><a id="radcnst_depends"></a><p class="title"><strong>Figure 6.1. Radiative Constituents Module Dependencies</strong></p><div class="figure-contents"><pre class="synopsis">
+Modules at the tails of the arrows depend on the modules at the heads of
+the arrows.
+</pre><div class="mediaobject"><img src="figures/radcnst_depends.png" alt="Radiative Constituents Module Dependencies" /></div></div></div><br class="figure-break" /><p>
+The purpose of this section is to describe the radiative constituents
+module (<code class="classname">rad_constituents</code>) which was designed to
+implement this new functionality.  
+</p><p><strong>NOTE: </strong> The current implementation of <code class="classname">rad_constituents</code> does not
+include the treatment of hydrometeors which comprise clouds.  The
+interaction of clouds and radiation remains a hardwired part of the physics
+package.  An implication of this for diagnostic radiative forcing
+calculations is that the corresponding change in the cloud properties due
+to a change in the aerosol specification will not be captured since only
+the cloud representation that affects the climate is used in the radiative
+transfer calculations.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="rad_cnst_ui"></a>6.1.1. User Interface</h3></div></div></div><p>
+The purpose of the user interface is to provide a namelist based mechanism
+to explicitly specify all atmospheric constituent distributions and properties
+that affect calculations done by the radiative transfer parameterization.  All
+radiation calculations must be specified, that is, calculations that affect
+the climate as well as calculations done solely for diagnostic purposes.
+</p><p>
+In order to understand how the source of a constituent distribution is
+specified it is necessary to know a few details about <acronym class="acronym">CAM</acronym>'s
+infrastructure.  <acronym class="acronym">CAM</acronym> has two distinct facilities for storing
+distributions, and these facilities each have private namespaces which is
+why the user needs to specifiy which namespace to use when looking for a
+specified constituent name.  Constituent distributions fall into two
+categories; either they are advected by the large scale winds (or simply
+"advected") or they aren't.  The constituents that are advected are stored
+by <acronym class="acronym">CAM</acronym>'s infrastructure in the constituent array which is a component of
+the physics state derived type. The names in the constituent array are
+managed by the <code class="classname">constituents</code> module.  Non-advected constituents are stored
+in the physics buffer and names there are managed by the <code class="classname">phys_buffer</code>
+module.  To specify the source of a constituent distribution it is
+sufficient, in addition to providing the distribution name, to specify
+whether the constituent is advected or non-advected.
+</p><p>
+The functionality of the <code class="classname">rad_constituents</code> module is controlled by the
+following namelist variables.
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="varname">rad_climate</code></span></dt><dd><p>
+An array of strings indicating the set of entities that affect the climate.
+The format of the strings is:
+</p><pre class="screen">
+rad_climate = 'entity:name:properties'
+              [,'entity:name:properties'
+              [,'entity:name:properties']...]
+</pre><p>
+where the ':' separated terms in the strings are defined as follows:
+
+</p><div class="glosslist"><dl><dt><span class="glossterm"><em class="replaceable"><code>entity</code></em></span></dt><dd class="glossdef"><p>
+An <em class="replaceable"><code>entity</code></em> can be either a single constituent
+distribution, or a group of constituents which are treated in a special way
+by the optics or microphysics parameterizations.
+An <em class="replaceable"><code>entity</code></em> is represented 
+by a
+single character field which may currently take one
+of the following three values:
+
+</p><div class="glosslist"><dl><dt><span class="glossterm"><code class="literal">A</code></span></dt><dd class="glossdef"><p>
+An advected constituent distribution.
+</p></dd><dt><span class="glossterm"><code class="literal">N</code></span></dt><dd class="glossdef"><p>
+A non-advected constituent distribution.
+</p></dd><dt><span class="glossterm"><code class="literal">M</code></span></dt><dd class="glossdef"><p> A group of constituents which are treated as an aerosol
+mode.  The mode is a mixture which has its own properties.  The sources of
+the individual constituents that comprise the mode are given by the mode
+definition contained in the namelist variable <code class="varname">mode_defs</code>.
+</p></dd></dl></div><p>
+
+
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>name</code></em></span></dt><dd class="glossdef"><p>
+There are two cases, depending on the value
+of <em class="replaceable"><code>entity</code></em>:
+</p><p>
+If <em class="replaceable"><code>entity</code></em> is <code class="literal">M</code>, then
+<em class="replaceable"><code>name</code></em> is the name of the aerosol mode and must
+match one of the mode names which are defined by the namelist
+variable <code class="varname">mode_defs</code> (see below).
+</p><p>
+If <em class="replaceable"><code>entity</code></em> is <code class="literal">A</code>
+or <code class="literal">N</code>, then
+<em class="replaceable"><code>name</code></em> is the name by which the constituent is
+known to <acronym class="acronym">CAM</acronym>'s infrastructure, specifically, either
+the <code class="literal">constituents</code> module or
+the <code class="literal">phys_buffer</code> module.  Some of these names are
+determined via namelist input while other names may be hardcoded as part of
+the chemistry or aerosol parameterization which is responsible for
+producing them.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>properties</code></em></span></dt><dd class="glossdef"><p>
+<em class="replaceable"><code>properties</code></em> may be either the name of a gas phase
+specie that is known by the radiation parameterization, or it may be the
+name of a <acronym class="acronym">NetCDF</acronym> file which is indicated by a ".nc" suffix.
+</p><p>
+The optical properties of the gasses are specific to the radiation code, so
+it is sufficient to identify the gas properties using a name that the
+radiation code recognizes.  The gas names recognized by both
+the <code class="literal">camrt</code> and the <code class="literal">rrtmg</code> radiation
+schemes in <acronym class="acronym">CAM</acronym> are:
+<code class="literal">H2O</code>, <code class="literal">O3</code>, <code class="literal">O2</code>,
+<code class="literal">CO2</code>, <code class="literal">N2O</code>, <code class="literal">CH4</code>,
+<code class="literal">CFC11</code>, and <code class="literal">CFC12</code>.
+</p><p>
+When <em class="replaceable"><code>properties</code></em> is specified by a <acronym class="acronym">NetCDF</acronym>
+filename, the file contains the
+properties of either a bulk aerosol or an aerosol mode.  The file is for
+an aerosol mode if and only if the
+<em class="replaceable"><code>entity</code></em> is <code class="literal">M</code>.  There will be a
+separate properties file for each broadband absorber (and eventually for each
+gas).  The file will contain the necessary information to convert the
+distribution (plus auxiliary information such as model pressure,
+temperature, and humidity) to bulk layer radiative properties on each
+shortwave and longwave band. These bands and properties are specific to the
+choice of radiative transfer code.
+</p></dd></dl></div><p>
+
+</p></dd><dt><span class="term"><code class="varname">rad_diag_1, ..., rad_diag_10</code></span></dt><dd><p>
+The value of each of the <code class="varname">rad_diag_*</code> variables is an
+array of strings with a format that is identical to that
+for <code class="varname">rad_climate</code> described above.  The constituent lists
+specified by these variables are for diagnostic radiation calculations only
+and have no impact on the climate state of the model.
+</p></dd><dt><span class="term"><code class="varname">mode_defs</code></span></dt><dd><p>
+<code class="varname">mode_defs</code> is used to define all the aerosol modes that
+are present in a run.  Any mode that is referenced by
+a <code class="varname">rad_climate</code> or a <code class="varname">rad_diag_*</code>
+variable must be defined here.  The value of <code class="varname">mode_defs</code>
+is an array of strings which for each mode defined specifies the mode type,
+the constituents which contain the number mixing ratios for both the
+interstitial and cloud borne phases, and for each specie in the mode
+specifies which constituents contain the mass mixing ratios for both the
+interstitial and cloud borne phases.  All modes present in the run are
+defined.  The individual strings in the definitions have the following
+format:
+</p><pre class="screen">
+mode_defs = 'mode_name:mode_type:=',
+            'source_num:name_num_a:name_num_c:num_mr:+',
+            'source_mmr:name_mmr_a:name_mmr_c:spec_type:prop_file[:+]'[,]
+            ['source_mmr:name_mmr_a:name_mmr_c:spec_type:prop_file][:+][']
+            [,...]
+            ['mode_name:mode_type:=',
+             'source_num:name_num_a:name_num_c:num_mr:+',
+             'source_mmr:name_mmr_a:name_mmr_c:spec_type:prop_file[:+]'[,]
+             ['source_mmr:name_mmr_a:name_mmr_c:spec_type:prop_file][:+][']
+            ] [,...]
+
+</pre><p>
+where the ':' separated terms in the strings are defined as follows:
+
+</p><div class="glosslist"><dl><dt><span class="glossterm"><em class="replaceable"><code>mode_name</code></em></span></dt><dd class="glossdef"><p>
+The name of the aerosol mode being defined.  The name of every aerosol
+mode entity in the <code class="varname">rad_climate</code>
+or <code class="varname">rad_diag_*</code> variables is associated the entry in
+<code class="varname">mode_defs</code> with the matching value
+of <em class="replaceable"><code>mode_name</code></em>.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>mode_type</code></em></span></dt><dd class="glossdef"><p>
+Type of mode.  Valid values are from the MAM code.  The valid types for
+<code class="literal">trop_mam3</code> are 
+<code class="literal">accum</code>, <code class="literal">aitken</code>,
+and <code class="literal">coarse</code>.  Additional types for <code class="literal">trop_mam7</code>
+are <code class="literal">primary_carbon</code>, <code class="literal">fine_seasalt</code>,
+<code class="literal">fine_dust</code>, <code class="literal">coarse_seasalt</code>,
+and <code class="literal">coarse_dust</code>.
+</p></dd><dt><span class="glossterm"><code class="literal">=</code></span></dt><dd class="glossdef"><p>
+The string terminator which identifies the initial string in a mode
+definition.
+</p></dd><dt><span class="glossterm"><code class="literal">+</code></span></dt><dd class="glossdef"><p>
+The string terminator which indicates that the mode definition is continued
+in the next string.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>source_num</code></em></span></dt><dd class="glossdef"><p>
+The source of the mode's interstitial number mixing ratio.  A single character
+field with valid values of <code class="literal">A</code> or <code class="literal">N</code>
+which stands for advected or non-advected constituent respectively.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>name_num_a</code></em></span></dt><dd class="glossdef"><p>
+The name by which the mode's interstitial number mixing ratio is known to
+<acronym class="acronym">CAM</acronym>'s infrastructure.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>name_num_c</code></em></span></dt><dd class="glossdef"><p>
+The name of the mode's number mixing ratio for the cloud borne phase.
+Unlike the name for the interstitial phase, this name will always be known
+to the physics buffer module.  The cloud borne phase is not advected, and
+thus is never registered with the constituent module.
+</p></dd><dt><span class="glossterm"><code class="literal">num_mr</code></span></dt><dd class="glossdef"><p>
+This is a literal term which indicates that the string is defining
+constituents that contain number mixing ratios.  There can only be one
+string with the <code class="literal">num_mr</code> term in the definition of each
+mode.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>source_mmr</code></em></span></dt><dd class="glossdef"><p>
+The source of a specie's interstitial mass mixing ratio.  A single character
+field with valid values of <code class="literal">A</code> or <code class="literal">N</code>
+which stands for advected or non-advected constituent respectively.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>name_mmr_a</code></em></span></dt><dd class="glossdef"><p>
+The name by which a specie's interstitial mass mixing ratio is known to
+<acronym class="acronym">CAM</acronym>'s infrastructure.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>name_mmr_c</code></em></span></dt><dd class="glossdef"><p>
+The name of a specie's mass mixing ratio for the cloud borne phase.
+Unlike the name for the interstitial phase, this name will always be known
+to the physics buffer module.  The cloud borne phase is not advected, and
+thus is never registered with the constituent module.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>spec_type</code></em></span></dt><dd class="glossdef"><p>
+Type of specie.  Valid values are from the MAM code.  The valid types
+are 
+<code class="literal">sulfate</code>, <code class="literal">ammonium</code>,
+<code class="literal">nitrate</code>, <code class="literal">p-organic</code>,
+<code class="literal">s-organic</code>, <code class="literal">black-c</code>,
+<code class="literal">seasalt</code>, and <code class="literal">dust</code>.
+</p></dd><dt><span class="glossterm"><em class="replaceable"><code>prop_file</code></em></span></dt><dd class="glossdef"><p>
+Name of a <acronym class="acronym">NetCDF</acronym> file (which must have a ".nc" suffix) which
+contains the properties of the bulk aerosol specie that is part of the
+aerosol mode.  The file must contain the information required by the modal
+optics parameterization.
+</p></dd></dl></div><p>
+
+
+</p></dd></dl></div><p>
+For examples of the use of the namelist variables see the User's Guide.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="rad_cnst_api"></a>6.1.2. Application Programmer Interface</h3></div></div></div><p>
+Internally the <code class="classname">rad_constituents</code> module contains
+lists of the gasses, bulk aerosols, and aerosol modes that contribute to
+the climate and diagnostic calculations.  This is essentially just a
+reorganization of the data specified in
+the <code class="varname">rad_climate</code>, <code class="varname">rad_diag_*</code>,
+and <code class="varname">mode_defs</code> variables.  Creating these lists (referred
+to simply as gas, aerosol, and mode lists) is done by the initialization
+process which begins with the <code class="methodname">rad_cnst_readnl</code>
+method, and is finished by the <code class="methodname">rad_cnst_init</code>
+method.  The initialization does more that just reorganize data.  It also
+provides error checking to ensure that the constituents specified in the
+namelist variables are known to <acronym class="acronym">CAM</acronym>'s infrastructure.
+</p><p>
+The functionality of the <code class="classname">rad_constituents</code> module is
+provided to the application code via the following methods.
+</p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="rad_cnst_readnl"></a><code class="methodname">rad_cnst_readnl</code></h4></div></div></div><pre class="screen">
+subroutine rad_cnst_readnl(nlfile)
+
+   character(len=*), intent(in) :: nlfile  ! filepath for file containing namelist input
+
+   namelist /rad_cnst_nl/ mode_defs,     &amp;
+                          rad_climate,   &amp;
+                          rad_diag_1,    &amp;
+                          rad_diag_2,    &amp;
+                          rad_diag_3,    &amp;
+                          rad_diag_4,    &amp;
+                          rad_diag_5,    &amp;
+                          rad_diag_6,    &amp;
+                          rad_diag_7,    &amp;
+                          rad_diag_8,    &amp;
+                          rad_diag_9,    &amp;
+                          rad_diag_10,   &amp;
+                          iceopticsfile, &amp;
+                          liqopticsfile, &amp;
+                          icecldoptics,  &amp;
+                          liqcldoptics,  &amp;
+                          oldcldoptics
+</pre><p>
+<code class="methodname">rad_cnst_readnl</code> reads the namelist
+group <code class="literal">rad_cnst_nl</code> and parses the information in the
+string arrays.  The internal data structures that hold the information from
+the namelist are initialized here so that the module query functions are
+available at the time the register methods are called.  The error checking
+done during initialization is postponed to
+the <code class="methodname">rad_cnst_init</code> call since the registration
+phase must occur before the availability of constituents and physics buffer
+fields can be checked.
+</p><p>
+The properties files that are specified for the bulk aerosols and the
+aerosol modes are managed by the <code class="classname">phys_prop</code> module.
+The <code class="methodname">physprop_accum_unique_files</code> subroutine is
+called by <code class="methodname">rad_cnst_readnl</code> to initialize the list
+of files that that module is responsible for.
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="rad_cnst_init"></a><code class="methodname">rad_cnst_init</code></h4></div></div></div><pre class="screen">
+subroutine rad_cnst_init()
+
+   ! The initialization of the gas, aerosol, and mode lists is finished by
+   ! 1) reading the physprop files
+   ! 2) finding the index of each constituent in the constituent or physics buffer arrays
+   ! 3) finding the index of the aerosol constituents used to access its properties from the
+   !    physprop module.
+
+</pre><p>
+<code class="methodname">rad_cnst_init</code>
+calls <code class="methodname">physprop_init</code> which reads the properties
+files and finishes initializing the <code class="classname">phys_prop</code>
+module.  This module is not designed to be part of the general purpose
+<acronym class="acronym">CAM</acronym> API, but rather is designed as a utility to be used by
+the <code class="classname">rad_constituents</code> module.  All data from the
+properties files should be accessed using
+the <code class="classname">rad_constituents</code> API.
+</p><p>
+Constituents are accessed from either
+the <code class="classname">constituents</code> or
+the <code class="classname">phys_buffer</code> modules.  Checking that the
+specified constituents are available is done by this method which is called
+after the registration methods.  The indices used to identify constituents
+in the <code class="classname">constituents</code> and
+<code class="classname">phys_buffer</code> modules are saved for efficient access
+during runtime.  If an index is not found
+then <code class="methodname">endrun</code> is called.
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="rad_cnst_get_info"></a><code class="methodname">rad_cnst_get_info</code></h4></div></div></div><pre class="screen">
+interface rad_cnst_get_info
+   module procedure rad_cnst_get_info
+   module procedure rad_cnst_get_info_by_mode
+   module procedure rad_cnst_get_info_by_mode_spec
+   module procedure rad_cnst_get_info_by_spectype
+end interface
+</pre><pre class="screen">
+subroutine rad_cnst_get_info(list_idx, gasnames, aernames, &amp;
+                             use_data_o3, ngas, naero, nmodes)
+
+   ! Return info about gas and aerosol lists
+
+   ! Arguments
+   integer,                     intent(in)  :: list_idx    ! index of the climate or a diagnostic list
+   character(len=64), optional, intent(out) :: gasnames(:)
+   character(len=64), optional, intent(out) :: aernames(:)
+   logical,           optional, intent(out) :: use_data_o3
+   integer,           optional, intent(out) :: naero
+   integer,           optional, intent(out) :: ngas
+   integer,           optional, intent(out) :: nmodes
+</pre><pre class="screen">
+subroutine rad_cnst_get_info_by_mode(list_idx, m_idx, &amp;
+   mode_type, num_name, num_name_cw, nspec)
+
+   ! Return info about modal aerosol lists
+
+   ! Arguments
+   integer,                     intent(in)  :: list_idx    ! index of the climate or a diagnostic list
+   integer,                     intent(in)  :: m_idx       ! index of mode in the specified list
+   character(len=32), optional, intent(out) :: mode_type   ! type of mode (as used in MAM code)
+   character(len=32), optional, intent(out) :: num_name    ! name of interstitial number mixing ratio
+   character(len=32), optional, intent(out) :: num_name_cw ! name of cloud borne number mixing ratio
+   integer,           optional, intent(out) :: nspec       ! number of species in the mode
+</pre><pre class="screen">
+subroutine rad_cnst_get_info_by_mode_spec(list_idx, m_idx, s_idx, &amp;
+   spec_type, spec_name, spec_name_cw)
+
+   ! Return info about modal aerosol lists
+
+   ! Arguments
+   integer,                     intent(in)  :: list_idx    ! index of the climate or a diagnostic list
+   integer,                     intent(in)  :: m_idx       ! index of mode in the specified list
+   integer,                     intent(in)  :: s_idx       ! index of specie in the specified mode
+   character(len=32), optional, intent(out) :: spec_type   ! type of specie
+   character(len=32), optional, intent(out) :: spec_name   ! name of interstitial specie
+   character(len=32), optional, intent(out) :: spec_name_cw ! name of cloud borne specie
+</pre><pre class="screen">
+subroutine rad_cnst_get_info_by_spectype(list_idx, spectype, mode_idx, spec_idx)
+
+   ! Return info about modes in the specified climate/diagnostics list
+
+   ! Arguments
+   integer,                     intent(in)  :: list_idx    ! index of the climate or a diagnostic list
+   character(len=*),            intent(in)  :: spectype    ! species type
+   integer,           optional, intent(out) :: mode_idx    ! index of a mode that contains a specie of spectype
+   integer,           optional, intent(out) :: spec_idx    ! index of the species of spectype
+</pre><p>
+</p><p>
+</p></div></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="rad_cnst_examples"></a>6.1.3. Use in CAM</h3></div></div></div><p>
+The following sections outline how the radiative constituent interfaces are
+currently being used in <acronym class="acronym">CAM</acronym>.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> The example code is intentionally incomplete; just pieces from
+the actual code have been extracted to highlight the use of the interfaces
+with minimal detail.
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="gas_mmr"></a><acronym class="acronym">CAM</acronym>4 Radiation Driver</h4></div></div></div><p>
+Treatment of the gas optical properties is internal to the radiation codes,
+hence it is only the mixing ratio information that is passed through the
+top level interfaces.  The following example from the <acronym class="acronym">CAM</acronym>4 version of
+<code class="methodname">radiation_tend</code> shows how the <code class="classname">rad_constituents</code> interfaces provide access
+to the gas mixing ratios for the shortwave radiative calculation.
+</p><p>
+The aerosol optical properties are computed by the call to <code class="methodname">aer_rad_props_sw</code>.
+</p><pre class="screen">
+subroutine radiation_tend(...)
+
+    use rad_constituents, only: rad_cnst_get_gas
+
+    real(r8), pointer :: sp_hum(:,:)         ! specific humidity
+    real(r8), pointer :: o3(:,:)             ! Ozone mass mixing ratio
+    real(r8), pointer :: o2(:,:)             ! Oxygen mass mixing ratio
+    real(r8),         :: o2_col(pcols)       ! column oxygen mmr
+    real(r8), pointer :: co2(:,:)            ! co2 mass mixing ratio
+    real(r8),         :: co2_col_mean(pcols) ! co2 column mean mmr
+
+    ! Get specific humidity
+    call rad_cnst_get_gas(0,'H2O', state, pbuf, sp_hum)
+
+    ! Get ozone mass mixing ratio.
+    call rad_cnst_get_gas(0,'O3',  state, pbuf, o3)
+
+    ! Get CO2 mass mixing ratio and compute column mean values
+    call rad_cnst_get_gas(0,'CO2', state, pbuf, co2)
+    call calc_col_mean(state, co2, co2_col_mean)
+
+    ! Get Oxygen mass mixing ratio and compute column mean values
+    call rad_cnst_get_gas(0,'O2', state, pbuf, o2)
+    call calc_col_mean(state, o2, o2_col)
+
+    ! Get aerosol radiative properties.
+    call aer_rad_props_sw(0, state, pbuf, nnite, idxnite, &amp;
+         aer_tau, aer_tau_w, aer_tau_w_g, aer_tau_w_f)
+
+    call radcswmx(..., sp_hum, o3, o2_col, co2_col_mean, ..., &amp;
+                 aer_tau, aer_tau_w, aer_tau_w_g, aer_tau_w_f, ...)
+
+</pre><p>
+The first argument to both <code class="methodname">rad_cnst_get_gas</code> and <code class="methodname">aer_rad_props_sw</code>
+determines whether the climate list or one of the diagnostic lists is used
+to specify the constituents.  Here that argument is hardcoded to 0 which
+means use the climate list.  The <acronym class="acronym">CAM</acronym>4 radiation code doesn't support
+diagnostic radiative forcing calculations.
+</p><p>
+The gas name given as the second argument must be a name recognized by the
+radiation code.  These names are contained in the <code class="classname">radconstants</code> module.
+</p><p>
+The version of <code class="methodname">radiation_tend</code> used by <acronym class="acronym">CAM</acronym>5 (RRTMG) is very similar, the
+main difference being that the first argument to <code class="methodname">rad_cnst_get_gas</code> and
+<code class="methodname">aer_rad_props_sw</code> is a variable that can be set to use any of the climate
+or diagnostic lists in the radiative transfer calculation.
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="aer_optics"></a>Bulk Aerosol Optical Properties</h4></div></div></div><p>
+The bulk aerosol optical properties are computed outside the radiation code
+and are passed to it via the argument list.  The optical properties of the
+individual bulk aerosol species are "externally mixed" by which we mean
+that the properties of the whole are treated as the sum of the parts.
+Hence the calculation of the bulk aerosol properties are done in a loop
+over the list of bulk aerosol species and the properties of the whole are
+accumulated as the sum over the properties of the individual species.
+</p><p>
+The computation of the aerosol optical layer properties is done by routines
+in the <code class="classname">aer_rad_props</code> module.  The following example is from the routine
+for the shortwave calculation.
+</p><pre class="screen">
+subroutine aer_rad_props_sw(list_idx, state, pbuf, nnite, idxnite, &amp;
+                            tau, tau_w, tau_w_g, tau_w_f)
+
+   use rad_constituents, only: rad_cnst_get_info, rad_cnst_get_aer_mmr, &amp;
+                               rad_cnst_get_aer_props
+
+   real(r8), pointer :: aermmr(:,:)    ! mass mixing ratio of aerosols
+
+   ! compute mixing ratio to mass conversion
+   mmr_to_mass(:,:) = rga * state%pdeldry(:,:)
+
+   ! initialize optical property output
+   tau     (:,:,:) = 0._r8
+   tau_w   (:,:,:) = 0._r8
+   tau_w_g (:,:,:) = 0._r8
+   tau_w_f (:,:,:) = 0._r8
+
+   ! get number of bulk aerosols in current list
+   call rad_cnst_get_info(list_idx, naero=numaerosols)
+
+   ! Contributions from bulk aerosols.
+   do aer_idx = 1, numaerosols
+
+      ! get bulk aerosol mass mixing ratio
+      call rad_cnst_get_aer_mmr(list_idx, aer_idx, state, pbuf, aermmr)
+      aermass(:,:) = aermmr(:,:) * mmr_to_mass(:,:)
+
+      ! get optics type
+      call rad_cnst_get_aer_props(list_idx, aer_idx, opticstype=opticstype)
+
+      select case (trim(opticstype))
+      case('hygro','hygroscopic','hygroscopi')
+         ! get optical properties for hygroscopic aerosols
+         call rad_cnst_get_aer_props(list_idx, aer_idx, sw_hygro_ext=h_ext, &amp;
+                                     sw_hygro_ssa=h_ssa, sw_hygro_asm=h_asm)
+         call get_hygro_rad_props(ncol, krh, wrh, aermass, h_ext, h_ssa, h_asm, &amp;
+                                  ta, tw, twg, twf)
+
+      case('nonhygro','insoluble ')
+         ! get optical properties for non-hygroscopic aerosols
+         call rad_cnst_get_aer_props(list_idx, aer_idx, sw_nonhygro_ext=n_ext, &amp;
+                                     sw_nonhygro_ssa=n_ssa, sw_nonhygro_asm=n_asm)
+         call get_nonhygro_rad_props(ncol, aermass, n_ext, n_ssa, n_asm, &amp;
+                                     ta, tw, twg, twf)
+
+      case('volcanic')
+         ! get optical properties for volcanic aerosols
+         call rad_cnst_get_aer_props(list_idx, aer_idx, sw_nonhygro_ext=n_ext, &amp;
+                              sw_nonhygro_scat=n_scat, sw_nonhygro_ascat=n_ascat)
+         call get_volcanic_rad_props(ncol, aermass, n_ext, n_scat, n_ascat, &amp;
+                                     ta, tw, twg, twf)
+
+      case('volcanic_radius')
+         ! get optical properties for volcanic aerosols
+         call rad_cnst_get_aer_props(list_idx, aer_idx, r_sw_ext=r_ext, &amp;
+                            r_sw_scat=r_scat, r_sw_ascat=r_ascat, mu=r_mu)
+         call get_volcanic_radius_rad_props(lchnk, ncol, aermass, pbuf, r_ext, &amp;
+                                        r_scat, r_ascat, r_mu, ta, tw, twg, twf)
+
+      end select
+
+      tau    (:,:,:) = tau    (:,:,:) + ta (:,:,:)
+      tau_w  (:,:,:) = tau_w  (:,:,:) + tw (:,:,:)
+      tau_w_g(:,:,:) = tau_w_g(:,:,:) + twg(:,:,:)
+      tau_w_f(:,:,:) = tau_w_f(:,:,:) + twf(:,:,:)
+
+   enddo
+
+
+</pre><p>
+The number of bulk aerosol species is returned by the first call to
+<code class="methodname">rad_cnst_get_info</code>.  The first argument to that
+call, <code class="varname">list_idx</code>, specifies whether the aerosols are in
+the climate list (index 0) or one of the diagnostic lists.
+</p><p>
+Inside the loop over the aerosol species the first call to
+<code class="methodname">rad_cnst_get_aer_mmr</code> returns a pointer to the mixing ratio for
+the <code class="varname">aer_idx</code> specie in the list.  The mixing ratio is
+then converted to a mass.
+</p><p>
+Next the call to <code class="methodname">rad_cnst_get_aer_props</code> returns the optics type.  This
+information comes from the properties file that is associated with each
+bulk aerosol specie.  It's value is used in the case selector to determine
+which method to use for the optics properties calculations.
+</p><p>
+Once inside the case selector the <code class="methodname">rad_cnst_get_aer_props</code> method is called
+again and returns the specific properties required by the method that is
+used for the optics calculation.  Again these properties come from the
+associated properties dataset.
+</p><p>
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a id="mode_optics"></a>Aerosol Mode Optical Properties</h4></div></div></div><p>
+The optical properties of an aerosol mode are computed using properties of
+the species that comprise the mode along with properties that pertain to
+the mixture of the species contained in the mode.  The optical properties
+of modes are externally mixed (summed) to give the total contribution to
+the aerosol optical properties from the modes.
+</p><p>
+The calculation of the optical properties due to aerosol modes is done in
+the <code class="classname">modal_aer_opt</code> module.  The following example is from the routine for
+the shortwave calculation.
+</p><pre class="screen">
+subroutine modal_aero_sw(list_idx, state, pbuf, nnite, idxnite, &amp;
+                         tauxar, wa, ga, fa)
+
+   use rad_constituents, only: rad_cnst_get_info, rad_cnst_get_aer_mmr, &amp;
+                             rad_cnst_get_aer_props, rad_cnst_get_mode_props
+
+   ! initialize output variables
+   tauxar(:ncol,:,:) = 0._r8
+   wa(:ncol,:,:)     = 0._r8
+   ga(:ncol,:,:)     = 0._r8
+   fa(:ncol,:,:)     = 0._r8
+
+   ! get number of aerosol modes
+   call rad_cnst_get_info(list_idx, nmodes=nmodes)
+
+   do m = 1, nmodes
+
+      ! get mode properties
+      call rad_cnst_get_mode_props(list_idx, m, sigmag=sigma_logr_aer, refrtabsw=refrtabsw , &amp;
+                          refitabsw=refitabsw, extpsw=extpsw, abspsw=abspsw, asmpsw=asmpsw)
+
+      ! get number of species in mode
+      call rad_cnst_get_info(list_idx, m, nspec=nspec)
+
+      do isw = 1, nswbands
+
+         do k = 1, pver
+
+            ! aerosol species loop
+            do l = 1, nspec
+               call rad_cnst_get_aer_mmr(list_idx, m, l, 'a', state, pbuf, specmmr)
+               call rad_cnst_get_aer_props(list_idx, m, l, density_aer=specdens, &amp;
+                                    refindex_aer_sw=specrefindex, spectype=spectype)
+
+            end do ! species loop
+
+            ! compute dopaer, palb, pasm
+
+            do i=1,ncol
+               tauxar(i,k,isw) = tauxar(i,k,isw) + dopaer(i)
+               wa(i,k,isw)     = wa(i,k,isw)     + dopaer(i)*palb(i)
+               ga(i,k,isw)     = ga(i,k,isw)     + dopaer(i)*palb(i)*pasm(i)
+               fa(i,k,isw)     = fa(i,k,isw)     + dopaer(i)*palb(i)*pasm(i)*pasm(i)
+            end do
+
+         end do ! pver
+
+      end do ! sw bands
+
+   end do ! nmodes
+
+</pre><p>
+The first call to <code class="methodname">rad_cnst_get_info</code> returns the number of modes in the
+list specified by <code class="varname">list_idx</code>.
+</p><p>
+The call to <code class="methodname">rad_cnst_get_mode_props</code> inside the loop over modes is to get
+properties that are specific to the mode.  The call to <code class="methodname">rad_cnst_get_info</code>
+returns the number of species in mode <code class="varname">m</code>.  Note that
+<code class="methodname">rad_cnst_get_info</code> is a generic interface.  In the first call with only
+one required argument it returns information that's relevent to a given
+list, while in the second call with two required arguments it's returning
+information relevent to a mode in the list.
+</p><p>
+Inside the loop over species the calls to <code class="methodname">rad_cnst_get_aer_mmr</code> and
+<code class="methodname">rad_cnst_get_aer_props</code> are returning mixing ratios and properties for
+specie <code class="varname">l</code> in mode <code class="varname">m</code>.  Again note the
+overloading of these generic interfaces.  In the previous section on bulk
+aerosol optical properties these routines were called with two required
+arguments and returned properties of bulk aerosols.  Here
+<code class="methodname">rad_cnst_get_aer_props</code> is called with three required arguments and is
+returning properties of species comprising an aerosol mode.
+<code class="methodname">rad_cnst_get_aer_mmr</code> is called with four required arguments; in addition
+to mode and specie indices, it is also necessary to specify whether the
+mixing ratio is for the interstitial ('<code class="literal">a</code>'), or the cloud
+borne ('<code class="literal">c</code>') phase.
+</p></div></div></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="subcol_intro"></a>6.2. Subcolumns</h2></div></div></div><p>
+The <acronym class="acronym">CAM</acronym> subcolumn infrastructure provides the ability to create fields
+with several elements within a single grid column.
+Different methods for generating and averaging subcolumn fields are
+called subcolumn schemes and are designated with the 'subcol_scheme'
+namelist variable.
+This chapter describes how to define a new subcolumn scheme and how to
+create and use subcolumn fields in a physics parameterization.
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="subcol_scheme"></a>6.2.1. Subcolumn schemes</h3></div></div></div><p>
+In order to implement a new scheme, you need to follow these steps:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+Implement a subcolumn scheme in a separate module
+(subcol_&lt;scheme&gt;.F90). This scheme may use data from a physics
+parameteriztion but not from an interface module
+(&lt;param&gt;_intr.F90). It may also use data from ppgrid, physconst,
+and physics_buffer.
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+Implement a subcol_register_&lt;scheme&gt; subroutine to register any
+scheme-specific fields. Any pbuf_add_field calls need to go here,
+however, pbuf fields are normally only used when the data is also used
+by another module so most pbuf_add_field calls will be in a
+parameterization module. See the restart routines below to see how other
+module data may be saved.
+This step is optional.
+</p></li><li class="listitem"><p>
+Implement a subcol_readnl_&lt;scheme&gt; subroutine to read in the
+namelist variables for this scheme's namelist.
+This step is optional.
+</p></li><li class="listitem"><p>
+Implement a subcol_init_&lt;scheme&gt; function to initialize any scheme-
+specific variables or fields. This is also a good time to call
+pbuf_get_index to store any pbuf indices needed later.
+This step is optional.
+</p></li><li class="listitem"><p>
+Implement a subcol_gen_&lt;scheme&gt; function to generate the appropriate
+subcol fields based on the existing GBA fields and other scheme data.
+</p></li><li class="listitem"><p>
+Implement a subcol_field_avg_&lt;scheme&gt; function to average subcol fields
+back into the appropriate GBA fields.
+</p></li><li class="listitem"><p>
+Implement a subcol_ptend_avg_&lt;scheme&gt; function to average the 
+subcolumn ptend to a grid ptend
+This step is optional
+</p></li></ol></div></li><li class="listitem"><p>
+Add necessary cases in the master subcol module (subcol.F90)
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+Add a case for your scheme name in subcol_register and optionally call
+your subcol_&lt;scheme&gt; registration function.
+subcol_register is called at registration time in phys_register.
+</p></li><li class="listitem"><p>
+Add a case for your scheme name in subcol_init and optionally call your
+subcol_&lt;scheme&gt; initialization function.
+subcol_init is called at initialization time in phys_init.
+</p></li><li class="listitem"><p>
+Add a case for your scheme name in subcol_gen and call your
+subcol_&lt;scheme&gt; subcol generator. subcol_gen is called in tphysbc
+although it can also be called by other parameterizations for
+special-purpose subcolumn use.
+</p></li><li class="listitem"><p>
+Add a case for your scheme name in subcol_field_avg and call your
+subcol_&lt;scheme&gt; field-averaging function.
+</p></li><li class="listitem"><p>
+Add a case for your scheme name in subcol_ptend_avg and optionally
+call your subcol_&lt;scheme&gt; ptend-averaging function.
+</p></li></ol></div></li></ul></div><p>
+NB: New schemes should be implemented in a separate file which is used by
+this module (and thus may not 'use' any subcol module variable, function,
+or subroutine).
+</p><p>
+Most subcolumn schemes contain information which must be stored acros
+time steps. This information can be stored as module variables. However,
+in cases where there is an interaction between the subcolumn scheme and
+other <acronym class="acronym">CAM</acronym> physics code (e.g., subcolumns populated according to a PDF
+generated by a physics parameterization), this information can also be
+stored in subcolumn fields (see <a class="xref" href="#subcol_fields" title="6.2.2. Subcolumn fields">Section 6.2.2, “Subcolumn fields”</a>).
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="subcol_fields"></a>6.2.2. Subcolumn fields</h3></div></div></div><p>
+To create a subcolumn field, call pbuf_add_field in a physics
+registration subroutine. By using the optional sixth argument,
+grid_types_flag. This flag can be set to create a grid-average field, a
+subcolumn field, or both. 
+</p><p>
+NB: If a subcolumn generator changes the number of subcolumns in a grid
+column. subcolumn fields which persist across time steps need to be
+reformed.
+</p></div><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="subcol_usage"></a>6.2.3. Subcolumn usage</h3></div></div></div><p>
+Subcol functions (e.g., subcol_gen, subcol_ptend_avg) should only be
+called from physpkg or from a parameterization scheme interface file
+(&lt;param&gt;_intr.F90).
+</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="infrastructure_utils"></a>Chapter 7. Infrastructure Utilities</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#camgrid_intro">7.1. CAM Grids</a></span></dt><dd><dl><dt><span class="sect2"><a href="#hcoords">7.1.1. Horizontal Coordinates</a></span></dt></dl></dd></dl></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="camgrid_intro"></a>7.1. CAM Grids</h2></div></div></div><p>
+The <acronym class="acronym">CAM</acronym> grid infrastructure provides an object which holds information
+about one CAM grid (e.g., a dycore grid) being used in the current run.
+The grid object contains all information about the grid's axes, the
+grid's lon/lat points, and its layout relative to NetCDF file order
+(e.g., its decomposition).
+</p><p>
+CAM grid objects are distributed objects; The object on each task only
+holds information on the grid's task-local points.
+CAM maintains an array of grids which are referenced through a handle
+</p><div class="sect2"><div class="titlepage"><div><div><h3 class="title"><a id="hcoords"></a>7.1.1. Horizontal Coordinates</h3></div></div></div><p>
+A horizontal coordinate is an object which describes the horizontal
+coordinate for one or more grids. For structured grids, these are simply
+longitude ('lon') and latitude ('lat'). For unstructured grids, which
+have 'columns' defined in longitude and latitude, these coordinates are
+defined in terms of the grid's column dimension. The horiz_coord_t type
+contains the following elements:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><div class="glosslist"><dl><dt><span class="glossterm"><em class="replaceable"><code>name</code></em></span></dt><dd class="glossdef"><span class="emphasis"><em>name</em></span><p>coordinate name (e.g., 'lon', 'lat_s')
+</p></dd></dl></div></li><li class="listitem"><span class="emphasis"><em>dimname</em></span>: type: character(len=max_hcoordname_len)
+<p>dimension name. This is used for unstructured grids where the
+dimension name (e.g., 'ncol') is the coordinate variable. If
+<span class="emphasis"><em>dimname</em></span> is blank, then <span class="emphasis"><em>name</em></span> is
+used as a coordinate variable.
+</p></li><li class="listitem"><span class="emphasis"><em>dimsize = 0</em></span>: type: integer
+<p>size of dimension
+</p></li><li class="listitem"><span class="emphasis"><em>long_name = ''</em></span>: type: character(len=max_chars)
+<p>'long_name' attribute
+</p></li><li class="listitem"><span class="emphasis"><em>units = ''</em></span>: type: character(len=max_chars)
+<p>'units' attribute
+</p></li><li class="listitem"><span class="emphasis"><em>values(:) =&gt; null()</em></span>: type: real(r8),      pointer
+<p>dim values (local if map)
+</p></li><li class="listitem"><span class="emphasis"><em>map(:) =&gt; null()</em></span>: type: integer(iMap), pointer
+<p>map (dof) for dist. coord
+</p></li><li class="listitem"><span class="emphasis"><em>latitude</em></span>: type: logical
+<p>.false. means longitude
+</p></li></ul></div></div></div></div><div class="bibliography"><div class="titlepage"><div><div><h1 class="title"><a id="idm139955890530624"></a>References</h1></div></div></div><div class="bibliomixed"><a id="craig2012"></a><p class="bibliomixed">[Craig et al.[2012]] 
+Craig, Anthony P., Mariana Vertenstein, and Robert Jacob.
+<span class="title">A new flexible coupler for earth system modeling developed for
+CCSM4 and CESM1
+</span>,
+The International Journal of High Performance Computing Applications,
+<span class="volumenum">26</span>(<span class="issuenum">1</span>),
+<span class="pagenums">31-42</span>,
+<span class="bibliomisc">
+<a class="ulink" href="http://dx.doi.org/10.1177/1094342011428141" target="_top">doi:10.1177/1094342011428141</a>
+</span>,
+<span class="pubdate">2012</span>.
+</p></div><div class="bibliomixed"><a id="kalnay89"></a><p class="bibliomixed">[Kalnay et al.[1989]] 
+Kalnay, E., M. Kanamitsu, J. Pfaendtner, J. Sela, M. Suarez, J. Stackpole,
+J. Tuccillo, L. Umscheid, and D. Williamson.
+<span class="title">Rules for Interchange of Physics Parameterizations
+</span>,
+Bulletin American Meteorological Society,
+<span class="volumenum">70</span>(<span class="issuenum">6</span>),
+<span class="pagenums">620-622</span>,
+<span class="pubdate">1989</span>.
+</p></div><div class="bibliomixed"><a id="worley2005"></a><p class="bibliomixed">[Worley et al. [2005]] 
+Worley, Patrick H., and John B. Drake.
+<span class="title">Performance Portability in the  Physical Parameterizations of the Community
+Atmospheric Model
+</span>,
+The International Journal of High Performance Computing Applications,
+<span class="volumenum">19</span>(<span class="issuenum">3</span>),
+<span class="pagenums">187-201</span>,
+<span class="bibliomisc">
+<a class="ulink" href="http://dx.doi.org/10.1177/1094342005056095" target="_top">doi:10.1177/1094342005056095</a>
+</span>,
+<span class="pubdate">2005</span>.
+</p></div></div></div></body></html>

@@ -1,0 +1,56 @@
+body { 
+  color: black;
+  font-family: serif;
+  margin: 2em;
+  margin-left: 3em;
+}
+
+h1, h2, h3, h4 {
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 1.8em
+}
+h2 {
+  font-size: 1.6em
+}
+h3 {
+  font-size: 1.4em
+}
+h4 {
+  font-size: 1.2em
+}
+
+.screen {
+  background-color: #DDDDDD;
+  padding: 0.5em;
+}
+
+.example {
+  background-color: #DDDDFF;
+  padding: 1.0em;
+}
+
+div.note {
+  color: #0000FF;
+}
+div.note h3 {
+  font-size: 1.1em
+}
+
+div.important {
+  color: #0000FF;
+}
+div.important h3 {
+  font-size: 1.1em
+}
+
+acronym {
+  font-family: sans-serif;
+}
+
+span.command {
+  font-family: monospace;
+}

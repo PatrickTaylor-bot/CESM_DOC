@@ -1,0 +1,4085 @@
+<html>
+<head>
+
+<title>CSM Plan - November 1994</title>
+
+<!------------------------------------------------------------->
+<!-- META TAG COMMENT ----------------------------------------->
+<!------------------------------------------------------------->
+<!-- <meta name="description" content="Insert unique description for
+your page here and place outside comment tags.">
+<meta name="keywords" content="Insert unique keywords for
+your page here and place outside comment tags.">
+<meta name="author" content="Insert unique author for
+your page here and place outside comment tags."> -->
+<!------------------------------------------------------------->
+<!-- END META TAG COMMENT ------------------------------------->
+<!------------------------------------------------------------->
+
+</head>
+
+<!-- #BeginLibraryItem "/Library/header.lbi" -->
+[an error occurred while processing this directive]
+[an error occurred while processing this directive]
+<!-- #EndLibraryItem -->
+<!----------------------------------------------------------------------------->
+<!---------------END OF CCSM HEADER-------------------------------------------->
+<!----------------------------------------------------------------------------->
+
+<center>
+<H1>
+NCAR 
+</h1>
+</center>
+
+<center>
+<h2>
+Climate System Model Plan<br>
+November 1994
+</h2>
+</center>
+
+
+<u><font size=5>
+Table of Contents
+</font></u><br><br>
+
+<font size=+1>
+<a href="plan23.html#Executive">Executive Summary</a><br><br>
+</font>
+
+<b>I. An NCAR Climate System Model</b><br><br>
+
+<a href="plan23.html#Overview">Overview</a><br>
+
+<a href="plan23.html#Descr1">NCAR CSM Project Description</a><br>
+
+<a href="plan23.html#Components">CSM Components and Structure<a/><br>
+
+<a href="plan23.html#Analogy">The CCM Analogy</a><br>
+
+<a href="plan23.html#Criteria">CSM Design Criteria</a><br>
+
+<a href="plan23.html#Validation">CSM Analysis and Validation</a><br>
+
+<a href="plan23.html#Computing">CSM Computing</a><br>
+
+<a href="plan23.html#Organization">CSM Project Organization</a><br><br>
+
+<b><a href="plan23.html#Start">II. CSM Start-up Phase</a></b><br><br>
+
+<a href="plan23.html#Strategy">Strategy for Coupled Calculations</a><br>
+
+<a href="plan23.html#Development">Preliminary Development</a><br>
+
+<a href="plan23.html#Calculations">Initial Calculations</a><br><br>
+
+<b>III. CSM Phase II</b><br><br>
+
+<a href="plan23.html#Community">Making CSM Available to the Climate 
+Modeling Community</a><br>
+
+<a href="plan23.html#Problems">Scientific Problems to be Addressed by CSM
+</a><br>
+
+<a href="plan23.html#Further"</a>Further Developments</a><br><br>
+
+<b>IV. Coupled Modeling and Climate Research at NCAR</b><br><br>
+
+<a href="plan23.html#Coupled">Coupled Modeling Background<a/><br>
+
+<a href="plan23.html#Contributing">Contributing Research</a><br><br>
+
+<b>V. Component Models and Development Plans</b><br><br>
+
+<a href="plan23.html#Atmosphere">Atmosphere</a><br>
+
+<a href="plan23.html#Ocean">Ocean</a><br>
+
+<a href="plan23.html#Land">Land<a/><br>
+
+<a href="plan23.html#Flux">Flux Coupler</a><br><br>
+
+<b>VI. Resource Requirements for CSM</b><br><br>
+
+<a href="plan23.html#Personnel">Personnel Requirements Summary</a><br>
+
+<a href="plan23.html#Computing">Computing Requirements Summary</a><br><br>
+
+<b>VII. <a href="plan23.html#References">References"</a></b><br><br>
+
+<b>VIII. <a href="plan23.html#Appendix">Appendix -- CMAP SAC Members</a></b>
+<br><br>
+
+<b>IX. <a href="plan23.html#Acronyms">Acronyms</a></b><br><br><br>
+
+
+
+
+
+
+<h2><a name="Executive">Executive Summary</a></h2><br>
+
+<h3>The Challenge of Modeling Climate</h3><br>
+ 
+Understanding and predicting climate, particularly climate variation and
+possible human-induced climate change, presents one of the most difficult and
+urgent challenges in science.  Earth-system scientists worldwide responded to
+that challenge over the past decade with a bewildering variety of climate
+models, simple and complex, with coarse or fine resolution, covering few or
+many aspects of the climate system, treating individual components or
+fully-coupled systems, and implemented on every variety of computing system. 
+This remarkable effort reveals two requirements for successful climate
+modeling: full coupling of model components and extraordinary collaboration
+among modelers.  Researchers probing the human genome benefit from a uniform
+genetic code and widely available gene libraries --- their research community
+benefits collectively from diverse individual accomplishments.  Similarly,
+climate researchers need access to a uniform modeling framework and better
+ways to share, compare, and incorporate diverse individual modeling advancements.
+</p>
+<h3>A Step Towards Community Climate Models</h3><br>
+NCAR proposes to develop, maintain, and improve a comprehensive, fully-coupled
+model of the climate system, one with a hierarchy of modular components within
+a unified model framework, flexible enough for implementation on several
+computing systems, and accessible to the climate modeling community.  (See
+Chapter 1: Project Description)
+</p>
+
+<h3>Why NCAR?</h3><br>
+
+NCAR starts with proven ability to produce and support community models and,
+with external collaborators, has
+skill in all major components of climate modeling and validation (Chapter
+5: Component Models and Development Plans).  NCAR researchers and support
+staff have a history of internal and external collaboration on coupled
+modeling problems and of modeling projects supported by a variety of
+government agencies (Chapter 4: Coupled Modeling and Climate Research at NCAR).</p>
+<p> 
+The NCAR climate modeling groups propose an immediate focus on a
+climate system model (CSM).
+</p>
+<h3>A Start-Up Phase</h3><br>
+
+This NCAR CSM plan proclaims an immediate goal of demonstrating the ability to
+couple disparate component models.  To get started, the NCAR CSM has a
+commitment of NCAR staff, some outside collaboration, a strategy for initial
+calculations to test and develop prototype coupled models, and initial
+computing resources.  The NCAR CSM needs a start-up phase of approximately two
+years, to allow it to develop and test a framework that can eventually
+support more broadly-based use and improvement (Chapter 1:  An NCAR
+Climate System Model).  NCAR CSM will need
+substantial additional computing resources during this start-up period. 
+(Chapter 2: Start-Up Phase)
+</p>
+
+<h3>CSM Plans</h3><br>
+The NCAR community CSM will adopt design criteria that allow implementation
+and testing of a range of components and subcomponents developed within and
+outside NCAR.  The CSM project will organize so as to encourage and foster
+collaborations from university and federal laboratory researchers.  The CSM
+project will adapt computing advances when appropriate and support
+implementations of the model on massively parallel and moderately parallel
+vector computing systems.  (For all the above, see Chapter 1: Project
+Description.)  Finally, CSM researchers will focus on specific issues in the
+component models that contribute to improvements in component and coupled
+system performance leading to improved predictive understanding of climate.
+
+(Chapter 3: Scientific Problems to be Addressed)
+</p>
+
+<h3>What Does the Research Community Get from a CSM at NCAR?</h3><br>
+
+
+<p>
+Climate researchers from universities, federal laboratories, the
+private sector, and NCAR get modeling tools and a framework and computing
+environment for using those tools.  They get access to a range of model
+components to complement their own and a system in which to test their own
+components in a variety of configurations.  Other coupled modeling efforts get
+access to and benefit from an open modeling environment and the opportunity to
+implement community CSM improvements in their own systems.  The climate
+research community gets a much needed test bed, a way to incorporate and focus
+diverse achievements, and a set of recognized, documented, advanced coupled
+models to apply to national and international environmental policy issues. 
+The climate impacts and policy research communities will have access to
+the CSM process and will help guide CSM development.  
+</p>
+
+
+
+
+
+
+<b>I.</b> <b><u>An NCAR Climate System Model</u></b><br>
+
+<a name="Overview">Overview</a><br>
+
+<p>
+Changes in climate, whether anthropogenic or natural, involve a
+complex interplay of physical, chemical, and biological processes of
+the atmosphere, ocean, and land surface.  As climate system research
+seeks to explain the behavior of climate over time scales of years to
+millennia, focus necessarily turns to behavior introduced by physical,
+chemical, and biogeochemical interactions among climate
+subsystems. The need to understand climate as a coupled system is
+demonstrated by the paleoclimate record, which reveals large,
+related changes in atmospheric and oceanic circulation and
+biogeochemistry (e.g., Broecker, 1987; Dansgaard et al., 1993).
+The challenges of modeling the role of anthropogenic emissions of
+carbon dioxide, of reactive trace gases, and of changing land use in
+the earth system likewise require a coupled climate system approach.
+While knowledge that land-ocean-atmosphere interactions influence
+climate is not new, the emergence of coupled climate system questions
+as central scientific concerns of geophysics constitutes a major
+change in the research agendas of atmospheric science, oceanography,
+ecology, and hydrology.
+</p>
+
+<p>
+Two recent books, ``Climate System Modeling'' (Trenberth, 1992) and
+``Modeling the Earth System'' (Ojima, 1992), document many aspects of
+climate system modeling and of the uses of such models for global
+change research and paleoclimate studies. Key questions include the
+coupling between processes occurring at different time scales
+(seasonal to interannual, interannual to decadal) that affect the
+longer term behavior of the system. The interaction between seasonal
+and El Nino-Southern Oscillation (ENSO) processes discussed by
+Tziperman et al.  (1994) and Jin
+et al. (1994) provides one example. Evidence in the paleorecord
+and from models that changes in ENSO frequency are a component of long-term
+climate variability is a related but longer term example (Meehl
+et al., 1993; Thompson et al., 1989). The possible
+existence of thresholds or multiple equilibria in the climate system,
+arising from the thermohaline ocean circulation and perhaps related to
+the carbon cycle, is another issue of scientific importance and great
+relevance to society (Taylor et al., 1993). Adaptation to
+abrupt change would be more difficult than acclimatization
+to continuous change. 
+</p>
+
+<p>
+We believe that relatively simple models will continue to play an
+important role in climate system research, but the most credible
+characterizations of the important processes, as well as the best
+predictions for future climate change, will come from comprehensive
+models of the climate system.  Many relevant examples of component
+subsystem models exist, and several groups around the world have
+produced interesting prototypes for a comprehensive climate system
+model.  However, no mature model of this type yet exists.  We believe
+it timely to establish a substantial, highly-focussed project at NCAR
+to develop, explore, test, and continuously improve a CSM.
+Extrapolating from previous general circulation model (GCM) experience, we strongly believe this
+project, and others like it, will require many years to come to
+maturity, although a sequence of useful models and scientific results
+will be produced over that period.
+</p>
+
+<p>
+Development of a comprehensive CSM, which
+accurately represents the principal components of the climate system
+and the couplings between them, requires both wide intellectual
+participation and computing capabilities beyond those available to
+most U.S. institutions. A CSM, therefore, must involve an 
+improved framework for coupling existing and future component models
+to permit rapid exploration of alternate formulations, an 
+accessible coupled model within that framework that allows
+calculations at various complexities and resolutions according to
+scientific need and demand on computing resources, and an active
+series of simulations and evaluations using the improved model to
+address important scientific issues and problems of national and
+international policy interest.
+</p>
+
+<p>
+There have been several coupled modeling studies over the last two
+decades and an ongoing debate over criteria for ``state-of-the-art''
+climate models. It has been argued (by S. Manabe of the Geophysical
+Fluid Dynamics Laboratory (GFDL), S. Schneider of Stanford/NCAR, among
+others) that the choice of computational resolution involves
+scientific assessments balanced by resource (computing) availability,
+and that model skill in addressing specific scientific questions does
+not automatically result from detailed parameterizations or high
+resolution.  We extract two principles from that debate pertinent to
+the development of a CSM.  First, science issues must drive model
+development, although computing resources may force scientific
+compromises and may severely limit the number of simulations that can
+be performed. Second, the CSM development effort should not 
+a priori eschew exploration of coupled behavior or solutions using
+simple, less computationally intensive, component models.
+</p>
+
+<a name="Descr1"><u><b>NCAR CSM Project Description</a></b></u>
+
+<p>
+As a leading research institution in atmospheric science and
+associated disciplines, NCAR has a long history of developing,
+maintaining, and improving models of the atmosphere, ocean, and
+land surface.  NCAR also pioneered basic studies of the earth
+system that led to current understanding of the strength and pervasive
+influence of land-ocean-atmosphere couplings on the climate system.
+</p>
+
+<p>
+NCAR now plans to develop, maintain, and improve a comprehensive CSM.
+We commit to designing a scientifically sound, policy-relevant
+modeling system, accessible to a large user community. The CSM itself,
+a hierarchy of simpler subset models, and the results of a wide
+variety of experiments using the models will be available to NCAR,
+university, and federal laboratory scientists, and to any other
+interested parties. To ensure broad intellectual participation and
+efficient use of resources, the effort to develop a CSM will be
+coordinated and integrated across NCAR scientific divisions and the
+NCAR Scientific Computing Division, and will collaborate extensively
+with the university and federal laboratory research community.
+</p>
+
+<p>
+As a focussed effort, the CSM project will address an important aspect
+of climate system research. In particular, the CSM project is aimed at
+developing and using comprehensive models to gain a predictive
+understanding of  the climate system. Toward this end, the long-term
+goals of the  CSM project are simple and ambitious. They are:<br>
+
+<ul>
+<li>to develop and maintain a comprehensive CSM that is at the forefront
+of international efforts in modeling the climate system; 
+<li>to maintain a hierarchy of less complete subset
+models; 
+<li>to continually improve the comprehensive model and its
+component models;
+<li>to use the model to address important scientific
+questions about the climate system, including global change and
+interdecadal and interannual variability;
+<li>to use appropriate versions of the model for
+calculations in support of national and international policy
+decisions; and
+<li>to make the complete hierarchy of models and the results of major
+experiments available to the wider scientific community.
+</ul>
+
+
+<p>
+Complementary efforts using simplified models are also important and will be
+undertaken by many individuals, including CSM participants.
+</p>
+
+<a name="Components"><b><u>CSM Components and Structure</b></u></a>
+
+<p>
+The CSM will have a simple conceptual structure: separate models for
+atmosphere, ocean, land surface, and sea ice that communicate through
+a flux coupler. The flux coupler will impose few (if any) rules about
+the resolutions and structures of component models. This structure
+will easily allow for the distribution of the component models among
+separate computers. This simple structure also allows the systematic
+maintenance of a hierarchy of climate system models. For example, the
+same structure can support alternative component models ranging
+from specified boundary conditions to interactive GCMs on either side
+of the atmosphere/ocean interface. The appropriate component models
+and their configuration for a particular problem can then be selected
+on the basis of the important processes expected to be involved.
+</p>
+
+<p>
+The atmospheric component includes atmospheric dynamics, radiation,
+clouds, aerosols, and chemistry; it encompasses the troposphere and at
+least some (possibly large) portion of the middle atmosphere.  The
+oceanic component includes ocean dynamics and biochemistry. For
+efficient modeling the ocean component supports different domains:
+regional or global and upper-ocean or full-depth.  The land surface
+component includes physical, biological, and chemical processes; it
+extends from the top of the plant canopy through the upper soil layers.
+The sea ice component includes the dynamics and thermodynamics of sea
+ice formation and transport.  The flux coupler is a separate computer
+code that interrogates components for state variables, calculates
+interfacial fluxes not produced by component models, and parcels out
+fluxes in an integrally-conservative manner, even when component
+models have different space-time discretizations.  The flux coupler
+will also control the synchronization and pace of calculations.
+</p>
+
+<a name="Analogy"><b><u>The CCM Analogy</b></u></a>
+
+<p>
+The NCAR Community Climate Model (CCM) represents a successful example
+of an institutional modeling project.  Many of its attributes should
+belong to the CSM:
+</p>
+<ul>
+<li>It is maintained as a community model, available to NCAR,
+university, and federal laboratory scientists who invest effort to
+learn about it and obtain computer time to use it;
+
+<li>Its development and evaluation occurs through an open process
+that includes all interested scientists, but is accomplished in
+practice primarily by a relatively small team of scientists who make a
+substantial commitment of their time, cooperate closely, and take
+responsibility for the model's contents;
+
+<li>Its development is guided and overseen by an internal advisory
+committee that meets frequently, an external panel of experts that
+meets approximately annually, and occasional workshops for users;
+
+<li>Its code architecture and formats support modular subcomponents and
+portability to different computers and centers;
+
+<li>Benchmark versions of the model are produced on explicitly
+declared (and approximately met) schedules; and
+
+<li>The project commands resources, particularly in support staff and
+computer allocations, greater than those typically available to
+individual scientists.
+</ul>
+
+<a name="Criteria"><b><u>CSM Design Criteria</b></u></a>
+
+<p>
+The scientific scope of the CSM project is much greater than the scope
+of the CCM.  In consequence, the CSM will be more complex than the
+CCM, and the CSM project will need to support much broader user communities
+than does the CCM. The CSM should also stand as a more nearly unique
+model.  A few modeling groups have expertise that spans the climate
+system; however, in the U.S. none are institutionally committed to
+full community access to its models and computing environment.  In its
+more complete configurations, CSM will require long
+integration times and computing resources substantially larger than
+those now available. To obtain the maximum benefit from the available
+scientific and computational resources, the CSM project will adhere to
+the following design criteria:
+</p>
+
+<p>
+Establish a unified model framework.  The CSM will establish a unified
+model framework, albeit one with flexibility and generality. When
+alternative component models exist or develop, the
+CSM project will endeavor to incorporate the best aspects of each in
+the unified model. However, the CSM will have to run on several
+different computer systems, and it is possible that separate
+implementations of some component models will have to be maintained
+for both massively parallel computers and moderately parallel vector
+computers. 
+</p>
+
+<p>
+Support variable domains, resolutions, and complexity.  The CSM
+must support various domains and resolutions to allow locally
+high-resolution  studies of specific problems or regions and to allow
+relatively low-resolution for long time scale (century and longer)
+studies. A hierarchy of components must be supported with, for
+example, different levels of physical or chemical complexity. The
+combination of the components for particular coupled calculations must
+be easily user selectable.
+</p>
+
+<p>
+Support modular components.  Component models should interact
+with the CSM in a modular way, so that scientists can experiment with
+alternative component models.  Modularity offers the potential for
+fruitful cooperation with other groups pursuing climate system
+modeling.
+</p>
+
+<p>
+Develop from existing components.  In principle, CSM might wish to design
+entirely new component models, subject to all available advice.  In
+practice, several CSM component models will grow from existing models.
+The CSM atmospheric physical model will start from CCM2.  The first
+realization of the CSM oceanic physical model will derive from a
+GFDL-type ocean model.  Other CSM component models have, a priori,
+less obvious initial design bases.
+</p>
+
+<p>
+Begin with some components simplified.  To efficiently explore
+new modes of solution behavior that occur with coupled component
+models, CSM calculations should begin with at least some components
+intentionally very simple.
+</p>
+
+<p>
+Use computational science advances.  To achieve the design
+criteria listed (modularity, variable domains, resolutions, and
+complexity, and selectable combinations of coupled components) and to
+support CSM on a wide range of computer systems, CSM must attend
+closely to code architectural aspects and other computational science
+issues.  CSM teams should include computational science expertise.
+</p>
+
+
+<a name="Validation"><b><u>CSM Analysis and Validation</b></u></a>
+
+<p>
+Developing CSM and its components invokes a vital, ongoing need to
+judge how well the models perform, to diagnose erroneous performance,
+to improve those aspects or components deemed inadequate, and
+generally to document and validate the model. In carrying out these tasks,
+close collaboration with mathematicians and statisticians is essential.
+Even for individual model
+components, natural variability of the model may obscure the signals
+one seeks in the model solution.  In the case of CSM, the scope of
+possible natural variability becomes much greater and less well 
+documented, so validation presents a severe problem. 
+</p>
+
+<p>
+The lack of complete, global observations of many important variables and
+derived quantities presents major challenges to validation of component models
+of the atmosphere, ocean, and sea ice.  In coupled models, concern with
+interactive system behavior exacerbates validation problems. However,
+a great deal of data is available that provides
+indirect information about aspects of the coupled system. For example,
+heat and fresh water budget constraints 
+can be used to validate coupled atmosphere-ocean-sea ice components. 
+Estimates of evaporation minus precipitation from atmospheric measurements or
+analyses can be used to examine fresh water transports, oceanic
+salinity, and thermohaline circulation.  Similarly, the sum of convergence of heat
+transports by atmosphere and ocean must balance net radiation imbalances at
+the top-of-the-atmosphere.  The combination of local budgets of these
+quantities in the atmosphere, the ocean, and at the interface produces
+over-specification requiring conciliation among different answers and, thus,
+provides constraints on system behavior.  In the absence of sufficient quality
+observational data, these multiple internal checks will need to be extensively
+exploited.
+</p>
+
+<p>
+Because requisite data sets may not exist or may exist in unusable
+forms, CSM development activities will connect closely with data base
+development and validation efforts across the community to make known
+the data needs of the CSM effort. A start in this direction is already 
+underway within SCD and CGD, working collaboratively with universities
+and NOAA under the U.S. Global Change Research Program's Geosystem
+Database initiative.
+</p>
+
+
+<a name="Computing"><b><u>CSM Computing</b></u></a>
+
+<p>
+The computational requirements of a comprehensive CSM are enormous and
+will require dedicated, up-to-date computer facilities. Inevitably,
+the development of CSM will require undesirable trade-offs between
+computational expense, resolution, and detailed treatments of
+physical, chemical, and biological processes.  Incorporation of
+chemical and biogeochemical cycles will greatly increase the cost over
+that for the physical climate system alone.  If the CSM project is to
+provide a truly state-of the-art model to the scientific community, it
+is imperative that the computational constraints not force excessive
+compromise.
+</p>
+
+<p>
+There must be sufficient computer power available to simultaneously
+support: ongoing development of the coupled model and of the
+underlying component models; long (at least century) production
+integrations of the comprehensive coupled model; and decadal
+integrations of higher resolution, less comprehensive coupled
+models. Experience suggests that it will not be possible to maintain
+interest and participation in the CSM project if it is necessary to
+stop development  to make long production simulations, or if
+the production simulations take many months each to complete.
+</p>
+
+<p>
+The initial CSM computing requirements are being addressed through the
+Climate Simulation Laboratory (CSL) within the NCAR Scientific Computing
+Division. As of October, 1994, the CSL consists of 5 Cray Research
+Inc. computers, a
+YMP8-864, a 64 processor T3D, and three EL98's.
+These machines will meet the requirements of
+the CSM in the short term, and will allow reasonable resolution in the
+atmosphere and ocean components of the physical climate system. They
+will not be adequate to allow routine inclusion of chemical and
+biogeochemical cycles in the CSM for long integrations, and they are,
+in total, less powerful than the computers available at several
+climate research centers internationally. Substantially augmenting the
+initial CSL computers will be required if the CSM is to include
+chemistry and biogeochemistry and is to be widely used by the scientific
+community in the U.S.
+</p>
+
+<a name="Organization"><b><u>CSM Project Organization</b></u></a>
+
+<p>
+The CSM project will be overseen by a steering committee consisting of
+the NCAR director, associate director, and the directors of the
+science divisions. Guidance and oversight will also come from the
+Scientific Advisory Committee for the National Science Foundation
+(NSF) Climate Modeling,  Analysis and
+Prediction (CMAP) program (see appendix, section VIII). Scientific direction of CSM
+will come primarily from the CSM Investigator Group (CSMIG), composed
+of those NCAR and outside scientists actively participating in CSM. It
+is expected that the composition of this group will vary with time as
+some participants move on to other interests and new investigators
+become involved. The Chair of the CSMIG is appointed by the NCAR
+director in consultation with the CSMIG. During the start-up phase of
+CSM, Byron Boville and William Holland are co-chairing the CSMIG.
+</p>
+
+<p>
+The CSMIG co-chairs will lead the collaborating team of scientists
+involved in the project. They will maintain a consensual, decision
+making approach and will attempt to resolve scientific debate within
+the project in a constructive fashion. They will describe and advocate
+the CSM project in a variety of venues, including at scientific
+meetings and at funding agency briefings. They will coordinate, and be
+responsible for, the development of plans and proposals. They will
+attempt to engage the participation of a broad spectrum of scientists
+in the CSM project.  They will allocate the resources available to the
+project (including computer time and programming support) in
+consultation with the CSMIG.
+</p>
+
+<p>
+CSM activities described in this plan will occur largely through the
+efforts of relatively small teams of scientists. These teams will work
+on component models and on coupling strategies, and all team members
+will be members of the CSMIG.  Each team takes responsibility for
+developing and continually improving its component of the CSM
+consistent with the CSM goal of a fully-coupled model and with the CSM
+design criteria.  Each team will declare its development priorities
+and work schedules.  During the CSM start-up phase, CSM teams will
+consist largely, though not entirely, of NCAR scientists.  The
+eventual success of the long-term CSM effort requires full and active
+participation by non-NCAR researchers as CSM members and an
+active effort to develop and maintain close collaborations over
+considerable distances.
+</p>
+
+
+<b>II.</b> <a name="Start"><b><u>CSM Start-up Phase</u></b></a><br>
+
+<p>
+The complexity of climate issues and the evident and as-yet
+undiscovered difficulties in designing, assembling, and testing a
+coupled climate system model require that the CSM project adopt and
+adhere to long-term goals and standards. Within and consistent with
+that long-term effort, we defined a start-up phase of approximately two
+years that began in January, 1994. We recognize the need to show
+sufficient progress and skill so that, by the end of the start-up
+phase, the CSM can serve as the centerpiece for a long-term community
+climate modeling research program and as a useful tool for addressing
+policy-driven questions about climate change.  During this phase, CSM
+development will rely heavily on people and climate modeling research
+now underway at NCAR, coordinated toward the CSM goals and
+supplemented in many instances by direct solicitation of university
+and federal laboratory collaborators. Outside guidance and oversight
+will come from the Scientific Advisory Committee of CMAP.
+</p>
+
+<p>
+During the start-up phase, the prototype CSM will be developed, tested,
+and probably revised extensively. Development of the prototype model
+is already proceeding, with initial coupled atmosphere-ocean
+calculations having begun in April, 1994. The initial release of the
+CSM for wider use by the scientific community will take place at the
+end of the start-up phase.  The highest priority
+short-term goals of the CSM project are:
+to develop a global coupled atmosphere, ocean, land surface, sea
+ice model from existing component models;
+to determine the ability of the model to reproduce the current
+climate, including interannual and interdecadal variability;
+to attempt to significantly reduce the largest errors of the
+initial coupled model; 
+to use the resulting model for global change studies, including
+the Intergovernmental Panel on Climate Change (IPCC) global warming scenarios;
+to develop a hierarchy of subset models for addressing specific
+problems on shorter time scales, e.g., a global atmosphere coupled to a
+tropical Pacific upper ocean model to address the ENSO-related variability; and to couple carbon and sulfur cycle models into the CSM.
+</p>
+
+<p>
+There are also several lower priority goals that the CSM will
+actively address, largely taking advantage of
+existing efforts and interests in specific areas. These lower priority
+goals address problems that will be important to the CSM project in
+the longer term and will entrain wider participation in the early
+stages of CSM development without significantly impacting the highest
+priority projects. These goals include:
+</p>
+<ul>
+<li>development of a middle atmosphere GCM including interactive ozone chemistry; and 
+
+<li>coupling of an upper atmosphere model to the lower atmosphere of the
+CSM for studies of the interaction of the lower atmosphere with the
+mesosphere and thermosphere.
+</ul>
+
+<p>
+At the end of the CSM start-up phase, we intend to have publishable
+solutions for a variety of coupled phenomena (see below); to have a
+set of models that can be used for climate system research by a broad
+segment of the scientific community; and to be in a position to
+contribute to the scientific basis of national and international
+policy discussions relating to global change by running scenarios for
+changes in greenhouse gases. The models available at the end of the
+start-up phase will serve as the basis for continuing development
+based on the research interests of the expanding user base.
+</p>
+
+<a name="Strategy"><b><u>Strategy for Coupled Calculations</b></u></a>
+
+<p>
+According to the design criteria of the previous section, CSM will
+develop from existing components and attempt, during initial
+calculations, to couple those components in somewhat simplified form.
+In choosing initial calculations, we attend to the need
+to demonstrate that the CSM project has: engaged the active
+collaboration of a wide selection of scientists; developed a viable
+approach to building a CSM; and demonstrated substantial progress in
+learning about coupled behavior during the CSM start-up phase.  Our
+work on these particular initial calculations will allow us to meet
+those needs and lead to more complex and comprehensive coupling
+efforts as skill develops.
+</p>
+
+<p>
+We propose the following strategy for selecting and conducting initial
+calculations:
+</p>
+
+<ul>
+
+<li>Work on coupled problems in parallel with work on component
+models, testing the latter at least partly in uncoupled mode;
+
+<li>Attempt to remove as many biases as possible in the surface
+exchanges of energy and momentum of component models in uncoupled mode;
+
+<li>Start with equilibrium climate as our principal target problem 
+to address climate drift of the coupled system from the beginning;
+
+<li>Start with primarily physical coupling and rapidly work toward
+including chemical, biogeochemical, and ecological aspects;
+
+<li>Define our target resolution as the maximum computationally-feasible resolution
+over the next two years for coupled simulations of at least 100 years.
+<li>Evaluate the benefits of this target resolution compared to lower
+resolutions in the face of vastly increased costs for high resolution;
+and 
+
+<li>Sustain effort on several specific problems motivated by particular
+scientific issues rather than emphasizing repeated calculations of just one
+comprehensive problem.
+</ul>
+</p>
+
+
+<p>
+The initial CSM calculations have been selected according to the above
+guidelines and computational constraints imposed by the phased
+upgrades planned for the CSL. Extensive
+coupled calculations could not begin prior to the availability of
+a YMP8 in October, 1994. However, a great deal has been accomplished
+in the interim period.
+</p>
+
+
+<u><b><a name="Development">Preliminary Development</a></u></b>
+
+<p>The first nine months of the CSM project (January--September, 1994)
+has been a 
+preliminary development phase. During this phase several activities
+have taken place:
+</p>
+
+<ul>
+<li>
+Configure and test an updated atmosphere model based on CCM2;
+
+<li>
+Configure and spin up the ocean GCM;
+
+<li>
+Compare the ocean heat transport simulated by the ocean model to
+the implied ocean heat transport in the atmosphere model with observed
+sea-surface temperatures. The implied ocean heat transport is the
+transport that would be required to maintain the fixed sea-surface
+temperatures against the simulated surface fluxes;
+
+<li>
+Complete the implementation and testing of the prototype flux coupler;
+
+<li>
+Run the atmosphere model driven by the flux coupler with
+observed sea-surface temperatures instead of an ocean model;
+
+<li>Run the ocean model driven by the flux coupler and state
+variables from the previous simulation with the atmosphere model;
+
+<li>
+Run the atmosphere model driven by the flux coupler and
+sea-surface temperatures of the previous simulation with the ocean
+model; and 
+
+<li>
+Begin low-resolution coupled simulation (R15 atmosphere, ocean and sea ice).
+</ul>
+
+<p><b><u><a name="Calculations">Initial Calculations</a></u></b></p>
+
+<p>
+The CSM coupled calculations during the start-up phase will focus on
+two problems, equilibrium climate and seasonal to interannual
+variability. The first problem forms the basis for all climate change
+experiments, including greenhouse gas induced global warming, and
+consequently for contributions to the IPCC process. It also supports
+the modeling component of focus 2 of the World Climate Research
+Programme (WCRP) CLIVAR program. The
+second problem contributes to the modeling component of CLIVAR focus 1
+and the GOALS program in the U.S.
+</p>
+
+<p><i>Equilibrium Climate</i></p>
+
+<p>
+This is the essential problem to be addressed during the start-up
+phase of the CSM project.  This calculation addresses the question of
+whether the improvements that have been made in the atmosphere and
+ocean model components over the last several years are sufficient to
+allow coupled simulations that do not drift greatly from the
+presently observed climate. Extensive analysis of the simulated annual
+cycle and interannual variability will be required. We intend to run
+the coupled model without ``flux adjustment'' at the atmosphere-ocean
+interface. Based on previous experience at NCAR and elsewhere, it is
+expected that the initial coupled calculation will drift away from the
+present climate and that several revisions of 
+the atmosphere and ocean models will be required. We will not resort to
+``flux adjustment'' unless it is absolutely required to
+produce a usable model within the two year start-up phase.
+</p>
+
+<p>
+This problem presents an excellent first test to CSM because it is the
+prerequisite to all global change experiments and to interdecadal
+variability studies. Although later revisions of the CSM will be
+integrated for a least 100 years, integrations of a decade or
+so will probably be sufficient to establish the initial drift of the
+early experiments.
+</p>
+
+<p>
+Given this physical model as a base, we can investigate additional
+phenomena with developmental, partially-coupled models on the same
+space and time scales: (a) stratospheric ozone cycle; (b) tropospheric
+sulfur cycle; (c) carbon cycle with terrestrial ecosystems and an
+abiotic ocean; (d) oceanic primary productivity and phytoplankton
+distributions with a nitrogen based marine ecosystem model; and (e)
+lower atmospheric driving (one-way coupling) of the upper atmosphere.
+Terrestrial and ocean biogeochemical models will be added as
+diagnostic components to the physical models at an early stage.  The
+research plans for the component models provide descriptions
+of the approaches to these additional calculations.
+</p>
+
+<p>
+Component models: </p>
+
+<ul>
+<li>
+Atmosphere model based on CCM2 with many improvements to its
+numerical formulation and physical parameterizations;
+
+<li>
+Land surface (biophysical exchange) model (Bonan, 1994);
+
+<li>
+Full-depth, ocean with isopycnal tracer mixing;
+
+<li>
+Flato-Hibler sea ice with extended thermodynamics (snow, etc.);
+and 
+
+<li>
+Prototype flux coupler for ocean, ice, and marine atmosphere. The
+variables exchanged and the exchange protocols have been
+established and the prototype coupler is complete.
+</ul>
+
+
+<p><i>Initial conditions:</i></p>
+
+<p>
+Atmosphere and land initial conditions will come from an uncoupled CCM2
+solution.  Ocean initial conditions will derive from a near-equilibrium
+solution calculated with a full-depth ocean model using mean seasonal forcing
+of climatological wind stress and temperature and salinity boundary
+conditions that restore towards climatology.  
+The ocean will then be run for several decades using boundary
+conditions from the atmosphere model to yield initial conditions for
+the coupled model.
+</p>
+
+<p><i>Issues:</i></p>
+
+<p>
+The target resolutions for this calculation are T42 for the atmosphere
+(18 levels) and  for the ocean (45 levels) and ice
+components. Alternative resolutions are also being explored and
+the benefits of the target resolution will have to be established. The
+duration of the initial calculations and the criteria for validation
+have not yet been established.  We expect to resolve these issues
+quickly. However, the availability of computer time will inevitably
+play an important role in the choices made.  We will improve the
+quality of the solution iteratively through successive integrations
+and explore several alternative choices.
+</p>
+
+<p><i>Seasonal to Interannual Variability</i></p>
+
+<p>
+We will design seasonal and interannual calculations to address the
+mechanisms responsible
+for the coherent, coupled variations of the ocean and atmosphere on
+seasonal and interannual time scales.  Such variations will include ENSO,
+midlatitude ocean-atmosphere fluctuations, and variability in the thermohaline
+circulation. We will use the ocean model in different configurations
+to address the different phenomena mentioned above. For example, to address 
+ENSO the ocean model will require resolution sufficient to resolve
+important frontal structures and wave dynamics in the equatorial region. 
+To address midlatitude ocean-atmosphere fluctuations, for example in the
+North Atlantic region, the ocean model will 
+require eddy-resolving resolution in the North Atlantic Ocean and 
+coarser (non-eddy-resolving) resolution elsewhere in the global ocean. 
+The sea ice component will also be configured appropriately for different 
+phenomena; i.e., it is not important to ENSO variability but it is absolutely
+vital to studies of variability in the thermohaline circulation. Eventually
+it will be possible to have a truly eddy-resolving global ocean model as
+part of the CSM, but this will require much greater computational resources.
+</p>
+
+<p>
+The CCM2 and land models will be run with sufficiently high resolution
+(T42 or higher for these studies), and the prototype flux coupler for
+ocean, ice, and marine atmosphere will also be used. The flux coupler
+approach allows regional ocean models to be combined with observations
+from the rest of the ocean in an easy and consistent way. The initial
+conditions for these various studies will also be chosen according to
+the phenomena being addressed.
+</p>
+
+
+<b>III.</b> <b><u>CSM Phase II</u></b><br>
+
+<b><a name="Community">
+Making CSM Available to the Climate Modeling Community</a></b>
+
+<p>
+At the end of the startup phase, a CSM version 1 will be frozen and
+documented extensively. The source code and accompanying technical
+descriptions and users guides and the results of control and
+greenhouse gas scenario experiments will be made available to the
+scientific community. Plans are still being developed for the
+distribution and support of the CSM and for fostering the continuing
+involvement of an active user community in the ongoing
+development and use of the CSM. These plans will be completed in
+consultation with the Scientific Advisory Committee for CMAP and will
+depend on the availability of resources to support the CSM. 
+This work will require the efforts of a
+dedicated core group of programmers as well as the input from NCAR
+scientists, patterned after the successful development and application
+of the CCM atmospheric model and its easy availability to the outside
+community. The personnel requirements will be discussed in Section VI.
+Here we will discuss some aspects of how the NCAR CSM activities relate to
+the wider climate modeling community.
+</p>
+
+<p>
+The model will be used by CSM investigators (from within and outside
+NCAR) to address a wide variety of scientific problems. The CSM will
+also be freely available to any interested parties, whether or not
+they desire any further involvement with the onging CSM
+project. Experience with the CCM suggests that to foster maximal use
+and benefit from this new tool for climate studies, NCAR will
+need to not only make the basic CSM model easily available, but to
+supply documentation and other support to outside users. Thus the CSM
+will be made available at the appropriate time by anonymous FTP,
+extensive documentation of the code will be provided, workshops will
+be undertaken by NCAR to actively aid a users group, and a
+visitor/postdoc program will be supported at a level depending upon
+resources.  Following the CCM experience, a first workshop in the
+summer of 1996 (and one every two years thereafter) would allow a
+rapid dissemination of knowledge and expertise on how to use the model
+to the outside community of users.
+</p>
+
+<p>
+Development and support of analysis tools will also be a vital part of
+the CSM project and will be required by outside users in addition to
+the CSM itself. Experience with the CCM indicates that support of
+large analysis package across the widely distributed and diverse
+computing environments of the CSM users would be a major
+undertaking. Such a project would probably be beyond the resources
+likely to be available to the CSM project and would probably not
+lead to a product satisfactory to a large number of the CSM users in
+any case. Plans for CSM analysis tools are still being developed, and
+will evolve with user needs, but will probably focus on standardizing
+data formats to those supported by many analysis and visualization packages
+(e.g. netCDF). Widely available commercial and public domain software
+packages could then be used to analyze CSM results.  A set of
+tools to manipulate the data files and visualize the results will be
+developed, in large part as modules within existing software packages.
+</p>
+
+<p>
+There are already strong links between NCAR modeling activities and the
+outside community. Many scientists at NCAR have very active
+collaborations with the university community and close involvement
+with activities in other agencies and programs supporting climate
+research [DOE (CHAMMP, LLNL, LANL); EPA (GENESIS); NASA (EOS, GSFC, JPL,
+WSRP); NOAA (Climate data reanalysis)]. Discussions on
+cooperation between CSM and some of these programs have already
+started. Thus it is expected that
+involving the outside community in CSM will occur naturally and
+rapidly in the early stages of CSM development and use.
+Almost half of the planned CSM budget will be used for short and long
+term visitors, postdoctoral fellows, and workshops.
+</p>
+
+<p><b>
+<a name="Problems">Scientific Problems to be Addressed by CSM</a></b></p>
+
+<p>
+Several important scientific problems require a CSM
+beyond the scope of existing NCAR models and include models of
+physical, chemical, and biological processes that transcend
+disciplinary boundaries. The CSM project will not only develop the model
+and make it available, but will also use the CSM and its subset models
+to address many of these problems. Examples, roughly in order of
+priority to the CSM project, include:
+</p>
+
+<p>
+Equilibrium physical climate. The first priority of the CSM
+project is to develop a model that more accurately represents the
+current state of the physical climate system, including its mean state
+and annual and interannual variability. This is required for
+increasing confidence in global change studies. Simulating the present
+climate requires coupled climate system models, including the
+atmosphere, ocean, land surface, and sea ice. It is the starting point
+for studies of chemical and biogeochemical cycles.
+</p>
+
+<p>
+Global warming.  The possibility of significant global warming
+motivates much research on the climate system.  Determining the extent
+of greenhouse gas warming, the impacts of warming on other aspects of
+climate (precipitation, solar radiation at the land surface), and the
+spatial variability of warming effects require coupled climate system
+models.  Determining the time evolution of greenhouse effects also
+requires coupled models: it depends
+upon the complex behavior of the coupled systems (e.g., land, carbon cycle,
+ocean). NCAR has a long history of global warming research and
+participates in IPCC simulations with coupled models.
+</p>
+
+<p>
+Comprehensive annual cycle.  Simulation of temporal and spatial
+components of the annual cycle presents a demanding and attractive
+test to coupled models.  Simulation of the annual cycle
+involves all aspects of the climate system (atmospheric physics and
+chemistry, the hydrologic cycle, ocean dynamics, and
+biology/biophysics) but without important and difficult longer term
+processes of deep ocean circulation, vegetation change, and carbon
+cycle dynamics.  Accurate annual cycle simulations should include
+physical climatology and annual cycles of important trace gases
+(O, CH, CO) and of terrestrial characteristics, such as
+soil moisture and leaf area.
+</p>
+
+<p>
+Interannual variability. Interannual variability on time scales
+of a few years involves interactions of the atmosphere and the land
+surface through changes in surface wetness and snow cover. Sea ice
+variations are also important. However, interactions of the atmosphere
+and the upper ocean, particularly the tropical oceans, may be of
+dominant importance on this time scale. Studies on this time scale
+will require more detailed upper ocean models than will be used for
+equilibrium climate interdecadal variability. The CSM project
+begins with a solid base of experience in coupling atmospheric and
+tropical upper ocean models, in coupling atmosphere and land surface
+models, and in coupling atmospheric and global ocean models.
+</p>
+
+<p>
+Interdecadal variability.  Detecting long-term climate change requires an
+understanding of climate variability on decadal time scales.
+Interdecadal variability can be forced by processes external to the
+atmosphere-ocean-land-ice system, such as volcanic emissions, solar
+variability, and anthropogenic effects.  However, interdecadal
+variability is also an intrinsic aspect of the
+atmosphere-ocean-land-ice system, resulting from internal dynamics in
+the atmosphere and from atmospheric interactions with oceans and land.
+For example, interdecadal variabilities in land, ocean, and
+atmosphere systems probably play roles in Sahelian drought cycles,
+monsoon variations, and other low-frequency phenomena.
+</p>
+
+<p>
+Sulfur cycle.  Climate researchers have long recognized the importance of
+sulfate aerosols in climate, and this problem has recently returned to
+the forefront of scientific interest.  Studies of sulfur effects require that
+coupled models include elements of tropospheric chemistry and represent
+anthropogenic and biological controls over tropospheric SO and NH
+concentrations and vertical distributions within the coupled physical climate
+system. 
+</p>
+
+<p>
+Carbon cycle.  Understanding the role of the carbon cycle in the
+climate system presents a major scientific and practical challenge to
+earth and life sciences. Only coupled models can consider the full
+range of factors influencing the carbon cycle: human land use,
+CO-fertilized growth in regrowing and natural areas, climate
+feedbacks to ecosystems, and climate effects on carbon storage through
+physical and biological processes. The CSM effort begins an
+essentially new effort in this area, but one that starts from
+existing strengths in modeling terrestrial carbon dynamics and in
+tracer transport in the atmosphere and ocean (e.g., Schimel et al., 1994;
+Erickson et al., 1994).
+</p>
+
+<p>
+Middle atmosphere circulation and ozone depletion. Catalytic ozone
+destruction caused by anthropogenic gases is one of the key global
+change problems. Until recently, most modeling of ozone chemistry and
+transport has taken place using two-dimensional models (in the
+latitude-height plane). It is now generally recognized that several
+key transport processes require a three-dimensional model to treat
+them credibly (e.g., convection, stratosphere-troposphere
+exchange).  NCAR has existing expertise in modeling dynamics and
+transport in the middle atmosphere (Boville, 1991; Rasch et al., 1993)
+and in modeling ozone chemistry (Brasseur et al., 1990). Work on a
+coupled dynamical-photochemical model for ozone has already
+started. Eventually, global warming problems may be treated with an
+interactive ozone chemistry component, although these problems will be
+treated separately in the early stages of the CSM project, and the
+ozone chemistry will be done in models without an interactive ocean.
+</p>
+
+<p>
+Glacial-interglacial transitions.  There is conflicting
+observational evidence suggesting that transitions between extreme
+climate conditions (e.g., between ice ages and warmer interglacial
+periods) can occur on short, perhaps even decadal, time scales with
+several transitions within the span of a few centuries.  Investigating
+such phenomena requires a reasonably complete and skillful model of the
+coupled climate system. This is a long-term goal of CSM and will 
+be an active area of research in the later stages of the project.
+</p>
+
+<p><b><a name="Further">Further Developments</a></b></p>
+
+<p>
+The particular model components that comprise the CSM at the start of
+phase II are being selected by NCAR scientists and a small number of
+external collaborators. These choices depend on a number of factors,
+including, but not limited to, scientific merit.
+</p>
+
+<p>
+NCAR management and CSM scientists are committed to the principle of
+continuous evaluation of the CSM and its components, and the
+replacement of existing components with others, from wherever, that
+are of higher scientific quality. This commitment includes the task
+of defining a process for such evaluations. 
+</p>
+
+
+<b>IV.</b> <b><u>Coupled Modeling and Climate Research at NCAR</u></b>
+
+<a name="Coupled">Coupled Modeling Background</a><br>
+
+
+<p>
+While component models for the atmosphere and ocean have been
+available for some years, and at least partial land models for nearly
+as long, relatively few coupled simulations have been conducted. The
+rate of progress has been retarded by the difficulties of coupling
+models, by persistent problems with coupled simulations (e.g.,
+``climate drift''), and by the lack of adequate computing resources at
+every major institution involved in such calculations. In view of the
+level of effort involved in developing coupled models and of the
+resources required to run them, it is important to learn as much as
+possible from existing and planned calculations.
+</p>
+
+<p>
+The first coupled ocean-atmosphere model calculations (see review by
+Meehl, 1990) were conducted at GFDL in the late 1960's with a simple
+sector model (Manabe and Bryan, 1969).  That group continued coupled
+model development through the 1970's leading to a global
+ocean-atmosphere coarse grid model with asynchronous coupling (Manabe
+et al., 1975; Bryan et al., 1975).
+</p>
+
+<p>
+The first global coupled ocean-atmosphere-sea ice model calculation at
+NCAR also used asynchronous coupling in light of limited computing
+resources (Washington et al., 1980).  Several other groups
+began global coarse grid coupled modeling activities in the 1980's
+(e.g., Max Planck Institute in Germany, the Hadley Centre in England).
+A transient CO increase calculation performed by researchers at
+NCAR with a global coupled coarse grid model
+(Washington and Meehl, 1989) was one of several model simulations that
+contributed to the IPCC reports (IPCC, 1990, 1992).  In that model 
+earlier results performed with simple sector coupled models were
+confirmed in that the oceanic thermohaline circulation weakened with increased
+CO in the atmosphere.  Similar results with a global coupled
+coarse grid model were documented about the same time by researchers
+at GFDL (Stouffer et al., 1989).  A streamlined version of the
+GFDL global coarse grid coupled model has recently been run for
+several 500-year integrations to document century time scale
+variability of the thermohaline circulation with various CO
+increase scenarios (Manabe and Stouffer, 1993). The results show a
+suppression of the thermohaline circulation, which appears to be
+irreversible in the highest CO scenario.
+</p>
+
+<p>
+Currently, Washington and Meehl are running a global coupled model
+with increased ocean resolution (, 20 levels).  Control and
+transient CO increase experiments are being performed with and
+without flux correction.  This coupled model will be used to simulate
+the effects of IPCC CO scenarios on climate processes and to study
+further inherent variability in the coupled system on various
+time scales. While this experiment will be conducted outside the CSM
+flux coupler framework, it will include CCM2, a CSM component.  The
+study will be a useful reference point for the subsequent development
+and testing of the flux coupler concept described below.  The NCAR
+contribution to the current IPCC 1995 assessment will be based on the
+above experiments, and contributions to subsequent assessments will be
+based on the new coupled model described in this document.
+</p>
+
+<a name="Contributing">Contributing Research</a><br>
+
+<p>
+The focussed research within the CSM project is built upon a general
+base of NSF-funded climate research at NCAR, as well as several closely
+affiliated climate modeling projects funded by other agencies.  The
+scope and quality of this research are greatly enhanced by extensive
+collaborations with university and federal laboratory scientists.
+</p>
+
+<p>
+A large part of the climate research at NCAR takes place within the
+Climate and Global Dynamics Division (CGD). The broad research
+objectives of CGD are to promote further understanding of the physical
+causes of present and past climates and of large-scale atmospheric and
+oceanic dynamics, thus contributing to the basis for the scientific
+prediction of weather and climate.  During the last few years, CGD has
+engaged in the following research activities geared toward achieving
+these objectives: (1) release of CCM2 to the scientific community; (2) investigation, with the
+CCM and other models, of the mechanisms of global climate variability
+and change and
+exploration of the basis for long-range prediction of weather and
+climate; (3) study of the dynamics of global oceans and interactions
+with the atmosphere; (4) evaluation and analysis of global
+observational data sets for the study of climate variability and
+validation of climate models; (5) study and modeling of clouds, their
+radiative properties, and their effects on global energy balance from
+satellite observations; (6) description and modeling of the interface
+between the atmosphere and the oceans, cryosphere, chemosphere, and
+land--biosphere within the concept of coupled climate systems; (7)
+examination of the mesoscale implications of large-scale climate
+changes; and (8) study of the relationship between ecosystem processes
+and the atmosphere.  The CSM project will draw upon this ongoing
+research for many of its modeling components, as well as analysis and
+validation of simulations with observations.
+</p>
+
+<p>
+NCAR scientists have continued development of, and research with, the
+Global Environmental and Ecological Simulations of Interactive Systems
+(GENESIS) earth system model.  The GENESIS model is designed to
+facilitate research in terrestrial surface processes and
+paleoclimate.  Part of this research supports the Paleoclimate of
+Arctic Lakes and Estuaries (PALE) program.  The current GENESIS model
+(version 1.02) has been in use since January, 1992, by a number of
+groups within and outside NCAR.  This work has been supported by the
+Environmental Protection Agency (EPA). 
+</p>
+
+<p>
+The climate sensitivity to increased CO work of Washington and Meehl,
+described above, is supported by the Department of Energy (DOE) Global Change
+Research Program.
+The development of versions of the CCM and other
+climate modules for a variety of massively parallel processor
+computers is being pursued with funding from the Computer Hardware,
+Advanced Mathematics and Model Physics (CHAMMP) program (DOE).  Also
+under CHAMMP is the development of a semi-Lagrangian version of the
+CCM2 and a simplified, workstation-based, numerical framework for
+parameterization development, as well as benchmark models for testing
+numerical methods.  Important studies in radiation and clouds using a
+two-dimensional cumulus ensemble model continue with support from the
+Atmospheric Radiation Measurements (ARM) program, also funded by DOE.
+In addition, scientists continue to participate in the Atmospheric
+Model Intercomparison Project (AMIP) sponsored by the Environmental
+Sciences Division of DOE.
+</p>
+
+<p>
+A modeling component, especially with regard to land surface
+processes, terrestrial ecosystems, and the
+use of satellite data for validation, is  included in an interdisciplinary
+project of the National Aeronautics and Space Administration's (NASA)
+Earth Observing System (EOS). The latter also supports
+satellite and other data set development for use with models and development
+of an adjoint model for examining sensitivity to input data and
+parameterizations. Further, EOS funding supports the development of ecosystem
+dynamics modeling for use in global applications and coupled earth system
+modeling of the carbon cycle. 
+</p>
+
+<p>
+Several NCAR projects are supported by the National Oceanic and Atmospheric
+Administration's (NOAA) Office of Global Programs under the
+Climate and Global Change Program that help develop the ocean component of
+climate models, explore coupling atmospheric and ocean models
+especially for ENSO studies, and explore processes important in
+interannual and low-frequency variability. In addition, NCAR scientists
+are working collaboratively with NOAA in the production of reanalyzed
+long-term climate data sets.
+</p>
+
+<p>
+The Japanese Central Research Institute of Electric Power Industry (CRIEPI)
+helps support development of a high-resolution regional climate model
+RegCM2 that can be driven by global analyses as boundary conditions.  Also
+contributing is the Italian Agency for New Technologies, Energy and Environment
+(ENEA) by supporting regional climate modeling, studies of coupled
+ocean-atmospheric forcing, and the effects of resolving boundary features in
+global warming scenarios.  Other support in providing computer time for climate
+modeling has come from the Model Evaluation Consortium for Climate
+Assessment (MECCA).
+</p>
+
+<p>
+NCAR scientists participate in many national and international
+programs that are also relevant to CSM.  Our participation in the CMAP
+program, Global Tropospheric Chemistry Program (GTCP), Tropical Ocean
+and Global Atmosphere (TOGA) and the TOGA Coupled Ocean--Atmosphere
+Response Experiment (TOGA COARE), World Ocean Circulation Experiment
+(WOCE) especially through the WOCE Community Modeling Effort (CME),
+Earth Radiation Budget Experiment (ERBE), Role of Clouds, Energy and
+Water (ROCEW)/Global Energy and Water cycle Experiment (GEWEX),
+Atlantic Climate Change Program (ACCP), and International Satellite Cloud
+Climatology Project (ISCCP) is strong evidence of our contribution to
+the U.S. Global Change Research Program.  Efforts are ongoing in
+Geosystems Databases and data reanalysis with the development,
+documentation, analyses, verification, and distribution of data sets
+to a wide user community.
+</p>
+
+<p>
+The core NCAR NSF support, together with other agency funding for specific
+projects, provides a strong base for the NCAR CSM. University and
+federal laboratory scientists
+will contribute to the effort by collaborating with NCAR scientists or as
+independent investigators. The results of
+applications of the models through these efforts are expected to feed
+into the CSM, while the CSM develops new modules and models that can
+be employed and exploited by these efforts.  The CSM will also draw
+upon the diverse activities ongoing within CGD, the Atmospheric
+Chemistry Division (ACD), the Mesoscale and Microscale Meteorology
+Division (MMM), and the High Altitude Observatory (HAO), thus
+providing opportunities for alternate model components to the CSM.
+Through its various versions, the CSM will eventually be tailored to
+such specific problems as droughts, global change, ozone depletion,
+long-range prediction, ENSO phenomena, solar-weather relationships,
+land surface changes, paleoclimate studies, and ecosystem dynamics.
+</p>
+
+
+
+
+<b>V.</b> <b><u>Component Models and Development Plans</u></b>
+
+<p>
+The component model plans appearing below describe the research and
+development plans of a large number of individuals gathered into
+several groups that roughly correspond to the subheadings under the
+major components. Each group or individual has plans to build better
+component models, and the priority given to various parts of the plans
+will be guided by the needs of the CSM project and by the interests of
+the individual scientists. These plans will certainly change as
+experience is gained with the components in the CSM context. 
+</p>
+
+<p>
+Chemistry appears in some form within each of the component models
+rather than as a separate component because the important processes
+and compounds are different within the atmosphere, ocean, and
+land. For example, CO in the atmosphere is an inert, nearly well
+mixed gas whose concentration is controlled by sources and sinks at
+the surface, modified by atmospheric transport (Erickson et al.,
+1994; Tans et al., 1990). However, CO emission and uptake by
+the land and ocean biota are controlled by complex biogeochemical
+processes that are crucial components of the climate system (Schimel
+et al., 1990; Sarmiento et al., 1993).
+</p>
+
+<p>
+The most mature component models are the atmospheric and oceanic GCMs
+and, to a lesser extent, the land biophysical model. Therefore, their
+plans describe specific, current research issues that are expected to
+result in model improvements in the immediate future. The
+chemical and biogeochemical models of the atmosphere, ocean, and land
+are less mature than the physical models. In consequence, the plans
+given below are more general for these models, although specific
+projects are given for the short term.
+</p>
+
+<p><b>NCAR CSM:  Atmosphere Component</b></p>
+
+<p><i>Overview</i></p>
+
+<p>
+Atmospheric modeling, with roots in early atmospheric climate
+simulations begun in the mid 1950's, represents the most mature aspect
+of climate system modeling. Indeed, much of what is currently
+understood about the role of the atmosphere in the climate system has
+been discovered through the judicious use of the experimental testbed
+afforded by atmospheric general circulation models (AGCMs). Despite
+this long  history, climate system modeling
+presents a demanding scientific challenge to those modeling the
+atmosphere.  The atmospheric model will be required to simulate
+atmospheric behavior in a coupled interactive context, a more
+demanding requisite than merely simulating the atmosphere with the
+strong constraints of specified ocean surface temperatures and sea ice
+distributions.  The atmospheric model will also be required to
+accurately transport chemical constituents, and in some
+configurations, drive an upper-atmospheric model with momentum, heat,
+and constituent fluxes.
+</p>
+
+<p>
+NCAR has a long history of developing and using AGCMs, starting with
+the grid-point models of the late 1960's and early 1970's designed by
+Kasahara and Washington and progressing to the spectral CCMs of the
+present day.  The latest model in this series, the NCAR CCM2, forms
+the basis for the atmosphere component of CSM. CCM2 is usually
+configured as a tropospheric model with a top in the upper
+stratosphere but can also be configured as a middle atmosphere model,
+extending from the surface to the upper mesosphere. A land
+biophysics model (Biosphere-Atmosphere Transfer Scheme (BATS)) is
+presently included in  CCM2, but will soon
+become part of a separate land component model.
+</p>
+
+<p>
+Radiative forcing is directly influenced by the abundance in the
+atmosphere of trace gases such as water vapor, carbon dioxide, methane,
+nitrous oxide, ozone and the chlorofluorocarbons.  Sulfate aerosols also
+affect the radiative budget of the Earth/ atmosphere system.  Industrial, as
+well as agricultural, activities have perturbed significantly the chemical
+composition of the atmosphere at the regional and global scales, and hence
+the climate forcing.  It, therefore, is  important that the interactions
+between biogeochemical cycles and the physical climate system be accurately
+represented in the CSM.  We will develop chemical modules
+to be included in the atmospheric component of the CSM and to account for
+the exchanges of chemical compounds with the continental biosphere and the
+oceans. The chemical modules will be integrated into the
+full CSM after careful testing and validation.  The emphasis will be on
+the cycles of carbon and sulfur, and their impact on the climate system.
+In addition, the role of other radiative gases such as ozone and methane,
+which contribute to the ``greenhouse effect,'' will be investigated. 
+</p>
+
+<p>
+We also present subsections on a nested regional modeling capability
+that will be included in the CSM, and an upper-atmosphere model that
+may eventually lead to a merging of CCM2 with upper-atmosphere
+components to give a full atmosphere component for the CSM.
+</p>
+
+<p><b>Community Climate Model</b></p>
+
+<p>
+Over the last three years, the Climate Modeling Section integrated a large
+number of simulation capabilities into a single cohesive modeling
+framework, the CCM2. The most recent version (CCM2.1) includes
+BATS for computing surface
+exchanges over land.  The individual and collective behavior
+of various model components were validated against available observational
+data.  These components were modified accordingly, followed by major
+refinements to the overall implementation for optimal computational
+performance.
+</p>
+
+<p>
+The result of this effort, the NCAR CCM2, is a new AGCM for which most
+aspects of the formulation represent improvements over the CCM1.  The
+principal algorithmic approaches carried forward from CCM1 are the use
+of a semi-implicit, leap-frog time integration scheme, the use of the
+spectral transform method for treating dry dynamics, the use of a
+bi-harmonic horizontal diffusion operator, and the large-scale
+condensation process. The CCM2 makes use of new algorithms for both
+resolved dynamics and parameterized physics, which are documented in
+Hack et al. (1993).  The standard model configuration uses a
+horizontal spectral resolution of T42 (
+transform grid), 18 vertical levels, and a top at 2.917 mb.  It
+employs a 20 minute time step by dynamically adjusting the spectral
+resolution of the top layer to maintain a Courant number of less than
+one. A middle-atmosphere version of CCM2 is also maintained. This
+version uses 44 levels between the surface and 0.017 mb (
+km).
+</p>
+
+<p>
+Two major improvements are included in the CCM2 dynamical formalism.
+The first is the incorporation of a hybrid vertical coordinate that
+follows terrain near the surface (traditional sigma) and transitions
+to a pure pressure coordinate above about 100 mb.  A second major
+change to the resolved dynamics is the incorporation of a
+shape-preserving semi-Lagrangian transport (SLT) scheme (Williamson
+and Rasch, 1994) for advecting water vapor.  This scheme can also be
+used to transport an arbitrary number of other scalar fields (e.g.,
+cloud water variables, chemical constituents, etc.) as required by a
+CSM.  The use of the SLT method largely addresses the many numerical
+problems exhibited by the spectral advection approach used in earlier
+versions of the CCM.
+</p>
+
+<p>
+Aspects of the CCM2 dynamic, thermodynamic, and radiative climate
+statistics are documented in Hack et al. (1994) and Kiehl 
+et al. (1994). The physical representation of a wide range of key
+climate processes in CCM2 is much more physically realistic than in
+previous versions of the CCM. Hurrell et al. (1993) present a
+comparison of the climatology of CCM2 with CCM1, GENESIS, and the
+atmospheric component of the coupled ocean-atmosphere model of Washington
+and Meehl (1993).  Overall, the model climatology is substantially
+better than climates produced by previous versions of the model, which
+generally suffered from a variety of large biases in the mean climate
+state.  The most serious of these earlier biases, a systematically
+cold and dry model troposphere, has to a large extent been
+eliminated. Although the simulated climate continues to be cold, it is
+now generally within  to  K of what is analyzed,
+exhibiting excellent agreement with analyses and observations in the
+tropics.  The simulated three-dimensional water vapor distribution is
+also in very good agreement with both analyses and selected
+observational station data. The most serious coupled
+problems in CCM2 are likely to be its excessive latent heat fluxes,
+precipitation, and surface stresses in the tropics.
+</p>
+
+<p><b>Actions during Start-up Phase</b></p>
+
+<p>
+During the CSM start-up phase, the developers of CCM2 and other
+atmospheric modelers will work together with the ocean modelers to
+carry out and analyze simulations with the coupled
+land-atmosphere-ocean model.  The atmospheric scientists will work on
+problems that arise during coupled calculations in a collaborative
+mode with other members of the CSMIG. Many improvements will be
+included in the model, based on the long-term research projects listed
+below.
+</p>
+
+<p>
+The standard T42, 18-level CCM2 with BATS has been restructured to
+interface with the flux coupler and will provide the land and
+atmosphere components for the initial development of the CSM. An
+independent land surface model, with its own history carrying and
+restart capabilities, is being developed based on existing land
+components of the CCM2 code.  The independent land model will couple
+to CCM2 through the flux coupler to facilitate introduction of
+alternative land surface models.
+</p>
+
+<p><b>Long-Term Research</b></p>
+
+
+<p>
+NCAR and other scientists will continue to concentrate on improving
+atmosphere components of the CSM.  In the following we list areas of
+immediate concern and scientists who are committed to work on them.
+Although this section is referred to as long-term research, most
+efforts are currently underway.  When improvements are documented and
+acceptable to the CSMIG, they will be incorporated in the CSM.
+</p>
+
+<p>
+Large warm bias in simulated land surface temperature over the
+Northern Hemisphere during July.  Other aspects of surface climate,
+such as precipitation and surface energy exchanges, are strongly
+affected by this bias.  The principal source of this problem is the
+diagnosis of cloud optical properties. Techniques that more
+realistically diagnose cloud droplet effective radius as a function of
+space and time and cloud liquid water path as a function of the space-
+and time-dependent atmospheric state have been independently explored
+by Kiehl (1994) and Hack (1994).  The combination of these two
+approaches substantially reduces many
+temperature and precipitation biases observed in CCM2 Northern
+Hemisphere summer circulation.  (Kiehl, Hack)
+</p>
+
+<p>
+Anomalous positioning of deep convection in the Western Pacific.
+This anomalous position affects wave propagation and long-wave
+positioning in January simulations, contributing to excessive ridging
+over the North Pacific and a reduction in the height field over
+Western North America. The incorporation of improved cloud optical
+properties results in a northward displacement of the diabatic
+heating, a correspondingly improved Australian monsoon, and more
+realistic ridging throughout the troposphere along western North
+America.  The magnitude of the precipitation maxima remains
+unreasonably large, and its position remains too far west, apparently
+associated with excessive boundary layer transport of water vapor in
+deep convective regimes.  (Hack, Tribbia)
+</p>
+
+<p>
+Wind stress over the tropical Pacific remains too strong compared to
+estimates from atmospheric analyses.  In this region 
+model stresses actually converge with increasing resolution but to
+values different from the atmospheric estimates (Williamson et
+al., 1994).  These model stresses are expected to have serious
+consequences when coupled to an ocean model.  Research will be
+directed toward identifying and removing this deficiency.  (Tribbia,
+Gent, Boville)
+</p>
+
+<p>
+Simulated polar tropopause temperatures are significantly
+colder than observed, particularly in summer. This problem is common
+to almost all AGCMs and its source is currently being investigated.
+Possible deficiencies in both the thermodynamic (cloud/ radiation) and
+dynamic (gravity wave) parameterizations are being examined.
+(Boville, Saravanan)
+</p>
+
+<p>
+Orographic locking of precipitation.  Spurious precipitation over
+high terrain can have a serious impact on land surface models. Two
+possible causes of the spurious precipitation are being investigated,
+elevated heat sources and numerical errors associated with terrain
+following vertical coordinates. (Williamson)
+</p>
+
+<p>
+Numerical methods for transport of chemical constituents.  The
+semi-Lagrangian method of CCM2 is a good starting point but not ideal.  It
+addresses the most serious problems associated with the spectral transform
+method.  Most chemistry researchers would be more comfortable with schemes
+that locally enforce conservation.  Research will be direct toward adapting
+such schemes for global applications. (Rasch, Williamson)
+</p>
+
+<p>
+The need to pre-specify the order of parameterizations within a time
+step. Physical parameterizations in CCM2 are approximated in a time split
+manner to allow efficient solutions of the implicit components
+incorporated in them.  Since these parameterizations depend on each other, at
+least one of the connections is lagged one time step.  The current ordering,
+arrived at through evolution of the CCM series, may not be appropriate for the
+coupled system.  We will consider alternative orderings in atmospheric and
+coupled simulations. (Williamson)
+</p>
+
+<p>
+The Antarctic winter vortex in the stratosphere is
+much too strong and the polar temperatures are too cold by up to 40 K
+in the middle atmosphere version of CCM2. This deficiency has been
+traced to inadequate mesospheric gravity wave drag by Garcia and
+Boville (1994). The middle atmosphere version of CCM2 currently uses
+Rayleigh friction to parameterize the effects of breaking gravity
+waves in the mesosphere. A single vertical profile of coefficients is
+employed that is horizontally uniform. This scheme does not provide a
+reasonable, physically-based context for improvements. More
+physically-based parameterizations are being considered and will be
+included in future versions of the model. (Boville)
+</p>
+
+ 
+<p><b>Atmospheric Chemical Transport Models</b></p>
+
+
+<p>
+ACD, jointly with CGD, has developed a
+hierarchy of three-dimensional chemical transport models (CTMs) that
+will contribute to development of an integrated CSM.  One of them
+(Rasch et al., 1993) is run ``on-line'' with the middle atmosphere
+version of CCM2 to simulate the three-dimensional distribution of
+approximately 25 species that govern production and destruction rates
+of ozone in the stratosphere and lower mesosphere.  The calculated
+distribution of radiatively-active gases such as ozone and water vapor
+can be used to calculate radiative heating rates so that coupling
+between stratospheric chemistry and dynamics is adequately
+represented. A tropospheric version of the CTM will be run with an
+appropriate chemical scheme and detailed surface emission rates and
+deposition velocities both within CCM2 and ``off-line'', driven by dynamical variables
+provided by CCM2.  An ``off-line'' stratospheric version of the CTM is
+also available.  Finally, preliminary global model studies have been
+performed by prototype models, such as the three-dimensional 
+Intermediate Model for Annual and Global Evolution of Species (IMAGES).
+</p>
+
+<p><b>Start-up phase</b></p>
+
+
+<p>
+During the start-up phase of CSM, we will focus on validation of the
+above models based on available observations.  At the same time, to
+address the needs of CSM, simplified approaches to represent chemical
+processes and their roles in the climate system will be developed.
+Preliminary coupling studies will also be conducted.
+</p>
+
+<p>
+Model validation will be performed by comparing calculated distributions of
+chemical constituents with observed fields.  Comparison is relatively
+straightforward for several stratospheric species for which satellite
+data are often available (LIMS, TOMS, UARS, etc.).  It is more
+difficult for reactive species in the troposphere that have only
+episodic measurements from the ground, balloons, and aircraft.
+</p>
+
+<p><b>Carbon Cycle Modeling</b></p>
+
+<p>
+CO plays a central role in all proposed scenarios related to the
+climate of the 21st century.  The mixing ratio of CO in the
+atmosphere is largely controlled by exchanges with the ocean and the
+terrestrial biosphere. To study the complex cycles that
+influence carbon on the planetary scale and to address the relative
+contribution of various surface CO emission scenarios in Earth's
+climate, several atmospheric CO tracers can be included in
+the CCM2 (Erickson et al., 1994).  Each tracer is related to
+different surface source and sink representations in the model, such as
+air-sea exchange, fossil fuel combustion, biomass
+burning/deforestation, and exchange with the terrestrial biosphere.
+</p>
+
+<p>
+The air-sea exchange of CO is directly controlled by the
+distribution of CO in the surface ocean.  An observational data
+base for surface ocean CO is being compiled by several researchers
+around the world.  The exchange of CO between the terrestrial
+biosphere and the atmosphere is a complex process that involves a
+variety of biological and geophysical variables. 
+A satellite-based estimate of the magnitude and phasing of the
+CO uptake and release by the terrestrial biosphere is being used presently.
+An interactive biosphere is being developed whereby the CO
+exchange process is influenced at each time step by the dynamical
+variables in the atmospheric models. All model runs are compared to a
+comprehensive observational data base on atmospheric CO, at 35
+sites worldwide, supplied via collaboration with the NOAA-CMDL group.
+A smaller observational data base dealing with the isotopic
+composition of atmospheric CO will also be used to constrain the
+global carbon cycle in an independent fashion.  
+</p>
+
+<p>
+The CSM effort will
+support the further developments of the global three-dimensional
+carbon modeling effort in conjunction with development of the
+aforementioned chemistry transport models.  The global
+three-dimensional GCM modeling activity will be complemented by
+several other sub-models of varying spatial and temporal resolution.
+These models include soil carbon dynamics models, terrestrial
+biosphere CO exchange models, and surface ocean biogeochemical
+models, which are discussed in other sections of this document.
+</p>
+
+
+<p><b>Sulfur Cycle, Aerosols, and Atmospheric Radiation Modeling</b></p>
+
+<p>
+Several observational and theoretical studies have suggested that
+atmospheric aerosols influence the scattering and absorption of
+radiation in the atmosphere with a direct effect on surface
+temperatures.  Atmospheric sulfur, in the form
+of sulfate aerosols, is thus an important component of the CSM.
+Preliminary modeling efforts have already computed the global
+distribution of anthropogenic sulfate aerosols and the possible
+influence on Earth's climate using CCM2 and other AGCMs.  A
+sulphate aerosol model will be developed and coupled to the radiation
+calculation in the atmospheric model to assess their possible climatic
+influence.
+</p>
+
+<p>
+Other aerosols, such as carbonaceous aerosols that are related to
+biomass burning and other combustion processes and mineral dust
+aerosols originating in desert regions, may also influence the
+radiative properties of the atmosphere.  We will attempt to model the
+distributions of these aerosols based on estimates of their surface
+sources and incorporate their radiative effects in the
+atmospheric model.
+</p>
+
+<p><b>Tropospheric Ozone Modeling</b></p>
+
+
+<p>
+Tropospheric ozone is important as a greenhouse gas and as an oxidant, 
+and its abundance has increased dramatically over the last century.
+The abundance of tropospheric ozone is determined by a number of
+complex chemical processes involving anthropogenic and biogenic
+precursors.  Although much attention has been given to the mechanisms
+affecting ozone in the boundary layer, the chemical budget of ozone in
+the upper troposphere, where its effect on the radiative forcing is
+largest, remains poorly quantified (Hauglustaine et al., 1994).
+</p>
+
+<p>
+A chemical transport model of the troposphere will be developed
+that simulates the processes that lead to chemical production and
+destruction of ozone and other oxidants and takes into account the
+surface emission and deposition of the chemical constituents, as well
+as their three-dimensional advective and convective transport.  This
+model is also intended to derive the spatial and global distribution
+of the hydroxyl radical, which determines the global lifetime of many
+chemical species including methane and contributes to the conversion
+of reduced sulfur species into sulfuric acid (and hence sulfate
+aerosols).  The chemical scheme used in this particular model will be
+based on the classic Ox, NOx, CH, CO scheme with a simplified
+formulation of the effect of non-methane hydrocarbons.
+</p>
+
+<p>
+The prototype model for this project is IMAGES,
+which includes a rather
+detailed chemical scheme, but is limited by its simplified transport
+formulation.  The model is also constrained by observational data,
+limiting its ability to treat interactions with the physical climate
+system.  A more advanced framework will be provided by an ``off-line''
+version of CCM2.  In this case, the transport will be driven by the
+dynamical variables (winds, temperature, convection, clouds,
+precipitation, etc.) provided at selected time intervals.  The CTM
+will be coupled to the land surface model of CSM, which will provide
+ecosystem distributions, as well as biogenic fluxes of several chemical
+compounds.  The precipitation of other gases including nitrates
+provided by the CTM will be used by the land surface model as input
+for its vegetation scheme.  Finally, an ``on-line'' version of the CTM
+will be developed.  This will probably require that the chemical
+scheme be simplified to reduce the computational
+burden.  Rather than calculating explicitly the concentration of all
+chemical species, a possible approach is to derive at each location of
+the atmosphere variations in the concentrations from given
+climatological values, making use of appropriate assumptions and
+simplifications.
+</p>
+
+<p><b>Stratospheric Ozone Modeling</b></p>
+
+
+<p>
+Ozone depletion in the stratosphere is one of the most dramatic changes
+observed in the Earth system.  It is expected to affect the thermal
+structure and possibly the circulation of the atmosphere, as well as
+the level of biologically damaging UV-B radiation at the surface.  We
+expect to further develop the stratospheric version of the CTM.  The
+model will account for the effects of industrially manufactured
+chlorofluorocarbons and include explicitly the impact on the ozone
+layer of compounds belonging to the oxygen, hydrogen, nitrogen,
+chlorine, and bromine families.  Special attention will be given to
+the importance of heterogeneous processes occurring on the surface of
+solid particles inside polar stratospheric clouds and of liquid/solid
+sulfate aerosol particles at all latitudes.  The radiatively active
+species derived by the CTM (such as ozone and water vapor) will be
+coupled to the GCM and hence affect directly the calculated 
+temperature and circulation in the stratosphere.
+</p>
+
+<p><b>Regional Atmospheric Model</b></p>
+
+<p>
+In the last several years, a one-way nested regional climate modeling
+capability has been developed at NCAR in which a limited area model
+is driven either by analyses of observations or by GCM output (Giorgi,
+1990; Giorgi et al., 1993; Giorgi et al., 1994). This
+nested modeling technique allows us to produce long-term regional climate
+simulations at resolutions of a few to several tens of km.  This
+capability can be useful to CSM in at least three respects: 1) in
+developing and testing the performance of physical parameterizations
+at high resolution; 2) in carrying out pilot coupling studies, whereby
+regional ocean, sea ice, hydrology, and ecosystem models can be
+interactively coupled with the regional atmospheric model over
+selected areas of interest; and 3) in bridging the scale gap between
+climate models and impact models, since climate scenarios at a few
+tens of km resolution, or less, can be produced.
+</p>
+
+<p><b>Start-up phase</b></p>
+
+<p>
+Recently, a second generation version of the NCAR regional climate
+model (RegCM2) has been completed. This version of the model includes
+BATS, the CCM2 planetary boundary layer and radiative transfer
+calculations, and three cumulus parameterization options (including
+that of the CCM2). In the start-up phase we plan to 1) complete a
+10-year run with RegCM2 driven by the European Center for Medium-Range
+Weather Forecasts (ECMWF) analyses of observations over
+a domain encompassing the whole continental U.S. at 50 km
+resolution. This run will allow careful validation of the model
+climatology over the U.S. and identify and correct main model
+biases; and 2) produce multi-year runs of present day climate
+conditions with RegCM2 (50 km resolution) driven by CCM2 output over
+the U.S. and Europe.  These runs will serve as validation of the
+coupled RegCM/CCM modeling system.
+</p>
+
+<p><b>Long-term research</b></p>
+
+<p>
+In the long term we plan to: 1) produce and make available to the
+community increasingly accurate and computationally efficient versions
+of the RegCM suitable for regional climate simulations at resolutions
+of up to 10--30 km. This will likely require development of
+parameterizations, e.g., for precipitation and surface processes,
+suitable for such resolutions; 2) carry out pilot studies with the
+RegCM coupled with regional ocean, sea ice, hydrology, and biosphere
+models. Examples of regions of interest for such coupling studies are
+the continental U.S. (in particular the Great Lakes basin), the
+northern Atlantic, the Mediterranean and Baltic Sea Basins, and eastern
+Asia; 3) produce high-resolution regional climate change scenarios
+with the RegCM driven by climate change simulations performed with the
+CSM. It is anticipated that, depending on computing resources, among
+the regions for which such scenarios may be generated will be the
+continental U.S., Europe, eastern Asia, and the Sahelian region.
+</p>
+
+<p><b>Upper Atmosphere Model</b></p>
+
+<p>
+The middle and upper atmosphere must be considered to obtain accurate
+models for long-term climate studies.  The middle and upper atmosphere
+are coupled both physically and chemically to the lower atmosphere 
+with mutual interactions important for understanding both interannual
+variability and long-term climate change.  Dynamical interactions
+between planetary waves, gravity waves, and the mean circulation
+introduce considerable variability to the basic structure and dynamics
+of the middle and upper atmosphere that is not well understood.  It
+seems certain that the dynamical state of the middle atmosphere (at
+least through the middle stratosphere) has a significant impact on the
+circulation of the troposphere through mechanisms that are also not
+well understood.  Transport of chemically and radiatively active gases
+from the troposphere can significantly alter chemical and radiative
+balances of the middle and upper atmosphere, leading to changes in its
+basic structure and seasonal evolution.  Effects of solar variability
+occur on time scales ranging from that of the Maunder Minimum through
+the 80-year Gleisberg cycle, the 11-year sunspot cycle, the 27-day
+solar rotation cycle, to shorter term solar flare, solar proton event,
+and geomagnetic storm variations.  Finally, electrodynamic couplings
+between the upper atmosphere wind dynamo, solar wind/magnetosphere
+dynamo, and thunderstorms in the global electric circuit could have
+important long-term variations that influence the climate system
+(e.g., more lightning activity with global change).
+</p>
+
+
+<p><b>Start-up phase</b></p>
+
+<p>
+The CSM flux coupler will be used to couple the NCAR
+Thermosphere-Ionosphere-Mesosphere-Electrodynamics General
+Circulation Model (TIME-GCM) to CCM2. The TIME-GCM solves for the
+circulation, temperature, compositional, and electrodynamic structure
+of the atmosphere between 30 (10mb) and 500 km.  The flux coupler will
+be applied at the 10 mb constant pressure surface and initially will
+be a one-way coupling, using fluxes of heat, momentum, and composition
+from the lower atmosphere as inputs to the TIME-GCM to evaluate their
+impact on the dynamics and structure of the upper atmosphere.  Once
+upward coupling is examined, mutual interactions between the two
+models may be attempted.
+</p>
+
+<p>
+This coupling represents the most expedient way of evaluating the
+importance of upper atmosphere structure and dynamics on CSM.
+Eventually, some subset of TIME-GCM physics and chemistry will be
+extracted and incorporated into a CSM atmosphere model that extends
+from ground to thermosphere, and includes couplings with the solar
+wind through auroral processes to achieve a consistent model structure
+instead of two dissimilar models coupled at the 10 mb surface.
+Nevertheless, much science and information can be obtained with the
+initial effort.
+</p>
+
+<p><b>Long-term research</b></p>
+
+<p>Problems involved in modeling the middle and upper atmosphere include: <br>
+
+Non-LTE radiation. Radiative cooling from CO and O is
+non-LTE (local thermodynamic equilibrium) above about 60 km,
+introducing complexity into calculation of cooling rates in the upper
+atmosphere.  Furthermore, collisions with O strongly enhance CO
+radiation near 100 km, albeit with poorly-known rate coefficients, an
+interaction important for determining the structure of the mesopause
+region.
+</p>
+
+<p>
+Chemical effects of particle fluxes.  Reactive chemical species
+(e.g., NO and HO) are produced when energetic electrons and
+protons bombard the upper and middle atmosphere during geomagnetic
+storms, solar flares, and auroral sub-storms.  The particle fluxes are
+highly variable both spatially and temporally, and during strong solar
+proton events, can produce as much NO in the middle atmosphere as
+a full year photodissociation of NO. We need to understand this
+variability for possible natural influences on global change.
+</p>
+
+
+
+<p><b>NSF Supported Staff for CSM</b></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><b>Non-NSF Supported Staff Contributing to CSM</b></p>
+
+<p>
+Several scientists and programmers at NCAR are supported by non-NSF
+funds to work on specific projects that are closely related to CSM and
+contribute directly to its goals.  For atmospheric modeling these
+include:
+</p>
+
+
+
+
+
+
+
+
+
+
+<p><b>Collaborations</b></p>
+
+<P>
+Collaborators on atmospheric modeling and validation are:
+V. Ramanathan on the surface energy budget of the Pacific basin;
+B. Albrecht and W. Frank (Pennsylvania State University) on planetary
+boundary layer and deep convection parameterization; R. Turco
+(University of California at Los Angeles) on biogeochemical tracer
+modeling; P. Tans (NOAA Climate Modeling Diagnostics Laboratory) on the
+carbon cycle; and R. Oglesby (Purdue University) on climate effects of
+sulphur.  CSM activities include links to DOE CHAMMP Program
+initiatives on the development of efficient component model codes and
+computational techniques for coupling component models on a variety of
+hardware platforms. Atmospheric scientists from NCAR and computer
+scientists from the NCAR Scientific Computing Division, Oak Ridge
+National Laboratory, Argonne National Laboratory, Los Alamos National
+Laboratory (LANL), and Lawrence Livermore National Laboratory are
+participating in this effort, coordinated by R. Malone of LANL.
+</p>
+
+
+
+
+<p><b>NCAR CSM: Ocean Component</b></p>
+
+<p><b>Background</b></p>
+
+<p>
+Modeling of large-scale ocean circulation has a long history at NCAR.
+Model development and application has been a central theme of research in 
+CGD's Oceanography Section for 20 years. Early work focussed upon process 
+studies in limited areas to examine fundamental oceanic 
+processes at work in isolation. At the same time,
+eddy-resolving oceanic GCMs were developed
+to examine the role played by mesoscale eddy processes in
+large-scale gyre dynamics. This array of work evolved in the mid-1980s 
+into the WOCE-driven CME that was begun at NCAR to examine, for a
+single ocean basin (the North Atlantic), the oceanic general circulation
+at a variety of resolutions (, and ) 
+in anticipation of
+eventually moving to the global domain (Bryan and Holland, 1989; 
+Boning et al.,
+1994; Holland and Bryan, 1993a,b). This work has involved an assessment
+of the wind and thermohaline--driven circulation and particularly its
+climate characteristics (heat transports, temperature/salinity property distributions,
+overturning mass transports, etc.) with the view of building a better
+large-scale ocean circulation model. 
+</p>
+
+<p>
+Models of the global ocean based upon the GFDL model have also been 
+implemented at NCAR and a variety 
+of calculations
+carried out. A series of equilibrium calculations, each run for approximately
+10000 years, has been carried out with a low-resolution 
+( latitude/longitude) version  of the Modular Ocean
+Model (MOM), 
+making use of many of the improvements
+in physical parameterization discussed below (Danabasoglu et al., 1994).
+Other global calculations have been carried out for shorter times at higher resolutions
+(Semtner and Chervin, 1992) with the original GFDL 
+physics as a demonstration of the capability to carry out global, eddy--resolving
+calculations. These, together with the North Atlantic
+experiments mentioned above and the ENSO modeling discussed below, will form the physical basis for our future CSM
+ocean component model.
+</p>
+
+<p>
+Coupled calculations are already underway using a variety of ocean model
+components. For example, Gent and collaborators have been exploring climate 
+variability connected with ENSO. It is one of the strongest coupled modes, and, by a
+widely accepted hypothesis, may only involve the ocean importantly in the
+upper tropical Pacific. ENSO phenomena have been studied at NCAR both in 
+a stand alone model of the upper,
+tropical Pacific Ocean (Gent and Cane, 1989;
+Gent, 1991) and in coupled mode with the global CCM2 atmospheric model (Gent 
+and Tribbia, 1993). For the present, the tropical Pacific model will 
+continue to be used for coupled experiments of ENSO behavior
+until the CSM model provides a satisfactory alternative.
+Similarly, low-resolution coupled experiments (e.g., Washington and Meehl, 1989)
+addressing IPCC issues are in progress, giving us additional experience
+with the oceanic role in addressing coupling questions.
+</p>
+
+<p>
+Finally, there have been important developments in the 
+implementation of alternative software architectures for running the
+GFDL model efficiently on other computer systems in a massively parallel
+fashion (Smith et al., 1992). The intention of the 
+ocean team effort in CSM is to
+combine the best choices for ocean physics (i.e., parameterizations of mixing
+in the ocean interior; a better mixed layer parameterization; more suitable
+numerical algorithms for advection; etc.) with a computational
+structure for the ocean model component that best fits the NCAR computing
+environment. A new level of sophisticated physical parameterizations is
+in hand; now we must move toward implementing this in an
+optimal computing environment.
+</p>
+
+
+<p><b>Strategy</b></p>
+
+<p>
+We are currently in a period of very active development of the traditional 
+GFDL model in the areas of parameterized physics (isopycnal mixing,
+surface boundary layer), numerical formulation (coordinate systems,
+discretization, transport schemes), and software architecture (modularity,
+parallel implementation). We can expect rapid evolution of the 
+``standard" CSM ocean component with a range of alternative
+configurations to be available in the next year.
+</p>
+
+<p>
+While some options with potentially improved solutions will be available in
+the short term, we will begin by providing a suite of global modules based on 
+GFDL MOM Code 1.1, with varying resolution  and our current ``best choice" set of
+reasonably well-tested physical parameterizations.
+The ocean team will be responsible for assembling and regularly improving
+this global ocean GCM for use in a wide variety of climate
+problems.  In particular, this model will be judged by its performance 
+both in an uncoupled mode with specified surface boundary conditions, as
+well as when
+coupled to other component models of the climate system.
+While the scope of the ocean model includes physical transport processes,
+biogeochemical processes, and sea ice, these will come along at different
+rates and be included in different complexities as they are ready.
+</p>
+
+<p>
+The general approach is to create some early versions of the model; establish
+benchmark solutions in an uncoupled mode with surface boundary conditions from
+either empirical data or atmospheric model output; use these solutions as
+initial conditions for prototype coupled calculations focusing initially on
+relatively short time scales (annual and interannual); and then establish a
+long-term cycle of investigating possible model improvements, computing new
+solutions in both uncoupled and coupled modes for different phenomenological
+regimes, and comparing these solutions to observations.  The coupled
+solutions, in particular, will be designed and analyzed in collaboration with
+other participants in the CSM effort.  
+</p>
+
+<p><b>Physical Ocean Models</b></p>
+
+<p>
+The physical circulation and transport model includes all processes, either in
+its resolved dynamics or through subgrid scale parameterizations, that are
+necessary for geographically realistic calculations of the global ocean
+circulation and its variability on all climatic time scales from the daily
+cycle to paleoclimatic evolution. Virtually all aspects of the ocean
+general circulation are potentially of interest, but the first focus will be
+upon the thermohaline convective circulations, the wind-driven equatorial and
+Antarctic zonal currents and extra-tropical gyres, the sea-surface temperature
+and surface boundary layer profiles, and the water-mass distributions of
+temperature and salinity.  The model's design
+criteria include variable resolution, alternative domain specifications (so
+that regional or upper-ocean configurations can be used where apt), and a code
+architecture that supports many variants in its elements --- all within a common
+model framework so that systematic solution intercomparisons can be made.
+</p>
+
+<p>
+In future implementations, other alternative versions of the GFDL code
+will be considered. This is important because the CSM in its whole must
+be tailored architecturally to the NCAR computing environment. The ocean
+code structure for the future will thus evolve, making use of the best choices
+that derive from efforts at GFDL, DOE, and NCAR, which have alternative
+structures for the basic GFDL code. Melding the numerics with the
+improved physical parameterizations will give us a powerful new tool
+for CSM and for ocean-only studies as well.
+</p>
+
+<p>
+Issues to be addressed to improve ocean models in  coupled
+and uncoupled mode can be divided into three categories: (a) improved
+parameterization of physical processes in the model formulation, (b) improved
+numerical algorithms and efficiency in the ocean model, and (c) improved
+data sets used to force the ocean model in uncoupled runs and to critically
+test its ability to reconstruct the temperature--salinity properties of
+the global ocean.
+The issues currently being explored in these categories and the scientists 
+committed to working on them are:
+</p>
+
+<p><b>Physical Issues</b></p>
+
+
+<p>
+The effects of mesoscale eddies must be parameterized in ocean
+models that do not resolve them. A recent proposal based upon isopycnal form drag
+and tracer mixing (Gent and McWilliams, 1990; McWilliams and Gent, 1994;
+Gent et al., 1994) has been implemented in a global 
+model and has  shown (Danabasoglu et al., 1994) very promising 
+improvements in the simulation of
+several quantities important in climate models such as northward heat
+transport. (Danabasoglu; Gent; McWilliams)
+</p>
+
+<p>
+Interaction between the atmosphere and ocean occurs in boundary layers.
+Having a realistic representation of this complex of processes is important
+in an ocean model. A new parameterization (Large et al., 1994)
+for vertical mixing that uses a K-profile form in
+the planetary boundary  layer (PBL)  and a local diffusivity in the interior 
+has been developed. 
+(Large; Doney)
+</p>
+
+<p><b>Numerical Issues</b></p>
+
+<p>
+Different vertical coordinate systems have different effects
+on the results and need exploration for the climate problem. 
+A stretched-sigma alternative to 
+the standard vertical height coordinate
+has been formulated and is being tested, 
+including the reformulation of a simplified equation of state that can be
+evaluated at arbitrary height, that is formally more accurate and provides
+a different numerical treatment of the topographic lower boundary
+condition. (Danabasoglu; Gent)
+</p>
+
+<p>
+An upper-ocean model configuration with a stretched-sigma coordinate and a
+climatological lower boundary condition beneath the thermocline (taken from
+data or from a full-depth solution) will permit better vertical resolution,
+greater computational efficiency, shorter time to approach equilibrium, and
+less climate drift for calculations of short-term climate variability (up to
+decadal). (Large; Gent)
+</p>
+
+<p>
+Modified grid structure and adequate filtering is needed in the 
+Arctic basin 
+to avoid issues concerning the polar singularity that occurs in a regular 
+latitude-longitude grid. (Gent; Bryan)
+</p>
+
+<p>
+Alternative algorithms for tracer advection 
+(e.g., Smolarkiewicz, 1984)
+may be needed at some resolutions to prevent
+unphysical concentrations due to numerical errors. Various
+choices are being examined. (Hecht; Bryan; Holland) 
+</p>
+
+<p>
+Alternative formulations of the external-mode, reference-pressure, or
+free-surface solution method for computational efficiency and accuracy (e.g.,
+Pinardi et al., 1994) are under development. These will be implemented
+as necessary. (Chervin; Holland)
+</p>
+
+<p><b>Data Issues</b></p>
+
+<p>
+Adequate surface boundary conditions for uncoupled experiments are needed.
+Data sets need to be improved for the specification of mean annual cycle of 
+surface buoyancy forcing (restoring to
+climatological temperature and salinity or prescription of the actual fluxes of heat
+and fresh water) and wind stress forcing fields for uncoupled
+solutions. (Large; Holland)
+</p>
+
+<p>
+Improved climatologies of temperature and salinity and other chemical properties of
+the interior of the ocean are needed as models improve. Critical tests
+of the success of uncoupled and coupled model experiments will depend upon
+having a high-quality observed climatic state of the ocean. (Owens; Holland;
+Chow)
+</p>
+
+<p>
+These issues will be the primary foci during the next two years of
+the CSM project. On a longer time scale, other
+developments will be pursued, including a reconsideration of the underlying
+grid structure and numerical algorithms in the model.
+
+Also, different spatial resolutions to establish the
+cost/benefit curve for global solutions will be explored.  The
+coarsest grid planned to work with is  20 levels.  Refinements to
+ 45 levels and
+ 45 levels 
+are being tested. Given computational costs to run the coupled system to
+equilibrium and given the need to explore alternative model specifications,
+reaching mesoscale-eddy resolution for climate studies in the
+immediate future except on an exploratory and regional basis is not anticipated. In this latter
+respect coupled models with very high resolution in the equatorial region
+or in the North Atlantic region will allow exploration of 
+interactions in the coupled system in a regime where the oceanic
+and atmospheric components are each capable of generating substantial unforced
+variability.
+</p>
+
+<p>
+For coupled calculations, development options will be selected, guided
+substantially by progress in testing them.  For a particular selection, 
+a full-depth, near-equilibrium solution for specified surface
+forcing will be obtained.  That solution will then serve as initial conditions (and lower
+boundary conditions for an upper-ocean model configuration) for the coupled
+calculation.  A variety of different forcing fields will be examined 
+to minimize drifts in the coupled solution.
+</p>
+
+<p><b>Sea Ice Models</b></p>
+
+<p>
+The sea ice model has two primary components: local ice formation or 
+melting due to
+thermodynamic forcing from above and below 
+and horizontal advection of sea ice.  The
+first connects crucially to the oceanic PBL model and
+with the flux coupler that handles atmospheric surface fluxes.  The latter
+must include a dynamic model of the sea ice with a proper parameterization of
+horizontal, internal ice stress.
+</p>
+
+<p>
+The formation or melting of sea ice due to vertical heat fluxes has been
+considered from the outset in the formulation of the K-profile planetary
+boundary layer model (Large et al., 1994).  In addition to predicting the mass
+of ice at a grid point, the model must also include the fraction of ice cover
+(compactness), since the large difference in ice temperature at its upper
+surface and the ocean surface temperature (near the freezing point when
+ice is nearby) produces significantly different heat fluxes to the atmosphere,
+so that the two situations must be considered separately.  The formulation
+will follow the standard conservation statements for ice mass and compactness
+(Hibler, 1979; Parkinson and Washington, 1979).  In contrast to earlier models
+that included the interaction of sea ice with ocean mixed layers
+(Lemke et al., 1990), the formation of ice  occurring within the upper
+grid points of the ocean boundary layer model and the melting of ice due
+to the difference between the atmospheric and oceanic heat fluxes will
+be considered.
+</p>
+
+<p>
+A model for the advection of sea ice involves solving horizontal momentum
+equations for sea ice, which crucially depend on proper parameterization of
+internal ice stress.  From previous modeling studies (e.g., Owens and Lemke,
+1990), it appears that one may need to include a viscous-plastic rheology as
+formulated by Hibler (1979). However, for some purposes
+an alternative, simplified treatment of the sea ice
+rheology, a version of the formulation by Flato and
+Hibler (1990) that includes only shear stresses, may be useful. 
+A version of this latter model has recently been
+recoded at NCAR and has been adapted to communicate with the flux
+coupler. In the near future, a form of the Hibler model with the complete
+rheology will also be implemented to work through the flux coupler and the
+user may use either version.
+</p>
+
+<p><b>Biogeochemical Ocean Models</b></p>
+
+<p>
+The long-term goal is to develop a global model of the major marine
+biogeochemical cycles (e.g., carbon, sulfur, nitrogen, oxygen), including  a
+reasonable level of biological detail in the upper ocean and coupled fluxes of
+CO and other radiatively important gases with the atmosphere.  As preliminary
+steps towards that goal, three intermediate problems have been identified for
+the next one to two years: the inorganic CO solubility pump, the 
+seasonal cycle of productivity and phytoplankton biomass, and the ocean
+uptake and transport of inert and radioactive tracers.
+</p>
+
+<p>
+The full-depth ocean model configuration will be used to examine the ocean
+transport of inorganic CO forced by solubility effects in the abiotic 
+ocean, focusing
+on the large-scale patterns driven by the thermohaline circulation. The
+model simulations of the inorganic CO distribution and the geographic
+and temporal patterns of the air-sea CO flux will be compared with 
+observations and previous
+model work (Maier-Reimer and Hasselmann, 1987).  The sensitivity
+of the CO solutions to the new vertical and isopycnal mixing 
+parameterizations 
+will be explored. Early coupled calculations involving an abiotic, inorganic 
+CO model and an interactive terrestrial carbon storage model are also
+envisioned (see Biogeochemical and Ecosystem Processes: NCAR CSM Land
+Component).
+</p>
+
+<p>
+A nitrogen-based marine ecosystem model, adapted from the Fasham model 
+(Sarmiento et al., 1993), will be incorporated into a global, 
+upper-ocean 
+configuration of the CSM ocean component, including the new 
+parameterization of the surface boundary layer (Large et al., 1994).
+The bottom boundary conditions for the coupled ecosystem model will be
+specified from full-depth physical solutions together with available
+nutrient climatologies (Levitus et al., 1993). The behavior of the 
+ecosystem model has been examined in detail in the vertical (Doney and
+Najjar, 1993), and alternative parameterizations of key biological processes
+(e.g., grazing, particle remineralization, micronutrient fertilization, and
+trophic and size class structure) will be explored in both the one-dimensional
+and global models. The coupled biological-physical model will be used to
+study a variety of questions on the seasonal to interannual time scale:
+the evolution of inorganic nutrients, phytoplankton, and zooplankton
+biomass; the rates of new and primary production; and the biological role of
+horizontal and vertical transport.
+Emphasis will be placed on understanding the seasonal cycle of spring blooms
+in the mid- and high latitudes and on the biological response
+to large-scale interannual variability such as ENSO. Validation
+of the marine ecosystem model will utilize data from individual time-series
+sites, historical nutrient and chlorophyll data sets, and the satellite
+ocean color data from the upcoming Sea-viewing Wide-field-of-view
+Sensor (SeaWiFS) project.
+</p>
+ 
+<p>
+Both of these biogeochemistry problems will be carried out in conjunction with
+physical transport studies using transient and natural chemical tracers, such
+as radiocarbon, tritium, and chlorofluorocarbons that are essentially
+non-reactive or have well known radioactive decay rates (e.g.,
+Toggweiler et al., 1989a,b).  For this problem the surface atmospheric fluxes will be
+prescribed from observations.
+</p>
+
+<p>
+In the second phase of the CSM project, the abiotic CO and upper-ocean
+ecosystem models will be combined into a full-depth, biotic carbon model. The
+transition from the nitrogen-based ecosystem model to a full representation of
+the carbon system is relatively straightforward, involving the addition
+of variable C/N ratios for biological pools, CO air-sea exchange, and the
+calcium carbonate cycle.
+</p>
+
+
+
+<p><b>NSF Supported Staff for CSM</b></p>
+
+<br>
+<br>
+
+
+<p><b>Non-NSF Supported Staff Contributing to CSM</b></p>
+
+<p>
+Several scientists and programmers at NCAR are supported by non-NSF
+funds to work on specific projects that are closely related to CSM and
+contribute directly to its goals.  For ocean modeling these
+include:
+</p>
+
+
+
+
+
+
+
+
+
+<p><b>Collaborations</b></p>
+
+<p>Dr. W.B. Owens, Woods Hole Oceanographic Institution (WHOI), is directly
+involved in the  development of the
+sea ice model and in the development of an improved temperature/salinity climatology.
+Other collaborators are Dr. G. Flato of the Institute of Ocean
+Sciences (IOS, Canada) on sea ice modeling, 
+Dr. David Glover of WHOI on the
+validation of the marine ecosystem model with satellite ocean color data,
+Dr. F.F. Jin of the University of Hawaii on empirical studies to
+determine the feedback boundary conditions, Dr. N.
+Pinardi of the University of Modena, Italy, on development of
+a surface-pressure solver and on empirical studies of the
+surface-flux climatology, Dr. W. Schmitz of WHOI on global equilibrium
+circulation, Dr. A.J. Semtner on the architecture of ocean model codes
+for moderately parallel computers, and Dr. R.
+Toggweiler of GFDL on equilibrium circulation and
+biogeochemical tracer distributions.
+</p>
+
+
+<p><b>NCAR CSM: Land Component</b></p>
+
+<p>
+The land is an integral part of the Earth system, influencing climate through
+a variety of processes.  Key processes include surface energy exchange, the
+exchange of trace gases, and the generation and transport of runoff, which in 
+turn affects ocean circulation and biogeochemical cycles via river input.
+The degree of coupling between terrestrial and climate
+processes varies, as does the time scale over which that coupling occurs.  For
+example, the coupling between stomatal conductance, influencing water and CO
+exchange, and boundary layer climates is so close that in effect plant canopy
+biophysics must be considered integral for the atmosphere.  At the other
+extreme, soil carbon, a significant component in the global carbon budget,
+responds to climate and influences atmospheric CO, 
+but only on time scales of
+decades to millennia. Coupling on intermediate
+time scales occurs from the emission of biogenic compounds (e.g., methane, 
+non-methane hydrocarbons) that have a profound influence on the ``chemical 
+climate'' of the troposphere.
+</p>
+
+<p><b>Land Model Components</b></p>
+
+<p>
+The objective of including a terrestrial component in the CSM is to be able 
+to examine
+coupling between the climate system and land processes on multiple time
+scales.  To address such interactions, a land model needs a series of
+biophysical and biogeochemical components.  The structure proposed 
+separates these components into (a) biophysics and 
+hydrology and (b) biogeochemistry and ecosystem processes.  We propose to
+bring these components into the program in a phased fashion that reflects the
+readiness of the components within the land program and the overall plan of
+experiments within CSM.
+</p>
+
+<p><b>Biophysics and Hydrology</b></p>
+
+<p>
+The land surface influences atmospheric physical processes through 
+radiative fluxes, turbulent transfer, and the
+partitioning of energy between latent and sensible heat.  Key modeling
+issues in coupling the land surface to the atmosphere include:
+</p>
+
+<p>
+Subgrid scale heterogeneity. Most land surface models have
+the same spatial resolution as the atmosphere, neglecting variation
+in vegetation and soil at smaller spatial scales. Three approaches
+have been adopted to account for this subgrid scale heterogeneity:
+(a) a finer land surface grid than the atmosphere, e.g., a 2
+by 2 land grid and 4.5 by 7.5 atmospheric
+grid (Bonan et al., 1992; Pollard and Thompson, 1994);
+(b) explicit representation of several surface types for each grid with
+the necessary fractional areas to average surface fluxes to the grid
+(Avissar, 1992; Koster and Suarez, 1992); and (c)
+closed-form analytical expressions that integrate over 
+distributions of important heterogeneity (Entekhabi and Eagleson, 1989;
+Johnson et al., 1993).
+</p>
+
+<p>
+Runoff. The current generation of land surface models
+have focussed on the coupling between the land and the atmosphere.
+Future models must examine the coupling between the land and oceans.
+Ocean circulations are affected by the magnitude of runoff through its
+impact on temperature and salinity distributions.  River runoff delivers a
+significant amount of nutrients
+and dissolved organic carbon to the coastal ocean, and thus
+affects oceanic biogeochemical cycling. The riverine input of dissolved
+organic carbon in particular may be a significant component of the 
+global carbon cycle (Siegenthaler and Sarmiento, 1993).
+Improved runoff prediction will require better
+schemes for runoff generation, including subgrid scale heterogeneity
+in vegetation and soil types. It will also require a runoff routing
+model that considers lateral flow of
+runoff between adjacent grid cells, which current
+land surface models ignore. This affects not only the
+timing and magnitude of runoff to oceans but also soil water
+and latent heat exchange. Once the runoff reaches a channel some 
+form of river routing must be used.
+</p>
+
+<p>
+Lakes and other wetlands. Lakes are a substantial
+area of the terrestrial surface but are neglected in current land
+surface models.  However, in regions with large areas of standing water (e.g., 
+high latitudes in the Northern Hemisphere), this can have a
+significant effect on surface fluxes.
+The ability to include lakes and other wetlands in the land
+surface model depends on the parameterization of subgrid scale
+heterogeneity because even on a
+0.5 by 0.5 grid most lakes are too small to be resolved.
+In addition, lakes and wetlands are important agents of
+biogeochemical cycling, serving as sources, sinks, and transformers of
+biological materials.  Wetlands are significant sources of groundwater
+recharge and act as natural buffers against floods. Consequently,
+the representation of lakes and wetlands must be closely tied
+with the subgrid scale parameterization, hydrology, and biogeochemistry.
+</p>
+
+<p>
+Model complexity. The degree of complexity with which
+surface energy exchange should be represented is poorly understood
+and is the subject of a land surface model intercomparison
+project (Pitman et al., 1991). 
+This issue is important because
+of model sensitivity to land surface characteristics
+that are poorly known, e.g., soil water holding capacity, plant
+physiology. The complexity of a land surface model also affects
+the parameterization of subgrid scale heterogeneity and
+the links to biogeochemistry and ecosystem processes.
+In addition, there are considerable discrepancies in
+how micrometeorologists parameterize surface exchange models
+for comparison with tower measurements and the surface
+exchange models used in global climate models.
+The micrometeorological models are  much more detailed,
+but this complexity
+is prohibitive in terms of computer time. The large discrepancy
+between models needs to be further investigated.
+</p>
+
+<p>
+Plant physiology. Recent land surface model development
+has recognized the close linkage of biophysical and plant physiological
+processes and the benefits of coupling these into a 
+comprehensive land surface model (Sellers et al., 1992).
+For example, latent heat
+exchange and CO exchange are linked through stomatal resistance.
+This coupling of stomatal resistance and photosynthesis provides
+for additional land-atmosphere feedbacks, e.g., diurnal variation
+in atmospheric CO concentration in the boundary layer and
+long-term changes in atmospheric CO concentration.
+Adding vegetation CO fluxes also provides new means to test
+land surface models.
+</p>
+
+<p>
+Plant growth and community structure. 
+The fluxes of energy, 
+water vapor, and momentum from the atmosphere to the land depend in a critical 
+way on the structure of the plant community. Properties such as albedo
+and surface roughness that are required by biophysical models are closely
+related to the state of the biota (e.g., plant biomass and height, leaf area 
+index, root-stem allocation), which changes on annual time scales due to 
+the seasonal growth and die back at temperate and high latitudes and on longer 
+time scales from shifts in vegetation composition (e.g.,  broadleaf deciduous
+tree to grassland). These interactions can be studied either in isolation
+or in a coupled mode whereby the feedbacks between surface fluxes and
+plant behavior are allowed to occur (see Biogeochemical and Ecosystem 
+Processes).
+</p>
+
+<p>
+The initial implementation of the physical component of the land
+surface model will use an existing global land surface model
+while leaving the above issues as research projects. Emphasis will
+be on the physical land-atmosphere coupling at the seasonal time scale.
+Improved parameterization of subgrid scale heterogeneity,
+hydrology (lakes, wetlands, runoff generation), and
+links to biogeochemistry and ecosystem processes will be
+brought on-line in due time as appropriate. Subgrid scale
+heterogeneity, lakes, and wetlands can be added quickly
+(i.e., within the first year).
+The linkage of photosynthesis with energy exchange also 
+has sufficient development to be brought on-line within the
+first year (Bonan, 1994).  Coupling to ecosystem processes, such as
+growth, nutrient cycling, and vegetation dynamics, is possible 
+but will require more time (see below). These additional
+components must be brought on-line in a systems approach that
+addresses the coupling, linkages, and common processes
+and state variables rather
+than treating biophysics, hydrology, biogeochemistry, and
+ecosystem processes as independent components.
+</p>
+
+<p><b>Biogeochemical and Ecosystem Processes</b></p>
+
+<p>
+Ecosystem and biogeochemical processes influence land-atmosphere interactions,
+generally on longer time scales than effects of surface biophysical processes. 
+Key processes include storage of carbon in living and non-living components of
+the terrestrial biosphere, influence of the nitrogen cycle on carbon fixation
+(photosynthesis) and storage, and long-term effects of vegetation structural
+change (e.g., forestgrasslands, coniferdeciduous) on biogeochemistry and on
+biophysical exchanges through changes in physiology, rooting depth, height, and
+albedo. 
+</p>
+
+<p>
+For early (though not initial) experiments in CSM, a model of terrestrial
+biospheric storage and exchange of carbon is the primary target.  Such a model
+will simulate carbon fixation as a function of climatic variables (providing a
+forcing from climate), atmospheric carbon dioxide concentration, and the
+nitrogen cycle (providing internal, nonlinear dynamics).  
+The model will simulate decomposition as a function
+of soil physical properties, climate, the N cycle, and plant organic chemistry.
+The model will simulate the gross effects of land management on carbon
+storage, as this is a crucial driver for ``realistic'' simulations of the 
+carbon cycle.  
+</p>
+
+<p>
+This model will
+be based on the Century model developed by Parton, Schimel, and coworkers at
+Colorado State University, but with significant simplification of
+carbon-nitrogen interactions (Parton et al., 1994; Schimel et al.,
+1994).  The Century component plays two important roles
+in the coupled model.  It provides nitrogen to the land surface
+parameterization, which constrains canopy development and conductance. 
+Second, it computes terrestrial carbon storage as a function of climate
+forcing and CO, modified by internal C/N dynamics, and thus, modifies
+atmospheric CO concentrations over time.
+</p>
+
+<p>
+In coupling to the physical land surface model, carbon fixation
+will be derived from calculations of photosynthesis carried out in the
+land surface parameterization to provide consistency between the carbon and
+water cycle calculations. Soil temperature and water, needed
+to simulate microbial activity,  will also be derived from the land 
+surface parameterization. However, the biogeochemical model can simulate
+carbon fixation and soil water itself at longer
+temporal resolutions, so that the model can also be run uncoupled
+from the short-term (i.e., less than 30 minute time step) biophysical model for
+long calculations (e.g., 100s of years).
+</p>
+
+<p>
+Three-dimensional calculations of CO effects on climate generally prescribe a
+rate of CO increase based on extrapolation of historical trends.  In fact,
+non-linear processes control the relationship between CO forcing and
+atmospheric CO concentrations: a) the non-linear chemistry of CO oceanic
+uptake; b) the highly non-linear effects of CO in biological uptake and
+storage of C in the terrestrial biosphere; c) the potential effects of altered
+ocean surface and thermohaline circulations on CO; and d) the effects of
+physical climate changes (temperature, precipitation, solar radiation) on the
+biosphere.   Simple models suggest that growth rate and lifetime of CO are
+sensitive to the inclusion of a  function that increases terrestrial uptake
+as atmospheric CO increases.  These effects presumably affect the rate of
+change of climate for any rate of change of anthropogenic CO, possibly with
+significant interactions.  In more realistic ecosystem models, the ``''
+function relates to the N cycle and to soil moisture, so direct CO effects
+need to be simulated with a full ecosystem model.  A proposed first experiment
+with a coupled climate system model including the terrestrial biogeochemical
+component would be to simulate the evolution of climate, atmospheric CO, and
+terrestrial C storage during a 100-year transient calculation with CO forcing
+according to a prescribed scenario.  This calculation would require at a
+minimum a geochemical CO uptake mechanism in the ocean model but could be
+done with an upper ocean model.  Inclusion of a full-depth ocean model would
+add additional possibilities to behavior of the physical climate system (e.g.,
+Manabe and Stouffer, 1993) but would not be required for the initial carbon 
+cycle calculation.  The terrestrial model required for this calculation could 
+be ready in approximately one year with additional programming support.
+</p>
+
+<p>
+Two other areas of ecosystem interactions are of interest: exchange of trace
+gases other than carbon dioxide and effects of changing vegetation types on
+biogeochemistry (CO and other species) and biophysics.  For trace gas
+exchanges, no comprehensive model exists but a number of components exist,
+including models for NO, non-methane hydrocarbons (Guenther 
+et al., 1994), 
+and methane (Holland et al., 1993).  Modeling of trace gases can be thought of
+in two categories.  First are species such as NO (and CO), greenhouse gases,
+but unreactive with weak influence in tropospheric reactions.  These gases may
+be modeled like CO with no atmospheric reactions simulated.  Inclusion of
+such gases allows the exploration of their effects on climate.  In a second
+category are reactive chemical species, such as the NMHCs, methane, and NO. 
+The emissions and uptake of these species is sensitive to climate and land
+surface conditions, may influence climate through the lifetimes of greenhouse
+species, and have profound effects on the OH-O chemistry of the troposphere. 
+Coupling of simulations of the exchange fluxes of reactive species can only be
+of interest when the terrestrial model is coupled to an atmospheric model
+containing chemistry.  Since the simulations of chemistry require the fluxes
+of a fairly large number of species, the ``jump'' from a CO model to a
+CO-trace gas model is large.  Intermediate calculations may be possible, such
+as calculations containing a methane source model and a simplified atmospheric
+destruction model.  The timetable on coupled atmospheric-terrestrial
+biogeochemistry models is somewhat indeterminate but will require two
+to three years.
+</p>
+
+<p>
+Tropical deforestation and ``boreal" deforestation experiments with
+coupled land- atmosphere models raise the possibility
+of coupled climate-vegetation dynamics in which the biogeographic
+distribution of vegetation affects and is affected by climate
+(Bonan et al., 1992; Henderson-Sellers, 1993).
+In addition, recent steady state calculations of
+terrestrial C storage under doubled CO climates with a biogeochemical model
+(TEM: Melillo et al., 1993) showed that changing vegetation distributions
+significantly affect C storage beyond the direct effects of climate on
+biogeochemical processes. 
+A number of equilibrium global vegetation models exist,
+including a model developed as part of the GENESIS project at NCAR, a model
+developed by the Henderson-Sellers group, the MAPSS model of Neilson, the DOLY
+model of Woodward.  Considerable effort is underway to make these 
+equilibrium models time-dependent, e.g.,
+linking N and water availability to
+changes in leaf area, and changes in leaf area to changes in growth form.  A
+dynamic vegetation distribution model,
+which links with the short-term biophysics and biogeochemistry,
+should eventually be a component of the land team activity.
+CSM scientists are currently involved in an EPRE-NASA-USFS-CSMP
+supported intercomparison of vegetation models (Vegetation/Ecosystem
+Modeling and Analysis Project VEMAP) which should provide insight into
+the behavior of these models. Because the time table for developing
+credible time-dependent vegetation type models is unclear, no timetable for
+this activity can be given.  
+</p>
+
+<p><b>Validation</b></p>
+
+
+<p>
+Validation of land surface models will utilize global and in
+situ data sets.  A number of important data sets exist. The new Advanced Very High
+Resolution Radiometer (AVHRR) Pathfinder activity
+produces a satellite product for the land fundamentally superior to the GAC
+and GVI products previously used, and improved algorithms for the extraction
+of leaf area, interception of photosynthetically active radiation, and net
+primary productivity now exist. Records of seasonal and interannual
+variability of CO, C of CO, O, and oxygen isotopes provide
+fundamental constraints on simulations of terrestrial carbon and water
+cycling.  A significant number of globally-distributed, but point or regional
+measures, also exist.  These include results of field campaigns in France, West
+Africa, the central U.S., Northern Canada, Scandinavia, and Brazil, in which
+comprehensive measurements exist.  Also available are several new compendia of
+plant biomass and soil carbon and nitrogen dynamics from the U.S. Long Term
+Ecological Research network, assembled globally by a SCOPE project and
+recently published.  Finally, data on river runoff in major river basins and
+dissolved and particulate carbon loading were recently published and made
+available for testing runoff components of surface hydrology.  Critical gaps
+in land surface data sets are soil moisture, important in biophysical and
+biogeochemical calculations, for which no satisfactory remote techniques
+exist, and snow cover,  for which satellite products have low spatial
+resolution and poor estimation of depth and water content.
+</p>
+
+<p><b>NSF Supported Staff for CSM</b></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><b>Collaborations</b></p>
+
+<p>
+J. Famiglietti (University of Texas, Austin) is working on issues of land 
+surface hydrology/runoff and W. Parton (Colorado State University) is 
+involved in
+the Century Model.
+</p>
+
+
+
+<p><b>NCAR CSM: Flux Coupler</b></p>
+
+<p>Description</p>
+
+<p>
+The flux coupler (FC) provides the framework  of the CSM by providing
+overall computing
+control and interfacial physical coupling among the component system
+models.  Control involves software engineering issues, such as 
+model synchronization
+and data communication between components. The coupling function addresses
+issues such as the computation of physical quantities exchanged among CSM
+components, as well as numerical questions such as those associated with 
+interpolation between disparate grids of the component models. 
+</p>
+
+<p>
+The control and coupling functionality are designed to allow each component to run with its own time
+stepping scheme and to have its own grid structure.  The FC will make as few
+demands upon component models as possible, and conversely, the models will
+make minimal demands upon the coupler.  The FC and model components will
+exchange minimal amounts of information with each bit of information
+preferably transmitted only once.  Thus, each component model must maintain
+some control structure. If, for example, a model requires lagged time
+information, that component must store data received from the FC and use it
+appropriately.  The FC, for its part, will only require that each component
+model accept fluxes and flux-related quantities, such as albedo, as boundary
+conditions.
+</p>
+
+<p>
+The FC diverges from the most common practice of atmosphere-ocean model
+coupling in two important ways. First, coupled models have
+traditionally been implemented as single monolithic programs by
+``subroutinizing" the component models. In the FC framework, each
+component model remains as a stand-alone program. Second, interaction
+between the atmosphere and the surface has generally been handled
+completely within the atmospheric component model.  This severely
+limits the flexibility of the system and makes it difficult to
+accommodate component models with disparate spatial resolutions. In the
+FC quantities computed on the surfaces between models are treated
+independently of the models themselves. This set of choices is based on recent
+experience at NCAR in modeling ocean-atmosphere interaction and draws
+on recent developments at other institutions in the areas of ocean-atmosphere
+and atmosphere-land surface coupling. Mechoso et al. (1993) and
+Barth and Smith (1993), for example, have demonstrated the viability of
+the message-passing approach. The approach adopted for computing
+interfacial fluxes is very similar to that used to represent sub-grid scale
+heterogeneity in land-surface process modeling (e.g., Koster and Suarez, 1992;
+Avissar and Pielke, 1989). These issues are discussed
+further below.  Two aspects of coupling not specifically being
+addressed by the CSM FC project at the present time are (a)
+asynchronous integration strategies (Dickinson, 1981) and (b) flux
+adjustment  procedures (Sausen et al., 1988).
+</p>
+
+<p><b>Software Architecture and Computing Environments</b></p>
+
+<p>
+Given current computing trends, the FC is designed with the
+capability to operate in a distributed, heterogeneous processor 
+environment,  
+as well as with a more traditional
+single-system, shared-memory environment. We have constructed a system in which
+the component models, as well as the FC itself, operate as a set of
+separate, cooperating executables. Communication between the components
+is facilitated through an explicit message-passing interface.
+Each model sends just those data required by 
+the FC, which then computes updated fluxes and returns them to the components,
+allowing them to advance.
+</p>
+
+<p>
+A message-passing FC allows orderly program development.  Models should require
+far less modification to operate within the message-passing system than if it
+were demanded that each model be ``subroutinized'' for coupling.  This greatly
+increases the flexibility of the CSM system, permitting different component
+models to be easily substituted.
+Existing components should still run in their usual stand-alone mode with only
+the invocation of the message exchanges, and some coordination functions,
+required for use in the coupled mode.
+</p>
+
+<p>
+In developing the FC, attention will be given to software-engineering principles and adoption of 
+programming standards similar to those already in use among atmospheric
+modelers (Kalnay et al., 1989).  These standards require 
+``plug compatibility'' for internal FC 
+subroutines; this modular approach should facilitate modifications, such as 
+alternative flux formulations, interpolation routines, or extensions to
+accommodate additional processes, e.g., chemistry. 
+</p>
+
+<p><b>Coupling Principles</b></p>
+
+<p>
+CSM model components will couple primarily through fluxes across component
+boundaries, which requires formulating each component with flux boundary
+conditions.  For example, the atmosphere component need not know sea-surface
+temperature (SST) but only fluxes that the FC computes using SST from the ocean
+component.  Conservation of fluxes becomes the most important principle. 
+Even though fluxes may be modified in some manner by the receiving
+model due to such functions as smoothing or filtering, each CSM component 
+must see the same globally-averaged flux as another at interfaces shared 
+by those models.
+</p>
+
+<p>
+Spatial Aspects of Interaction. 
+Two component models interacting through one of the interfaces will
+generally not have the same horizontal resolution or identical grid
+layout. This necessitates spatial averaging or interpolation of
+quantities to be communicated between the models.  In this system a
+distinction is made between two types of fluxes passing across an
+interface. The first type is a flux computed by a component model.
+These generally involve computationally intensive calculations over
+the three-dimensional domain of the component model.  Examples include
+the precipitation rate or downward radiative fluxes computed by the
+atmosphere or the potential freezing rate computed by the ocean. The
+second type is a flux computed at the interface itself based on the
+(two-dimensional) surface states of the component models.  Examples
+include turbulent heat fluxes across the air-sea interface or the
+stress between the ocean and sea ice.  The general philosophy followed
+here is that to the extent possible, the second type of flux should be
+computed on the finer of the two grids defining an interface. The
+outputs (both state variables and output fluxes) of the model at the
+coarser resolution are interpolated to the finer resolution grid.
+Fluxes requiring state information from both systems are computed on
+the finer grid by the coupler. These fluxes are then spatially
+averaged back to the coarser model grid in a conservative manner. In
+the case where a component model (say atmospheric) grid cell contains
+more than one surface type (say land and ocean), the fluxes from each
+interface are averaged together in an area weighted manner into an
+aggregate flux. This particular scheme was selected to allow for
+subgrid-scale heterogeneity of surface types, to be conservative,
+and to take maximum advantage of any high-resolution information
+available in the system.
+</p>
+
+<p>
+Temporal Aspects of Interaction.
+Just as the component models may operate with different spatial
+discretizations, they will generally have different time steps or
+require updated fluxes at different time intervals. We follow a
+similar procedure as used for handling disparities in spatial
+resolution in handling temporal interactions. Fluxes on an interface
+are computed at the frequency required by the model with the faster
+time scales and temporally averaged over an interval called the
+synchronization period before being passed to the model with the
+slower time scales. The state variables on the interface from the
+``slow" model are held fixed during this interval, while the output
+fluxes and state variables of the ``fast" model are updated an integer
+number of times. At the end of the synchronization period, all component
+models will have seen the same flux passing through the interface.
+</p>
+
+<p><b>Work Plan</b></p>
+
+<p>
+The FC will be developed in two phases. The first, already well along, involves
+the implementation of a basic system for atmosphere--ocean--sea ice
+interactions, with the land model kept initially within the present (CCM2)
+atmospheric component.
+Modifications to the component models to allow
+communication of two-dimensional fields of state variables and fluxes
+are underway. In addition, tuning/optimization of the communication structures
+are being examined. Our goal is to begin coupled experiments
+using the flux coupler immediately so as to both test the FC aspects of the coupling 
+and to begin to carry out useful coupled experiments from the physical
+point of view.
+</p>
+
+<p>
+The second phase of FC development will involve extensions to include
+a separate land model, to include chemical processes that require
+FC passing of information between components, and to include the
+thermosphere as a separate component. In the long term, the FC will
+provide an effective framework to switch in and out various sub-components
+of the complete climate system model according to the desires of the
+investigator.
+</p>
+
+<p><b>NSF Supported Staff for CSM</b></p>
+
+<br>
+<br>
+
+
+
+<p><b>Non-NSF Supported Staff Contributing to CSM</b></p>
+
+<p>
+Several scientists and programmers at NCAR are supported by non-NSF
+funds to work on specific projects that are closely related to CSM and
+contribute directly to its goals.  For the flux coupler these
+include:
+</p>
+<br>
+<br>
+
+
+
+
+
+
+
+<p><b>VI.</B> <b><u>Resource Requirements for CSM</u></b>
+
+<b><a name="Personnel">Personnel Requirements Summary</a></b>
+
+<p>
+NCAR scientists have a very strong
+interest and commitment to the CSM. There is
+however a need for a long term commitment of dedicated resources to
+support the activities of the CSM project. This involves establishing a
+core group of programmers for:
+</p>
+
+<ul>
+<li>developing, maintaining, documenting and
+<li>disseminating the CSM code;
+<li>managing the computations and data
+sets created and making them available to the outside user community;
+<li>aiding in the development of new components or revisions of
+existing components;
+<li>providing general support to CSM activities, including developing
+and maintaining analysis tools. 
+</ul>
+
+<p>
+Based upon past
+experience with the CCM core group, we anticipate needing four
+programmers for these purposes and propose bringing onboard such people
+over the course of the start-up period, i.e. the first two
+years. At steady state, about 360K per year would be needed for the
+duration of the CSM project. These
+programmers may eventually be combined with the existing CCM core
+group to support all aspects of the CSM.
+</p>
+
+<p>
+In order to promote active participation by
+university faculty and training of young scientists we propose that
+a minimum of two long term visitor and two postdoctoral positions
+should be funded (300K per year). These positions could be
+coordinated through UCAR-CSMP in order to broaden the the outreach to
+the scientific community and to reduce overhead.
+</p>
+
+<p>
+The CSM project also requires resources for
+short-term visitors collaborating with NCAR scientists on CSM
+development and analyses and for those wanting hands-on experience with the
+model (50K per year). Regular workshops 
+on the model and its use are needed to stimulate the
+involvement of a broader spectrum of users and to increase their
+understanding of the capabilities and limitations of the CSM (24K, every
+other year). Finally,
+the CSM core group and visitors will need adequate workstations to
+work effectively (25K per year).
+</p>
+
+
+<b><a name="Computing">Computing Requirements</a></b>
+
+<p>
+A comprehensive CSM will be computationally expensive.  The
+development of any complex model, such as the CSM, inevitably involves
+compromises either to control computational costs, or because of
+insufficient scientific understanding.  
+Below we show an estimate of the computational cost of the components
+in the first implementation of a modest-resolution CSM version 1. We
+also discuss, component by component, the rationale for these choices
+as well as give an indication of the relative costs of other (future)
+choices. It should be remarked that it is relatively straight-forward
+to enhance the resolution of any of the components and, for some
+climate issues, this will be required.
+</p>
+
+<p>
+Several strategies are being followed to limit the expense of the CSM,
+such as intermediate horizontal resolution and limited complexity. The
+target resolutions for the atmospheric components have been chosen
+near the minimum resolutions at which credible representations of the
+most important large scale dynamical processes are possible.  The only
+chemical or biogeochemical option which will probably be incorporated
+in coupled simulations during the startup phase is an extremely
+simplified treatment of the atmospheric concentrations of the principal
+greenhouse gases and sulphate aerosol. More detailed chemistry and
+biogeochemistry will be tested primarily in uncoupled simulations
+until both significant skill and a need for coupling is demonstrated.
+Nevertheless, the CSM will tax the capabilities of currently available
+supercomputers.  As increasing computer power is available, pioneering
+calculations with higher resolution and increased complexity will be
+performed. However, assuming that the important dynamical and
+thermodynamical processes are adequately represented, more will be
+learned from frequent simulations at modest resolution than from one
+or two simulations at the highest possible resolution. It is extremely
+important that a large proportion of the available computing time be
+used for multiple simulations in order to understand the model
+behavior and its sensitivity to a variety of parameter choices.
+</p>
+
+<p>
+The computational cost of the physical components of the climate system
+are reasonably well known because relatively mature models exist. 
+The initial configuration of the CSM has been designed so that
+the physical climate system from the ocean floor to the middle
+stratosphere can be simulated on the existing computers in the CSL. 
+However, transient greenhouse gas experiments will stretch the
+available capacity to the limit. For example, a 150 year integration
+from preindustrial greenhouse gas concentrations would take about 2
+months on a dedicated YMP8.
+</p>
+
+<p>COMPUTATIONAL REQUIREMENTS<br>
+YMP Processor hours / simulated year
+</p>
+
+
+<p>
+The computational costs of the chemical and biogeochemical components
+of the climate system are not well known because only prototype models
+currently exist. However, it is certain that any reasonably
+comprehensive treatment of these processes will be expensive. The cost
+of treating chemical compounds in three-dimensional models can be
+easily seen from the increase in the required number of variables. An
+atmospheric or oceanic GCM needs three dimensional equations to
+predict only 4 variables: zonal and meridional momentum, temperature,
+and water vapor or salt concentration. In addition, the vertical
+velocity must be diagnosed.  Each chemical compound whose
+concentration must be advected adds an additional three dimensional
+variable and could be expected to add about 20 to the computational
+cost. The actual increase is generally less than 20 because the
+parameterized physics in the GCM significantly increase its basic cost
+and the numerics can often eliminate redundant calculations for
+additional variables. However, it is clear that simulating
+the concentrations of the principal greenhouse gases will be time
+consuming, even with highly simplified chemistry and biogeochemistry
+and limited numbers of constituents.
+</p>
+
+
+
+<p><b>How Increased Computer Resources Can Be Used</b></p>
+
+<p>1.  Atmosphere</p>
+
+
+<p>Dynamics</p>
+
+<p>
+The advent of semi-Lagrange dynamics
+allows an increase of the spectral truncation to T63 with no increase in
+cost. Developing of a reduced grid (at the poles) model will allow a
+further modest increase in resolution (or decrease in cost).  At least
+a factor of five increase in computing power would be required to make
+a significant increase in the horizontal resolution.
+</p>
+
+<p>
+The vertical domain can be increased to include the full
+stratosphere and lower mesosphere at about 2.5 times the cost of the
+standard model. This increase will be required for a credible
+treatment of ozone chemistry and its effects on climate.
+</p>
+
+
+<p><b>Physics</b></p>
+
+<p>
+The radiative transfer parameterization is fairly detailed for both
+solar and long wave radiation. The long wave effects of the principal
+greenhouse gases are being included and the short wave effects of
+aerosols can be included easily in the short wave without
+significantly altering the cost.
+</p>
+
+<p>
+The boundary layer employs one of the best available 
+parameterizations for models with modest vertical resolution. A modest
+increase in vertical resolution ( 10) would improve the
+ability to represent the boundary layer depth and turbulent fluxes,
+but little more computational cost is required unless significantly
+better parameterizations are developed.
+</p>
+
+<p>
+The treatment of convection in CCM2 is particularly simple and
+more elaborate (and expensive) schemes are being tested. A significant
+increase in the model cost (10--20) will probably be required to
+incorporate a better convection, if the benefits can be demonstrated.
+</p>
+
+
+<p><b>Chemistry</b></p>
+
+<p>
+Atmospheric chemistry can use enormous amounts of computing
+power. Each chemical species added to the model must be advected by
+the dynamics and mixed vertically by the boundary layer and
+convection. Computing chemical and photolytic reaction rates can also
+be very expensive, especially when expensive algorithms are required
+to deal with the numerical problems posed by reaction time scales
+which vary from nanoseconds to hours or longer.
+</p>
+
+<p>
+A reasonably comprehensive treatment of
+stratospheric ozone chemistry approximately doubles the cost of the
+model even though the chemistry is still somewhat simplified and
+highly optimized. Half of the cost increase results from
+including the photochemical reactions and half results from the
+cost of transporting 14 chemical constituents in the GCM.
+</p>
+
+<p>
+Detailed tropospheric chemistry
+will be much more expensive both in terms of the number of species
+which must be advected, and in terms of the computational cost of
+chemistry itself.
+</p>
+
+<p>
+The initial CSM will include only
+a highly simplified chemistry for the principal greenhouse
+gas and sulphate
+aerosol.  Even this limited set will probably represent  50
+of the cost of the atmospheric model.
+</p>
+
+<p>
+More detailed chemical models will
+be pursued outside the coupled model framework, but may require
+greatly expanded ( 5--10 times) computer resources for significant
+advances.
+</p>
+
+
+
+<p><b>2.</b> <b><a name="Ocean">Ocean</a></b>
+
+
+<p><b>Physics</b></p>
+
+<p>
+The mesoscale eddy parameterization included in the ocean model
+results in considerable net savings in computation time. The increase
+in the accuracy of the simulation of many large scale ocean
+properties, including the poleward heat fluxes, allows the model to be
+run at coarser horizontal resolution than would be possible in a model
+employing only a standard horizontal diffusion in height coordinates.
+The reduction in horizontal resolution easily offsets the 40
+increase in computation time resulting from the 
+calculation of the density slopes
+required by the eddy parameterization.
+</p>
+
+<p>
+The next major change in the model physics will be the inclusion
+of an ocean boundary layer, similar in nature to the atmospheric
+boundary layer included in the atmosphere component. The boundary
+layer parameterization will increase the cost of the ocean model by a
+further 25, based on initial testing, but should greatly improve the
+accuracy of the simulation of vertical mixing in the upper layers of
+the ocean.
+</p>
+
+
+<p><b>Numerics</b></p>
+
+<p>
+An acceleration technique has been used to run the ocean model to
+equilibrium with fixed atmospheric forcing. The ocean adjustment time
+increases as a function of depth to about 1000--3000 years for the
+deep ocean. The acceleration technique allows deep ocean
+temperature and salinity timesteps 100 times greater than the
+time step for the upper layer ocean velocities. This technique has
+been shown to work well in obtaining equilibrium solutions under
+constant forcing conditions but cannot be used in coupled model runs
+because of the variations in atmospheric  forcing. Indeed, several
+coupled modeling groups have abandoned acceleration techniques
+entirely because of concerns that it leads to the wrong equilibrium
+solution when even seasonal variations in forcing are included. This
+means that ocean component of the coupled simulations will take much
+longer (10--100 times) than ocean spinup runs of comparable length.
+</p>
+
+<p>
+Most of the early CSM simulations will be run at a horizontal
+resolution in the ocean model of 2longitude and averaging 
+2latitude (higher near the equator and at high latitudes, lower in
+midlatitudes).  Some simulations will be performed at half of this grid
+spacing ( 1), but clearly neither configuration resolves ocean
+eddies, which is the reason that the mesoscale eddy parameterization has
+been included. If an eddy resolving global
+ocean model is considered, then the computation cost would increase
+enormously. Although considerable success at simulating ocean eddies
+has been achieved at 1/6resolution, truly eddy resolving models
+will require 1/10resolution and cost at least 400 times more than
+the 2model being used in the initial CSM simulations.
+</p>
+
+<p>
+The ocean model is a considerable compromise in horizontal
+resolution. The ability to represent some of the important processes
+involved in ENSO has been sacrificed to achieve an affordable cost.
+Since the model has a minimum latitudinal spacing of 1.2near the
+equator, it cannot adequately resolve the equatorial wave guide and is
+not expected to be able to represent some of the essential dynamics
+of tropical Pacific variability. Experience suggests that the 1
+model, with it's 0.6equatorial resolution, will be required to
+properly represent ENSO.
+</p>
+
+<p>
+The 45 level vertical resolution of the ocean model is
+considerably greater than that being used by most other coupled
+modeling groups. This resolution has been chosen to represent
+the crucial effects of variations in the ocean depth on the
+circulation and, particularly, on water mass formation. Many aspects
+of the ocean circulation are determined by the restrictions on the
+flow produced by shallow sills and the isolation of basins by
+intervening ridges. 
+</p>
+
+<p>
+Other issues, such as alternative advection algorithms, filtering
+schemes and vertical coordinates would not greatly affect the
+computational cost of the ocean model.
+</p>
+
+
+<p><b>Biogeochemistry</b></p>
+
+
+<p>
+The simplest ocean biogeochemistry calculations using an abiotic,
+inorganic CO2 model increase the cost of the ocean model by 40.
+</p>
+
+<p>
+Early tests using a marine ecosystem model adapted from the
+``Fasham'' model have shown that it increases the ocean model cost by
+a factor of 3. 
+</p>
+
+<p>
+Inclusion of a full-depth biotic carbon and nitrogen-based
+ecosystem model would probably increase the computational cost of the
+ocean model by a factor of 5.
+</p>
+
+
+<p><b>3.</b> <b><a name="Land">Land Surface</a></b>
+
+<p><b>Physics</b></p>
+
+<p>
+The land surface grid is currently the same as the horizontal
+resolution of
+the atmosphere (approximately 2.8 x 2.8). Moving the land
+surface
+to its own grid with finer resolution would allow for better 
+characterization of vegetation and soil inhomogeneities that are
+thought
+to significantly affect land-atmosphere interactions. However, this
+gain
+in spatial resolution is expense. A 2 x 2 grid
+increases the overhead of the land surface model by a factor of two;
+a 1 x 1 grid increases the overhead by a factor of eight.
+</p>
+
+
+<p>
+Most land surface models simulate the average soil water within
+a grid box. Independent of the horizontal resolution of the land, the 
+distribution of soil water within a grid box and the non-linearities
+associated with surface fluxes and soil hydrology need to be
+considered.
+Simplying adding two subgrid fractions (wet, dry) with explicit
+surface flux calculations and hydrology for each fraction
+would increase the overhead of the land surface model by a factor of
+two.
+</p>
+
+<p>
+Empirical and theoretical studies suggest the terrestrial fresh water
+flux into oceans is an important determinant of past climatic changes.
+Models that transport runoff from individual land surface points to 
+appropriate oceans are being developed and must be included in future
+CSM activities. The cost of these models is not known, but can be high
+if one fully represents the two-dimensional lateral transport of water
+between grid boxes.
+</p>
+
+
+<p><b>Biogeochemistry</b></p>
+
+<p>
+The land surface model simulates CO fluxes associated with plant
+photosynthesis, plant respiration, and microbial respiration, and the
+feedbacks from the nitrogen cyclke that govern transient responses.
+This model will also serve as a platfrom for the eventual simulation
+of biogenic CH, NO, NO, and hydrocarbon fluxes.  One of
+the future tasks for the CSM is to use these fluxes to simulate
+atmospheric CO concentrations. The cost of adding an inert
+chemical constituent such as CO to the atmosphere is approximately 1.2 CPU hours per
+simulated year.
+</p>
+
+<p>
+The cost of running a complete terrestrial ecosystem model at T42
+resolution is approximately 1 CPU hour per simulated year.
+</p>
+
+<p><b>4. Sea Ice</b></p>
+
+<p>
+The initial sea ice component of CSM will use a cavitating fluid
+rheology, partly to reduce the computation time. Developments such as
+full rheology physics and more advanced thermodynamics are likely in
+the near future. These developments may increase the computational
+cost of the sea ice model several times, but it will remain small
+compared to other components of the CSM.
+</p>
+
+
+<p><b>VII.</b> <b><a name="References">References</a></b>
+
+<p>
+
+
+ 97, 2729--2742.<br>
+<p>
+Avissar, R., and R.A. Pielke, 1989:  A parameterization of heterogeneous
+land surfaces for atmospheric numerical models and its impact on regional
+meteorology.  Mon. Wea. Rev. 117, 2113--2136.
+</p>
+
+<p>
+Barth, N., and S. Smith, 1993: Coupling numerical models of the atmosphere
+and ocean using the Parallel Virtual Machine (PVM) Package. In: Proceedings
+of the Sixth SIAM Conference on Parallel Processing for Scientific
+Computation. R. Sincovec, D. Keyes, M. Leuze, L. Petzold, and D. Reed (Eds.),
+SIAM, pp. 71--75.
+</p>
+
+<p>
+Bonan, G.B., 1994: Comparison of the land surface climatology of the NCAR CCM2
+at R15 and T42 resolutions with implications for sub--grid land surface
+heterogeneity.  J. Geophys. Res., submitted.
+</p>
+
+<p>
+Bonan, G.B, D. Pollard, and S.L. Thompson, 1992:  Effects of boreal
+forest vegetation on global climate.  Nature 359, 716--718.
+</p>
+
+<p>
+Boning, C.W., F.O. Bryan, and W.R. Holland, 1994: Thermohaline circulation and
+poleward heat transport in a high resolution model of the North Atlantic. 
+Submitted.
+</p>
+
+<p>
+Boville, B.A., 1994: Middle atmosphere version of CCM2:  Annual cycle and
+interannual variability.  J. Geophys. Res., submitted.
+</p>
+
+<p>
+Boville, B.A., 1991:  Sensitivity of simulated climate to model
+resolution.  J. Climate 4, 469--485.
+</p>
+
+<p>
+Brasseur, G.P., M.H. Hitchman, S. Walters, M. Dymek, E. Falise, and M.
+Pirre, 1990:  An interactive chemical dynamical radiative
+two-dimensional model of the middle atmosphere.  J. Geophys. Res.
+95, 5639--5655.
+</p>
+
+<p>
+Broecker, W.S., 1987:  The biggest chill.  Natural History
+Magazine, October, 74--82.
+</p>
+
+<p>
+Bryan, F.O., and W.R. Holland, 1989: A high resolution simulation of
+the wind- and thermohaline--driven circulation in the North Atlantic Ocean.  
+In:
+Parameterization of Small Scale Processes.  aha Huilko'a Proceedings Winter
+Hawaii Workshop, P. Muller and D. Henderson (Eds.), Spec. Publ. 99--116, Hawaii
+Inst. Geophys.
+</p>
+
+<p>
+Bryan, K., S. Manabe, and C. Pacanowski, 1975:  A global
+ocean-atmosphere climate model.  Part II.  The oceanic circulation.
+J. Phys. Oceanogr. 5, 30--46.
+</p>
+
+<p>
+Danabasoglu, G., J.C. McWilliams, and P.R. Gent, 1994:  The role of
+mesoscale tracer transports in the global ocean circulation. 
+Science, in press.
+</p>
+
+<p>
+Dansgaard, W., S.J. Johnsen, H.B. Clausen, D. Dahl-Jensen, N.S.
+Gundestrup, C.U. Hammer, C.S. Hvidberg, J.P. Steffensen, A.E.
+Sveinbjornsdottir, J. Jouzel, and G. Bond, 1993:  Evidence for
+general instability of past climate from a 250-kyr ice-core record.
+Nature 364, 218--220.
+</p>
+
+<p>
+Dickinson, R.E., 1981: Convergence rate and stability of
+ocean-atmosphere coupling schemes with a zero-dimensional climate
+model. J. Atmos. Sci. 38, 2112--2120.
+</p>
+
+<p>
+Doney, S.C., and R.G. Najjar, 1993: The effect of vertical transport in a
+one--dimensional coupled biological--physical model of the upper ocean. Preprint.
+</p>
+
+<p>
+Entekhabi, D., and P.S. Eagleson, 1989:  Land surface hydrology
+parameterization for atmospheric general circulation models including subgrid
+scale spatial variability.  J. Climate 2, 816--831.
+</p>
+
+<p>
+Erickson, D.J., III, P.J. Rasch, P.P. Tans, and P. Friedlingstein, 1994: The
+NCAR CCM2-based global atmospheric CO cycle model:  Initial validation
+experiments. J. Geophys. Res., submitted.
+</p>
+
+<p>
+Flato, G.M., and W.D. Hibler, III, 1990: On a simple sea ice dynamics model for
+climate studies. Adv. Geophys. 14, 72--77.
+</p>
+
+<p>
+Garcia, R.R., and B.A. Boville, 1994:  Downward control of the mean
+meridional circulation and temperature distribution of the polar
+winter stratosphere.  J. Atmos. Sci., in press.
+</p>
+
+<p>
+Gent, P.R., 1991: The heat budget of the TOGA--COARE domain in an ocean
+model.  J. Geophys. Res. 96, 3323--3330.
+</p>
+
+<p>
+Gent, P.R., and M.A. Cane, 1989: A reduced gravity, primitive equation model
+of the upper equatorial ocean. J. Comp. Phys. 81, 444--480.
+</p>
+
+<p>
+Gent, P.R., and J.C. McWilliams, 1990: Isopycnal mixing in ocean circulation
+models. J. Phys. Ocean. 20, 150--155.
+</p>
+
+<p>
+Gent, P.R., and J.J. Tribbia, 1993: Simulation and predictability in a
+coupled TOGA model.  J. Climate 6, 1843--1858.
+</p>
+
+<p>
+Gent, P.R., J. Willebrand, T.J. McDougall, and J.C. McWilliams, 1994:
+Parameterizing eddy--induced tracer transports in ocean circulation
+models. J. Phys. Ocean., submitted.
+</p>
+
+<p>
+Giorgi, F., 1990: Simulation of regional climate using a limited area
+model nested in a general circulation model. J. Climate 3,
+941--963.
+</p>
+
+<p>
+Giorgi, F., G.T. Bates, and S.J. Nieman, 1993: The multiyear
+surface climatology of a regional atmospheric model over the western United States. 
+J. Climate 6, 75--95.
+</p>
+
+<p>
+Giorgi, F., C. Shields Brodeur, and G.T. Bates, 1994: Regional climate
+change scenarios over the United States produced with a nested regional
+climate model:  Spatial and seasonal characteristics. J. Climate 7,
+375--399.
+</p>
+
+<p>
+Guenther, A., C. Hewitt, D. Erickson, R. Fall, C. Geron, T. Graedel,
+P. Harley, L. Klinger, M. Lerdau, W. McKay, T. Pierce, R. Scholes, R. 
+Steinbrecher, R. Tallamraju, J. Taylor, and P. Zimmerman, 1994:  A global
+model of natural volatile organic compound emissions.  J. Geophys.
+Res., submitted. 
+</p>
+
+<p>
+Hack, J.J., B.A. Boville, J.T. Kiehl, P.J. Rasch, and D.L. Williamson,
+1994:  Climate statistics from the NCAR Community Climate Model
+(CCM2).  J. Geophys. Res., in press.
+</p>
+
+<p>
+Hack, J.J., 1994: Sensitivity of the simulated climate to liquid water path
+length specification.  J. Geophys. Res., in preparation.
+</p>
+
+<p>
+Hack, J.J., B.A. Boville, B.P. Briegleb, J.T. Kiehl, P.J. Rasch, and D.L.
+Williamson, 1993: Description of the NCAR Community Climate Model (CCM2). 
+NCAR Technical Note/TN--382+STR, Boulder, Colorado, 108 pp.
+</p>
+
+<p>
+Hauglustaine, D.A., C. Granier, G.P. Brasseur, and G. Megie, 1994: The
+importance of atmospheric chemistry in the calculation of radiative forcing
+on the climate system, J. Geophys. Res. 99, 1173--1186.
+</p>
+
+<p>
+Henderson-Sellers, A., 1993:  Continental vegetation as a dynamic
+component of a global climate model:  a preliminary assessment.  
+Climate Change 23, 337--377.
+</p>
+
+<p>
+Hibler, W.D., III, 1979:  A dynamic thermodynamic sea ice model.
+J. Phys. Ocean. 9, 815--846.
+</p>
+
+<p>
+Holland, E.A., C. Coxwell, D.S. Schimel, and D. Valentine, 1993: 
+A model of methane production in soils. Bulletin of the Ecological
+Society of America, 78th Annual ESA  Meeting, Ecology and Global
+Sustainability, University of Wisconsin, Madison, Wisconsin, 
+July 31--August 4, 1993 74(2).
+</p>
+
+<p>
+Holland, W.R., and F.O. Bryan, 1993a:  Sensitivity studies
+on the role of the ocean in climate change. Ocean Processes in
+Climate Dynamics: Global and Mediterranean Examples. P. Malanotte-Rizzoli
+and A. R. Robinson (Eds.), NATO ASI Series, Kluwer Academic
+Publishers, Dordrecht, 111--134.
+</p>
+
+<p>
+Holland, W.R., and F.O. Bryan, 1993b:  Modeling the wind and
+thermohaline circulation in the North Atlantic Ocean. Ocean Processes in
+Climate Dynamics: Global and Mediterranean Examples. P. Malanotte-Rizzoli
+and A. R. Robinson (Eds.), NATO ASI Series, Kluwer Academic
+Publishers, Dordrecht, 135--156.
+</p>
+
+<p>
+Hurrell, J.W., J.J. Hack, and D.P. Baumhefner, 1993:  Comparison
+of NCAR Community Climate Model (CCM) climates.  NCAR Technical Note
+NCAR/TN--395+STR, Boulder, Colorado, 335 pp.
+</p>
+
+<p>
+IPCC, 1990:  Climate Change:  The IPCC Scientific Assessment,
+J.T. Houghton, G.J. Jenkins, and J.J. Ephraums (Eds.), Cambridge
+University Press, 365 pp.
+</p>
+
+<p>
+IPCC, 1992:  Climate Change 1992:  The Supplementary Report to
+The IPCC Scientific Assessment, J.T. Houghton, B.A. Callander, and
+S.K. Varney (Eds.), Cambridge University Press, 200 pp.
+</p>
+
+<p>
+Jin, F.-F., J.D. Neelin, and M. Ghil, 1994:  El Nino on the Devil's
+Staircase:  Annual Subharmonic Steps to Chaos. Nature 264
+70--72.
+</p>
+
+<p>
+Johnson, K.D., D. Entekhabi, and P.S. Eagleson, 1993: The
+implementation and validation of improved land-surface hydrology in an atmospheric
+general circulation model. J. Climate 6, 1009--1026.
+</p>
+
+<p>
+Kalnay, E., M. Kanamitsu, J. Pfaendtner, J. Sela, M. Suarez, J.
+Stackpole, J. Tuccillo, L. Umscheid, and D. Williamson, 1989: Rules for
+interchange of physical  parameterizations.
+Bull. Amer. Meteor. Soc. 70, 620--622.
+</p>
+
+<p>
+Kiehl, J.T., 1994: Sensitivity of the
+simulated climate to  effective drop size
+specification.  J. Geophys. Res., in preparation.
+</p>
+
+<p>
+Kiehl, J.T., J.J. Hack, and B.P. Briegleb, 1994: The simulated earth radiation
+budget of the NCAR CCM2 and comparisons with the Earth Radiation Budget
+Experiment (ERBE).  J. Geophys. Res., in press.
+</p>
+
+<p>
+Koster, R.D., and M.J. Suarez, 1992: A comparative analysis of two land
+surface heterogeneity representations. J. Climate 5, 1379--1390.
+</p>
+ 
+<p>
+Large, W.G., J.C. McWilliams, and S.C. Doney, 1994: Oceanic vertical
+mixing:  A review and a model with a nonlocal K-profile boundary layer
+parameterization.  Rev. Geophys., submitted.
+</p>
+
+<p>
+Lemke, P., W.B. Owens, and W.D. Hibler, III, 1990:  A coupled sea ice--mixed
+layer--pycnocline model for the Weddell Sea. J. Geophys. Res. 95, 9513--9525.
+</p>
+
+<p>
+Levitus, S., M.E. Conkright, J.L. Reid, R.G. Najjar, and
+A. Mantyla, 1993:  Distribution of nitrate, phosphate and silicate in the world
+oceans. Prog. Oceanog. 31, 245--273.
+</p>
+
+<p>
+Maier--Reimer, E., and K. Hasselmann, 1987: Transport and storage of CO in the
+ocean:  An inorganic ocean--circulation carbon cycle model.  
+Clim. Dyn. 2, 63--90.
+</p>
+
+<p>
+Manabe, S., K. Bryan, and M.J. Spelman, 1975:  A global
+ocean-atmosphere climate model.  Part I.  The atmospheric circulation.
+J. Phys. Oceanogr. 5, 3--29.
+</p>
+
+<p>
+Manabe, S., and K. Bryan, 1969:  Climate calculations with a combined
+ocean-atmosphere model.  J. Atmos. Sci. 26, 786--789.
+</p>
+
+<p>
+Manabe, S.,  and R.J. Stouffer, 1993: Century-scale effects of increased atmospheric
+CO on the ocean-atmosphere system. Nature 364, 215--218.
+</p>
+
+<p>
+Mechoso, C.R., C.-C. Ma, J.D. Farrara, and J.A. Spahr, 1993: Parallelization
+and distribution of a coupled atmosphere-ocean general circulation model.
+Mon. Wea. Rev. 121, 2062--2076.
+</p>
+
+<p>
+Meehl, G.A., 1990:  Development of global coupled ocean-atmosphere
+general circulation models.  Clim. Dyn. 5, 19--33.
+</p>
+
+<p>
+Meehl, G.A., G.W. Branstator, and W.M. Washington, 1993:  Tropical
+Pacific interannual variability and CO climate change.  J.
+Climate 6, 42--63.
+</p>
+
+<p>
+Melillo, J.M., A.D. McGuire, D.W. Kicklighter, B. Moore, III, C.J. Vorosmarty,
+and A.L. Schloss, 1993: Global climate change and terrestrial net primary
+production. Nature 363, 234--240.
+</p>
+
+<p>
+McWilliams, J.C., and P.R. Gent, 1994: The wind--driven ocean circulation with
+an isopycnal--thickness mixing parameterization. J. Phys. Ocean. 
+24, 46--65.
+</p>
+
+<p>
+Ojima, D., Editor, 1992:  Modeling the Earth System.
+UCAR/Office for Interdisciplinary Earth Studies, Boulder, Colorado, 488 pp.
+</p>
+
+<p>
+Owens, W.B., and P. Lemke, 1990:  Sensitivity studies with a sea
+ice-mixed layer-pycnocline model in the Weddell Sea.  J. Geophys.
+Res. 95, 9527--9538.  
+</p>
+
+<p>
+Parkinson, C.L., and W.M. Washington, 1979:  A large--scale numerical model
+of sea ice. J. Geophys. Res. 84, 311--337.
+</p>
+
+<p>
+Parton, W.J., D.S. Schimel, D.S. Ojima, and C.V. Cole, 1994:  A
+general model for soil organic matter dynamics:  sensitivity to litter
+chemistry, texture and management.  Soil Science Society of
+America Journal, in press.
+</p>
+
+<p>
+Pinardi, N., A. Rosati, and R.C. Pacanowski, 1994: The sea surface pressure
+formulation of rigid lid models. Implications for altimetric data assimilation
+studies. Preprint.
+</p>
+
+<p>
+Pitman, A.J., Z.-L. Yang, J.G. Cogloy, and A. Henderson-Sellers,
+1991:  Description of Bare Essentials of Surface Transfer for the
+Bureau of Meteorology Research Centre AGCM. BMRC Research Report,
+Bureau of Meteorology Research Center, Melbourne, Victoria, Australia,
+32, 117 pp.
+</p>
+
+<p>
+Pollard, D., and S.L. Thompson, 1994:  Use of a Land-Surface-Transfer
+Scheme (LSX) in a global climate model:  The response to doubling
+stomatal resistance.  Global and Planetary Change, submitted.
+</p>
+
+<p>
+Rasch, P.J., X.X. Tie, B.A. Boville, and D.L. Williamson, 1993:  A
+three-dimensional transport model for the middle atmosphere.  J.
+Geophys. Res. 99, 999--1018.
+</p>
+
+<p>
+Sarmiento, J.L., R.D. Slater, and M.J.R. Fasham, 1993: A seasonal
+three--dimensional ecosystem model of nitrogen cycling in the North Atlantic
+euphotic zone. Global Biogeochem. Cycles. 7, 417--450.
+</p>
+
+<p>
+Sausen, R., K. Barthel, and K. Hasselmann, 1988: Coupled
+ocean-atmosphere models with flux correction. Clim. Dyn. 2,
+145-163.
+</p>
+
+<p>
+Schimel, D.S., B.H. Braswell, E.A. Holland, R. McKeown, D.S. Ojima,
+T.H. Painter, W.J. Parton, and A.R. Townsend, 1994:  Climatic, edaphic
+and biotic controls over storage and turnover of carbon in soils.
+Global Biogeochemical Cycles, in press.
+</p>
+
+<p>
+Schimel, D.S., W.J. Parton, T.G.F. Kittel, D.S. Ojima, and C.V. Cole,
+1990:  Grassland biogeochemistry:  links to atmospheric processes.
+Climatic Change 17, 13--25.
+</p>
+
+<p>
+Sellers, P.J., J.A. Berry, G.J. Collatz, C.B. Field, and F.G. Hall, 1992:
+Canopy reflectance, photosynthesis, and transpiration. III. A reanalysis
+using improved leaf models and a new canopy integration scheme.
+Remote Sensing of Environment 42, 187--216.
+</p>
+
+<p>
+Semtner, A.J., and R.M. Chervin, 1992:  Ocean general circulation from
+a global eddy-resolving model. J. Geophys. Res. 97, 5493--5550.
+</p>
+
+<p>
+Siegenthaler, U., and J.L. Sarmiento, 1993:  Atmospheric carbon
+dioxide and the ocean.  Nature 365, 119--125.
+</p>
+
+<p>
+Smith, R.D., J.K. Dukowicz, and R.C. Malone, 1992:  Parallel ocean
+general circulation modeling.  Physica D 60, 38--61.
+</p>
+
+<p>
+Smolarkiewicz, P.K., 1984: A fully multidimensional positive definite
+advection transport algorithm with small implicit diffusion. J.
+Comp. Phys. 54, 325--362.
+</p>
+
+<p>
+Stossel, A.,  P. Lemke, and W.B. Owens, 1990:  Coupled sea ice--mixed layer
+simulations for the Southern Ocean.  J. Geophys. Res. 95, 9539--9555.
+</p>
+
+<p>
+Stouffer, R.J., S. Manabe, and K. Bryan, 1989:  Interhemispheric
+asymmetry in climate response to a gradual increase of CO. 
+Nature 342, 660--662.
+</p>
+
+<p>
+Tans, P.P., I.Y. Fung, and T. Takahashi, 1990:  Observational
+constraints on the global atmospheric CO budget.  Science
+247, 1431--1438.
+</p>
+
+<p>
+Taylor, K.C., G.W. Lamorey, G.A. Doyle, R.B. Alley, D.M. Grootes, P.A.
+Mayewski, J.W.C. White, and L.K. Barlow, 1993: The ``flickering
+switch" of late Pleistocene climate change. Nature 361, 432--435.
+</p>
+
+<p>
+Thompson, L.G., E. Mosely-Thompson, M.E. Davis, J.F. Bolzani, J. Dai, T. Yao,
+N. Gunderstrup, X. Wu, L. Klein, and Z. Xie, 1989: Holocene-late Pleistocene
+climatic ice core records from Quinhai-Tibetan Plateau. Science 
+246, 474--477.  
+</p>
+
+<p>
+Toggweiler, J.R., K. Dixon, and K. Bryan, 1989a: Simulations of radiocarbon in
+a coarse--resolution world ocean model, 1, Steady state prebomb distributions.
+J. Geophys. Res. 94, 8217--8242.
+</p>
+
+<p>
+Toggweiler, J.R., K. Dixon, and K. Bryan, 1989b: Simulations of radiocarbon in
+a coarse--resolution world ocean model, 1, Distributions of bomb--produced carbon
+14. J. Geophys. Res. 94, 8243--8264.
+</p>
+
+<p>
+Trenberth, K.E., Editor, 1992:  Climate System Modeling.
+Cambridge University Press, 788 pp.
+</p>
+
+<p>
+Tziperman, E., L. Stone, M.A. Cane, and H. Jarosh, 1994:  El Nino
+Chaos:  Overlapping of Resonances Between the Seasonal Cycle and the
+Pacific Ocean-Atmosphere Oscillator.  Science 264 72--74.
+</p>
+<p>
+Washington, W.M., A.J. Semtner, Jr., G.A. Meehl, D.J. Knight, and T.A.
+Mayer, 1980:  A general circulation experiment with a coupled
+atmosphere, ocean and sea ice model.  J. Phys. Oceanogr. 10, 1887--1908.
+</p>
+
+<p>
+Washington, W.M., and G.A. Meehl, 1989:  Climate sensitivity due to
+increased CO:  Experiments with a coupled atmosphere and ocean
+general circulation model.  Clim. Dyn. 4, 1--38.
+</p>
+
+<p>
+Washington, W.M., and G.A. Meehl, 1993:  Greenhouse sensitivity
+experiments with penetrative cumulus convection and tropical cirrus
+albedo effects.  Clim. Dyn. 8, 211--223.
+</p>
+
+<p>
+Williamson, D.L., and P.J. Rasch, 1994: Water vapor transport in the NCAR
+CCM2.  Tellus 46A, 34--51.
+</p>
+
+<p>
+Williamson, D.L., J.T. Kiehl, and J.J. Hack, 1994: Climate sensitivity of the
+NCAR Community Climate Model (CCM2) to horizontal resolution.  Clim.
+Dyn., submitted.
+</p>
+
+
+
+
+<p><b>VIII.</b> <b><a name="Appendix">Appendix -- CMAP SAC Members</a></b>
+<br>
+<br>
+<br>
+
+
+<p><b>IX.</b> <b><a name="Acronyms">Acronyms</a></b><br>
+</body>
+</html>

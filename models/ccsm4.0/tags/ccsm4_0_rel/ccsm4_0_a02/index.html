@@ -1,0 +1,3065 @@
+<html>
+
+<head>
+   <title>Community Climate System Model (CCSM)</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<a name="TOP">
+<!-- ----------------------------------------------------------------------- -->
+<!-- main navigation include -->
+<!-- ----------------------------------------------------------------------- -->
+<!=======================================================================>
+<body bgcolor="#ffffff">
+<!=======================================================================>
+<!----------------------------------------------------------------------------->
+<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+<tr>
+<td align="left">
+   <font size=-1>
+   http://www.cesm.ucar.edu/models/ccsm4.0/tags/ccsm4_0_rel/ccsm4_0_a02/index.html
+   </font>
+</td>
+<td align="right">
+   <font size=-1>
+   
+   11 Feb 2011
+   
+   </font>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+<table width="100%" cellpadding="8" cellspacing="0" border="1" bgcolor="dddddd">
+<tr>
+<td align="left">
+   <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="dddddd">
+   <tr>
+   <td align="left">
+      <font size="+1">
+      <b> CCSM4&nbsp;Software&nbsp;Release</b>
+      </font>
+   </td>
+   <td width="50">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td align="right">
+      <font size=-1>
+      [an error occurred while processing this directive]
+         <a href="http://www.cesm.ucar.edu/models/ccsm4.0/">CCSM4&nbsp;Release&nbsp;Home</a>&nbsp;|&nbsp;
+         <a href="http://www.cesm.ucar.edu/">CESM&nbsp;Home</a> 
+      
+      </font>
+   </td>
+   </tr>
+   </table>
+</td>
+</tr>
+</table>
+<!=======================================================================>
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### BEGIN EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!----------------------------------------------------------------------------->
+<h1 align=center> 
+ccsm4_0_a02
+
+</h1>
+<!----------------------------------------------------------------------------->
+<h2 align=center>Release Notes, Test Results, and Known Problems </h2>
+<!----------------------------------------------------------------------------->
+
+<p>
+Contents
+<ul>
+<li><a href="#TAG">Release Notes</a>
+<li><a href="#RECORD">Software Engineering Test Record</a>
+<li><a href="#PROBLEMS">Known Problems</a>
+</ul>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="TAG">
+<h3>Release Notes</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+================================================================================
+SVN $URL: https://svn-ccsm-release.cgd.ucar.edu/model_versions/ccsm4_0_a02 $
+================================================================================
+
+Tag name: ccsm4_0_a02
+Originator(s): cseg
+Date: Wed Mar 10 2010
+One-line Summary: Second ccsm4.0 alpha release tag.
+
+This tag is the second released version of the ccsm4.0 alpha code.
+The science is essentially the same, but because of numerous software 
+improvements and bug fixes, users are strongly encouraged to upgrade 
+from previous versions to this release.
+
+- various minor bug fixes in both scientific and non-scientific code
+- improvements to build and run scripts
+- additional support for new machines
+- improved default processor layouts for certain configurations
+- improved parallel i/o library (pio)
+- improved performance of high resolution configurations
+- new support for omp threading in pop model
+- clm Volatile Organic Compounds (VOC) module now implements science from
+  MEGAN Heald et. al. 2008 version.
+- new cam FV filter options needed for high res runs
+- new cam dust tuning mods for trop_bam and trop_mozart configs
+- new cam pre-industrial and 20th century transient SST datasets
+- new cam atm_aero flag
+
+Release tag ccsm4_0_a02 corresponds to internal release candidate ccsm4_0_rel05.
+
+================================================================================
+
+Tag name: ccsm4_0_a01
+Originator(s): cseg
+Date: Fri Jan 15 2010
+One-line Summary: First ccsm4.0 alpha release tag. 
+
+This tag is the first released of the ccsm4.0 alpha code.
+The purpose of alpha code releases is testing leading up to a final release.
+Release tag ccsm4_0_a01 corresponds to internal release candidate ccsm4_0_rel03.
+
+</pre>
+<a href="#TOP"> Return to Top </a>
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="RECORD">
+<h3> Software Engineering Test Record</h3>
+<!----------------------------------------------------------------------------->
+
+<h4> Bluefire Pre-tag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+><I
+CLASS="emphasis"
+>P4A.f09_g16.B1850CN.bluefire </I
+></TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B20TRCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850RMCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.f19_g16.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.T31_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+> expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.BW1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.E.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.B1850CN.bluefire </TD
+><TD
+><FONT
+COLOR="RED"
+>TFAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>test not being threaded</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_PT.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_f19.FW1850.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.FCN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T62_g16.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.D.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.f45_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+> expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERB.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.E.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.E1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERP.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+> expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERP.T62_g37.G.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+> expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>SMS_D.T62_g16.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.479 memh=1052.642 memr=-0.001 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.f09_g16.B1850CN.bluefire.perf npes=128 tput=4.393 memh=1059.980 memr=-0.001 tag=ccsm4_0_rel05 
+  
+CHECK ERT.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.218 memh=1067.760 memr=-0.001 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.f09_g16.B20TRCN.bluefire.perf npes=128 tput=4.194 memh=1075.663 memr=-0.001 tag=ccsm4_0_rel05 
+  
+CHECK ERT.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.513 memh=1044.605 memr=-0.001 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.f09_g16.B1850RMCN.bluefire.perf npes=128 tput=4.426 memh=1051.823 memr=-0.001 tag=ccsm4_0_rel05 
+  
+CHECK ERT.T62_g16.C.bluefire.perf npes=128 tput=22.790 memh=905.704 memr=-0.001 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.T62_g16.C.bluefire.perf npes=128 tput=21.521 memh=912.973 memr=-0.001 tag=ccsm4_0_rel05 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Bluefire Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS.f45_g37.B.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS.f45_f45.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERT.T62_g37.C.bluefire </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERI.f45_g37.BMOZ.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B20TRCNCHM.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CNCHM.bluefire.GC.rel05posttag </TD
+><TD
+><FONT
+COLOR="RED"
+>SFAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+><P
+>CAM build-namelist - ERROR:</P
+> 
+<P
+>invalid value of use_case (1850_cam4_super_fast_llnl) This will be fixed in the next tag.</P
+></TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F1850.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.I4804.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SEQ.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS_DE.f19_g16.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f19_g16.S.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>CME.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS.ne30_f19_g16.F.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_RLA.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_RLB.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_ROA.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_ROB.f45_f45.I.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEA_P1.f45_g37.B.bluefire </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>cam build failed "models/atm/cam/src/utils/pilgrim/mod_comm.F90", 1516-036 (S) Entity mpi_datatype_null has undefined type. Will be fixed in next tag.</TD
+></TR
+><TR
+><TD
+>PEM.f19_g16.X.bluefire.cpl </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEM.f45_g37.A.bluefire.cpl </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PEM.f19_g16.B.bluefire.cpl </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.X.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f45_g37.A.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f09_g16.B1850CN.bluefire </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g37.C.bluefire.perf npes=16 tput=68.690 memh=377.964 memr=-0.001 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.T62_g37.C.bluefire.perf npes=16 tput=73.517 memh=376.300 memr=-0.001 tag=ccsm4_0_rel05 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Jaguar Pretag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERI.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.f09_g16.B20TRCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.f19_g16.B20TR.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERI.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERI.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.FCN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS_D.f19_g16.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERS_D.T31_g37.B.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.D.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+><TR
+><TD
+>SMS_D.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>lustre problems caused BFAIL</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.f09_g16.B1850CN.jaguar.perf npes=128 tput=3.645 memh=1857.106 memr=1975.914 tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.f09_g16.B20TRCN.jaguar.perf npes=128 tput=3.215 memh=1875.467 memr=1995.873 tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.f19_g16.B20TR.jaguar.perf npes=416 tput=16.209 memh=1712.039 memr=1844.814 tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.f19_g16.B.jaguar.perf npes=416 tput=16.126 memh=1702.947 memr=1835.698 tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.T31_g37.B.jaguar.perf npes=16 tput=8.274 memh=1368.191 memr=1454.603 tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.T62_g16.C.jaguar.perf npes=128 tput=etag/run/c memh=etag/run/c memr=etag/run/c tag=ccsm4_0_rel05 
+ 
+  
+CHECK ERT.T62_g16.D.jaguar.perf npes=64 tput=28.422 memh=1210.377 memr=1286.580 tag=ccsm4_0_rel05 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Jaguar Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>ERB.T62_g37.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_f19.F1850.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.T62_t12.G.jaguar </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>shf* and sfwf* forcing files not available</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.jaguar </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>core dump during initialization run</TD
+></TR
+><TR
+><TD
+>SMS.ne30_f19_g16.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.C.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.D.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.T62_g16.G.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_f19.F.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.I.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.E.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>PET_PT.f19_g16.B1850CN.jaguar </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Franklin PostTest Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.franklin </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CN.franklin </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B20TRCN.franklin </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>[0] MPICH has run out of unexpected buffer space. Fixed in next release.</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B20TRCNCHM.franklin </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>[0] MPICH has run out of unexpected buffer space.  Fixed in next release.</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CNCHM.franklin.GC.rel05posttag </TD
+><TD
+><FONT
+COLOR="RED"
+>SFAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>CAM build-namelist - ERROR: invalid value of use_case (1850_cam4_super_fast_llnl).  Fixed in next tag</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.franklin </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.franklin </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.franklin </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.franklin </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.franklin </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.franklin </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>dies during initialization run, at time step 0, no core dump</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.franklin.perf npes=128 tput=13.240 memh=1919.977 memr=2108.644 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.T62_g16.G.franklin.perf npes=128 tput=12.954 memh=1937.734 memr=2123.537 tag=ccsm4_0_rel05 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+
+<h4> Kraken PostTest Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f09_g16.B20TRCN.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B1850CN.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f09_g16.B20TRCN.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.kraken </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.kraken </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.kraken </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f05_t12.B.kraken.GC.rel05posttag </TD
+><TD
+><FONT
+COLOR="RED"
+>RUN</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>core dumbs during initialization run</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.kraken.perf npes=128 tput=13.505 memh=803.836 memr=1012.620 tag=ccsm4_0_beta45 baseline 
+CHECK ERT.T62_g16.G.kraken.perf npes=128 tput=13.764 memh=804.248 memr=1010.143 tag=ccsm4_0_rel05 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Edinburgh Pretag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>ERS.T31_g37.B1850CN.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.T31_g37.B1850CN.edinburgh_lahey </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>expected, lahey doesn't compile pop</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_lahey </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.B1850CN.edinburgh_intel </TD
+><TD
+>PASS </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>expected pop is not bfb for gx3v7</TD
+></TR
+><TR
+><TD
+>ERS.f45_g37.A.edinburgh_intel </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+<h4> Edinburgh Posttag Test Record</h4>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;Possible test result outcomes:
+  UNDEF - undefined result
+  SFAIL - scripts case generation failed
+  TFAIL - test setup error
+  GEN   - case generated
+  PEND  - case submitted
+  RUN   - case running or died during run, likely failure
+  PASS  - case passed
+  CHECK - manual review of data is required
+  FAIL  - case failed
+  BFAIL - compare test couldn't find base result
+  ERROR - test checker failed, test may or may not have passed
+</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="informaltable"
+><P
+></P
+><A
+NAME="AEN3"
+></A
+><TABLE
+BORDER="1"
+BGCOLOR="#E0E0E0"
+CELLSPACING="0"
+CELLPADDING="4"
+CLASS="CALSTABLE"
+><THEAD
+><TR
+><TH
+>Test</TH
+><TH
+>Status</TH
+><TH
+>Compare Baseline History</TH
+><TH
+>Compare Baseline Logs</TH
+><TH
+>Notes</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>SMS_D.f19_g16.B20TRCN.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B1850CN.edinburgh_pgi </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>p15_31392:  p4_error: interrupt SIGx: 15</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.edinburgh_pgi.GC.rel05posttag </TD
+><TD
+>PEND </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.edinburgh_pgi </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>p7_7442:  p4_error: interrupt SIGx: 15</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.edinburgh_pgi </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f19_g16.B20TRCN.edinburgh_lahey </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>expected: lahey failes to compile pop2</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.B1850CN.edinburgh_lahey </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>expected: lahey failes to compile pop2</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.edinburgh_lahey </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g16.G.edinburgh_lahey </TD
+><TD
+><FONT
+COLOR="RED"
+>FAIL</FONT
+> </TD
+><TD
+>--- </TD
+><TD
+><FONT
+COLOR="RED"
+>BFAIL</FONT
+> </TD
+><TD
+>expected: lahey failes to compile pop2</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.edinburgh_lahey </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.edinburgh_lahey </TD
+><TD
+>PASS </TD
+><TD
+>--- </TD
+><TD
+>PASS </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>SMS_D.f19_g16.B20TRCN.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.T31_g37.B1850CN.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERS.f19_g16.X.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERT.T62_g37.G.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERB.T31_g37.I.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+><TR
+><TD
+>ERH.f19_f19.F.edinburgh_intel.GC.rel05posttag </TD
+><TD
+>GEN </TD
+><TD
+>--- </TD
+><TD
+>--- </TD
+><TD
+>&nbsp;</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></DIV
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="screen"
+>&#13;CHECK ERT.T62_g16.G.edinburgh_pgi.perf npes=16 tput= memh= memr= tag=ccsm4_0_rel05 
+ 
+  
+</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="PROBLEMS">
+<h3>Known Problems</h3>
+<!----------------------------------------------------------------------------->
+<pre>
+  
+
+_____________________________________________________________________________________________
+
+Description: 
+Date       : 
+Contact    : 
+Information: 
+
+			       
+_____________________________________________________________________________________________
+
+</pre>
+
+
+<a href="#TOP"> Return to Top </a>
+<!----------------------------------------------------------------------------->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ######### END   EDITABLE PAGE CONTENT ######### -->
+<!-- ----------------------------------------------------------------------- -->
+</body>
+</html>
